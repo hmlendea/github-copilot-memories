@@ -56,6 +56,7 @@
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
+- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it.
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.
 

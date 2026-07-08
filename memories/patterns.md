@@ -57,7 +57,7 @@
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
-- Use expression-bodied (`=>`) for any method whose entire body is a single `return` statement: `public Foo GetFoo() => foo;`
+- Use expression-bodied (`=>`) for **any** method whose entire body is a single statement — this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions. A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToDomainModel`, `ToDataObject`, and their plurals).
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.

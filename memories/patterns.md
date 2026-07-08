@@ -11,7 +11,7 @@
 
 ## C# General
 
-- Always use explicit braces for control flow. `=>` expression-bodied members are encouraged for single-expression methods/properties/constructors.
+- Always use explicit braces for control flow. Use `=>` expression-bodied syntax for all single-expression methods, properties, and constructors — this is mandatory, not optional.
 - Never declare multiple variables on one line.
 - Each new type must be declared in its own file. File name must exactly match the class name.
 - Prefer `.Equals()` over `==` for comparisons.
@@ -56,7 +56,8 @@
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
-- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it.
+- Use expression-bodied (`=>`) for any method whose entire body is a single `return` statement: `public Foo GetFoo() => foo;`
+- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it: `public Foo GetFoo() => new() { ... };`
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.
 

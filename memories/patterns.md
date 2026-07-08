@@ -18,6 +18,8 @@
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
 - `if`, `for`, `foreach`, `while`, and `switch` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
+- `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
+- Never use two or more consecutive blank lines anywhere in the code.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
 - Each new type must be declared in its own file. File name must exactly match the class name.

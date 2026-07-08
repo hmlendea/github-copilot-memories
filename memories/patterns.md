@@ -34,6 +34,7 @@
 - Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
 - Configuration classes: Noun + `Settings` (`DataStoreSettings`).
 - Mapping classes: Noun + `MappingExtensions` (`AccountMappingExtensions`).
+- Mapping methods: `ToDomainModel` / `ToDomainModels` for entity→model direction; `ToDataObject` / `ToDataObjects` for model→entity direction. Never `ToEntity` or `ToEntities`.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
 - Boolean properties/methods: `Is`-prefixed (`IsEnabled`, `IsToday()`).
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
@@ -57,7 +58,7 @@
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
 - Use expression-bodied (`=>`) for any method whose entire body is a single `return` statement: `public Foo GetFoo() => foo;`
-- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it: `public Foo GetFoo() => new() { ... };`
+- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToDomainModel`, `ToDataObject`, and their plurals).
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.
 

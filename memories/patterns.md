@@ -4,18 +4,25 @@
 - Place methods and functions in files, classes, and types based on clear responsibility; avoid multi-responsibility buckets.
 - Ensure all added code is covered by tests.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
-- Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings.
+- Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos` etc. are forbidden — always write the full word (`texture`, `message`, `button`, `image`, `value`, `object`, `manager`, `configuration`, `position`).
 - Use British English spelling in code and related text. Prefer latinate English words where possible (e.g. "necessary" instead of "needed").
 - Keep code self-explanatory and avoid comments unless they are exceptional and genuinely useful.
+- Always place at least one space after `//` at the start of a comment: `// text`, never `//text`.
+- Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
+- TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
+- Never use tabs for indentation — always use spaces.
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.
 
 ## C# General
 
-- Always use explicit braces for control flow. Use `=>` expression-bodied syntax for all single-expression methods, properties, and constructors — this is mandatory, not optional.
-- Never declare multiple variables on one line.
+- Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
+- Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
+- `if`, `for`, `foreach`, `while`, and `switch` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
+- Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
+- Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
 - Each new type must be declared in its own file. File name must exactly match the class name.
 - Prefer `.Equals()` over `==` for comparisons.
-- NEVER use conditional (ternary) expressions (`? :`). Always use `if` statements instead, in every session, in every project.
+- NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
 - Always use explicit types instead of `var`.
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Always prefer `.slnx` over `.sln` solution files.
@@ -46,7 +53,7 @@
 - Configuration classes: `public sealed class`.
 - Mapping extension classes: no access modifier (implicitly `internal`), `static`.
 - Mapping extension methods: explicitly `internal static`.
-- Private methods in service classes: omit the `private` keyword (let it default to implicitly private).
+- Always declare the accessibility modifier explicitly on every method, property, field, and constructor — including `private`. Never rely on implicit/default accessibility.
 
 ## C# Constructors & Object Creation
 
@@ -76,7 +83,7 @@
 ## C# Collections
 
 - Use `IEnumerable<T>` as the return type and parameter type for all collections. Never `List<T>`, `IList<T>`, `IReadOnlyList<T>`, `HashSet<T>`.
-- Use C# 12 collection expressions `[...]` for inline collection initialization.
+- Use C# 12 collection expressions `[...]` for inline collection initialization of **any** collection type (`List<T>`, `Dictionary<K,V>`, arrays, etc.), including empty ones. `new List<T>()`, `new Dictionary<K,V>()`, `new T[]{}` are all wrong — use `[]` instead.
 - Use LINQ (`.Where()`, `.Any()`, `.First()`, `.Select()`, `.Append()`) for in-memory querying.
 
 ## C# Controller Style

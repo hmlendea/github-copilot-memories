@@ -1,6 +1,8 @@
 ## General - all languages and technologies
 
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
+- Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
+- Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
 - Place methods and functions in files, classes, and types based on clear responsibility; avoid multi-responsibility buckets.
 - When changing existing logic, remove all leftovers: dead code, unused imports, obsolete fields, and any other artefacts that are no longer necessary after the change. Update the README if the change affects documented behaviour or setup.
 - Ensure all added code is covered by tests.
@@ -25,6 +27,8 @@
 
 - Variables inside functions must be declared with `local` whenever possible.
 - Never embed Python in shell scripts unless explicitly asked.
+- Always write distro-agnostic code: use only POSIX-standard or universally available commands, and avoid paths or tools specific to any particular Linux distribution.
+- Always use environment variables for paths instead of hardcoded values — e.g. `${HOME}`, `${XDG_CONFIG_HOME}`, `${XDG_DATA_HOME}`, `${XDG_CACHE_HOME}`. Never hardcode paths like `/home/user/` or `/etc/`.
 - Constant strings (no variable references or command substitutions) must use single quotes: `'constant string'`. Strings that reference variables or call commands must use double quotes: `"Value is: ${VAR}"` / `"Today is: $(date)"`.
 - Variable naming: all uppercase, always referenced with surrounding curly braces — `${VAR_NAME}`, never `$var_name`.
 - Function naming: all lowercase, words separated by underscores — `my_function`, never `myFunction` or `MY_FUNCTION`.
@@ -43,11 +47,13 @@
 - Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Namespace must mirror the folder structure.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer `.Equals()` over `==` for comparisons.
+- NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples — avoid tuples entirely.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
 - Always use explicit types instead of `var`.
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Always prefer `.slnx` over `.sln` solution files.
 - Always target the latest stable .NET version available.
+- When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
@@ -76,9 +82,12 @@
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
+- Implement `IEquatable<T>` on domain models and entity classes where equality comparison is meaningful (e.g. value objects, entities compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 - Mapping extension classes: no access modifier (implicitly `internal`), `static`.
 - Mapping extension methods: explicitly `internal static`.
 - Always declare the accessibility modifier explicitly on every method, property, field, and constructor — including `private`. Never rely on implicit/default accessibility.
+- Order members by accessibility: `public` first, then `protected`, then `private`.
+- Within each accessibility group, order members by kind: fields (readonly first, then mutable) → properties → events → constructors and destructors → methods.
 - All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
 
 ## C# Constructors & Object Creation
@@ -105,6 +114,7 @@
 - Use log-and-rethrow pattern: `catch (Exception exception) { logger.Error(...); throw; }`.
 - Use `throw;` (NOT `throw exception;`) to preserve the stack trace.
 - Use only BCL exceptions (`ArgumentNullException`, `KeyNotFoundException`, `AuthenticationException`). Do NOT create custom exception types.
+- When throwing exceptions, always pass as much detail as possible — include the relevant value(s), parameter name(s), and a descriptive message that clearly identifies what was invalid or missing and why.
 
 ## C# Collections
 

@@ -2,9 +2,10 @@
 
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
 - Place methods and functions in files, classes, and types based on clear responsibility; avoid multi-responsibility buckets.
+- When changing existing logic, remove all leftovers: dead code, unused imports, obsolete fields, and any other artefacts that are no longer necessary after the change. Update the README if the change affects documented behaviour or setup.
 - Ensure all added code is covered by tests.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
-- Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos`, single-letter names (`t`, `x`, `n`) or single-letter prefixes (`tX`, `tY`) etc. are forbidden — always write the full descriptive name (`textureYOffset`, `xFaceParametricDistance`).
+- Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. This applies **everywhere**: local variables, fields, method parameters, lambda parameters, loop variables, and out-variables. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos`, `dir`, `ray`, single-letter names (`t`, `x`, `n`, `m`, `e`) or single-letter/abbreviated prefixes (`tX`, `tY`, `dirX`, `dirY`, `rayX`, `rayY`, `checkX`, `len`, `min`, `max`, `dmg`, `str`, `acc`, `def`) are forbidden — always write the full descriptive name (e.g. `textureYOffset`, `directionX`, `rayPositionX`, `samplePositionX`, `magnitude`, `minimumDamage`, `maximumDamage`, `damageRoll`, `attackerStrength`). Lambda parameters follow the same rule without exception: `items.Select(item => item.Name)`, never `items.Select(i => i.Name)` or `items.Select(x => x.Name)`.
 - Use British English spelling in code and related text. Prefer latinate English words where possible (e.g. "necessary" instead of "needed").
 - Keep code self-explanatory and avoid comments unless they are exceptional and genuinely useful.
 - Always place at least one space after `//` at the start of a comment: `// text`, never `//text`.
@@ -23,14 +24,18 @@
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
 - Each new type must be declared in its own file. File name must exactly match the class name.
+- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it clearly belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it into smaller, focused classes.
+- Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Namespace must mirror the folder structure.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer `.Equals()` over `==` for comparisons.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
 - Always use explicit types instead of `var`.
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Always prefer `.slnx` over `.sln` solution files.
+- Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
-- Namespace must mirror folder structure exactly.
+- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `src/Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
+- Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
 - All `using` directives go at the top of the file, **outside** the namespace block. Order: System → third-party → project.
 
 ## C# Naming Conventions
@@ -57,6 +62,7 @@
 - Mapping extension classes: no access modifier (implicitly `internal`), `static`.
 - Mapping extension methods: explicitly `internal static`.
 - Always declare the accessibility modifier explicitly on every method, property, field, and constructor — including `private`. Never rely on implicit/default accessibility.
+- All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
 
 ## C# Constructors & Object Creation
 
@@ -116,7 +122,7 @@
 ## C# Unit Tests
 
 - Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
-- Use **NUnit 4.x** + **Moq** for all unit tests.
+- Use **NUnit 4.x** + **Moq** for all unit tests, unless other test or mocking frameworks are already installed in the project — in that case use the ones already present.
 - Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
 - Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.
 - Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.

@@ -1,3 +1,5 @@
+See also: [test-values.md](test-values.md) for standard test values (names, cities, currencies, domains, etc.).
+
 ## General - all languages and technologies
 
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.

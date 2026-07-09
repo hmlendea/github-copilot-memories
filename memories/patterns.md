@@ -33,7 +33,7 @@
 - Variable naming: all uppercase, always referenced with surrounding curly braces — `${VAR_NAME}`, never `$var_name`.
 - Function naming: all lowercase, words separated by underscores — `my_function`, never `myFunction` or `MY_FUNCTION`.
 
-## C# General
+## C# Code Style
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
@@ -42,22 +42,25 @@
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
-- Each new type must be declared in its own file. File name must exactly match the class name.
-- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it clearly belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it into smaller, focused classes.
-- Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Namespace must mirror the folder structure.
+- Always use explicit types instead of `var`.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer `.Equals()` over `==` for comparisons.
-- NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples — avoid tuples entirely.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
-- Always use explicit types instead of `var`.
-- NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
-- Always prefer `.slnx` over `.sln` solution files.
-- Always target the latest stable .NET version available.
-- When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
+- NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples — avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
+
+## C# Project Structure
+
+- Always target the latest stable .NET version available.
+- Always prefer `.slnx` over `.sln` solution files.
+- When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
+- NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
-- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `src/Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
+- Each new type must be declared in its own file. File name must exactly match the class name.
+- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it clearly belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it into smaller, focused classes.
+- Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder.
+- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
 - All `using` directives go at the top of the file, **outside** the namespace block. Order: System → third-party → project.
 
@@ -77,14 +80,17 @@
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`) — e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
 
-## C# Access Modifiers
+## C# Type Declarations
 
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
-- Implement `IEquatable<T>` on domain models and entity classes where equality comparison is meaningful (e.g. value objects, entities compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 - Mapping extension classes: no access modifier (implicitly `internal`), `static`.
 - Mapping extension methods: explicitly `internal static`.
+- Implement `IEquatable<T>` on domain models and entity classes where equality comparison is meaningful (e.g. value objects, entities compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
+
+## C# Member Organisation
+
 - Always declare the accessibility modifier explicitly on every method, property, field, and constructor — including `private`. Never rely on implicit/default accessibility.
 - Order members by accessibility: `public` first, then `protected`, then `private`.
 - Within each accessibility group, order members by kind: fields (readonly first, then mutable) → properties → events → constructors and destructors → methods.
@@ -95,7 +101,7 @@
 - Use **primary constructors** (C# 12) on all service classes, controllers, and startup classes. Parameters are used directly inside method bodies — do NOT assign them to fields.
 - Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
 
-## C# Properties
+## C# Properties & Methods
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.

@@ -11,8 +11,23 @@
 - Always place at least one space after `//` at the start of a comment: `// text`, never `//text`.
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
 - TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
-- Never use tabs for indentation — always use spaces.
+- Never use tabs for indentation — always use 4 spaces per indent level.
+- Licence new projects under GPL v3 unless the repository already uses a different licence.
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.
+
+## Source Control
+
+- Default branch name: `master`.
+- Merge strategy: default (no fast-forward flags or special strategies unless the repository already specifies otherwise).
+- Pull strategy: rebase (`git pull --rebase`).
+
+## Bash & Other UNIX Shells
+
+- Variables inside functions must be declared with `local` whenever possible.
+- Never embed Python in shell scripts unless explicitly asked.
+- Constant strings (no variable references or command substitutions) must use single quotes: `'constant string'`. Strings that reference variables or call commands must use double quotes: `"Value is: ${VAR}"` / `"Today is: $(date)"`.
+- Variable naming: all uppercase, always referenced with surrounding curly braces — `${VAR_NAME}`, never `$var_name`.
+- Function naming: all lowercase, words separated by underscores — `my_function`, never `myFunction` or `MY_FUNCTION`.
 
 ## C# General
 
@@ -32,6 +47,8 @@
 - Always use explicit types instead of `var`.
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Always prefer `.slnx` over `.sln` solution files.
+- Always target the latest stable .NET version available.
+- Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
 - Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `src/Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
@@ -51,7 +68,7 @@
 - Mapping classes: Noun + `MappingExtensions` (`AccountMappingExtensions`).
 - Mapping methods: `ToDomainModel` / `ToDomainModels` for entity→model direction; `ToDataObject` / `ToDataObjects` for model→entity direction. Never `ToEntity` or `ToEntities`.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
-- Boolean properties/methods: `Is`-prefixed (`IsEnabled`, `IsToday()`).
+- Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`) — e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
 
 ## C# Access Modifiers

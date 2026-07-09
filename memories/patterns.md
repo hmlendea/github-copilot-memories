@@ -103,6 +103,10 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Use **primary constructors** (C# 12) on all service classes, controllers, and startup classes. Parameters are used directly inside method bodies — do NOT assign them to fields.
 - Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
 
+## C# Method Signatures
+
+- Do NOT use optional parameters. Use method overloads instead.
+
 ## C# Properties & Methods
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.

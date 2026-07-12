@@ -10,7 +10,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Ensure all added code is covered by tests.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
 - Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. This applies **everywhere**: local variables, fields, method parameters, lambda parameters, loop variables, and out-variables. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos`, `dir`, `ray`, single-letter names (`t`, `x`, `n`, `m`, `e`) or single-letter/abbreviated prefixes (`tX`, `tY`, `dirX`, `dirY`, `rayX`, `rayY`, `checkX`, `len`, `min`, `max`, `dmg`, `str`, `acc`, `def`) are forbidden — always write the full descriptive name (e.g. `textureYOffset`, `directionX`, `rayPositionX`, `samplePositionX`, `magnitude`, `minimumDamage`, `maximumDamage`, `damageRoll`, `attackerStrength`). Lambda parameters follow the same rule without exception: `items.Select(item => item.Name)`, never `items.Select(i => i.Name)` or `items.Select(x => x.Name)`.
-- Use British English spelling in code and related text. Prefer latinate English words where possible (e.g. "necessary" instead of "needed").
+- Use British English spelling in code and related text. Prefer latinate English words where possible (e.g. "necessary" instead of "needed"). Key spelling differences: `normalise` (not `normalize`), `serialise` (not `serialize`), `initialise` (not `initialize`), `colour` (not `color`), `behaviour` (not `behavior`), `centre` (not `center`), `licence` (not `license` for the noun), `recognise` (not `recognize`), `synchronise` (not `synchronize`). Apply this to all identifiers, method names, comments, and strings.
 - Keep code self-explanatory and avoid comments unless they are exceptional and genuinely useful.
 - Always place at least one space after `//` at the start of a comment: `// text`, never `//text`.
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
@@ -39,7 +39,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
-- `if`, `for`, `foreach`, `while`, and `switch` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
+- `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.

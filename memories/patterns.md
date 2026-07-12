@@ -46,7 +46,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
 - Always use explicit types instead of `var`.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
-- Prefer `.Equals()` over `==` for comparisons.
+- Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference — doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples — avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
@@ -68,6 +68,8 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 
 ## C# Naming Conventions
 
+- Always use the lowercase alias for built-in types: `string`, `int`, `bool`, `object`, `long`, `double`, `float`, `decimal`, `byte`, `char`, etc. NEVER use the BCL class names `String`, `Int32`, `Boolean`, `Object`, etc.
+- Methods: PascalCase, clear and explicit names with no abbreviations or shortenings — same naming rules as for variables and parameters.
 - Classes: PascalCase.
 - Interfaces: `I`-prefixed PascalCase (`IAccountService`).
 - Controllers: pluralized noun + `Controller` (`AccountsController`).
@@ -106,6 +108,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 ## C# Method Signatures
 
 - Do NOT use optional parameters. Use method overloads instead.
+- Keep methods small and focused on a single responsibility. If a method grows beyond ~20–30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
 
 ## C# Properties & Methods
 
@@ -131,6 +134,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 ## C# Collections
 
 - Use `IEnumerable<T>` as the return type and parameter type for all collections. Never `List<T>`, `IList<T>`, `IReadOnlyList<T>`, `HashSet<T>`.
+- **Exception:** entity/data objects that are XML-serialised (e.g. via `XmlSerializer`) must use `List<T>` for collection properties — the XML serialiser cannot reflect interface types.
 - Use C# 12 collection expressions `[...]` for inline collection initialization of **any** collection type (`List<T>`, `Dictionary<K,V>`, arrays, etc.), including empty ones. `new List<T>()`, `new Dictionary<K,V>()`, `new T[]{}` are all wrong — use `[]` instead.
 - Use LINQ (`.Where()`, `.Any()`, `.First()`, `.Select()`, `.Append()`) for in-memory querying.
 

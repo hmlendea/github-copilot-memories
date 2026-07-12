@@ -43,7 +43,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
-- Never use `++` or `--` as standalone statements or in expressions. Always use `+= 1` and `-= 1` instead. Exception: `i++` / `i--` in the iterator clause of a `for` statement is preferred.
+- Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
 - Always use explicit types instead of `var`.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference — doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.

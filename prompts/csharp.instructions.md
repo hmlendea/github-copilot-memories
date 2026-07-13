@@ -101,6 +101,23 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 
 - Do NOT use optional parameters. Use method overloads instead.
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20–30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
+- When a parameter list (declaration) or argument list (call site) **exceeds 64 characters** in total length, split it so that each parameter or argument appears on its own line, indented by one extra level (4 spaces) relative to the method name. The closing `)` goes on its own line at the original indentation level. Example:
+  ```csharp
+  // Declaration:
+  public void RecordCheckIn(
+      string accountId,
+      string locationId,
+      DateTime timestamp)
+  {
+      ...
+  }
+
+  // Call site:
+  RecordCheckIn(
+      account.Id,
+      location.Id,
+      DateTime.UtcNow);
+  ```
 
 ### Properties & Methods
 

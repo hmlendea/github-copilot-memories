@@ -2,10 +2,14 @@
 
 Use these values when writing tests to keep them consistent and fun.
 
-### Names — Male
+### Names — Male — Full
 - `Ilarion Pintilie`
 - `Ionuț Karr`
 - `Robert Blitz`
+- `Vasile Ciupitu`
+
+### Names — Male — First
+- `Vasile`
 
 ### Names — Female — Full
 - `Elodia Ghinescu`
@@ -39,6 +43,9 @@ Use these values when writing tests to keep them consistent and fun.
 
 ### Company Names
 - `Îmhe Incorporated`
+
+### Dates
+- `2012-09-05`
 
 ### Currency
 - Valid: `RON`

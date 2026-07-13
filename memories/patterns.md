@@ -6,7 +6,9 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
 - Every class, file, and module must have a single, well-defined responsibility. Place methods and functions only in the class that owns that responsibility. Never create multi-responsibility buckets or utility dumping-grounds. When a class begins to serve more than one concern, split it immediately into separate, focused classes — each placed in the namespace or module that corresponds to its responsibility.
-- When changing existing logic, remove all leftovers: dead code, unused imports, obsolete fields, and any other artefacts that are no longer necessary after the change. Update the README if the change affects documented behaviour or setup.
+- Always remove dead code, unused imports, unused variables, redundant assignments, unused methods, obsolete fields, empty `if` blocks (conditionals with no logic inside their braces), and any other artefacts that serve no purpose. When changing existing logic, also update the README if the change affects documented behaviour or setup.
+- Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values. In C#, named constants must use `static [Type] [Name] =>` (a static read-only property) — never `const`.
+- When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property — never an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`). The index is derived from the enum value via `(int)value` — never stored directly.
 - Ensure all added code is covered by tests.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
 - Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. This applies **everywhere**: local variables, fields, method parameters, lambda parameters, loop variables, and out-variables. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos`, `dir`, `ray`, single-letter names (`t`, `x`, `n`, `m`, `e`) or single-letter/abbreviated prefixes (`tX`, `tY`, `dirX`, `dirY`, `rayX`, `rayY`, `checkX`, `len`, `min`, `max`, `dmg`, `str`, `acc`, `def`) are forbidden — always write the full descriptive name (e.g. `textureYOffset`, `directionX`, `rayPositionX`, `samplePositionX`, `magnitude`, `minimumDamage`, `maximumDamage`, `damageRoll`, `attackerStrength`). Lambda parameters follow the same rule without exception: `items.Select(item => item.Name)`, never `items.Select(i => i.Name)` or `items.Select(x => x.Name)`.
@@ -53,6 +55,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions. Whenever a namespace changes, the file must be moved to the matching folder immediately.
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
 - All `using` directives go at the top of the file, **outside** and **above** the `namespace` block — NEVER inside it.
+- NEVER use fully qualified type names inline (e.g. `OpenRS.Net.Client.Events.ContentLoadedEventArgs eventArgs`). Always add the appropriate `using` directive and reference the type by its short name (e.g. `using OpenRS.Net.Client.Events;` and `ContentLoadedEventArgs eventArgs`).
 - `using` directives must be organised into the following groups, in this order, each group separated from the next by exactly one blank line. All `using` directives within each group must be sorted alphabetically.
   1. **`System.*` usings** — all namespaces rooted at `System`.
   2. **`Microsoft.*` usings** — all namespaces rooted at `Microsoft`.
@@ -62,6 +65,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 ### Code Style
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
+- The opening brace of a control flow block must always appear on its own line (Allman style). NEVER place the opening brace or the body on the same line as the statement: `if (condition) { ... }` is NEVER acceptable.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
 - `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).

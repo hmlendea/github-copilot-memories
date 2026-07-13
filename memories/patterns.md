@@ -1,6 +1,6 @@
 See also: [test-values.md](test-values.md) for standard test values (names, cities, currencies, domains, etc.).
 
-## General - all languages and technologies
+## General
 
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
 - Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
@@ -35,7 +35,24 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Variable naming: all uppercase, always referenced with surrounding curly braces — `${VAR_NAME}`, never `$var_name`.
 - Function naming: all lowercase, words separated by underscores — `my_function`, never `myFunction` or `MY_FUNCTION`.
 
-## C# Code Style
+## C#
+
+### Project Structure
+
+- Always target the latest stable .NET version available.
+- Always prefer `.slnx` over `.sln` solution files.
+- When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
+- NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
+- Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
+- Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
+- Each new type must be declared in its own file. File name must exactly match the class name.
+- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it clearly belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it into smaller, focused classes.
+- Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder.
+- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
+- Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
+- All `using` directives go at the top of the file, **outside** the namespace block. Order: System → third-party → project.
+
+### Code Style
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
@@ -51,22 +68,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples — avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 
-## C# Project Structure
-
-- Always target the latest stable .NET version available.
-- Always prefer `.slnx` over `.sln` solution files.
-- When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
-- NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
-- Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too — use an explicit `Program` class with a `static void Main` entry point.
-- Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
-- Each new type must be declared in its own file. File name must exactly match the class name.
-- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it clearly belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it into smaller, focused classes.
-- Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder.
-- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
-- Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
-- All `using` directives go at the top of the file, **outside** the namespace block. Order: System → third-party → project.
-
-## C# Naming Conventions
+### Naming Conventions
 
 - Always use the lowercase alias for built-in types: `string`, `int`, `bool`, `object`, `long`, `double`, `float`, `decimal`, `byte`, `char`, etc. NEVER use the BCL class names `String`, `Int32`, `Boolean`, `Object`, etc.
 - Methods: PascalCase, clear and explicit names with no abbreviations or shortenings — same naming rules as for variables and parameters.
@@ -84,7 +86,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`) — e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
 
-## C# Type Declarations
+### Type Declarations
 
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
@@ -93,24 +95,24 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Mapping extension methods: explicitly `internal static`.
 - Implement `IEquatable<T>` on domain models and entity classes where equality comparison is meaningful (e.g. value objects, entities compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 
-## C# Member Organisation
+### Member Organisation
 
 - Always declare the accessibility modifier explicitly on every method, property, field, and constructor — including `private`. Never rely on implicit/default accessibility.
 - Order members by accessibility: `public` first, then `protected`, then `private`.
 - Within each accessibility group, order members by kind: fields (readonly first, then mutable) → properties → events → constructors and destructors → methods.
 - All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
 
-## C# Constructors & Object Creation
+### Constructors & Object Creation
 
 - Use **primary constructors** (C# 12) on all service classes, controllers, and startup classes. Parameters are used directly inside method bodies — do NOT assign them to fields.
 - Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
 
-## C# Method Signatures
+### Method Signatures
 
 - Do NOT use optional parameters. Use method overloads instead.
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20–30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
 
-## C# Properties & Methods
+### Properties & Methods
 
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
@@ -119,29 +121,52 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.
 
-## C# Null Handling
+### Null Handling
 
 - Use `is null` / `is not null` pattern. Do NOT use `== null` or `!= null`.
 - No null-coalescing `??` operator.
 
-## C# Exception Handling
+### Exception Handling
 
 - Use log-and-rethrow pattern: `catch (Exception exception) { logger.Error(...); throw; }`.
 - Use `throw;` (NOT `throw exception;`) to preserve the stack trace.
 - Use only BCL exceptions (`ArgumentNullException`, `KeyNotFoundException`, `AuthenticationException`). Do NOT create custom exception types.
 - When throwing exceptions, always pass as much detail as possible — include the relevant value(s), parameter name(s), and a descriptive message that clearly identifies what was invalid or missing and why.
 
-## C# Collections
+### Collections
 
 - Use `IEnumerable<T>` as the return type and parameter type for all collections. Never `List<T>`, `IList<T>`, `IReadOnlyList<T>`, `HashSet<T>`.
 - **Exception:** entity/data objects that are XML-serialised (e.g. via `XmlSerializer`) must use `List<T>` for collection properties — the XML serialiser cannot reflect interface types.
 - Use C# 12 collection expressions `[...]` for inline collection initialization of **any** collection type (`List<T>`, `Dictionary<K,V>`, arrays, etc.), including empty ones. `new List<T>()`, `new Dictionary<K,V>()`, `new T[]{}` are all wrong — use `[]` instead.
 - Use LINQ (`.Where()`, `.Any()`, `.First()`, `.Select()`, `.Append()`) for in-memory querying.
 
-## C# Controller Style
+### Async
+
+- Prefer synchronous service methods. Do not add `Task<T>` return types or `async/await` unless required.
+- No `CancellationToken` usage unless explicitly needed.
+
+### Dependency Injection
+
+- Register all services as `AddSingleton`. Do NOT use `AddScoped` or `AddTransient`.
+- Centralize all DI registration in a `ServiceCollectionExtensions.cs` file with extension methods on `IServiceCollection`.
+
+### Controller Style
 
 - Controller actions return `ActionResult` (not `ActionResult<T>`).
 - Use expression-bodied actions for single-expression delegates to a `ProcessRequest(...)` call.
+
+### Unit Tests
+
+- Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
+- Use **NUnit 4.x** + **Moq** for all unit tests, unless other test or mocking frameworks are already installed in the project — in that case use the ones already present.
+- Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
+- Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.
+- Use `Is.Empty` instead of `Is.EqualTo(string.Empty)` in asserts.
+- Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
+- Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
+- Declare mock fields and the SUT at class level without access modifiers (implicitly private).
+- Group tests within a class by the production method under test, separated by comment banners (e.g., `// ── MethodName ──────`).
+- Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
 
 ## XNA / MonoGame with NuciXNA
 
@@ -164,7 +189,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Clear, explicit names with no abbreviations or shortenings — same full-name rule as for other languages. This applies everywhere: local variables, parameters, loop variables, lambda variables, etc. Single-letter names and abbreviated prefixes are forbidden.
 - Boolean variables and functions must use a meaningful boolean-semantic prefix: `is_`, `has_`, `does_`, `are_`, or contextual tense-embedded forms (`..._was_...`, `..._were_...`) — e.g. `is_enabled`, `has_permission`, `request_was_handled`. Never use vague names like `flag`, `check`, or `result` for booleans.
 
-### String literals
+### String Literals
 - Single quotes for plain string literals: `'grant_type'`, `'code'`.
 - f-strings for all interpolation — never `%` formatting or `.format()`.
 
@@ -175,55 +200,32 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - TODO comments must always use the exact format `# TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Section dividers use `# --- Section Name ---` with dashes on both sides and a blank line above and below.
 
-### Error handling
+### Error Handling
 - Guard clauses at top of functions for missing configuration or preconditions.
 - `try/except Exception as exception:` wrapping all external I/O calls (HTTP, file, socket).
 - Check response status code before parsing the body: `if response.status_code == 200:`.
 - Use `.get("key", default)` for safe dict access on JSON responses.
 
-### HTTP / requests
+### HTTP / Requests
 - `requests.Session()` used as a context manager.
 - URL query parameters extracted with `parse_qs(urlsplit(url).query).get('key', [''])[0]`.
 
-### Function structure
+### Function Structure
 - Variables initialised to `None` before conditional assignment; returned at the end.
 - `for _ in range(n):` for counted loops with a throwaway variable.
 - `or` chaining for fallback values: `obj.get('emailAddress') or obj.get('phoneNumber') or DEFAULT`.
 
-### Type hints
+### Type Hints
 - Used selectively on public-facing or complex functions; not required everywhere.
 - When used, annotate parameters and return type: `def build_headers(fields: dict, key: str) -> dict:`.
 
-### Module structure
+### Module Structure
 - All configuration constants extracted to a dedicated `config.py` and imported explicitly by name.
 - Module-level constants defined at the top of each file, before any function definitions.
 - `if __name__ == "__main__": main()` at the very end of the entry-point file.
 
-### Blank lines
+### Blank Lines
 - One blank line between top-level functions.
 - `if`, `for`, `while`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the function body or the first line after an opening block).
 - Never use two or more consecutive blank lines anywhere.
-
-## C# Async
-
-- Prefer synchronous service methods. Do not add `Task<T>` return types or `async/await` unless required.
-- No `CancellationToken` usage unless explicitly needed.
-
-## C# Dependency Injection
-
-- Register all services as `AddSingleton`. Do NOT use `AddScoped` or `AddTransient`.
-- Centralize all DI registration in a `ServiceCollectionExtensions.cs` file with extension methods on `IServiceCollection`.
-
-## C# Unit Tests
-
-- Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
-- Use **NUnit 4.x** + **Moq** for all unit tests, unless other test or mocking frameworks are already installed in the project — in that case use the ones already present.
-- Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
-- Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.
-- Use `Is.Empty` instead of `Is.EqualTo(string.Empty)` in asserts.
-- Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
-- Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
-- Declare mock fields and the SUT at class level without access modifiers (implicitly private).
-- Group tests within a class by the production method under test, separated by comment banners (e.g., `// ── MethodName ──────`).
-- Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.

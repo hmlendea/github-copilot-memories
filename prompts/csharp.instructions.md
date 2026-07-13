@@ -190,6 +190,7 @@ Rules for enumeration classes:
 - Order members by accessibility: `public` first, then `protected`, then `private`.
 - Within each accessibility group, order members by kind: fields (readonly first, then mutable) → properties → events → constructors and destructors → methods.
 - All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
+- Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
 
 ### Constructors & Object Creation
 

@@ -225,6 +225,14 @@ Rules for enumeration classes:
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement — this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions. A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser — do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToDomainModel`, `ToDataObject`, and their plurals).
+- When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature — never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
+  ```csharp
+  internal static UnitDataObject ToDataObject(this Unit model) => new()
+  {
+      Id = model.TypeIndex.ToString(),
+      Name = model.Name,
+  };
+  ```
 - Each property on its own line, separated by a blank line from other members.
 - No `init`-only properties.
 

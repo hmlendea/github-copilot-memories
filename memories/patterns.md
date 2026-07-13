@@ -50,9 +50,9 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Namespace choice is driven by responsibility, not by incidental proximity. A class that handles account validation belongs in `[Root].Services.Account`, not in a generic `[Root].Services` or `[Root].Utilities` namespace. Always ask: "What is the one thing this class does?" — the answer determines its namespace and folder.
 - Never create catch-all or helper namespaces (e.g. `Helpers`, `Utils`, `Common`, `Misc`, `Shared`). If you feel the need for one, it is a signal that the class has not been assigned its correct single responsibility yet.
 - Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Within a layer, sub-folders (and sub-namespaces) group classes by the domain concept they serve (e.g. `Services/Account/`, `Services/CheckIn/`).
-- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions.
+- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions. Whenever a namespace changes, the file must be moved to the matching folder immediately.
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
-- All `using` directives go at the top of the file, **outside** the namespace block. Order: System → third-party → project.
+- All `using` directives go at the top of the file, **outside** and **above** the `namespace` block — NEVER inside it. Order: System → third-party → project.
 
 ### Code Style
 
@@ -61,6 +61,8 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
+- Never place an empty line immediately after an opening brace `{`.
+- All C# methods must have exactly one empty line between them — no more, no less.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
 - Always use explicit types instead of `var`.

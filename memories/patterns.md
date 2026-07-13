@@ -161,7 +161,9 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Use **NUnit 4.x** + **Moq** for all unit tests, unless other test or mocking frameworks are already installed in the project — in that case use the ones already present.
 - Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
 - Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.
+- Never call `.Equals()` inside `Assert.That`. Use `Assert.That(actual, Is.EqualTo(expected))` and `Assert.That(actual, Is.Not.EqualTo(unexpected))` instead.
 - Use `Is.Empty` instead of `Is.EqualTo(string.Empty)` in asserts.
+- Use `Has.Length.EqualTo(n)` instead of asserting on `.Length` directly: `Assert.That(collection, Has.Length.EqualTo(n))`, never `Assert.That(collection.Length, Is.EqualTo(n))`.
 - Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
 - Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
 - Declare mock fields and the SUT at class level without access modifiers (implicitly private).

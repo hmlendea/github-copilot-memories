@@ -1,3 +1,6 @@
+---
+description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, domains, emails, dates, currencies."
+---
 ## Test Values (Easter Eggs / Funny Values)
 
 Use these values when writing tests to keep them consistent and fun.

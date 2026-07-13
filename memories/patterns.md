@@ -2,14 +2,18 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 
 ## General
 
+- When editing code, actively refactor the affected areas to comply with all rules defined here — do not leave surrounding code in violation of these rules when you have touched that area.
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
 - Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
+- All files must end with an empty line.
 - Every class, file, and module must have a single, well-defined responsibility. Place methods and functions only in the class that owns that responsibility. Never create multi-responsibility buckets or utility dumping-grounds. When a class begins to serve more than one concern, split it immediately into separate, focused classes — each placed in the namespace or module that corresponds to its responsibility.
 - Always remove dead code, unused imports, unused variables, redundant assignments, unused methods, obsolete fields, empty `if` blocks (conditionals with no logic inside their braces), and any other artefacts that serve no purpose. When changing existing logic, also update the README if the change affects documented behaviour or setup.
 - Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values. In C#, named constants must use `static [Type] [Name] =>` (a static read-only property) — never `const`.
 - When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property — never an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`). The index is derived from the enum value via `(int)value` — never stored directly.
-- Ensure all added code is covered by tests.
+- Screen coordinates, sizes, and all layout measurements must be dynamic and relative — derived from screen size, control size, texture/spritesheet dimensions read at runtime, or other already-computed layout values. Never hardcode pixel positions or dimensions. The only acceptable numeric constants are measurements *within the artwork itself* (e.g. where an inner border starts in a texture), expressed as named constants that describe what they measure in the asset, used as numerators in proportional scaling against the texture's runtime dimensions.
+- Whenever writing or editing code, if a test project or test files already exist in the repository, also write or update the tests for all affected or newly added code as part of the same change.
+- Avoid code duplication. Always extract and reuse existing logic whenever it is reasonable to do so — never copy-paste code blocks, repeat the same expression in multiple places, or re-implement logic that already exists elsewhere. When making changes in an area of code, actively look for and eliminate any existing duplication in that area as part of the same change.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
 - Use clear, explicit variable, type, and method names with no unclear abbreviations or shortenings. This applies **everywhere**: local variables, fields, method parameters, lambda parameters, loop variables, and out-variables. Prefixes like `tex`, `msg`, `btn`, `img`, `val`, `obj`, `mgr`, `cfg`, `pos`, `dir`, `ray`, single-letter names (`t`, `x`, `n`, `m`, `e`) or single-letter/abbreviated prefixes (`tX`, `tY`, `dirX`, `dirY`, `rayX`, `rayY`, `checkX`, `len`, `min`, `max`, `dmg`, `str`, `acc`, `def`) are forbidden — always write the full descriptive name (e.g. `textureYOffset`, `directionX`, `rayPositionX`, `samplePositionX`, `magnitude`, `minimumDamage`, `maximumDamage`, `damageRoll`, `attackerStrength`). Lambda parameters follow the same rule without exception: `items.Select(item => item.Name)`, never `items.Select(i => i.Name)` or `items.Select(x => x.Name)`.
 - Use British English spelling in code and related text. Prefer latinate English words where possible (e.g. "necessary" instead of "needed"). Key spelling differences: `normalise` (not `normalize`), `serialise` (not `serialize`), `initialise` (not `initialize`), `colour` (not `color`), `behaviour` (not `behavior`), `centre` (not `center`), `licence` (not `license` for the noun), `recognise` (not `recognize`), `synchronise` (not `synchronize`). Apply this to all identifiers, method names, comments, and strings.
@@ -54,6 +58,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 - Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Within a layer, sub-folders (and sub-namespaces) group classes by the domain concept they serve (e.g. `Services/Account/`, `Services/CheckIn/`).
 - Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account` — no exceptions. Whenever a namespace changes, the file must be moved to the matching folder immediately.
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
+- Never create a `[xyz].Enumerations` (or `Enums`) namespace. Place enums in the same namespace and folder as the domain models they belong to.
 - All `using` directives go at the top of the file, **outside** and **above** the `namespace` block — NEVER inside it.
 - NEVER use fully qualified type names inline (e.g. `OpenRS.Net.Client.Events.ContentLoadedEventArgs eventArgs`). Always add the appropriate `using` directive and reference the type by its short name (e.g. `using OpenRS.Net.Client.Events;` and `ContentLoadedEventArgs eventArgs`).
 - `using` directives must be organised into the following groups, in this order, each group separated from the next by exactly one blank line. All `using` directives within each group must be sorted alphabetically.
@@ -61,17 +66,27 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
   2. **`Microsoft.*` usings** — all namespaces rooted at `Microsoft`.
   3. **NuGet / third-party package usings** — one group per package root namespace (e.g. all `Newtonsoft.*` together, all `Serilog.*` together), ordered alphabetically by package root namespace.
   4. **Current solution usings** — namespaces belonging to the solution being worked on, all in one group.
+- The last `using` directive must always be separated from the `namespace` statement by exactly one blank line.
 
 ### Code Style
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`) — even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - The opening brace of a control flow block must always appear on its own line (Allman style). NEVER place the opening brace or the body on the same line as the statement: `if (condition) { ... }` is NEVER acceptable.
+- When an `if` condition contains multiple sub-conditions joined by `&&` or `||` **and** the full condition text exceeds 72 characters, split each sub-condition onto its own line with the logical operator placed at the **end** of the line (not the start). Continuation lines are indented by one extra level (4 spaces) relative to the `if` keyword. Do NOT split conditions that fit within 72 characters. Example:
+  ```csharp
+  if (GameData.TileWalkability is not null &&
+      tileId < GameData.TileWalkability.Length &&
+      GameData.TileWalkability[tileId] != 0)
+  {
+      return new Colour(20, 60, 120);
+  }
+  ```
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
 - `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never place an empty line immediately after an opening brace `{`.
-- All C# methods must have exactly one empty line between them — no more, no less.
+- All C# methods must have exactly one empty line between them — no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
 - Always use explicit types instead of `var`.
@@ -119,6 +134,7 @@ See also: [test-values.md](test-values.md) for standard test values (names, citi
 
 - Use **primary constructors** (C# 12) on all service classes, controllers, and startup classes. Parameters are used directly inside method bodies — do NOT assign them to fields.
 - Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
+- Whenever a `new` expression appears on the same line as the variable/property/field declaration (so the type is already stated on the left-hand side), always use `new(...)` instead of `new [Type](...)`. Example: `private static Colour HoverTintColour => new(255, 220, 80);` — NEVER `new Colour(255, 220, 80)` in that position.
 
 ### Method Signatures
 

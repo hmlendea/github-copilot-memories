@@ -1,11 +1,12 @@
 ---
-description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, domains, emails, dates, currencies."
+description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, streets, domains, emails, dates, currencies, video game names, movie names."
 ---
 ## Test Values (Easter Eggs / Funny Values)
 
 Use these values when writing tests to keep them consistent and fun.
 
 ### Usernames
+- `Angetenar`
 - `IlarionPintilie`
 - `solaire_of_astora`
 
@@ -17,16 +18,30 @@ Use these values when writing tests to keep them consistent and fun.
 - `Vasile Ciupitu`
 
 ### Names — Male — First
+- `Bobert`
+- `Ilarion`
+- `Ionuț`
+- `Robert`
 - `Solaire`
 - `Vasile`
 
 ### Names — Female — Full
 - `Elodia Ghinescu`
-- `Mary Karr`
 - `Ioana Blitz`
+- `Mary Karr`
 
 ### Names — Female — First
+- `Elodia`
+- `Ioana`
+- `Mary`
 - `Vibia`
+
+### Surnames
+- `Ciupitu`
+- `Karr`
+- `Nucaru`
+- `Nucescu`
+- `Pintilie`
 
 ### Integers
 - `613`
@@ -34,14 +49,25 @@ Use these values when writing tests to keep them consistent and fun.
 
 ### Decimal Numbers
 - `3.14`
+- `6.13`
+- `61.3`
+- `8.73`
+- `87.3`
 
 ### Country
+- `Astora`
 - `Nucilandia`
 - `Romania`
-- `Astora`
 
 ### Cities
-- `Solara`, `Cratesia`, `Izmir`, `Horidava`, `Cornova`, `Flusseland`, `Çupișan`, `Hokazuro`, `Frigonița`, `Nordavia`
+- `Solara`, `Cratesia`, `Izmir`, `Horidava`, `Cornova`, `Flusseland`, `Çupișan`, `Hokazuro`, `Frigonița`, `Nordavia`, `Cluj-Napoca`, `Dezmir`, `Florești`, `Oradea`
+
+### Street Names
+- `Pinched Street`
+- `Strada Ciupită`
+- `Strada Nucilor`
+- `Walnut Street`
+- `Walnut Way`
 
 ### States / Regions
 - `Solara`, `Kreezland`, `Flusseland`, `Murasaki`
@@ -52,7 +78,13 @@ Use these values when writing tests to keep them consistent and fun.
 - E-mails: e.g. `ilarion.pintilie@nucilandia.ro`, `solaire@astora.com`, `vasile.ciupitu@gmail.com`
 
 ### Company Names
+- `Endava`
 - `Îmhe Incorporated`
+- `Nucilandian Softworks`
+- `Pinched Games`
+- `Valve`
+- `WorldPay`
+- `Zamolxis Entertainment`
 
 ### Dates
 - `2012-09-05`
@@ -60,3 +92,15 @@ Use these values when writing tests to keep them consistent and fun.
 ### Currency
 - Valid: `RON`
 - Invalid: `NLV`
+
+### Video Game Names
+- `Dark Souls III`
+- `eRepublik`
+- `Minecraft`
+- `Narivia`
+- `RuneScape`
+- `SokoGrump`
+- `Terraria`
+
+### Movie Names
+- `The Lord of the Rings`

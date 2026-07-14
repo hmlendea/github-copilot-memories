@@ -70,7 +70,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
 - Configuration classes: Noun + `Settings` (`DataStoreSettings`).
 - Mapping classes: Noun + `MappingExtensions` (`AccountMappingExtensions`).
-- Mapping methods: `ToDomainModel` / `ToDomainModels` for entity→model direction; `ToDataObject` / `ToDataObjects` for model→entity direction. Never `ToEntity` or `ToEntities`.
+- Mapping methods: `ToDomainModel` / `ToDomainModels` for entity->model direction; `ToDataObject` / `ToDataObjects` for model->entity direction. Never `ToEntity` or `ToEntities`.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`), e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
@@ -188,7 +188,8 @@ Rules for enumeration classes:
 
 - Always declare the accessibility modifier explicitly on every method, property, field, and constructor, including `private`. Never rely on implicit/default accessibility.
 - Order members by accessibility: `public` first, then `protected`, then `private`.
-- Within each accessibility group, order members by kind: fields (readonly first, then mutable) → properties → events → constructors and destructors → methods.
+- Within each accessibility group, order members by kind: fields (readonly first, then mutable) -> properties -> events -> constructors and destructors -> methods.
+- Within the fields group, static fields must come before non-static fields. The full order is: static readonly -> static mutable -> instance readonly -> instance mutable.
 - All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
 - Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
 

@@ -1,0 +1,198 @@
+---
+description: "Use whenever generating text or code of any kind. Language preferences: Romanian word replacements and English spelling rules."
+applyTo: "**"
+---
+## Romanian
+
+Word replacements - apply to all variants and derivatives of each word:
+
+- (a fi) nevoie → să fie necesar
+- (a fi) nevoit → să îi fie necesar
+- (a fi) nevoite → să le fie necesar
+- (a fi) nevoiți → să le fie necesar
+- (ai) nevoie → îți este necesar
+- (aibă) nevoie → îi fie necesar
+- (ar) trebui → (ar) fi necesar
+- (avea) nevoie → îi era necesar
+- (aveam) nevoie → îmi era necesar
+- (în) zadar → (în) van
+- a folosi → a utiliza
+- amețit → dezorientat
+- amintire → memorie
+- arțăgos → irascibil
+- asemănător → similar
+- astronaut → cosmonaut
+- babă → bătrână
+- bai → problemă
+- băbuță → bătrânică
+- boturi → boți
+- brand → marcă / firmă
+- branșament → racord
+- branșare → racordare
+- buștean → trunchi
+- căcălău → cât încape
+- ChatGPT-ul → chat-ul GPT
+- ciudat → straniu / bizar
+- ciudățenie → bizarerie
+- clanță → mâner de uşă
+- clătire → limpezire
+- clipă → moment
+- cremă de brânză → crefă
+- cuier → agățător
+- darnic → generos
+- deal → colină
+- destul → suficient
+- dobândă → interes
+- dobândire → obținere
+- dovedesc → demonstrez
+- dovedire → demonstrație
+- dovedit → demonstrat
+- duhoare → miasmă
+- dumirire → clarificare, explicare, înțelegere
+- fel → tip
+- focus → concentrare
+- focusat → concentrat
+- follower → urmăritor
+- folosind → utilizând
+- folositor → util
+- fursec → biscuite
+- gaură → orificiu
+- geam → fereastră
+- ghinioane [doar la plural] → adversități
+- graniță → frontieră
+- grănicer → agent de frontieră
+- greșite → eronate
+- groaznic → teribil / foarte rău
+- grozav → extraordinar
+- hotar → frontieră
+- hotărâre → decizie
+- iscare → provocare
+- împodobire → ornare / decorare
+- împodobit → ornat / decorat
+- încercare → tentativă
+- încrezător → confident / sigur pe sine
+- încrezut → prezumțios
+- încurcat → impedat / confundat
+- îndesat → compactat
+- îndrăzneală → cutezare
+- îndrăznesc → cutez
+- înființat → fondat
+- înfundat → blocat
+- înfundătură → blocaj
+- îngrijorat → preocupat
+- întâmplă → petrece
+- întâmplător → accidental
+- întemeiat → fondat
+- înzdrăvenire → întărire
+- lacăt → încuietoare
+- lămurire → clarificare, explicare
+- lipici → adeziv
+- localnic → om de-al locului
+- magazie → depozit
+- măgar → asin
+- mărgele → perle
+- mijloace → căi / metode
+- minunat → miraculos
+- minune → miracol
+- molid → conifer
+- muncă → lucru
+- muncitor → lucrător
+- murdărie → mizerie
+- nedumerit → confuz, neclar, incert
+- nelămurire → neclaritate
+- neobișnuit → neuzual
+- nevoi → necesități
+- nevoie → necesitate
+- noros → înnorat
+- oboseală → epuizare
+- obosit → extenuat
+- păzește → supraveghează
+- pedeapsă → sancțiune
+- pedepsit → sancționat
+- pivniță → subsol
+- plângere → reclamație
+- primejdie → pericol
+- primejdios → periculos
+- pripească → precipiteze
+- pripește → precipitează
+- pripire → precipitare
+- pripit → precipitat
+- pulled pork → porc tras
+- pulled turkey → curcan tras
+- putoare → miasmă
+- răsplată → recompensă
+- răzbunare → retribuție
+- râșniță → măcinătoare
+- râvnă → deziderație
+- râvnire → deziderație
+- risipire → irosire
+- rost → sens
+- rostul → sensul
+- sățios → sațios
+- scări → trepte
+- sfârșit → final
+- slugă → servitor
+- stârnire → incitare
+- stârnit → incitat
+- steag → drapel
+- strâmt → îngust
+- strâmtorare → îngustare
+- subscriere → abonare
+- subscripție → abonament
+- șipcă → lamelă
+- șlefuire → polizare
+- tăvălire → rostogolire
+- teacă → toc
+- temei → fundament / bază
+- topor → secure
+- tovarăș → camarad
+- treabă → lucru
+- trebuie → este necesar
+- trebuință → necesitate
+- treburi → lucruri de făcut
+- trend → tendință
+- trezire → deșteptare
+- țeavă → conductă
+- țel → obiectiv
+- țipăt → strigăt
+- ucenic → discipol
+- uimească → surprindă
+- uimește → surprinde
+- uimire → surprindere
+- uimit → surprins
+- uimitor → extraordinar
+- updatat → actualizat
+- ușurează → facilitează
+- ușurez → facilitez
+- vacare → vacantare
+- vamal → de frontieră
+- vamă → frontieră
+- veceu → toaletă
+- veșnic → etern
+- veșnicie → eternitate
+- veștejire → ofilire
+- vraiște → dezordine
+- vrednic → demn
+- vrednicie → demnitate
+- vremea → timpul
+- vremii → timpului
+- vremuri → timpuri
+- weekend → sfârșit de săptămână
+- zadarnic → inutil
+- zăbovire → pierdere de timp
+- zădărnicire → compromitere
+- zdravăn → robust
+- zdrobire → strivire
+- zdrobitor (e.g. de usturoi) → presă
+
+## English
+
+- Always use British spelling.
+- Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
+- Word replacements - apply to all variants and derivatives of each word:
+  - airplane → aeroplane
+  - clever → astute
+  - gray → grey
+  - lipstick → rouge
+  - nauseous → nauseated
+  - weird → bizarre

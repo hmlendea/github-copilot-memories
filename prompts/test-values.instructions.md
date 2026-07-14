@@ -11,8 +11,10 @@ Use these values when writing tests to keep them consistent and fun.
 - `solaire_of_astora`
 
 ### Names — Male — Full
+- `Iancu Robilă`
 - `Ilarion Pintilie`
 - `Ionuț Karr`
+- `Lică Sămădăul`
 - `Robert Blitz`
 - `Solaire of Astora`
 - `Vasile Ciupitu`
@@ -37,6 +39,7 @@ Use these values when writing tests to keep them consistent and fun.
 - `Vibia`
 
 ### Surnames
+- `Blitz`
 - `Ciupitu`
 - `Karr`
 - `Nucaru`

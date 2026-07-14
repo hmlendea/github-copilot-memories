@@ -7,6 +7,7 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 ## General
 
 - When editing code, actively refactor the affected areas to comply with all rules defined here; do not leave surrounding code in violation of these rules when you have touched that area.
+- When refactoring, all public-facing contracts must remain 100% backwards compatible. This includes UI visuals, CLI interfaces, API contracts, library public APIs, serialised output formats, and any other surface that an end-user or external client directly interacts with or depends on. Internal restructuring must never alter observable behaviour.
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
 - Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
@@ -27,15 +28,21 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
 - TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Never use tabs for indentation; always use 4 spaces per indent level.
-- Lines must not exceed 96 characters (including indentation and whitespace). When a line is too long, split it across multiple lines. Place the line break before a method call, argument, or operator so that the continuation is indented by one extra level relative to the opening statement. For example, in C#:
+- Lines must not exceed 96 characters (including indentation and whitespace). When a line is too long, split it across multiple lines. Place the line break before a method call, argument, or operator so that the continuation is indented by one extra level relative to the opening statement. When splitting a call with multiple arguments or parameters across multiple lines, each argument or parameter must be on its own separate line. For example, in C#:
   ```csharp
   // Method call chain - break before the chained call:
   DataStoreSettings dataStoreSettings = app.ApplicationServices
       .GetRequiredService<DataStoreSettings>();
 
-  // Long argument - break after the opening parenthesis:
+  // Single long argument - break after the opening parenthesis:
   string directory = Path.GetDirectoryName(
       dataStoreSettings.ProductKeysStorePath);
+
+  // Multiple arguments - each on its own line:
+  SomeMethod(
+      firstArgument,
+      secondArgument,
+      thirdArgument);
   ```
 - Licence new projects under GPL v3 unless the repository already uses a different licence.
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.

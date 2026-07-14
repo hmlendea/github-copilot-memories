@@ -13,7 +13,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too; use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
 - Each new type must be declared in its own file. File name must exactly match the class name.
-- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it unambiguously belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it immediately into smaller, focused classes, each declared in the namespace that matches its responsibility.
+- Each class must have a single, well-defined responsibility. Do not add logic to a class unless it unambiguously belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it immediately into smaller, focused classes, each declared in the namespace that matches its responsibility. NEVER split a class into `partial` classes; always split into separate, concrete classes placed in the appropriate namespace and folder, and reference them explicitly.
 - Namespace choice is driven by responsibility, not by incidental proximity. A class that handles account validation belongs in `[Root].Services.Account`, not in a generic `[Root].Services` or `[Root].Utilities` namespace. Always ask: "What is the one thing this class does?"; the answer determines its namespace and folder.
 - Never create catch-all or helper namespaces (e.g. `Helpers`, `Utils`, `Common`, `Misc`, `Shared`). If you feel the need for one, it is a signal that the class has not been assigned its correct single responsibility yet.
 - Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Within a layer, sub-folders (and sub-namespaces) group classes by the domain concept they serve (e.g. `Services/Account/`, `Services/CheckIn/`).
@@ -186,7 +186,7 @@ Rules for enumeration classes:
 
 ### Member Organisation
 
-- Always declare the accessibility modifier explicitly on every method, property, field, and constructor, including `private`. Never rely on implicit/default accessibility.
+- ALWAYS declare the accessibility modifier explicitly on EVERY member: every field, property, event, constructor, and method must begin with `public`, `protected`, `internal`, `private`, or a valid combination. NEVER omit the modifier and rely on the implicit default. This applies even to `private` members — write `private int counter;`, NEVER just `int counter;`. Writing a field or method with no accessibility modifier is a bug.
 - Order members by accessibility: `public` first, then `protected`, then `private`.
 - Within each accessibility group, order members by kind: fields (readonly first, then mutable) -> properties -> events -> constructors and destructors -> methods.
 - Within the fields group, static fields must come before non-static fields. The full order is: static readonly -> static mutable -> instance readonly -> instance mutable.

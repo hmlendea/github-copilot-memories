@@ -21,15 +21,16 @@ Rules:
 
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_USERNAME]]/[[REPO_NAME]])](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/releases/latest)
-<!-- Include the Build Status badge only if a GitHub Actions workflow file exists. -->
+<!-- Only if `.github/workflows/[WORKFLOW_FILE]` exists. -->
 [![Build Status](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml/badge.svg)](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml)
+<!-- Only if `LICENSE` exists. -->
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
 
 # [[Project Title]]
 
-[[[Short description of what this project does.]]]
+[[[Clear description of what this project does and why it is useful.]]]
 
-<!-- Include preview only if `preview.png` exists in the repository root. -->
+<!-- Only if `preview.png` exists. -->
 ![Preview screenshot](preview.png)
 
 ## Features
@@ -67,30 +68,38 @@ All settings are loaded from `appsettings.json`. The following keys are recognis
 
 ### Requirements
 
+<!-- Only if this is a .NET project. -->
 - [.NET [[DOTNET_VERSION]] SDK](https://dotnet.microsoft.com/download)
-- [[Additional requirement]]
+<!-- Only if other requirements exist. -->
+- [[Additional requirement 1]]
+- [[Additional requirement 2]]
 
+<!-- Only if this is a .NET project. -->
 All NuGet dependencies are restored automatically by `dotnet restore`.
 
 ### Build
 
+<!-- This is an example for .NET, use a different command for other frameworks. -->
 ```bash
 dotnet build [[MAIN_PROJECT_NAME]]
 ```
 
 ### Run
 
+<!-- This is an example for .NET, use a different command for other frameworks. -->
 ```bash
 dotnet run --project [[MAIN_PROJECT_NAME]]
 ```
 
+<!-- Only if tests exist. -->
 ### Test
 
+<!-- This is an example for .NET, use a different command for other frameworks. -->
 ```bash
 dotnet test [[SOLUTION_FILE]]
 ```
 
-<!-- Include the Release section only if the project produces an executable output (i.e. not a NuGet package). -->
+<!-- Only if `release.sh` exists. -->
 ### Release
 
 The repository includes `release.sh`, which delegates to the upstream deployment script used by the project maintainer.
@@ -124,20 +133,21 @@ Key directories inside `[[MAIN_PROJECT_NAME]]/`:
 
 ## Contributing
 
-Contributions are welcome.
+Contributions are welcome. Please:
+- Keep changes cross-platform
+- Keep the existing public API intact unless a breaking change is intentional
+- Keep pull requests focused and consistent with the existing code style
+- Update documentation when behaviour changes
 
-Please:
-
-- keep the changes cross-platform
-- keep the pull requests focused and consistent with the existing style
-- update the documentation when the behaviour changes
-- add or update the tests for any new behaviour
+<!-- Only if `CONTRIBUTING.md` exists. -->
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details on contributing to this project.
 
 ## Support
 
 If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
 
+<!-- Only if `LICENSE` exists. -->
 ## License
 
-Licensed under the GNU General Public License v3.0 or later.
+Licensed under the **[[License Title]]** or later.
 See [LICENSE](./LICENSE) for details.

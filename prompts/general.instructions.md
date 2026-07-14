@@ -26,6 +26,16 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
 - TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Never use tabs for indentation — always use 4 spaces per indent level.
+- Lines must not exceed 96 characters (including indentation and whitespace). When a line is too long, split it across multiple lines. Place the line break before a method call, argument, or operator so that the continuation is indented by one extra level relative to the opening statement. For example, in C#:
+  ```csharp
+  // Method call chain — break before the chained call:
+  DataStoreSettings dataStoreSettings = app.ApplicationServices
+      .GetRequiredService<DataStoreSettings>();
+
+  // Long argument — break after the opening parenthesis:
+  string directory = Path.GetDirectoryName(
+      dataStoreSettings.ProductKeysStorePath);
+  ```
 - Licence new projects under GPL v3 unless the repository already uses a different licence.
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.
 

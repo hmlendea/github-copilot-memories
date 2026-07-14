@@ -192,13 +192,20 @@ Word replacements - apply to all variants and derivatives of each word:
 - Word replacements - apply to all variants and derivatives of each word:
   - airplane → aeroplane
   - ask → inquire
+  - blueprint → plan
   - buy → purchase
   - clever → astute
+  - climb down → descend
+  - climb up → ascend
+  - color → colour
+  - customize → personalise
   - enough → sufficient
+  - fetch → retrieve
   - gray → grey
   - health points → vitality
   - is/was/are needed → is/was/are necessary
   - lipstick → rouge
+  - login → authenticate
   - lucky → fortunate
   - nauseous → nauseated
   - often → frequently

@@ -135,7 +135,8 @@ Key directories inside `[[MAIN_PROJECT_NAME]]/`:
 
 Contributions are welcome. Please:
 - Keep changes cross-platform
-- Keep the existing public API intact unless a breaking change is intentional
+<!-- Only if this is an API or library. -->
+- Keep the existing public contract intact unless a breaking change is intentional
 - Keep pull requests focused and consistent with the existing code style
 - Update documentation when behaviour changes
 

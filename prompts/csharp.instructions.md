@@ -12,7 +12,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too; use an explicit `Program` class with a `static void Main` entry point.
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
-- Each new type must be declared in its own file. File name must exactly match the class name.
+- Every type must be declared in its own file - one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
 - Each class must have a single, well-defined responsibility. Do not add logic to a class unless it unambiguously belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it immediately into smaller, focused classes, each declared in the namespace that matches its responsibility. NEVER split a class into `partial` classes; always split into separate, concrete classes placed in the appropriate namespace and folder, and reference them explicitly.
 - Namespace choice is driven by responsibility, not by incidental proximity. A class that handles account validation belongs in `[Root].Services.Account`, not in a generic `[Root].Services` or `[Root].Utilities` namespace. Always ask: "What is the one thing this class does?"; the answer determines its namespace and folder.
 - Never create catch-all or helper namespaces (e.g. `Helpers`, `Utils`, `Common`, `Misc`, `Shared`). If you feel the need for one, it is a signal that the class has not been assigned its correct single responsibility yet.
@@ -47,6 +47,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never place an empty line immediately after an opening brace `{`.
+- Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
 - All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
@@ -70,7 +71,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
 - Configuration classes: Noun + `Settings` (`DataStoreSettings`).
 - Mapping classes: Noun + `MappingExtensions` (`AccountMappingExtensions`).
-- Mapping methods: `ToDomainModel` / `ToDomainModels` for entity->model direction; `ToDataObject` / `ToDataObjects` for model->entity direction. Never `ToEntity` or `ToEntities`.
+- Mapping methods: `ToServiceModel` / `ToServiceModels` for entity->model direction; `ToDataObject` / `ToDataObjects` for model->entity direction.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`), e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
@@ -229,7 +230,7 @@ Rules for enumeration classes:
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions. A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
-- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToDomainModel`, `ToDataObject`, and their plurals).
+- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToServiceModel`, `ToDataObject`, and their plurals).
 - When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature; never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
   ```csharp
   internal static UnitDataObject ToDataObject(this Unit model) => new()
@@ -252,6 +253,7 @@ Rules for enumeration classes:
 - Use `throw;` (NOT `throw exception;`) to preserve the stack trace.
 - Use only BCL exceptions (`ArgumentNullException`, `KeyNotFoundException`, `AuthenticationException`). Do NOT create custom exception types.
 - When throwing exceptions, always pass as much detail as possible; include the relevant value(s), parameter name(s), and a descriptive message that clearly identifies what was invalid or missing and why.
+- Prefer `expression as TargetType` over `(TargetType)expression` wherever the cast may fail (i.e. when the object is not guaranteed to be of that type at compile time). Use a direct cast only when you are certain of the type and want an exception on failure.
 
 ### Collections
 
@@ -305,9 +307,10 @@ Rules for enumeration classes:
   ```
 - Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
 - Declare mock fields and the SUT at class level without access modifiers (implicitly private).
-- Group tests within a class by the production method under test, separated by comment banners (e.g., `// -- MethodName ------`).
+- Group tests within a class by the production method under test. Do NOT use comment banners or any other separator between groups.
 - Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
 
 ### Logging
 
 - When using `NuciLog`, always prefer `LogInfoKey` entries over embedding information directly in the `Message` string. Use `Message` only for content that cannot be expressed as a key-value pair.
+- When using `NuciLog`, always pass exceptions via the dedicated `exception` parameter. Never embed exception messages or stack traces as text inside `Message`.

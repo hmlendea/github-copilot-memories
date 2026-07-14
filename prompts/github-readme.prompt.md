@@ -15,14 +15,24 @@ Rules:
 - Include `### Release` only if the project produces an executable output (i.e. it is not a NuGet package).
 - Include `### Dependencies` only if there are non-test runtime NuGet dependencies. Do not list test-only packages.
 - Include the preview screenshot line only if `preview.png` exists in the repository root.
+- Include `## Known Limitations` only if there are real, notable caveats or missing features worth warning users about. Omit it otherwise.
+- Include `## Configuration` only if `appsettings.json` exists and contains at least one recognisable setting. If it exists but has no documented keys, omit the section entirely rather than leaving an empty or filler table.
+- Include `## Project Structure` only if the solution has more than one project or the directory layout is non-obvious and genuinely helps orientation. Omit it for single-project solutions with a standard layout.
+- Include `## Changelog` only if `CHANGELOG.md` exists in the repository root.
+- Include `## Security` only if `SECURITY.md` exists in the repository root.
+- Include `## Acknowledgements` only if the project builds on notable third-party work, data sources, or inspiration that warrants attribution.
+- Include `### Docker` only if a `Dockerfile` exists in the repository root.
+- Always include `## Usage`. Even for trivial projects, at minimum show one example command or snippet.
+- In `## License`, include "or later" only for GPL-family licences. Omit it for MIT, Apache, and other non-copyleft licences.
+- Prefix each `##` heading with its emoji as shown in the template. Omit the emoji only if the existing README uses no emojis and the project's tone is formal (e.g. an enterprise SDK or internal tooling).
 - Remove all HTML comments from the final output.
 
 ---
 
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-[![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_USERNAME]]/[[REPO_NAME]])](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
 <!-- Only if `.github/workflows/[WORKFLOW_FILE]` exists. -->
-[![Build Status](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml/badge.svg)](https://github.com/[[GITHUB_USERNAME]]/[[REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml)
+[![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]].yml)
 <!-- Only if `LICENSE` exists. -->
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
 
@@ -33,13 +43,23 @@ Rules:
 <!-- Only if `preview.png` exists. -->
 ![Preview screenshot](preview.png)
 
-## Features
+## ✨ Features
 
 - [[Feature 1]]
 - [[Feature 2]]
 
+## 🚀 Usage
+
+<!-- Provide a minimal but realistic example showing how to use the project. For CLI tools, show a shell command. For libraries, show a code snippet. For web apps, describe the main workflow. -->
+[[Usage example]]
+
+<!-- Only if there are notable caveats, constraints, or missing features worth highlighting. -->
+## ⚠️ Known Limitations
+
+- [[Limitation 1]]
+
 <!-- For NuGet packages only: include this Installation section. -->
-## Installation
+## 📦 Installation
 
 [![Get it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/[[PACKAGE_ID]])
 
@@ -55,16 +75,16 @@ dotnet add package [[PACKAGE_ID]]
 Install-Package [[PACKAGE_ID]]
 ```
 
-<!-- Only if `appsettings.json` exists. -->
-## Configuration
+<!-- Only if `appsettings.json` exists and has at least one documented setting. Omit entirely rather than leaving an empty or filler table. -->
+## ⚙️ Configuration
 
 All settings are loaded from `appsettings.json`. The following keys are recognised:
 
 | Section | Key | Description |
 |---------|-----|-------------|
-| ....... | ... | ........... |
+| [[Section]] | [[Key]] | [[Description]] |
 
-## Development
+## 🛠️ Development
 
 ### Requirements
 
@@ -99,6 +119,21 @@ dotnet run --project [[MAIN_PROJECT_NAME]]
 dotnet test [[SOLUTION_FILE]]
 ```
 
+<!-- Only if `Dockerfile` exists. -->
+### Docker
+
+```bash
+docker build -t [[IMAGE_NAME]] .
+docker run --rm [[IMAGE_NAME]]
+```
+
+<!-- Only if there are non-test runtime NuGet dependencies. -->
+### Dependencies
+
+| Package | Purpose |
+|---------|--------|
+| [[package]] | [[purpose]] |
+
 <!-- Only if `release.sh` exists. -->
 ### Release
 
@@ -112,7 +147,8 @@ This script downloads and executes an external release helper from `https://raw.
 
 **Note:** Piping into `bash` is an intensely controversial topic. Please review any external scripts before running them in your environment!
 
-## Project Structure
+<!-- Only if the solution has more than one project or the directory layout is non-obvious. -->
+## 🗂️ Project Structure
 
 The solution contains the following projects:
 
@@ -124,14 +160,8 @@ Key directories inside `[[MAIN_PROJECT_NAME]]/`:
 |-----------|---------|
 | [[dir]]   | [[purpose]] |
 
-<!-- Include the Dependencies section only if there are non-test runtime NuGet dependencies. -->
-### Dependencies
 
-| Package | Purpose |
-|---------|---------|
-| [[package]] | [[purpose]] |
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome. Please:
 - Keep changes cross-platform
@@ -139,16 +169,35 @@ Contributions are welcome. Please:
 - Keep the existing public contract intact unless a breaking change is intentional
 - Keep pull requests focused and consistent with the existing code style
 - Update documentation when behaviour changes
+<!-- Only if tests exist. -->
+- Add unit tests for any new or changed functionality
 
 <!-- Only if `CONTRIBUTING.md` exists. -->
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details on contributing to this project.
 
-## Support
+<!-- Only if there are notable third-party works, data sources, or inspiration worth attributing. -->
+## 🙏 Acknowledgements
+
+- [[Acknowledgement 1]]
+
+<!-- Only if `CHANGELOG.md` exists. -->
+## 📋 Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
+
+<!-- Only if `SECURITY.md` exists. -->
+## 🔒 Security
+
+For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
+
+## 💬 Support
+
+Found a bug or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
 If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
 
 <!-- Only if `LICENSE` exists. -->
-## License
+## 📄 License
 
-Licensed under the **[[License Title]]** or later.
+Licensed under the `[[License Title]]`<!-- only for GPL-family licences, append: " or later" -->.
 See [LICENSE](./LICENSE) for details.

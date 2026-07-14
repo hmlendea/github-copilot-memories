@@ -1,5 +1,5 @@
 ---
-description: "Generate or update a README.md for a GitHub repository. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
+description: "Use when the user asks to update, create, or generate a README.md. Auto-invoked by requests such as 'update the readme', 'create a readme', 'write the readme', or 'generate the readme'. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
 mode: generate
 ---
 
@@ -53,6 +53,15 @@ dotnet add package [[PACKAGE_ID]]
 ```powershell
 Install-Package [[PACKAGE_ID]]
 ```
+
+<!-- Only if `appsettings.json` exists. -->
+## Configuration
+
+All settings are loaded from `appsettings.json`. The following keys are recognised:
+
+| Section | Key | Description |
+|---------|-----|-------------|
+| ....... | ... | ........... |
 
 ## Development
 

@@ -40,6 +40,10 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.
 - Never use characters or phrasing that indicate AI-generated content. This includes em dashes (`—`), en dashes (`–`), ellipsis characters (`…`), arrow characters (`→`), box-drawing characters, and overly verbose transitional phrases such as "it is worth noting", "it is important to", "in order to", "this ensures that", "as mentioned above". Use plain ASCII punctuation (`,`, `;`, `:`, `-`, `->`) and direct phrasing instead.
 
+## README
+
+- When the user asks to update or create a `README.md` (e.g. "update the readme", "create a readme", "generate the readme"), always follow the template and rules defined in `github-readme.prompt.md`.
+
 ## Source Control
 
 - Default branch name: `master`.

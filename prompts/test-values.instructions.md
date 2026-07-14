@@ -90,7 +90,7 @@ Use these values when writing tests to keep them consistent and fun.
 - `2012-09-05`
 
 ### Currency
-- Valid: `RON`
+- Valid: `EUR`, `MDL`, `RON`
 - Invalid: `NLV`
 
 ### Video Game Names
@@ -101,6 +101,16 @@ Use these values when writing tests to keep them consistent and fun.
 - `RuneScape`
 - `SokoGrump`
 - `Terraria`
+
+### Passwords
+- `NucileRullz!`
+- `P@ssw0rd!`
+- `Parola123!`
+- `Silver56`
+- `stayback123`
+
+### Petrol Station Names
+- `Nukoil`
 
 ### Movie Names
 - `The Lord of the Rings`

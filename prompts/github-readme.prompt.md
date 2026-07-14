@@ -128,10 +128,10 @@ Contributions are welcome.
 
 Please:
 
-- keep changes cross-platform
-- keep pull requests focused and consistent with existing style
-- update documentation when behaviour changes
-- add or update tests for new behaviour
+- keep the changes cross-platform
+- keep the pull requests focused and consistent with the existing style
+- update the documentation when the behaviour changes
+- add or update the tests for any new behaviour
 
 ## Support
 

@@ -283,6 +283,23 @@ Rules for enumeration classes:
 - Use `Is.Empty` instead of `Is.EqualTo(string.Empty)` in asserts.
 - Use `Has.Length.EqualTo(n)` instead of asserting on `.Length` directly: `Assert.That(collection, Has.Length.EqualTo(n))`, never `Assert.That(collection.Length, Is.EqualTo(n))`.
 - Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
+- When a test method contains only a single `Assert.That(...)` call (i.e. no Arrange or Act steps), use `=>` instead of a block body `{ ... }`. For multi-argument `Assert.That` calls, place the expression on the next line with one extra level of indentation, and each argument on its own line. Example:
+  ```csharp
+  // Wrong:
+  [Test]
+  public void GivenX_WhenY_ThenZ()
+  {
+      string actual = subject.GetValue("input");
+      Assert.That(actual, Is.EqualTo("expected"));
+  }
+
+  // Correct:
+  [Test]
+  public void GivenX_WhenY_ThenZ()
+      => Assert.That(
+          subject.GetValue("input"),
+          Is.EqualTo("expected"));
+  ```
 - Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
 - Declare mock fields and the SUT at class level without access modifiers (implicitly private).
 - Group tests within a class by the production method under test, separated by comment banners (e.g., `// -- MethodName ------`).

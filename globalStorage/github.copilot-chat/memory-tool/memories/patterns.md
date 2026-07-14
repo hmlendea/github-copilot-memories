@@ -24,4 +24,10 @@ On this machine the folder is symlinked to `prompts/` in this repository.
 | `typescript.instructions.md` | `**/*.ts`, `**/*.tsx` | TypeScript |
 | `test-values.instructions.md` | description-based | Standard test values (names, cities, etc.) |
 
+## Prompt Files
+
+| File | Trigger | Purpose |
+|---|---|---|
+| `github-readme.prompt.md` | `/github-readme` or "generate/update README" | Generate or update a `README.md` for a GitHub repository |
+
 See also: [test-values.md](test-values.md) for the raw test values reference.

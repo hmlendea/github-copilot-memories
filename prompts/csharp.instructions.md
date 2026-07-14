@@ -64,7 +64,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Classes: PascalCase.
 - Interfaces: `I`-prefixed PascalCase (`IAccountService`).
 - Controllers: pluralized noun + `Controller` (`AccountsController`).
-- Data/entity objects: `Entity` suffix (`AccountEntity`).
+- Data/entity objects: `DataObject` suffix (`AccountDataObject`).
 - Domain models: plain noun, no suffix (`Account`, `CheckIn`).
 - Request DTOs: Verb + Noun + `Request` (`AddAccountRequest`, `RecordCheckInRequest`).
 - Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
@@ -82,7 +82,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Configuration classes: `public sealed class`.
 - Mapping extension classes: no access modifier (implicitly `internal`), `static`.
 - Mapping extension methods: explicitly `internal static`.
-- Implement `IEquatable<T>` on domain models and entity classes where equality comparison is meaningful (e.g. value objects, entities compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
+- Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 
 ### Enumerations and Enumeration Classes
 

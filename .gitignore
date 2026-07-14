@@ -1,0 +1,9 @@
+*
+!.gitignore
+!globalStorage/
+!globalStorage/github.copilot-chat/
+!globalStorage/github.copilot-chat/memory-tool/
+!globalStorage/github.copilot-chat/memory-tool/memories/
+!globalStorage/github.copilot-chat/memory-tool/memories/**
+!prompts/
+!prompts/**

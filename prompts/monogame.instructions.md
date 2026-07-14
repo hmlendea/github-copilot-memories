@@ -9,3 +9,4 @@ description: "Use when working with XNA, MonoGame, or NuciXNA. Covers GuiImage, 
 - Inside a `GuiControl` subclass: register child controls via `RegisterChildren(...)` or `RegisterChild(...)`.
 - Inside a `Screen` subclass: register controls via `GuiManager.Instance.RegisterControls(...)` or `GuiManager.Instance.RegisterControl(...)`.
 - There are NO exceptions to the registration rule; do not manually call LoadContent/UnloadContent/Update/Draw on any GuiControl.
+- Always use `Point2D.Empty` instead of `new Point2D(0, 0)`, and `Size2D.Zero` instead of `new Size2D(0, 0)`.

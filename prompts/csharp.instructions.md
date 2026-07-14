@@ -203,9 +203,12 @@ Rules for enumeration classes:
 
 - Do NOT use optional parameters. Use method overloads instead.
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20-30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
-- When a parameter list (declaration) or argument list (call site) **exceeds 64 characters** in total length, split it so that each parameter or argument appears on its own line, indented by one extra level (4 spaces) relative to the method name. The closing `)` goes on its own line at the original indentation level. Example:
+- A parameter list (declaration) or argument list (call site) must either fit entirely on one line, or be split so that **each** parameter or argument appears on its own line with none remaining on the opening line. Mixing — placing some parameters on the same line as the method name and others on continuation lines — is never acceptable. When splitting, each parameter or argument is indented by one extra level (4 spaces) relative to the method name, and the closing `)` goes on its own line at the original indentation level. Split when the single-line form would exceed 96 characters. Example:
   ```csharp
-  // Declaration:
+  // Declaration - all on one line (fits within 96 characters):
+  public void Move(int directionX, int directionY) { ... }
+
+  // Declaration - split, each parameter on its own line:
   public void RecordCheckIn(
       string accountId,
       string locationId,
@@ -214,7 +217,7 @@ Rules for enumeration classes:
       ...
   }
 
-  // Call site:
+  // Call site - split, each argument on its own line:
   RecordCheckIn(
       account.Id,
       location.Id,
@@ -304,3 +307,7 @@ Rules for enumeration classes:
 - Declare mock fields and the SUT at class level without access modifiers (implicitly private).
 - Group tests within a class by the production method under test, separated by comment banners (e.g., `// -- MethodName ------`).
 - Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
+
+### Logging
+
+- When using `NuciLog`, always prefer `LogInfoKey` entries over embedding information directly in the `Message` string. Use `Message` only for content that cannot be expressed as a key-value pair.

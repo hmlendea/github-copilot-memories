@@ -191,8 +191,18 @@ Word replacements - apply to all variants and derivatives of each word:
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
 - Word replacements - apply to all variants and derivatives of each word:
   - airplane → aeroplane
+  - ask → inquire
+  - buy → purchase
   - clever → astute
+  - enough → sufficient
   - gray → grey
+  - health points → vitality
+  - is/was/are needed → is/was/are necessary
   - lipstick → rouge
+  - lucky → fortunate
   - nauseous → nauseated
+  - often → frequently
+  - think about → consider
+  - try → attempt
   - weird → bizarre
+  - will/would need → will/would be necessary

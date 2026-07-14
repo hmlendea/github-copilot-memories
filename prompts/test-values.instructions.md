@@ -10,7 +10,7 @@ Use these values when writing tests to keep them consistent and fun.
 - `IlarionPintilie`
 - `solaire_of_astora`
 
-### Names — Male — Full
+### Names: Male / Full
 - `Iancu Robilă`
 - `Ilarion Pintilie`
 - `Ionuț Karr`
@@ -19,7 +19,7 @@ Use these values when writing tests to keep them consistent and fun.
 - `Solaire of Astora`
 - `Vasile Ciupitu`
 
-### Names — Male — First
+### Names: Male / First
 - `Bobert`
 - `Ilarion`
 - `Ionuț`
@@ -27,12 +27,12 @@ Use these values when writing tests to keep them consistent and fun.
 - `Solaire`
 - `Vasile`
 
-### Names — Female — Full
+### Names: Female / Full
 - `Elodia Ghinescu`
 - `Ioana Blitz`
 - `Mary Karr`
 
-### Names — Female — First
+### Names: Female / First
 - `Elodia`
 - `Ioana`
 - `Mary`

@@ -7,19 +7,19 @@ applyTo: "**/*.py"
 ### Imports
 
 - Standard library imports first, one name per line (`import random`, `import re`, etc.).
-- `from … import` for stdlib submodules grouped on one line (`from urllib.parse import urlencode, parse_qs, urlparse, urlsplit`).
-- Local imports last, grouped by module; use a `from module import (name, name, …)` multi-line form with each name on its own line when there are many names.
+- `from ... import` for stdlib submodules grouped on one line (`from urllib.parse import urlencode, parse_qs, urlparse, urlsplit`).
+- Local imports last, grouped by module; use a `from module import (name, name, ...)` multi-line form with each name on its own line when there are many names.
 
 ### Naming
 
 - `snake_case` for all functions, variables, and parameters. `SCREAMING_SNAKE_CASE` for all module-level constants.
-- Clear, explicit names with no abbreviations or shortenings — same full-name rule as for other languages. This applies everywhere: local variables, parameters, loop variables, lambda variables, etc. Single-letter names and abbreviated prefixes are forbidden.
-- Boolean variables and functions must use a meaningful boolean-semantic prefix: `is_`, `has_`, `does_`, `are_`, or contextual tense-embedded forms (`..._was_...`, `..._were_...`) — e.g. `is_enabled`, `has_permission`, `request_was_handled`. Never use vague names like `flag`, `check`, or `result` for booleans.
+- Clear, explicit names with no abbreviations or shortenings, following the same full-name rule as for other languages. This applies everywhere: local variables, parameters, loop variables, lambda variables, etc. Single-letter names and abbreviated prefixes are forbidden.
+- Boolean variables and functions must use a meaningful boolean-semantic prefix: `is_`, `has_`, `does_`, `are_`, or contextual tense-embedded forms (`..._was_...`, `..._were_...`), e.g. `is_enabled`, `has_permission`, `request_was_handled`. Never use vague names like `flag`, `check`, or `result` for booleans.
 
 ### String Literals
 
 - Single quotes for plain string literals: `'grant_type'`, `'code'`.
-- f-strings for all interpolation — never `%` formatting or `.format()`.
+- f-strings for all interpolation; never `%` formatting or `.format()`.
 
 ### Comments
 

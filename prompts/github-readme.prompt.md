@@ -98,7 +98,7 @@ This script downloads and executes an external release helper from `https://raw.
 
 The solution contains the following projects:
 
-- [[ProjectName]] — [[purpose]]
+- [[ProjectName]]: [[purpose]]
 
 Key directories inside `[[MAIN_PROJECT_NAME]]/`:
 
@@ -126,7 +126,7 @@ Please:
 
 ## Support
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding).
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
 
 ## License
 

@@ -1,6 +1,6 @@
 ---
 description: "Use when writing or editing TypeScript or JavaScript code. Covers file structure, module organisation, naming, blank line rules, and code style."
-applyTo: ["**/*.ts", "**/*.tsx"]
+applyTo: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
 ---
 ## TypeScript
 
@@ -18,5 +18,34 @@ applyTo: ["**/*.ts", "**/*.tsx"]
 - `if`, `for`, `for...of`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the function/method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
-- Never place an empty line immediately after an opening brace `{`.
+- Never place an empty line immediately after an opening brace `{` or immediately before a closing brace `}`.
 - All methods must have exactly one empty line between them: no more, no less.
+
+### Naming Conventions
+
+- Classes, enums, and type aliases: PascalCase.
+- Interfaces: `I`-prefixed PascalCase (`IAccountService`).
+- Functions, methods, variables, and parameters: camelCase.
+- Private class members: camelCase, no underscore prefix (`accountRepository`, not `_accountRepository`).
+- Module-level constants: `SCREAMING_SNAKE_CASE`.
+- Boolean variables, properties, and functions must use a meaningful boolean-semantic prefix: `is`, `has`, `does`, `are`, or contextual tense-embedded forms (`...Was...`, `...Were...`), e.g. `isEnabled`, `hasPermission`, `requestWasHandled`. Never use vague names like `flag`, `check`, or `result` for booleans.
+
+### Imports
+
+- Organise `import` statements into the following groups, in this order, with exactly one blank line between groups:
+  1. Built-in Node modules (`path`, `fs`, `os`, etc.).
+  2. Third-party packages (`react`, `express`, etc.).
+  3. Local imports (relative paths: `./`, `../`).
+- Sort all imports alphabetically within each group.
+- Prefer named exports and named imports over default exports.
+
+### Code Style
+
+- Use `const` for all declarations that are never reassigned. Use `let` only when reassignment is necessary. Never use `var`.
+- Always use `===` and `!==`; never `==` or `!=`.
+- Never use `any`. Use `unknown` when the type is genuinely unknown and narrow it explicitly with a type guard.
+- Use `interface` over `type` for object shapes. Use `type` only for unions, intersections, or primitive aliases.
+- Always declare explicit return types on exported and public functions and methods.
+- Use `readonly` on class properties that are never reassigned after construction.
+- Always use explicit braces for ALL control flow (`if`, `else`, `for`, `for...of`, `while`, `switch`), even for single-line bodies. Braceless bodies are never acceptable.
+- The opening brace must appear on the same line as the statement (K&R style): `if (condition) {`.

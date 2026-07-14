@@ -12,7 +12,7 @@ applyTo: "**/*.py"
 
 ### Naming
 
-- `snake_case` for all functions, variables, and parameters. `SCREAMING_SNAKE_CASE` for all module-level constants.
+- `snake_case` for all functions, variables, and parameters. `PascalCase` for all classes. `SCREAMING_SNAKE_CASE` for all module-level constants.
 - Clear, explicit names with no abbreviations or shortenings, following the same full-name rule as for other languages. This applies everywhere: local variables, parameters, loop variables, lambda variables, etc. Single-letter names and abbreviated prefixes are forbidden.
 - Boolean variables and functions must use a meaningful boolean-semantic prefix: `is_`, `has_`, `does_`, `are_`, or contextual tense-embedded forms (`..._was_...`, `..._were_...`), e.g. `is_enabled`, `has_permission`, `request_was_handled`. Never use vague names like `flag`, `check`, or `result` for booleans.
 
@@ -44,8 +44,6 @@ applyTo: "**/*.py"
 ### Function Structure
 
 - Variables initialised to `None` before conditional assignment; returned at the end.
-- `for _ in range(n):` for counted loops with a throwaway variable.
-- `or` chaining for fallback values: `obj.get('emailAddress') or obj.get('phoneNumber') or DEFAULT`.
 
 ### Type Hints
 

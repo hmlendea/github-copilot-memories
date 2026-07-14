@@ -46,7 +46,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
 - Never use two or more consecutive blank lines anywhere in the code.
-- Never place an empty line immediately after an opening brace `{`.
+- Never place an empty line immediately after an opening brace `{` or immediately before a closing brace `}`. This applies to all braces without exception: type bodies, method bodies, property accessors, control flow blocks, and every other brace-delimited scope.
 - Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
 - All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
@@ -54,7 +54,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Always use explicit types instead of `var`.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
-- NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??`, `??=`, or switch expressions.
+- NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 
@@ -78,10 +78,11 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 
 ### Type Declarations
 
+- All classes that are not explicitly designed for inheritance must be declared `sealed`. When in doubt, default to `sealed`.
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
-- Mapping extension classes: no access modifier (implicitly `internal`), `static`.
+- Mapping extension classes: explicitly `internal static class`.
 - Mapping extension methods: explicitly `internal static`.
 - Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 
@@ -230,6 +231,7 @@ Rules for enumeration classes:
 - Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions. A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
+- When a method signature is too long to fit on one line and the method is expression-bodied, place `=>` on the next line indented by 4 spaces relative to the method name, with the expression on the same line as `=>`. Example: `public void DrawNpc(int x, int y, int width, int height)\n    => inner.DrawNpc(x, y, width, height);`
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToServiceModel`, `ToDataObject`, and their plurals).
 - When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature; never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
   ```csharp
@@ -306,11 +308,12 @@ Rules for enumeration classes:
           Is.EqualTo("expected"));
   ```
 - Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
-- Declare mock fields and the SUT at class level without access modifiers (implicitly private).
+- Declare mock fields and the SUT at class level as `private`.
 - Group tests within a class by the production method under test. Do NOT use comment banners or any other separator between groups.
 - Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
 
 ### Logging
 
+- When using `NuciLog`, always include an `Operation` in all log calls.
 - When using `NuciLog`, always prefer `LogInfoKey` entries over embedding information directly in the `Message` string. Use `Message` only for content that cannot be expressed as a key-value pair.
 - When using `NuciLog`, always pass exceptions via the dedicated `exception` parameter. Never embed exception messages or stack traces as text inside `Message`.

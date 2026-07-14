@@ -10,3 +10,4 @@ description: "Use when working with XNA, MonoGame, or NuciXNA. Covers GuiImage, 
 - Inside a `Screen` subclass: register controls via `GuiManager.Instance.RegisterControls(...)` or `GuiManager.Instance.RegisterControl(...)`.
 - There are NO exceptions to the registration rule; do not manually call LoadContent/UnloadContent/Update/Draw on any GuiControl.
 - Always use `Point2D.Empty` instead of `new Point2D(0, 0)`, and `Size2D.Zero` instead of `new Size2D(0, 0)`.
+- The only acceptable numeric constants in layout code are measurements within the artwork itself (e.g. where an inner border starts in a texture), expressed as named constants that describe what they measure in the asset, used as numerators in proportional scaling against the texture's runtime dimensions. Always read texture dimensions at runtime via `GuiImage`; never hardcode them.

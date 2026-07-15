@@ -11,6 +11,7 @@ Fill in all `[[PLACEHOLDER]]` values from the actual project. Remove any section
 
 Rules:
 - Include the `Build Status` badge only if a GitHub Actions workflow file exists in `.github/workflows/`.
+- Include the `Latest Release` badge only if the repository has at least one published release.
 - Include the `Website` badge only if the repository has a configured Website URL in its GitHub About section, or if GitHub Pages is enabled (i.e. a `gh-pages` branch or a `docs/` folder is published). Use the label `GitHub Pages` if the URL is a `github.io` domain, otherwise use `Website`.
 - Include `## Installation` (NuGet section) only if this is a NuGet package, not an executable app. Place it directly above `## Development`.
 - Include `### Release` using the appropriate variant: `dotnet pack` for NuGet packages; `npm run dist` for npm packages with a `dist` script configured; `bash ./release.sh` if `release.sh` exists; omit the section entirely for executables with no dedicated release process.
@@ -37,6 +38,7 @@ Rules:
 ---
 
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
+<!-- Only if the repository has at least one published release. -->
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
 <!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use label 'GitHub Pages' for github.io URLs, otherwise 'Website'. -->
 [![Website](https://img.shields.io/badge/Website-Visit-blue)](https://[[WEBSITE_URL]])

@@ -1,6 +1,6 @@
 ---
 description: "Use when the user asks to update, create, or generate a README.md. Auto-invoked by requests such as 'update the readme', 'create a readme', 'write the readme', or 'generate the readme'. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
-mode: generate
+agent: agent
 ---
 
 Generate or update the `README.md` for this GitHub repository using the template below.
@@ -12,19 +12,25 @@ Fill in all `[[PLACEHOLDER]]` values from the actual project. Remove any section
 Rules:
 - Include the `Build Status` badge only if a GitHub Actions workflow file exists in `.github/workflows/`.
 - Include `## Installation` (NuGet section) only if this is a NuGet package, not an executable app. Place it directly above `## Development`.
-- Include `### Release` only if the project produces an executable output (i.e. it is not a NuGet package).
-- Include `### Dependencies` only if there are non-test runtime NuGet dependencies. Do not list test-only packages.
+- Include `### Release` using the appropriate variant: `dotnet pack` for NuGet packages; `npm run dist` for npm packages with a `dist` script configured; `bash ./release.sh` if `release.sh` exists; omit the section entirely for executables with no dedicated release process.
+- Include `### Dependencies` only if there are non-test runtime dependencies. For .NET, omit test-only packages. For other project types, list only non-trivial runtime packages.
 - Include the preview screenshot line only if `preview.png` exists in the repository root.
+- Include `## Screenshots` only if a `screenshots/` directory exists in the repository root containing image files. Place it directly after the description paragraph.
 - Include `## Known Limitations` only if there are real, notable caveats or missing features worth warning users about. Omit it otherwise.
-- Include `## Configuration` only if `appsettings.json` exists and contains at least one recognisable setting. If it exists but has no documented keys, omit the section entirely rather than leaving an empty or filler table.
+- Include `## Configuration` if `appsettings.json` or `.env.example` exists and contains at least one recognisable setting. If neither has documented keys, omit the section entirely rather than leaving an empty or filler table.
+- Include `### Environment Variables` within `## Configuration` only if `.env.example` exists.
+- Include `## Roadmap` only if `ROADMAP.md` exists in the repository root.
 - Include `## Project Structure` only if the solution has more than one project or the directory layout is non-obvious and genuinely helps orientation. Omit it for single-project solutions with a standard layout.
 - Include `## Changelog` only if `CHANGELOG.md` exists in the repository root.
 - Include `## Security` only if `SECURITY.md` exists in the repository root.
 - Include `## Acknowledgements` only if the project builds on notable third-party work, data sources, or inspiration that warrants attribution.
 - Include `### Docker` only if a `Dockerfile` exists in the repository root.
+- Include `### Docker Compose` only if `docker-compose.yml` or `docker-compose.yaml` exists in the repository root.
 - Always include `## Usage`. Even for trivial projects, at minimum show one example command or snippet.
 - In `## License`, include "or later" only for GPL-family licences. Omit it for MIT, Apache, and other non-copyleft licences.
 - Prefix each `##` heading with its emoji as shown in the template. Omit the emoji only if the existing README uses no emojis and the project's tone is formal (e.g. an enterprise SDK or internal tooling).
+- For npm/Node.js projects, replace the .NET SDK requirement with the Node.js version, and replace dotnet commands with: `npm install` for setup, `npm run build` for building, `npm start` or `npm run dev` for running, and `npm test` for testing.
+- For Python projects, replace the .NET SDK requirement with the Python version, and replace dotnet commands with: `python -m venv .venv && source .venv/bin/activate` and `pip install -r requirements.txt` for setup, `python [[entrypoint]]` or `python -m [[module]]` for running, and `pytest` for testing.
 - Remove all HTML comments from the final output.
 
 ---
@@ -42,6 +48,12 @@ Rules:
 
 <!-- Only if `preview.png` exists. -->
 ![Preview screenshot](preview.png)
+
+<!-- Only if `screenshots/` directory exists with image files. -->
+## 🖼️ Screenshots
+
+![[[Screenshot 1 description]]](screenshots/[[screenshot1.png]])
+![[[Screenshot 2 description]]](screenshots/[[screenshot2.png]])
 
 ## ✨ Features
 
@@ -83,6 +95,15 @@ All settings are loaded from `appsettings.json`. The following keys are recognis
 | Section | Key | Description |
 |---------|-----|-------------|
 | [[Section]] | [[Key]] | [[Description]] |
+
+<!-- Only if `.env.example` exists. -->
+### Environment Variables
+
+The following environment variables can be set:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `[[VARIABLE_NAME]]` | [[Description]] | `[[default value]]` |
 
 ## 🛠️ Development
 
@@ -127,12 +148,26 @@ docker build -t [[IMAGE_NAME]] .
 docker run --rm [[IMAGE_NAME]]
 ```
 
-<!-- Only if there are non-test runtime NuGet dependencies. -->
-### Dependencies
+<!-- Only if `docker-compose.yml` or `docker-compose.yaml` exists. -->
+### Docker Compose
 
-| Package | Purpose |
-|---------|--------|
-| [[package]] | [[purpose]] |
+```bash
+docker compose up
+```
+
+<!-- For NuGet packages only: include this Release sub-section. -->
+### Release
+
+```bash
+dotnet pack [[MAIN_PROJECT_NAME]] -c Release
+```
+
+<!-- For NPM packages only, if they have the `dist` command configured: include this Release sub-section. -->
+### Release
+
+```bash
+npm run dist
+```
 
 <!-- Only if `release.sh` exists. -->
 ### Release
@@ -147,6 +182,13 @@ This script downloads and executes an external release helper from `https://raw.
 
 **Note:** Piping into `bash` is an intensely controversial topic. Please review any external scripts before running them in your environment!
 
+<!-- Only if there are non-test runtime dependencies. -->
+### Dependencies
+
+| Package | Purpose |
+|---------|--------|
+| [[package]] | [[purpose]] |
+
 <!-- Only if the solution has more than one project or the directory layout is non-obvious. -->
 ## 🗂️ Project Structure
 
@@ -154,26 +196,38 @@ The solution contains the following projects:
 
 - [[ProjectName]]: [[purpose]]
 
-Key directories inside `[[MAIN_PROJECT_NAME]]/`:
+The key directories inside `[[MAIN_PROJECT_NAME]]/` are:
 
 | Directory | Purpose |
 |-----------|---------|
 | [[dir]]   | [[purpose]] |
 
 
+<!-- Only if `ROADMAP.md` exists. -->
+## 🗺️ Roadmap
+
+See [ROADMAP.md](./ROADMAP.md) for planned features and upcoming changes.
+
 ## 🤝 Contributing
 
 Contributions are welcome. Please:
-- Keep changes cross-platform
+- Keep the changes cross-platform
 <!-- Only if this is an API or library. -->
 - Keep the existing public contract intact unless a breaking change is intentional
-- Keep pull requests focused and consistent with the existing code style
-- Update documentation when behaviour changes
+- Keep the pull requests focused and consistent with the existing code style
+- Update the documentation when behaviour changes
+- Properly test all changes, including edge cases and error conditions
 <!-- Only if tests exist. -->
 - Add unit tests for any new or changed functionality
 
 <!-- Only if `CONTRIBUTING.md` exists. -->
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details on contributing to this project.
+
+<!-- Only if there are related projects. -->
+## 🔗 Related Projects
+
+- [[Related project 1 with link]]: [[description]]
+- [[Related project 2 with link]]: [[description]]
 
 <!-- Only if there are notable third-party works, data sources, or inspiration worth attributing. -->
 ## 🙏 Acknowledgements
@@ -190,7 +244,8 @@ See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
 
 For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
 
-## 💬 Support
+<!-- Always include this Support section -->
+## 💝 Support
 
 Found a bug or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 

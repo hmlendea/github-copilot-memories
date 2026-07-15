@@ -220,6 +220,18 @@ Rules for enumeration classes:
 - Use expression-bodied (`=>`) for derived/computed read-only properties.
 - No `init`-only properties.
 - Each property must be on its own line, separated by a blank line from adjacent members.
+- When a property has both `get` and `set` accessors (or any combination of accessors with bodies), each accessor must be on its own line inside the property block. Placing multiple accessors on the same line is NEVER acceptable. Example:
+  ```csharp
+  // Wrong:
+  public bool IsInterlaced { get => renderer.IsInterlaced; set => renderer.IsInterlaced = value; }
+
+  // Correct:
+  public bool IsInterlaced
+  {
+      get => renderer.IsInterlaced;
+      set => renderer.IsInterlaced = value;
+  }
+  ```
 
 ### Methods
 

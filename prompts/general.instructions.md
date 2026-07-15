@@ -29,7 +29,9 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
 - TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Never use tabs for indentation; always use 4 spaces per indent level.
-- Lines must not exceed 96 characters (including indentation and whitespace). When a line is too long, split it across multiple lines. Place operators (`+`, `-`, `&&`, `||`, etc.) at the end of the line, not the start of the continuation. Method chain calls (`.Method()`) break before the dot. When splitting a call with multiple arguments or parameters across multiple lines, each argument or parameter must be on its own separate line. When a `return` statement's expression spans multiple lines, place `return` alone on the first line and indent the expression. For example, in C#:
+- Never place a blank line immediately before a closing brace or bracket (`}`, `]`, `)`). The last statement inside a block must be followed directly by the closing delimiter with no empty line between them.
+- Always place a blank line before a control flow statement (`if`, `for`, `foreach`, `while`, `do`, `switch`, `return`, `break`, `continue`, `throw`) when it is preceded by one or more non-blank, non-control-flow statements in the same block. Do not add the blank line when the control flow statement is the very first statement in the block, or when the preceding line is itself an opening brace or a control flow statement.
+- Lines must not exceed 96 characters (including indentation and whitespace). When a line is too long, split it across multiple lines. Place operators (`+`, `-`, `&&`, `||`, etc.) at the end of the line, not the start of the continuation. Method chain calls (`.Method()`) break before the dot. When splitting a call with multiple arguments or parameters across multiple lines, each argument or parameter must be on its own separate line. When a `return` statement's expression spans multiple lines, place `return` alone on the first line and indent the expression. When an expression-bodied member (`=>`) is too long, break after `=>` and indent the body on the next line. For example, in C#:
   ```csharp
   // Method call chain - break before the dot:
   DataStoreSettings dataStoreSettings = app.ApplicationServices
@@ -56,6 +58,10 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
       IsDestinationTwoInBounds(directionX, directionY) &&
       board.Tiles[destinationX, destinationY].Id == TileId.CrateOnFloor &&
       board.Tiles[destination2X, destination2Y].Id == TileId.Floor;
+
+  // Expression-bodied member too long - break after `=>` and indent the body:
+  private static int ClampToTexture128Range(int value) =>
+      Math.Clamp(value, 0, Texture128RowMask);
   ```
 - Licence new projects under GPL v3 unless the repository already uses a different licence.
 - Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.

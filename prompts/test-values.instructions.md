@@ -190,10 +190,10 @@ Always use these standard values when writing tests or generating test data. Nev
 ### Phrases: Romanian
 - `Ai, n-ai, dai la poartă`
 - `Altă întrebare`
-- `Crăciun Fericit!`
 - `Când o' zbura porcu'`
-- `Facem și dregem`
+- `Crăciun Fericit!`
 - `Facem să fie bine, ca să nu fie rău`
+- `Facem și dregem`
 - `Fir divin`
 - `Glorie Nucilandiei!`
 - `Hai că merge și-așa`
@@ -201,11 +201,12 @@ Always use these standard values when writing tests or generating test data. Nev
 - `La umbra Nucului Bătrân`
 - `Mă duc la magazin, vreți ceva?`
 - `Merge și fără`
-- `Nu-i bai, dom'le`
-- `Nu mai da cu seen, părinte!`
 - `Nu faci tu ordine la mine-n birou!`
+- `Nu mai da cu seen, părinte!`
+- `Nu-i bai, dom'le`
 - `Nucile rullz`
 - `Salată de boeuf`
+- `Să trăiți bine`
 - `Totu' o mers bine, până n-o mai mers`
 - `Urmăresc cu mare interes și firească îngrijorare`
 

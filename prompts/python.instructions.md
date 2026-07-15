@@ -23,7 +23,6 @@ applyTo: "**/*.py"
 
 ### Comments
 
-- Keep code self-explanatory and avoid comments unless they are exceptional and genuinely useful.
 - Always place at least one space after `#`: `# text`, never `#text`.
 - Inline and block comments must always begin with an uppercase letter and end with a period: `# Calculates the wall distance.`
 - TODO comments must always use the exact format `# TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).

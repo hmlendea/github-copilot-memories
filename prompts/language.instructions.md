@@ -190,32 +190,145 @@ Word replacements - apply to all variants and derivatives of each word:
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
 - Word replacements - apply to all variants and derivatives of each word:
+  - adhesive bandage → plaster
   - airplane → aeroplane
+  - allow → permit
+  - allowed → permitted
   - ask → inquire
+  - bad luck → misfortune
+  - bathroom → toilet
+  - bathroom sink → washbasin
+  - begin → commence
   - blueprint → plan
+  - build <!-- verb, as in "build a building/structure" --> → construct
+  - building <!-- noun, as in "a building/structure" --> → structure / edifice
   - buy → purchase
   - clever → astute
   - climb down → descend
   - climb up → ascend
   - color → colour
+  - come in → enter
+  - come on in → enter
   - cookie → biscuit
   - customize → personalise
+  - Czech Republic → Czechia
+  - deep <!-- adjective, meaning profound --> → profound
+  - do you have → have you got
+  - do you want → would you like
+  - dodgy → suspicious
+  - elementary school → primary school
+  - end <!-- verb --> → conclude / terminate
   - enough → sufficient
+  - fair <!-- adjective, meaning just or equitable --> → equitable / just
+  - faucet → tap
   - fetch → retrieve
+  - find <!-- verb, meaning to locate or discover --> → discover / locate
+  - flashlight → torch
+  - flat <!-- noun, the living space --> → apartment
+  - flat tyre → punctured tyre
+  - folder <!-- noun, in computing --> → directory
+  - free <!-- adjective, meaning unencumbered or liberated --> → unencumbered / liberated
+  - freedom → liberty
+  - garbage → rubbish
+  - garbage can → dustbin
+  - garbage truck → refuse collection vehicle
+  - gas gauge → fuel gauge
+  - gas pedal → accelerator pedal
+  - gas pump → petrol pump
+  - gas station → petrol station
+  - gas tank → fuel tank
+  - give <!-- verb, meaning to provide or furnish --> → provide / furnish
+  - go back → return
+  - go forward → advance / proceed
+  - go in → enter
+  - go out → exit
   - gray → grey
+  - grow <!-- verb, meaning to develop --> → develop
+  - growth <!-- noun, meaning development --> → development
+  - happen <!-- verb, meaning to occur --> → occur
+  - hard <!-- adjective, meaning difficult --> → arduous / demanding
+  - hate <!-- verb --> → detest / abhor
   - health points → vitality
-  - is/was/are needed → is/was/are necessary
+  - help <!-- noun, meaning assistance --> → assistance
+  - help <!-- verb, meaning to assist --> → assist
+  - hide <!-- verb, meaning to conceal --> → conceal
+  - high <!-- adjective, meaning elevated --> → elevated
+  - hold <!-- verb, meaning to retain or maintain --> → retain / maintain
+  - holiday <!-- noun, meaning vacation --> → vacation
+  - holy <!-- adjective, meaning sacred or consecrated --> → sacred / consecrated
+  - is/was/are needed <!-- verb, meaning to be necessary --> → is/was/are necessary
   - jail <!-- noun --> → prison
   - jail <!-- verb --> → incarcerate
+  - jailor → prison guard
+  - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
+  - kill <!-- verb, in computing --> → terminate
+  - know <!-- verb, meaning to be aware of or comprehend --> → be aware of / comprehend
+  - last <!-- verb, meaning to endure --> → endure / persist
+  - law <!-- noun, meaning legislation or statute --> → legislation / statute
+  - leave <!-- verb, meaning to depart --> → depart
+  - like <!-- verb, meaning to appreciate or favour --> → appreciate / favour
   - lipstick → rouge
   - login → authenticate
+  - look <!-- verb, meaning to observe or examine --> → observe / examine
+  - luck → fortune
   - lucky → fortunate
+  - mailbox → postbox
+  - mailman → postman
+  - make <!-- verb, meaning to create or produce --> → create / produce
+  - man → male
+  - manhood → masculinity
+  - manly → masculine
+  - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - nauseous → nauseated
+  - need <!-- verb, meaning to require --> → require
+  - new <!-- adjective, meaning recent or novel --> → novel / recent
   - often → frequently
+  - old <!-- adjective, meaning ancient or aged --> → ancient / aged
+  - open <!-- verb, meaning to access or expose --> → access / expose
+  - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
+  - own <!-- verb, meaning to possess --> → possess
+  - ownership <!-- noun, meaning the state or fact of possessing something --> → possession / proprietorship
+  - pajamas → pyjamas
+  - parking lot → car park
+  - pick <!-- verb, meaning to select --> → select
+  - put <!-- verb, meaning to place or position --> → place / position
+  - raise → elevate / increase
+  - restroom → toilet
+  - rise <!-- verb, meaning to ascend --> → ascend
+  - schedule <!-- noun, meaning a plan or timetable --> → timetable
+  - send <!-- verb, meaning to dispatch or transmit --> → dispatch / transmit
   - shopkeeper → merchant
+  - show <!-- verb, meaning to demonstrate or display --> → demonstrate / display / exhibit
+  - sidewalk → pavement
+  - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
+  - small → diminutive / minor
+  - solar system <!-- noun, astronomy, one other than the Sun's --> → star system
+  - speed <!-- noun, meaning the rate at which something moves or operates --> → velocity
+  - start <!-- verb, meaning to commence or initiate --> → commence / initiate
   - storekeeper → merchant
-  - think about → consider
+  - strength <!-- noun, meaning the quality or state of being strong --> → fortitude / vigour
+  - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
+  - tell <!-- verb, meaning to inform or notify --> → inform / notify
+  - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate
+  - think about <!-- verb, meaning to consider --> → consider
   - trader → merchant
-  - try → attempt
+  - trash → rubbish
+  - trash bag → rubbish bag
+  - trash can → dustbin
+  - trash truck → refuse collection vehicle
+  - try <!-- verb, meaning to attempt --> → attempt
+  - understand <!-- verb, meaning to comprehend --> → comprehend
+  - unlucky → unfortunate
+  - want <!-- verb, meaning to desire or wish --> → desire / wish
+  - watch <!-- verb, meaning to observe or monitor --> → observe / monitor
   - weird → bizarre
-  - will/would need → will/would be necessary
+  - whole <!-- adjective, meaning entire or complete --> → entire / complete
+  - wide <!-- adjective, meaning broad or expansive --> → broad / expansive
+  - will/would need <!-- verb, meaning to be necessary --> → will/would be necessary
+  - woman <!-- noun, meaning female human --> → female
+  - womanhood <!-- noun, meaning the state or condition of being a woman --> → femininity
+  - womanly <!-- adjective, meaning characteristic of a woman --> → feminine
+  - work <!-- noun, meaning labour or effort --> → labour / effort
+  - worth <!-- noun, meaning value or merit --> → value / merit
+  - write <!-- verb, meaning to compose or document --> → compose / document
+  - yard <!-- noun, meaning garden or outdoor area --> → garden

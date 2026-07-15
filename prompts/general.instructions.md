@@ -13,7 +13,7 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
 - All files must end with an empty line.
 - Every class, file, and module must have a single, well-defined responsibility. Place methods and functions only in the class that owns that responsibility. Never create multi-responsibility buckets or utility dumping-grounds. When a class begins to serve more than one concern, split it immediately into separate, focused classes, each placed in the namespace or module that corresponds to its responsibility.
-- Always remove dead code, unused imports, unused variables, redundant assignments, unused methods, obsolete fields, empty `if` blocks (conditionals with no logic inside their braces), and any other artefacts that serve no purpose. When changing existing logic, also update the README if the change affects documented behaviour or setup.
+- Always remove dead code, unused imports, unused variables, redundant assignments, unused methods, obsolete fields, empty `if` blocks (conditionals with no logic inside their braces), and any other artefacts that serve no purpose.
 - After every edit, explicitly check for and remove any imports or `using` directives that are no longer referenced. This is MANDATORY and must never be skipped, even when the change seems unrelated to imports.
 - Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values. In C#, named constants must use `static [Type] [Name] =>` (a static read-only property), not `const`.
 - When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property, not an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`). In C#, the index is derived from the enum value via `(int)value` and is never stored directly.
@@ -64,6 +64,7 @@ See also: [test-values.instructions.md](test-values.instructions.md) for standar
 ## README
 
 - When the user asks to update or create a `README.md` (e.g. "update the readme", "create a readme", "generate the readme"), always follow the template and rules defined in `github-readme.prompt.md`.
+- After every code change, check whether the `README.md` requires updating to reflect the change. If it does, update it as part of the same change.
 
 ## Source Control
 

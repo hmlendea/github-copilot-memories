@@ -1,6 +1,6 @@
 ---
 description: "Use when writing or editing C# code, .csproj, or .slnx files. Covers project structure, code style, naming conventions, type declarations, member organisation, constructors, methods, properties, null handling, exception handling, collections, async, dependency injection, controller style, and unit tests."
-applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
+applyTo: "**/*.{cs,csproj,slnx}"
 ---
 ## C#
 
@@ -11,8 +11,11 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - When creating a new C# solution, place the `.slnx` file and all project directories at the repository root level (no `src/` subfolder or similar). The unit test project, where applicable, must be named `[ProjectName].UnitTests`.
 - NEVER use `ImplicitUsings` or implicit namespaces. Always use explicit `using` directives. Never add `<ImplicitUsings>enable</ImplicitUsings>` to any csproj.
 - Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too; use an explicit `Program` class with a `static void Main` entry point.
+- Every type must be declared in its own file — one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
+
+### Namespaces & Using Directives
+
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
-- Every type must be declared in its own file - one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
 - Each class must have a single, well-defined responsibility. Do not add logic to a class unless it unambiguously belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it immediately into smaller, focused classes, each declared in the namespace that matches its responsibility. NEVER split a class into `partial` classes; always split into separate, concrete classes placed in the appropriate namespace and folder, and reference them explicitly.
 - Namespace choice is driven by responsibility, not by incidental proximity. A class that handles account validation belongs in `[Root].Services.Account`, not in a generic `[Root].Services` or `[Root].Utilities` namespace. Always ask: "What is the one thing this class does?"; the answer determines its namespace and folder.
 - Never create catch-all or helper namespaces (e.g. `Helpers`, `Utils`, `Common`, `Misc`, `Shared`). If you feel the need for one, it is a signal that the class has not been assigned its correct single responsibility yet.
@@ -21,8 +24,10 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
 - Never create a `[xyz].Enumerations` (or `Enums`) namespace. Place enums in the same namespace and folder as the domain models they belong to.
 - All `using` directives go at the top of the file, **outside** and **above** the `namespace` block; NEVER inside it.
-- NEVER use fully qualified type names inline (e.g. `OpenRS.Net.Client.Events.ContentLoadedEventArgs eventArgs`). Always add the appropriate `using` directive and reference the type by its short name (e.g. `using OpenRS.Net.Client.Events;` and `ContentLoadedEventArgs eventArgs`).
-- `using` directives must be organised into the following groups, in this order, each group separated from the next by exactly one blank line. All `using` directives within each group must be sorted alphabetically.
+- **NEVER use fully qualified type names inline.** This applies to ALL types without exception, including BCL types such as `System.Enum`, `System.Collections.Generic.List`, etc. Always add the appropriate `using` directive and reference the type by its short name. Examples:
+  - WRONG: `System.Enum.GetValues<RuneElement>()` — CORRECT: `using System;` at the top, then `Enum.GetValues<RuneElement>()`
+  - WRONG: `OpenRS.Net.Client.Events.ContentLoadedEventArgs eventArgs` — CORRECT: `using OpenRS.Net.Client.Events;` at the top, then `ContentLoadedEventArgs eventArgs`
+- `using` directives must be organised into the following groups, in this order, each group separated from the next by exactly one blank line. All directives within each group must be sorted alphabetically.
   1. **`System.*` usings**: all namespaces rooted at `System`.
   2. **`Microsoft.*` usings**: all namespaces rooted at `Microsoft`.
   3. **NuGet / third-party package usings**: one group per package root namespace (e.g. all `Newtonsoft.*` together, all `Serilog.*` together), ordered alphabetically by package root namespace.
@@ -33,6 +38,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 
 - Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`), even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
 - The opening brace of a control flow block must always appear on its own line (Allman style). NEVER place the opening brace or the body on the same line as the statement: `if (condition) { ... }` is NEVER acceptable.
+- `else if` must always appear on a single line. NEVER split it so that `else` is on one line and `if` is on another.
 - When an `if` condition contains multiple sub-conditions joined by `&&` or `||` **and** the full condition text exceeds 72 characters, split each sub-condition onto its own line with the logical operator placed at the **end** of the line (not the start). Continuation lines are indented by one extra level (4 spaces) relative to the `if` keyword. Do NOT split conditions that fit within 72 characters. Example:
   ```csharp
   if (GameData.TileWalkability is not null &&
@@ -45,6 +51,13 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
 - `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
+- When a `return` expression spans multiple lines, place `return` alone on the first line and indent the expression. Place operators (`||`, `&&`, `+`, etc.) at the **end** of each line, not at the start of the continuation. Example:
+  ```csharp
+  return
+      markerEven == MarkerRefPack ||
+      markerEven == MarkerQfsLow ||
+      markerEven == MarkerBigChunk;
+  ```
 - Never use two or more consecutive blank lines anywhere in the code.
 - Never place an empty line immediately after an opening brace `{` or immediately before a closing brace `}`. This applies to all braces without exception: type bodies, method bodies, property accessors, control flow blocks, and every other brace-delimited scope.
 - Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
@@ -86,7 +99,7 @@ applyTo: ["**/*.cs", "**/*.csproj", "**/*.slnx"]
 - Mapping extension methods: explicitly `internal static`.
 - Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 
-### Enumerations and Enumeration Classes
+### Enumerations & Enumeration Classes
 
 - Use a regular `enum` for simple categorical values that carry no additional data and require no string serialisation.
 - Use an **enumeration class** instead of an `enum` when any of the following apply:
@@ -189,9 +202,9 @@ Rules for enumeration classes:
 ### Member Organisation
 
 - ALWAYS declare the accessibility modifier explicitly on EVERY member: every field, property, event, constructor, and method must begin with `public`, `protected`, `internal`, `private`, or a valid combination. NEVER omit the modifier and rely on the implicit default. This applies even to `private` members — write `private int counter;`, NEVER just `int counter;`. Writing a field or method with no accessibility modifier is a bug.
-- Order members by accessibility: `public` first, then `protected`, then `private`.
-- Within each accessibility group, order members by kind: fields (readonly first, then mutable) -> properties -> events -> constructors and destructors -> methods.
-- Within the fields group, static fields must come before non-static fields. The full order is: static readonly -> static mutable -> instance readonly -> instance mutable.
+- Order members by kind first, then by accessibility within each kind group. The top-level kind order is: fields -> properties -> events -> constructors and destructors -> methods.
+- Within the fields group, order by: static readonly -> static mutable -> instance readonly -> instance mutable. Within each of those sub-groups, order by accessibility: `public` first, then `protected`, then `private`.
+- Within every other kind group (properties, events, constructors, methods), order by accessibility: `public` first, then `protected`, then `private`.
 - All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`).
 - Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
 
@@ -201,14 +214,24 @@ Rules for enumeration classes:
 - Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
 - Whenever a `new` expression appears on the same line as the variable/property/field declaration (so the type is already stated on the left-hand side), always use `new(...)` instead of `new [Type](...)`. Example: `private static Colour HoverTintColour => new(255, 220, 80);`; NEVER `new Colour(255, 220, 80)` in that position.
 
-### Method Signatures
+### Properties
+
+- Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
+- Use expression-bodied (`=>`) for derived/computed read-only properties.
+- No `init`-only properties.
+- Each property must be on its own line, separated by a blank line from adjacent members.
+
+### Methods
 
 - Do NOT use optional parameters. Use method overloads instead.
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20-30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
-- A parameter list (declaration) or argument list (call site) must either fit entirely on one line, or be split so that **each** parameter or argument appears on its own line with none remaining on the opening line. Mixing — placing some parameters on the same line as the method name and others on continuation lines — is never acceptable. When splitting, each parameter or argument is indented by one extra level (4 spaces) relative to the method name, and the closing `)` goes on its own line at the original indentation level. Split when the single-line form would exceed 96 characters. Example:
+- A parameter list (declaration) or argument list (call site) must either fit entirely on one line, or be split so that **each** parameter or argument appears on its own line with none remaining on the opening line. Mixing — placing some parameters on the same line as the method name and others on continuation lines — is never acceptable. When splitting, each parameter or argument is indented by one extra level (4 spaces) relative to the method name, and the closing `)` goes on its own line at the original indentation level. Split when the single-line form would exceed 96 characters. The method name itself must NEVER be split from its return type or access modifiers; only the parameter list may wrap. Example:
   ```csharp
   // Declaration - all on one line (fits within 96 characters):
-  public void Move(int directionX, int directionY) { ... }
+  public void Move(int directionX, int directionY)
+  {
+      ...
+  }
 
   // Declaration - split, each parameter on its own line:
   public void RecordCheckIn(
@@ -219,19 +242,39 @@ Rules for enumeration classes:
       ...
   }
 
+  // Constructor - split, each parameter on its own line:
+  public Camera(
+      GameImage gameImageSource,
+      int maxObjects,
+      int maxVisibleObjects,
+      int maxSceneObjects)
+  {
+      ...
+  }
+
   // Call site - split, each argument on its own line:
   RecordCheckIn(
       account.Id,
       location.Id,
       DateTime.UtcNow);
   ```
-
-### Properties & Methods
-
-- Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
-- Use expression-bodied (`=>`) for derived/computed read-only properties.
-- Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions. A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
+- Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions (`public void ResetCombat()\n    => throw new NotImplementedException();`). A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - When a method signature is too long to fit on one line and the method is expression-bodied, place `=>` on the next line indented by 4 spaces relative to the method name, with the expression on the same line as `=>`. Example: `public void DrawNpc(int x, int y, int width, int height)\n    => inner.DrawNpc(x, y, width, height);`
+- When the expression of an expression-bodied method spans multiple lines (because it is a complex expression, not because the signature is too long), place `=>` at the **end** of the signature line and spread the expression across subsequent lines, each indented by 4 spaces, with operators at the **end** of each line. A block body with `return` is **never** acceptable in this case. Example:
+  ```csharp
+  // Wrong:
+  private static int ReadBigEndian24(byte[] data, int offset)
+  {
+      return
+          (data[offset] << 16) | (data[offset + 1] << 8) | data[offset + 2];
+  }
+
+  // Correct:
+  private static int ReadBigEndian24(byte[] data, int offset) =>
+      (data[offset] << 16) |
+      (data[offset + 1] << 8) |
+      data[offset + 2];
+  ```
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToServiceModel`, `ToDataObject`, and their plurals).
 - When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature; never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
   ```csharp
@@ -241,8 +284,6 @@ Rules for enumeration classes:
       Name = model.Name,
   };
   ```
-- Each property on its own line, separated by a blank line from other members.
-- No `init`-only properties.
 
 ### Null Handling
 
@@ -317,3 +358,4 @@ Rules for enumeration classes:
 - When using `NuciLog`, always include an `Operation` in all log calls.
 - When using `NuciLog`, always prefer `LogInfoKey` entries over embedding information directly in the `Message` string. Use `Message` only for content that cannot be expressed as a key-value pair.
 - When using `NuciLog`, always pass exceptions via the dedicated `exception` parameter. Never embed exception messages or stack traces as text inside `Message`.
+- When using `NuciLog`, place all custom `Operation` and `LogInfoKey` classes in the `[Project].Logging` namespace.

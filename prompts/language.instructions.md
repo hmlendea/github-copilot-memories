@@ -198,18 +198,24 @@ Word replacements - apply to all variants and derivatives of each word:
   - climb down → descend
   - climb up → ascend
   - color → colour
+  - cookie → biscuit
   - customize → personalise
   - enough → sufficient
   - fetch → retrieve
   - gray → grey
   - health points → vitality
   - is/was/are needed → is/was/are necessary
+  - jail <!-- noun --> → prison
+  - jail <!-- verb --> → incarcerate
   - lipstick → rouge
   - login → authenticate
   - lucky → fortunate
   - nauseous → nauseated
   - often → frequently
+  - shopkeeper → merchant
+  - storekeeper → merchant
   - think about → consider
+  - trader → merchant
   - try → attempt
   - weird → bizarre
   - will/would need → will/would be necessary

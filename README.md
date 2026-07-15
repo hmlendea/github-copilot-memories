@@ -1,5 +1,4 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-[![Latest Release](https://img.shields.io/github/v/release/hmlendea/github-copilot-memories)](https://github.com/hmlendea/github-copilot-memories/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
 
 # GitHub Copilot Memories
@@ -37,17 +36,23 @@ The `github-readme.prompt.md` template will be invoked automatically.
 
 ### Setup
 
-Clone the repository and symlink the `prompts/` folder into your VS Code user profile:
+Clone the repository and symlink the `prompts/` and `memories/` directories into your VS Code user profile:
 
 ```bash
 # Linux
 ln -s "$(pwd)/prompts" ~/.config/Code/User/prompts
+mkdir -p ~/.config/Code/User/globalStorage/github.copilot-chat/memory-tool
+ln -s "$(pwd)/globalStorage/github.copilot-chat/memory-tool/memories" ~/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories
 
 # macOS
 ln -s "$(pwd)/prompts" ~/Library/Application\ Support/Code/User/prompts
+mkdir -p ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/memory-tool
+ln -s "$(pwd)/globalStorage/github.copilot-chat/memory-tool/memories" ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories
 
 # Windows (run as Administrator)
 mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
+mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
+mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
 
 VS Code picks up all `.instructions.md` and `.prompt.md` files automatically via the `chat.promptFilesLocations` setting (or the default user-profile scan).

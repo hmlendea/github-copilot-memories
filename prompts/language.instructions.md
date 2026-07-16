@@ -220,6 +220,8 @@ Word replacements - apply to all variants and derivatives of each word:
   - bathroom → toilet
   - bathroom sink → washbasin
   - begin → commence
+  - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
+  - blend <!-- verb, meaning to mix or combine things together --> → mix / combine / merge
   - big <!-- adjective, meaning physically large in size --> → large
   - big <!-- adjective, meaning substantial or significant in amount or degree --> → substantial / considerable
   - blueprint <!-- noun, meaning a design or detailed plan --> → plan / schematic
@@ -230,6 +232,7 @@ Word replacements - apply to all variants and derivatives of each word:
   - build <!-- verb, as in "build a building/structure" --> → construct
   - building <!-- noun, as in "a building/structure" --> → structure / edifice
   - buy → purchase
+  - busy <!-- adjective, meaning actively occupied or engaged --> → occupied
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
   - climb down → descend
   - climb up → ascend
@@ -238,6 +241,8 @@ Word replacements - apply to all variants and derivatives of each word:
   - come in → enter
   - come on in → enter
   - cookie → biscuit
+  - cunning <!-- adjective, meaning skilled at achieving goals through devious means --> → astute / devious
+  - damp <!-- adjective, meaning slightly wet or moist --> → moist
   - customize <!-- verb, meaning to modify to personal preferences --> → personalise
   - Czech Republic → Czechia
   - death <!-- noun, referring to the passing of a person --> → demise
@@ -248,10 +253,16 @@ Word replacements - apply to all variants and derivatives of each word:
   - do you have → have you got
   - do you want → would you like
   - dodgy <!-- adjective, meaning unreliable, questionable, or of dubious quality --> → suspicious
+  - doorman <!-- noun, meaning a person stationed at a building entrance to admit visitors --> → porter
+  - drop <!-- verb, meaning to release or relinquish something --> → relinquish
   - drunk <!-- adjective, meaning under the influence of alcohol --> → inebriated / intoxicated
   - dumb <!-- adjective, meaning unable to speak --> → mute
   - dumb <!-- adjective, meaning unintelligent or foolish --> → stupid
+  - dwelling <!-- noun, meaning a place where someone lives --> → residence / abode
+  - earnest <!-- adjective, meaning sincere and serious in intention --> → sincere
+  - eat <!-- verb, meaning to consume food --> → consume / ingest
   - Earth <!-- noun, the planet --> → Terra
+  - eerie <!-- adjective, meaning strange and unsettling in atmosphere --> → uncanny / sinister
   - elementary school → primary school
   - end <!-- verb --> → conclude / terminate
   - enough → sufficient
@@ -267,11 +278,14 @@ Word replacements - apply to all variants and derivatives of each word:
   - flashlight → torch
   - flat <!-- noun, the living space --> → apartment
   - flat tyre → punctured tyre
+  - foe <!-- noun, meaning an enemy or opponent --> → adversary
+  - folk <!-- noun, meaning people in general --> → people / populace
   - forget <!-- verb, meaning to fail to remember something --> → fail to recall
   - forget <!-- verb, meaning to fail to carry out something --> → neglect
   - foreman <!-- noun, meaning a supervisor of a work crew --> → supervisor
   - folder <!-- noun, in computing --> → directory
   - forbid <!-- verb, meaning to prohibit by authority --> → prohibit
+  - foul <!-- adjective, meaning offensive or disgustingly unpleasant --> → putrid / noxious
   - free <!-- adjective, meaning unencumbered or liberated --> → unencumbered / liberated
   - freedom → liberty
   - fright <!-- noun, meaning fear or terror --> → terror
@@ -286,6 +300,9 @@ Word replacements - apply to all variants and derivatives of each word:
   - gas pump → petrol pump
   - gas station → petrol station
   - gas tank → fuel tank
+  - gather <!-- verb, meaning to assemble in a group --> → assemble / congregate
+  - gather <!-- verb, meaning to collect or accumulate objects or resources --> → collect / accumulate
+  - gift <!-- noun, meaning a natural talent or aptitude --> → aptitude / talent
   - give <!-- verb, meaning to provide or furnish --> → provide / furnish
   - gilded <!-- adjective, meaning covered in gold or having a golden appearance, in formal or literary writing --> → aureate
   - glad <!-- adjective, meaning pleased or joyful --> → pleased / delighted
@@ -295,13 +312,18 @@ Word replacements - apply to all variants and derivatives of each word:
   - go in → enter
   - go out → exit
   - gray → grey
+  - greed <!-- noun, meaning an intense desire to acquire wealth or possessions --> → avarice
+  - greedy <!-- adjective, meaning excessively desirous of wealth or possessions --> → avaricious
+  - grim <!-- adjective, meaning forbidding or ominous in appearance or character --> → severe / ominous
   - grow <!-- verb, meaning to develop --> → develop
   - growth <!-- noun, meaning development --> → development
   - happen <!-- verb, meaning to occur --> → occur
   - hard <!-- adjective, meaning difficult --> → arduous / demanding
   - harsh <!-- adjective, meaning severe or unpleasant in manner or nature --> → severe / abrasive
   - hate <!-- verb --> → detest / abhor
+  - heal <!-- verb, meaning to recover from illness or injury --> → recover / recuperate
   - health points → vitality
+  - heavy <!-- adjective, meaning of great weight or density --> → ponderous
   - help <!-- noun, meaning assistance --> → assistance
   - help <!-- verb, meaning to assist --> → assist
   - hide <!-- verb, meaning to conceal --> → conceal
@@ -319,6 +341,7 @@ Word replacements - apply to all variants and derivatives of each word:
   - jail <!-- verb --> → incarcerate
   - jailor → prison guard
   - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
+  - keep <!-- verb, meaning to maintain a state or condition --> → maintain
   - keen <!-- adjective, meaning enthusiastic or eager --> → avid / ardent
   - kill <!-- verb, in computing --> → terminate
   - kind <!-- noun, meaning a type or category --> → type / category
@@ -327,6 +350,7 @@ Word replacements - apply to all variants and derivatives of each word:
   - law <!-- noun, meaning legislation or statute --> → legislation / statute
   - leave <!-- verb, meaning to depart --> → depart
   - like <!-- verb, meaning to hold something in high regard or esteem, not for casual enjoyment --> → appreciate / favour
+  - likely <!-- adjective, meaning probable or expected to happen --> → probable
   - little <!-- adjective, meaning small in size or degree --> → minor
   - lipstick → rouge
   - login / log in <!-- verb, meaning to authenticate or gain access --> → authenticate
@@ -335,6 +359,7 @@ Word replacements - apply to all variants and derivatives of each word:
   - look <!-- verb, meaning to observe or examine --> → observe / examine
   - luck → fortune
   - lucky → fortunate
+  - lukewarm <!-- adjective, meaning only moderately warm in temperature or enthusiasm --> → tepid
   - mailbox → postbox
   - mailman → postman
   - make <!-- verb, meaning to create or produce --> → create / produce
@@ -350,10 +375,14 @@ Word replacements - apply to all variants and derivatives of each word:
   - nauseous → nauseated
   - need <!-- verb, meaning to require --> → require
   - new <!-- adjective, meaning recent or novel --> → novel / recent
+  - offspring <!-- noun, meaning the progeny of a person, animal, or plant --> → progeny
   - often → frequently
   - old <!-- adjective, meaning ancient or aged --> → ancient / aged
   - open <!-- verb, meaning to access or expose --> → access / expose
+  - outlaw <!-- noun, meaning a person declared outside the protection of the law --> → criminal / fugitive
+  - outskirts <!-- noun, meaning the outer parts of a city or town --> → periphery
   - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
+  - overwhelm <!-- verb, meaning to overpower or inundate completely --> → inundate
   - own <!-- verb, meaning to possess, only when used as a standalone predicate, not as a participial modifier --> → possess
   - ownership <!-- noun, meaning the state or fact of possessing something --> → possession / proprietorship
   - pajamas → pyjamas
@@ -385,24 +414,33 @@ Word replacements - apply to all variants and derivatives of each word:
   - show <!-- verb, meaning to demonstrate or display --> → demonstrate / display / exhibit
   - sidewalk <!-- noun, meaning a paved pedestrian path alongside a road --> → pavement
   - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
+  - sluggish <!-- adjective, meaning slow-moving or lacking energy --> → lethargic / torpid
   - small <!-- adjective, meaning little in size or degree --> → minor
   - smart <!-- adjective, meaning intelligent or perceptive --> → intelligent
   - solar system <!-- noun, astronomy, one other than the Sun's --> → star system
   - sorrow <!-- noun, meaning deep distress or grief --> → grief / anguish
   - speed <!-- noun, meaning the rate at which something moves or operates --> → velocity
+  - stab <!-- verb, meaning to pierce or wound with a pointed weapon --> → pierce / impale
   - start <!-- verb, meaning to commence or initiate --> → commence / initiate
   - steadfast <!-- adjective, meaning resolute and unwavering in purpose --> → resolute / tenacious
+  - stealthy <!-- adjective, meaning acting in a cautious and secretive manner --> → covert / clandestine
   - stern <!-- adjective, meaning austere or strict in manner --> → austere
   - storekeeper → merchant
   - strength <!-- noun, meaning the quality or state of being strong --> → fortitude / vigour
+  - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
+  - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
   - tell <!-- verb, meaning to inform or notify --> → inform / notify
+  - thankful <!-- adjective, meaning feeling or expressing gratitude --> → grateful
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
   - thick <!-- adjective, meaning dense in consistency or composition --> → dense
   - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate
   - think about <!-- verb, meaning to consider --> → consider
+  - three times → thrice
+  - thrive <!-- verb, meaning to prosper or flourish --> → flourish / prosper
   - tired <!-- adjective, meaning physically or mentally drained from exertion --> → fatigued / exhausted
+  - tough <!-- adjective, meaning resilient or resistant to hardship --> → resilient / robust
   - trade <!-- verb, meaning to exchange goods or services --> → exchange / barter
   - trader <!-- noun, meaning a person who engages in trade --> → merchant
   - trading <!-- noun, meaning the activity of buying and selling goods or services --> → commerce / business
@@ -416,6 +454,7 @@ Word replacements - apply to all variants and derivatives of each word:
   - trustworthy <!-- adjective, meaning having a good reputation and standing --> → reputable
   - try <!-- verb, meaning to attempt in a sentence; not in short imperative phrases like "Try again" --> → attempt
   - understand <!-- verb, meaning to comprehend --> → comprehend
+  - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
   - unlucky → unfortunate
   - want <!-- verb, meaning to desire or wish --> → desire / wish
   - warn <!-- verb, meaning to caution or alert someone about danger or risk --> → caution / alert
@@ -425,11 +464,16 @@ Word replacements - apply to all variants and derivatives of each word:
   - weary <!-- adjective, meaning physically or mentally exhausted --> → fatigued
   - wedding <!-- noun, meaning a marriage ceremony --> → nuptials
   - weird → bizarre
+  - wonder <!-- verb, meaning to speculate or be curious about something --> → speculate / query
+  - wonder <!-- noun, meaning a feeling of curiosity or amazement --> → curiosity
+  - wonder <!-- noun, meaning a remarkable or miraculous thing --> → miracle
+  - I wonder <!-- phrase, expressing curiosity about something --> → I am curious
   - well <!-- meaning effectively --> → effectively / properly
   - well <!-- meaning satisfactorily --> → satisfactorily / adequately
   - whole <!-- adjective, meaning entire or complete --> → entire / complete
   - wide <!-- adjective, meaning broad or expansive --> → broad / expansive
   - will/would need <!-- verb, meaning to be necessary --> → will/would be necessary
+  - woe <!-- noun, meaning intense sorrow or distress --> → misery / affliction
   - woman <!-- noun, meaning female human --> → female
   - womanhood <!-- noun, meaning the state or condition of being a woman --> → femininity
   - womanly <!-- adjective, meaning characteristic of a woman --> → feminine
@@ -438,7 +482,10 @@ Word replacements - apply to all variants and derivatives of each word:
   - worshipper <!-- noun, meaning a person who performs acts of religious devotion --> → devotee / supplicant
   - worth <!-- noun, meaning value or merit --> → value / merit
   - worth <!-- adjective/predicate, meaning having a certain value or deserving of something --> → merit
+  - wrath <!-- noun, meaning extreme anger or indignation --> → indignation
   - write <!-- verb, meaning to compose or document --> → compose / document
   - wrong <!-- adjective, meaning incorrect or erroneous --> → erroneous / incorrect
   - wrong <!-- adjective, meaning unjust or inequitable --> → unjust / inequitable
   - yard <!-- noun, meaning garden or outdoor area --> → garden
+  - yield <!-- verb, meaning to surrender or concede to pressure or force --> → concede / capitulate
+  - yield <!-- verb, meaning to produce or generate a result or crop --> → produce / generate

@@ -20,7 +20,14 @@ applyTo: "**/*.{cs,csproj,slnx}"
 - Namespace choice is driven by responsibility, not by incidental proximity. A class that handles account validation belongs in `[Root].Services.Account`, not in a generic `[Root].Services` or `[Root].Utilities` namespace. Always ask: "What is the one thing this class does?"; the answer determines its namespace and folder.
 - Never create catch-all or helper namespaces (e.g. `Helpers`, `Utils`, `Common`, `Misc`, `Shared`). If you feel the need for one, it is a signal that the class has not been assigned its correct single responsibility yet.
 - Organise source files by architectural layer (e.g. Controllers, Services, Repositories, Domain, DataObjects); each layer lives in its own folder. Within a layer, sub-folders (and sub-namespaces) group classes by the domain concept they serve (e.g. `Services/Account/`, `Services/CheckIn/`).
-- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account`, with no exceptions. Whenever a namespace changes, the file must be moved to the matching folder immediately.
+- Namespace must mirror folder structure exactly, and file location must match the namespace. A file in `Services/Account/` must declare namespace `[Root].Services.Account`, with no exceptions. Whenever a namespace changes, the file must be moved to the matching folder immediately. Examples of well-structured namespaces:
+  - `[RootNamespace].Configuration`
+  - `[RootNamespace].DataAccess`
+  - `[RootNamespace].DataAccess.DataObjects`
+  - `[RootNamespace].Logging`
+  - `[RootNamespace].Services`
+  - `[RootNamespace].Services.Mapping`
+  - `[RootNamespace].Services.Models`
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
 - Never create a `[xyz].Enumerations` (or `Enums`) namespace. Place enums in the same namespace and folder as the domain models they belong to.
 - All `using` directives go at the top of the file, **outside** and **above** the `namespace` block; NEVER inside it.
@@ -74,6 +81,7 @@ applyTo: "**/*.{cs,csproj,slnx}"
 ### Naming Conventions
 
 - Always use the lowercase alias for built-in types: `string`, `int`, `bool`, `object`, `long`, `double`, `float`, `decimal`, `byte`, `char`, etc. NEVER use the BCL class names `String`, `Int32`, `Boolean`, `Object`, etc.
+- All `public` and `protected` members — without exception — must begin with an uppercase letter. This applies to fields, properties, methods, events, delegates, constructors, and nested types, regardless of context.
 - Methods: PascalCase, clear and explicit names with no abbreviations or shortenings, following the same naming rules as for variables and parameters.
 - Classes: PascalCase.
 - Interfaces: `I`-prefixed PascalCase (`IAccountService`).

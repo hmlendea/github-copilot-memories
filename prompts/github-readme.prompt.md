@@ -216,11 +216,14 @@ See [ROADMAP.md](./ROADMAP.md) for planned features and upcoming changes.
 ## 🤝 Contributing
 
 Contributions are welcome. Please:
+<!-- Only if relevant. -->
 - Keep the changes cross-platform
 <!-- Only if this is an API or library. -->
 - Keep the existing public contract intact unless a breaking change is intentional
 - Keep the pull requests focused and consistent with the existing code style
+<!-- Only if documentation and behaviour exists. -->
 - Update the documentation when behaviour changes
+<!-- Only if tests exist. -->
 - Properly test all changes, including edge cases and error conditions
 <!-- Only if tests exist. -->
 - Add unit tests for any new or changed functionality

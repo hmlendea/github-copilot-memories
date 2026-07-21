@@ -17,6 +17,9 @@ Word replacements - apply to all variants and derivatives of each word:
 - (aveam) nevoie → îmi era necesar
 - (în) zadar → (în) van
 - a folosi → a utiliza
+- a găsi <!-- verb, în contextul identificării sau descoperirii --> → a identifica / a descoperi
+- a grăbi <!-- verb, în contextul accelerării unui proces --> → a accelera / a urgenta
+- a izbuti → a reuși
 - a pricepe → a înțelege
 - a schimba <!-- verb, cu sensul de a altera sau modifica --> → a modifica / a transforma
 - a vesti → a anunța / a informa
@@ -29,6 +32,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - babă → bătrână
 - bai → problemă
 - băbuță → bătrânică
+- boală <!-- substantiv, în contexte generale sau medicale --> → afecțiune
 - boturi → boți
 - brand → marcă / firmă
 - branșament → racord
@@ -36,6 +40,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - buștean → trunchi
 - căcălău → cât încape
 - ChatGPT-ul → chat-ul GPT
+- chip <!-- substantiv, cu sensul de față sau înfățișare --> → figură / fizionomie / aspect
 - ciudat → straniu / bizar
 - ciudățenie → bizarerie
 - clanță → mâner de uşă
@@ -63,15 +68,19 @@ Word replacements - apply to all variants and derivatives of each word:
 - gaură → orificiu
 - geam → fereastră
 - ghinioane [doar la plural] → adversități
+- grabă <!-- substantiv, cu sensul de urgență sau precipitare --> → urgență / promptitudine
+- grabnic → urgent / prompt
 - graniță → frontieră
 - grănicer → agent de frontieră
 - greșite → eronate
 - grijă → preocupare
 - groaznic → teribil / foarte rău
 - grozav → extraordinar
+- haz <!-- substantiv, cu sensul de caracter amuzant --> → umor
 - hotar → frontieră
 - hotărâre → decizie
 - iscare → provocare
+- izbândă → succes
 - împodobire → ornare / decorare
 - împodobit → ornat / decorat
 - încercare → tentativă
@@ -116,6 +125,8 @@ Word replacements - apply to all variants and derivatives of each word:
 - pedepsit → sancționat
 - pivniță → subsol
 - plângere → reclamație
+- poftă <!-- substantiv, cu sensul de dorință sau apetit --> → dorință / apetit
+- prilej → ocazie
 - primejdie → pericol
 - primejdios → periculos
 - pripească → precipiteze
@@ -135,6 +146,8 @@ Word replacements - apply to all variants and derivatives of each word:
 - rostul → sensul
 - sățios → sațios
 - scări → trepte
+- sfat → recomandare / sugestie
+- sfătui → recomanda / consilia
 - sfârșit → final
 - slugă → servitor
 - stăpân <!-- substantiv, cu sensul de proprietar sau stăpânitor --> → proprietar / domn
@@ -147,7 +160,9 @@ Word replacements - apply to all variants and derivatives of each word:
 - subscripție → abonament
 - șipcă → lamelă
 - șlefuire → polizare
+- taină → secret
 - tăvălire → rostogolire
+- tâlc → sens / semnificație
 - teacă → toc
 - temei → fundament / bază
 - topor → secure
@@ -189,6 +204,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - zadarnic → inutil
 - zăbovire → pierdere de timp
 - zădărnicire → compromitere
+- zâmbet → surâs
 - zdravăn → robust
 - zdrobire → strivire
 - zdrobitor (e.g. de usturoi) → presă
@@ -198,100 +214,145 @@ Word replacements - apply to all variants and derivatives of each word:
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
 - Word replacements - apply to all variants and derivatives of each word:
+  - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
   - adamantite → adamantium
   - adhesive bandage → plaster
-  - against <!-- preposition, meaning in opposition to or in competition with --> → versus
   - against <!-- preposition, meaning in contravention of a rule or law --> → contrary to / in violation of
+  - against <!-- preposition, meaning in opposition to or in competition with --> → versus
   - airplane → aeroplane
   - allow <!-- verb, meaning to grant permission or enable something --> → permit / enable
+  - allow <!-- verb, meaning to grant permission or enable something --> → permit / facilitate
   - allowed <!-- adjective or verb, meaning granted permission or enabled --> → permitted / given permission / enabled
+  - allowed <!-- adjective or verb, meaning granted permission or enabled --> → permitted / given permission / facilitated
+  - already → previously
   - anger <!-- noun, meaning a feeling of intense displeasure or hostility --> → fury / ire
   - angry <!-- adjective, meaning feeling intense displeasure or hostility --> → furious
   - answer <!-- verb, meaning to reply to a question or message --> → respond / reply
+  - around <!-- adverb/preposition, meaning approximately --> → approximately
+  - around <!-- adverb/preposition, meaning in the vicinity of or surrounding --> → surrounding / nearby
   - ask <!-- verb, meaning to pose a question or make a request --> → inquire
-  - avoid <!-- verb, meaning to evade or keep away from something --> → evade
-  - avoid <!-- verb, meaning to deliberately reject or exclude someone socially --> → shun
   - avoid <!-- verb, meaning to abstain from doing something --> → refrain from
+  - avoid <!-- verb, meaning to deliberately reject or exclude someone socially --> → shun
+  - avoid <!-- verb, meaning to evade or keep away from something --> → evade
+  - awesome <!-- adjective, meaning impressively great or remarkable --> → remarkable / extraordinary
   - axe <!-- noun, meaning a small, one-handed chopping tool --> → hatchet
-  - bad <!-- adjective, meaning of poor quality or low standard --> → inferior / poor
   - bad <!-- adjective, meaning morally wrong or harmful --> → vile / adverse
+  - bad <!-- adjective, meaning of poor quality or low standard --> → inferior / poor
   - bad luck → misfortune
   - badly <!-- adverb, meaning to a severe or serious degree --> → severely / gravely
+  - bamboo → bambus
+  - basically → essentially / fundamentally
   - bathroom → toilet
   - bathroom sink → washbasin
+  - beach <!-- noun, meaning a sandy or pebbly shore beside a body of water --> → shore / strand
+  - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
+  - beehive <!-- noun, meaning a structure housing a bee colony --> → apiary
   - begin → commence
   - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
-  - blend <!-- verb, meaning to mix or combine things together --> → mix / combine / merge
   - big <!-- adjective, meaning physically large in size --> → large
   - big <!-- adjective, meaning substantial or significant in amount or degree --> → substantial / considerable
+  - blank <!-- adjective, meaning empty or unfilled --> → empty / vacant
+  - blend <!-- verb, meaning to mix or combine things together --> → mix / combine / merge
+  - blight <!-- noun, meaning a disease or force that destroys or corrupts --> → affliction / pestilence
+  - bless <!-- verb, in formal or religious contexts, meaning to make holy or invoke divine favour --> → consecrate / sanctify
   - blueprint <!-- noun, meaning a design or detailed plan --> → plan / schematic
   - bold <!-- adjective, meaning daring or courageous --> → audacious
   - break <!-- verb, meaning to fracture or sever something --> → fracture / rupture
   - break <!-- verb, meaning to violate or transgress a rule or law --> → violate / infringe
+  - bright <!-- adjective, meaning emitting or reflecting a strong light --> → luminous / radiant
+  - bright <!-- adjective, meaning intelligent or quick to learn --> → astute / intelligent
   - broken <!-- adjective, meaning no longer functional or in disrepair --> → damaged / defective
+  - brotherhood <!-- noun, meaning a community or bond between males --> → fraternity
+  - buffer <!-- noun, meaning a protective margin or reserve in technical or figurative use --> → cushion / reserve
   - build <!-- verb, as in "build a building/structure" --> → construct
   - building <!-- noun, as in "a building/structure" --> → structure / edifice
-  - buy → purchase
   - busy <!-- adjective, meaning actively occupied or engaged --> → occupied
+  - buy → purchase
+  - cheap <!-- adjective, meaning low in price or cost --> → inexpensive / economical
+  - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
   - climb down → descend
   - climb up → ascend
+  - cobweb <!-- noun, meaning a spider's web --> → spider web
+  - cold <!-- adjective, meaning low in temperature --> → frigid / glacial
   - color → colour
   - come back → return
   - come in → enter
   - come on in → enter
   - cookie → biscuit
   - cunning <!-- adjective, meaning skilled at achieving goals through devious means --> → astute / devious
-  - damp <!-- adjective, meaning slightly wet or moist --> → moist
   - customize <!-- verb, meaning to modify to personal preferences --> → personalise
   - Czech Republic → Czechia
+  - damp <!-- adjective, meaning slightly wet or moist --> → moist
+  - dark <!-- adjective, meaning lacking light or deeply obscure; not as a title or proper name (e.g. not "Dark Lord") --> → dim / obscure
   - death <!-- noun, referring to the passing of a person --> → demise
+  - deed <!-- noun, meaning an action or accomplishment --> → action / feat
   - deep <!-- adjective, meaning profound --> → profound
   - die <!-- verb, meaning to cease living --> → perish / expire
-  - dirty <!-- adjective, meaning physically unclean or soiled --> → soiled
+  - dig <!-- verb, meaning to excavate the ground --> → excavate
   - dirty <!-- adjective, meaning morally corrupt or impure --> → corrupt / impure
+  - dirty <!-- adjective, meaning physically unclean or soiled --> → soiled
+  - disable <!-- verb, meaning to deactivate or prevent from functioning --> → deactivate
+  - dislike <!-- verb, meaning to regard with disapproval or aversion --> → disapprove of / object to
+  - disturb <!-- verb, meaning to interrupt, unsettle, or interfere with --> → disrupt / unsettle
   - do you have → have you got
   - do you want → would you like
   - dodgy <!-- adjective, meaning unreliable, questionable, or of dubious quality --> → suspicious
   - doorman <!-- noun, meaning a person stationed at a building entrance to admit visitors --> → porter
+  - dread <!-- noun, meaning a feeling of great fear or apprehension --> → trepidation / apprehension
   - drop <!-- verb, meaning to release or relinquish something --> → relinquish
   - drunk <!-- adjective, meaning under the influence of alcohol --> → inebriated / intoxicated
+  - dull <!-- adjective, meaning lacking interest or excitement --> → tedious / mundane
   - dumb <!-- adjective, meaning unable to speak --> → mute
   - dumb <!-- adjective, meaning unintelligent or foolish --> → stupid
+  - dwarfs <!-- noun, plural of dwarf --> → dwarves
   - dwelling <!-- noun, meaning a place where someone lives --> → residence / abode
   - earnest <!-- adjective, meaning sincere and serious in intention --> → sincere
-  - eat <!-- verb, meaning to consume food --> → consume / ingest
   - Earth <!-- noun, the planet --> → Terra
+  - eat <!-- verb, meaning to consume food --> → consume / ingest
   - eerie <!-- adjective, meaning strange and unsettling in atmosphere --> → uncanny / sinister
   - elementary school → primary school
+  - empty <!-- adjective, meaning containing nothing; devoid of content --> → vacant / devoid
+  - enable <!-- verb, meaning to activate something --> → activate
+  - enable <!-- verb, meaning to make something possible --> → facilitate
   - end <!-- verb --> → conclude / terminate
   - enough → sufficient
-  - evil <!-- adjective, meaning profoundly immoral or malevolent --> → malevolent
+  - entry <!-- noun, in data, lists, logs, or records --> → record / item
   - evil <!-- adjective, meaning deliberately causing harm --> → malicious
+  - evil <!-- adjective, meaning profoundly immoral or malevolent --> → malevolent
   - evil <!-- adjective, meaning wickedly criminal or unjust --> → nefarious
   - fair <!-- adjective, meaning just or equitable --> → equitable / just
   - fast <!-- adjective, meaning moving or occurring at high velocity --> → rapid
   - faucet → tap
+  - feedback <!-- noun, meaning a response or evaluation --> → response / evaluation
   - fetch → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant
   - find <!-- verb, meaning to locate or discover --> → discover / locate
   - flashlight → torch
   - flat <!-- noun, the living space --> → apartment
   - flat tyre → punctured tyre
+  - flaw <!-- noun, meaning an imperfection or defect --> → defect / imperfection
+  - flood <!-- noun, meaning an overwhelming influx or inundation --> → inundation / deluge
+  - flood <!-- verb, meaning to overwhelm or fill excessively --> → inundate
   - foe <!-- noun, meaning an enemy or opponent --> → adversary
-  - folk <!-- noun, meaning people in general --> → people / populace
-  - forget <!-- verb, meaning to fail to remember something --> → fail to recall
-  - forget <!-- verb, meaning to fail to carry out something --> → neglect
-  - foreman <!-- noun, meaning a supervisor of a work crew --> → supervisor
   - folder <!-- noun, in computing --> → directory
+  - folk <!-- noun, meaning people in general --> → people / populace
+  - follow <!-- verb, meaning to pursue or track --> → pursue / track
+  - following <!-- adjective, meaning listed or mentioned next --> → subsequent / ensuing
+  - for sure → certainly / assuredly
   - forbid <!-- verb, meaning to prohibit by authority --> → prohibit
+  - foreman <!-- noun, meaning a supervisor of a work crew --> → supervisor
+  - forget <!-- verb, meaning to fail to carry out something --> → neglect
+  - forget <!-- verb, meaning to fail to remember something --> → fail to recall
   - foul <!-- adjective, meaning offensive or disgustingly unpleasant --> → putrid / noxious
   - free <!-- adjective, meaning unencumbered or liberated --> → unencumbered / liberated
   - freedom → liberty
+  - fresh <!-- adjective, meaning newly produced or not previously encountered --> → novel / pristine
   - fright <!-- noun, meaning fear or terror --> → terror
   - frighten <!-- verb, meaning to scare --> → terrify
   - frightened <!-- adjective, meaning scared --> → terrified
   - frightening <!-- adjective, meaning scary --> → terrifying
+  - fulfillment <!-- noun, meaning completion or realisation of something desired --> → completion / realisation
   - garbage → rubbish
   - garbage can → dustbin
   - garbage truck → refuse collection vehicle
@@ -302,21 +363,26 @@ Word replacements - apply to all variants and derivatives of each word:
   - gas tank → fuel tank
   - gather <!-- verb, meaning to assemble in a group --> → assemble / congregate
   - gather <!-- verb, meaning to collect or accumulate objects or resources --> → collect / accumulate
+  - get <!-- verb, meaning to obtain or acquire something --> → obtain / acquire
   - gift <!-- noun, meaning a natural talent or aptitude --> → aptitude / talent
-  - give <!-- verb, meaning to provide or furnish --> → provide / furnish
   - gilded <!-- adjective, meaning covered in gold or having a golden appearance, in formal or literary writing --> → aureate
+  - give <!-- verb, meaning to provide or furnish --> → provide / furnish
   - glad <!-- adjective, meaning pleased or joyful --> → pleased / delighted
   - glowing <!-- adjective, meaning emitting or reflecting light --> → luminous / radiant
   - go back → return
   - go forward → advance / proceed
   - go in → enter
   - go out → exit
+  - grasp <!-- verb, meaning to comprehend or understand something --> → comprehend / apprehend
+  - grasp <!-- verb, meaning to physically seize or grip something --> → seize / grip
   - gray → grey
+  - great <!-- adjective, meaning considerable in size, extent, or degree --> → considerable / magnificent
   - greed <!-- noun, meaning an intense desire to acquire wealth or possessions --> → avarice
   - greedy <!-- adjective, meaning excessively desirous of wealth or possessions --> → avaricious
   - grim <!-- adjective, meaning forbidding or ominous in appearance or character --> → severe / ominous
   - grow <!-- verb, meaning to develop --> → develop
   - growth <!-- noun, meaning development --> → development
+  - halt <!-- verb, meaning to cease movement or operation --> → cease / suspend
   - happen <!-- verb, meaning to occur --> → occur
   - hard <!-- adjective, meaning difficult --> → arduous / demanding
   - harsh <!-- adjective, meaning severe or unpleasant in manner or nature --> → severe / abrasive
@@ -333,52 +399,68 @@ Word replacements - apply to all variants and derivatives of each word:
   - holy <!-- adjective, meaning sacred or consecrated --> → sacred / consecrated
   - hungry <!-- adjective, meaning experiencing a strong desire for food --> → famished / ravenous
   - hurt <!-- verb, meaning to injure or cause pain --> → injure
+  - I wonder <!-- phrase, expressing curiosity about something --> → I am curious
   - illness <!-- noun, meaning a disease or medical condition --> → malady / infirmity
+  - income <!-- noun, meaning money received or earned --> → revenue / earnings
   - inn <!-- noun, meaning a drinking and eating establishment --> → tavern
   - inn <!-- noun, meaning a lodging establishment --> → hostelry
   - is/was/are needed <!-- verb, meaning to be necessary --> → is/was/are necessary
   - jail <!-- noun --> → prison
   - jail <!-- verb --> → incarcerate
   - jailor → prison guard
-  - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
-  - keep <!-- verb, meaning to maintain a state or condition --> → maintain
   - keen <!-- adjective, meaning enthusiastic or eager --> → avid / ardent
+  - keep <!-- verb, meaning to maintain a state or condition --> → maintain
+  - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
   - kill <!-- verb, in computing --> → terminate
+  - kill <!-- verb, meaning to cause the death of a living being --> → slay / eliminate
   - kind <!-- noun, meaning a type or category --> → type / category
   - know <!-- verb, meaning to be aware of or comprehend --> → be aware of / comprehend
   - last <!-- verb, meaning to endure --> → endure / persist
   - law <!-- noun, meaning legislation or statute --> → legislation / statute
   - leave <!-- verb, meaning to depart --> → depart
+  - leaves <!-- noun, plural of leaf, meaning the flat green parts of a plant --> → foliage
   - like <!-- verb, meaning to hold something in high regard or esteem, not for casual enjoyment --> → appreciate / favour
   - likely <!-- adjective, meaning probable or expected to happen --> → probable
-  - little <!-- adjective, meaning small in size or degree --> → minor
+  - linger <!-- verb, meaning to remain in a place beyond the expected time --> → remain / persist
   - lipstick → rouge
+  - little <!-- adjective, meaning small in size or degree --> → minor
+  - log <!-- noun, meaning a section of a felled tree trunk --> → trunk
   - login / log in <!-- verb, meaning to authenticate or gain access --> → authenticate
   - lonely <!-- adjective, meaning solitary or without companionship --> → solitary
   - long <!-- adjective, meaning extended in duration or distance --> → extended / prolonged
   - look <!-- verb, meaning to observe or examine --> → observe / examine
+  - lose <!-- verb, meaning to fail to win or be defeated --> → forfeit / concede
+  - lose <!-- verb, meaning to misplace something --> → misplace
   - luck → fortune
   - lucky → fortunate
   - lukewarm <!-- adjective, meaning only moderately warm in temperature or enthusiasm --> → tepid
+  - mad <!-- adjective, meaning mentally unsound or insane --> → insane
   - mailbox → postbox
   - mailman → postman
   - make <!-- verb, meaning to create or produce --> → create / produce
-  - mad <!-- adjective, meaning mentally unsound or insane --> → insane
   - man → male
   - manhood → masculinity
   - manly → masculine
   - many <!-- adjective, constituting a large number --> → numerous
-  - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - meek <!-- adjective, meaning submissive or lacking assertiveness --> → docile / submissive
+  - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
+  - mend <!-- verb, meaning to repair or restore something --> → repair / restore
+  - might <!-- noun, meaning great power or strength --> → power / potency
+  - misclick → accidental click
   - misgiving <!-- noun, meaning a feeling of doubt or apprehension --> → apprehension
   - mood <!-- noun, meaning a person's emotional state or disposition --> → disposition / temperament
+  - mushroom <!-- noun, meaning the fruiting body of a fungus --> → fungus
   - nauseous → nauseated
   - need <!-- verb, meaning to require --> → require
+  - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
+  - odd <!-- adjective, meaning peculiar or unusual --> → peculiar / anomalous
+  - of course → certainly / naturally
   - offspring <!-- noun, meaning the progeny of a person, animal, or plant --> → progeny
   - often → frequently
   - old <!-- adjective, meaning ancient or aged --> → ancient / aged
   - open <!-- verb, meaning to access or expose --> → access / expose
+  - outcome <!-- noun, meaning a result or consequence --> → result / consequence
   - outlaw <!-- noun, meaning a person declared outside the protection of the law --> → criminal / fugitive
   - outskirts <!-- noun, meaning the outer parts of a city or town --> → periphery
   - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
@@ -389,45 +471,80 @@ Word replacements - apply to all variants and derivatives of each word:
   - paperwork <!-- noun, meaning administrative documents or bureaucratic procedures --> → documentation
   - parking lot → car park
   - pick <!-- verb, meaning to select --> → select
+  - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
+  - proud <!-- adjective, meaning feeling superior to others or self-important --> → haughty / arrogant
   - put <!-- verb, meaning to place or position --> → place / position
   - quick <!-- adjective, meaning rapid in movement or action --> → rapid / expeditious
   - raise <!-- verb, meaning to lift, elevate, or increase --> → elevate / increase
+  - raw <!-- adjective, meaning uncooked or not yet processed --> → uncooked
+  - reboot <!-- verb, meaning to restart a system or device --> → restart
+  - regards <!-- noun, in greetings or sign-offs --> → greetings
+  - remainder <!-- noun, meaning the part left over after the rest has been used, taken, or dealt with --> → rest / residue / balance
   - remember <!-- verb, meaning to bring something back to mind --> → recall / recollect
+  - reminder <!-- noun, meaning something that prompts a person to remember --> → prompt / notification
   - restroom → toilet
+  - retreat <!-- verb, meaning to withdraw from a position or confrontation --> → withdraw / fall back
   - rise <!-- verb, meaning to ascend --> → ascend
+  - rotten <!-- adjective, meaning decayed or putrid --> → putrid / decomposed
   - rough <!-- adjective, meaning coarse or uneven in surface texture --> → coarse / abrasive
-  - run <!-- verb, meaning to operate or manage an organisation or business --> → operate / manage
   - run <!-- verb, meaning to extend from one point to another, as a pipe or cable --> → extend
+  - run <!-- verb, meaning to operate or manage an organisation or business --> → operate / manage
   - run out of <!-- verb phrase, meaning to exhaust a supply of something --> → exhaust / deplete
-  - scary <!-- adjective, meaning frightening or causing fear --> → terrifying
+  - rush <!-- verb, meaning to move or act with great urgency --> → hasten / charge
   - salesman <!-- noun, meaning a person who sells goods or services --> → vendor / merchant
+  - same <!-- adjective, meaning exactly alike or unchanged in identity --> → identical
+  - scary <!-- adjective, meaning frightening or causing fear --> → terrifying
   - schedule <!-- noun, meaning a plan or timetable --> → timetable
   - seafaring <!-- adjective, meaning relating to travel or work at sea --> → nautical / maritime
   - seaman <!-- noun, meaning a person who works at sea --> → mariner
   - seaworthy <!-- adjective, meaning a vessel fit for navigation at sea --> → serviceable / navigable
+  - seek <!-- verb, meaning to search for or pursue something --> → search for / pursue
   - sellsword → mercenary
   - send <!-- verb, meaning to dispatch or transmit --> → dispatch / transmit
+  - settle <!-- verb, meaning to establish residence or take up a position --> → establish / reside
+  - settle <!-- verb, meaning to resolve or conclude a matter --> → resolve / conclude
+  - settlement <!-- noun, meaning a place where people establish a community --> → colony / outpost
+  - setup <!-- noun, in technical or product contexts, meaning the arrangement or initial configuration --> → configuration
+  - shame <!-- noun, meaning a feeling of disgrace or humiliation --> → ignominy / dishonour
+  - shame <!-- noun, meaning a painful sense of disgrace or humiliation --> → disgrace / humiliation
+  - shard <!-- noun, meaning a fragment of a brittle material --> → fragment
   - sharp <!-- adjective, meaning acute or incisive in thought or perception --> → acute / incisive
-  - short <!-- adjective, meaning brief in duration --> → brief
   - ship <!-- noun, meaning a large sea-going vessel --> → vessel
+  - shoot <!-- verb, meaning to discharge a projectile weapon --> → fire / discharge
   - shopkeeper → merchant
+  - short <!-- adjective, meaning brief in duration --> → brief
   - show <!-- verb, meaning to demonstrate or display --> → demonstrate / display / exhibit
+  - sick <!-- adjective, meaning ill or unwell --> → ill / infirm
+  - side <!-- noun, meaning an aspect or perspective of something --> → aspect / perspective
   - sidewalk <!-- noun, meaning a paved pedestrian path alongside a road --> → pavement
   - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
+  - slim <!-- adjective, meaning slender or of small girth --> → slender / svelte
   - sluggish <!-- adjective, meaning slow-moving or lacking energy --> → lethargic / torpid
   - small <!-- adjective, meaning little in size or degree --> → minor
   - smart <!-- adjective, meaning intelligent or perceptive --> → intelligent
+  - smash <!-- verb, meaning to shatter or break violently --> → shatter / demolish
+  - smooth <!-- adjective, meaning having an even, regular surface --> → seamless / sleek
   - solar system <!-- noun, astronomy, one other than the Sun's --> → star system
   - sorrow <!-- noun, meaning deep distress or grief --> → grief / anguish
   - speed <!-- noun, meaning the rate at which something moves or operates --> → velocity
+  - split <!-- verb, meaning to divide or separate into parts --> → divide / sever
+  - spot <!-- verb, meaning to notice, identify, or detect --> → detect / identify / observe
+  - spread <!-- verb, meaning to disseminate or distribute widely --> → disseminate / distribute
   - stab <!-- verb, meaning to pierce or wound with a pointed weapon --> → pierce / impale
+  - staffs <!-- noun, plural of staff --> → staves
   - start <!-- verb, meaning to commence or initiate --> → commence / initiate
   - steadfast <!-- adjective, meaning resolute and unwavering in purpose --> → resolute / tenacious
   - stealthy <!-- adjective, meaning acting in a cautious and secretive manner --> → covert / clandestine
   - stern <!-- adjective, meaning austere or strict in manner --> → austere
+  - stiff <!-- adjective, meaning rigid or inflexible --> → rigid / inflexible
+  - stop <!-- verb, meaning to cease an action or bring something to a halt --> → cease / halt
   - storekeeper → merchant
+  - storm <!-- noun, meaning a violent atmospheric disturbance --> → tempest
   - strength <!-- noun, meaning the quality or state of being strong --> → fortitude / vigour
+  - strengthen <!-- verb, meaning to make stronger or more robust --> → fortify / reinforce
+  - strong <!-- adjective, meaning physically powerful or robust --> → robust / sturdy
   - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
+  - swamp <!-- noun, meaning a low-lying wetland area --> → marsh / bog
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
@@ -435,28 +552,40 @@ Word replacements - apply to all variants and derivatives of each word:
   - thankful <!-- adjective, meaning feeling or expressing gratitude --> → grateful
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
   - thick <!-- adjective, meaning dense in consistency or composition --> → dense
+  - thin <!-- adjective, meaning of little depth or slender in form --> → slender / attenuated
   - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate
   - think about <!-- verb, meaning to consider --> → consider
+  - thinking <!-- noun, meaning the process or result of considering something --> → consideration / reflection
   - three times → thrice
   - thrive <!-- verb, meaning to prosper or flourish --> → flourish / prosper
+  - throw <!-- verb, meaning to propel something through the air --> → hurl / project / cast
   - tired <!-- adjective, meaning physically or mentally drained from exertion --> → fatigued / exhausted
   - tough <!-- adjective, meaning resilient or resistant to hardship --> → resilient / robust
   - trade <!-- verb, meaning to exchange goods or services --> → exchange / barter
   - trader <!-- noun, meaning a person who engages in trade --> → merchant
   - trading <!-- noun, meaning the activity of buying and selling goods or services --> → commerce / business
+  - trapdoor <!-- noun, meaning a hinged door in a floor or ceiling --> → hatch
   - trash → rubbish
   - trash bag → rubbish bag
   - trash can → dustbin
   - trash truck → refuse collection vehicle
-  - trustworthy <!-- adjective, meaning consistently reliable or dependable --> → reliable
+  - trigger <!-- verb, meaning to initiate or cause something to occur --> → initiate / activate
+  - trust <!-- noun, meaning confidence or reliance placed in someone or something --> → confidence / reliance
+  - trust <!-- verb, meaning to have confidence or reliance in someone or something --> → rely upon / confide in
   - trustworthy <!-- adjective, meaning able to be depended on --> → dependable
-  - trustworthy <!-- adjective, meaning worthy of belief or confidence --> → credible
+  - trustworthy <!-- adjective, meaning consistently reliable or dependable --> → reliable
   - trustworthy <!-- adjective, meaning having a good reputation and standing --> → reputable
+  - trustworthy <!-- adjective, meaning worthy of belief or confidence --> → credible
   - try <!-- verb, meaning to attempt in a sentence; not in short imperative phrases like "Try again" --> → attempt
+  - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
   - understand <!-- verb, meaning to comprehend --> → comprehend
-  - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
   - unlucky → unfortunate
+  - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
+  - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
+  - upset <!-- verb, meaning to distress or agitate someone --> → distress / agitate
+  - upvote <!-- verb/noun, meaning to express approval of something --> → endorse / endorsement
   - want <!-- verb, meaning to desire or wish --> → desire / wish
+  - war <!-- noun, meaning an armed conflict between nations or groups --> → conflict / warfare
   - warn <!-- verb, meaning to caution or alert someone about danger or risk --> → caution / alert
   - warship <!-- noun, meaning a vessel equipped for naval combat --> → war vessel
   - watch <!-- verb, meaning to observe or monitor --> → observe / monitor
@@ -464,28 +593,32 @@ Word replacements - apply to all variants and derivatives of each word:
   - weary <!-- adjective, meaning physically or mentally exhausted --> → fatigued
   - wedding <!-- noun, meaning a marriage ceremony --> → nuptials
   - weird → bizarre
-  - wonder <!-- verb, meaning to speculate or be curious about something --> → speculate / query
-  - wonder <!-- noun, meaning a feeling of curiosity or amazement --> → curiosity
-  - wonder <!-- noun, meaning a remarkable or miraculous thing --> → miracle
-  - I wonder <!-- phrase, expressing curiosity about something --> → I am curious
   - well <!-- meaning effectively --> → effectively / properly
   - well <!-- meaning satisfactorily --> → satisfactorily / adequately
   - whole <!-- adjective, meaning entire or complete --> → entire / complete
   - wide <!-- adjective, meaning broad or expansive --> → broad / expansive
+  - wield <!-- verb, meaning to hold and use a weapon or tool effectively --> → employ / exercise
+  - wild <!-- adjective, meaning living or occurring in an undomesticated state --> → feral / untamed
   - will/would need <!-- verb, meaning to be necessary --> → will/would be necessary
+  - wisdom <!-- noun, meaning the quality of having experience, knowledge, and good judgement --> → sagacity
+  - withstand <!-- verb, meaning to resist or endure something difficult --> → resist / endure
   - woe <!-- noun, meaning intense sorrow or distress --> → misery / affliction
   - woman <!-- noun, meaning female human --> → female
   - womanhood <!-- noun, meaning the state or condition of being a woman --> → femininity
   - womanly <!-- adjective, meaning characteristic of a woman --> → feminine
+  - wonder <!-- noun, meaning a feeling of curiosity or amazement --> → curiosity
+  - wonder <!-- noun, meaning a remarkable or miraculous thing --> → miracle
+  - wonder <!-- verb, meaning to speculate or be curious about something --> → speculate / query
   - work <!-- noun, meaning labour or effort --> → labour / effort
   - worship <!-- verb, meaning to perform acts of religious devotion toward a deity --> → venerate / adore
   - worshipper <!-- noun, meaning a person who performs acts of religious devotion --> → devotee / supplicant
-  - worth <!-- noun, meaning value or merit --> → value / merit
   - worth <!-- adjective/predicate, meaning having a certain value or deserving of something --> → merit
+  - worth <!-- noun, meaning value or merit --> → value / merit
+  - worthy <!-- adjective, meaning deserving of respect or merit --> → meritorious / deserving
   - wrath <!-- noun, meaning extreme anger or indignation --> → indignation
   - write <!-- verb, meaning to compose or document --> → compose / document
   - wrong <!-- adjective, meaning incorrect or erroneous --> → erroneous / incorrect
   - wrong <!-- adjective, meaning unjust or inequitable --> → unjust / inequitable
   - yard <!-- noun, meaning garden or outdoor area --> → garden
-  - yield <!-- verb, meaning to surrender or concede to pressure or force --> → concede / capitulate
   - yield <!-- verb, meaning to produce or generate a result or crop --> → produce / generate
+  - yield <!-- verb, meaning to surrender or concede to pressure or force --> → concede / capitulate

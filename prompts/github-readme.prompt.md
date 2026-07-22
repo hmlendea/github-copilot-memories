@@ -1,11 +1,11 @@
 ---
-description: "Use when the user asks to update, create, or generate a README.md. Auto-invoked by requests such as 'update the readme', 'create a readme', 'write the readme', or 'generate the readme'. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
+description: "Use when the user asks to revise, create, or generate a README.md. Auto-invoked by requests such as 'revise the readme', 'create a readme', 'compose the readme', or 'generate the readme'. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
 agent: agent
 ---
 
-Generate or update the `README.md` for this GitHub repository using the template below.
+Generate or revise the `README.md` for this GitHub repository using the template below.
 
-If a `README.md` already exists, preserve any content that is correct and up to date, and update only what has changed or is missing. If no `README.md` exists, create one from scratch.
+If a `README.md` previously exists, preserve any content that is correct and up to date, and revise only what has changed or is missing. If no `README.md` exists, create one from scratch.
 
 Fill in all `[[PLACEHOLDER]]` values from the actual project. Remove any section or comment that does not apply (see the inline guidance). Do not leave any placeholder text, template comments, or example rows in the final output.
 
@@ -19,7 +19,7 @@ Rules:
 - Include the preview screenshot line only if `preview.png` exists in the repository root.
 - Include `## Screenshots` only if a `screenshots/` directory exists in the repository root containing image files. Place it directly after the description paragraph.
 - Include `## Known Limitations` only if there are real, notable caveats or missing features worth warning users about. Omit it otherwise.
-- Include `## Configuration` if `appsettings.json` or `.env.example` exists and contains at least one recognisable setting. If neither has documented keys, omit the section entirely rather than leaving an empty or filler table.
+- Include `## Configuration` if any of the following exist and contain at least one recognisable setting: `appsettings.json`, `config.json`, `config.yaml`, `config.toml`, or `settings.py`. If none has documented keys, omit the section entirely rather than leaving an empty or filler table.
 - Include `### Environment Variables` within `## Configuration` only if `.env.example` exists.
 - Include `## Roadmap` only if `ROADMAP.md` exists in the repository root.
 - Include `## Project Structure` only if the solution has more than one project or the directory layout is non-obvious and genuinely helps orientation. Omit it for single-project solutions with a standard layout.
@@ -31,8 +31,14 @@ Rules:
 - Always include `## Usage`. Even for trivial projects, at minimum show one example command or snippet.
 - In `## License`, include "or later" only for GPL-family licences. Omit it for MIT, Apache, and other non-copyleft licences.
 - Prefix each `##` heading with its emoji as shown in the template. Omit the emoji only if the existing README uses no emojis and the project's tone is formal (e.g. an enterprise SDK or internal tooling).
-- For npm/Node.js projects, replace the .NET SDK requirement with the Node.js version, and replace dotnet commands with: `npm install` for setup, `npm run build` for building, `npm start` or `npm run dev` for running, and `npm test` for testing.
-- For Python projects, replace the .NET SDK requirement with the Python version, and replace dotnet commands with: `python -m venv .venv && source .venv/bin/activate` and `pip install -r requirements.txt` for setup, `python [[entrypoint]]` or `python -m [[module]]` for running, and `pytest` for testing.
+- For npm/Node.js projects, replace the .NET SDK requirement with the Node.js version, and replace dotnet commands with: `npm install` for the initial configuration, `npm run build` for building, `npm start` or `npm run dev` for running, and `npm test` for testing.
+- For Python projects, replace the .NET SDK requirement with the Python version, and replace dotnet commands with: `python -m venv .venv && source .venv/bin/activate` and `pip install -r requirements.txt` for the initial configuration, `python [[entrypoint]]` or `python -m [[module]]` for running, and `pytest` for testing.
+- For Go projects, replace the .NET SDK requirement with the Go version, and replace dotnet commands with: `go mod tidy` for the initial configuration, `go build ./...` for building, `go run ./cmd/[[entrypoint]]` for running, and `go test ./...` for testing.
+- For Rust projects, replace the .NET SDK requirement with the Rust toolchain version, and replace dotnet commands with: `cargo build` for building, `cargo run` for running, and `cargo test` for testing.
+- For Java projects, replace the .NET SDK requirement with the Java/JDK version and build tool (Maven or Gradle), and replace dotnet commands with the appropriate Maven or Gradle equivalents (`mvn install` / `gradle build`, `mvn test` / `gradle test`).
+- Include `## 📚 Documentation` only if a `docs/` directory exists in the repository root, GitHub Pages is enabled, or the repository has a GitHub Wiki. Place it directly after `## 🗺️ Roadmap`.
+- Include `## 🌐 API Reference` only if this is a library, SDK, or API project with auto-generated or hosted API documentation. Place it directly after `## 📚 Documentation` when that section is present, otherwise directly after `## 🗺️ Roadmap`.
+- Always include `## 📑 Table of Contents` after the description paragraph and the `preview.png` image (if present), and before the first `##` section. Generate its entries dynamically: include one entry per `##`, `###`, and `####` heading that is actually present in the final output, in the order they appear, using the heading title stripped of its leading emoji as the link text, and a lowercased, emoji-stripped, space-to-hyphen anchor as the target. Indent `###` entries by two spaces and `####` entries by four spaces relative to the `##` entries. Omit entries for any sections that have been conditionally excluded.
 - Remove all HTML comments from the final output.
 
 ---
@@ -54,6 +60,14 @@ Rules:
 <!-- Only if `preview.png` exists. -->
 ![Preview screenshot](preview.png)
 
+## 📑 Table of Contents
+
+<!-- Generate one entry per ## section present in the final output, in order. -->
+- [[Section 1]]
+  - [[Subsection 1.1]]
+  - [[Subsection 1.2]]
+- [[Section 2]]
+
 <!-- Only if `screenshots/` directory exists with image files. -->
 ## 🖼️ Screenshots
 
@@ -67,7 +81,7 @@ Rules:
 
 ## 🚀 Usage
 
-<!-- Provide a minimal but realistic example showing how to use the project. For CLI tools, show a shell command. For libraries, show a code snippet. For web apps, describe the main workflow. -->
+<!-- Provide a minimal but realistic example showing how to use the project. For CLI tools, demonstrate with a shell command. For libraries, demonstrate with a code snippet. For web apps, describe the main workflow. -->
 [[Usage example]]
 
 <!-- Only if there are notable caveats, constraints, or missing features worth highlighting. -->
@@ -75,27 +89,76 @@ Rules:
 
 - [[Limitation 1]]
 
-<!-- For NuGet packages only: include this Installation section. -->
+<!-- Only if this is distributed in any form. -->
 ## 📦 Installation
 
-[![Get it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/[[PACKAGE_ID]])
+<!-- Only if this is distributed as a Flatpak package. -->
+[![Obtain it from FlatHub](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/flathub.png)](https://flathub.org/apps/details/[[FLATHUB_PACKAGE_ID]])
+<!-- Only if this is distributed as a Snap package. -->
+[![Obtain it from Snap Store](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-white.png)](https://snapcraft.io/[[SNAP_PACKAGE_ID]])
+<!-- Only if this is distributed as an AUR package. -->
+[![Obtain it from AUR](https://raw.githubusercontent.com/hmlendea/readme-assets/master/install_from_aur.png)](https://aur.archlinux.org/packages/[[AUR_PACKAGE_ID]])
+<!-- Only if this is distributed as a NuGet package. -->
+[![Obtain it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/[[NUGET_PACKAGE_ID]])
+<!-- Only if this is distributed as a Steam Workshop mod. -->
+[![Obtain it from Steam Workshop](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ID]])
+<!-- Only if this is distributed as a Nexus Mods mod. -->
+[![Obtain it from Nexus Mods](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nexus.png)](https://nexusmods.com/[[NEXUS_MODS_GAME_ID]]/mods/[[NEXUS_MODS_ID]])
+<!-- Only if this is distributed as a Paradox Mods mod. -->
+[![Obtain it from Paradox Mods](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/paradox-mods.png)](https://mods.paradoxplaza.com/mods/[[PARADOX_MODS_ID]]/Any)
+<!-- Only if this is distributed as a GitHub release. -->
+[![Obtain it from GitHub](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/github.png)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases)
 
+<!-- Only if this is distributed as a Flatpak package. -->
+### Flatpak CLI
+
+```bash
+flatpak install flathub [[FLATHUB_PACKAGE_ID]]
+```
+
+<!-- Only if this is distributed as a Snap package. -->
+### Snap CLI
+
+```bash
+snap install [[SNAP_PACKAGE_ID]]
+```
+
+<!-- Only if this is distributed as an AUR package. -->
+### AUR CLI
+
+```bash
+paru -S [[AUR_PACKAGE_ID]]
+```
+or, if you use `yay`:
+```bash
+yay -S [[AUR_PACKAGE_ID]]
+```
+
+<!-- Only if this is distributed as a NuGet package. -->
 ### .NET CLI
 
 ```bash
-dotnet add package [[PACKAGE_ID]]
+dotnet add package [[NUGET_PACKAGE_ID]]
 ```
 
+<!-- Only if this is a NuGet package. -->
 ### Package Manager Console
 
 ```powershell
-Install-Package [[PACKAGE_ID]]
+Install-Package [[NUGET_PACKAGE_ID]]
 ```
 
-<!-- Only if `appsettings.json` exists and has at least one documented setting. Omit entirely rather than leaving an empty or filler table. -->
+<!-- Only if this is an npm package. -->
+### npm
+
+```bash
+npm install [[NPM_PACKAGE_ID]]
+```
+
+<!-- Only if `appsettings.json`, `config.json`, `config.yaml`, `config.toml`, or `settings.py` exists and has at least one documented setting. Omit entirely rather than leaving an empty or filler table. -->
 ## ⚙️ Configuration
 
-All settings are loaded from `appsettings.json`. The following keys are recognised:
+All settings are loaded from `appsettings.json`. The subsequent keys are recognised:
 
 | Section | Key | Description |
 |---------|-----|-------------|
@@ -104,7 +167,7 @@ All settings are loaded from `appsettings.json`. The following keys are recognis
 <!-- Only if `.env.example` exists. -->
 ### Environment Variables
 
-The following environment variables can be set:
+The subsequent environment variables can be set:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -115,7 +178,7 @@ The following environment variables can be set:
 ### Requirements
 
 <!-- Only if this is a .NET project. -->
-- [.NET [[DOTNET_VERSION]] SDK](https://dotnet.microsoft.com/download)
+- [.NET [[DOTNET_VERSION]] SDK](https://dotnet.microsoft.com/download/dotnet/[[DOTNET_VERSION]])
 <!-- Only if other requirements exist. -->
 - [[Additional requirement 1]]
 - [[Additional requirement 2]]
@@ -180,7 +243,7 @@ npm run dist
 The repository includes `release.sh`, which delegates to the upstream deployment script used by the project maintainer.
 
 ```bash
-bash ./release.sh 1.0.0
+bash ./release.sh [[LATEST_RELEASE_VERSION_WITHOUT_V_PREFIX]]
 ```
 
 This script downloads and executes an external release helper from `https://raw.githubusercontent.com/hmlendea/deployment-scripts/master/release/dotnet/[[DOTNET_VERSION]].sh`.
@@ -191,13 +254,13 @@ This script downloads and executes an external release helper from `https://raw.
 ### Dependencies
 
 | Package | Purpose |
-|---------|--------|
+|---------|---------|
 | [[package]] | [[purpose]] |
 
 <!-- Only if the solution has more than one project or the directory layout is non-obvious. -->
 ## 🗂️ Project Structure
 
-The solution contains the following projects:
+The solution contains the subsequent projects:
 
 - [[ProjectName]]: [[purpose]]
 
@@ -213,18 +276,29 @@ The key directories inside `[[MAIN_PROJECT_NAME]]/` are:
 
 See [ROADMAP.md](./ROADMAP.md) for planned features and upcoming changes.
 
+<!-- Only if docs/ directory, GitHub Pages, or GitHub Wiki exists. -->
+## 📚 Documentation
+
+Full documentation is available at [[DOCS_URL]].
+
+<!-- Only if this is a library, SDK, or API project with auto-generated or hosted documentation. -->
+## 🌐 API Reference
+
+See the [API Reference]([[API_DOCS_URL]]) for the full type and method documentation.
+
 ## 🤝 Contributing
 
-Contributions are welcome. Please:
-<!-- Only if relevant. -->
-- Keep the changes cross-platform
+You are welcome to bring any suggestion, feedback or modification to this project.
+
+When doing so, please:
+<!-- Only if relevant (e.g. applications, libraries, mods, etc). -->
+- Maintain cross-platform compatibility
 <!-- Only if this is an API or library. -->
-- Keep the existing public contract intact unless a breaking change is intentional
-- Keep the pull requests focused and consistent with the existing code style
+- Maintain the existing public contract intact unless a breaking change is intentional
+- Maintain the pull requests as focused and consistent with the existing code style
 <!-- Only if documentation and behaviour exists. -->
-- Update the documentation when behaviour changes
-<!-- Only if tests exist. -->
-- Properly test all changes, including edge cases and error conditions
+- Revise the documentation when behaviour changes
+- Properly test all changes <!-- Only if tests exist, append: `, including edge cases and error conditions` -->
 <!-- Only if tests exist. -->
 - Add unit tests for any new or changed functionality
 
@@ -255,11 +329,13 @@ For information on reporting security vulnerabilities, see [SECURITY.md](./SECUR
 <!-- Always include this Support section -->
 ## 💝 Support
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
+Discovered a bug or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
 
-<!-- Only if `LICENSE` exists. -->
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
+
+<!-- Only if `LICENSE` exists. Add this exactly as it is written here, do not modify it in any way. -->
 ## 📄 License
 
 Licensed under the `[[License Title]]`<!-- only for GPL-family licences, append: " or later" -->.

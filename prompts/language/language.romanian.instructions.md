@@ -1,0 +1,212 @@
+---
+description: "Use whenever generating text or code of any kind. Language preferences: Romanian word replacements and spelling rules."
+applyTo: "**"
+---
+## Romanian
+
+Word replacements - apply to all variants and derivatives of each word:
+
+- a fi nevoie → să fie necesar
+- a fi nevoit → să îi fie necesar
+- a fi nevoite → să le fie necesar
+- a fi nevoiți → să le fie necesar
+- a folosi → a utiliza
+- a găsi <!-- verb, în contextul identificării sau descoperirii --> → a identifica / a descoperi
+- a grăbi <!-- verb, în contextul accelerării unui proces --> → a accelera / a urgenta
+- a izbuti → a reuși
+- a pricepe → a înțelege
+- a schimba <!-- verb, cu sensul de a altera sau modifica --> → a modifica / a transforma
+- a vesti → a anunța / a informa
+- a vorbi <!-- verb, în context formal --> → a comunica / a conversa / a dialoga / a discuta
+- ai nevoie → îți este necesar
+- aibă nevoie → îi fie necesar
+- amețit → dezorientat
+- amintire → memorie
+- ar trebui → ar fi necesar
+- arțăgos → irascibil
+- asemănător → similar
+- astronaut → cosmonaut
+- avea nevoie → îi era necesar
+- aveai nevoie → îți era necesar
+- aveam nevoie → îmi era necesar
+- aveau nevoie → le era necesar
+- babă → bătrână
+- bai → problemă
+- băbuță → bătrânică
+- boală <!-- substantiv, în contexte generale sau medicale --> → afecțiune
+- boturi → boți
+- brand → marcă / firmă
+- branșament → racord
+- branșare → racordare
+- buștean → trunchi
+- căcălău → cât încape
+- ChatGPT-ul → chat-ul GPT
+- chip <!-- substantiv, cu sensul de față sau înfățișare --> → figură / fizionomie / aspect
+- ciudat → straniu / bizar
+- ciudățenie → bizarerie
+- clanță → mâner de uşă
+- clătire → limpezire
+- clipă → moment
+- cremă de brânză → crefă
+- cuier → agățător
+- darnic → generos
+- deal → colină
+- destul → suficient
+- dobândă → interes
+- dobândire → obținere
+- dovedesc → demonstrez
+- dovedire → demonstrație
+- dovedit → demonstrat
+- duhoare → miasmă
+- dumirire → clarificare, explicare, înțelegere
+- fel → tip
+- focus → concentrare
+- focusat → concentrat
+- follower → urmăritor
+- folosind → utilizând
+- folositor → util
+- fursec → biscuite
+- gaură → orificiu
+- geam → fereastră
+- ghinioane [doar la plural] → adversități
+- grabă <!-- substantiv, cu sensul de urgență sau precipitare --> → urgență / promptitudine
+- grabnic → urgent / prompt
+- graniță → frontieră
+- grănicer → agent de frontieră
+- greșite → eronate
+- grijă → preocupare
+- groaznic → teribil / foarte rău
+- grozav → extraordinar
+- haz <!-- substantiv, cu sensul de caracter amuzant --> → umor
+- hotar → frontieră
+- hotărâre → decizie
+- iscare → provocare
+- izbândă → succes
+- împodobire → ornare / decorare
+- împodobit → ornat / decorat
+- în zadar → în van
+- încercare → tentativă
+- încrezător → confident / sigur pe sine
+- încrezut → prezumțios
+- încurcat → impedat / confundat
+- îndesat → compactat
+- îndrăzneală → cutezare
+- îndrăznesc → cutez
+- înființat → fondat
+- înfundat → blocat
+- înfundătură → blocaj
+- îngrijorat → preocupat
+- întâmplă → petrece
+- întâmplător → accidental
+- întemeiat → fondat
+- înzdrăvenire → întărire
+- lacăt → încuietoare
+- lămurire → clarificare, explicare
+- lipici → adeziv
+- localnic → om de-al locului
+- magazie → depozit
+- măgar → asin
+- mărgele → perle
+- mijloace → căi / metode
+- minunat → miraculos
+- minune → miracol
+- molid → conifer
+- muncă → lucru
+- muncitor → lucrător
+- murdărie → mizerie
+- nedumerit → confuz, neclar, incert
+- nelămurire → neclaritate
+- neobișnuit → neuzual
+- nevoi → necesități
+- nevoie → necesitate
+- noros → înnorat
+- oboseală → epuizare
+- obosit → extenuat
+- păzește → supraveghează
+- pedeapsă → sancțiune
+- pedepsit → sancționat
+- pivniță → subsol
+- plângere → reclamație
+- poftă <!-- substantiv, cu sensul de dorință sau apetit --> → dorință / apetit
+- prilej → ocazie
+- primejdie → pericol
+- primejdios → periculos
+- pripească → precipiteze
+- pripește → precipitează
+- pripire → precipitare
+- pripit → precipitat
+- pulled pork → porc tras
+- pulled turkey → curcan tras
+- putoare → miasmă
+- răsplată → recompensă
+- răzbunare → retribuție
+- râșniță → măcinătoare
+- râvnă → deziderație
+- râvnire → deziderație
+- risipire → irosire
+- rost → sens
+- rostul → sensul
+- sățios → sațios
+- scări → trepte
+- sfat → recomandare / sugestie
+- sfătui → recomanda / consilia
+- sfârșit → final
+- slugă → servitor
+- stăpân <!-- substantiv, cu sensul de proprietar sau stăpânitor --> → proprietar / domn
+- stârnire → incitare
+- stârnit → incitat
+- steag → drapel
+- strâmt → îngust
+- strâmtorare → îngustare
+- subscriere → abonare
+- subscripție → abonament
+- șipcă → lamelă
+- șlefuire → polizare
+- taină → secret
+- tăvălire → rostogolire
+- tâlc → sens / semnificație
+- teacă → toc
+- temei → fundament / bază
+- topor → secure
+- tovarăș → camarad
+- treabă → lucru
+- trebuie → este necesar
+- trebuință → necesitate
+- treburi → lucruri de făcut
+- trend → tendință
+- trezire → deșteptare
+- țeavă → conductă
+- țel → obiectiv
+- țipăt → strigăt
+- ucenic → discipol
+- uimească → surprindă
+- uimește → surprinde
+- uimire → surprindere
+- uimit → surprins
+- uimitor → extraordinar
+- updatat → actualizat
+- ușurează → facilitează
+- ușurez → facilitez
+- vacare → vacantare
+- vamal → de frontieră
+- vamă → frontieră
+- veceu → toaletă
+- vesel <!-- adjectiv, cu sensul de jovial sau plin de bucurie --> → jovial / euforic
+- veste → știre / noutate / informație
+- veșnic → etern
+- veșnicie → eternitate
+- veștejire → ofilire
+- vraiște → dezordine
+- vrednic → demn
+- vrednicie → demnitate
+- vremea → timpul
+- vremii → timpului
+- vremuri → timpuri
+- weekend → sfârșit de săptămână
+- zadarnic → inutil
+- zăbovire → pierdere de timp
+- zădărnicire → compromitere
+- zâmbet → surâs
+- zdravăn → robust
+- zdrobire → strivire
+- zdrobitor (e.g. de usturoi) → presă

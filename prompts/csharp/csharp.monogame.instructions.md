@@ -1,7 +1,15 @@
 ---
 description: "Use when working with XNA, MonoGame, or NuciXNA. Covers GuiImage, GuiText, control lifecycle, child registration, and screen registration rules."
 ---
-## XNA / MonoGame with NuciXNA
+
+## C#
+
+- All general instructions from `general.instructions.md` apply to C# code as well, unless explicitly overridden in this file.
+- All general coding instructions from `general.coding.instructions.md` apply to C# code as well, unless explicitly overridden in this file.
+- All C# coding instructions from `csharp.coding.instructions.md` apply to MonoGame/XNA code as well, unless explicitly overridden in this file.
+- All C# logging instructions from `csharp.logging.instrutions.md` apply when writing logging code.
+
+### XNA / MonoGame with NuciXNA
 
 - When NuciXNA packages are present, ALWAYS use `GuiImage` instead of raw `Texture2D` fields/dictionaries for loading and holding textures. NEVER use `NuciContentManager.Instance.LoadTexture2D(...)` directly when `GuiImage` can be used instead.
 - When NuciXNA packages are present, ALWAYS use `GuiText` instead of raw `SpriteFont` / `SpriteBatch.DrawString(...)` for text rendering.

@@ -4,6 +4,10 @@ applyTo: "**/*.py"
 ---
 ## Python
 
+- All general instructions from `general.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All general coding instructions from `general.coding.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All language instructions from `language.english.instructions.md` and `language.romanian.instructions.md` apply here as well, unless explicitly overridden in this file.
+
 ### Imports
 
 - Standard library imports first, one name per line (`import random`, `import re`, etc.).

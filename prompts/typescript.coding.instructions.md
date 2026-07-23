@@ -4,6 +4,10 @@ applyTo: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
 ---
 ## TypeScript
 
+- All general instructions from `general.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All general coding instructions from `general.coding.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All language instructions from `language.english.instructions.md` and `language.romanian.instructions.md` apply here as well, unless explicitly overridden in this file.
+
 ### File & Module Structure
 
 - Each exported class, interface, type alias, or enum must be declared in its own file. The file name must exactly match the exported name (e.g. `AccountService.ts` for `AccountService`).

@@ -4,6 +4,10 @@ applyTo: "**/*.sh"
 ---
 ## Bash & Other UNIX Shells
 
+- All general instructions from `general.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All general coding instructions from `general.coding.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All language instructions from `language.english.instructions.md` and `language.romanian.instructions.md` apply here as well, unless explicitly overridden in this file.
+
 ### Safety & Error Handling
 
 - Always add `set -euo pipefail` at the top of every non-interactive script. This causes the script to exit immediately on any error (`-e`), treats unset variables as errors (`-u`), and propagates failures through pipelines (`-o pipefail`).

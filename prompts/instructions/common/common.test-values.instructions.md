@@ -1,6 +1,8 @@
 ---
 description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, streets, domains, emails, dates, currencies, video game names, movie names."
+applyTo: "**/*.{cs},**/*.{spec,tests}.ts"
 ---
+
 ## Test Values
 
 Always use these standard values when writing tests or generating test data. Never invent ad-hoc values; pick from the lists below to keep tests consistent, searchable, and recognisable across the codebase.

@@ -5,7 +5,7 @@ applyTo: "**/*.{cs,csproj,slnx}"
 ## C#
 
 - All C# coding instructions from `csharp.coding.instructions.md` apply to test code as well, unless explicitly overridden in this file.
-- All test value instructions from `general.test-values.instructions.md` apply here as well, unless explicitly overridden in this file.
+- All test value instructions from `instructions/common/common.test-values.instructions.md` apply here as well, unless explicitly overridden in this file.
 
 ### Project Structure
 

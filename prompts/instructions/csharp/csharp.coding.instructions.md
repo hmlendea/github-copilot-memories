@@ -34,7 +34,7 @@ applyTo: "**/*.{cs}"
 - All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
 - Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
-- Always use explicit types instead of `var`.
+- Always use explicit types instead of `var`, no exceptions.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
@@ -189,3 +189,7 @@ applyTo: "**/*.{cs}"
 
 - Controller actions return `ActionResult` (not `ActionResult<T>`).
 - Use expression-bodied actions for single-expression delegates to a `ProcessRequest(...)` call.
+
+### Compiler Instructions
+
+- Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.

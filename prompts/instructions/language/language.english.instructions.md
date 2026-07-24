@@ -23,7 +23,7 @@ applyTo: "**"
   - anger <!-- noun, meaning a feeling of intense displeasure or hostility --> → fury / ire
   - angry <!-- adjective, meaning feeling intense displeasure or hostility --> → furious
   - answer <!-- verb, meaning to reply to a question or message --> → respond / reply
-  - around <!-- adverb/preposition, meaning approximately --> → approximately
+  - around <!-- adverb/preposition, meaning approximately --> → approximately, circa
   - around <!-- adverb/preposition, meaning in the vicinity of or surrounding --> → surrounding / nearby
   - ask <!-- verb, meaning to pose a question or make a request --> → inquire
   - avoid <!-- verb, meaning to abstain from doing something --> → refrain from
@@ -348,6 +348,7 @@ applyTo: "**"
   - tell <!-- verb, meaning to inform or notify --> → inform / notify
   - thankful <!-- adjective, meaning feeling or expressing gratitude --> → grateful
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
+  - the other way around → vice versa
   - thick <!-- adjective, meaning dense in consistency or composition --> → dense
   - thin <!-- adjective, meaning of little depth or slender in form --> → slender / attenuated
   - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate

@@ -1,12 +1,8 @@
 ---
-description: "Use when writing or editing TypeScript or JavaScript code. Covers file structure, module organisation, naming, blank line rules, and code style."
-applyTo: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+description: "Use when writing or editing TypeScript code. Covers file structure, module organisation, naming, blank line rules, and code style."
+applyTo: "**/*.{ts,tsx}"
 ---
 ## TypeScript
-
-- All general instructions from `general.instructions.md` apply here as well, unless explicitly overridden in this file.
-- All general coding instructions from `general.coding.instructions.md` apply here as well, unless explicitly overridden in this file.
-- All language instructions from `language.english.instructions.md` and `language.romanian.instructions.md` apply here as well, unless explicitly overridden in this file.
 
 ### File & Module Structure
 

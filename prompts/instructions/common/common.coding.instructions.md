@@ -1,6 +1,6 @@
 ---
 description: "Use when writing or editing any code. General coding rules: clean code, naming, comments, blank lines, indentation, British English, magic numbers, dead code, single responsibility, tests, source control."
-applyTo: "**/*.{c,cpp,cs,h,java,js,py,sh,ts}"
+applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
 ---
 
 ## General

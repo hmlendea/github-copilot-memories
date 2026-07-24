@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# code, .csproj, or .slnx files. Covers code style, naming conventions, type declarations, member organisation, constructors, methods, properties, collections, async, dependency injection, controller style."
+description: "Use when writing or editing C# code, .csproj, or .slnx files. Covers code style, naming conventions, type declarations, member organisation, constructors, methods, properties, collections, async, dependency injection."
 applyTo: "**/*.{cs}"
 ---
 ## C#
@@ -47,15 +47,11 @@ applyTo: "**/*.{cs}"
 - All `public` and `protected` members — without exception — must begin with an uppercase letter. This applies to fields, properties, methods, events, delegates, constructors, and nested types, regardless of context.
 - Methods: PascalCase, clear and explicit names with no abbreviations or shortenings, following the same naming rules as for variables and parameters.
 - Classes: PascalCase.
-- Interfaces: `I`-prefixed PascalCase (`IAccountService`).
-- Controllers: pluralized noun + `Controller` (`AccountsController`).
 - Data/entity objects: `DataObject` suffix (`AccountDataObject`).
 - Domain models: plain noun, no suffix (`Account`, `CheckIn`).
 - Request DTOs: Verb + Noun + `Request` (`AddAccountRequest`, `RecordCheckInRequest`).
 - Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
 - Configuration classes: Noun + `Settings` (`DataStoreSettings`).
-- Mapping classes: Noun + `MappingExtensions` (`AccountMappingExtensions`).
-- Mapping methods: `ToServiceModel` / `ToServiceModels` for entity->model direction; `ToDataObject` / `ToDataObjects` for model->entity direction.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`), e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
 
@@ -65,8 +61,6 @@ applyTo: "**/*.{cs}"
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
-- Mapping extension classes: explicitly `internal static class`.
-- Mapping extension methods: explicitly `internal static`.
 - Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
 
 ### Member Organisation
@@ -75,7 +69,7 @@ applyTo: "**/*.{cs}"
 - Order members by kind first, then by accessibility within each kind group. The top-level kind order is: fields -> properties -> events -> constructors and destructors -> methods.
 - Within the fields group, order by: static readonly -> static mutable -> instance readonly -> instance mutable. Within each of those sub-groups, order by accessibility: `public` first, then `protected`, then `private`.
 - Within every other kind group (properties, events, constructors, methods), order by accessibility: `public` first, then `protected`, then `private`.
-- All `public` members in NuGet packages (classes, interfaces, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`). These must NEVER be removed or omitted, including during refactoring. When a member is renamed, moved, or restructured, its XML documentation must be preserved and updated to reflect the change.
+- All `public` members in NuGet packages (classes, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`). These must NEVER be removed or omitted, including during refactoring. When a member is renamed, moved, or restructured, its XML documentation must be preserved and updated to reflect the change.
 - NEVER remove a `public` member from a NuGet package during refactoring, even if it appears unused within the solution. External clients of the package may depend on it. A `public` member may only be removed when explicitly instructed to do so by the user.
 - Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
 
@@ -158,7 +152,7 @@ applyTo: "**/*.{cs}"
       (data[offset + 1] << 8) |
       data[offset + 2];
   ```
-- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`. This applies unconditionally to all mapping extension methods (`ToServiceModel`, `ToDataObject`, and their plurals).
+- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`.
 - When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature; never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
   ```csharp
   internal static UnitDataObject ToDataObject(this Unit model) => new()
@@ -184,11 +178,6 @@ applyTo: "**/*.{cs}"
 
 - Register all services as `AddSingleton`. Do NOT use `AddScoped` or `AddTransient`.
 - Centralize all DI registration in a `ServiceCollectionExtensions.cs` file with extension methods on `IServiceCollection`.
-
-### Controller Style
-
-- Controller actions return `ActionResult` (not `ActionResult<T>`).
-- Use expression-bodied actions for single-expression delegates to a `ProcessRequest(...)` call.
 
 ### Compiler Instructions
 

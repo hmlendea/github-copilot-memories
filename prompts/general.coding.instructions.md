@@ -1,8 +1,7 @@
 ---
 description: "Use when writing or editing any code. General coding rules: clean code, naming, comments, blank lines, indentation, British English, magic numbers, dead code, single responsibility, tests, source control."
-applyTo: "**"
+applyTo: "**/*.{c,cpp,cs,h,java,js,py,sh,ts}"
 ---
-See also: [test-values.instructions.md](test-values.instructions.md) for standard test values to use in tests.
 
 ## General
 

@@ -1,6 +1,6 @@
 ---
 description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, streets, domains, emails, dates, currencies, video game names, movie names."
-applyTo: "**/*.{cs},**/*.{spec,tests}.ts"
+applyTo: "**/*Tests.{cs},**/*.{spec,tests}.ts"
 ---
 
 ## Test Values
@@ -11,10 +11,11 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Angetenar`
 - `IlarionPintilie`
 - `solaire_of_astora`
+- `zezima`
 
 ### Names: Male / Full / Romanian
 - `Dorel Meseriașu`
-- `Gică Contra`
+- `Gică Contra` <!-- Especially for negative test cases -->
 - `Iancu Robilă`
 - `Ilarion Pintilie`
 - `Ionuț Karr`
@@ -27,7 +28,7 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Bob Ross`
 - `Chuck Norris`
 - `Courage the Cowardly Dog`
-- `Grumpy Cat`
+- `Grumpy Cat` <!-- Especially for negative test cases -->
 - `John Doe`
 - `John Rambo`
 - `John Wick`
@@ -40,6 +41,7 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Testy McTestface`
 - `Tux the Penguin`
 - `Willy Wonka`
+- `Yes Man`  <!-- Especially for positive test cases -->
 
 ### Names: Male / First / Romanian
 - `Ilarion`
@@ -107,6 +109,7 @@ Always use these standard values when writing tests or generating test data. Nev
 - `1024`
 - `2048`
 - `4096`
+- `8192`
 
 ### Decimal Numbers
 - `3.14`
@@ -123,19 +126,41 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Roman Empire`
 - `Roman Republic`
 - `Romania`
+- `Scotland`
 
 ### Cities
-- `Solara`, `Cratesia`, `Izmir`, `Horidava`, `Cornova`, `Flusseland`, `Çupișan`, `Hokazuro`, `Frigonița`, `Nordavia`, `Cluj-Napoca`, `Dezmir`, `Florești`, `Oradea`
+- `Cluj-Napoca`
+- `Cornova`
+- `Cratesia`
+- `Çupișan`
+- `Dezmir`
+- `Enada`
+- `Florești`
+- `Flusseland`
+- `Frigonița`
+- `Hokazuro`
+- `Horidava`
+- `Izmir`
+- `Newport`
+- `Nordavia`
+- `Oradea`
+- `Solara`
 
 ### Street Names
+- `Bulevardul Piersicilor`
 - `Pinched Street`
+- `Polaris Boulevard`
+- `Solar Boulevard`
 - `Strada Ciupită`
 - `Strada Nucilor`
 - `Walnut Street`
 - `Walnut Way`
 
 ### States / Regions
-- `Solara`, `Kreezland`, `Flusseland`, `Murasaki`
+- `Flusseland`
+- `Kreezland`
+- `Murasaki`
+- `Solara`
 
 ### Domain / URLs / E-mails
 - Domain: `nucilandia.ro`
@@ -148,6 +173,7 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Endava`
 - `Îmhe Incorporated`
 - `Nucilandian Softworks`
+- `NuciSoft`
 - `Pinched Games`
 - `Valve`
 - `WorldPay`

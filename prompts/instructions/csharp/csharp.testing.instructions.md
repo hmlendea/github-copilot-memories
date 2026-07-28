@@ -1,16 +1,7 @@
 ---
 description: "Use when writing or editing C# tests, .csproj, or .slnx files. Covers project structure, testing preferences, naming conventions, member organisation, and unit tests."
-applyTo: "**/*.{cs,csproj,slnx}"
+applyTo: "**/*Tests.{cs,csproj,slnx}"
 ---
-## C#
-
-- All C# coding instructions from `csharp.coding.instructions.md` apply to test code as well, unless explicitly overridden in this file.
-- All test value instructions from `instructions/common/common.test-values.instructions.md` apply here as well, unless explicitly overridden in this file.
-
-### Project Structure
-
-- The unit test project, where applicable, must be named `[MainProjectName].UnitTests`.
-
 ### Naming Conventions
 
 - Test classes: Subject + `Tests` (`AccountServiceTests`).

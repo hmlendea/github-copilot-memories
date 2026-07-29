@@ -2,14 +2,16 @@
 description: "Use when writing or editing C# tests, .csproj, or .slnx files. Covers project structure, testing preferences, naming conventions, member organisation, and unit tests."
 applyTo: "**/*Tests.{cs,csproj,slnx}"
 ---
-### Naming Conventions
+## C#
 
+### Naming Conventions
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
+- Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
+
+### Projects
+- NEVER add `<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">` (or any other production code change) to a project just to enable unit test access. Do not modify the production project or its csproj solely for the sake of tests.
 
 ### Unit Tests
-
-- NEVER add `<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">` (or any other production code change) to a project just to enable unit test access. Do not modify the production project or its csproj solely for the sake of tests.
-- Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
 - Use the existing unit‑testing framework of the project. If no testing framework is present, default to **NUnit 4.x** with **Moq**.
 - Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
 - Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.

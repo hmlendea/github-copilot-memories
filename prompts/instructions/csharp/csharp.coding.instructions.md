@@ -41,20 +41,6 @@ applyTo: "**/*.{cs}"
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 
-### Naming Conventions
-
-- Always use the lowercase alias for built-in types: `string`, `int`, `bool`, `object`, `long`, `double`, `float`, `decimal`, `byte`, `char`, etc. NEVER use the BCL class names `String`, `Int32`, `Boolean`, `Object`, etc.
-- All `public` and `protected` members — without exception — must begin with an uppercase letter. This applies to fields, properties, methods, events, delegates, constructors, and nested types, regardless of context.
-- Methods: PascalCase, clear and explicit names with no abbreviations or shortenings, following the same naming rules as for variables and parameters.
-- Classes: PascalCase.
-- Data/entity objects: `DataObject` suffix (`AccountDataObject`).
-- Domain models: plain noun, no suffix (`Account`, `CheckIn`).
-- Request DTOs: Verb + Noun + `Request` (`AddAccountRequest`, `RecordCheckInRequest`).
-- Response DTOs: `Get` + Noun + `Response` (`GetAccountResponse`).
-- Configuration classes: Noun + `Settings` (`DataStoreSettings`).
-- Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
-- Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`), e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
-
 ### Type Declarations
 
 - All classes that are not explicitly designed for inheritance must be declared `sealed`. When in doubt, default to `sealed`.
@@ -62,6 +48,7 @@ applyTo: "**/*.{cs}"
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
 - Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
+- Every type must be declared in its own file — one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
 
 ### Member Organisation
 
@@ -173,11 +160,6 @@ applyTo: "**/*.{cs}"
 
 - Prefer synchronous service methods. Do not add `Task<T>` return types or `async/await` unless required.
 - No `CancellationToken` usage unless explicitly needed.
-
-### Dependency Injection
-
-- Register all services as `AddSingleton`. Do NOT use `AddScoped` or `AddTransient`.
-- Centralize all DI registration in a `ServiceCollectionExtensions.cs` file with extension methods on `IServiceCollection`.
 
 ### Compiler Instructions
 

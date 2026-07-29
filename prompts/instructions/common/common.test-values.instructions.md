@@ -9,6 +9,7 @@ Always use these standard values when writing tests or generating test data. Nev
 
 ### Usernames
 - `Angetenar`
+- `DummyUser`
 - `IlarionPintilie`
 - `solaire_of_astora`
 - `zezima`
@@ -92,6 +93,10 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Blitz`
 - `Karr`
 
+### Certificates
+- `dummy-cert.pem`
+- `dummy-cert.pfx`
+
 ### Integers
 - `4`
 - `8`
@@ -162,10 +167,25 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Murasaki`
 - `Solara`
 
-### Domain / URLs / E-mails
-- Domain: `nucilandia.ro`
-- URLs: e.g. `test.nucilandia.ro`
-- E-mails: e.g. `ilarion.pintilie@nucilandia.ro`, `solaire@astora.com`, `vasile.ciupitu@gmail.com`
+### Domains
+- `dummy-domain.com`
+- `dummy-domain.md`
+- `dummy-domain.ro`
+- `dummy-url.com`
+- `dummy-url.md`
+- `dummy-url.ro`
+- `nucilandia.ro`
+- `test.nucilandia.ro`
+- `test.url.com`
+- `test.url.md`
+- `test.url.ro`
+
+## E-mails
+- `elodia@yahoo.ro`
+- `ilarion.pintilie@nucilandia.ro`
+- `solaire@astora.com`
+- `test@email.com`
+- `vasile.ciupitu@gmail.com`
 
 ### Company Names
 - `Aperture Laboratories`
@@ -199,12 +219,15 @@ Always use these standard values when writing tests or generating test data. Nev
 - `SokoGrump`
 - `Terraria`
 
-### Passwords
+### Passwords / Secret Keys
+- `1234567890`
 - `NucileRullz!`
 - `P@ssw0rd!`
 - `Parola123!`
 - `Silver56`
 - `stayback123`
+- `Test1234!`
+- `TestPassword!`
 
 ### Petrol Station Names
 - `Nukoil`

@@ -5,12 +5,10 @@ applyTo: "**/*.{cs}"
 ## C#
 
 ### Null Handling
-
 - Use `is null` / `is not null` pattern. Do NOT use `== null` or `!= null`.
 - No null-coalescing `??` operator.
 
 ### Exception Handling
-
 - Use log-and-rethrow pattern: `catch (Exception exception) { logger.Error(...); throw; }`.
 - Use `throw;` (NOT `throw exception;`) to preserve the stack trace.
 - Use only BCL exceptions (`ArgumentNullException`, `KeyNotFoundException`, `AuthenticationException`). Do NOT create custom exception types.

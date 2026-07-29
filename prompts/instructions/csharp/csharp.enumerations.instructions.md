@@ -5,11 +5,9 @@ applyTo: "**/*.{cs}"
 ## C#
 
 ### Namespaces
-
 - Never create a `[xyz].Enumerations` (or `Enums`) namespace. Place enums in the same namespace and folder as the domain models they belong to.
 
 ### Enumerations & Enumeration Classes
-
 - Use a regular `enum` for simple categorical values that carry no additional data and require no string serialisation.
 - Use an **enumeration class** instead of an `enum` when any of the following apply:
   - Each value must carry additional structured data (e.g. multiple properties per value).

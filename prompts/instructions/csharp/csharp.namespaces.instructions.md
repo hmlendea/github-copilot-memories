@@ -4,7 +4,7 @@ applyTo: "**/*.{cs}"
 ---
 ## C#
 
-### Namespaces & Using Directives
+### Namespaces
 
 - Use block-braces namespaces (`namespace Foo { ... }`), NOT file-scoped namespaces (`namespace Foo;`).
 - Each class must have a single, well-defined responsibility. Do not add logic to a class unless it unambiguously belongs there. If a class grows beyond its responsibility or serves multiple concerns, split it immediately into smaller, focused classes, each declared in the namespace that matches its responsibility. NEVER split a class into `partial` classes; always split into separate, concrete classes placed in the appropriate namespace and folder, and reference them explicitly.
@@ -20,6 +20,8 @@ applyTo: "**/*.{cs}"
   - `[RootNamespace].Services.Mapping`
   - `[RootNamespace].Services.Models`
 - Never create a `[xyz].Interfaces` namespace. Place interfaces in the same namespace and folder as their implementations.
+
+### Using Directives
 - All `using` directives go at the top of the file, **outside** and **above** the `namespace` block; NEVER inside it.
 - **NEVER use fully qualified type names inline.** This applies to ALL types without exception, including BCL types such as `System.Enum`, `System.Collections.Generic.List`, etc. Always add the appropriate `using` directive and reference the type by its short name. Examples:
   - WRONG: `System.Enum.GetValues<RuneElement>()` — CORRECT: `using System;` at the top, then `Enum.GetValues<RuneElement>()`

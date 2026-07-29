@@ -17,4 +17,5 @@ applyTo: "**/*.{cs}"
 - Configuration classes: Noun + `Settings` (`DataStoreSettings`).
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).
 - Boolean variables, properties, and methods must use a meaningful boolean-semantic prefix: `Is`, `Has`, `Does`, `Are`, or contextual tense-embedded forms (`...Was...`, `...Were...`, `...Is...`, `...Does...`, `...Are...`), e.g. `IsEnabled`, `HasPermission`, `DoesExist`, `AreValid`, `requestWasHandled`, `itemsAreLoaded`. Never use vague names like `flag`, `check`, or `result` for booleans.
+ - Never use names where a suffix repeats a meaning already implied by an abbreviation, e.g. `jwtToken` or `atmMachine`.
 - Private fields: camelCase, NO underscore prefix (`accountRepository`, not `_accountRepository`).

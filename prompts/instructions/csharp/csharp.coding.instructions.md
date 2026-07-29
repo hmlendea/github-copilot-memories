@@ -37,12 +37,14 @@ applyTo: "**/*.{cs}"
 - Always use explicit types instead of `var`, no exceptions.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
 - Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
+- If a method does not access instance state, mark it `static`.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
 
 ### Type Declarations
 
+- Do not use `partial` classes unless explicitly required by framework-generated contract or explicitly requested by the user.
 - All classes that are not explicitly designed for inheritance must be declared `sealed`. When in doubt, default to `sealed`.
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.
@@ -148,6 +150,15 @@ applyTo: "**/*.{cs}"
       Name = model.Name,
   };
   ```
+- Never leave unreachable statements after an unconditional `return`, `throw`, `continue`, `break`, or exhaustive switch expression return.
+
+### Parsing & Serialisation
+- When parsing or formatting date/time values with explicit formats (`ParseExact`, `TryParseExact`, etc.), always use `CultureInfo.InvariantCulture` unless a different culture is explicitly required.
+- Do not allocate `JsonSerializerOptions` repeatedly in hot paths or loops. Cache and reuse static readonly options instances.
+
+### Networking & Security
+- For Kestrel listeners that are expected to accept IPv6, bind using `IPAddress.IPv6Any` rather than `IPAddress.Any` unless there is an explicit requirement to reject IPv6.
+- Never include raw PAN/card numbers in logs, exception messages, or telemetry. Always mask sensitive values first.
 
 ### Collections
 

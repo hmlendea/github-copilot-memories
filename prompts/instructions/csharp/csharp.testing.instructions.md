@@ -44,6 +44,8 @@ applyTo: "**/*Tests.{cs,csproj}"
 - Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
 - Group tests within a class by the production method under test. Do NOT use comment banners or any other separator between groups.
 - Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
+- In test infrastructure and helper classes, mark methods `static` when they do not use instance state.
+- In tests and test steps, cache `JsonSerializerOptions` in static readonly fields instead of creating new instances per call.
 
 ### Compatibility
 - Ensure tests are platform‑safe: avoid hard‑coded paths, locale‑dependent formats, and OS‑specific APIs. Tests should run reliably on Linux, Windows, macOS, x86, ARM, etc.

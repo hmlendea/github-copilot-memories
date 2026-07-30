@@ -1,12 +1,8 @@
 ---
-description: "Use when writing or editing Python code. Covers imports, naming, string literals, comments, error handling, HTTP/requests, function structure, type hints, module structure, and blank line rules."
+description: "Use when writing or editing Python code. Covers imports, naming, string literals, comments, HTTP/requests, function structure, type hints, module structure, and blank line rules."
 applyTo: "**/*.py"
 ---
 ## Python
-
-- All general instructions from `general.instructions.md` apply here as well, unless explicitly overridden in this file.
-- All general coding instructions from `general.coding.instructions.md` apply here as well, unless explicitly overridden in this file.
-- All language instructions from `language.english.instructions.md` and `language.romanian.instructions.md` apply here as well, unless explicitly overridden in this file.
 
 ### Imports
 
@@ -31,13 +27,6 @@ applyTo: "**/*.py"
 - Inline and block comments must always begin with an uppercase letter and end with a period: `# Calculates the wall distance.`
 - TODO comments must always use the exact format `# TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Section dividers use `# --- Section Name ---` with dashes on both sides and a blank line above and below.
-
-### Error Handling
-
-- Guard clauses at top of functions for missing configuration or preconditions.
-- `try/except Exception as exception:` wrapping all external I/O calls (HTTP, file, socket).
-- Check response status code before parsing the body: `if response.status_code == 200:`.
-- Use `.get("key", default)` for safe dict access on JSON responses.
 
 ### HTTP / Requests
 

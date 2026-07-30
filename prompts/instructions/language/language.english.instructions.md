@@ -7,13 +7,14 @@ applyTo: "**"
 
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
-- Try to use latinate words instead of germanic words, when it sounds natural.
+- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spnish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another anicient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
   - adamantite → adamantium
   - adhesive bandage → plaster
   - against <!-- preposition, meaning in contravention of a rule or law --> → contrary to / in violation of
   - against <!-- preposition, meaning in opposition to or in competition with --> → versus
+  - aging → ageing
   - airplane → aeroplane
   - allow <!-- verb, meaning to grant permission or enable something --> → permit / enable
   - allow <!-- verb, meaning to grant permission or enable something --> → permit / facilitate
@@ -43,6 +44,7 @@ applyTo: "**"
   - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
   - beehive <!-- noun, meaning a structure housing a bee colony --> → apiary
   - begin → commence
+  - behaviour <!-- noun, meaning the manner in which a person or entity coducts itself --> → conduct / deportment
   - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
   - big <!-- adjective, meaning physically large in size --> → large
   - big <!-- adjective, meaning substantial or significant in amount or degree --> → substantial / considerable
@@ -52,12 +54,15 @@ applyTo: "**"
   - blight <!-- noun, meaning a disease or force that destroys or corrupts --> → affliction / pestilence
   - blueprint <!-- noun, meaning a design or detailed plan --> → plan / schematic
   - bold <!-- adjective, meaning daring or courageous --> → audacious
+  - botched <!-- adjective, meaning carried out poorly or carelessly --> → defective / abortive
   - break <!-- verb, meaning to fracture or sever something --> → fracture / rupture
   - break <!-- verb, meaning to violate or transgress a rule or law --> → violate / infringe
+  - breaking up <!-- phrase, in communication contexts, meaning the audio or video signal becomes intermittent or cutting out --> → intermittent / disrupted
   - bright <!-- adjective, meaning emitting or reflecting a strong light --> → luminous / radiant
   - bright <!-- adjective, meaning intelligent or quick to learn --> → astute / intelligent
   - broken <!-- adjective, meaning no longer functional or in disrepair --> → damaged / defective
   - brotherhood <!-- noun, meaning a community or bond between males --> → fraternity
+  - browse <!-- verb, meaning to navigate or explore the web or internet --> → navigate
   - buffer <!-- noun, meaning a protective margin or reserve in technical or figurative use --> → cushion / reserve
   - build <!-- verb, as in "build a building/structure" --> → construct
   - building <!-- noun, as in "a building/structure" --> → structure / edifice
@@ -93,6 +98,7 @@ applyTo: "**"
   - do you have → have you got
   - do you want → would you like
   - dodgy <!-- adjective, meaning unreliable, questionable, or of dubious quality --> → suspicious
+  - done <!-- adjective or past participle, meaning completed or finished --> → complete / accomplished
   - doorman <!-- noun, meaning a person stationed at a building entrance to admit visitors --> → porter
   - dread <!-- noun, meaning a feeling of great fear or apprehension --> → trepidation / apprehension
   - drop <!-- verb, meaning to release or relinquish something --> → relinquish
@@ -120,6 +126,7 @@ applyTo: "**"
   - fast <!-- adjective, meaning moving or occurring at high velocity --> → rapid
   - faucet → tap
   - feedback <!-- noun, meaning a response or evaluation --> → response / evaluation
+  - feel <!-- verb, meaning to think or believe, in contexts such as "do we feel we are ready?" --> → believe / consider / judge
   - fetch → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant
   - find <!-- verb, meaning to locate or discover --> → discover / locate
@@ -207,6 +214,7 @@ applyTo: "**"
   - keen <!-- adjective, meaning enthusiastic or eager --> → avid / ardent
   - keep <!-- verb, meaning to maintain a state or condition --> → maintain
   - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
+  - kidnap <!-- verb, meaning to seize and detain a person, typically for ransom --> → abduct
   - kill <!-- verb, in computing --> → terminate
   - kill <!-- verb, meaning to cause the death of a living being --> → slay / eliminate
   - kind <!-- noun, meaning a type or category --> → type / category
@@ -215,6 +223,7 @@ applyTo: "**"
   - law <!-- noun, meaning legislation or statute --> → legislation / statute
   - leave <!-- verb, meaning to depart --> → depart
   - leaves <!-- noun, plural of leaf, meaning the flat green parts of a plant --> → foliage
+  - light <!-- noun, meaning illumination or luminosity --> → illumination / luminosity
   - like <!-- verb, meaning to hold something in high regard or esteem, not for casual enjoyment --> → appreciate / favour
   - likely <!-- adjective, meaning probable or expected to happen --> → probable
   - linger <!-- verb, meaning to remain in a place beyond the expected time --> → remain / persist
@@ -242,11 +251,14 @@ applyTo: "**"
   - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - mend <!-- verb, meaning to repair or restore something --> → repair / restore
   - might <!-- noun, meaning great power or strength --> → power / potency
+  - misbehave <!-- verb, meaning to conduct oneself improperly --> → misconduct onself / act improperly
   - misclick → accidental click
   - misgiving <!-- noun, meaning a feeling of doubt or apprehension --> → apprehension
+  - misunderstood <!-- adjective or past participle, meaning incorrectly interpreted or construed --> → misinterpreted / misconstrued
   - mood <!-- noun, meaning a person's emotional state or disposition --> → disposition / temperament
   - mushroom <!-- noun, meaning the fruiting body of a fungus --> → fungus
   - nauseous → nauseated
+  - need <!-- noun, meaning a necessity or requirement --> → necessity / requirement
   - need <!-- verb, meaning to require --> → require
   - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
@@ -257,9 +269,13 @@ applyTo: "**"
   - old <!-- adjective, meaning ancient or aged --> → ancient / aged
   - open <!-- verb, meaning to access or expose --> → access / expose
   - outcome <!-- noun, meaning a result or consequence --> → result / consequence
+  - outdone <!-- adjective or past participle, meaning surpassed or exceeded --> → surpassed / exceeded
   - outlaw <!-- noun, meaning a person declared outside the protection of the law --> → criminal / fugitive
   - outskirts <!-- noun, meaning the outer parts of a city or town --> → periphery
   - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
+  - overload <!-- verb or noun, meaning to burden or exceed the capacity of something --> → saturate / surcharge
+  - overlord <!-- noun, meaning a supreme ruler or dominant authority --> → sovereign / suzerain / potentate
+  - overseer <!-- noun, meaning a person who supervises others --> → supervisor / superintendent
   - overwhelm <!-- verb, meaning to overpower or inundate completely --> → inundate
   - own <!-- verb, meaning to possess, only when used as a standalone predicate, not as a participial modifier --> → possess
   - ownership <!-- noun, meaning the state or fact of possessing something --> → possession / proprietorship
@@ -268,6 +284,7 @@ applyTo: "**"
   - parking lot → car park
   - pick <!-- verb, meaning to select --> → select
   - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
+  - placeholder <!-- noun, meaning a temporary surrogate or substitute until a final value or version is available --> → surrogate / substitute / proxy
   - proud <!-- adjective, meaning feeling superior to others or self-important --> → haughty / arrogant
   - put <!-- verb, meaning to place or position --> → place / position
   - quick <!-- adjective, meaning rapid in movement or action --> → rapid / expeditious
@@ -344,7 +361,9 @@ applyTo: "**"
   - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
+  - take a look <!-- phrase, meaning to examine or inspect something --> → examine / inspect / observe
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
+  - talking about <!-- phrase, meaning dicussing or conversing regarding a topic --> → dscussing / concerning
   - tell <!-- verb, meaning to inform or notify --> → inform / notify
   - thankful <!-- adjective, meaning feeling or expressing gratitude --> → grateful
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
@@ -376,6 +395,7 @@ applyTo: "**"
   - trustworthy <!-- adjective, meaning worthy of belief or confidence --> → credible
   - try <!-- verb, meaning to attempt in a sentence; not in short imperative phrases like "Try again" --> → attempt
   - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
+  - underloaded <!-- adjective, meaning insufficiently loaded or below capacity --> → under-utilised / below capacity
   - understand <!-- verb, meaning to comprehend --> → comprehend
   - unlucky → unfortunate
   - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
@@ -405,9 +425,11 @@ applyTo: "**"
   - woman <!-- noun, meaning female human --> → female
   - womanhood <!-- noun, meaning the state or condition of being a woman --> → femininity
   - womanly <!-- adjective, meaning characteristic of a woman --> → feminine
+  - wonder <!-- adjective or modifier, meaning miraculous or extraordinary, as in "wonder child" or "wonder treatment" --> → miracle / miraculous
   - wonder <!-- noun, meaning a feeling of curiosity or amazement --> → curiosity
   - wonder <!-- noun, meaning a remarkable or miraculous thing --> → miracle
   - wonder <!-- verb, meaning to speculate or be curious about something --> → speculate / query
+  - woodworking <!-- noun, meaning the craft of shaping or constructing items from wood --> → carpentry
   - work <!-- noun, meaning labour or effort --> → labour / effort
   - worship <!-- verb, meaning to perform acts of religious devotion toward a deity --> → venerate / adore
   - worshipper <!-- noun, meaning a person who performs acts of religious devotion --> → devotee / supplicant

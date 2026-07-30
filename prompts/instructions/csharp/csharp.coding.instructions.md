@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# code, .csproj, or .slnx files. Covers code style, naming conventions, type declarations, member organisation, constructors, methods, properties, collections, async, dependency injection."
+description: "Use when writing or editing C# code. Covers code style, naming conventions, type declarations, member organisation, constructors, methods, properties, collections, async, dependency injection."
 applyTo: "**/*.{cs}"
 ---
 ## C#
@@ -156,9 +156,8 @@ applyTo: "**/*.{cs}"
 - When parsing or formatting date/time values with explicit formats (`ParseExact`, `TryParseExact`, etc.), always use `CultureInfo.InvariantCulture` unless a different culture is explicitly required.
 - Do not allocate `JsonSerializerOptions` repeatedly in hot paths or loops. Cache and reuse static readonly options instances.
 
-### Networking & Security
+### Networking
 - For Kestrel listeners that are expected to accept IPv6, bind using `IPAddress.IPv6Any` rather than `IPAddress.Any` unless there is an explicit requirement to reject IPv6.
-- Never include raw PAN/card numbers in logs, exception messages, or telemetry. Always mask sensitive values first.
 
 ### Collections
 

@@ -22,7 +22,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - aibă nevoie → îi fie necesar
 - amețit → dezorientat
 - amintire → memorie
-- ar trebui → ar fi necesar
+- ar trebui → ar fi necesar / ar fi indicat / ar fi bine
 - arțăgos → irascibil
 - asemănător → similar
 - astronaut → cosmonaut
@@ -170,9 +170,11 @@ Word replacements - apply to all variants and derivatives of each word:
 - topor → secure
 - tovarăș → camarad
 - treabă → lucru
+- trebuia → era necesar / ar fi fost indicat / ar fi fost bine
+- trebuiască → fie necesar / fie indicat / fie bine
 - trebuie → este necesar
 - trebuință → necesitate
-- treburi → lucruri de făcut
+- treburi → lucruri de făcut / chestiuni / chestii
 - trend → tendință
 - trezire → deșteptare
 - țeavă → conductă

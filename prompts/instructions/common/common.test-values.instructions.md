@@ -83,15 +83,37 @@ Always use these standard values when writing tests or generating test data. Nev
 ### Names: Female / First / Latin
 - `Vibia`
 
-### Surnames: Romanian
+### Names: Surnames/ Romanian
 - `Ciupitu`
 - `Nucaru`
 - `Nucescu`
 - `Pintilie`
 
-### Surnames: Others
+### Names: Surnames/ Others
 - `Blitz`
 - `Karr`
+
+### Phone Numbers: Romanian
+- `+40 (722) 512 537`
+- `+40 (722) 512 689`
+- `+40 (726) 611 989`
+- `+40 (726) 765 879`
+- `+40 (728) 880 830`
+- `+40 (729) 875 468`
+- `+40 (731) 282 530`
+- `+40 (731) 833 650`
+- `+40 (737) 748 624`
+- `+40 (737) 964 690`
+- `+40 (743) 314 575`
+- `+40 (744) 487 232`
+- `+40 (745) 857 724`
+- `+40 (748) 665 289`
+- `+40 (751) 248 032`
+- `+40 (752) 401 947`
+- `+40 (756) 888 555`
+- `+40 (759) 045 899`
+- `+40 (765) 181 387`
+- `+40 (771) 022 942`
 
 ### Certificates
 - `dummy-cert.pem`

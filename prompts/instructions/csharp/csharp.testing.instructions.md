@@ -1,6 +1,6 @@
 ---
 description: "Use when writing or editing C# tests classes and .csproj. Covers project structure, testing preferences, naming conventions, member organisation, and unit tests."
-applyTo: "**/*Tests.{cs,csproj}"
+applyTo: "**/*Tests.{cs,csproj},**/*.Tests/*.cs,**/*.Tests/**/*.cs"
 ---
 ## C#
 

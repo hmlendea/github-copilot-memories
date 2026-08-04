@@ -8,9 +8,6 @@ applyTo: "**/*.{cs}"
 - Use `is null` / `is not null` pattern. Do NOT use `== null` or `!= null`.
 - No null-coalescing `??` operator.
 
-### Exceptions
-- Exception type names mus always end with `Exception`.
-
 ### Exception Handling
 - Use log-and-rethrow pattern: `catch (Exception exception) { logger.Error(...); throw; }`.
 - Use `throw;` (NOT `throw exception;`) to preserve the stack trace.

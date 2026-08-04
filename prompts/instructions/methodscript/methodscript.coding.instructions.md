@@ -4,54 +4,64 @@ applyTo: "**/*.{ms,msa}"
 ---
 ## MethodScript
 
-### Language and Runtime Reference
+### Architecture and Paradigms
 
-#### Core Data Model
+#### Project Structure Paradigm
 
-- **Primary value types** - MethodScript core runtime values include `string`, `int`, `double`, `boolean`, `null`, and `array`.
-- **Arrays** - Indexed arrays are created with `array(...)`; key-value structures are represented with `associative_array(...)`.
-- **Variable model** - Alias parameters use `$...`, while script-level variables use `@...`; globals are commonly accessed with `import(...)` and persisted with `export(...)` style flows.
-- **Callable blocks** - `closure(...) { ... }` supports callback-style execution in scheduling, queues, and threading.
-- **Null and equality checks** - Runtime behaviour can differ by coercion context, so explicit null and equality checks reduce ambiguity.
+- **Local package triad** - Organise each feature package with `main.ms` (runtime orchestration), `auto_include.ms` (shared procedures), and `aliases.msa` (alias signatures).
+- **Single-responsibility files** - Keep alias declaration logic out of `main.ms`, and keep heavy implementation logic out of `aliases.msa`.
+- **Root-level shared utilities** - Use root `auto_include.ms` for cross-package primitives that are reused broadly.
 
-#### Execution and File Model
+#### Execution Model Paradigm
 
-- **Execution units** - `main.ms`, each alias body, bound event handlers, queue elements, and timed callbacks execute as separate units.
-- **Role of files** - `main.ms` is startup/reload execution, `auto_include.ms` provides shared declarations, and `aliases.msa` contains alias definitions.
-- **Alias signatures** - Signatures should remain non-ambiguous because overlapping match paths create compile-time conflicts.
-- **Alias variables** - Optional arguments use `[$var=default]`, and the final variable `$` captures trailing free-form arguments.
+- **Independent execution units** - Treat alias executions, event handlers, timeout callbacks, and thread closures as isolated execution flows.
+- **Reload-safe design** - Assume scripts may be recompiled frequently (`/reloadaliases` or `/recompile`), and write code that can be reinitialised without stale state.
+- **Deterministic registration** - Use stable IDs for commands, events, tasks, and threads so replacement and unregistration are predictable.
 
-#### Event and Callback Model
+#### Command Definition Paradigm
 
-- **Register handlers** - Event bindings (for example via helper wrappers around `bind`) should include deterministic IDs and explicit conditions.
-- **Deregister handlers** - Unbind handlers during teardown to prevent stale listeners across reload cycles.
-- **Event mutation and cancellation** - Event APIs support cancellation, consumption, and event mutation where the event type permits it.
-- **Filtering** - Narrow binding conditions reduce unnecessary handler execution and side effects.
+- **Declarative command registration** - Prefer associative option objects and closures for command behaviour (`executor`, `condition`, `tab_completer`, metadata fields).
+- **Permission-first flow** - Gate command execution and tab completion through explicit permission checks before business logic.
+- **Argument normalisation pipeline** - Parse arguments early and pass validated values to dedicated helpers.
 
-#### Command and Metadata Integration
+#### Event-Driven Paradigm
 
-- **Smart comment command metadata** - `@command`, `@usage`, `@permission`, `@param`, and tab-completion annotations provide command-system integration.
-- **Runtime registration caveat** - Some command metadata changes may require stronger reload boundaries than alias body changes.
+- **Declarative event wiring** - Register events with explicit IDs, optional prefilter criteria, optional conditions, and focused executors.
+- **Condition-first handlers** - Use fast guard clauses and conditions to reject non-applicable events early.
+- **Controlled mutation** - Use event cancellation and mutation only when the event contract supports it.
 
-#### Runtime Operations
+#### Data and State Paradigm
 
-- **Reload commands** - `/reloadaliases` maps to `/recompile` and is the normal refresh path after script edits.
-- **Module reload behaviour** - Partial recompile modes can leave inconsistent runtime state versus full-module reload.
+- **Layered state strategy** - Distinguish between transient cache state, global in-memory state (`import`/`export`), and durable file-backed state.
+- **Associative arrays as records** - Represent structured objects (options, locale bundles, player data) with associative arrays.
+- **Localisation as data** - Model localised messages as structured values (for example `{ro: ..., en: ...}`) and resolve language late.
 
-#### Capability Areas
+#### Procedure-Centred Paradigm
 
-- **Control and logic** - Branching, loop, and logical function groups drive script flow.
-- **Arrays and data handling** - Array traversal, mapping, merge, serialisation, and coercion helpers are core data tools.
-- **Strings and regex** - Pattern matching, replacement, splitting, formatting, and validation functions cover text processing.
-- **Math and numeric** - Arithmetic, rounding, bounds checks, randomisation, and conversions support numeric workflows.
-- **Exceptions** - Exception constructs support catch, propagation, and controlled failure handling.
-- **Persistence and IO** - File and persistence primitives support durable state and data exchange.
-- **Scheduling and queues** - Timers and queue functions support deferred and staged execution.
-- **Threading** - Thread APIs (including `x_new_thread`) support asynchronous execution.
-- **Integration surfaces** - SQL, web/network, and server/world/player APIs provide external and platform integration.
+- **Strongly typed boundaries** - Declare explicit return and parameter types for procedures wherever practical.
+- **Utility procedure abstraction** - Centralise reusable logic in helper procedures, then compose features through these helpers.
+- **Composable closures** - Use closures for callbacks in scheduling, tab completion, asynchronous flows, and event dispatch.
 
-#### Safety and Reliability Notes
+#### Asynchronous and Scheduling Paradigm
 
-- **Shared state** - Imported/exported global data can be accessed from multiple execution paths, so race conditions are possible.
-- **Dynamic evaluation** - Runtime evaluation of untrusted input can introduce security and correctness risks.
-- **Teardown discipline** - Reload-safe scripts release scheduled work, event bindings, and transient state deterministically.
+- **Non-blocking by design** - Move expensive or remote work (I/O, network, heavy transforms) to threads or deferred callbacks.
+- **Main-thread safety** - Keep thread-sensitive game operations on the main runtime context.
+- **Timeout and queue orchestration** - Use `set_timeout`, queue, and thread utilities for staged operations instead of synchronous waiting.
+
+#### Error and Reliability Paradigm
+
+- **Fail-fast guards** - Validate preconditions early and return or throw before side effects.
+- **Explicit exception channels** - Prefer controlled throw helpers and `try/catch` around external boundaries (shell, file, network, API calls).
+- **Recoverable defaults** - Use `import(..., default)` or custom safe getters for optional data paths.
+
+#### Alias Language Paradigm
+
+- **Best-practice alias RHS** - Prefer `run('/command ...')` on alias right-hand sides instead of legacy macro chaining for maintainability.
+- **Final-variable capture** - Use `$` as the final capture variable only when truly necessary for variadic/free-form command tails.
+- **Non-ambiguous signatures** - Avoid alias definitions that can match the same command input in multiple ways.
+
+#### Safety and Compatibility Paradigm
+
+- **Shell boundary hardening** - Treat shell execution as privileged; validate and sanitise any user-derived inputs.
+- **Dynamic code caution** - Avoid `eval`-style patterns for untrusted content.
+- **Feature compatibility checks** - Use compile-time capability checks (`function_exists`, `extension_exists`) when supporting mixed environments.

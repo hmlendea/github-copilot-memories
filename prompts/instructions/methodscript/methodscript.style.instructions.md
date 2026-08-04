@@ -8,35 +8,66 @@ applyTo: "**/*.{ms,msa}"
 
 #### Syntax and Formatting
 
-- **Procedure declaration** - Declare procedures with `proc` and an explicit return type (`auto`, `boolean`, `string`, `array`).
-- **Control flow style** - Use explicit `if` and `foreach` blocks; avoid ternary operators.
-- **Concatenation style** - Prefer explicit `.` concatenation and avoid relying on autoconcatenation.
-- **Quote safety** - Quote command fragments that include special symbols (for instance `-`) to prevent parse ambiguity.
-- **Multiline layout** - For non-trivial aliases, use `>>>` and `<<<` and keep one clear action per line.
-- **Macro style** - Avoid long backslash-separated macros; prefer multiline MethodScript blocks for readability.
+- **Procedure declaration** - Declare procedures with explicit return and argument types (`auto`, `boolean`, `string`, `int`, `array`) where practical.
+- **Brace syntax preference** - Prefer keyword and brace syntax for `proc`, `if`, loops, and `try/catch` over function-form flow control.
+- **Multiline alias construct** - For non-trivial alias logic, use `>>>` and `<<<` with one operation per line.
+- **Macro minimisation** - Avoid long backslash macro chains; convert to multiline blocks with explicit `run(...)` calls.
+- **Concatenation explicitness** - Prefer explicit `.` concatenation, especially when composing command strings.
+- **Statement clarity** - Terminate operational statements with semicolons in script blocks for consistency.
 
-#### Naming and Variables
+#### Alias Conventions
 
-- **Local variable prefix** - Prefix local and procedure variables with `@`.
-- **Alias variable prefix** - Use `$var` placeholders in alias signatures and keep names descriptive.
-- **Internal helper naming** - Prefix internal helper procedures with `_`.
-- **Optional defaults** - Use `[$var=default]` for optional parameters, with static literal defaults only.
-- **Final variable usage** - Use `$` as the final variable when trailing free-form input must be captured.
+- **Best-practice alias RHS** - Prefer `run('/command ...')` on alias right-hand sides, including forwarding aliases.
+- **Special-character quoting** - Quote alias literals or command fragments containing parse-sensitive characters (for example `-`).
+- **Optional arguments** - Use `[$var=default]` for optional alias parameters; keep defaults static.
+- **Final variable discipline** - Use `$` only as the final variadic capture when free-form argument tails are required.
+- **Signature uniqueness** - Avoid ambiguous alias signatures that may match the same invocation path.
+
+#### Naming and Typing
+
+- **Procedure naming** - Use lowercase snake_case for procedures; prefix private/internal helpers with `_`.
+- **Variable prefixes** - Use `@var` for script variables and `$var` for alias-signature parameters.
+- **Descriptive identifiers** - Prefer semantically descriptive names (`@player_uuid`, `@cache_expiry_sec`) over short opaque names.
+- **Key naming consistency** - Keep associative-array keys and IDs stable and predictable, typically lowercase snake_case or lowercase kebab-case based on the subsystem.
+
+#### Command and Event Option Objects
+
+- **Associative option payloads** - Use associative arrays for command and event options instead of long positional parameter lists.
+- **Closure signatures** - Keep closure parameters explicit and context-specific (for example executor/player/args/locale).
+- **Condition-first option sets** - Provide `condition` closures when command or event execution is context dependent.
+
+#### Error Handling and Guards
+
+- **Guard clauses first** - Validate permissions, existence checks, and argument shape before mutation or external calls.
+- **Null safety** - Use explicit null/empty helpers (`is_null`, `array_index_exists`, project wrappers) before deep access.
+- **External boundary protection** - Wrap shell, network, and file operations in `try/catch` where failure is plausible.
 
 #### Comments and Documentation
 
-- **Line comments** - Prefer `//` for single-line comments; reserve `#` primarily for hashbang usage.
-- **Block comments** - Use `/* ... */` for multi-line explanatory notes.
-- **Smart comments** - Use `/** ... */` for alias and procedure documentation.
-- **Command annotations** - For command-style aliases, document `@command`, `@usage`, `@permission`, `@param`, and optional tab completer metadata in smart comments.
+- **Comment style** - Use concise single-line comments for intent and non-obvious invariants; avoid narrating obvious code.
+- **Repository convention** - In this codebase, `#` comments are common (including temporarily disabled lines); preserve existing local style when editing.
+- **Smart metadata comments** - Where command metadata is used, keep annotations (`@command`, `@usage`, `@permission`, `@param`) synchronised with actual command behaviour.
 
 #### Project and File Organisation
 
-- **Execution unit awareness** - Design with separate execution units in mind (`main.ms`, aliases, event handlers, scheduled callbacks).
-- **File role separation** - Keep startup registration in `main.ms`, shared procedures in `auto_include.ms`, and command aliases in `aliases.msa`.
-- **Alias implementation style** - Prefer explicit `run('...');` on alias right-hand sides, including simple forwarding aliases.
-- **Signature clarity** - Avoid ambiguous alias signatures that could match the same input path.
+- **Role separation** - Keep runtime registration and orchestration in `main.ms`, shared helpers in `auto_include.ms`, and aliases in `aliases.msa`.
+- **Feature modularity** - Keep package-specific procedures in their LocalPackage unless they are intentionally cross-cutting.
+- **Localisation structure** - Represent translatable output as structured locale maps and resolve at emission time.
+
+#### Concurrency and Runtime Safety
+
+- **Thread naming** - Use deterministic, namespaced thread IDs when calling `x_new_thread`.
+- **Main-thread operations** - Keep game-world mutation in safe runtime context; do not assume all API calls are thread-safe.
+- **Delayed execution clarity** - Use `set_timeout` for delayed actions with explicit delay values and short, focused closures.
+
+#### Persistence and IO Conventions
+
+- **State layering** - Use `import`/`export` for process-local shared state and dedicated file helpers for durable state.
+- **Path safety** - Resolve and validate file paths before write operations.
+- **Serialisation format choice** - Use JSON/YML intentionally, and keep data schema stable across writes.
 
 #### Maintenance Conventions
 
-- **Encoding** - Save `.ms` and `.msa` sources as UTF-8 (BOM optional).
+- **Encoding** - Save `.ms` and `.msa` as UTF-8.
+- **Backward compatibility** - Prefer patterns that remain compatible with `reloadaliases`/`recompile` workflows.
+- **Minimal side effects** - Keep utility procedures pure where possible; isolate side effects in orchestrator procedures.

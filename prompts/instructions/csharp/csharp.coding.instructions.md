@@ -45,6 +45,7 @@ applyTo: "**/*.{cs}"
 ### Type Declarations
 
 - Do not use `partial` classes unless explicitly required by framework-generated contract or explicitly requested by the user.
+- Every non-static class that declares at least one `public` method and is not a domain model or data/entity object must have an equivalent interface and must implement that interface. Prefer colocated naming pairs such as `AccountService` + `IAccountService` and keep the interface surface aligned with the class's public contract.
 - All classes that are not explicitly designed for inheritance must be declared `sealed`. When in doubt, default to `sealed`.
 - Domain models: `public sealed class`.
 - Data/entity objects: `public sealed class`.

@@ -10,6 +10,7 @@ applyTo: "**/*.{cs}"
 - All `public` and `protected` members — without exception — must begin with an uppercase letter. This applies to fields, properties, methods, events, delegates, constructors, and nested types, regardless of context.
 - Methods: PascalCase, clear and explicit names with no abbreviations or shortenings, following the same naming rules as for variables and parameters.
 - Classes: PascalCase.
+- For eligible non-static classes (those with at least one `public` method and not models/entities), the equivalent interface name must be `I` + class name (`AccountService` -> `IAccountService`), and the class must implement that interface.
 - Data/entity objects: `DataObject` suffix (`AccountDataObject`).
 - Domain models: plain noun, no suffix (`Account`, `CheckIn`).
 - Request DTOs: Verb + Noun + `Request` (`AddAccountRequest`, `RecordCheckInRequest`).

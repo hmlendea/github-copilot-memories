@@ -6,17 +6,6 @@ applyTo: "**/*.{cs}"
 
 ### Code Style
 
-- Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`), even when the body is a single line or a single `continue`/`break`/`return`. Braceless single-line bodies are NEVER acceptable.
-- The opening brace of a control flow block must always appear on its own line (Allman style). NEVER place the opening brace or the body on the same line as the statement: `if (condition) { ... }` is NEVER acceptable.
-- `else if` must always appear on a single line. NEVER split it so that `else` is on one line and `if` is on another.
-- Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
-- `if`, `for`, `foreach`, `while`, `switch`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
-- `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the method body or the first line after an opening brace).
-- Never use two or more consecutive blank lines anywhere in the code.
-- Never place an empty line immediately after an opening brace `{` or immediately before a closing brace `}`. This applies to all braces without exception: type bodies, method bodies, property accessors, control flow blocks, and every other brace-delimited scope.
-- Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
-- All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
-- Never pad spaces before `=` (or any operator) to align consecutive assignments. Each assignment uses exactly one space before and after `=`.
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
 - Always use explicit types instead of `var`, no exceptions.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
@@ -24,7 +13,24 @@ applyTo: "**/*.{cs}"
 - If a method does not access instance state, mark it `static`.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.
+- Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
+- All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
 - Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
+- Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`, etc.), even when the body is a single line or a single statement like `continue`, `break`, or `return`. Braceless single-line bodies are NEVER acceptable.
+- The opening brace of a control flow block must always appear on its own line. NEVER place the opening brace or the body on the same line as the statement.
+- `else if` must always appear on a single line. NEVER split it so that `else` is on one line and the condition is on another.
+- Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values. Named constants must use `static [Type] [Name] =>` (a static read-only property), not `const`.
+- When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property, not an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`). The index is derived from the enum value via `(int)value` and is never stored directly.
+- Do NOT use optional parameters or default arguments. Use method/function overloads instead.
+- Parameter names in interfaces and their implementing classes must match exactly. If an interface defines a method with a parameter named `accountId`, all implementing classes must use the same parameter name `accountId`, not an alias like `id` or `account`. This ensures consistency and proper IDE support for overrides and implementations.
+- Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
+- Never place a blank line immediately before a closing brace or bracket (`}`, `]`, `)`). The last statement inside a block must be followed directly by the closing delimiter with no empty line between them.
+- Always place a blank line above AND below a block control flow statement (`if`, `for`, `foreach`, `while`, `do`, `switch`, `continue`, `break`) when it is adjacent to non-blank, non-control-flow statements in the same block. Always place a blank line above only for `return` and `throw` statements when preceded by one or more non-blank, non-control-flow statements. Do not add the blank line when the statement is the very first statement in the block, or when the adjacent line is itself an opening brace or another control flow statement.
+
+### File Structure
+
+- Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too; use an explicit `Program` class with a `static void Main` entry point.
+- Every type must be declared in its own file — one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
 
 ### Type Declarations
 
@@ -35,7 +41,6 @@ applyTo: "**/*.{cs}"
 - Data/entity objects: `public sealed class`.
 - Configuration classes: `public sealed class`.
 - Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
-- Every type must be declared in its own file — one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
 
 ### Member Organisation
 
@@ -45,7 +50,6 @@ applyTo: "**/*.{cs}"
 - Within every other kind group (properties, events, constructors, methods), order by accessibility: `public` first, then `protected`, then `private`.
 - All `public` members in NuGet packages (classes, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`). These must NEVER be removed or omitted, including during refactoring. When a member is renamed, moved, or restructured, its XML documentation must be preserved and updated to reflect the change.
 - NEVER remove a `public` member from a NuGet package during refactoring, even if it appears unused within the solution. External clients of the package may depend on it. A `public` member may only be removed when explicitly instructed to do so by the user.
-- Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
 
 ### Constructors & Object Creation
 
@@ -61,14 +65,15 @@ applyTo: "**/*.{cs}"
 
 ### Methods
 
-- Do NOT use optional parameters. Use method overloads instead.
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20-30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
+- Avoid duplicated code; respect the DRY (Don't Repeat Yourself) principle. Extract common logic into well-named private helper methods or utility functions. Never copy-paste code across multiple methods or classes.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions (`public void ResetCombat()\n    => throw new NotImplementedException();`). A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`.
 - Never leave unreachable statements after an unconditional `return`, `throw`, `continue`, `break`, or exhaustive switch expression return.
 
 ### Parsing & Serialisation
-- When parsing or formatting date/time values with explicit formats (`ParseExact`, `TryParseExact`, etc.), always use `CultureInfo.InvariantCulture` unless a different culture is explicitly required.
+
+- Always use a format provider when parsing or formatting date-time objects. Use `CultureInfo.InvariantCulture` for culture-independent operations (the most common case), or an explicitly specified culture when required. Methods like `DateTime.Parse()`, `DateTime.TryParse()`, `ParseExact()`, `TryParseExact()`, `ToString()`, and similar should always receive a format provider or format string. Never call `DateTime.Parse("2026-08-05")` without a format provider; use `DateTime.ParseExact("2026-08-05", "yyyy-MM-dd", CultureInfo.InvariantCulture)` instead.
 - Do not allocate `JsonSerializerOptions` repeatedly in hot paths or loops. Cache and reuse static readonly options instances.
 
 ### Networking

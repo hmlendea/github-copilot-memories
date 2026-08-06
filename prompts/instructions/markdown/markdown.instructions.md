@@ -5,10 +5,13 @@ applyTo: "**/*.md"
 
 ## Markdown
 
+### Intendation
+- Use two spaces for each indentation level.
+- Do not use tabs for indentation.
+
 ### Lists
 
 - When a list is introduced by a sentence ending with a colon, place the first list item on the immediately following line. Do not insert a blank line.
-- Prefix every list marker with exactly one leading space, including top-level list items.
 
 Incorrect:
 ```markdown
@@ -27,12 +30,21 @@ Roman designs eventually improve:
 Correct:
 ```markdown
 Roman designs eventually improve:
- - medical instruments
- - electromechanical communication
- - archive indexing
- - legal and technical standardisation
-   - distances
-   - weights
-   - currencies
-   - etc.
+- medical instruments
+- electromechanical communication
+- archive indexing
+  - legal and technical standardisation
+  - distances
+  - weights
+  - currencies
+  - etc.
+```
+
+### Headings
+
+- Headings must use title case.
+
+Example:
+```markdown
+## The Dawn of Man
 ```

@@ -10,6 +10,7 @@ applyTo: "**"
 - When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spnish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another anicient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
+  - actual <!-- adjective, meaning real or genuine in context such as "actual work" --> → genuine / real
   - adamantite → adamantium
   - adhesive bandage → plaster
   - against <!-- preposition, meaning in contravention of a rule or law --> → contrary to / in violation of
@@ -24,9 +25,11 @@ applyTo: "**"
   - anger <!-- noun, meaning a feeling of intense displeasure or hostility --> → fury / ire
   - angry <!-- adjective, meaning feeling intense displeasure or hostility --> → furious
   - answer <!-- verb, meaning to reply to a question or message --> → respond / reply
+  - app <!-- noun, meaning a software application designed for a specific purpose --> → application
   - around <!-- adverb/preposition, meaning approximately --> → approximately, circa
   - around <!-- adverb/preposition, meaning in the vicinity of or surrounding --> → surrounding / nearby
   - ask <!-- verb, meaning to pose a question or make a request --> → inquire
+  - ask <!-- verb, meaning to request something specific, as in "I asked for the other cup" --> → request
   - avoid <!-- verb, meaning to abstain from doing something --> → refrain from
   - avoid <!-- verb, meaning to deliberately reject or exclude someone socially --> → shun
   - avoid <!-- verb, meaning to evade or keep away from something --> → evade
@@ -40,6 +43,7 @@ applyTo: "**"
   - basically → essentially / fundamentally
   - bathroom → toilet
   - bathroom sink → washbasin
+  - bay <!-- noun, meaning a broad coastal inlet --> → gulf / estuary
   - beach <!-- noun, meaning a sandy or pebbly shore beside a body of water --> → shore / strand
   - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
   - beehive <!-- noun, meaning a structure housing a bee colony --> → apiary
@@ -66,9 +70,13 @@ applyTo: "**"
   - buffer <!-- noun, meaning a protective margin or reserve in technical or figurative use --> → cushion / reserve
   - build <!-- verb, as in "build a building/structure" --> → construct
   - building <!-- noun, as in "a building/structure" --> → structure / edifice
+  - burglar → intruder
   - busy <!-- adjective, meaning actively occupied or engaged --> → occupied
   - buy → purchase
+  - charm <!-- noun, meaning a small decorative or magical object --> → amulet / talisman
+  - charm <!-- noun, meaning attractive quality --> → allure / appeal
   - cheap <!-- adjective, meaning low in price or cost --> → inexpensive / economical
+  - chunk → segment / fragment
   - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
   - climb down → descend
@@ -79,7 +87,9 @@ applyTo: "**"
   - come back → return
   - come in → enter
   - come on in → enter
+  - config → configuration
   - cookie → biscuit
+  - cop <!-- noun, meaning a police officer --> → police officer
   - cunning <!-- adjective, meaning skilled at achieving goals through devious means --> → astute / devious
   - customize <!-- verb, meaning to modify to personal preferences --> → personalise
   - Czech Republic → Czechia
@@ -116,9 +126,12 @@ applyTo: "**"
   - empty <!-- adjective, meaning containing nothing; devoid of content --> → vacant / devoid
   - enable <!-- verb, meaning to activate something --> → activate
   - enable <!-- verb, meaning to make something possible --> → facilitate
+  - end <!-- noun, meaning final part or conclusion --> → conclusion / terminus / final part
   - end <!-- verb --> → conclude / terminate
+  - ending <!-- noun, meaning final section of a story or process --> → conclusion / denouement
   - enough → sufficient
   - entry <!-- noun, in data, lists, logs, or records --> → record / item
+  - etc <!-- abbreviation, meaning and other similar items --> → et cetera
   - evil <!-- adjective, meaning deliberately causing harm --> → malicious
   - evil <!-- adjective, meaning profoundly immoral or malevolent --> → malevolent
   - evil <!-- adjective, meaning wickedly criminal or unjust --> → nefarious
@@ -130,7 +143,7 @@ applyTo: "**"
   - fetch → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant
   - find <!-- verb, meaning to locate or discover --> → discover / locate
-  - finish <!-- verb, meaning to reach the end of a process or task --> → complete / conclude
+  - finish <!-- verb, meaning to reach the end of a process or task --> → complete / conclude / finalise
   - flashlight → torch
   - flat <!-- noun, the living space --> → apartment
   - flat tyre → punctured tyre
@@ -165,7 +178,8 @@ applyTo: "**"
   - gas station → petrol station
   - gas tank → fuel tank
   - gather <!-- verb, meaning to assemble in a group --> → assemble / congregate
-  - gather <!-- verb, meaning to collect or accumulate objects or resources --> → collect / accumulate
+  - gather <!-- verb, meaning to collect or accumulate objects or resources --> → collect / accumulate / procure
+  - gather <!-- verb, meaning to meet at a planned place and time --> → rendezvous
   - get <!-- verb, meaning to obtain or acquire something --> → obtain / acquire
   - gift <!-- noun, meaning a natural talent or aptitude --> → aptitude / talent
   - gilded <!-- adjective, meaning covered in gold or having a golden appearance, in formal or literary writing --> → aureate
@@ -180,6 +194,7 @@ applyTo: "**"
   - grasp <!-- verb, meaning to physically seize or grip something --> → seize / grip
   - gray → grey
   - great <!-- adjective, meaning considerable in size, extent, or degree --> → considerable / magnificent
+  - great <!-- interjection, meaning approval or resigned acknowledgement, as in "Great, that's what I asked for" --> → excellent / marvellous
   - greed <!-- noun, meaning an intense desire to acquire wealth or possessions --> → avarice
   - greedy <!-- adjective, meaning excessively desirous of wealth or possessions --> → avaricious
   - grim <!-- adjective, meaning forbidding or ominous in appearance or character --> → severe / ominous
@@ -187,6 +202,8 @@ applyTo: "**"
   - growth <!-- noun, meaning development --> → development
   - halt <!-- verb, meaning to cease movement or operation --> → cease / suspend
   - happen <!-- verb, meaning to occur --> → occur
+  - has <!-- verb, meaning to contain --> → contains
+  - have <!-- verb, meaning to contain --> → contain
   - hard <!-- adjective, meaning difficult --> → arduous / demanding
   - harsh <!-- adjective, meaning severe or unpleasant in manner or nature --> → severe / abrasive
   - hate <!-- verb --> → detest / abhor
@@ -218,9 +235,12 @@ applyTo: "**"
   - kill <!-- verb, in computing --> → terminate
   - kill <!-- verb, meaning to cause the death of a living being --> → slay / eliminate
   - kind <!-- noun, meaning a type or category --> → type / category
+  - know <!-- verb, meaning to be acquainted with a person or community --> → be acquainted with / be familiar with
   - know <!-- verb, meaning to be aware of or comprehend --> → be aware of / comprehend
   - last <!-- verb, meaning to endure --> → endure / persist
   - law <!-- noun, meaning legislation or statute --> → legislation / statute
+  - lawyer → advocate / counsel
+  - laziness <!-- noun, meaning unwillingness to exert effort --> → indolence
   - leave <!-- verb, meaning to depart --> → depart
   - leaves <!-- noun, plural of leaf, meaning the flat green parts of a plant --> → foliage
   - light <!-- noun, meaning illumination or luminosity --> → illumination / luminosity
@@ -250,6 +270,8 @@ applyTo: "**"
   - meek <!-- adjective, meaning submissive or lacking assertiveness --> → docile / submissive
   - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - mend <!-- verb, meaning to repair or restore something --> → repair / restore
+  - Middle Ages → Mediaeval Era
+  - misc → miscellaneous
   - might <!-- noun, meaning great power or strength --> → power / potency
   - misbehave <!-- verb, meaning to conduct oneself improperly --> → misconduct onself / act improperly
   - misclick → accidental click
@@ -262,6 +284,7 @@ applyTo: "**"
   - need <!-- verb, meaning to require --> → require
   - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
+  - nonetheless → nevertheless
   - odd <!-- adjective, meaning peculiar or unusual --> → peculiar / anomalous
   - of course → certainly / naturally
   - offspring <!-- noun, meaning the progeny of a person, animal, or plant --> → progeny
@@ -295,6 +318,7 @@ applyTo: "**"
   - remainder <!-- noun, meaning the part left over after the rest has been used, taken, or dealt with --> → rest / residue / balance
   - remember <!-- verb, meaning to bring something back to mind --> → recall / recollect
   - reminder <!-- noun, meaning something that prompts a person to remember --> → prompt / notification
+  - replacement <!-- noun, meaning a substitute that takes the place of another item --> → substitute
   - restroom → toilet
   - retreat <!-- verb, meaning to withdraw from a position or confrontation --> → withdraw / fall back
   - right <!-- adjective, meaning correct or accurate, as opposed to incorrect --> → correct
@@ -327,12 +351,15 @@ applyTo: "**"
   - shoot <!-- verb, meaning to discharge a projectile weapon --> → fire / discharge
   - shopkeeper → merchant
   - short <!-- adjective, meaning brief in duration --> → brief
+  - should <!-- modal verb, meaning recommendation or advisability --> → is advisable to / is recommended to
   - show <!-- verb, meaning to demonstrate or display --> → demonstrate / display / exhibit
   - sick <!-- adjective, meaning ill or unwell --> → ill / infirm
   - side <!-- noun, meaning an aspect or perspective of something --> → aspect / perspective
   - sidewalk <!-- noun, meaning a paved pedestrian path alongside a road --> → pavement
   - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
   - slim <!-- adjective, meaning slender or of small girth --> → slender / svelte
+  - sloth <!-- noun, meaning habitual laziness --> → indolence
+  - slothful <!-- adjective, meaning habitually lazy --> → indolent
   - sluggish <!-- adjective, meaning slow-moving or lacking energy --> → lethargic / torpid
   - small <!-- adjective, meaning little in size or degree --> → minor
   - smart <!-- adjective, meaning intelligent or perceptive --> → intelligent
@@ -340,6 +367,9 @@ applyTo: "**"
   - smooth <!-- adjective, meaning having an even, regular surface --> → seamless / sleek
   - solar system <!-- noun, astronomy, one other than the Sun's --> → star system
   - sorrow <!-- noun, meaning deep distress or grief --> → grief / anguish
+  - sort <!-- verb, meaning to organise items into order, as in alphabetical sorting --> → arrange / classify
+  - sort out <!-- phrasal verb, meaning to resolve or organise a problem or situation --> → resolve / organise
+  - speaker <!-- noun, meaning a person who speaks publicly --> → orator
   - speed <!-- noun, meaning the rate at which something moves or operates --> → velocity
   - split <!-- verb, meaning to divide or separate into parts --> → divide / sever
   - spot <!-- verb, meaning to notice, identify, or detect --> → detect / identify / observe
@@ -369,6 +399,7 @@ applyTo: "**"
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
   - the other way around → vice versa
   - thick <!-- adjective, meaning dense in consistency or composition --> → dense
+  - thievery <!-- noun, meaning the act or practice of stealing --> → larceny
   - thin <!-- adjective, meaning of little depth or slender in form --> → slender / attenuated
   - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate
   - think about <!-- verb, meaning to consider --> → consider
@@ -397,6 +428,7 @@ applyTo: "**"
   - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
   - underloaded <!-- adjective, meaning insufficiently loaded or below capacity --> → under-utilised / below capacity
   - understand <!-- verb, meaning to comprehend --> → comprehend
+  - untouched <!-- adjective, meaning not altered or affected --> → intact
   - unlucky → unfortunate
   - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
   - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
@@ -413,11 +445,13 @@ applyTo: "**"
   - weird → bizarre
   - well <!-- meaning effectively --> → effectively / properly
   - well <!-- meaning satisfactorily --> → satisfactorily / adequately
+  - well enough <!-- phrase, meaning to a sufficient degree --> → sufficiently / adequately
   - whole <!-- adjective, meaning entire or complete --> → entire / complete
   - wide <!-- adjective, meaning broad or expansive --> → broad / expansive
   - wield <!-- verb, meaning to hold and use a weapon or tool effectively --> → employ / exercise
   - wild <!-- adjective, meaning living or occurring in an undomesticated state --> → feral / untamed
   - will/would need <!-- verb, meaning to be necessary --> → will/would be necessary
+  - wish <!-- verb, meaning to desire something --> → desire
   - wipe <!-- verb, meaning to remove or erase something completely --> → erase / eliminate
   - wisdom <!-- noun, meaning the quality of having experience, knowledge, and good judgement --> → sagacity
   - withstand <!-- verb, meaning to resist or endure something difficult --> → resist / endure
@@ -440,6 +474,8 @@ applyTo: "**"
   - write <!-- verb, meaning to compose or document --> → compose / document
   - wrong <!-- adjective, meaning incorrect or erroneous, as opposed to right --> → erroneous / incorrect
   - wrong <!-- adjective, meaning unjust or inequitable --> → unjust / inequitable
+  - wroth <!-- adjective, meaning intensely angry --> → irate / indignant
   - yard <!-- noun, meaning garden or outdoor area --> → garden
   - yield <!-- verb, meaning to produce or generate a result or crop --> → produce / generate
+  - yield <!-- verb, meaning to generate outcomes over time, as in "yielding results" --> → produce / generate
   - yield <!-- verb, meaning to surrender or concede to pressure or force --> → concede / capitulate

@@ -21,7 +21,7 @@ This is the `README.md` template that must be used.
 <!-- Human-friendly project title (not necessarily the repository name). Must come after the badges. -->
 # [[Project Title]]
 
-[[[Clear description of what this project does and why it is useful.]]]
+[[[Clear description of what this project provides and why it is valuable.]]]
 
 <!-- Only if `preview.png` exists. -->
 ![Preview screenshot](preview.png)
@@ -36,17 +36,17 @@ This is the `README.md` template that must be used.
 ![[[Screenshot 1 description]]](screenshots/[[screenshot1.png]])
 ![[[Screenshot 2 description]]](screenshots/[[screenshot2.png]])
 
-## ✨ Features
+## ✨ Capabilities
 
-- [[Feature 1]]
-- [[Feature 2]]
+- [[Capability 1]]
+- [[Capability 2]]
 
 ## 🚀 Usage
 
 <!-- Provide a minimal but realistic example showing how to use the project. For CLI tools, demonstrate with a shell command. For libraries, demonstrate with a code snippet. For web apps, describe the main workflow. -->
 [[Usage example]]
 
-<!-- Only if there are notable caveats, constraints, or missing features worth highlighting. -->
+<!-- Only if there are notable caveats, constraints, or missing capabilities worth emphasising. -->
 ## ⚠️ Known Limitations
 
 - [[Limitation 1]]
@@ -54,7 +54,7 @@ This is the `README.md` template that must be used.
 <!-- Only if `FAQ.md` exists. -->
 ## ❓ FAQ
 
-See [FAQ.md](./FAQ.md) for answers to frequently asked questions.
+See [FAQ.md](./FAQ.md) for responses to frequently raised inquiries.
 
 <!-- Only if this is an end-user application with meaningful OS, hardware, or runtime prerequisites. -->
 ## 🖥️ System Requirements
@@ -274,7 +274,7 @@ The key directories inside `[[MAIN_PROJECT_NAME]]/` are:
 <!-- Only if `ROADMAP.md` exists. -->
 ## 🗺️ Roadmap
 
-See [ROADMAP.md](./ROADMAP.md) for planned features and upcoming changes.
+See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 
 <!-- Only if docs/ directory, GitHub Pages, or GitHub Wiki exists. -->
 ## 📚 Documentation
@@ -289,7 +289,7 @@ See the [API Reference]([[API_DOCS_URL]]) for the full type and method documenta
 <!-- Only if `ARCHITECTURE.md` exists or `docs/architecture/` directory exists. -->
 ## 🏗️ Architecture
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for an overview of the system design and component interactions.
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for a structural synopsis and component interactions.
 
 <!-- Only if `MIGRATION.md` or `UPGRADING.md` exists. -->
 ## 🔄 Migration Guide
@@ -298,7 +298,7 @@ See [MIGRATION.md](./MIGRATION.md) for instructions on upgrading from previous v
 
 ## 🤝 Contributing
 
-You are welcome to bring any suggestion, feedback or modification to this project.
+You are welcome to submit any suggestion, feedback, or modification to this project.
 
 When doing so, please:
 <!-- Only if relevant (e.g. applications, libraries, mods, etc). -->
@@ -314,7 +314,10 @@ When doing so, please:
 - Add unit tests for any new or changed functionality
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details on contributing to this project.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for further information on contributing to this project.
+
+<!-- Only if `ROADMAP.md` exists. -->
+See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 
 <!-- Only if there are related projects. -->
 ## 🔗 Related Projects
@@ -338,12 +341,12 @@ See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
 For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
 
 <!-- Always include this Support section -->
-## 💝 Helping out
+## 💝 Helping outellput
 
-Discovered a problem or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
+Discovered a problemroble or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
 <!-- Only if `.github/FUNDING.yml` exists. -->
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
+If you findonsiind this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
 
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
@@ -352,4 +355,4 @@ If you find this project useful, consider [funding it](https://hmlendea.go.ro/fu
 ## 📄 License
 
 This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
-See [LICENSE](./LICENSE) for details.
+See [LICENSE](./LICENSE) for further information.

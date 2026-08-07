@@ -67,6 +67,7 @@ applyTo: "**/*.{cs}"
 
 - Keep methods small and focused on a single responsibility. If a method grows beyond ~20-30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
 - Avoid duplicated code; respect the DRY (Don't Repeat Yourself) principle. Extract common logic into well-named private helper methods or utility functions. Never copy-paste code across multiple methods or classes.
+- Implementation classes must NOT contain mapping methods. All mapping logic must be implemented as extension methods in a dedicated `*MappingExtensions.cs` file under a `*.Mappings` namespace.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions (`public void ResetCombat()\n    => throw new NotImplementedException();`). A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`.
 - Never leave unreachable statements after an unconditional `return`, `throw`, `continue`, `break`, or exhaustive switch expression return.

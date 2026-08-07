@@ -28,13 +28,16 @@ applyTo: "**"
   - answer <!-- verb, meaning to reply to a question or message --> → respond / reply
   - app <!-- noun, meaning a software application designed for a specific purpose --> → application
   - around <!-- adverb/preposition, meaning approximately --> → approximately, circa
-  - around <!-- adverb/preposition, meaning in the vicinity of or surrounding --> → surrounding / nearby
+  - around <!-- adverb/preposition, meaning in the vicinity of or surrounding --> → surrounding / near
   - amid <!-- preposition, meaning in the middle of or during --> → during
+  - assume <!-- verb, meaning to suppose or take for granted without proof --> → presume / suppose
+  - assumption <!-- noun, meaning something accepted as true without proof --> → premise / supposition
   - ask <!-- verb, meaning to pose a question or make a request --> → inquire
   - ask <!-- verb, meaning to request something specific, as in "I asked for the other cup" --> → request
   - avoid <!-- verb, meaning to abstain from doing something --> → refrain from
   - avoid <!-- verb, meaning to deliberately reject or exclude someone socially --> → shun
   - avoid <!-- verb, meaning to evade or keep away from something --> → evade
+  - average <!-- adjective, meaning typical or ordinary --> → typical / mean
   - awesome <!-- adjective, meaning impressively great or remarkable --> → remarkable / extraordinary
   - axe <!-- noun, meaning a small, one-handed chopping tool --> → hatchet
   - bad <!-- adjective, meaning morally wrong or harmful --> → vile / adverse
@@ -49,7 +52,9 @@ applyTo: "**"
   - beach <!-- noun, meaning a sandy or pebbly shore beside a body of water --> → shore / strand
   - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
   - beehive <!-- noun, meaning a structure housing a bee colony --> → apiary
-  - begin → commence
+  - begin <!-- verb --> → start <!-- Preferred --> / commence
+  - beginning <!-- noun, meaning the initial part of a story, process, or period --> → start <!-- Preferred --> / commencement / outset / inception
+  - beginning <!-- verb (present participle/gerund), meaning commencing or starting an action --> → starting / commencing / initiating
   - behaviour <!-- noun, meaning the manner in which a person or entity coducts itself --> → conduct / deportment
   - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
   - big <!-- adjective, meaning physically large in size --> → large
@@ -61,6 +66,7 @@ applyTo: "**"
   - blight <!-- noun, meaning a disease or force that destroys or corrupts --> → affliction / pestilence
   - blueprint <!-- noun, meaning a design or detailed plan --> → plan / schematic
   - bold <!-- adjective, meaning daring or courageous --> → audacious
+  - border <!-- noun, meaning an edge, boundary, or dividing line between areas or jurisdictions --> → frontier / boundary
   - bookkeeping <!-- noun, meaning the recording and management of financial accounts --> → accountancy
   - botched <!-- adjective, meaning carried out poorly or carelessly --> → defective / abortive
   - bottleneck <!-- noun, meaning a point of congestion that limits flow or progress --> → constriction / limitation
@@ -89,7 +95,12 @@ applyTo: "**"
   - cheap <!-- adjective, meaning low in price or cost --> → inexpensive / economical
   - chunk → segment / fragment
   - ceiling <!-- noun, meaning an upper bound, as in "throughput ceiling" --> → capacity limit
+  - cease <!-- verb, meaning to stop or come to an end --> → terminate
+  - ceasefire <!-- noun, meaning a negotiated or declared suspension of hostilities --> → armistice / truce
+  - certain <!-- adjective, meaning definite or assured --> → definite / assured
+  - certainly <!-- adverb, meaning with confidence or without doubt --> → assuredly / undoubtedly
   - cities <!-- noun, plural, meaning urban settlements --> → urban centres
+  - claim <!-- verb, meaning to state, maintain, or assert something as true or due --> → assert / allege
   - cluster <!-- noun or verb, meaning a close grouping of similar items --> → aggregate / aggregation
   - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
@@ -97,22 +108,28 @@ applyTo: "**"
   - climb up → ascend
   - clockwork <!-- noun/adjective, meaning precise mechanical operation --> → mechanism / mechanical
   - cobweb <!-- noun, meaning a spider's web --> → spider web
+  - cofferdam <!-- noun, meaning a temporary watertight enclosure used for construction in water --> → caisson / temporary enclosure
   - cold <!-- adjective, meaning low in temperature --> → frigid / glacial
   - color → colour
+  - common <!-- adjective, meaning widespread, usual, or shared by many --> → prevalent / ordinary
   - come back → return
   - come in → enter
   - come on in → enter
   - config → configuration
   - cookie → biscuit
   - cop <!-- noun, meaning a police officer --> → police officer
+  - core <!-- noun or adjective, meaning central and fundamental part --> → central / principal
   - craftsman → artisan
+  - cross <!-- verb, meaning to pass from one side to another, as in crossing a river --> → traverse
   - cunning <!-- adjective, meaning skilled at achieving goals through devious means --> → astute / devious
   - customize <!-- verb, meaning to modify to personal preferences --> → personalise
   - Czech Republic → Czechia
   - damp <!-- adjective, meaning slightly wet or moist --> → moist
   - dark <!-- adjective, meaning lacking light or deeply obscure; not as a title or proper name (e.g. not "Dark Lord") --> → dim / obscure
   - death <!-- noun, referring to the passing of a person --> → demise
+  - debris <!-- noun, meaning scattered fragments, wreckage, or rubble --> → rubble / detritus
   - deed <!-- noun, meaning an action or accomplishment --> → action / feat
+  - deliberately <!-- adverb, meaning intentionally or with full awareness --> → intentionally / purposefully
   - deepen <!-- verb, meaning to make more intense or profound --> → intensify
   - demand <!-- noun, meaning a requirement --> → requirement
   - demand <!-- verb, meaning to require insistently --> → require
@@ -124,6 +141,7 @@ applyTo: "**"
   - disable <!-- verb, meaning to deactivate or prevent from functioning --> → deactivate
   - dislike <!-- verb, meaning to regard with disapproval or aversion --> → disapprove of / object to
   - diminish <!-- verb, meaning to make or become smaller or weaker --> → reduce / attenuate
+  - dispersal <!-- noun, meaning the act or process of distributing or scattering --> → dissemination / diffusion
   - disruption <!-- noun, meaning interruption of normal operation --> → interruption
   - disturb <!-- verb, meaning to interrupt, unsettle, or interfere with --> → disrupt / unsettle
   - downtime <!-- noun, meaning a period when a system is not operational --> → inactivity period / interruption period
@@ -160,13 +178,24 @@ applyTo: "**"
   - evil <!-- adjective, meaning deliberately causing harm --> → malicious
   - evil <!-- adjective, meaning profoundly immoral or malevolent --> → malevolent
   - evil <!-- adjective, meaning wickedly criminal or unjust --> → nefarious
+  - facing <!-- adjective or participle, meaning positioned opposite, as in "facing one another" --> → opposite / confronting
   - fair <!-- adjective, meaning just or equitable --> → equitable / just
   - fast <!-- adjective, meaning moving or occurring at high velocity --> → rapid
   - faster <!-- adverb/comparative adjective, meaning at greater speed --> → more rapidly
+  - far better <!-- phrase, meaning substantially improved in quality or outcome --> → substantially better / considerably better
+  - far bigger <!-- phrase, meaning substantially greater in size or scale --> → substantially larger / considerably larger
+  - far larger <!-- phrase, meaning substantially greater in size or scale --> → substantially larger / considerably larger
+  - far less <!-- phrase, meaning substantially smaller in amount or degree --> → substantially less / considerably less
+  - far later <!-- phrase, meaning at a substantially more delayed time --> → substantially later / considerably later
+  - far longer <!-- phrase, meaning substantially greater in duration --> → substantially longer / considerably longer
+  - far more <!-- phrase, meaning substantially greater in amount or degree --> → substantially more / considerably more
+  - far smaller <!-- phrase, meaning substantially reduced in size or scale --> → substantially smaller / considerably smaller
+  - far sooner <!-- phrase, meaning at a substantially earlier time --> → substantially sooner / considerably sooner
+  - far worse <!-- phrase, meaning substantially more severe or adverse --> → substantially worse / considerably worse
   - faucet → tap
   - feedback <!-- noun, meaning a response or evaluation --> → response / evaluation
   - feel <!-- verb, meaning to think or believe, in contexts such as "do we feel we are ready?" --> → believe / consider / judge
-  - fetch → retrieve
+  - fetch <!-- verb, meaning to go and bring or to retrieve something --> → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant
   - find <!-- verb, meaning to locate or discover --> → discover / locate
   - finish <!-- verb, meaning to reach the end of a process or task --> → complete / conclude / finalise
@@ -189,12 +218,15 @@ applyTo: "**"
   - forget <!-- verb, meaning to fail to remember something --> → fail to recall
   - foul <!-- adjective, meaning offensive or disgustingly unpleasant --> → putrid / noxious
   - free <!-- adjective, meaning unencumbered or liberated --> → unencumbered / liberated
+  - freed <!-- adjective or past participle, meaning released from constraint, captivity, or obligation --> → liberated / emancipated
   - freedom → liberty
   - fresh <!-- adjective, meaning newly produced or not previously encountered --> → novel / pristine
+  - refrain <!-- verb, meaning to abstain from an action --> → abstain
   - fright <!-- noun, meaning fear or terror --> → terror
   - frighten <!-- verb, meaning to scare --> → terrify
   - frightened <!-- adjective, meaning scared --> → terrified
   - frightening <!-- adjective, meaning scary --> → terrifying
+  - fuel <!-- verb, meaning to intensify, sustain, or provoke something such as conflict, suspicion, or accusations --> → intensify / exacerbate / provoke
   - fulfillment <!-- noun, meaning completion or realisation of something desired --> → completion / realisation
   - garbage → rubbish
   - garbage can → dustbin
@@ -228,11 +260,15 @@ applyTo: "**"
   - grim <!-- adjective, meaning forbidding or ominous in appearance or character --> → severe / ominous
   - grow <!-- verb, meaning to develop --> → develop
   - growth <!-- noun, meaning development --> → development
+  - growth <!-- noun, meaning increase in size, number, or extent, as in "population growth" --> → expansion / increase
+  - growth policy <!-- noun phrase, meaning a policy intended to increase development or expansion --> → development policy / expansion policy
+  - growth rate <!-- noun phrase, meaning the pace of development or expansion --> → development rate / expansion rate
   - halt <!-- verb, meaning to cease movement or operation --> → cease / suspend
   - happen <!-- verb, meaning to occur --> → occur
   - has <!-- verb, meaning to contain --> → contains
   - have <!-- verb, meaning to contain --> → contain
   - hard <!-- adjective, meaning difficult --> → arduous / demanding
+  - hardening <!-- noun, meaning the process of making something harder, stronger, or more resilient --> → fortification / reinforcement
   - harsh <!-- adjective, meaning severe or unpleasant in manner or nature --> → severe / abrasive
   - hate <!-- verb --> → detest / abhor
   - heal <!-- verb, meaning to recover from illness or injury --> → recover / recuperate
@@ -254,12 +290,14 @@ applyTo: "**"
   - I wonder <!-- phrase, expressing curiosity about something --> → I am curious
   - illness <!-- noun, meaning a disease or medical condition --> → malady / infirmity
   - income <!-- noun, meaning money received or earned --> → revenue / earnings
+  - inside <!-- preposition, meaning within a process, forum, or institution, as in "inside this institution" --> → within
   - inn <!-- noun, meaning a drinking and eating establishment --> → tavern
   - inn <!-- noun, meaning a lodging establishment --> → hostelry
   - is/was/are needed <!-- verb, meaning to be necessary --> → is/was/are necessary
   - jail <!-- noun --> → prison
   - jail <!-- verb --> → incarcerate
   - jailor → prison guard
+  - join <!-- verb, meaning to connect, combine, or become part of something --> → unite / attach
   - keen <!-- adjective, meaning enthusiastic or eager --> → avid / ardent
   - keep <!-- verb, meaning to maintain a state or condition --> → maintain
   - keep <!-- verb, meaning to retain or preserve --> → retain / preserve
@@ -272,6 +310,7 @@ applyTo: "**"
   - last <!-- verb, meaning to endure --> → endure / persist
   - law <!-- noun, meaning legislation or statute --> → legislation / statute
   - lawyer → advocate / counsel
+  - layer <!-- noun, meaning a distinct level or stratum, as in layers of a city --> → stratum
   - landlord → proprietor
   - landscape <!-- noun, meaning a broad situational view or terrain --> → panorama / terrain
   - laziness <!-- noun, meaning unwillingness to exert effort --> → indolence
@@ -309,7 +348,10 @@ applyTo: "**"
   - man → male
   - manhood → masculinity
   - manly → masculine
+  - masonry <!-- noun, meaning construction using stone or brick --> → stone construction / brick construction
   - many <!-- adjective, constituting a large number --> → numerous
+  - match <!-- verb, meaning to correspond or be equivalent to --> → correspond / align with
+  - matched <!-- adjective or past participle, meaning corresponding or aligned --> → corresponding / aligned
   - meek <!-- adjective, meaning submissive or lacking assertiveness --> → docile / submissive
   - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - mend <!-- verb, meaning to repair or restore something --> → repair / restore
@@ -326,6 +368,7 @@ applyTo: "**"
   - nauseous → nauseated
   - need <!-- noun, meaning a necessity or requirement --> → necessity / requirement
   - need <!-- verb, meaning to require --> → require
+  - needs <!-- noun, plural, meaning necessities or requirements --> → necessities / requirements
   - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
   - nonetheless → nevertheless
@@ -335,9 +378,13 @@ applyTo: "**"
   - offspring <!-- noun, meaning the progeny of a person, animal, or plant --> → progeny
   - often → frequently
   - old <!-- adjective, in historical-age contexts meaning ancient or aged; do not replace numeric age constructions such as "3,000 years old" --> → ancient / aged
+  - oldest <!-- adjective, in chronological or historical ordering contexts meaning earliest --> → earliest
   - open <!-- verb, meaning to access or expose --> → access / expose
+  - open <!-- verb, meaning to formally begin, dedicate, or commence a venue, event, or institution --> → inaugurate
+  - opening <!-- noun, meaning the formal beginning or dedication of a venue, event, or institution --> → inauguration
   - outcome <!-- noun, meaning a result or consequence --> → result / consequence
   - otherwise <!-- adverb, meaning in contradiction, as in "he says otherwise" --> → to the contrary
+  - outside <!-- preposition, meaning external to a process, forum, or institution, as in "outside arbitration" --> → external / beyond
   - overhead <!-- noun, meaning indirect operating expense --> → operational cost
   - outdone <!-- adjective or past participle, meaning surpassed or exceeded --> → surpassed / exceeded
   - output <!-- noun, meaning produced quantity or result --> → production
@@ -352,6 +399,7 @@ applyTo: "**"
   - own <!-- verb, meaning to possess, only when used as a standalone predicate, not as a participial modifier --> → possess
   - ownership <!-- noun, meaning the state or fact of possessing something --> → possession / proprietorship
   - pathway <!-- noun, meaning a route or process channel --> → channel / conduit
+  - pattern <!-- noun, meaning a recurring arrangement, model, or structure --> → configuration / schema
   - pajamas → pyjamas
   - paperwork <!-- noun, meaning administrative documents or bureaucratic procedures --> → documentation
   - parking lot → car park
@@ -363,6 +411,7 @@ applyTo: "**"
   - post-war → postbellum
   - prewar → prebellum
   - pre-war → prebellum
+  - proof <!-- noun, meaning evidence that establishes truth or validity --> → evidence / verification
   - prevailing <!-- adjective, meaning most common or dominant at a given time --> → predominant
   - proud <!-- adjective, meaning feeling superior to others or self-important --> → haughty / arrogant
   - put <!-- verb, meaning to place or position --> → place / position
@@ -375,8 +424,20 @@ applyTo: "**"
   - remember <!-- verb, meaning to bring something back to mind --> → recall / recollect
   - reach <!-- noun, meaning scope or extent, as in "fiscal reach" --> → scope
   - reminder <!-- noun, meaning something that prompts a person to remember --> → prompt / notification
+  - repel <!-- verb, meaning to drive back or fend off an attack or approach --> → repulse / ward off
+  - remove <!-- verb, meaning to take away, extract, or eliminate something --> → extract / eliminate
+  - removal <!-- noun, meaning the act of taking away, extracting, or eliminating something --> → extraction / elimination
   - replacement <!-- noun, meaning a substitute that takes the place of another item --> → substitute
+  - recovery <!-- noun, meaning restoration to a former condition or recuperation after harm --> → restoration / recuperation
+  - research <!-- noun, meaning systematic investigation to establish facts or conclusions --> → investigation / study
+  - reliable <!-- adjective, meaning consistently dependable or trustworthy --> → dependable / credible
+  - render <!-- verb, meaning to cause, provide, or present formally --> → cause / provide / present
+  - rescue <!-- verb, meaning to save or recover someone or something from danger --> → extricate / recover
+  - reshape <!-- verb, meaning to alter the form, structure, or character of something --> → reform / reconfigure
+  - retention <!-- noun, meaning continued possession, preservation, or remembrance --> → preservation / continuity
+  - restore <!-- verb, meaning to return something to a former or proper state --> → reinstate / re-establish
   - restroom → toilet
+  - retrain <!-- verb, meaning to train again for a different skill, role, or standard --> → re-educate / reskill
   - retreat <!-- verb, meaning to withdraw from a position or confrontation --> → withdraw / fall back
   - right <!-- adjective, meaning correct or accurate, as opposed to incorrect --> → correct
   - rise <!-- verb, meaning to ascend --> → ascend
@@ -390,11 +451,13 @@ applyTo: "**"
   - run out of <!-- verb phrase, meaning to exhaust a supply of something --> → exhaust / deplete
   - rush <!-- verb, meaning to move or act with great urgency --> → hasten / charge
   - sail <!-- verb, meaning to travel by vessel, especially wind-propelled --> → navigate
+  - safely <!-- adverb, meaning without harm or danger --> → securely / without hazard
   - salesman <!-- noun, meaning a person who sells goods or services --> → vendor / merchant
   - same <!-- adjective, meaning exactly alike or unchanged in identity --> → identical
   - scattered <!-- adjective, meaning spread irregularly over an area --> → dispersed
   - scary <!-- adjective, meaning frightening or causing fear --> → terrifying
   - schedule <!-- noun, meaning a plan or timetable --> → timetable
+  - seed <!-- noun, meaning a source or origin from which something develops --> → origin / source
   - seafaring <!-- adjective, meaning relating to travel or work at sea --> → nautical / maritime
   - seafarer <!-- noun, meaning a person who travels or works at sea --> → mariner
   - seaman <!-- noun, meaning a person who works at sea --> → mariner
@@ -442,7 +505,9 @@ applyTo: "**"
   - stab <!-- verb, meaning to pierce or wound with a pointed weapon --> → pierce / impale
   - staffs <!-- noun, plural of staff --> → staves
   - stall <!-- verb, meaning to delay progress or cease advancing --> → impede / suspend
+  - stand <!-- verb, meaning to remain positioned or situated, as in standing in a building --> → remain / be situated
   - start <!-- verb, meaning to commence or initiate --> → commence / initiate
+  - starvation <!-- noun, meaning severe suffering or death caused by lack of food --> → famine / inanition
   - steadfast <!-- adjective, meaning resolute and unwavering in purpose --> → resolute / tenacious
   - stealthy <!-- adjective, meaning acting in a cautious and secretive manner --> → covert / clandestine
   - stern <!-- adjective, meaning austere or strict in manner --> → austere
@@ -454,6 +519,7 @@ applyTo: "**"
   - strengthen <!-- verb, meaning to make stronger or more robust --> → fortify / reinforce
   - strengthening <!-- noun, meaning the process of making stronger --> → reinforcement / fortification
   - strong <!-- adjective, meaning physically powerful or robust --> → robust / sturdy
+  - survival <!-- noun, meaning continued existence or remaining alive despite danger --> → persistence / continuance
   - swamp <!-- noun, meaning a low-lying wetland area --> → marsh / bog
   - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
@@ -473,13 +539,16 @@ applyTo: "**"
   - think <!-- verb, meaning to consider or contemplate --> → consider / contemplate
   - think about <!-- verb, meaning to consider --> → consider
   - thinking <!-- noun, meaning the process or result of considering something --> → consideration / reflection
+  - threat <!-- noun, meaning an indication or source of potential harm or danger --> → menace / peril
   - three times → thrice
   - throughput <!-- noun, meaning rate of processing or transfer --> → processing rate / transfer rate
   - thrive <!-- verb, meaning to prosper or flourish --> → flourish / prosper
   - throw <!-- verb, meaning to propel something through the air --> → hurl / project / cast
   - tired <!-- adjective, meaning physically or mentally drained from exertion --> → fatigued / exhausted
+  - tiny <!-- adjective, meaning very small in size or degree --> → minuscule
   - tough <!-- adjective, meaning resilient or resistant to hardship --> → resilient / robust
   - trade <!-- verb, meaning to exchange goods or services --> → exchange / barter
+  - trade <!-- verb, meaning to exchange one concession or right for another, as in "trade access" --> → exchange / concede
   - trader <!-- noun, meaning a person who engages in trade --> → merchant
   - trading <!-- noun, meaning the activity of buying and selling goods or services --> → commerce / business
   - trapdoor <!-- noun, meaning a hinged door in a floor or ceiling --> → hatch
@@ -497,7 +566,10 @@ applyTo: "**"
   - trustworthy <!-- adjective, meaning having a good reputation and standing --> → reputable
   - trustworthy <!-- adjective, meaning worthy of belief or confidence --> → credible
   - try <!-- verb, meaning to attempt in a sentence; not in short imperative phrases like "Try again" --> → attempt
+  - uncertain <!-- adjective, meaning not known, reliable, or assured --> → indeterminate / doubtful
   - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
+  - unload <!-- verb, meaning to remove a load from a vehicle, container, or system --> → discharge / offload
+  - under way <!-- phrase, meaning already in progress or proceeding --> → in progress / proceeding
   - underdeliver <!-- verb, meaning to deliver below expected performance --> → deliver inadequately / deliver below expectations
   - underloaded <!-- adjective, meaning insufficiently loaded or below capacity --> → under-utilised / below capacity
   - undertaking <!-- noun, meaning a substantial task, effort, project, or committed endeavour --> → endeavour / enterprise
@@ -564,3 +636,7 @@ applyTo: "**"
   - yield <!-- verb, meaning to surrender or concede to pressure or force --> → concede / capitulate
   - exchange networks <!-- noun phrase, meaning systems of trade and transfer --> → commercial networks / mercantile networks
   - machine network <!-- noun phrase, meaning interlinked mechanical or industrial systems --> → industrial network
+- Words that should not be replaced with latinate alternatives:
+  - animal
+  - start
+  - use <!-- verb, meaning to employ or utilise something -->

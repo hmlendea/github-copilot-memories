@@ -11,7 +11,7 @@ This is the `ROADMAP.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. -->
+<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Do not include emojis here. -->
 
 <!-- Only if there is active labour in progress. -->
 ## 🎯 Current Focus
@@ -66,3 +66,11 @@ This is the `ROADMAP.md` template that shall be utilised.
 ## 📋 Delivered Labour
 
 See [CHANGELOG.md](./CHANGELOG.md) for completed labour.
+
+## 🤝 Contribution
+
+External contributions are welcome. Propose roadmap refinements or implementation suggestions through repository issues and focused pull requests aligned with current priorities.
+
+## 🆘 Support
+
+For roadmap questions, proposals, or clarifications, [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues).

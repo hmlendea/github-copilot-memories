@@ -28,7 +28,7 @@ This is the `README.md` template that must be used.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. -->
+<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Do not include emojis here. -->
 
 <!-- Only if `screenshots/` directory exists with image files. -->
 ## 🖼️ Screenshots

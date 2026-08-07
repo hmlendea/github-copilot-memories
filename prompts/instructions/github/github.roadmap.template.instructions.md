@@ -45,11 +45,11 @@ This is the `ROADMAP.md` template that shall be utilised.
 - [[Idea 2]]
 
 <!-- Only if date-based checkpoints exist. -->
-## 🧱 Milestones
+## 🧱 Objectives
 
-| Milestone | Target Period | Result | Status |
+| Objective | Target Period | Result | Status |
 |-----------|---------------|---------|--------|
-| [[Milestone name]] | [[Period]] | [[Expected result]] | [[Planned / In Progress / Complete]] |
+| [[Objective name]] | [[Period]] | [[Expected result]] | [[Planned / In Progress / Complete]] |
 
 <!-- Only if notable external constraints or material risks exist. -->
 ## ⚠️ Dependencies and Risks

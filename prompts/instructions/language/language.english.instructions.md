@@ -240,6 +240,7 @@ applyTo: "**"
   - help <!-- verb, meaning to assist --> → assist
   - hide <!-- verb, meaning to conceal --> → conceal
   - high <!-- adjective, meaning elevated in a literal, physical, or quantitative sense; not as a title or compound modifier (e.g. not "High King", "high-level") --> → elevated
+  - highlight <!-- verb, meaning to emphasise or make prominent --> → emphasise / accentuate
   - hold <!-- verb, meaning to retain or maintain --> → retain / maintain
   - holiday <!-- noun, meaning vacation --> → vacation
   - hollow <!-- adjective, meaning having an empty interior --> → vacuous / cavernous
@@ -309,6 +310,7 @@ applyTo: "**"
   - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - mend <!-- verb, meaning to repair or restore something --> → repair / restore
   - Middle Ages → Mediaeval Era
+  - milestone <!-- noun, meaning a significant stage or checkpoint in progress --> → phase marker
   - misc → miscellaneous
   - might <!-- noun, meaning great power or strength --> → power / potency
   - misbehave <!-- verb, meaning to conduct oneself improperly --> → misconduct onself / act improperly
@@ -373,6 +375,7 @@ applyTo: "**"
   - retreat <!-- verb, meaning to withdraw from a position or confrontation --> → withdraw / fall back
   - right <!-- adjective, meaning correct or accurate, as opposed to incorrect --> → correct
   - rise <!-- verb, meaning to ascend --> → ascend
+  - roadmap <!-- noun, meaning a planned sequence of future work or goals --> → plan / programme
   - rotten <!-- adjective, meaning decayed or putrid --> → putrid / decomposed
   - rope <!-- noun, meaning strong thick cord --> → cordage
   - rough <!-- adjective, meaning coarse or uneven in surface texture --> → coarse / abrasive
@@ -448,6 +451,7 @@ applyTo: "**"
   - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
+  - target <!-- noun, meaning an intended goal or objective --> → objective
   - take a look <!-- phrase, meaning to examine or inspect something --> → examine / inspect / observe
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
   - talking about <!-- phrase, meaning dicussing or conversing regarding a topic --> → dscussing / concerning
@@ -537,6 +541,9 @@ applyTo: "**"
   - worth <!-- adjective/predicate, meaning having a certain value or deserving of something --> → merit
   - worth <!-- noun, meaning value or merit --> → value / merit
   - worthy <!-- adjective, meaning deserving of respect or merit --> → meritorious / deserving
+  - worthwhile <!-- adjective, meaning worth the time, effort, or expense --> → valuable / beneficial
+  - wholesome <!-- adjective, meaning conducive to health or wellbeing --> → salutary / beneficial
+  - worthless <!-- adjective, meaning without value or merit --> → devoid of value
   - wrath <!-- noun, meaning extreme anger or indignation --> → indignation
   - write <!-- verb, meaning to compose or document --> → compose / document
   - wrong <!-- adjective, meaning incorrect or erroneous, as opposed to right --> → erroneous / incorrect

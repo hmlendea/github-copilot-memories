@@ -4,6 +4,9 @@ applyTo: "**"
 ---
 ## Romanian
 
+- When Romanian text is edited or produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered Romanian via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Slavic, Turkish, or Germanic root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
+- Apply these replacements using an LLM with contextual judgement, not bulk-replace tools; each substitution should be selected case by case according to meaning and fluency in the surrounding text.
+
 Word replacements - apply to all variants and derivatives of each word:
 
 - a fi nevoie → să fie necesar
@@ -33,6 +36,9 @@ Word replacements - apply to all variants and derivatives of each word:
 - babă → bătrână
 - bai → problemă
 - băbuță → bătrânică
+- bănuială → suspiciune
+- belșug → abundență
+- benzinărie → stație de încărcare / stație de alimentare / stație de carburanți
 - boală <!-- substantiv, în contexte generale sau medicale --> → afecțiune
 - boturi → boți
 - brand → marcă / firmă
@@ -42,11 +48,15 @@ Word replacements - apply to all variants and derivatives of each word:
 - căcălău → cât încape
 - ChatGPT-ul → chat-ul GPT
 - chip <!-- substantiv, cu sensul de față sau înfățișare --> → figură / fizionomie / aspect
+- chip <!-- substantiv, cu sensul de mod sau fel --> → mod / manieră
 - ciudat → straniu / bizar
 - ciudățenie → bizarerie
 - clanță → mâner de uşă
 - clătire → limpezire
 - clipă → moment
+- cotropit → oprimat
+- cotropitor → opressor
+- cremă de brânză → crefă
 - cremă de brânză → crefă
 - cuier → agățător
 - darnic → generos
@@ -59,6 +69,11 @@ Word replacements - apply to all variants and derivatives of each word:
 - dovedit → demonstrat
 - duhoare → miasmă
 - dumirire → clarificare, explicare, înțelegere
+- dușman → inamic
+- dușmănie → ostilitate / animozitate
+- făgădui → promite
+- făgăduință → promisiune
+- fățiș → evident / clar
 - fel → tip
 - focus → concentrare
 - focusat → concentrat
@@ -84,24 +99,32 @@ Word replacements - apply to all variants and derivatives of each word:
 - izbândă → succes
 - împodobire → ornare / decorare
 - împodobit → ornat / decorat
+- împotriva → contra / în opoziție cu
+- împotrivire → opoziție
 - în zadar → în van
 - încercare → tentativă
 - încrezător → confident / sigur pe sine
 - încrezut → prezumțios
 - încurcat → impedat / confundat
 - îndesat → compactat
+- îngădui → permite
+- îngăduință → permisiune
+- îngăduitor → permisiv
 - îndrăzneală → cutezare
 - îndrăznesc → cutez
+- înfățișare → aparență / aspect
 - înființat → fondat
 - înfundat → blocat
 - înfundătură → blocaj
 - îngrijorat → preocupat
+- însușire <!-- substantiv, în sens de caracteristică --> → proprietate / caracteristică
 - întâmplă → petrece
 - întâmplător → accidental
 - întemeiat → fondat
 - înzdrăvenire → întărire
 - lacăt → încuietoare
 - lămurire → clarificare, explicare
+- liniștit → calm
 - lipici → adeziv
 - localnic → om de-al locului
 - magazie → depozit
@@ -114,23 +137,30 @@ Word replacements - apply to all variants and derivatives of each word:
 - muncă → lucru
 - muncitor → lucrător
 - murdărie → mizerie
+- nădejde → speranță
 - nedumerit → confuz, neclar, incert
 - nelămurire → neclaritate
 - neobișnuit → neuzual
-- nevoi → necesități
+- nenorocire → nefericire
+- nevoi <!-- substantiv, cu sensul de necesități --> → necesități
 - nevoie → necesitate
 - noros → înnorat
 - oboseală → epuizare
 - obosit → extenuat
 - păzește → supraveghează
+- pagubă → daună / pierdere
 - pedeapsă → sancțiune
 - pedepsit → sancționat
 - pivniță → subsol
 - plângere → reclamație
 - poftă <!-- substantiv, cu sensul de dorință sau apetit --> → dorință / apetit
+- pricină → cauză
+- pricinui → cauza
+- pricinuit → cauzat
 - prilej → ocazie
 - primejdie → pericol
 - primejdios → periculos
+- prielnic → propice
 - pripească → precipiteze
 - pripește → precipitează
 - pripire → precipitare
@@ -143,6 +173,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - râșniță → măcinătoare
 - râvnă → deziderație
 - râvnire → deziderație
+- rânduială → ordine / organizare
 - risipire → irosire
 - rost → sens
 - rostul → sensul
@@ -151,6 +182,9 @@ Word replacements - apply to all variants and derivatives of each word:
 - sfat → recomandare / sugestie
 - sfătui → recomanda / consilia
 - sfârșit → final
+- sârguincios → diligent
+- sârguință → diligență
+- slujbă <!-- substantiv, în sens de ocupație --> → serviciu / funcție
 - slugă → servitor
 - stăpân <!-- substantiv, cu sensul de proprietar sau stăpânitor --> → proprietar / domn
 - stârnire → incitare
@@ -167,6 +201,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - tâlc → sens / semnificație
 - teacă → toc
 - temei → fundament / bază
+- tocmeală → negociere
 - topor → secure
 - tovarăș → camarad
 - treabă → lucru
@@ -210,5 +245,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - zădărnicire → compromitere
 - zâmbet → surâs
 - zdravăn → robust
+- zilnic <!-- adjectiv --> → cotidian
+- zilnic <!-- adverb, de exemplu „se întâmplă zilnic” --> → în fiecare zi
 - zdrobire → strivire
 - zdrobitor (e.g. de usturoi) → presă

@@ -7,7 +7,8 @@ applyTo: "**"
 
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
-- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spnish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another anicient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
+- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
+- Apply these replacements using an LLM with contextual judgement, not bulk-replace tools; each substitution should be selected case by case according to meaning and fluency in the surrounding text.
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
   - actual <!-- adjective, meaning real or genuine in context such as "actual work" --> → genuine / real
@@ -81,12 +82,14 @@ applyTo: "**"
   - burglar → intruder
   - busy <!-- adjective, meaning actively occupied or engaged --> → occupied
   - buy → purchase
+  - cannot <!-- modal verb phrase, meaning to be unable to do something --> → is unable to / is incapable of
   - choose <!-- verb, meaning to pick from alternatives --> → select
   - charm <!-- noun, meaning a small decorative or magical object --> → amulet / talisman
   - charm <!-- noun, meaning attractive quality --> → allure / appeal
   - cheap <!-- adjective, meaning low in price or cost --> → inexpensive / economical
   - chunk → segment / fragment
   - ceiling <!-- noun, meaning an upper bound, as in "throughput ceiling" --> → capacity limit
+  - cities <!-- noun, plural, meaning urban settlements --> → urban centres
   - cluster <!-- noun or verb, meaning a close grouping of similar items --> → aggregate / aggregation
   - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
@@ -245,7 +248,7 @@ applyTo: "**"
   - holiday <!-- noun, meaning vacation --> → vacation
   - hollow <!-- adjective, meaning having an empty interior --> → vacuous / cavernous
   - holy <!-- adjective, meaning sacred or consecrated --> → sacred / consecrated
-  - household <!-- noun, meaning a domestic living unit --> → domestic unit
+  - household <!-- noun, meaning a domestic living unit --> → residence / domestic unit
   - hungry <!-- adjective, meaning experiencing a strong desire for food --> → famished / ravenous
   - hurt <!-- verb, meaning to injure or cause pain --> → injure
   - I wonder <!-- phrase, expressing curiosity about something --> → I am curious
@@ -279,6 +282,7 @@ applyTo: "**"
   - light <!-- noun, meaning illumination or luminosity --> → illumination / luminosity
   - like <!-- verb, meaning to hold something in high regard or esteem, not for casual enjoyment --> → appreciate / favour
   - likely <!-- adjective, meaning probable or expected to happen --> → probable
+  - likely <!-- adverb, meaning probably, as in "will likely fail" --> → probably
   - linger <!-- verb, meaning to remain in a place beyond the expected time --> → remain / persist
   - livestock <!-- noun, meaning domesticated farm animals --> → domesticated animals
   - lipstick → rouge
@@ -330,7 +334,7 @@ applyTo: "**"
   - of course → certainly / naturally
   - offspring <!-- noun, meaning the progeny of a person, animal, or plant --> → progeny
   - often → frequently
-  - old <!-- adjective, meaning ancient or aged --> → ancient / aged
+  - old <!-- adjective, in historical-age contexts meaning ancient or aged; do not replace numeric age constructions such as "3,000 years old" --> → ancient / aged
   - open <!-- verb, meaning to access or expose --> → access / expose
   - outcome <!-- noun, meaning a result or consequence --> → result / consequence
   - otherwise <!-- adverb, meaning in contradiction, as in "he says otherwise" --> → to the contrary
@@ -352,6 +356,7 @@ applyTo: "**"
   - paperwork <!-- noun, meaning administrative documents or bureaucratic procedures --> → documentation
   - parking lot → car park
   - pick <!-- verb, meaning to select --> → select
+  - picker <!-- noun, meaning a person or mechanism that selects from options --> → selector
   - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
   - placeholder <!-- noun, meaning a temporary surrogate or substitute until a final value or version is available --> → surrogate / substitute / proxy
   - postwar → postbellum
@@ -422,6 +427,8 @@ applyTo: "**"
   - small <!-- adjective, meaning little in size or degree --> → minor
   - smart <!-- adjective, meaning intelligent or perceptive --> → intelligent
   - smash <!-- verb, meaning to shatter or break violently --> → shatter / demolish
+  - seamless <!-- adjective, meaning continuous or without interruption --> → continuous / uninterrupted
+  - seamlessly <!-- adverb, meaning in a continuous or uninterrupted manner --> → continuously / without interruption
   - smooth <!-- adjective, meaning having an even, regular surface --> → seamless / sleek
   - solar system <!-- noun, astronomy, one other than the Sun's --> → star system
   - sorrow <!-- noun, meaning deep distress or grief --> → grief / anguish
@@ -493,8 +500,9 @@ applyTo: "**"
   - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
   - underdeliver <!-- verb, meaning to deliver below expected performance --> → deliver inadequately / deliver below expectations
   - underloaded <!-- adjective, meaning insufficiently loaded or below capacity --> → under-utilised / below capacity
+  - undertaking <!-- noun, meaning a substantial task, effort, project, or committed endeavour --> → endeavour / enterprise
   - uneven <!-- adjective, meaning not level or regular --> → irregular
-  - understand <!-- verb, meaning to comprehend --> → comprehend
+  - understand <!-- verb, in active-use contexts, meaning to comprehend; do not replace passive or adjectival forms such as "is understood" --> → comprehend
   - untouched <!-- adjective, meaning not altered or affected --> → intact
   - unlucky → unfortunate
   - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
@@ -506,6 +514,7 @@ applyTo: "**"
   - warn <!-- verb, meaning to caution or alert someone about danger or risk --> → caution / alert
   - warship <!-- noun, meaning a vessel equipped for naval combat --> → war vessel
   - watch <!-- verb, meaning to observe or monitor --> → observe / monitor
+  - waterwheel <!-- noun, meaning a wheel driven by flowing or falling water --> → hydraulic wheel
   - wave <!-- noun, meaning oscillating motion or disturbance --> → undulation / oscillation
   - way <!-- noun, meaning a method or approach --> → method / manner
   - weary <!-- adjective, meaning physically or mentally exhausted --> → fatigued

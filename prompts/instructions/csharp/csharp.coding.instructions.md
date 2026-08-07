@@ -9,7 +9,7 @@ applyTo: "**/*.{cs}"
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
 - Always use explicit types instead of `var`, no exceptions.
 - When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
-- Prefer the static `Equals(a, b)` form (e.g. `object.Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
+- Prefer the static `Equals(a, b)` form (e.g. `Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
 - If a method does not access instance state, mark it `static`.
 - NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
 - NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.

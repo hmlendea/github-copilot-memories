@@ -19,12 +19,14 @@ This is the `SECURITY.md` template that shall be utilised.
 
 Use this table to indicate which project versions currently receive security maintenance.
 
-| Version | Distribution Method | Supported |
+| Version | Distribution Channel | Supported |
 |---------|--------------------|-----------|
-| [[Latest version or branch, e.g. 2.x]] | [[Supported distribution method, e.g. GitHub Releases]] | ✅ |
-| [[Latest version or branch, e.g. 2.x]] | [[Unsupported distribution method, e.g. GitHub Releases]] | ❌ |
-| [[Outdated version or branch, e.g. 1.x]] | [[Supported distribution method, e.g. GitHub Releases]] | ❌ |
-| [[Outdated version or branch, e.g. 1.x]] | [[Unsupported distribution method, e.g. GitHub Releases]] | ❌ |
+| Latest version | [[Supported distribution channel 1, e.g. FlatHub]] | ✅ |
+| Latest version | [[Supported distribution channel 2, e.g. GitHub Releases]] | ✅ |
+| Latest version | [[Unsupported distribution channel 1, e.g. Snap Store]] | ❌ |
+| Latest version | [[Unsupported distribution channel 2, e.g. AppImage]] | ❌ |
+| Latest version | Unofficial third-party distribution channels | ❌ |
+| Preceding versions | Any distribution channel | ❌ |
 
 <!-- Add additional rows only when maintainers intentionally support or explicitly deprecate other versions. -->
 
@@ -32,7 +34,9 @@ Use this table to indicate which project versions currently receive security mai
 
 Please do not disclose suspected vulnerabilities publicly before maintainers have had an opportunity to validate and remediate them.
 
-To report a vulnerability, contact the maintainers directly
+To report a vulnerability:
+- [GitHub Security Advisories](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/security/advisories)
+- Contact the maintainers directly
 
 ## 📌 Scope
 

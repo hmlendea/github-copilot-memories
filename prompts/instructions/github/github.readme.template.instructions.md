@@ -5,6 +5,8 @@ applyTo: "README.md"
 This is the `README.md` template that must be used.
 ---
 
+<!-- BEGIN README TEMPLATE IMMUTABLE -->
+
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 <!-- Only if the repository has at least one published release. -->
@@ -314,10 +316,10 @@ When doing so, please:
 - Add unit tests for any new or changed functionality
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for further information on contributing to this project.
+Consult [CONTRIBUTING.md](./CONTRIBUTING.md) for further information on contributing to this project.
 
 <!-- Only if `ROADMAP.md` exists. -->
-See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
+Consult [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 
 <!-- Only if there are related projects. -->
 ## 🔗 Related Projects
@@ -340,13 +342,13 @@ See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
 
 For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
 
-<!-- Always include this Support section -->
-## 💝 Helping outellput
+<!-- Always include this Supporting the Project section -->
+## 💝 Supporting the Project
 
-Discovered a problemroble or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
+Discovered a problem or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
-<!-- Only if `.github/FUNDING.yml` exists. -->
-If you findonsiind this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
+<!-- Set `[[FUNDING_PREFIX]]` to `[funding it](https://hmlendea.go.ro/funding) or ` only if `.github/FUNDING.yml` exists; otherwise set it to an empty value. -->
+If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it on GitHub!
 
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
@@ -356,3 +358,5 @@ If you findonsiind this project useful, consider [funding it](https://hmlendea.g
 
 This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
 See [LICENSE](./LICENSE) for further information.
+
+<!-- END README TEMPLATE IMMUTABLE -->

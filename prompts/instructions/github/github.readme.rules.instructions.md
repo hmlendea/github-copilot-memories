@@ -5,9 +5,50 @@ applyTo: "README.md"
 
 Generate or revise the `README.md` for this GitHub repository using the `github.readme.template.instructions.md` template.
 
+## Strict Template Fidelity Mode (Default)
+
+This mode applies automatically when the user requests any of the following:
+- Update the README
+- Create the README.md file
+- Revise the README
+- Create a README
+- Generate the README
+- Compose the README
+
+### Precedence
+
+- These rules supersede all other README generation instructions.
+- If any other rule conflicts with strict fidelity, strict fidelity prevails.
+
+### Generation Contract
+
+1. Start from an exact copy of `github.readme.template.instructions.md`, preserving all template-defined section order, badge order, headings, punctuation, and whitespace layout.
+2. Replace only `[[PLACEHOLDER]]` tokens.
+3. Do not rephrase fixed template text.
+4. Do not remove any template section, badge, table, or subsection.
+5. Additional sections or subsections may be added when they are genuinely relevant to the repository, but they must be purely additive and must not replace, rename, reorder, or omit any template-defined section, badge, table, or subsection.
+6. Do not normalise, correct, or improve fixed template wording.
+7. Language, spelling, and phrasing rules apply only to values inserted into placeholders, not to fixed template literals.
+8. Framework-specific command replacements are disabled in strict mode.
+9. Resolve template-marked conditional blocks exactly as written in template comments (for example, lines marked with `Only if ...`). Template-defined core sections and headings remain mandatory and must not be removed.
+
+### Failure Behaviour
+
+- If any required placeholder value is unknown, cease generation and ask one concise clarification question.
+- Do not output a partial README.
+
+### Mandatory Validation Before Final Output
+
+- Headings match the template exactly in text and order.
+- Badge lines match the template exactly in text and order.
+- No template section is missing.
+- Any added section or subsection is repository-relevant and purely additive.
+- No fixed template line was rephrased.
+- All resolvable placeholders were replaced.
+
 If a `README.md` previously exists, preserve any content that is correct and up to date, and revise only what has changed or is missing. If no `README.md` exists, create one from scratch.
 
-Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## License`, `## Contributing`, or `## Support`; only replace placeholder tokens such as `[[License Title]]`, `[[GITHUB_REPO_USERNAME]]`, and `[[GITHUB_REPO_NAME]]`.
+Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## License`, `## Contributing`, or `## Supporting the Project`; only replace placeholder tokens such as `[[License Title]]`, `[[GITHUB_REPO_USERNAME]]`, and `[[GITHUB_REPO_NAME]]`.
 
 Fill in all `[[PLACEHOLDER]]` values from the actual project. Remove any section or comment that does not apply (see the inline guidance). Do not leave any placeholder text, template comments, or example rows in the final output.
 
@@ -69,7 +110,7 @@ Include these sections only when the specified conditions are met:
 - `## Usage`: Provide minimal but realistic example (shell command for CLI, code snippet for libraries, workflow description for web apps).
 - `## Contributing`: Base template provided; extend as needed.
 - `## License`: Specify licence title. For GPL-family licences only, append "or later". Omit for MIT, Apache, non-copyleft.
-- `## Support`: Always include with standard base template.
+- `## Supporting the Project`: Always include with standard base template.
 
 ## Styling & Format Rules
 

@@ -5,6 +5,45 @@ applyTo: "ROADMAP.md"
 
 Generate or revise the `ROADMAP.md` for this GitHub repository using the `github.roadmap.template.instructions.md` template.
 
+## Strict Template Fidelity Mode (Default)
+
+This mode applies automatically when the user requests any of the following:
+- Update the roadmap
+- Create the ROADMAP.md file
+- Revise the roadmap
+- Create a roadmap
+- Generate the roadmap
+- Compose the roadmap
+
+### Precedence
+
+- These rules supersede all other roadmap generation instructions.
+- If any other rule conflicts with strict fidelity, strict fidelity prevails.
+
+### Generation Contract
+
+1. Start from an exact copy of `github.roadmap.template.instructions.md`, preserving all template-defined section order, heading order, punctuation, and whitespace layout.
+2. Replace only `[[PLACEHOLDER]]` tokens.
+3. Do not rephrase fixed template text.
+4. Do not remove any template-defined section, table, bullet structure, or subsection.
+5. Additional sections or subsections may be added when they are genuinely relevant to the repository, but they must be purely additive and must not replace, rename, reorder, or omit any template-defined section, table, or subsection.
+6. Do not normalise, correct, or improve fixed template wording.
+7. Language, spelling, and phrasing rules apply only to values inserted into placeholders, not to fixed template literals.
+8. Conditional inclusion and omission logic are disabled in strict mode; include every template-defined section.
+
+### Failure Behaviour
+
+- If any required placeholder value is unknown, cease generation and ask one concise clarification question.
+- Do not output a partial roadmap.
+
+### Mandatory Validation Before Final Output
+
+- Headings match the template exactly in text and order.
+- No template-defined section is missing.
+- Any added section or subsection is repository-relevant and purely additive.
+- No fixed template line was rephrased.
+- All resolvable placeholders were replaced.
+
 If a `ROADMAP.md` previously exists, preserve any content that is accurate and current, and revise only what has changed or is absent. If no `ROADMAP.md` exists, create one from commencement.
 
 Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## Support` or `## Contribution`; only replace placeholder tokens such as `[[Project Title]]`, `[[GITHUB_REPO_USERNAME]]`, and `[[GITHUB_REPO_NAME]]`.

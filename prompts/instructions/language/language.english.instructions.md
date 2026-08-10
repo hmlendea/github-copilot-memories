@@ -100,7 +100,7 @@ applyTo: "**"
   - certain <!-- adjective, meaning definite or assured --> → definite / assured
   - certainly <!-- adverb, meaning with confidence or without doubt --> → assuredly / undoubtedly
   - cities <!-- noun, plural, meaning urban settlements --> → urban centres
-  - claim <!-- verb, meaning to state, maintain, or assert something as true or due --> → assert / allege
+  - claim <!-- verb, meaning to state, maintain, or assert something as true or due --> → assert
   - cluster <!-- noun or verb, meaning a close grouping of similar items --> → aggregate / aggregation
   - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
@@ -425,7 +425,8 @@ applyTo: "**"
   - reach <!-- noun, meaning scope or extent, as in "fiscal reach" --> → scope
   - reminder <!-- noun, meaning something that prompts a person to remember --> → prompt / notification
   - repel <!-- verb, meaning to drive back or fend off an attack or approach --> → repulse / ward off
-  - remove <!-- verb, meaning to take away, extract, or eliminate something --> → extract / eliminate
+  - remove <!-- verb, meaning to extract something from within, from a container, or from a fixed position --> → extract
+  - remove <!-- verb, meaning to eliminate or abolish something such as a barrier, restriction, obstacle, or feature --> → eliminate / abolish
   - removal <!-- noun, meaning the act of taking away, extracting, or eliminating something --> → extraction / elimination
   - replacement <!-- noun, meaning a substitute that takes the place of another item --> → substitute
   - recovery <!-- noun, meaning restoration to a former condition or recuperation after harm --> → restoration / recuperation
@@ -477,6 +478,8 @@ applyTo: "**"
   - shoot <!-- verb, meaning to discharge a projectile weapon --> → fire / discharge
   - shopkeeper → merchant
   - short <!-- adjective, meaning brief in duration --> → brief
+  - shortly <!-- adverb, meaning in a brief time or soon --> → in a moment / soon
+  - shortly <!-- adverb, meaning not long before or after a reference point, as in shortly before --> → briefly before / not long before
   - should <!-- modal verb, meaning recommendation or advisability --> → is advisable to / is recommended to
   - show <!-- verb, meaning to demonstrate or display --> → demonstrate / display / exhibit
   - sick <!-- adjective, meaning ill or unwell --> → ill / infirm
@@ -639,4 +642,5 @@ applyTo: "**"
 - Words that should not be replaced with latinate alternatives:
   - animal
   - start
+  - stop
   - use <!-- verb, meaning to employ or utilise something -->

@@ -263,11 +263,9 @@ This script downloads and executes an external release helper from `https://raw.
 ## 🗂️ Project Structure
 
 The solution contains the subsequent projects:
-
 - [[ProjectName]]: [[purpose]]
 
 The key directories inside `[[MAIN_PROJECT_NAME]]/` are:
-
 | Directory | Purpose |
 |-----------|---------|
 | [[dir]]   | [[purpose]] |

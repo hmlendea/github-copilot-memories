@@ -5,13 +5,15 @@ applyTo: "**/*.md"
 
 ## Markdown
 
-### Intendation
+### Indentation
 - Use two spaces for each indentation level.
 - Do not use tabs for indentation.
 
 ### Lists
 
-- When a list is introduced by a sentence ending with a colon, place the first list item on the immediately following line. Do not insert a blank line.
+- If a sentence ends with a colon and is followed by a list, the first list item MUST be on the next line immediately.
+- NEVER insert a blank line between the introducing line and the first list item.
+- This applies to unordered lists (`-`, `*`, `+`), ordered lists (`1.`), and task lists (`- [ ]`).
 
 Incorrect:
 ```markdown

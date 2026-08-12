@@ -194,6 +194,8 @@ applyTo: "**"
   - far worse <!-- phrase, meaning substantially more severe or adverse --> → substantially worse / considerably worse
   - faucet → tap
   - feedback <!-- noun, meaning a response or evaluation --> → response / evaluation
+  - feature <!-- noun, in software contexts, meaning an application capability --> → capability / function / functionality
+  - feature <!-- noun, meaning a distinctive attribute or aspect of something --> → attribute / characteristic
   - feel <!-- verb, meaning to think or believe, in contexts such as "do we feel we are ready?" --> → believe / consider / judge
   - fetch <!-- verb, meaning to go and bring or to retrieve something --> → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant

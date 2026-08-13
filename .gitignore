@@ -1,4 +1,5 @@
 *
+!.github/
 !.gitignore
 !globalStorage/
 !globalStorage/github.copilot-chat/

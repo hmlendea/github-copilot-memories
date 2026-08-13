@@ -1,100 +1,141 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
+[![License](https://img.shields.io/github/license/hmlendea/github-copilot-memories)](https://github.com/hmlendea/github-copilot-memories/blob/master/LICENSE)
 
 # GitHub Copilot Memories
 
-A curated collection of GitHub Copilot instruction files and prompt templates that encode personal coding standards, style conventions, and domain-specific rules. These files are loaded automatically by VS Code's Copilot Chat, ensuring consistent, high-quality code generation across all projects.
+A curated collection of GitHub Copilot instruction files that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for VS Code and GitHub Copilot Chat.
 
-## ✨ Features
+## 📑 Table of Contents
 
-- **Language-specific instruction files** for C#, Python, TypeScript/JavaScript, and Bash, each covering naming, style, error handling, and best practices for that language.
-- **General coding rules** applied to all files: clean code, single responsibility, British English, magic number elimination, dead code removal, and line-length limits.
-- **MonoGame / NuciXNA rules** covering GUI control lifecycle, texture management, and NuciXNA-specific APIs.
-- **Language preference rules** for both English (British spelling) and Romanian (word replacement lists).
-- **Standard test values** providing a consistent set of funny, reusable test data (names, cities, domains, video game titles, etc.) used across all test suites.
-- **README prompt template** for generating standardised, well-structured `README.md` files.
-- **Repository documentation synchronisation** requiring `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md` to remain accurate whenever relevant changes affect them.
-- **Patterns memory file** stored under `globalStorage/` so Copilot Chat's memory tool can reference the index at runtime.
-- **Symlink-friendly layout**: the `prompts/` folder is designed to be symlinked directly into the VS Code user profile so rule updates are reflected immediately without copying files.
+- [Table of Contents](#table-of-contents)
+- [Capabilities](#capabilities)
+- [Usage](#usage)
+- [Installation](#installation)
+  - [Installation from Source](#installation-from-source)
+- [Configuration](#configuration)
+- [Integrations](#integrations)
+- [Project Structure](#project-structure)
+  - [Directories](#directories)
+- [Contributing](#contributing)
+- [Project Engagement](#project-engagement)
+- [License](#license)
+
+## ✨ Capabilities
+
+- Applies shared coding, naming, error-handling, security, and documentation principles across supported file types.
+- Provides specialised guidance for C#, Python, TypeScript, shell scripts, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
+- Generates evidence-based README, architecture, roadmap, security, and GitHub Actions documents from strict templates.
+- Maintains British English and Romanian language preferences through contextual terminology rules.
+- Supplies consistent test values and an optional coding-pattern memory index.
+- Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 
 ## 🚀 Usage
 
-Once the `prompts/` folder is symlinked (see [Development](#-development)), Copilot Chat picks up all `.instructions.md` files automatically based on their `applyTo` patterns. No further configuration is necessary - just use Copilot Chat as normal and the rules will be applied.
+After installation, access a project in VS Code and submit a normal Copilot Chat request. Matching instruction files are selected through their `applyTo` globs and descriptions.
 
-To generate a `README.md` for any repository, open Copilot Chat and type:
+For example, to revise a repository README, submit:
 
+```text
+Update the README
 ```
-Update the readme
-```
 
-The `github-readme.prompt.md` template will be invoked automatically.
+The README rules inspect repository evidence, select applicable template sections, and revise the existing `README.md` in place.
 
-## 🛠️ Development
+## 📦 Installation
 
-### Requirements
+### Installation from Source
 
-- [VS Code](https://code.visualstudio.com/) with the GitHub Copilot Chat extension installed.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts` and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
 
-### Setup
-
-Clone the repository and symlink the `prompts/` and `memories/` directories into your VS Code user profile:
+On Linux:
 
 ```bash
-# Linux
-ln -s "$(pwd)/prompts" ~/.config/Code/User/prompts
-mkdir -p ~/.config/Code/User/globalStorage/github.copilot-chat/memory-tool
-ln -s "$(pwd)/globalStorage/github.copilot-chat/memory-tool/memories" ~/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories
+git clone https://github.com/hmlendea/github-copilot-memories.git
+cd github-copilot-memories
+ln -s "$PWD/prompts" "$HOME/.config/Code/User/prompts"
+mkdir -p "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool"
+ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
+```
 
-# macOS
-ln -s "$(pwd)/prompts" ~/Library/Application\ Support/Code/User/prompts
-mkdir -p ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/memory-tool
-ln -s "$(pwd)/globalStorage/github.copilot-chat/memory-tool/memories" ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories
+On macOS:
 
-# Windows (run as Administrator)
+```bash
+git clone https://github.com/hmlendea/github-copilot-memories.git
+cd github-copilot-memories
+ln -s "$PWD/prompts" "$HOME/Library/Application Support/Code/User/prompts"
+mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool"
+ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
+```
+
+On Windows, use an Administrator Command Prompt:
+
+```batch
+git clone https://github.com/hmlendea/github-copilot-memories.git
+cd github-copilot-memories
 mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
-mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
+if not exist "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool" mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
 mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
 
-VS Code picks up all `.instructions.md` and `.prompt.md` files automatically via the `chat.promptFilesLocations` setting (or the default user-profile scan).
+The memory link is optional; omit its `mkdir` and `ln` or `mklink` commands when only the instruction files are required.
+
+## ⚙️ Configuration
+
+Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
+
+For example:
+
+```yaml
+---
+description: "Use when writing or editing Python code. Covers imports, naming, string literals, comments, HTTP/requests, function structure, type hints, module structure, and blank line rules."
+applyTo: "**/*.py"
+---
+```
+
+Edit the Markdown body to personalise the guidance. Because the user-profile directories are linked to the repository, file revisions remain available without maintaining duplicate copies.
+
+## 🔌 Integrations
+
+| Integration | Compatibility | Purpose | Required |
+|-------------|---------------|---------|----------|
+| VS Code with GitHub Copilot Chat | User-profile `prompts/` discovery | Applies the instruction files during Copilot interactions | Yes |
+| GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
 ## 🗂️ Project Structure
 
-Key directories and files:
+The tracked project is content-focused. Instruction families are separated by language and concern so each file can define a narrow activation contract.
 
-| Path | Purpose |
-|------|---------|
-| `prompts/` | Instruction and prompt files loaded by VS Code Copilot Chat |
-| `globalStorage/github.copilot-chat/memory-tool/memories/` | Memory files used by the Copilot Chat memory tool |
+### Directories
 
-Key files inside `prompts/`:
-
-| File | `applyTo` | Purpose |
-|------|-----------|---------|
-| `general.instructions.md` | `**` | General coding rules and source control conventions |
-| `language.instructions.md` | `**` | British English spelling and Romanian word replacements |
-| `csharp.instructions.md` | `**/*.cs`, `**/*.csproj`, `**/*.slnx` | C# project structure, code style, and unit test rules |
-| `bash.instructions.md` | `**/*.sh` | Bash/shell scripting conventions |
-| `python.instructions.md` | `**/*.py` | Python coding conventions |
-| `typescript.instructions.md` | `**/*.ts`, `**/*.tsx` | TypeScript/JavaScript coding conventions |
-| `monogame.instructions.md` | description-based | XNA / MonoGame / NuciXNA-specific rules |
-| `test-values.instructions.md` | description-based | Standard reusable test data values |
-| `github-readme.prompt.md` | prompt | Template for generating `README.md` files |
+| Directory | Purpose |
+|-----------|---------|
+| `prompts/instructions/common/` | Shared coding, naming, error-handling, test-data, security, and documentation principles |
+| `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
+| `prompts/instructions/github/` | Repository document and GitHub Actions rules and templates |
+| `prompts/instructions/language/` | British English and Romanian terminology preferences |
+| `prompts/instructions/markdown/` | Markdown structure and formatting conventions |
+| `prompts/instructions/methodscript/` | MethodScript coding and style conventions |
+| `prompts/instructions/polyglot/` | PolyGlot dictionary conventions |
+| `prompts/instructions/python/` | Python coding and error-handling conventions |
+| `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
+| `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
+| `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🤝 Contributing
 
-Contributions are welcome. Please:
-- Keep changes cross-platform
-- Keep pull requests focused and consistent with the existing code style
-- Update documentation when behaviour changes
+You are welcome to submit any suggestion, feedback, or modification to this project.
 
-## 💝 Support
+When doing so, please:
+- Maintain cross-platform compatibility
+- Submit focused pull requests that conform to the existing code style
+- Maintain your branch synchronised with `master`
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/hmlendea/github-copilot-memories/issues)!
+## 💝 Project Engagement
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
+Discovered a problem or have a suggestion? [Open an issue](https://github.com/hmlendea/github-copilot-memories/issues)!
+
+If you find this project useful, consider starring ⭐️ it on GitHub!
 
 ## 📄 License
 
-Licensed under the `GNU General Public License v3.0` or later.
-See [LICENSE](./LICENSE) for details.
+This project is being distributed under the `GNU General Public License v3.0`.
+See [LICENSE](./LICENSE) for further information.

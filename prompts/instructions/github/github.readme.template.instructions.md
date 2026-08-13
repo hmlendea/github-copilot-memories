@@ -9,7 +9,7 @@ This is the `README.md` template that must be used.
 
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-<!-- Only if the repository has at least one published release. -->
+<!-- Only if the repository is public and it has at least one published release. -->
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
 <!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use label 'GitHub Pages' for github.io URLs, otherwise 'Website'. -->
 [![Website](https://img.shields.io/badge/Website-Visit-blue)](https://[[WEBSITE_URL]])
@@ -118,32 +118,8 @@ This is the `README.md` template that must be used.
 [![Obtain it from Snap Store](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-white.png)](https://snapcraft.io/[[SNAP_PACKAGE_ID]])
 <!-- Only if this is distributed as an AUR package. -->
 [![Obtain it from AUR](https://raw.githubusercontent.com/hmlendea/readme-assets/master/install_from_aur.png)](https://aur.archlinux.org/packages/[[AUR_PACKAGE_ID]])
-<!-- Only if this is distributed as a Homebrew formula or cask. -->
-[![Obtain it with Homebrew](https://img.shields.io/badge/Homebrew-Install-fbb040?logo=homebrew)](https://formulae.brew.sh/[[HOMEBREW_PACKAGE_TYPE]]/[[HOMEBREW_PACKAGE_ID]])
-<!-- Only if this is distributed through WinGet. -->
-[![Obtain it with WinGet](https://img.shields.io/badge/WinGet-Install-0078d4)](https://winstall.app/apps/[[WINGET_PACKAGE_ID]])
-<!-- Only if this is distributed through Chocolatey. -->
-[![Obtain it from Chocolatey](https://img.shields.io/chocolatey/v/[[CHOCO_PACKAGE_ID]]?label=Chocolatey)](https://community.chocolatey.org/packages/[[CHOCO_PACKAGE_ID]])
-<!-- Only if this is distributed through Scoop and a public manifest URL exists. -->
-[[SCOOP_BADGE]]
 <!-- Only if this is distributed as a NuGet package. -->
 [![Obtain it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/[[NUGET_PACKAGE_ID]])
-<!-- Only if this is distributed as an npm package. -->
-[![Obtain it from npm](https://img.shields.io/npm/v/[[NPM_PACKAGE_ID]]?label=npm)](https://npmjs.com/package/[[NPM_PACKAGE_ID]])
-<!-- Only if this is distributed as a PyPI package. -->
-[![Obtain it from PyPI](https://img.shields.io/pypi/v/[[PYPI_PACKAGE_ID]]?label=PyPI)](https://pypi.org/project/[[PYPI_PACKAGE_ID]])
-<!-- Only if this is distributed through conda-forge. -->
-[![Obtain it from conda-forge](https://img.shields.io/conda/vn/conda-forge/[[CONDA_PACKAGE_ID]]?label=conda-forge)](https://anaconda.org/conda-forge/[[CONDA_PACKAGE_ID]])
-<!-- Only if this is distributed through Maven Central. -->
-[![Obtain it from Maven Central](https://img.shields.io/maven-central/v/[[MAVEN_GROUP_ID]]/[[MAVEN_ARTIFACT_ID]]?label=Maven%20Central)](https://central.sonatype.com/artifact/[[MAVEN_GROUP_ID]]/[[MAVEN_ARTIFACT_ID]])
-<!-- Only if this is distributed through crates.io. -->
-[![Obtain it from crates.io](https://img.shields.io/crates/v/[[CRATES_PACKAGE_ID]]?label=crates.io)](https://crates.io/crates/[[CRATES_PACKAGE_ID]])
-<!-- Only if this is distributed through RubyGems. -->
-[![Obtain it from RubyGems](https://img.shields.io/gem/v/[[RUBYGEMS_PACKAGE_ID]]?label=RubyGems)](https://rubygems.org/gems/[[RUBYGEMS_PACKAGE_ID]])
-<!-- Only if this is distributed through Packagist. -->
-[![Obtain it from Packagist](https://img.shields.io/packagist/v/[[PACKAGIST_PACKAGE_ID]]?label=Packagist)](https://packagist.org/packages/[[PACKAGIST_PACKAGE_ID]])
-<!-- Only if this is distributed as a public OCI container image. -->
-[[CONTAINER_INSTALLATION_BADGE]]
 <!-- Only if this is distributed as a Steam Workshop mod. -->
 [![Obtain it from Steam Workshop](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ID]])
 <!-- Only if this is distributed as a Nexus Mods mod. -->
@@ -447,7 +423,11 @@ The subsequent environment variables can be set:
 <!-- Include every required SDK, runtime, tool, service, and version constraint. Link to canonical installation sources where useful. -->
 ### Requirements
 
-[[DEVELOPMENT_REQUIREMENTS]]
+<!-- Only if this is a .NET project. -->
+- [.NET [[DOTNET_VERSION]] SDK](https://dotnet.microsoft.com/download/dotnet/[[DOTNET_VERSION]])
+<!-- Only if other requirements exist. -->
+- [[Additional requirement 1]]
+- [[Additional requirement 2]]
 
 <!-- Include source checkout, submodules or Git LFS when applicable, dependency restoration, local configuration, and required service initialisation. -->
 ### Setup
@@ -759,7 +739,7 @@ If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it o
 <!-- Only if `./LICENSE` exists. Add this exactly as it is written here, do not modify it in any way. -->
 ## 📄 License
 
-This project is being distributed under the `[[LICENSE_TITLE]][[LICENSE_SUFFIX]]`.
+This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
 See [LICENSE](./LICENSE) for further information.
 
 <!-- END README TEMPLATE IMMUTABLE -->

@@ -104,6 +104,7 @@ applyTo: "**"
   - cluster <!-- noun or verb, meaning a close grouping of similar items --> → aggregate / aggregation
   - cleanly <!-- adverb, in technical or procedural contexts, meaning without errors, residue, or unwanted side effects --> → correctly / neatly
   - clever <!-- adjective, meaning mentally sharp or quick-witted --> → astute / intelligent
+  - cliff <!-- noun, meaning a steep rock face or abrupt escarpment --> → precipice
   - climb down → descend
   - climb up → ascend
   - clockwork <!-- noun/adjective, meaning precise mechanical operation --> → mechanism / mechanical
@@ -140,6 +141,7 @@ applyTo: "**"
   - dirty <!-- adjective, meaning physically unclean or soiled --> → soiled
   - disable <!-- verb, meaning to deactivate or prevent from functioning --> → deactivate
   - dislike <!-- verb, meaning to regard with disapproval or aversion --> → disapprove of / object to
+  - disappointment <!-- noun, meaning dissatisfaction or disillusionment caused by unmet expectations --> → dissatisfaction / disillusionment
   - diminish <!-- verb, meaning to make or become smaller or weaker --> → reduce / attenuate
   - dispersal <!-- noun, meaning the act or process of distributing or scattering --> → dissemination / diffusion
   - disruption <!-- noun, meaning interruption of normal operation --> → interruption
@@ -199,6 +201,9 @@ applyTo: "**"
   - feel <!-- verb, meaning to think or believe, in contexts such as "do we feel we are ready?" --> → believe / consider / judge
   - fetch <!-- verb, meaning to go and bring or to retrieve something --> → retrieve
   - fighter <!-- noun, meaning a person actively engaged in combat --> → combatant
+  - fill <!-- verb, meaning to occupy available space, capacity, or a position --> → occupy
+  - fill <!-- verb, meaning to add contents to a container until it is full --> → supply / charge
+  - fill <!-- verb, meaning to complete fields in a form or record --> → complete / populate
   - find <!-- verb, meaning to locate or discover --> → discover / locate
   - finish <!-- verb, meaning to reach the end of a process or task --> → complete / conclude / finalise
   - flashlight → torch
@@ -207,6 +212,10 @@ applyTo: "**"
   - flaw <!-- noun, meaning an imperfection or defect --> → defect / imperfection
   - flood <!-- noun, meaning an overwhelming influx or inundation --> → inundation / deluge
   - flood <!-- verb, meaning to overwhelm or fill excessively --> → inundate
+  - floodgate <!-- noun, meaning a gate controlling the release or exclusion of water --> → sluice / sluice gate
+  - flow <!-- noun, meaning continuous movement of liquid, gas, information, or traffic --> → circulation / current
+  - flow <!-- noun, meaning an ordered sequence of actions or states in a business or software process --> → process / procedure
+  - flow <!-- verb, meaning to move continuously in a stream or current --> → circulate / course
   - foe <!-- noun, meaning an enemy or opponent --> → adversary
   - folder <!-- noun, in computing --> → directory
   - folk <!-- noun, meaning people in general --> → people / populace
@@ -223,11 +232,13 @@ applyTo: "**"
   - freed <!-- adjective or past participle, meaning released from constraint, captivity, or obligation --> → liberated / emancipated
   - freedom → liberty
   - fresh <!-- adjective, meaning newly produced or not previously encountered --> → novel / pristine
+  - freshly <!-- adverb, meaning recently or newly, as in "freshly completed" --> → recently
   - refrain <!-- verb, meaning to abstain from an action --> → abstain
   - fright <!-- noun, meaning fear or terror --> → terror
   - frighten <!-- verb, meaning to scare --> → terrify
   - frightened <!-- adjective, meaning scared --> → terrified
   - frightening <!-- adjective, meaning scary --> → terrifying
+  - from where → whence
   - fuel <!-- verb, meaning to intensify, sustain, or provoke something such as conflict, suspicion, or accusations --> → intensify / exacerbate / provoke
   - fulfillment <!-- noun, meaning completion or realisation of something desired --> → completion / realisation
   - garbage → rubbish
@@ -271,6 +282,8 @@ applyTo: "**"
   - have <!-- verb, meaning to contain --> → contain
   - hard <!-- adjective, meaning difficult --> → arduous / demanding
   - hardening <!-- noun, meaning the process of making something harder, stronger, or more resilient --> → fortification / reinforcement
+  - harm <!-- noun, meaning physical, emotional, or material damage --> → injury / damage
+  - harm <!-- verb, meaning to cause physical, emotional, or material damage --> → injure / damage
   - harsh <!-- adjective, meaning severe or unpleasant in manner or nature --> → severe / abrasive
   - hate <!-- verb --> → detest / abhor
   - heal <!-- verb, meaning to recover from illness or injury --> → recover / recuperate
@@ -373,6 +386,7 @@ applyTo: "**"
   - needs <!-- noun, plural, meaning necessities or requirements --> → necessities / requirements
   - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
+  - night vision <!-- noun phrase, meaning the capacity to see in reduced illumination --> → nocturnal vision
   - nonetheless → nevertheless
   - nuisance <!-- noun, meaning a cause of inconvenience or annoyance --> → impediment / annoyance
   - odd <!-- adjective, meaning peculiar or unusual --> → peculiar / anomalous
@@ -407,6 +421,7 @@ applyTo: "**"
   - parking lot → car park
   - pick <!-- verb, meaning to select --> → select
   - picker <!-- noun, meaning a person or mechanism that selects from options --> → selector
+  - piecemeal <!-- adjective or adverb, meaning in separate fragments or gradual stages --> → incremental / incrementally
   - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
   - placeholder <!-- noun, meaning a temporary surrogate or substitute until a final value or version is available --> → surrogate / substitute / proxy
   - postwar → postbellum
@@ -419,9 +434,11 @@ applyTo: "**"
   - put <!-- verb, meaning to place or position --> → place / position
   - quick <!-- adjective, meaning rapid in movement or action --> → rapid / expeditious
   - raise <!-- verb, meaning to lift, elevate, or increase --> → elevate / increase
-  - raw <!-- adjective, meaning uncooked or not yet processed --> → uncooked
+  - raw <!-- adjective, meaning food that has not been cooked --> → uncooked
+  - raw <!-- adjective, meaning material, data, or a substance that has not been processed or treated --> → unprocessed / untreated
   - reboot <!-- verb, meaning to restart a system or device --> → restart
   - regards <!-- noun, in greetings or sign-offs --> → greetings
+  - reject <!-- verb, meaning to refuse, dismiss, or exclude something as unacceptable --> → decline / repudiate / exclude
   - remainder <!-- noun, meaning the part left over after the rest has been used, taken, or dealt with --> → rest / residue / balance
   - remember <!-- verb, meaning to bring something back to mind --> → recall / recollect
   - reach <!-- noun, meaning scope or extent, as in "fiscal reach" --> → scope
@@ -453,10 +470,12 @@ applyTo: "**"
   - run <!-- verb, meaning to operate or manage an organisation or business --> → operate / manage
   - run out of <!-- verb phrase, meaning to exhaust a supply of something --> → exhaust / deplete
   - rush <!-- verb, meaning to move or act with great urgency --> → hasten / charge
+  - saber → sabre
   - sail <!-- verb, meaning to travel by vessel, especially wind-propelled --> → navigate
   - safely <!-- adverb, meaning without harm or danger --> → securely / without hazard
   - salesman <!-- noun, meaning a person who sells goods or services --> → vendor / merchant
   - same <!-- adjective, meaning exactly alike or unchanged in identity --> → identical
+  - scaffolding <!-- noun, meaning a temporary structure supporting workers or construction --> → temporary support structure
   - scattered <!-- adjective, meaning spread irregularly over an area --> → dispersed
   - scary <!-- adjective, meaning frightening or causing fear --> → terrifying
   - schedule <!-- noun, meaning a plan or timetable --> → timetable
@@ -464,6 +483,8 @@ applyTo: "**"
   - seafaring <!-- adjective, meaning relating to travel or work at sea --> → nautical / maritime
   - seafarer <!-- noun, meaning a person who travels or works at sea --> → mariner
   - seaman <!-- noun, meaning a person who works at sea --> → mariner
+  - seaside <!-- noun, meaning the coastal area beside the sea --> → littoral / coast
+  - seaside <!-- adjective, meaning situated beside the sea --> → coastal / littoral
   - seaworthy <!-- adjective, meaning a vessel fit for navigation at sea --> → serviceable / navigable
   - seek <!-- verb, meaning to search for or pursue something --> → search for / pursue
   - sellsword → mercenary
@@ -487,14 +508,18 @@ applyTo: "**"
   - sick <!-- adjective, meaning ill or unwell --> → ill / infirm
   - side <!-- noun, meaning an aspect or perspective of something --> → aspect / perspective
   - sidewalk <!-- noun, meaning a paved pedestrian path alongside a road --> → pavement
+  - silly <!-- adjective, meaning foolish, absurd, or lacking sound judgement --> → foolish / absurd
+  - silly <!-- adjective, meaning trivial, frivolous, or not serious --> → trivial / frivolous
   - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
   - slim <!-- adjective, meaning slender or of small girth --> → slender / svelte
   - sloth <!-- noun, meaning habitual laziness --> → indolence
   - slothful <!-- adjective, meaning habitually lazy --> → indolent
+  - slowness <!-- noun, meaning reduced speed, delayed progress, or delayed response --> → reduced velocity / latency
   - sluggish <!-- adjective, meaning slow-moving or lacking energy --> → lethargic / torpid
   - small <!-- adjective, meaning little in size or degree --> → minor
   - smart <!-- adjective, meaning intelligent or perceptive --> → intelligent
-  - smash <!-- verb, meaning to shatter or break violently --> → shatter / demolish
+  - smash <!-- verb, meaning to break a brittle object violently, as in smashing a window --> → shatter
+  - smash to pieces <!-- verb phrase, meaning to break something violently into fragments --> → shatter into pieces / reduce to fragments
   - seamless <!-- adjective, meaning continuous or without interruption --> → continuous / uninterrupted
   - seamlessly <!-- adverb, meaning in a continuous or uninterrupted manner --> → continuously / without interruption
   - smooth <!-- adjective, meaning having an even, regular surface --> → seamless / sleek
@@ -507,6 +532,7 @@ applyTo: "**"
   - split <!-- verb, meaning to divide or separate into parts --> → divide / sever
   - spot <!-- verb, meaning to notice, identify, or detect --> → detect / identify / observe
   - spread <!-- verb, meaning to disseminate or distribute widely --> → disseminate / distribute
+  - spyglass <!-- noun, meaning a small portable telescope --> → telescope
   - stab <!-- verb, meaning to pierce or wound with a pointed weapon --> → pierce / impale
   - staffs <!-- noun, plural of staff --> → staves
   - stall <!-- verb, meaning to delay progress or cease advancing --> → impede / suspend
@@ -516,6 +542,8 @@ applyTo: "**"
   - steadfast <!-- adjective, meaning resolute and unwavering in purpose --> → resolute / tenacious
   - stealthy <!-- adjective, meaning acting in a cautious and secretive manner --> → covert / clandestine
   - stern <!-- adjective, meaning austere or strict in manner --> → austere
+  - sticky <!-- adjective, meaning able or tending to adhere to a surface --> → adhesive / adherent
+  - sticky <!-- adjective, meaning having a thick or viscous consistency --> → viscous / glutinous
   - stiff <!-- adjective, meaning rigid or inflexible --> → rigid / inflexible
   - stop <!-- verb, meaning to cease an action or bring something to a halt --> → cease / halt
   - storekeeper → merchant
@@ -524,10 +552,15 @@ applyTo: "**"
   - strengthen <!-- verb, meaning to make stronger or more robust --> → fortify / reinforce
   - strengthening <!-- noun, meaning the process of making stronger --> → reinforcement / fortification
   - strong <!-- adjective, meaning physically powerful or robust --> → robust / sturdy
+  - surge <!-- noun, meaning a sudden increase in quantity, demand, activity, or arrivals --> → influx / escalation
+  - surge <!-- verb, meaning to increase suddenly in quantity, demand, or activity --> → escalate / intensify
   - survival <!-- noun, meaning continued existence or remaining alive despite danger --> → persistence / continuance
   - swamp <!-- noun, meaning a low-lying wetland area --> → marsh / bog
   - swear <!-- verb, meaning to solemnly commit to a course of action or allegiance --> → vow / pledge
   - swift <!-- adjective, meaning rapid in movement --> → rapid / expeditious
+  - swiftness <!-- noun, meaning rapidity of movement or action --> → rapidity / celerity
+  - swing <!-- verb, meaning to move back and forth or through an arc --> → oscillate / pivot
+  - swing <!-- noun, meaning a movement or change in position, direction, opinion, or value --> → oscillation / fluctuation
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
   - target <!-- noun, meaning an intended goal or objective --> → objective
   - take a look <!-- phrase, meaning to examine or inspect something --> → examine / inspect / observe
@@ -573,6 +606,7 @@ applyTo: "**"
   - try <!-- verb, meaning to attempt in a sentence; not in short imperative phrases like "Try again" --> → attempt
   - uncertain <!-- adjective, meaning not known, reliable, or assured --> → indeterminate / doubtful
   - uncover <!-- verb, meaning to reveal or expose something hidden --> → reveal / expose
+  - unknown <!-- adjective, meaning not identified, determined, or understood --> → unidentified / indeterminate
   - unload <!-- verb, meaning to remove a load from a vehicle, container, or system --> → discharge / offload
   - under way <!-- phrase, meaning already in progress or proceeding --> → in progress / proceeding
   - underdeliver <!-- verb, meaning to deliver below expected performance --> → deliver inadequately / deliver below expectations

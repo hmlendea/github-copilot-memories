@@ -13,6 +13,7 @@ A curated collection of GitHub Copilot instruction files and prompt templates th
 - **Language preference rules** for both English (British spelling) and Romanian (word replacement lists).
 - **Standard test values** providing a consistent set of funny, reusable test data (names, cities, domains, video game titles, etc.) used across all test suites.
 - **README prompt template** for generating standardised, well-structured `README.md` files.
+- **Repository documentation synchronisation** requiring `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md` to remain accurate whenever relevant changes affect them.
 - **Patterns memory file** stored under `globalStorage/` so Copilot Chat's memory tool can reference the index at runtime.
 - **Symlink-friendly layout**: the `prompts/` folder is designed to be symlinked directly into the VS Code user profile so rule updates are reflected immediately without copying files.
 

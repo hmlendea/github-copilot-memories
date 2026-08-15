@@ -8,6 +8,7 @@ applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
 - When editing code, actively refactor the affected areas to comply with all rules defined here; do not leave surrounding code in violation of these rules when you have touched that area.
 - When refactoring, all public-facing contracts must remain 100% backwards compatible. This includes UI visuals, CLI interfaces, API contracts, library public APIs, serialised output formats, and any other surface that an end-user or external client directly interacts with or depends on. Internal restructuring must never alter observable behaviour. For NuGet packages and other APIs, use all existing unit tests to validate that no contract has been broken; if the tests pass, the change is safe to proceed.
 - Respect the existing coding style in each repository, including file naming, splitting, and structure conventions.
+- Default timestamp format should be: "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK".
 - Always treat file and directory paths as case-sensitive, even on Windows, to ensure cross-platform compatibility.
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
 - All files must end with an empty line.

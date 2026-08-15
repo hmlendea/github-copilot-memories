@@ -38,25 +38,36 @@ applyTo: "**"
   - avoid <!-- verb, meaning to deliberately reject or exclude someone socially --> → shun
   - avoid <!-- verb, meaning to evade or keep away from something --> → evade
   - average <!-- adjective, meaning typical or ordinary --> → typical / mean
+  - aware <!-- adjective, meaning conscious of or informed regarding a fact or situation --> → conscious / cognisant
+  - awareness <!-- noun, meaning consciousness or perception of a fact, condition, or situation --> → cognisance / consciousness / perception
   - awesome <!-- adjective, meaning impressively great or remarkable --> → remarkable / extraordinary
   - axe <!-- noun, meaning a small, one-handed chopping tool --> → hatchet
+  - backup / back-up <!-- noun or adjective, meaning assistance, a substitute, or a copy retained for contingencies --> → support / reserve / duplicate / contingency
   - bad <!-- adjective, meaning morally wrong or harmful --> → vile / adverse
   - bad <!-- adjective, meaning of poor quality or low standard --> → inferior / poor
   - bad luck → misfortune
   - badly <!-- adverb, meaning to a severe or serious degree --> → severely / gravely
   - bamboo → bambus
+  - ban <!-- noun, meaning an official prohibition --> → prohibition / interdiction
+  - ban <!-- verb, meaning to prohibit officially --> → prohibit / interdict
   - basically → essentially / fundamentally
   - bathroom → toilet
   - bathroom sink → washbasin
   - bay <!-- noun, meaning a broad coastal inlet --> → gulf / estuary
   - beach <!-- noun, meaning a sandy or pebbly shore beside a body of water --> → shore / strand
+  - because <!-- conjunction, introducing a cause or reason --> → considering that / on account of the fact that
+  - because of <!-- prepositional phrase, introducing a cause --> → due to / as a consequence of
   - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
   - beehive <!-- noun, meaning a structure housing a bee colony --> → apiary
+  - before <!-- preposition or conjunction, meaning earlier than a time or event --> → prior to / in advance of
+  - before <!-- adverb, meaning at an earlier time --> → previously
+  - before <!-- preposition, meaning in front of or in the presence of --> → anterior to / in the presence of
   - begin <!-- verb --> → start <!-- Preferred --> / commence
   - beginning <!-- noun, meaning the initial part of a story, process, or period --> → start <!-- Preferred --> / commencement / outset / inception
   - beginning <!-- verb (present participle/gerund), meaning commencing or starting an action --> → starting / commencing / initiating
   - behaviour <!-- noun, meaning the manner in which a person or entity coducts itself --> → conduct / deportment
   - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
+  - beware <!-- verb, meaning to remain alert to danger or risk --> → exercise caution concerning / remain vigilant concerning
   - big <!-- adjective, meaning physically large in size --> → large
   - big <!-- adjective, meaning substantial or significant in amount or degree --> → substantial / considerable
   - blank <!-- adjective, meaning empty or unfilled --> → empty / vacant
@@ -221,12 +232,13 @@ applyTo: "**"
   - folk <!-- noun, meaning people in general --> → people / populace
   - follow <!-- verb, meaning to pursue or track --> → pursue / track
   - following <!-- adjective, meaning listed or mentioned next --> → subsequent / ensuing
-  - forecast <!-- noun or verb, meaning prediction of future conditions --> → projection / anticipate
+  - forecast <!-- noun, meaning a prediction of future conditions --> → projection / prediction / prognosis
+  - forecast <!-- verb, meaning to predict future conditions --> → project / predict / anticipate
   - for sure → certainly / assuredly
-  - forbid <!-- verb, meaning to prohibit by authority --> → prohibit
+  - forbid <!-- verb, meaning to prohibit by authority --> → prohibit / interdict
   - foreman <!-- noun, meaning a supervisor of a work crew --> → supervisor
-  - forget <!-- verb, meaning to fail to carry out something --> → neglect
-  - forget <!-- verb, meaning to fail to remember something --> → fail to recall
+  - forget <!-- verb, meaning to fail to perform or include something --> → neglect / omit
+  - forget <!-- verb, meaning to fail to remember something --> → fail to recollect
   - foul <!-- adjective, meaning offensive or disgustingly unpleasant --> → putrid / noxious
   - free <!-- adjective, meaning unencumbered or liberated --> → unencumbered / liberated
   - freed <!-- adjective or past participle, meaning released from constraint, captivity, or obligation --> → liberated / emancipated
@@ -428,6 +440,8 @@ applyTo: "**"
   - post-war → postbellum
   - prewar → prebellum
   - pre-war → prebellum
+  - prize <!-- noun, meaning an award granted for victory or excellence --> → trophy / distinction / recompense
+  - prize <!-- verb, meaning to value highly --> → value / appreciate / esteem
   - proof <!-- noun, meaning evidence that establishes truth or validity --> → evidence / verification
   - prevailing <!-- adjective, meaning most common or dominant at a given time --> → predominant
   - proud <!-- adjective, meaning feeling superior to others or self-important --> → haughty / arrogant
@@ -459,6 +473,8 @@ applyTo: "**"
   - restroom → toilet
   - retrain <!-- verb, meaning to train again for a different skill, role, or standard --> → re-educate / reskill
   - retreat <!-- verb, meaning to withdraw from a position or confrontation --> → withdraw / fall back
+  - reward <!-- noun, meaning compensation or recognition for merit, service, or effort --> → recompense / remuneration / compensation
+  - reward <!-- verb, meaning to provide compensation or recognition --> → recompense / remunerate / compensate
   - right <!-- adjective, meaning correct or accurate, as opposed to incorrect --> → correct
   - rise <!-- verb, meaning to ascend --> → ascend
   - roadmap <!-- noun, meaning a planned sequence of future work or goals --> → plan / programme
@@ -476,6 +492,8 @@ applyTo: "**"
   - salesman <!-- noun, meaning a person who sells goods or services --> → vendor / merchant
   - same <!-- adjective, meaning exactly alike or unchanged in identity --> → identical
   - scaffolding <!-- noun, meaning a temporary structure supporting workers or construction --> → temporary support structure
+  - scam <!-- noun, meaning a fraudulent or deceptive scheme --> → fraud / deception
+  - scam <!-- verb, meaning to defraud or deceive --> → defraud / deceive
   - scattered <!-- adjective, meaning spread irregularly over an area --> → dispersed
   - scary <!-- adjective, meaning frightening or causing fear --> → terrifying
   - schedule <!-- noun, meaning a plan or timetable --> → timetable
@@ -561,12 +579,18 @@ applyTo: "**"
   - swiftness <!-- noun, meaning rapidity of movement or action --> → rapidity / celerity
   - swing <!-- verb, meaning to move back and forth or through an arc --> → oscillate / pivot
   - swing <!-- noun, meaning a movement or change in position, direction, opinion, or value --> → oscillation / fluctuation
+  - tainted <!-- adjective or past participle, meaning contaminated, corrupted, or rendered impure --> → contaminated / corrupted / adulterated / polluted
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
   - target <!-- noun, meaning an intended goal or objective --> → objective
+  - task <!-- noun, meaning a defined assignment, operation, or responsibility --> → assignment / operation / responsibility
+  - task <!-- verb, meaning to assign a duty or responsibility --> → commission / assign
   - take a look <!-- phrase, meaning to examine or inspect something --> → examine / inspect / observe
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
   - talking about <!-- phrase, meaning dicussing or conversing regarding a topic --> → dscussing / concerning
-  - tell <!-- verb, meaning to inform or notify --> → inform / notify
+  - tell <!-- verb, meaning to inform, notify, or communicate information --> → inform / notify / communicate
+  - tell <!-- verb, meaning to narrate or relate information --> → narrate / relate
+  - tell <!-- verb, meaning to distinguish or determine --> → discern / differentiate / determine
+  - tell <!-- verb, meaning to direct or instruct someone to act --> → direct / instruct
   - thankful <!-- adjective, meaning feeling or expressing gratitude --> → grateful
   - tip <!-- verb, meaning to cause a decisive shift, as in "tipped civilisation into sustained industrial acceleration" --> → catalyse / precipitate
   - the moon's <!-- noun, the natural satellite of the Earth --> → the lunar
@@ -582,6 +606,12 @@ applyTo: "**"
   - throughput <!-- noun, meaning rate of processing or transfer --> → processing rate / transfer rate
   - thrive <!-- verb, meaning to prosper or flourish --> → flourish / prosper
   - throw <!-- verb, meaning to propel something through the air --> → hurl / project / cast
+  - tight <!-- adjective, meaning firmly fixed, compressed, tense, or constricted --> → secure / compressed / tense / constricted
+  - tight <!-- adjective, meaning strict or permitting little latitude --> → rigorous / restrictive / stringent
+  - tight <!-- adjective, meaning limited in availability, capacity, or time --> → restricted / limited / constrained
+  - tight <!-- adjective, meaning closely connected or united --> → cohesive / intimate
+  - tight <!-- adjective, meaning closely contested --> → competitive / closely contested
+  - tight <!-- adverb, meaning firmly or securely --> → firmly / securely
   - tired <!-- adjective, meaning physically or mentally drained from exertion --> → fatigued / exhausted
   - tiny <!-- adjective, meaning very small in size or degree --> → minuscule
   - tough <!-- adjective, meaning resilient or resistant to hardship --> → resilient / robust
@@ -597,8 +627,10 @@ applyTo: "**"
   - trigger <!-- verb, meaning to initiate or cause something to occur --> → initiate / activate
   - tightly coupled <!-- adjective, meaning strongly interdependent components --> → tightly integrated
   - turnaround <!-- noun, meaning the time required to complete a process cycle --> → processing interval
-  - trust <!-- noun, meaning confidence or reliance placed in someone or something --> → confidence / reliance
-  - trust <!-- verb, meaning to have confidence or reliance in someone or something --> → rely upon / confide in
+  - trust <!-- noun, meaning confidence or reliance placed in someone or something --> → confidence / reliance / faith
+  - trust <!-- verb, meaning to have confidence or reliance in someone or something --> → rely upon / confide in / place confidence in
+  - trust <!-- verb, meaning to accept something as true without verification --> → credit / presume
+  - trust <!-- verb, meaning to place something in another's care or responsibility --> → commit / consign
   - trustworthy <!-- adjective, meaning able to be depended on --> → dependable
   - trustworthy <!-- adjective, meaning consistently reliable or dependable --> → reliable
   - trustworthy <!-- adjective, meaning having a good reputation and standing --> → reputable

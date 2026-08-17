@@ -679,6 +679,7 @@ When doing so, please:
 - Revise the documentation when functionality changes <!-- Only if documentation and executable functionality exist. -->
 - Properly test all modifications, including edge cases and error conditions <!-- Only if tests exist. -->
 - Add tests for additional or modified functionality <!-- Only if tests exist. -->
+- Raise a new [issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) for problems or suggestions
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
 Consult [CONTRIBUTING.md](./CONTRIBUTING.md) for further information on contributing to this project.
@@ -731,7 +732,7 @@ For information on reporting security vulnerabilities, see [SECURITY.md](./SECUR
 Discovered a problem or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
 <!-- Set `[[FUNDING_PREFIX]]` to `[funding it](https://hmlendea.go.ro/funding) or ` only if `.github/FUNDING.yml` exists; otherwise set it to an empty value. -->
-If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it on GitHub!
+If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it on GitHub<!-- Only if this is also released on the Steam Workshop, include: `, or giving it a thumbs up and adding it as a favourite on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ITEM_ID]])` -->!
 
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)

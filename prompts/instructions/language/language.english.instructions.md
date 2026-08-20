@@ -7,7 +7,7 @@ applyTo: "**"
 
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
-- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
+- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancestry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
 - Apply these replacements using an LLM with contextual judgement, not bulk-replace tools; each substitution should be selected case by case according to meaning and fluency in the surrounding text.
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
@@ -65,7 +65,10 @@ applyTo: "**"
   - begin <!-- verb --> → start <!-- Preferred --> / commence
   - beginning <!-- noun, meaning the initial part of a story, process, or period --> → start <!-- Preferred --> / commencement / outset / inception
   - beginning <!-- verb (present participle/gerund), meaning commencing or starting an action --> → starting / commencing / initiating
-  - behaviour <!-- noun, meaning the manner in which a person or entity coducts itself --> → conduct / deportment
+  - behaviour <!-- noun, meaning the manner in which a person or entity conducts itself --> → conduct / deportment
+  - belief <!-- noun, meaning acceptance that something is true or real --> → credence / conviction
+  - belong <!-- verb, meaning to be part of, be associated with, or be properly placed with something --> → pertain / be affiliated / be associated
+  - belonging <!-- noun, meaning possession, association, or membership --> → possession / affiliation / membership
   - being <!-- noun, meaning a living creature or supernatural entity --> → entity / creature
   - beware <!-- verb, meaning to remain alert to danger or risk --> → exercise caution concerning / remain vigilant concerning
   - big <!-- adjective, meaning physically large in size --> → large
@@ -174,6 +177,7 @@ applyTo: "**"
   - dwelling <!-- noun, meaning a place where someone lives --> → residence / abode
   - earnest <!-- adjective, meaning sincere and serious in intention --> → sincere
   - Earth <!-- noun, the planet --> → Terra
+  - earthly <!-- adjective, meaning of or relating to Earth or worldly existence --> → terrestrial / mundane
   - eat <!-- verb, meaning to consume food --> → consume / ingest
   - eerie <!-- adjective, meaning strange and unsettling in atmosphere --> → uncanny / sinister
   - elementary school → primary school
@@ -181,10 +185,13 @@ applyTo: "**"
   - empty <!-- adjective, meaning containing nothing; devoid of content --> → vacant / devoid
   - enable <!-- verb, meaning to activate something --> → activate
   - enable <!-- verb, meaning to make something possible --> → facilitate
+  - embodiment <!-- noun, meaning a concrete expression or representation of an idea, quality, or principle --> → incarnation / personification
+  - encyclopedia → encyclopaedia
   - end <!-- noun, meaning final part or conclusion --> → conclusion / terminus / final part
   - end <!-- verb --> → conclude / terminate
   - ending <!-- noun, meaning final section of a story or process --> → conclusion / denouement
   - enough → sufficient
+  - entanglement <!-- noun, meaning involvement in a complicated relation, dependency, or situation --> → complication / implication / involvement
   - entry <!-- noun, in data, lists, logs, or records --> → record / item
   - erratic <!-- adjective, meaning inconsistent or unpredictable in behaviour --> → irregular / inconsistent
   - etc <!-- abbreviation, meaning and other similar items --> → et cetera
@@ -261,6 +268,8 @@ applyTo: "**"
   - gas pump → petrol pump
   - gas station → petrol station
   - gas tank → fuel tank
+  - gain <!-- noun, meaning increase, profit, or benefit --> → increase / profit / benefit
+  - gain <!-- verb, meaning to obtain, acquire, or increase --> → acquire / obtain / increase
   - gains <!-- noun, meaning increases or improvements --> → increments / increases
   - gather <!-- verb, meaning to assemble in a group --> → assemble / congregate
   - gather <!-- verb, meaning to collect or accumulate objects or resources --> → collect / accumulate / procure
@@ -288,6 +297,8 @@ applyTo: "**"
   - growth <!-- noun, meaning increase in size, number, or extent, as in "population growth" --> → expansion / increase
   - growth policy <!-- noun phrase, meaning a policy intended to increase development or expansion --> → development policy / expansion policy
   - growth rate <!-- noun phrase, meaning the pace of development or expansion --> → development rate / expansion rate
+  - guide <!-- noun, meaning a person, document, or source that directs or instructs --> → adviser / manual / instruction
+  - guide <!-- verb, meaning to direct, instruct, or conduct someone or something --> → direct / instruct / conduct
   - halt <!-- verb, meaning to cease movement or operation --> → cease / suspend
   - happen <!-- verb, meaning to occur --> → occur
   - has <!-- verb, meaning to contain --> → contains
@@ -349,6 +360,7 @@ applyTo: "**"
   - like <!-- verb, meaning to hold something in high regard or esteem, not for casual enjoyment --> → appreciate / favour
   - likely <!-- adjective, meaning probable or expected to happen --> → probable
   - likely <!-- adverb, meaning probably, as in "will likely fail" --> → probably
+  - likelihood <!-- noun, meaning probability or chance of occurrence --> → probability
   - linger <!-- verb, meaning to remain in a place beyond the expected time --> → remain / persist
   - livestock <!-- noun, meaning domesticated farm animals --> → domesticated animals
   - lipstick → rouge
@@ -383,23 +395,27 @@ applyTo: "**"
   - meet <!-- verb, meaning to encounter or convene --> → encounter / convene
   - mend <!-- verb, meaning to repair or restore something --> → repair / restore
   - Middle Ages → Mediaeval Era
+  - meaningful <!-- adjective, meaning significant, important, or conveying useful meaning --> → significant / consequential / expressive
   - milestone <!-- noun, meaning a significant stage or checkpoint in progress --> → phase marker
   - misc → miscellaneous
   - might <!-- noun, meaning great power or strength --> → power / potency
-  - misbehave <!-- verb, meaning to conduct oneself improperly --> → misconduct onself / act improperly
+  - misbehave <!-- verb, meaning to conduct oneself improperly --> → misconduct oneself / act improperly
   - misclick → accidental click
   - misgiving <!-- noun, meaning a feeling of doubt or apprehension --> → apprehension
   - misunderstood <!-- adjective or past participle, meaning incorrectly interpreted or construed --> → misinterpreted / misconstrued
   - mood <!-- noun, meaning a person's emotional state or disposition --> → disposition / temperament
   - mushroom <!-- noun, meaning the fruiting body of a fungus --> → fungus
   - nauseous → nauseated
+  - nearby <!-- adjective or adverb, meaning close in distance or situated close by --> → proximate / adjacent
   - need <!-- noun, meaning a necessity or requirement --> → necessity / requirement
   - need <!-- verb, meaning to require --> → require
   - needs <!-- noun, plural, meaning necessities or requirements --> → necessities / requirements
+  - neighbour <!-- noun, meaning a person, place, or thing situated nearby or adjacent --> → adjacent resident / adjacent entity
   - neighbourhood <!-- noun, meaning an area surrounding a particular location --> → vicinity / district
   - new <!-- adjective, meaning recent or novel --> → novel / recent
   - night vision <!-- noun phrase, meaning the capacity to see in reduced illumination --> → nocturnal vision
   - nonetheless → nevertheless
+  - noteworthy <!-- adjective, meaning deserving attention or notice --> → notable / remarkable
   - nuisance <!-- noun, meaning a cause of inconvenience or annoyance --> → impediment / annoyance
   - odd <!-- adjective, meaning peculiar or unusual --> → peculiar / anomalous
   - of course → certainly / naturally
@@ -410,6 +426,7 @@ applyTo: "**"
   - open <!-- verb, meaning to access or expose --> → access / expose
   - open <!-- verb, meaning to formally begin, dedicate, or commence a venue, event, or institution --> → inaugurate
   - opening <!-- noun, meaning the formal beginning or dedication of a venue, event, or institution --> → inauguration
+  - ongoing <!-- adjective, meaning continuing or in progress --> → continuing / in progress
   - outcome <!-- noun, meaning a result or consequence --> → result / consequence
   - otherwise <!-- adverb, meaning in contradiction, as in "he says otherwise" --> → to the contrary
   - outside <!-- preposition, meaning external to a process, forum, or institution, as in "outside arbitration" --> → external / beyond
@@ -418,6 +435,7 @@ applyTo: "**"
   - output <!-- noun, meaning produced quantity or result --> → production
   - outpace <!-- verb, meaning to move faster than or exceed --> → surpass
   - outlaw <!-- noun, meaning a person declared outside the protection of the law --> → criminal / fugitive
+  - override <!-- verb, meaning to prevail over, supersede, or replace a decision, setting, or control --> → supersede / overrule
   - outskirts <!-- noun, meaning the outer parts of a city or town --> → periphery
   - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
   - overload <!-- verb or noun, meaning to burden or exceed the capacity of something --> → saturate / surcharge
@@ -435,6 +453,7 @@ applyTo: "**"
   - picker <!-- noun, meaning a person or mechanism that selects from options --> → selector
   - piecemeal <!-- adjective or adverb, meaning in separate fragments or gradual stages --> → incremental / incrementally
   - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
+  - pinpoint <!-- verb, meaning to identify or locate precisely --> → identify precisely / locate precisely
   - placeholder <!-- noun, meaning a temporary surrogate or substitute until a final value or version is available --> → surrogate / substitute / proxy
   - postwar → postbellum
   - post-war → postbellum
@@ -478,6 +497,7 @@ applyTo: "**"
   - right <!-- adjective, meaning correct or accurate, as opposed to incorrect --> → correct
   - rise <!-- verb, meaning to ascend --> → ascend
   - roadmap <!-- noun, meaning a planned sequence of future work or goals --> → plan / programme
+  - rooted <!-- adjective or past participle, meaning based in, derived from, or firmly established in something --> → founded / derived / established
   - rotten <!-- adjective, meaning decayed or putrid --> → putrid / decomposed
   - rope <!-- noun, meaning strong thick cord --> → cordage
   - rough <!-- adjective, meaning coarse or uneven in surface texture --> → coarse / abrasive
@@ -514,6 +534,8 @@ applyTo: "**"
   - shame <!-- noun, meaning a feeling of disgrace or humiliation --> → ignominy / dishonour
   - shame <!-- noun, meaning a painful sense of disgrace or humiliation --> → disgrace / humiliation
   - shard <!-- noun, meaning a fragment of a brittle material --> → fragment
+  - shape <!-- noun, meaning form, contour, or configuration --> → form / contour / configuration
+  - shape <!-- verb, meaning to form, influence, or configure --> → form / influence / configure
   - sharp <!-- adjective, meaning acute or incisive in thought or perception --> → acute / incisive
   - ship <!-- noun, meaning a large sea-going vessel --> → vessel
   - shoot <!-- verb, meaning to discharge a projectile weapon --> → fire / discharge
@@ -570,6 +592,7 @@ applyTo: "**"
   - strengthen <!-- verb, meaning to make stronger or more robust --> → fortify / reinforce
   - strengthening <!-- noun, meaning the process of making stronger --> → reinforcement / fortification
   - strong <!-- adjective, meaning physically powerful or robust --> → robust / sturdy
+  - sulfur → sulphur
   - surge <!-- noun, meaning a sudden increase in quantity, demand, activity, or arrivals --> → influx / escalation
   - surge <!-- verb, meaning to increase suddenly in quantity, demand, or activity --> → escalate / intensify
   - survival <!-- noun, meaning continued existence or remaining alive despite danger --> → persistence / continuance
@@ -580,13 +603,14 @@ applyTo: "**"
   - swing <!-- verb, meaning to move back and forth or through an arc --> → oscillate / pivot
   - swing <!-- noun, meaning a movement or change in position, direction, opinion, or value --> → oscillation / fluctuation
   - tainted <!-- adjective or past participle, meaning contaminated, corrupted, or rendered impure --> → contaminated / corrupted / adulterated / polluted
+  - tapestry <!-- noun, meaning a woven textile or a complex, interlaced composition --> → textile / fabric / composition
   - take <!-- verb, meaning to acquire or obtain something --> → acquire / obtain
   - target <!-- noun, meaning an intended goal or objective --> → objective
   - task <!-- noun, meaning a defined assignment, operation, or responsibility --> → assignment / operation / responsibility
   - task <!-- verb, meaning to assign a duty or responsibility --> → commission / assign
   - take a look <!-- phrase, meaning to examine or inspect something --> → examine / inspect / observe
   - talk <!-- verb, meaning to communicate, converse or discuss --> → communicate / converse / discuss
-  - talking about <!-- phrase, meaning dicussing or conversing regarding a topic --> → dscussing / concerning
+  - talking about <!-- phrase, meaning discussing or conversing regarding a topic --> → discussing / concerning
   - tell <!-- verb, meaning to inform, notify, or communicate information --> → inform / notify / communicate
   - tell <!-- verb, meaning to narrate or relate information --> → narrate / relate
   - tell <!-- verb, meaning to distinguish or determine --> → discern / differentiate / determine
@@ -626,6 +650,7 @@ applyTo: "**"
   - trash truck → refuse collection vehicle
   - trigger <!-- verb, meaning to initiate or cause something to occur --> → initiate / activate
   - tightly coupled <!-- adjective, meaning strongly interdependent components --> → tightly integrated
+  - tricky <!-- adjective, meaning difficult, complex, or requiring careful handling --> → difficult / complex / delicate
   - turnaround <!-- noun, meaning the time required to complete a process cycle --> → processing interval
   - trust <!-- noun, meaning confidence or reliance placed in someone or something --> → confidence / reliance / faith
   - trust <!-- verb, meaning to have confidence or reliance in someone or something --> → rely upon / confide in / place confidence in
@@ -651,6 +676,10 @@ applyTo: "**"
   - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
   - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
   - upset <!-- verb, meaning to distress or agitate someone --> → distress / agitate
+  - utmost <!-- adjective, meaning greatest or highest in degree --> → maximum / supreme
+  - utter <!-- adjective, meaning complete, absolute, or total --> → complete / absolute / total
+  - utter <!-- verb, meaning to say, express, or articulate --> → articulate / express
+  - uttermost <!-- adjective, meaning furthest, greatest, or most extreme --> → extreme / maximum
   - upvote <!-- verb/noun, meaning to express approval of something --> → endorse / endorsement
   - want <!-- verb, meaning to desire or wish --> → desire / wish
   - war <!-- noun, meaning an armed conflict between nations or groups --> → conflict / warfare

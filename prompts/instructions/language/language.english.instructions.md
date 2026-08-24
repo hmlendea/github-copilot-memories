@@ -12,6 +12,8 @@ applyTo: "**"
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition, meaning concerning or on the subject of --> → concerning / regarding
   - actual <!-- adjective, meaning real or genuine in context such as "actual work" --> → genuine / real
+  - advice <!-- noun, meaning guidance or recommendations offered for prudent action --> → recommendation / counsel / guidance
+  - advisory <!-- adjective or noun, meaning serving to advise or provide cautionary guidance --> → consultative / consultative notice / cautionary notice
   - adamantite → adamantium
   - adhesive bandage → plaster
   - against <!-- preposition, meaning in contravention of a rule or law --> → contrary to / in violation of
@@ -54,7 +56,6 @@ applyTo: "**"
   - bathroom → toilet
   - bathroom sink → washbasin
   - bay <!-- noun, meaning a broad coastal inlet --> → gulf / estuary
-  - beach <!-- noun, meaning a sandy or pebbly shore beside a body of water --> → shore / strand
   - because <!-- conjunction, introducing a cause or reason --> → considering that / on account of the fact that
   - because of <!-- prepositional phrase, introducing a cause --> → due to / as a consequence of
   - bee nest <!-- noun, meaning a naturally occurring bee hive --> → natural apiary
@@ -241,6 +242,7 @@ applyTo: "**"
   - following <!-- adjective, meaning listed or mentioned next --> → subsequent / ensuing
   - forecast <!-- noun, meaning a prediction of future conditions --> → projection / prediction / prognosis
   - forecast <!-- verb, meaning to predict future conditions --> → project / predict / anticipate
+  - foreshadow <!-- verb, meaning to indicate or suggest a future development in advance --> → prefigure / presage
   - for sure → certainly / assuredly
   - forbid <!-- verb, meaning to prohibit by authority --> → prohibit / interdict
   - foreman <!-- noun, meaning a supervisor of a work crew --> → supervisor
@@ -335,6 +337,7 @@ applyTo: "**"
   - jail <!-- noun --> → prison
   - jail <!-- verb --> → incarcerate
   - jailor → prison guard
+  - jagged <!-- adjective, meaning rough with sharp, uneven edges --> → serrated / irregular
   - join <!-- verb, meaning to connect, combine, or become part of something --> → unite / attach
   - keen <!-- adjective, meaning enthusiastic or eager --> → avid / ardent
   - keep <!-- verb, meaning to maintain a state or condition --> → maintain
@@ -431,6 +434,7 @@ applyTo: "**"
   - otherwise <!-- adverb, meaning in contradiction, as in "he says otherwise" --> → to the contrary
   - outside <!-- preposition, meaning external to a process, forum, or institution, as in "outside arbitration" --> → external / beyond
   - overhead <!-- noun, meaning indirect operating expense --> → operational cost
+  - outbreak <!-- noun, meaning a sudden emergence or escalation, specifically of disease or conflict --> → eruption / emergence / escalation
   - outdone <!-- adjective or past participle, meaning surpassed or exceeded --> → surpassed / exceeded
   - output <!-- noun, meaning produced quantity or result --> → production
   - outpace <!-- verb, meaning to move faster than or exceed --> → surpass
@@ -439,6 +443,7 @@ applyTo: "**"
   - outskirts <!-- noun, meaning the outer parts of a city or town --> → periphery
   - overcome <!-- verb, meaning to successfully deal with or defeat --> → surmount
   - overload <!-- verb or noun, meaning to burden or exceed the capacity of something --> → saturate / surcharge
+  - overhang <!-- noun or verb, meaning a projecting part that extends beyond what supports it --> → projection / protrusion
   - overlord <!-- noun, meaning a supreme ruler or dominant authority --> → sovereign / suzerain / potentate
   - overseer <!-- noun, meaning a person who supervises others --> → supervisor / superintendent
   - overwhelm <!-- verb, meaning to overpower or inundate completely --> → inundate
@@ -446,15 +451,18 @@ applyTo: "**"
   - ownership <!-- noun, meaning the state or fact of possessing something --> → possession / proprietorship
   - pathway <!-- noun, meaning a route or process channel --> → channel / conduit
   - pattern <!-- noun, meaning a recurring arrangement, model, or structure --> → configuration / schema
+  - peak <!-- noun, meaning the highest point, level, or degree --> → apex / zenith
   - pajamas → pyjamas
   - paperwork <!-- noun, meaning administrative documents or bureaucratic procedures --> → documentation
   - parking lot → car park
   - pick <!-- verb, meaning to select --> → select
   - picker <!-- noun, meaning a person or mechanism that selects from options --> → selector
   - piecemeal <!-- adjective or adverb, meaning in separate fragments or gradual stages --> → incremental / incrementally
+  - pillage <!-- verb, meaning to rob or despoil, especially during conflict --> → despoil / depredate
   - ping <!-- verb, in messaging or technical contexts, meaning to contact or send a quick signal to --> → notify / contact / probe
   - pinpoint <!-- verb, meaning to identify or locate precisely --> → identify precisely / locate precisely
   - placeholder <!-- noun, meaning a temporary surrogate or substitute until a final value or version is available --> → surrogate / substitute / proxy
+  - plunder <!-- verb or noun, meaning to seize goods by force or through theft --> → despoil / depredation
   - postwar → postbellum
   - post-war → postbellum
   - prewar → prebellum
@@ -508,6 +516,7 @@ applyTo: "**"
   - rush <!-- verb, meaning to move or act with great urgency --> → hasten / charge
   - saber → sabre
   - sail <!-- verb, meaning to travel by vessel, especially wind-propelled --> → navigate
+  - safe <!-- adjective, meaning prudent, judicious, or cautious in decision-making --> → prudent / judicious / cautious
   - safely <!-- adverb, meaning without harm or danger --> → securely / without hazard
   - salesman <!-- noun, meaning a person who sells goods or services --> → vendor / merchant
   - same <!-- adjective, meaning exactly alike or unchanged in identity --> → identical
@@ -540,6 +549,7 @@ applyTo: "**"
   - ship <!-- noun, meaning a large sea-going vessel --> → vessel
   - shoot <!-- verb, meaning to discharge a projectile weapon --> → fire / discharge
   - shopkeeper → merchant
+  - shore <!-- noun, meaning land adjoining a sea, lake, or river --> → coast / littoral
   - short <!-- adjective, meaning brief in duration --> → brief
   - shortly <!-- adverb, meaning in a brief time or soon --> → in a moment / soon
   - shortly <!-- adverb, meaning not long before or after a reference point, as in shortly before --> → briefly before / not long before
@@ -552,6 +562,7 @@ applyTo: "**"
   - silly <!-- adjective, meaning trivial, frivolous, or not serious --> → trivial / frivolous
   - skill <!-- noun, meaning the ability to do something well --> → competence / proficiency
   - slim <!-- adjective, meaning slender or of small girth --> → slender / svelte
+  - slope <!-- noun, meaning an inclied surface, gradient, or slant --> → incline / gradient
   - sloth <!-- noun, meaning habitual laziness --> → indolence
   - slothful <!-- adjective, meaning habitually lazy --> → indolent
   - slowness <!-- noun, meaning reduced speed, delayed progress, or delayed response --> → reduced velocity / latency
@@ -574,6 +585,7 @@ applyTo: "**"
   - spread <!-- verb, meaning to disseminate or distribute widely --> → disseminate / distribute
   - spyglass <!-- noun, meaning a small portable telescope --> → telescope
   - stab <!-- verb, meaning to pierce or wound with a pointed weapon --> → pierce / impale
+  - stacked <!-- adjectiev, meaning arranged in layers or placed one upon another --> → layered / stratified
   - staffs <!-- noun, plural of staff --> → staves
   - stall <!-- verb, meaning to delay progress or cease advancing --> → impede / suspend
   - stand <!-- verb, meaning to remain positioned or situated, as in standing in a building --> → remain / be situated
@@ -627,6 +639,7 @@ applyTo: "**"
   - thinking <!-- noun, meaning the process or result of considering something --> → consideration / reflection
   - threat <!-- noun, meaning an indication or source of potential harm or danger --> → menace / peril
   - three times → thrice
+  - through <!-- preposition or adverb, meaning by way of, via, or across --> → via / by means of / across
   - throughput <!-- noun, meaning rate of processing or transfer --> → processing rate / transfer rate
   - thrive <!-- verb, meaning to prosper or flourish --> → flourish / prosper
   - throw <!-- verb, meaning to propel something through the air --> → hurl / project / cast
@@ -676,6 +689,7 @@ applyTo: "**"
   - update <!-- verb, meaning to bring something up to date or revise it with newer information --> → revise / refresh
   - upkeep <!-- noun, meaning the process of maintaining something in good condition --> → maintenance
   - upset <!-- verb, meaning to distress or agitate someone --> → distress / agitate
+  - upstanding <!-- adjective, meaning morally upright and pespectable, as in "upstanding citizen" --> → reputable / honourable / virtuous
   - utmost <!-- adjective, meaning greatest or highest in degree --> → maximum / supreme
   - utter <!-- adjective, meaning complete, absolute, or total --> → complete / absolute / total
   - utter <!-- verb, meaning to say, express, or articulate --> → articulate / express

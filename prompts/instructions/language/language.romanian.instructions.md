@@ -9,6 +9,7 @@ applyTo: "**"
 
 Word replacements - apply to all variants and derivatives of each word:
 
+- [X] trebuie să <!-- construcție impersonală, cu [X] ca subiect; nu pentru "trebuie" utilizat ca substantiv sau pentru alte sensuri ale verbului --> → este necesar ca [X] să / [X] este necesar să
 - a fi nevoie → să fie necesar
 - a fi nevoit → să îi fie necesar
 - a fi nevoite → să le fie necesar
@@ -26,9 +27,12 @@ Word replacements - apply to all variants and derivatives of each word:
 - amețit → dezorientat
 - amintire → memorie
 - ar trebui → ar fi necesar / ar fi indicat / ar fi bine
+- ar trebui să <!-- construcție care exprimă recomandare sau necesitate; nu pentru "ar trebui" utilizat izolat --> → ar fi necesar să / ar fi indicat să / ar fi bine să
 - arțăgos → irascibil
+- aruncă la gunoi <!-- locuțiune, cu snesul de a arunca un obiect la tomberon sau în coșul de gunoi; nu pentru eliminarea unei persoane, a unei idei ori a unei informații --> → aruncă la tomberon
 - asemănător → similar
 - astronaut → cosmonaut
+- aș avea nevoie <!-- locuțiune, pentru exprimarea unei necesități personale ipotetice sau politicoase --> → mi-ar fi necesar
 - avea nevoie → îi era necesar
 - aveai nevoie → îți era necesar
 - aveam nevoie → îmi era necesar
@@ -49,6 +53,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - ChatGPT-ul → chat-ul GPT
 - chip <!-- substantiv, cu sensul de față sau înfățișare --> → figură / fizionomie / aspect
 - chip <!-- substantiv, cu sensul de mod sau fel --> → mod / manieră
+- ciob <!-- substantiv, pentru un fragment de sticlă , ceramică sau alt material spart; nu pentru un fragment de text ori de date --> → fragment
 - ciudat → straniu / bizar
 - ciudățenie → bizarerie
 - clanță → mâner de uşă
@@ -56,12 +61,15 @@ Word replacements - apply to all variants and derivatives of each word:
 - clipă → moment
 - cotropit → oprimat
 - cotropitor → opressor
+- cottage cheese <!-- substantiv, plural, pentru mai multe porții sau tipuri de brânză proaspătă granulată --> → cotaje
+- cottage chesse <!-- substantiv, singular, pentru brânza proaspătă granulată; nu pentru sensuri metaforice sau alte tipuri de brânză --> → cotajă
 - cremă de brânză → crefă
 - cremă de brânză → crefă
 - cuier → agățător
 - darnic → generos
 - deal → colină
 - destul → suficient
+- deznădejde <!-- substantiv, cu sensul de lipsă profundă de speranță sau disperare; nu pentru simpla tristețe ori dezamăgire --> → disperare / lipsă de speranță / lipsă profundă de speranță
 - dobândă → interes
 - dobândire → obținere
 - dovedesc → demonstrez
@@ -92,6 +100,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - grijă → preocupare
 - groaznic → teribil / foarte rău
 - grozav → extraordinar
+- haine de pat <!-- grup nominal, pentru lenjeria utilizată pe un pat; nu pentru îmbrăcăminte sau alte textile de uz casnic --> → lenjerie de pat
 - haz <!-- substantiv, cu sensul de caracter amuzant --> → umor
 - hotar → frontieră
 - hotărâre → decizie
@@ -107,21 +116,22 @@ Word replacements - apply to all variants and derivatives of each word:
 - încrezut → prezumțios
 - încurcat → impedat / confundat
 - îndesat → compactat
-- îngădui → permite
-- îngăduință → permisiune
-- îngăduitor → permisiv
 - îndrăzneală → cutezare
 - îndrăznesc → cutez
 - înfățișare → aparență / aspect
 - înființat → fondat
 - înfundat → blocat
 - înfundătură → blocaj
+- îngădui → permite
+- îngăduință → permisiune
+- îngăduitor → permisiv
 - îngrijorat → preocupat
 - însușire <!-- substantiv, în sens de caracteristică --> → proprietate / caracteristică
 - întâmplă → petrece
 - întâmplător → accidental
 - întemeiat → fondat
 - înzdrăvenire → întărire
+- îți trăbă <!-- formă colocvială sau ortografiată incorect, cu sensul de necesitate adresată unei singure persoane --> → îți este necesar / îti este indicat
 - lacăt → încuietoare
 - lămurire → clarificare, explicare
 - liniștit → calm
@@ -130,6 +140,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - magazie → depozit
 - măgar → asin
 - mărgele → perle
+- mi-ar fi de folos <!-- locuțiune, pentru exprimarea utilității unui lucru pentru vorbitor; nu pentru exprimarea unei necesități propriu-zise --> → mi-ar fi util
 - mijloace → căi / metode
 - minunat → miraculos
 - minune → miracol
@@ -140,15 +151,17 @@ Word replacements - apply to all variants and derivatives of each word:
 - nădejde → speranță
 - nedumerit → confuz, neclar, incert
 - nelămurire → neclaritate
-- neobișnuit → neuzual
 - nenorocire → nefericire
+- neobișnuit → neuzual
 - nevoi <!-- substantiv, cu sensul de necesități --> → necesități
 - nevoie → necesitate
 - noros → înnorat
+- nu mai ai nevoie <!-- locuțiune, adresată unei singure persoane, cu snesul că o necesitate a încetat --> → nu îți mai este necesar / nu mai îți este necesar
+- nu mai aveți nevoie de [X] <!-- locuțiune de politețe sau pentru plural, când [X] este un substtantiv la plural; nu utiliza pentru un singur obiect --> → nu vă mai sunt necesare [X]ele/[X]urile / nu vă mai sunt necesari [X]ii
 - oboseală → epuizare
 - obosit → extenuat
-- păzește → supraveghează
 - pagubă → daună / pierdere
+- păzește → supraveghează
 - pedeapsă → sancțiune
 - pedepsit → sancționat
 - pivniță → subsol
@@ -157,10 +170,10 @@ Word replacements - apply to all variants and derivatives of each word:
 - pricină → cauză
 - pricinui → cauza
 - pricinuit → cauzat
+- prielnic → propice
 - prilej → ocazie
 - primejdie → pericol
 - primejdios → periculos
-- prielnic → propice
 - pripească → precipiteze
 - pripește → precipitează
 - pripire → precipitare
@@ -170,22 +183,22 @@ Word replacements - apply to all variants and derivatives of each word:
 - putoare → miasmă
 - răsplată → recompensă
 - răzbunare → retribuție
+- rânduială → ordine / organizare
 - râșniță → măcinătoare
 - râvnă → deziderație
 - râvnire → deziderație
-- rânduială → ordine / organizare
 - risipire → irosire
 - rost → sens
 - rostul → sensul
 - sățios → sațios
+- sârguincios → diligent
+- sârguință → diligență
 - scări → trepte
 - sfat → recomandare / sugestie
 - sfătui → recomanda / consilia
 - sfârșit → final
-- sârguincios → diligent
-- sârguință → diligență
-- slujbă <!-- substantiv, în sens de ocupație --> → serviciu / funcție
 - slugă → servitor
+- slujbă <!-- substantiv, în sens de ocupație --> → serviciu / funcție
 - stăpân <!-- substantiv, cu sensul de proprietar sau stăpânitor --> → proprietar / domn
 - stârnire → incitare
 - stârnit → incitat
@@ -205,6 +218,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - topor → secure
 - tovarăș → camarad
 - treabă → lucru
+- treabă <!-- substantiv, cu sensul de atribuție, obligație sau misiune; nu pentru o activitate ori un lucru în sens general --> → atribuție / obligație / misiune
 - trebuia → era necesar / ar fi fost indicat / ar fi fost bine
 - trebuiască → fie necesar / fie indicat / fie bine
 - trebuie → este necesar
@@ -214,6 +228,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - trezire → deșteptare
 - țeavă → conductă
 - țel → obiectiv
+- ți-ar trebui <!-- locuțiune, pentru exprimarea unei necesități sau a unei recomandări adresate unei singure persoane --> → ți-ar fi necesar / ți-ar fi indicat / ți-ar fi bine / ți-ar fi bun / ți-ar fi bună
 - țipăt → strigăt
 - ucenic → discipol
 - uimească → surprindă
@@ -245,7 +260,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - zădărnicire → compromitere
 - zâmbet → surâs
 - zdravăn → robust
-- zilnic <!-- adjectiv --> → cotidian
-- zilnic <!-- adverb, de exemplu „se întâmplă zilnic” --> → în fiecare zi
 - zdrobire → strivire
 - zdrobitor (e.g. de usturoi) → presă
+- zilnic <!-- adjectiv --> → cotidian
+- zilnic <!-- adverb, de exemplu „se întâmplă zilnic” --> → în fiecare zi

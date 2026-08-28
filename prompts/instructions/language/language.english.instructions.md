@@ -380,6 +380,7 @@ applyTo: "**"
   - low maintenance → reduced maintenance
   - low-output → reduced production
   - low-pressure → reduced-pressure
+  - lush <!-- adjective, describing abundant, vigorous, and usually green vegetation; not luxurious objets or lifestyles --> → verdant / luxuriant
   - luck → fortune
   - lucky → fortunate
   - lukewarm <!-- adjective, meaning only moderately warm in temperature or enthusiasm --> → tepid
@@ -598,6 +599,7 @@ applyTo: "**"
   - sticky <!-- adjective, meaning having a thick or viscous consistency --> → viscous / glutinous
   - stiff <!-- adjective, meaning rigid or inflexible --> → rigid / inflexible
   - stop <!-- verb, meaning to cease an action or bring something to a halt --> → cease / halt
+  - stony <!-- adjective, describing ground covered with stones or stone-like material; not emotional coldness --> → rocky / lapidary / lithic
   - storekeeper → merchant
   - storm <!-- noun, meaning a violent atmospheric disturbance --> → tempest
   - strength <!-- noun, meaning the quality or state of being strong --> → fortitude / vigour
@@ -743,7 +745,9 @@ applyTo: "**"
   - write <!-- verb, meaning to compose or document --> → compose / document
   - wrong <!-- adjective, meaning incorrect or erroneous, as opposed to right --> → erroneous / incorrect
   - wrong <!-- adjective, meaning unjust or inequitable --> → unjust / inequitable
+  - wavy <!-- adjective, describing a surface, line, or form with repeated curves; not a person's mood or uncertainty --> → undulating / sinuous
   - wroth <!-- adjective, meaning intensely angry --> → irate / indignant
+  - windswept <!-- adjective, describing terrain exposed to persistent or strong winds; not hair merely styled in waves --> → exposed to prevailing winds / wind-exposed
   - yard <!-- noun, meaning garden or outdoor area --> → garden
   - yield <!-- verb, meaning to produce or generate a result or crop --> → produce / generate
   - yield <!-- verb, meaning to generate outcomes over time, as in "yielding results" --> → produce / generate

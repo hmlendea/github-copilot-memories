@@ -30,4 +30,4 @@ On this machine the folder is symlinked to `prompts/` in this repository.
 |---|---|---|
 | `github-readme.instructions.md` | `/github-readme` or "generate/update README" | Generate or update a `README.md` for a GitHub repository |
 
-See also: [test-values.md](test-values.md) for the raw test values reference.
+See also: `common.test-values.instructions.md` for the raw test values reference.

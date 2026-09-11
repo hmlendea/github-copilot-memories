@@ -29,7 +29,8 @@ This mode applies automatically when the user requests any of the subsequent:
 5. Additional sections or subsections may be added when they are genuinely relevant to the repository, but they must be purely additive and must not replace, rename, reorder, or omit any template-defined section, table, or subsection.
 6. Do not normalise, correct, or improve fixed template wording.
 7. Language, spelling, and phrasing rules apply only to values inserted into placeholders, not to fixed template literals.
-8. Resolve template-marked conditional blocks exactly as written in template comments (for example, lines marked with `Only if ...`). Template-defined core sections and headings remain mandatory and must not be removed.
+8. When creating or revising this document, also ensure the repository `README.md` includes the corresponding Security section or link unless that section already exists and remains accurate.
+9. Resolve template-marked conditional blocks exactly as written in template comments (for example, lines marked with `Only if ...`). Template-defined core sections and headings remain mandatory and must not be removed.
 
 ### Failure Behaviour
 

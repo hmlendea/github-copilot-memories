@@ -24,9 +24,10 @@ This mode applies automatically when the user requests any of the following:
 
 1. Start from `github.readme.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
-3. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
-4. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
-5. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.
+3. When `ARCHITECTURE.md`, `SECURITY.md`, `ROADMAP.md`, or similar planning and policy documents exist or are being generated, ensure the README contains the corresponding section or link unless that section already exists and remains accurate.
+4. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
+5. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
+6. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.
 6. Expand content placeholders such as `[[USAGE_EXAMPLE]]`, `[[DEVELOPMENT_SETUP]]`, and `[[RELEASE_INSTRUCTIONS]]` into the complete Markdown required by that block, including paragraphs, lists, tables, or fenced code blocks.
 7. Duplicate rows, list items, screenshots, badges, or other examples only when an adjacent template comment says `Repeat` or otherwise expressly permits repetition. When adjacent directives define mutually exclusive variants with identical headings, include exactly one matching variant.
 8. Remove an optional placeholder together with its containing conditional block when no evidenced content applies. Never preserve an empty heading, table, list, or code block.

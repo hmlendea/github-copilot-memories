@@ -40,9 +40,10 @@ Unless the user explicitly requests a target architecture, document the verified
 5. Do not rephrase fixed template text outside placeholders, except when a conditional block is removed in its entirety.
 6. Additional project-specific sections or subsections are permitted when they document material domain mechanics, ownership rules, caches, compatibility contracts, or operational concerns absent from the standard sections.
 7. Preserve accurate, current project-specific content from an existing ARCHITECTURE.md. Position it beneath the nearest standard section or retain it as an additive section; do not discard it solely because the template lacks an identical heading.
-8. Preserve deliberate architecture terminology used by the repository, including layer, component, module, service, adapter, facade, pipeline, host, and domain names.
-9. Use repository-relative links for source references, and verify that every referenced path exists.
-10. Remove all template comments and unresolved placeholders from the final document.
+8. When creating or revising this document, also ensure the repository `README.md` includes the corresponding Architecture section or link unless the section already exists and remains accurate.
+9. Preserve deliberate architecture terminology used by the repository, including layer, component, module, service, adapter, facade, pipeline, host, and domain names.
+10. Use repository-relative links for source references, and verify that every referenced path exists.
+11. Remove all template comments and unresolved placeholders from the final document.
 
 ### Failure Conduct
 

@@ -18,4 +18,5 @@ applyTo: "**"
 ## Repository Documentation
 
 - After making changes, always assess whether `README.md`, `SECURITY.md`, `ROADMAP.md`, or `ARCHITECTURE.md` is affected, and revise every relevant document so that it remains accurate and complete.
+- When generating or revising `ARCHITECTURE.md`, `SECURITY.md`, `ROADMAP.md`, or similar planning and policy files, ensure the corresponding section or link is present in `README.md` unless that section already exists and remains accurate.
 - Treat each document independently and do not modify documents whose subject matter is unaffected by the change.

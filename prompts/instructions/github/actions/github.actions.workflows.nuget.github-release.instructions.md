@@ -19,6 +19,9 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     env:
       NUGET_PACKAGE_NAME: [[NUGET_PACKAGE_NAME]]
 
@@ -53,14 +56,9 @@ jobs:
         echo "sha256=$SHA256" >> $GITHUB_OUTPUT
 
     - name: Upload the package to the GitHub Release
-      uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./nupkg/${{ env.NUGET_PACKAGE_NAME }}.${{ steps.version.outputs.version }}.nupkg
-        asset_name: ${{ env.NUGET_PACKAGE_NAME }}.${{ steps.version.outputs.version }}.nupkg
-        asset_content_type: application/zip
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh release upload "${{ github.event.release.tag_name }}" "./nupkg/${NUGET_PACKAGE_NAME}.${{ steps.version.outputs.version }}.nupkg" --clobber
 
     - name: Append the SHA256 checksum to the GitHub Release notes
       uses: actions/github-script@v7

@@ -11,6 +11,7 @@ When creating or revising workflow files, use these canonical file names:
 - Nexus Mods workflows: `nexus-mods.yml`
 - Steam Workshop workflows: `steam-workshop.yml`
 - GitHub Release workflows: `github-release.yml`
+- NuGet.org release workflows: `nuget-release.yml`
 - Release asset upload workflows: `release-assets.yml`
 
 Do not use alternative names for these workflow categories unless the user explicitly requests an exception.

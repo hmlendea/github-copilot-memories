@@ -10,7 +10,7 @@ The `[[NUGET_PACKAGE_NAME]]` placeholder must be replaced with the NuGet package
 The repository must define the `NUGET_USER` secret with the NuGet.org account name associated with the package. NuGet trusted publishing must be configured for the repository so `NuGet/login` can exchange the GitHub Actions OIDC token for a temporary API key.
 
 ```yaml
-name: NuGet Release
+name: NuGet.org Release
 
 on:
   release:

@@ -13,7 +13,8 @@ applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
 - Always write code that handles both LF (`\n`) and CRLF (`\r\n`) line endings. Never assume a single newline style.
 - All files must end with an empty line.
 - Every class, file, and module must have a single, well-defined responsibility. Place methods and functions only in the class that owns that responsibility. Never create multi-responsibility buckets or utility dumping-grounds. When a class begins to serve more than one concern, split it immediately into separate, focused classes, each placed in the namespace or module that corresponds to its responsibility.
-- Never leave empty placeholder classes. Every typ must have a concrete purpose and at least one meaningful member, behaviour, or contract.
+- Do not create catch-all `Helpers`, `Utils`, `Common`, `Misc`, or `Shared` modules or namespaces. Assign each type to the domain or responsibility it serves.
+- Do not leave empty placeholder classes or types. Every type must have a concrete purpose and at least one meaningful member, behaviour, or contract.
 - Always remove dead code, unused imports, unused variables, redundant assignments, unused methods, obsolete fields, empty `if` blocks (conditionals with no logic inside their braces), and any other artefacts that serve no purpose.
 - After every edit, explicitly check for and remove any imports or `using` directives that are no longer referenced. This is MANDATORY and must never be skipped, even when the change seems unrelated to imports.
 - Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values.

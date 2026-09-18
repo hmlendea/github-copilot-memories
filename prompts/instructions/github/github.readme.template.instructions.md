@@ -549,6 +549,13 @@ This script downloads and executes an external release helper from `https://raw.
 |---------|---------|-------|---------|
 | [[DEPENDENCY]] | [[DEPENDENCY_VERSION]] | [[DEPENDENCY_SCOPE]] | [[DEPENDENCY_PURPOSE]] |
 
+<!-- Only if `.github/workflows/` contains one or more workflow files. Link each workflow name to its verified file on `[[DEFAULT_BRANCH]]`, and explain its purpose and principal actions. -->
+## ⚙️ GitHub Actions
+
+| Workflow | Purpose | What it does |
+|----------|---------|--------------|
+| [ [[WORKFLOW_NAME]] ](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/blob/[[DEFAULT_BRANCH]]/.github/workflows/[[WORKFLOW_FILE]]) | [[WORKFLOW_PURPOSE]] | [[WORKFLOW_DESCRIPTION]] |
+
 <!-- Only if the solution has more than one project or the directory layout is non-obvious. -->
 ## 🗂️ Project Structure
 

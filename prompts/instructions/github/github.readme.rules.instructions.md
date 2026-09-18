@@ -152,6 +152,7 @@ Process the subsequent sections in table order. This order is canonical after co
 | `## 🛡️ Privacy and Data` | The project collects, processes, transmits, or persists user data, analytics, diagnostics, or telemetry. | Document evidenced data conduct and controls without exposing personal data. |
 | `## ♿ Accessibility` | A user-facing interface has documented accessibility support, constraints, or conformance. | Do not assert standards conformance without evidence. |
 | `## 🛠️ Development` | A local development workflow exists. | Use canonical project-native commands. Omit for content-only repositories without executable steps. |
+| `## ⚙️ GitHub Actions` | One or more workflow files exist under `.github/workflows/`. | Document every workflow. Link each workflow name to its verified `.yml` or `.yaml` file on `[[DEFAULT_BRANCH]]`, and explain its evidenced purpose and principal actions. |
 | `## 🗂️ Project Structure` | Multiple projects exist or the directory layout is non-obvious. | Include principal projects and directories only. |
 | `## 🏗️ Architecture` | `ARCHITECTURE.md` exists or `docs/architecture/` contains substantive documentation. | Place directly after Project Structure, preserve its fixed sentence, and resolve only `[[ARCHITECTURE_DOCUMENT_LINK]]`. |
 | `## 🚢 Deployment` | The project is deployed as an application, service, website, infrastructure component, or self-hosted system. | Include only public, safe operational procedures. |

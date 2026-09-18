@@ -26,12 +26,12 @@ jobs:
       NUGET_PACKAGE_NAME: [[NUGET_PACKAGE_NAME]]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 

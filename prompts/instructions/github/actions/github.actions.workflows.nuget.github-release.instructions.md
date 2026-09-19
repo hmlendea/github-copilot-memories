@@ -25,6 +25,9 @@ jobs:
     env:
       NUGET_PACKAGE_NAME: [[NUGET_PACKAGE_NAME]]
 
+    permissions:
+      contents: write
+
     steps:
     - uses: actions/checkout@v6
       with:

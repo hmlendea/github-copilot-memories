@@ -18,6 +18,7 @@ This is the `SECURITY.md` template that shall be utilised.
 ## 🛡️ Supported Versions
 
 Use this table to indicate which project versions currently receive security maintenance.
+<!-- `Latest version` is literal text and must not be replaced with a version number. -->
 
 | Version | Distribution Channel | Supported |
 |---------|--------------------|-----------|

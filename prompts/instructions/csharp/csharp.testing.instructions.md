@@ -49,3 +49,13 @@ applyTo: "**/*Tests.{cs,csproj},**/*.Tests/*.cs,**/*.Tests/**/*.cs"
 
 ### Compatibility
 - Ensure tests are platform‑safe: avoid hard‑coded paths, locale‑dependent formats, and OS‑specific APIs. Tests should run reliably on Linux, Windows, macOS, x86, ARM, etc.
+
+### Integration Testing
+
+- Integration tests for APIs should cover every input and output scenario, including:
+  - All success scenarios.
+  - All failure scenarios, including each possible HTTP status code (e.g., 400, 401, 404, 500).
+- Use the existing integration testing framework of the project. If no framework is present, default to **NUnit** with **FluentAssertions** and **Microsoft.AspNetCore.Mvc.Testing** for API testing.
+- Ensure tests validate both the response body and HTTP status codes.
+- Use `[InlineData]` or `[Theory]` attributes to parameterize tests for different input/output combinations.
+- Mock external dependencies (e.g., databases, third-party APIs) to ensure tests are deterministic and fast.

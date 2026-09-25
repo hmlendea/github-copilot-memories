@@ -96,3 +96,7 @@ applyTo: "**/*.{cs}"
 ### Compiler Instructions
 
 - Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.
+
+### Constants and Fields
+
+- Avoid using `const` for class members. Use `static readonly` with expression-bodied syntax (`static readonly ... =>`) instead.

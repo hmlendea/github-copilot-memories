@@ -40,6 +40,11 @@ applyTo: "**/*Tests.{cs,csproj},**/*.Tests/*.cs,**/*.Tests/**/*.cs"
 - Declare mock fields and the SUT at class level as `private`.
 - Do not write unit tests that validate configuration files or their values; configuration should be verified by integration tests or runtime checks.
 
+### Branch Coverage
+- Unit tests should cover **every single possible code branch** to ensure comprehensive validation of logic paths.
+- Unit tests should cover **every single erroneous or inconsistent scenario** to validate error handling and edge cases.
+- Unit tests should cover **edge cases** and **unexpected scenarios** to ensure robustness and reliability.
+
 ### Structure
 - Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
 - Group tests within a class by the production method under test. Do NOT use comment banners or any other separator between groups.

@@ -22,3 +22,11 @@ Treat those files as the primary source of project instructions. If you need cla
 - Do not repeat an identical unsuccessful search.
 - After two failed searches for a referenced instruction file, stop and ask the user for its exact path.
 - Never modify a file based on an instruction file that has not actually been read.
+
+## Repository Documentation
+- Whenever it is required to understand how the repository is organised, how it works, what it represents, or where certain things are located, refer to:
+  1. **`ARCHITECTURE.md`** if it exists in the repository.
+  2. **`docs/`** directory if it exists in the repository.
+  3. The **repository's GitHub Wiki** if it exists.
+
+- Ensure repository-relative file and directory links in documentation are verified before inclusion.

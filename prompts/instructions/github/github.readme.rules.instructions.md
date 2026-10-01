@@ -7,18 +7,7 @@ Generate or revise the `README.md` for this GitHub repository using the `github.
 
 ## Strict Template Fidelity Mode (Default)
 
-This mode applies automatically when the user requests any of the following:
-- Update the README
-- Create the README.md file
-- Revise the README
-- Create a README
-- Generate the README
-- Compose the README
-
-### Precedence
-
-- These rules supersede all other README generation instructions.
-- If any other rule conflicts with strict fidelity, strict fidelity prevails.
+Strict fidelity applies to every `README.md` creation or revision and overrides conflicting instructions.
 
 ### Generation Contract
 
@@ -81,18 +70,6 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 If a `README.md` previously exists, preserve any content that is correct and up to date, and revise only what has changed or is missing. If no `README.md` exists, create one from scratch.
 
 Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## 🏗️ Architecture`, `## 🤝 Contributing`, `## 📜 Code of Conduct`, `## 💝 Project Engagement`, or `## 📄 License`; resolve only their conditional lines and placeholders.
-
-## Mandatory Editing Rules
-
-When updating an existing README.md:
-
-- Never delete README.md.
-- Never use `*** Delete File`.
-- Never recreate README.md with `create_file`.
-- Modify the existing file only with `apply_patch` using `*** Update File`.
-- A complete rewrite must still use `*** Update File`.
-- Preserve the file path and file identity throughout the operation.
-- If an in-place patch cannot be produced, stop and explain the problem instead of deleting the file.
 
 ## Conditional Content Rules
 

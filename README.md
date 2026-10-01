@@ -29,6 +29,7 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 - Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
+- Provides on-demand skills for scoped research, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
 
 ## 🚀 Usage
 
@@ -44,11 +45,13 @@ The README rules inspect repository evidence, select applicable template section
 
 For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
 
+Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
+
 ## 📦 Installation
 
 ### Installation from Source
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts` and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
 
 On Linux:
 
@@ -56,6 +59,8 @@ On Linux:
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
 ln -s "$PWD/prompts" "$HOME/.config/Code/User/prompts"
+mkdir -p "$HOME/.copilot"
+ln -s "$PWD/skills" "$HOME/.copilot/skills"
 mkdir -p "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -66,6 +71,8 @@ On macOS:
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
 ln -s "$PWD/prompts" "$HOME/Library/Application Support/Code/User/prompts"
+mkdir -p "$HOME/.copilot"
+ln -s "$PWD/skills" "$HOME/.copilot/skills"
 mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -76,17 +83,21 @@ On Windows, use an Administrator Command Prompt:
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
 mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
+if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
+mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 if not exist "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool" mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
 mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
 
-The memory link is optional; omit its `mkdir` and `ln` or `mklink` commands when only the instruction files are required.
+The skill and memory links are optional when only instruction files and custom agents are required.
 
 ## ⚙️ Configuration
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
 
 Custom agents reside under `prompts/agents/`. The Token Saver agent is opt-in and does not pin a model; select the desired model and reasoning effort before starting a session.
+
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand.
 
 For example:
 
@@ -103,7 +114,7 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 
 | Integration | Compatibility | Purpose | Required |
 |-------------|---------------|---------|----------|
-| VS Code with GitHub Copilot Chat | User-profile prompt and custom-agent discovery | Applies instructions and exposes custom agents | Yes |
+| VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, and skill discovery | Applies instructions and exposes custom agents and on-demand skills | Yes |
 | GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
 ## 🗂️ Project Structure
@@ -125,6 +136,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
+| `skills/` | On-demand procedures for context, research, structured data, validation, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🤝 Contributing

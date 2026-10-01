@@ -7,18 +7,7 @@ Generate or revise the `ARCHITECTURE.md` for this GitHub repository using the `g
 
 ## Strict Template Fidelity Mode (Default)
 
-This mode applies automatically when the user requests any of the subsequent:
-- Revise the architecture document
-- Create the ARCHITECTURE.md file
-- Create an architecture document
-- Document the architecture
-- Generate the architecture document
-- Compose the architecture document
-
-### Precedence
-
-- These rules supersede all other ARCHITECTURE generation instructions.
-- If another rule conflicts with strict fidelity, strict fidelity prevails.
+Strict fidelity applies to every `ARCHITECTURE.md` creation or revision and overrides conflicting instructions.
 
 ### Current-State Evidence Contract
 
@@ -66,17 +55,6 @@ Unless the user explicitly requests a target architecture, document the verified
 - The Table of Contents contains every final `##`, `###`, and `####` heading in order and links to the correct anchors.
 
 If an `ARCHITECTURE.md` previously exists, preserve content that remains accurate and current, and revise only material that is obsolete, incomplete, or structurally inconsistent. If no `ARCHITECTURE.md` exists, derive it from repository evidence.
-
-## Mandatory Editing Rules
-
-When revising an existing ARCHITECTURE.md:
-- Never delete ARCHITECTURE.md.
-- Never use `*** Delete File`.
-- Never recreate ARCHITECTURE.md with `create_file`.
-- Modify the existing file only with `apply_patch` using `*** Update File`.
-- A complete revision must still use `*** Update File`.
-- Preserve the file path and file identity throughout the operation.
-- If an in-place patch cannot be produced, cease and explain the impediment instead of deleting the file.
 
 ## Conditional Content Rules
 

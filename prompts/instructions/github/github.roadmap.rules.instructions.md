@@ -7,35 +7,19 @@ Generate or revise the `ROADMAP.md` for this GitHub repository using the `github
 
 ## Strict Template Fidelity Mode (Default)
 
-This mode applies automatically when the user requests any of the following:
-- Update the roadmap
-- Create the ROADMAP.md file
-- Revise the roadmap
-- Create a roadmap
-- Generate the roadmap
-- Compose the roadmap
-
-### Precedence
-
-- These rules supersede all other roadmap generation instructions.
-- If any other rule conflicts with strict fidelity, strict fidelity prevails.
+Strict fidelity applies to every `ROADMAP.md` creation or revision and overrides conflicting instructions.
 
 ### Generation Contract
 
-1. Start from an exact copy of `github.roadmap.template.instructions.md`, preserving all template-defined section order, heading order, punctuation, and whitespace layout.
-2. Replace only `[[PLACEHOLDER]]` tokens.
-3. Do not rephrase fixed template text.
-4. Do not remove any template-defined section, table, bullet structure, or subsection.
-5. Additional sections or subsections may be added when they are genuinely relevant to the repository, but they must be purely additive and must not replace, rename, reorder, or omit any template-defined section, table, or subsection.
-6. Do not normalise, correct, or improve fixed template wording.
-7. Language, spelling, and phrasing rules apply only to values inserted into placeholders, not to fixed template literals.
-8. When creating or revising this document, also ensure the repository `README.md` includes the corresponding Roadmap section or link unless that section already exists and remains accurate.
-9. Conditional inclusion and omission logic are disabled in strict mode; include every template-defined section.
+1. Use an exact copy of `github.roadmap.template.instructions.md`; preserve every template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
+2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
+3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
+4. Include every template-defined section; conditional inclusion and omission are disabled.
+5. Ensure `README.md` contains an accurate Roadmap section or link.
 
 ### Failure Behaviour
 
-- If any required placeholder value is unknown, cease generation and ask one concise clarification question.
-- Do not output a partial roadmap.
+- Unknown required placeholder: cease generation and ask one concise clarification. Never output a partial roadmap.
 
 ### Mandatory Validation Before Final Output
 
@@ -50,17 +34,6 @@ If a `ROADMAP.md` previously exists, preserve any content that is accurate and c
 Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## Support` or `## Contribution`; only replace placeholder tokens such as `[[Project Title]]`, `[[GITHUB_REPO_USERNAME]]`, and `[[GITHUB_REPO_NAME]]`.
 
 Fill in all `[[PLACEHOLDER]]` values from the actual project. Remove any section or comment that is not applicable (refer to inline guidance). Do not leave placeholder text, template comments, or example rows in the final output.
-
-## Mandatory editing rules
-
-When updating an existing ROADMAP.md:
-- Never delete ROADMAP.md.
-- Never use `*** Delete File`.
-- Never recreate ROADMAP.md with `create_file`.
-- Modify the existing file only with `apply_patch` using `*** Update File`.
-- A complete revision must still use `*** Update File`.
-- Preserve the file path and file identity throughout the operation.
-- If an in-place patch cannot be produced, cease and explain the problem instead of deleting the file.
 
 ## Conditional Content Rules
 

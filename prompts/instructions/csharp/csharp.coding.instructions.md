@@ -7,30 +7,28 @@ applyTo: "**/*.{cs}"
 ### Code Style
 
 - Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
-- Always use explicit types instead of `var`, no exceptions.
-- When a variable has a sensible default and is only conditionally overridden, initialise it with the default first and use a single `if` (no `else`) to override. Avoid `if`/`else` when the `else` branch only assigns a fallback/default value.
-- Prefer the static `Equals(a, b)` form (e.g. `Equals(a, b)` or `string.Equals(a, b)`) over instance `.Equals()` calls or `==` for comparisons. Never call `.Equals()` directly on a potentially null reference, as doing so throws a `NullReferenceException`. Use the static form or guard with a null check first.
-- If a method does not access instance state, mark it `static`.
-- NEVER use ternary expressions (`condition ? a : b`). Always use an `if`/`else` statement instead. This does NOT apply to `??=` or switch expressions.
-- NEVER use `ref` parameters. Avoid `out` parameters; if returning multiple values is necessary, create a dedicated type and return an instance of it. NEVER return tuples; avoid tuples entirely.
-- Never use `#region` or `#endregion`. They are forbidden everywhere without exception.
-- All C# methods must have exactly one empty line between them: no more, no less. This applies equally when a method ends with `};` (e.g. a multi-line expression-bodied method with an object initialiser): there must still be exactly one empty line before the next method.
-- Use `static [Type] [Name] =>` (a static read-only property) instead of `const [Type] [Name] =`. `const` is NEVER acceptable.
-- Always use explicit braces for ALL control flow (`if`, `else`, `for`, `foreach`, `while`, `switch`, etc.), even when the body is a single line or a single statement like `continue`, `break`, or `return`. Braceless single-line bodies are NEVER acceptable.
-- The opening brace of a control flow block must always appear on its own line. NEVER place the opening brace or the body on the same line as the statement.
-- `else if` must always appear on a single line. NEVER split it so that `else` is on one line and the condition is on another.
-- Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values. Named constants must use `static [Type] [Name] =>` (a static read-only property), not `const`.
-- When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property, not an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`). The index is derived from the enum value via `(int)value` and is never stored directly.
-- Do NOT use optional parameters or default arguments. Use method/function overloads instead.
-- Parameter names in interfaces and their implementing classes must match exactly. If an interface defines a method with a parameter named `accountId`, all implementing classes must use the same parameter name `accountId`, not an alias like `id` or `account`. This ensures consistency and proper IDE support for overrides and implementations.
-- Overloaded methods must be grouped together (no unrelated members between them) and ordered from simplest/fewest parameters to most-complex/most-numerous parameters.
-- Never place a blank line immediately before a closing brace or bracket (`}`, `]`, `)`). The last statement inside a block must be followed directly by the closing delimiter with no empty line between them.
+- Types: explicit; never `var`.
+- Conditional default: initialise first; one `if` overrides it, without fallback-only `else`.
+- Comparisons: prefer static `Equals(a, b)` or `string.Equals(a, b)` over `==` and instance `.Equals()`. Guard any nullable instance call.
+- No instance state access: mark method `static`.
+- No ternary (`condition ? a : b`); use `if`/`else`. `??=` and switch expressions remain permitted.
+- Parameters: no `ref`; avoid `out`; return a dedicated type for multiple values. No tuples.
+- No `#region` or `#endregion`.
+- Exactly one empty line between methods, including after methods ending with `};`.
+- Constants: `static [Type] [Name] =>`; never `const`.
+- Every control-flow body uses braces, including single `continue`, `break`, or `return`; opening brace occupies its own line.
+- Keep `else if` on one line.
+- Derive variant indices via `(int)value`; never store them directly.
+- No optional/default parameters; use overloads.
+- Interface and implementation parameter names must match exactly (e.g. `accountId`, not `id`).
+- Group overloads together, ordered from fewest/simplest to most parameters/complexity.
+- No blank line immediately before `}`, `]`, or `)`.
 - Always place a blank line above AND below a block control flow statement (`if`, `for`, `foreach`, `while`, `do`, `switch`, `continue`, `break`) when it is adjacent to non-blank, non-control-flow statements in the same block. Always place a blank line above only for `return` and `throw` statements when preceded by one or more non-blank, non-control-flow statements. Do not add the blank line when the statement is the very first statement in the block, or when the adjacent line is itself an opening brace or another control flow statement.
 
 ### File Structure
 
-- Never use top-level statements or free-floating code in any file. Every file must have an explicit `namespace { }` block, a `class` (or other type) block, and all code placed inside methods, constructors, or other members. This applies to `Program.cs` too; use an explicit `Program` class with a `static void Main` entry point.
-- Every type must be declared in its own file — one type per file, without exception. File name must exactly match the type name. If a file contains multiple type definitions, extract each additional type into its own file immediately.
+- No top-level/free-floating code. Every file, including `Program.cs`, requires explicit namespace and type blocks; `Program` uses `static void Main`.
+- One type per identically named file; extract additional types immediately.
 
 ### Type Declarations
 
@@ -65,12 +63,9 @@ applyTo: "**/*.{cs}"
 
 ### Methods
 
-- Keep methods small and focused on a single responsibility. If a method grows beyond ~20-30 lines or handles more than one logical concern, extract the extra logic into well-named private helper methods.
-- Avoid duplicated code; respect the DRY (Don't Repeat Yourself) principle. Extract common logic into well-named private helper methods or utility functions. Never copy-paste code across multiple methods or classes.
 - Implementation classes must NOT contain mapping methods. All mapping logic must be implemented as extension methods in a dedicated `*MappingExtensions.cs` file under a `*.Mappings` namespace.
 - Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions (`public void ResetCombat()\n    => throw new NotImplementedException();`). A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
 - Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`.
-- Never leave unreachable statements after an unconditional `return`, `throw`, `continue`, `break`, or exhaustive switch expression return.
 
 ### Parsing & Serialisation
 
@@ -96,7 +91,3 @@ applyTo: "**/*.{cs}"
 ### Compiler Instructions
 
 - Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.
-
-### Constants and Fields
-
-- Avoid using `const` for class members. Use `static readonly` with expression-bodied syntax (`static readonly ... =>`) instead.

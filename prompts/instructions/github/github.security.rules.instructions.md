@@ -7,35 +7,19 @@ Generate or revise the `SECURITY.md` for this GitHub repository using the `githu
 
 ## Strict Template Fidelity Mode (Default)
 
-This mode applies automatically when the user requests any of the subsequent:
-- Revise the security policy
-- Create the SECURITY.md file
-- Revise the security policy
-- Create a security policy
-- Generate the security policy
-- Compose the security policy
-
-### Precedence
-
-- These rules supersede all other SECURITY generation instructions.
-- If any other rule conflicts with strict fidelity, strict fidelity prevails.
+Strict fidelity applies to every `SECURITY.md` creation or revision and overrides conflicting instructions.
 
 ### Generation Contract
 
-1. Commence from an exact copy of `github.security.template.instructions.md`, preserving all template-defined section order, heading order, punctuation, and whitespace layout.
-2. Replace only `[[PLACEHOLDER]]` tokens.
-3. Do not rephrase fixed template text.
-4. Do not remove any template-defined section, table, bullet structure, or subsection.
-5. Additional sections or subsections may be added when they are genuinely relevant to the repository, but they must be purely additive and must not replace, rename, reorder, or omit any template-defined section, table, or subsection.
-6. Do not normalise, correct, or improve fixed template wording.
-7. Language, spelling, and phrasing rules apply only to values inserted into placeholders, not to fixed template literals.
-8. When creating or revising this document, also ensure the repository `README.md` includes the corresponding Security section or link unless that section already exists and remains accurate.
-9. Resolve template-marked conditional blocks exactly as written in template comments (for example, lines marked with `Only if ...`). Template-defined core sections and headings remain mandatory and must not be removed.
+1. Use an exact copy of `github.security.template.instructions.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
+2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
+3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
+4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
+5. Ensure `README.md` contains an accurate Security section or link.
 
 ### Failure Behaviour
 
-- If any required placeholder value is unknown, cease generation and inquire one concise clarification question.
-- Do not produce a partial security policy.
+- Unknown required placeholder: cease generation and request one concise clarification. Never produce a partial security policy.
 
 ### Mandatory Validation Before Final Output
 
@@ -50,18 +34,6 @@ If a `SECURITY.md` previously exists, preserve any content that is accurate and 
 Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## 🛡️ Supported Versions`, `## 🚨 Reporting a Vulnerability`, or `## 📢 Disclosure Policy`; only replace placeholder tokens such as `[[Latest version or branch, e.g. 2.x]]`, `[[Distribution method, e.g. GitHub Releases]]`, and `[[In-scope category 1]]`.
 
 Fill in all `[[PLACEHOLDER]]` values from the real project. Remove any section or comment that is not applicable (refer to inline guidance). Do not leave placeholder text, template comments, or example rows in the final output.
-
-## Mandatory editing rules
-
-When updating an existing SECURITY.md:
-
-- Never delete SECURITY.md.
-- Never use `*** Delete File`.
-- Never recreate SECURITY.md with `create_file`.
-- Modify the existing file only with `apply_patch` using `*** Update File`.
-- A complete revision must still use `*** Update File`.
-- Preserve the file path and file identity throughout the operation.
-- If an in-place patch cannot be produced, cease and explain the problem instead of deleting the file.
 
 ## Conditional Content Rules
 

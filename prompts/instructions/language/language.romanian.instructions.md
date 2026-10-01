@@ -18,7 +18,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - a grăbi <!-- verb, în contextul accelerării unui proces --> → a accelera / a urgenta
 - a izbuti → a reuși
 - a pricepe → a înțelege
-- a schimba <!-- verb, cu sensul de a altera sau modifica --> → a modifica / a transforma
+- a schimba <!-- verb: de a altera sau modifica --> → a modifica / a transforma
 - a vesti → a anunța / a informa
 - a vorbi <!-- verb, în context formal --> → a comunica / a conversa / a dialoga / a discuta
 - ai nevoie → îți este necesar
@@ -50,8 +50,8 @@ Word replacements - apply to all variants and derivatives of each word:
 - buștean → trunchi
 - căcălău → cât încape
 - ChatGPT-ul → chat-ul GPT
-- chip <!-- substantiv, cu sensul de față sau înfățișare --> → figură / fizionomie / aspect
-- chip <!-- substantiv, cu sensul de mod sau fel --> → mod / manieră
+- chip <!-- substantiv: de față sau înfățișare --> → figură / fizionomie / aspect
+- chip <!-- substantiv: de mod sau fel --> → mod / manieră
 - ciob <!-- substantiv, pentru un fragment de sticlă , ceramică sau alt material spart; nu pentru un fragment de text ori de date --> → fragment
 - ciudat → straniu / bizar
 - ciudățenie → bizarerie
@@ -68,7 +68,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - darnic → generos
 - deal → colină
 - destul → suficient
-- deznădejde <!-- substantiv, cu sensul de lipsă profundă de speranță sau disperare; nu pentru simpla tristețe ori dezamăgire --> → disperare / lipsă de speranță / lipsă profundă de speranță
+- deznădejde <!-- substantiv: de lipsă profundă de speranță sau disperare; nu pentru simpla tristețe ori dezamăgire --> → disperare / lipsă de speranță / lipsă profundă de speranță
 - dobândă → interes
 - dobândire → obținere
 - dovedesc → demonstrez
@@ -91,7 +91,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - gaură → orificiu
 - geam → fereastră
 - ghinioane [doar la plural] → adversități
-- grabă <!-- substantiv, cu sensul de urgență sau precipitare --> → urgență / promptitudine
+- grabă <!-- substantiv: de urgență sau precipitare --> → urgență / promptitudine
 - grabnic → urgent / prompt
 - graniță → frontieră
 - grănicer → agent de frontieră
@@ -100,7 +100,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - groaznic → teribil / foarte rău
 - grozav → extraordinar
 - haine de pat <!-- grup nominal, pentru lenjeria utilizată pe un pat; nu pentru îmbrăcăminte sau alte textile de uz casnic --> → lenjerie de pat
-- haz <!-- substantiv, cu sensul de caracter amuzant --> → umor
+- haz <!-- substantiv: de caracter amuzant --> → umor
 - hotar → frontieră
 - hotărâre → decizie
 - iscare → provocare
@@ -130,7 +130,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - întâmplător → accidental
 - întemeiat → fondat
 - înzdrăvenire → întărire
-- îți trăbă <!-- formă colocvială sau ortografiată incorect, cu sensul de necesitate adresată unei singure persoane --> → îți este necesar / îti este indicat
+- îți trăbă <!-- formă colocvială sau ortografiată incorect: de necesitate adresată unei singure persoane --> → îți este necesar / îti este indicat
 - lacăt → încuietoare
 - lămurire → clarificare, explicare
 - liniștit → calm
@@ -152,7 +152,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - nelămurire → neclaritate
 - nenorocire → nefericire
 - neobișnuit → neuzual
-- nevoi <!-- substantiv, cu sensul de necesități --> → necesități
+- nevoi <!-- substantiv: de necesități --> → necesități
 - nevoie → necesitate
 - noros → înnorat
 - nu mai ai nevoie <!-- locuțiune, adresată unei singure persoane, cu snesul că o necesitate a încetat --> → nu îți mai este necesar / nu mai îți este necesar
@@ -165,7 +165,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - pedepsit → sancționat
 - pivniță → subsol
 - plângere → reclamație
-- poftă <!-- substantiv, cu sensul de dorință sau apetit --> → dorință / apetit
+- poftă <!-- substantiv: de dorință sau apetit --> → dorință / apetit
 - pricină → cauză
 - pricinui → cauza
 - pricinuit → cauzat
@@ -198,7 +198,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - sfârșit → final
 - slugă → servitor
 - slujbă <!-- substantiv, în sens de ocupație --> → serviciu / funcție
-- stăpân <!-- substantiv, cu sensul de proprietar sau stăpânitor --> → proprietar / domn
+- stăpân <!-- substantiv: de proprietar sau stăpânitor --> → proprietar / domn
 - stârnire → incitare
 - stârnit → incitat
 - steag → drapel
@@ -217,7 +217,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - topor → secure
 - tovarăș → camarad
 - treabă → lucru
-- treabă <!-- substantiv, cu sensul de atribuție, obligație sau misiune; nu pentru o activitate ori un lucru în sens general --> → atribuție / obligație / misiune
+- treabă <!-- substantiv: de atribuție, obligație sau misiune; nu pentru o activitate ori un lucru în sens general --> → atribuție / obligație / misiune
 - trebuia → era necesar / ar fi fost indicat / ar fi fost bine
 - trebuiască → fie necesar / fie indicat / fie bine
 - trebuie → este necesar
@@ -242,7 +242,7 @@ Word replacements - apply to all variants and derivatives of each word:
 - vamal → de frontieră
 - vamă → frontieră
 - veceu → toaletă
-- vesel <!-- adjectiv, cu sensul de jovial sau plin de bucurie --> → jovial / euforic
+- vesel <!-- adjectiv: de jovial sau plin de bucurie --> → jovial / euforic
 - veste → știre / noutate / informație
 - veșnic → etern
 - veșnicie → eternitate

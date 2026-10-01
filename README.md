@@ -28,6 +28,7 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 - Maintains British English and Romanian language preferences through contextual terminology rules.
 - Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
+- Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 
 ## 🚀 Usage
 
@@ -40,6 +41,8 @@ Update the README
 ```
 
 The README rules inspect repository evidence, select applicable template sections, and revise the existing `README.md` in place.
+
+For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution, and prevents subagent delegation.
 
 ## 📦 Installation
 
@@ -83,6 +86,8 @@ The memory link is optional; omit its `mkdir` and `ln` or `mklink` commands when
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
 
+Custom agents reside under `prompts/agents/`. The Token Saver agent is opt-in and does not pin a model; select the desired model and reasoning effort before starting a session.
+
 For example:
 
 ```yaml
@@ -98,7 +103,7 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 
 | Integration | Compatibility | Purpose | Required |
 |-------------|---------------|---------|----------|
-| VS Code with GitHub Copilot Chat | User-profile `prompts/` discovery | Applies the instruction files during Copilot interactions | Yes |
+| VS Code with GitHub Copilot Chat | User-profile prompt and custom-agent discovery | Applies instructions and exposes custom agents | Yes |
 | GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
 ## 🗂️ Project Structure
@@ -109,6 +114,7 @@ The tracked project is content-focused. Instruction families are separated by la
 
 | Directory | Purpose |
 |-----------|---------|
+| `prompts/agents/` | Opt-in custom agents with restricted tools and specialised workflows |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | Repository document and GitHub Actions rules and templates |

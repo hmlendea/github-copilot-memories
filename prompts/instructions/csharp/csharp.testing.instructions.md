@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# tests classes and .csproj. Covers project structure, testing preferences, naming conventions, member organisation, and unit tests."
+description: "Use for C# tests and test projects. Covers structure, naming, framework, mocks, and assertions."
 applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/*.{Tests,IntegrationTests,UnitTests}/**/*.cs"
 ---
 ## C#

@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# .csproj, or .slnx files. Covers project structure, project configuration, solution structure, and solution configuration."
+description: "Use for .csproj edits. Covers project structure and configuration."
 applyTo: "**/*.{csproj}"
 ---
 ## C#

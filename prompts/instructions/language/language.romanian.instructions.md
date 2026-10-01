@@ -1,10 +1,10 @@
 ---
-description: "Use when generating, editing, translating, or reviewing Romanian-language text. Covers Romanian word replacements and spelling rules."
+description: "Use for Romanian text generation, editing, translation, or review. Covers spelling and contextual replacements."
 ---
 ## Romanian
 
-- When Romanian text is edited or produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered Romanian via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Slavic, Turkish, or Germanic root with no Latin ancenstry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
-- Apply these replacements using an LLM with contextual judgement, not bulk-replace tools; each substitution should be selected case by case according to meaning and fluency in the surrounding text.
+- Prefer context-natural Romanian words with Latin ancestry. Indirect ancestry through any intermediary qualifies; Latin words with older Greek, Etruscan, or other roots also qualify. Retain the original when no fluent alternative exists or the replacement sounds forced/overly formal, except in formal contexts.
+- Apply replacements contextually with LLM judgement, never bulk replacement; evaluate surrounding meaning and fluency case by case.
 
 Word replacements - apply to all variants and derivatives of each word:
 

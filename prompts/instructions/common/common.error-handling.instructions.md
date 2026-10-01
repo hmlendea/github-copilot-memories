@@ -1,6 +1,6 @@
 ---
-description: "Use when writing or editing any code. Covers exception handling and error management best practices."
-applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
+description: "Use for code edits involving exceptions, conversions, or error handling."
+applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,ms,msa,py,sh,ts,tsx}"
 ---
 
 ## Exception Handling

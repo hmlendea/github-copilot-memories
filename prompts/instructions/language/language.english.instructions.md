@@ -1,5 +1,5 @@
 ---
-description: "Use whenever generating text or code of any kind. Language preferences: English word replacements and spelling rules."
+description: "English spelling and contextual word-replacement rules for all generated text and code."
 applyTo: "**"
 ---
 
@@ -7,8 +7,8 @@ applyTo: "**"
 
 - Always use British spelling.
 - Prefer `s` over `z` where applicable (e.g. `organise`, `realise`, `serialise`).
-- When English text is produced, prefer words of Latin origin over words that lack Latin origin. This applies regardless of how indirect the Latin lineage is - a word qualifies as latinate even if it entered English via French, Spanish, Italian, Portuguese, or another intermediary, provided that intermediary word ultimately traces back to Latin. Similarly, a Latin word that itself derives from Greek, Etruscan, or another ancient source still counts as latinate for this purpose. A word that lacks Latin origin (e.g. a Germanic, Norse, or Old English root with no Latin ancestry in its lineage) should be replaced with a latinate equivalent whenever one exists that fits the context naturally - i.e. the substitution must read fluently and not sound forced or overly formal (unless the context is formal). If no suitable latinate alternative exists, or if the latinate variant would sound unnatural in context, retain the non-latinate word.
-- Apply these replacements using an LLM with contextual judgement, not bulk-replace tools; each substitution should be selected case by case according to meaning and fluency in the surrounding text.
+- Prefer context-natural words with Latin ancestry. Indirect ancestry through any intermediary qualifies; Latin words with older Greek, Etruscan, or other roots also qualify. Retain the original when no fluent alternative exists or the replacement sounds forced/overly formal, except in formal contexts.
+- Apply replacements contextually with LLM judgement, never bulk replacement; evaluate surrounding meaning and fluency case by case.
 - Word replacements - apply to all variants and derivatives of each word:
   - about <!-- preposition: concerning or on the subject of --> → concerning / regarding
   - actual <!-- adjective: real or genuine in context such as "actual work" --> → genuine / real

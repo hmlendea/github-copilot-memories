@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing TypeScript code. Covers file structure, module organisation, blank line rules."
+description: "Use for TypeScript edits. Covers files, modules, imports, and spacing."
 applyTo: "**/*.{ts,tsx}"
 ---
 ## TypeScript

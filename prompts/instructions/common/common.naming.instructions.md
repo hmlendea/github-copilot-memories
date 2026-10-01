@@ -1,6 +1,6 @@
 ---
 description: "Use when writing or editing any code. Covers naming conventions."
-applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
+applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,ms,msa,py,sh,ts,tsx}"
 ---
 ## General
 

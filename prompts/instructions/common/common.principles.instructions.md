@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing any code or documentation. Covers foundational principles and repository documentation synchronisation."
+description: "Use for code or documentation edits. Covers privacy, security, evidence, execution, and documentation synchronisation."
 applyTo: "**"
 ---
 

@@ -8,7 +8,7 @@ applyTo: "**/*.{cs}"
 
 #### Control Flow Conditions
 
-- When an `if` condition contains multiple sub-conditions joined by `&&` or `||` **and** the full condition text exceeds 72 characters, split each sub-condition onto its own line with the logical operator placed at the **end** of the line (not the start). Continuation lines are indented by one extra level (4 spaces) relative to the `if` keyword. Do NOT split conditions that fit within 72 characters. Example:
+- Multi-clause `if` conditions exceeding 72 characters: one clause per line, operator (`&&`/`||`) at line end, continuation indented 4 spaces. Do not split conditions within 72 characters. Example:
   ```csharp
   if (GameData.TileWalkability is not null &&
       tileId < GameData.TileWalkability.Length &&
@@ -20,7 +20,7 @@ applyTo: "**/*.{cs}"
 
 #### Return Expressions
 
-- When a `return` expression spans multiple lines, place `return` alone on the first line and indent the expression. Place operators (`||`, `&&`, `+`, etc.) at the **end** of each line, not at the start of the continuation. Example:
+- Multi-line return: `return` alone, expression indented, operators (`||`, `&&`, `+`, etc.) at line ends. Example:
   ```csharp
   return
       markerEven == MarkerRefPack ||
@@ -30,8 +30,8 @@ applyTo: "**/*.{cs}"
 
 #### Properties
 
-- Each property must be on its own line, separated by a blank line from adjacent members.
-- When a property has both `get` and `set` accessors (or any combination of accessors with bodies), each accessor must be on its own line inside the property block. Placing multiple accessors on the same line is NEVER acceptable. Example:
+- One property per line, separated from adjacent members by a blank line.
+- Accessors with bodies: one accessor per line; never combine them. Example:
   ```csharp
   // Wrong:
   public bool IsInterlaced { get => renderer.IsInterlaced; set => renderer.IsInterlaced = value; }
@@ -46,7 +46,7 @@ applyTo: "**/*.{cs}"
 
 #### Method Parameters & Arguments
 
-- A parameter list (declaration) or argument list (call site) must either fit entirely on one line, or be split so that **each** parameter or argument appears on its own line with none remaining on the opening line. Mixing — placing some parameters on the same line as the method name and others on continuation lines — is never acceptable. When splitting, each parameter or argument is indented by one extra level (4 spaces) relative to the method name, and the closing `)` goes on its own line at the original indentation level. Split when the single-line form would exceed 96 characters. The method name itself must NEVER be split from its return type or access modifiers; only the parameter list may wrap. Example:
+- Parameter/argument lists exceeding 96 characters: none on the opening line; one per line, indented 4 spaces; closing `)` at original indentation. Never mix inline and continued items. Keep method name with modifiers and return type; wrap only the list. Example:
   ```csharp
   // Declaration - all on one line (fits within 96 characters):
   public void Move(int directionX, int directionY)
@@ -82,9 +82,9 @@ applyTo: "**/*.{cs}"
 
 #### Expression-Bodied Methods
 
-- When a method signature is too long to fit on one line and the method is expression-bodied, place `=>` on the next line indented by 4 spaces relative to the method name, with the expression on the same line as `=>`. Example: `public void DrawNpc(int x, int y, int width, int height)\n    => inner.DrawNpc(x, y, width, height);`
+- Long expression-bodied signature: next-line `=>` indented 4 spaces, followed by its expression. Example: `public void DrawNpc(int x, int y, int width, int height)\n    => inner.DrawNpc(x, y, width, height);`
 
-- When the expression of an expression-bodied method spans multiple lines (because it is a complex expression, not because the signature is too long), place `=>` at the **end** of the signature line and spread the expression across subsequent lines, each indented by 4 spaces, with operators at the **end** of each line. A block body with `return` is **never** acceptable in this case. Example:
+- Multi-line expression: `=>` ends the signature; expression lines indent 4 spaces; operators end lines. Never replace it with a block-body `return`. Example:
   ```csharp
   // Wrong:
   private static int ReadBigEndian24(byte[] data, int offset)
@@ -100,7 +100,7 @@ applyTo: "**/*.{cs}"
       data[offset + 2];
   ```
 
-- When an expression-bodied method uses a multi-line `new() { ... }` object initialiser, always place `=> new()` on the **same line** as the method signature; never on the next line. The opening `{` of the initialiser goes on the line after the signature, and the closing `}` with `;` closes the method. Example:
+- Multi-line `new()` initialiser: signature ends with `=> new()`; `{` starts next line; `};` closes method. Example:
   ```csharp
   internal static UnitDataObject ToDataObject(this Unit model) => new()
   {
@@ -109,7 +109,7 @@ applyTo: "**/*.{cs}"
   };
   ```
 
-- When a method signature and the expression would together exceed 96 characters if the `=>` were placed at the end of the signature line, move `=>` to the **next line** indented by 4 spaces, with the expression on the same line as `=>`. This applies even if the expression itself is simple and fits on one line. Example:
+- Signature plus expression exceeding 96 characters: next-line `=>` indented 4 spaces with expression, even when expression alone fits one line. Example:
   ```csharp
   // Wrong (exceeds 96 characters):
   private static string FormatBalance(decimal balance) =>

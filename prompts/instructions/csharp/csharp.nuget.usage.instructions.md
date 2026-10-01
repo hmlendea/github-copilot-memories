@@ -1,5 +1,5 @@
 ---
-description: "Use when implementing HTTP clients, User-Agent retrieval, connectivity checks, public IP retrieval, or hostname lookup in C# repositories owned by hmlendea. Requires NuciWeb.HTTP."
+description: "Use for hmlendea C# HTTP/network utilities or Kestrel IPv6. Requires NuciWeb.HTTP."
 ---
 ## C# NuGet Packages
 
@@ -11,3 +11,4 @@ description: "Use when implementing HTTP clients, User-Agent retrieval, connecti
 - For checking whether an internet connection is available, use `NuciWeb.HTTP`'s `NetworkUtils`.
 - For obtaining the public IP address, use `NuciWeb.HTTP`'s `NetworkUtils`.
 - For obtaining hostnames for an IP address, use `NuciWeb.HTTP`'s `NetworkUtils`.
+- For Kestrel listeners that are expected to accept IPv6, bind using `IPAddress.IPv6Any` rather than `IPAddress.Any` unless there is an explicit requirement to reject IPv6.

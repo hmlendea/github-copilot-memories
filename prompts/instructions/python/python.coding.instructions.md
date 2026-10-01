@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing Python code. Covers imports, naming, string literals, comments, HTTP/requests, function structure, type hints, module structure, and blank line rules."
+description: "Use for Python edits. Covers imports, naming, strings, comments, HTTP, typing, functions, modules, and spacing."
 applyTo: "**/*.py"
 ---
 ## Python

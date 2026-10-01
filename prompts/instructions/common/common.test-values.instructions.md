@@ -1,5 +1,5 @@
 ---
-description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, streets, domains, emails, dates, currencies, video game names, movie names."
+description: "Use for tests or test data. Provides standard names, numbers, locations, contacts, dates, currencies, games, and films."
 applyTo: "**/*Tests.{cs},**/*.{spec,test,tests}.{ts,tsx},**/test_*.py,**/*_test.py,**/{test,tests}/**/*.py,**/*{Test,Tests}.java,**/Test*.java,**/{test,tests}/**/*.java"
 ---
 

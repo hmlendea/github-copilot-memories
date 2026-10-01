@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing Markdown files inside GitHub repositories. Covers Markdown GitHub Repository file links."
+description: "Use for Markdown edits in GitHub repositories. Covers verified repository-relative links."
 applyTo: "**/*.md"
 ---
 

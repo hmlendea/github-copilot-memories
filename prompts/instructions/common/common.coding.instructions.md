@@ -1,6 +1,6 @@
 ---
-description: "Use when writing or editing any code. General coding rules: clean code, naming, comments, blank lines, indentation, British English, magic numbers, dead code, single responsibility, test design, regression coverage, edge cases, source control."
-applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
+description: "Use for code edits. Covers shared structure, style, comments, testing, compatibility, and cleanup."
+applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,ms,msa,py,sh,ts,tsx}"
 ---
 
 ## General
@@ -16,24 +16,24 @@ applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
 - No catch-all `Helpers`, `Utils`, `Common`, `Misc`, or `Shared` modules/namespaces; assign each type to its domain or responsibility.
 - No empty placeholder types; every type requires a concrete purpose and meaningful member, behaviour, or contract.
 - Remove dead or unreachable code, unused imports/variables/methods/fields, redundant assignments, and empty conditionals. Check imports after every edit.
-- Never use magic numbers or magic strings. Use enums for categorical values and named constants for all other fixed values.
-- When an object has a "type" or "variant" (e.g. which button, which icon, etc.), always model it with an enum property, not an `int` index. The enum name should describe the category (e.g. `ButtonType`), and its values should be the specific variants (e.g. `Undo`, `Restart`, `Info`, `Settings`).
-- In every model, data object, entity, DTO, and analogous structured object, declare the primary identifier property first, before every other property. Use the object's established identifier name, such as `Identifier` or `Id`; when multiple identifiers exist, declare the primary identifier first and the remaining identifiers immediately afterwards.
-- Screen coordinates, sizes, and all layout measurements must be dynamic and relative, derived from screen size, container dimensions, or other already-computed layout values. Never hardcode pixel positions or dimensions.
+- No magic values: enums for categories; named constants otherwise.
+- Type/variant properties use descriptive enums, never integer indices (e.g. `ButtonType`: `Undo`, `Restart`, `Info`, `Settings`).
+- Structured objects: primary identifier (`Identifier`, `Id`, etc.) first, followed by remaining identifiers.
+- Layout measurements are dynamic and relative to screen, container, or computed values; no hardcoded pixels.
 - Reuse existing logic; no copied blocks, repeated expressions, or duplicate implementations. Eliminate duplication in the affected area.
 - Methods/functions: one concern and approximately 20-30 lines maximum; extract additional logic into named private functions.
 - No statements after unconditional `return`, `throw`, `continue`, `break`, or exhaustive pattern/switch.
 - Follow clean code principles, avoid design anti-patterns, and use suitable design patterns for scalable, reviewable, understandable, and well-organised code.
-- Keep code self-explanatory and avoid comments unless they are exceptional and genuinely useful. This rule does NOT apply to XML documentation comments (`/// <summary>`) in NuGet packages, which are mandatory and must never be removed.
+- Prefer self-explanatory code; comments only when exceptionally useful. NuGet XML documentation (`/// <summary>`) remains mandatory.
 - Always place at least one space after `//` at the start of a comment: `// text`, never `//text`.
 - Inline and block comments must always begin with an uppercase letter and end with a period: `// Calculates the wall distance.`
 - TODO comments must always use the exact format `// TODO: Description.` (uppercase TODO, colon, space, sentence ending with period).
 - Never use tabs for indentation; always use 4 spaces per indent level.
 - Never use two or more consecutive blank lines anywhere in the code.
 - Do not use redundant parentheses. Only add parentheses when they are required to override operator precedence or to clarify a genuinely ambiguous expression.
-- Licence new projects under GPL v3 unless the repository already uses a different licence.
-- Use proper grammar in all text, including log messages, test names, comments, and user-facing strings (for example: "Appends the `sdkInitialisationKey` with ...", "when the endpoint already ...", "Already has a query string", "Added Dispose() in the factory.", "The session token retrieval has failed"), instead of variants that omit "the", "has", "a", "an", etc.
-- Never use characters or phrasing that indicate AI-generated content. This includes em dashes (`—`), en dashes (`–`), ellipsis characters (`…`), arrow characters (`→`), box-drawing characters, and overly verbose transitional phrases such as "it is worth noting", "it is important to", "in order to", "this ensures that", "as mentioned above". Use plain ASCII punctuation (`,`, `;`, `:`, `-`, `->`) and direct phrasing instead. Emojis are allowed in user-facing strings and the readme.
+- All text uses complete grammar, including articles and auxiliaries in logs, tests, comments, and user strings.
+- No AI-styled em/en dashes, ellipsis/arrow/box-drawing characters, or verbose transitions. Use direct phrasing and ASCII punctuation (`,`, `;`, `:`, `-`, `->`). User strings and README may contain emojis.
+- Use the `repository-defaults` skill for repository creation, licensing, branching, merging, and pulling.
 
 ## Testing
 
@@ -41,9 +41,3 @@ applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,py,sh,ts,tsx}"
 - Cover observable contracts and relevant success/failure paths, branches, boundaries, input classes, interactions, and side effects. Assert complete results and prohibited-side-effect absence.
 - Tests must be distinct, deterministic, and isolated. Parameterise only identical behaviour. Aim for complete affected branch coverage; justify omissions.
 - Use the `test-design` skill for detailed case derivation.
-
-## Source Control
-
-- Default branch name: `master`.
-- Merge strategy: default (no fast-forward flags or special strategies unless the repository already specifies otherwise).
-- Pull strategy: rebase (`git pull --rebase`).

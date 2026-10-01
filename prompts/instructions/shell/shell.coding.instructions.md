@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing Bash or shell scripts. Covers variable declarations, quoting rules, portability, and distro-agnostic practices."
+description: "Use for Bash or shell edits. Covers variables, quoting, portability, and distribution independence."
 applyTo: "**/*.sh"
 ---
 ## Bash & Other UNIX Shells

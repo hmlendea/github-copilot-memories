@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# code. Covers code style, naming conventions, type declarations, member organisation, constructors, methods, properties, collections, async, dependency injection."
+description: "Use for C# edits. Covers style, types, members, construction, methods, properties, async, and compiler rules."
 applyTo: "**/*.{cs}"
 ---
 ## C#
@@ -32,28 +32,25 @@ applyTo: "**/*.{cs}"
 
 ### Type Declarations
 
-- Do not use `partial` classes unless explicitly required by framework-generated contract or explicitly requested by the user.
-- Every non-static class that declares at least one `public` method and is not a domain model or data/entity object must have an equivalent interface and must implement that interface. Prefer colocated naming pairs such as `AccountService` + `IAccountService` and keep the interface surface aligned with the class's public contract.
-- All classes that are not explicitly designed for inheritance must be declared `sealed`. When in doubt, default to `sealed`.
-- Domain models: `public sealed class`.
-- Data/entity objects: `public sealed class`.
-- Configuration classes: `public sealed class`.
-- Implement `IEquatable<T>` on domain models and data objects where equality comparison is meaningful (e.g. value objects, data objects compared by identifier). Override `Equals(object)` and `GetHashCode()` consistently.
+- No `partial` classes except framework contracts or explicit user requests.
+- Non-static classes with public methods implement a colocated equivalent interface (e.g. `AccountService`/`IAccountService`), except domain models and data/entities. Interface mirrors public contract.
+- Classes are `sealed` unless designed for inheritance. Domain models, data/entities, and configuration classes: `public sealed class`.
+- Domain/data objects with meaningful equality implement `IEquatable<T>`, `Equals(object)`, and consistent `GetHashCode()`.
 
 ### Member Organisation
 
-- ALWAYS declare the accessibility modifier explicitly on EVERY member: every field, property, event, constructor, and method must begin with `public`, `protected`, `internal`, `private`, or a valid combination. NEVER omit the modifier and rely on the implicit default. This applies even to `private` members — write `private int counter;`, NEVER just `int counter;`. Writing a field or method with no accessibility modifier is a bug.
-- Order members by kind first, then by accessibility within each kind group. The top-level kind order is: fields -> properties -> events -> constructors and destructors -> methods.
-- Within the fields group, order by: static readonly -> static mutable -> instance readonly -> instance mutable. Within each of those sub-groups, order by accessibility: `public` first, then `protected`, then `private`.
-- Within every other kind group (properties, events, constructors, methods), order by accessibility: `public` first, then `protected`, then `private`.
-- All `public` members in NuGet packages (classes, methods, properties, constructors, fields, enums, and their members) must have XML documentation comments (`/// <summary>...</summary>`). These must NEVER be removed or omitted, including during refactoring. When a member is renamed, moved, or restructured, its XML documentation must be preserved and updated to reflect the change.
-- NEVER remove a `public` member from a NuGet package during refactoring, even if it appears unused within the solution. External clients of the package may depend on it. A `public` member may only be removed when explicitly instructed to do so by the user.
+- Every field, property, event, constructor, and method explicitly declares valid accessibility, including `private`; omission is a defect.
+- Kind order: fields -> properties -> events -> constructors/destructors -> methods.
+- Field order: static readonly -> static mutable -> instance readonly -> instance mutable; within each: `public` -> `protected` -> `private`.
+- Other member groups: `public` -> `protected` -> `private`.
+- Every public NuGet class/member, including enum members, requires preserved and current XML documentation (`/// <summary>...</summary>`).
+- Never remove a public NuGet member unless explicitly requested; external clients may use it.
 
 ### Constructors & Object Creation
 
-- Use **primary constructors** (C# 12) on all service classes, controllers, and startup classes. Parameters are used directly inside method bodies; do NOT assign them to fields.
-- Use **target-typed `new()`** with object initializer syntax when instantiating models or entities: `Account account = new() { Id = x, ... };`
-- Whenever a `new` expression appears on the same line as the variable/property/field declaration (so the type is already stated on the left-hand side), always use `new(...)` instead of `new [Type](...)`. Example: `private static Colour HoverTintColour => new(255, 220, 80);`; NEVER `new Colour(255, 220, 80)` in that position.
+- Services, controllers, and startup classes use C# 12 primary constructors; use parameters directly, without fields.
+- Models/entities use target-typed `new()` initialisers: `Account account = new() { Id = x, ... };`.
+- When declaration already states the type, use `new(...)`, never `new Type(...)` (e.g. `Colour colour = new(1, 2, 3);`).
 
 ### Properties
 
@@ -63,25 +60,8 @@ applyTo: "**/*.{cs}"
 
 ### Methods
 
-- Implementation classes must NOT contain mapping methods. All mapping logic must be implemented as extension methods in a dedicated `*MappingExtensions.cs` file under a `*.Mappings` namespace.
-- Use expression-bodied (`=>`) for **any** method whose entire body is a single statement; this includes `return` expressions (`public Foo GetFoo() => foo;`), void delegation calls (`public void Reset() => inner.Reset();`), and `throw` expressions (`public void ResetCombat()\n    => throw new NotImplementedException();`). A block body `{ return x; }` or `{ Foo(); }` with a single statement is **always wrong**; use `=> x;` or `=> Foo();` instead.
-- Use expression-bodied (`=>`) for methods whose entire body is a single `new() { ... }` initialiser; do NOT assign to a local variable and return it: `internal static Foo ToDataObject(this Bar bar) => new() { Id = bar.Id };`.
-
-### Parsing & Serialisation
-
-- Always use a format provider when parsing or formatting date-time objects. Use `CultureInfo.InvariantCulture` for culture-independent operations (the most common case), or an explicitly specified culture when required. Methods like `DateTime.Parse()`, `DateTime.TryParse()`, `ParseExact()`, `TryParseExact()`, `ToString()`, and similar should always receive a format provider or format string. Never call `DateTime.Parse("2026-08-05")` without a format provider; use `DateTime.ParseExact("2026-08-05", "yyyy-MM-dd", CultureInfo.InvariantCulture)` instead.
-- For API request and response DTOs, every property name segment `Identifier` must serialise with `id` in JSON names via `JsonPropertyName`. Examples: `Identifier` -> `id`, `AccountIdentifier` -> `accountId`, `UserIdentifier` -> `userId`.
-- Do not allocate `JsonSerializerOptions` repeatedly in hot paths or loops. Cache and reuse static readonly options instances.
-
-### Networking
-- For Kestrel listeners that are expected to accept IPv6, bind using `IPAddress.IPv6Any` rather than `IPAddress.Any` unless there is an explicit requirement to reject IPv6.
-
-### Collections
-
-- Use `IEnumerable<T>` as the return type and parameter type for all collections. Never `List<T>`, `IList<T>`, `IReadOnlyList<T>`, `HashSet<T>`.
-- **Exception:** entity/data objects that are XML-serialised (e.g. via `XmlSerializer`) must use `List<T>` for collection properties, as the XML serialiser cannot reflect interface types.
-- Use C# 12 collection expressions `[...]` for inline collection initialization of **any** collection type (`List<T>`, `Dictionary<K,V>`, arrays, etc.), including empty ones. `new List<T>()`, `new Dictionary<K,V>()`, `new T[]{}` are all wrong; use `[]` instead.
-- Use LINQ (`.Where()`, `.Any()`, `.First()`, `.Select()`, `.Append()`) for in-memory querying.
+- Mapping exists only as extension methods in dedicated `*MappingExtensions.cs` files under `*.Mappings`; never in implementation classes.
+- Every single-statement method is expression-bodied (`=>`), including return, delegation, throw, and `new()` initialisers; never use a block or temporary local (e.g. `public Foo GetFoo() => foo;`).
 
 ### Async
 

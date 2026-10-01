@@ -1,5 +1,5 @@
 ---
-description: "Use when writing or editing C# .sln, or .slnx files. Covers solution structure, and solution configuration."
+description: "Use for .sln or .slnx edits. Covers solution structure and configuration."
 applyTo: "**/*.{sln,slnx}"
 ---
 ## C#

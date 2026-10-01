@@ -8,60 +8,50 @@ applyTo: "**/*.{ms,msa}"
 
 #### Project Structure Paradigm
 
-- **Local package triad** - Organise each feature package with `main.ms` (runtime orchestration), `auto_include.ms` (shared procedures), and `aliases.msa` (alias signatures).
-- **Single-responsibility files** - Keep alias declaration logic out of `main.ms`, and keep heavy implementation logic out of `aliases.msa`.
-- **Root-level shared utilities** - Use root `auto_include.ms` for cross-package primitives that are reused broadly.
+- Feature package: `main.ms` orchestration, `auto_include.ms` shared procedures, `aliases.msa` alias signatures.
+- Keep aliases out of `main.ms`, implementation out of `aliases.msa`; use root `auto_include.ms` for shared cross-package primitives.
 
 #### Execution Model Paradigm
 
-- **Independent execution units** - Treat alias executions, event handlers, timeout callbacks, and thread closures as isolated execution flows.
-- **Reload-safe design** - Assume scripts may be recompiled frequently (`/reloadaliases` or `/recompile`), and write code that can be reinitialised without stale state.
-- **Deterministic registration** - Use stable IDs for commands, events, tasks, and threads so replacement and unregistration are predictable.
+- Alias executions, event handlers, timeout callbacks, and thread closures are isolated flows.
+- Reload-safe for `/reloadaliases`/`/recompile`: reinitialise without stale state.
+- Commands, events, tasks, and threads use stable IDs for predictable replacement/unregistration.
 
 #### Command Definition Paradigm
 
-- **Declarative command registration** - Prefer associative option objects and closures for command behaviour (`executor`, `condition`, `tab_completer`, metadata fields).
-- **Permission-first flow** - Gate command execution and tab completion through explicit permission checks before business logic.
-- **Argument normalisation pipeline** - Parse arguments early and pass validated values to dedicated helpers.
+- Commands: associative options plus closures (`executor`, `condition`, `tab_completer`, metadata).
+- Permission checks precede command/tab business logic. Parse early; pass validated arguments to focused helpers.
 
 #### Event-Driven Paradigm
 
-- **Declarative event wiring** - Register events with explicit IDs, optional prefilter criteria, optional conditions, and focused executors.
-- **Condition-first handlers** - Use fast guard clauses and conditions to reject non-applicable events early.
-- **Controlled mutation** - Use event cancellation and mutation only when the event contract supports it.
+- Events: explicit ID, optional prefilter/condition, focused executor.
+- Reject non-applicable events early. Cancel/mutate only where event contract permits.
 
 #### Data and State Paradigm
 
-- **Layered state strategy** - Distinguish between transient cache state, global in-memory state (`import`/`export`), and durable file-backed state.
-- **Associative arrays as records** - Represent structured objects (options, locale bundles, player data) with associative arrays.
-- **Localisation as data** - Model localised messages as structured values (for example `{ro: ..., en: ...}`) and resolve language late.
+- State layers: transient cache; global in-memory `import`/`export`; durable files.
+- Structured options, locale bundles, and player data use associative arrays. Locales use values such as `{ro: ..., en: ...}` and resolve late.
 
 #### Procedure-Centred Paradigm
 
-- **Strongly typed boundaries** - Declare explicit return and parameter types for procedures wherever practical.
-- **Utility procedure abstraction** - Centralise reusable logic in helper procedures, then compose features through these helpers.
-- **Composable closures** - Use closures for callbacks in scheduling, tab completion, asynchronous flows, and event dispatch.
+- Procedures use explicit return/parameter types where practical. Centralise reusable logic in helpers.
+- Closures serve scheduling, tab completion, asynchronous flows, and event dispatch callbacks.
 
 #### Asynchronous and Scheduling Paradigm
 
-- **Non-blocking by design** - Move expensive or remote work (I/O, network, heavy transforms) to threads or deferred callbacks.
-- **Main-thread safety** - Keep thread-sensitive game operations on the main runtime context.
-- **Timeout and queue orchestration** - Use `set_timeout`, queue, and thread utilities for staged operations instead of synchronous waiting.
+- Move expensive/remote I/O, network, and transforms to threads or deferred callbacks.
+- Keep thread-sensitive game operations on the main context. Use `set_timeout`, queues, and threads for staged work, never synchronous waiting.
 
 #### Error and Reliability Paradigm
 
-- **Fail-fast guards** - Validate preconditions early and return or throw before side effects.
-- **Explicit exception channels** - Prefer controlled throw helpers and `try/catch` around external boundaries (shell, file, network, API calls).
-- **Recoverable defaults** - Use `import(..., default)` or custom safe getters for optional data paths.
+- Validate preconditions before side effects. Use controlled throws and `try/catch` at shell/file/network/API boundaries.
+- Optional data paths use `import(..., default)` or safe getters.
 
 #### Alias Language Paradigm
 
-- **Best-practice alias RHS** - Prefer `run('/command ...')` on alias right-hand sides instead of legacy macro chaining for maintainability.
-- **Final-variable capture** - Use `$` as the final capture variable only when truly necessary for variadic/free-form command tails.
-- **Non-ambiguous signatures** - Avoid alias definitions that can match the same command input in multiple ways.
+- Alias RHS: `run('/command ...')`, not legacy macro chains. Use `$` only as final variadic/free-form capture; signatures remain unambiguous.
 
 #### Safety and Compatibility Paradigm
 
-- **Shell boundary hardening** - Treat shell execution as privileged; validate and sanitise any user-derived inputs.
-- **Dynamic code caution** - Avoid `eval`-style patterns for untrusted content.
-- **Feature compatibility checks** - Use compile-time capability checks (`function_exists`, `extension_exists`) when supporting mixed environments.
+- Shell execution is privileged: validate/sanitise user input. No `eval`-style untrusted content.
+- Mixed environments: compile-time capability checks (`function_exists`, `extension_exists`).

@@ -33,10 +33,6 @@ applyTo: "**/*.{cs}"
 - One property per line, separated from adjacent members by a blank line.
 - Accessors with bodies: one accessor per line; never combine them. Example:
   ```csharp
-  // Wrong:
-  public bool IsInterlaced { get => renderer.IsInterlaced; set => renderer.IsInterlaced = value; }
-
-  // Correct:
   public bool IsInterlaced
   {
       get => renderer.IsInterlaced;
@@ -48,13 +44,6 @@ applyTo: "**/*.{cs}"
 
 - Parameter/argument lists exceeding 96 characters: none on the opening line; one per line, indented 4 spaces; closing `)` at original indentation. Never mix inline and continued items. Keep method name with modifiers and return type; wrap only the list. Example:
   ```csharp
-  // Declaration - all on one line (fits within 96 characters):
-  public void Move(int directionX, int directionY)
-  {
-      ...
-  }
-
-  // Declaration - split, each parameter on its own line:
   public void RecordCheckIn(
       string accountId,
       string locationId,
@@ -62,22 +51,6 @@ applyTo: "**/*.{cs}"
   {
       ...
   }
-
-  // Constructor - split, each parameter on its own line:
-  public Camera(
-      GameImage gameImageSource,
-      int maxObjects,
-      int maxVisibleObjects,
-      int maxSceneObjects)
-  {
-      ...
-  }
-
-  // Call site - split, each argument on its own line:
-  RecordCheckIn(
-      account.Id,
-      location.Id,
-      DateTime.UtcNow);
   ```
 
 #### Expression-Bodied Methods
@@ -86,14 +59,6 @@ applyTo: "**/*.{cs}"
 
 - Multi-line expression: `=>` ends the signature; expression lines indent 4 spaces; operators end lines. Never replace it with a block-body `return`. Example:
   ```csharp
-  // Wrong:
-  private static int ReadBigEndian24(byte[] data, int offset)
-  {
-      return
-          (data[offset] << 16) | (data[offset + 1] << 8) | data[offset + 2];
-  }
-
-  // Correct:
   private static int ReadBigEndian24(byte[] data, int offset) =>
       (data[offset] << 16) |
       (data[offset + 1] << 8) |
@@ -111,11 +76,6 @@ applyTo: "**/*.{cs}"
 
 - Signature plus expression exceeding 96 characters: next-line `=>` indented 4 spaces with expression, even when expression alone fits one line. Example:
   ```csharp
-  // Wrong (exceeds 96 characters):
-  private static string FormatBalance(decimal balance) =>
-      $"{balance:0.00} {DashboardConstants.CurrencyCode}";
-
-  // Correct:
   private static string FormatBalance(decimal balance)
       => $"{balance:0.00} {DashboardConstants.CurrencyCode}";
   ```

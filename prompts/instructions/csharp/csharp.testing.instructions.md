@@ -6,61 +6,40 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 
 ### Naming Conventions
 - Test classes: Subject + `Tests` (`AccountServiceTests`).
-- Always write unit tests in the `Given[x]_When[y]_Then[z]` naming format.
-- Use proper articles and fluency in test names. Ensure grammatical correctness and completeness of test names. Employ gerund forms for the `When` section. For example: `GivenANonExistentUser_WhenLoggingIn_ThenAnAuthenticationExceptionIsThrown`.
+- Unit tests: `Given[x]_When[y]_Then[z]`, fluent/grammatical with gerund `When` (e.g. `GivenANonExistentUser_WhenLoggingIn_ThenAnAuthenticationExceptionIsThrown`).
 
 ### Projects
-- NEVER add `<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">` (or any other production code change) to a project just to enable unit test access. Do not modify the production project or its csproj solely for the sake of tests.
+- Never add `InternalsVisibleTo` or other production-project changes solely for tests.
 
 ### Unit Tests
-- Use the existing unit‑testing framework of the project. If no testing framework is present, default to **NUnit 4.x** with **Moq**.
-- Use `Assert.That(...)` with the NUnit constraint model exclusively. NEVER use `Assert.AreEqual`, `Assert.IsTrue`, `Assert.IsNotNull`, etc.
-- Do not use `Assert.That(..., Is.True)`, just use `Assert.That(...)` directly.
-- Never call `.Equals()` inside `Assert.That`. Use `Assert.That(actual, Is.EqualTo(expected))` and `Assert.That(actual, Is.Not.EqualTo(unexpected))` instead.
-- Use `Is.Empty` instead of `Is.EqualTo(string.Empty)` in asserts.
-- Use `Has.Length.EqualTo(n)` instead of asserting on `.Length` directly: `Assert.That(collection, Has.Length.EqualTo(n))`, never `Assert.That(collection.Length, Is.EqualTo(n))`.
-- When a test method contains only a single `Assert.That(...)` call (i.e. no Arrange or Act steps), use `=>` instead of a block body `{ ... }`. For multi‑argument `Assert.That` calls, place the expression on the next line with one extra level of indentation, and each argument on its own line. Example:
+- Use project framework; absent framework defaults to NUnit 4.x + Moq.
+- NUnit: `Assert.That(...)` constraint model only; never `Assert.AreEqual`, `Assert.IsTrue`, or `Assert.IsNotNull`.
+- Use `Assert.That(...)`, not `Assert.That(..., Is.True)`; compare with `Is.EqualTo`/`Is.Not.EqualTo`, never `.Equals()`.
+- Use `Is.Empty`, not `Is.EqualTo(string.Empty)`; use `Has.Length.EqualTo(n)`, not direct `.Length` assertion.
+- Single-assert test without Arrange/Act: expression-bodied. Multi-argument assert: next line plus one indent, one argument per line. Example:
   ```csharp
-  // Wrong:
-  [Test]
-  public void GivenX_WhenY_ThenZ()
-  {
-      string actual = subject.GetValue("input");
-      Assert.That(actual, Is.EqualTo("expected"));
-  }
-
-  // Correct:
   [Test]
   public void GivenX_WhenY_ThenZ()
       => Assert.That(
           subject.GetValue("input"),
           Is.EqualTo("expected"));
   ```
-- Use a `[SetUp]` method named `SetUp()` to construct mocks and the SUT.
-- Declare mock fields and the SUT at class level as `private`.
-- Do not write unit tests that validate configuration files or their values; configuration should be verified by integration tests or runtime checks.
+- `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
+- Configuration values: integration tests or runtime checks, never unit tests.
 
 ### Branch Coverage
-- Unit tests should cover **every single possible code branch** to ensure comprehensive validation of logic paths.
-- Unit tests should cover **every single erroneous or inconsistent scenario** to validate error handling and edge cases.
-- Unit tests should cover **edge cases** and **unexpected scenarios** to ensure robustness and reliability.
+- Use common testing guidance and the `test-design` skill for branches, erroneous/inconsistent, edge, and unexpected scenarios.
 
 ### Structure
-- Annotate test classes with `[TestFixture]`, test methods with `[Test]` or `[TestCase(...)]`.
-- Group tests within a class by the production method under test. Do NOT use comment banners or any other separator between groups.
-- Put private static `BuildXxx()` helper methods at the bottom of the test class for constructing test data.
-- In test infrastructure and helper classes, mark methods `static` when they do not use instance state.
-- In tests and test steps, cache `JsonSerializerOptions` in static readonly fields instead of creating new instances per call.
+- Class `[TestFixture]`; methods `[Test]`/`[TestCase(...)]`. Group by production method, no comment banners.
+- Private static `BuildXxx()` test-data helpers at class bottom. Helpers without instance state: `static`.
+- Cache `JsonSerializerOptions` in static readonly fields, never per call.
 
 ### Compatibility
-- Ensure tests are platform‑safe: avoid hard‑coded paths, locale‑dependent formats, and OS‑specific APIs. Tests should run reliably on Linux, Windows, macOS, x86, ARM, etc.
+- Tests are platform-safe: no hard-coded paths, locale-dependent formats, or OS-specific APIs; support Linux/Windows/macOS and x86/ARM.
 
 ### Integration Testing
 
-- Integration tests for APIs should cover every input and output scenario, including:
-  - All success scenarios.
-  - All failure scenarios, including each possible HTTP status code (e.g., 400, 401, 404, 500).
-- Use the existing integration testing framework of the project. If no framework is present, default to **NUnit** with **FluentAssertions** and **Microsoft.AspNetCore.Mvc.Testing** for API testing.
-- Ensure tests validate both the response body and HTTP status codes.
-- Use `[InlineData]` or `[Theory]` attributes to parameterize tests for different input/output combinations.
-- Mock external dependencies (e.g., databases, third-party APIs) to ensure tests are deterministic and fast.
+- API integration tests cover all input/output success and failure scenarios, including applicable HTTP statuses (e.g. 400, 401, 404, 500).
+- Use project integration framework; absent framework defaults to NUnit + FluentAssertions + Microsoft.AspNetCore.Mvc.Testing.
+- Assert response body and status. Parameterise with `[InlineData]`/`[Theory]`; mock external dependencies for deterministic speed.

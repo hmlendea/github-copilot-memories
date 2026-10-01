@@ -1,5 +1,5 @@
 ---
-description: "Use when the user inquires regarding revising, creating, or generating a ROADMAP.md. Auto-invoked by requests such as 'revise the roadmap', 'create a roadmap', 'compose the roadmap', or 'generate the roadmap'. Populates project-specific priorities and applies the standard structure and conditional sections."
+description: "Rules for creating or revising ROADMAP.md files."
 applyTo: "ROADMAP.md"
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: "Use when the user requests revision, creation, or generation of an ARCHITECTURE.md. Auto-invoked by requests such as 'revise the architecture document', 'create an architecture document', 'document the architecture', or 'generate ARCHITECTURE.md'. Provides the standard evidence-based structure for system context, runtime flows, ownership, dependencies, constraints, and extension points."
+description: "Template for ARCHITECTURE.md files."
 applyTo: "ARCHITECTURE.md"
 ---
 This is the `ARCHITECTURE.md` template that shall be utilised.

@@ -1,5 +1,5 @@
 ---
-description: "Use when the user inquires regarding revising, creating, or generating a SECURITY.md. Auto-invoked by requests such as 'revise the security policy', 'create a security policy', 'compose the security policy', or 'generate SECURITY.md'. Populates project-specific disclosure scope and supported-version details while applying the standard structure."
+description: "Template for SECURITY.md files."
 applyTo: "SECURITY.md"
 ---
 This is the `SECURITY.md` template that shall be utilised.

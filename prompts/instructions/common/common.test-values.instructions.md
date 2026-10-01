@@ -1,11 +1,11 @@
 ---
 description: "Use when writing tests or test data. Standard funny/consistent test values: usernames, names, integers, countries, cities, streets, domains, emails, dates, currencies, video game names, movie names."
-applyTo: "**/*Tests.{cs},**/*.{spec,tests}.ts"
+applyTo: "**/*Tests.{cs},**/*.{spec,test,tests}.{ts,tsx},**/test_*.py,**/*_test.py,**/{test,tests}/**/*.py,**/*{Test,Tests}.java,**/Test*.java,**/{test,tests}/**/*.java"
 ---
 
 ## Test Values
 
-Always use these standard values when writing tests or generating test data. Never invent ad-hoc values; pick from the lists below to keep tests consistent, searchable, and recognisable across the codebase.
+Prefer these values for tests and test data whenever suitable; invent alternatives only when necessary.
 
 ### Usernames
 - `Angetenar`
@@ -54,8 +54,6 @@ Always use these standard values when writing tests or generating test data. Nev
 
 ### Names: Male / First / English
 - `Bobert`
-- `Oscar`
-- `Robert`
 
 ### Names: Male / First / French
 - `Solaire`
@@ -66,9 +64,6 @@ Always use these standard values when writing tests or generating test data. Nev
 ### Names: Female / Full / Romanian
 - `Elodia Ghinescu`
 - `Ioana Blitz`
-- `Mary Karr`
-
-### Names: Female / Full / English
 - `Mary Karr`
 
 ### Names: Female / First / Romanian
@@ -184,10 +179,7 @@ Always use these standard values when writing tests or generating test data. Nev
 - `Walnut Way`
 
 ### States / Regions
-- `Flusseland`
-- `Kreezland`
-- `Murasaki`
-- `Solara`
+- `Talmeria`
 
 ### Domains
 - `dummy-domain.com`
@@ -223,6 +215,7 @@ Always use these standard values when writing tests or generating test data. Nev
 
 ### Dates
 - `2012-09-05`
+- `2020-05-21`
 
 ### Currency
 - Valid: `EUR`, `MDL`, `RON`

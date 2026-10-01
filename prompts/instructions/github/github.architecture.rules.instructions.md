@@ -1,5 +1,5 @@
 ---
-description: "Use when the user requests revision, creation, or generation of an ARCHITECTURE.md. Auto-invoked by requests such as 'revise the architecture document', 'create an architecture document', 'document the architecture', or 'generate ARCHITECTURE.md'. Derives verified boundaries, runtime flows, ownership, dependencies, constraints, and extension points from repository evidence while applying the standard structure and conditional sections."
+description: "Rules for creating or revising ARCHITECTURE.md files."
 applyTo: "ARCHITECTURE.md"
 ---
 

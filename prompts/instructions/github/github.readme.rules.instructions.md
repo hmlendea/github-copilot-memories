@@ -1,5 +1,5 @@
 ---
-description: "Use when the user asks to revise, create, or generate a README.md. Auto-invoked by requests such as 'revise the readme', 'create a readme', 'compose the readme', or 'generate the readme'. Fills in project-specific details and applies the standard structure, badges, and conditional sections."
+description: "Rules for creating or revising README.md files."
 applyTo: "README.md"
 ---
 

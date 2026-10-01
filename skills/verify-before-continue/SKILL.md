@@ -1,6 +1,10 @@
 ---
 name: verify-before-continue
-description: Apply to all multi-step code changes. Run checks after each step; do not proceed on failure.
+description: Use for multi-step code changes. Validate each substantive edit with the cheapest focused check; stop on failure.
 ---
-After each change run: tests, linter, type-check. If any fail, fix before the next step.
-Stop when all checks pass — do not add unrequested work.
+After each substantive edit:
+- Run the cheapest focused check that can falsify it.
+- Failure: repair and rerun before further edits.
+- Final: run appropriate broader checks for the touched surface.
+- Report command and outcome; omit passing noise.
+Stop when acceptance criteria pass; no adjacent work.

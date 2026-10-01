@@ -1,6 +1,5 @@
 ---
-description: "Use when writing or editing C# code in repositories owned by hmlendea. Specifies the NuGet package and types to use for HTTP and network utility scenarios."
-applyTo: "**/*.{cs}"
+description: "Use when implementing HTTP clients, User-Agent retrieval, connectivity checks, public IP retrieval, or hostname lookup in C# repositories owned by hmlendea. Requires NuciWeb.HTTP."
 ---
 ## C# NuGet Packages
 

@@ -1,6 +1,5 @@
 ---
-description: "Use whenever generating text or code of any kind. Language preferences: Romanian word replacements and spelling rules."
-applyTo: "**"
+description: "Use when generating, editing, translating, or reviewing Romanian-language text. Covers Romanian word replacements and spelling rules."
 ---
 ## Romanian
 

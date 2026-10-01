@@ -1,6 +1,5 @@
 ---
-description: "Use when writing or editing C# code. Covers namespaces, enumerations and enumeration classes."
-applyTo: "**/*.{cs}"
+description: "Use when writing or editing C# enumerations or enumeration classes. Covers placement, selection, structure, serialisation, equality, and conversion rules."
 ---
 ## C#
 

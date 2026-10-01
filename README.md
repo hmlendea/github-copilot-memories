@@ -42,7 +42,7 @@ Update the README
 
 The README rules inspect repository evidence, select applicable template sections, and revise the existing `README.md` in place.
 
-For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution, and prevents subagent delegation.
+For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
 
 ## 📦 Installation
 

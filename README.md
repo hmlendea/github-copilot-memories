@@ -24,7 +24,7 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 
 - Applies shared coding, naming, error-handling, security, and documentation principles across supported file types.
 - Provides specialised guidance for C#, Python, TypeScript, shell scripts, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
-- Generates evidence-based README, architecture, roadmap, security, and GitHub Actions documents from strict templates.
+- Generates evidence-based README, architecture, roadmap, privacy, security, and GitHub Actions documents from strict templates.
 - Maintains British English and Romanian language preferences through contextual terminology rules.
 - Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.

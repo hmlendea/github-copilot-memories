@@ -14,8 +14,3 @@ applyTo: '**'
 - `create_file`: new files only.
 - Failed patch: reread, then retry with smaller exact context. Stop and report after two failures.
 - Never repeat an identical failed search. After two failed instruction-file searches, request its exact path.
-
-## Repository Orientation
-
-- When repository orientation is required, consult `ARCHITECTURE.md`, then `docs/`, then the GitHub Wiki, when present.
-- Verify repository-relative documentation links before inclusion.

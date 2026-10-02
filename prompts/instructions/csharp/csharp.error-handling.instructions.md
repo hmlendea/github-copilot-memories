@@ -1,6 +1,5 @@
 ---
-description: "Use when writing or editing C# code. Covers null handling, error handling."
-applyTo: "**/*.{cs}"
+description: "Use for C# null handling, exceptions, error handling, or type casting."
 ---
 
 ## C#

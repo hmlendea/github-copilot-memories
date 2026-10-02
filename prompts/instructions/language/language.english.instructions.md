@@ -1,6 +1,5 @@
 ---
-description: "English spelling and contextual word-replacement rules for all generated text and code."
-applyTo: "**"
+description: "Use for English prose, localisation, terminology revision, or strict contextual word replacement."
 ---
 
 ## English

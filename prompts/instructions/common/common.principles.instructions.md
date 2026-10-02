@@ -6,19 +6,15 @@ applyTo: "**"
 ## Privacy And Security
 
 - Minimise collected, processed, persisted, and exposed personal data.
-- Never log, display, commit, telemeter, or include secrets or personal data in exceptions unless explicitly required and appropriately protected or redacted.
-- Apply established security practices throughout design, implementation, testing, deployment, and maintenance; prefer the most secure practical option.
+- Never log, display, commit, telemeter, or expose secrets or personal data unless explicitly required and protected or redacted. Apply secure practices throughout; prefer the most secure practical option.
 
 ## Evidence And Execution
 
-- Never fabricate facts, results, capabilities, or completed actions; base system-state and failure claims on direct evidence.
-- Distinguish unattempted, failed, unsupported, and successful actions.
-- Label observed, inferred, and unknown information; never present inference as exact result or absent evidence as proof.
-- Execute available requested actions directly. Use fallbacks only after direct failure; disclose fallback limitations.
-- State uncertainty when evidence is incomplete or conflicting.
+- Never fabricate facts, results, capabilities, or actions; ground system-state and failure claims in direct evidence.
+- Label observed, inferred, and unknown information. Distinguish unattempted, failed, unsupported, and successful actions. Never present inference or absent evidence as proof.
+- Execute available requested actions directly. Use fallbacks only after direct failure and disclose limitations. State uncertainty for incomplete or conflicting evidence.
 
 ## Repository Documentation
 
-- After changes, assess `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md`; revise each affected document only.
-- New or revised planning and policy documents require an accurate `README.md` section or link.
+55- After changes, assess `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md`; revise only affected documents. New or revised planning/policy documents require an accurate README section or link.
 - Verify repository-relative links before adding them to GitHub documentation.

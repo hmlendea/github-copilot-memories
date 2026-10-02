@@ -12,5 +12,5 @@ Minimise tokens; preserve correctness.
 - Context: relevant files only; targeted searches, ranges, and diffs; no rereads.
 - Tools: batch independent operations.
 - Change: smallest sufficient; narrowest relevant validation.
-- Report: result, validation, blockers. Explain on request.
+- Output: result and validation only; blockers when present. No progress narration; explain on request.
 - Stop: acceptance criteria pass; no adjacent work.

@@ -29,7 +29,7 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 - Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
-- Provides on-demand skills for scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
+- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
 
 ## 🚀 Usage
 
@@ -95,11 +95,11 @@ The skill and memory links are optional when only instruction files and custom a
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
 
-Language dictionaries use compact `source [context] -> replacements/replacements` records; their tag legends define abbreviated grammatical context.
+Language dictionaries use semantic discovery rather than automatic path activation. Their compact `source [context] -> replacements/replacements` records load only for relevant language and terminology work.
 
 Custom agents reside under `prompts/agents/`. The Token Saver agent is opt-in and does not pin a model; select the desired model and reasoning effort before starting a session.
 
-Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand.
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; the Token Saver agent handles execution with restricted tools.
 
 For example:
 

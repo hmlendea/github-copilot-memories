@@ -8,23 +8,12 @@ applyTo: "**/*.{cs}"
 
 - Use block namespaces (`namespace Foo { ... }`), never file-scoped (`namespace Foo;`).
 - Namespace follows responsibility: account validation belongs in `[Root].Services.Account`, not generic `Services`/`Utilities`.
-- Organise by architectural layer (Controllers, Services, Repositories, Domain, DataObjects), then domain subfolder/namespace (e.g. `Services/Account/`).
-- Namespace and folder mirror exactly. Namespace changes require immediate file relocation. Examples:
-  - `[RootNamespace].Configuration`
-  - `[RootNamespace].DataAccess`
-  - `[RootNamespace].DataAccess.DataObjects`
-  - `[RootNamespace].Logging`
-  - `[RootNamespace].Services`
-  - `[RootNamespace].Services.Mapping`
-  - `[RootNamespace].Services.Models`
+- Organise first by layer (`Controllers`, `Services`, `Repositories`, `Domain`, `DataObjects`), then domain (for example, `Services/Account/`). Namespace and folder mirror exactly; relocate files immediately after namespace changes.
+- Standard namespaces: `[RootNamespace].Configuration`, `.DataAccess`, `.DataAccess.DataObjects`, `.Logging`, `.Services`, `.Services.Mapping`, `.Services.Models`.
 - No `[xyz].Interfaces`; colocate interfaces with implementations.
 
 ### Using Directives
 - Place all `using` directives above and outside the namespace.
 - No inline fully qualified types, including BCL types. Add a `using` and use the short name (e.g. `using System;` plus `Enum`, not `System.Enum`).
-- Group `using` directives in this order, one blank line between groups; alphabetise within each group.
-  1. **`System.*` usings**: all namespaces rooted at `System`.
-  2. **`Microsoft.*` usings**: all namespaces rooted at `Microsoft`.
-  3. **NuGet / third-party package usings**: one group per package root namespace (e.g. all `Newtonsoft.*` together, all `Serilog.*` together), ordered alphabetically by package root namespace.
-  4. **Current solution usings**: namespaces belonging to the solution being worked on, all in one group.
+- Group `using` directives in this order: `System.*`; `Microsoft.*`; third-party, one group per alphabetically ordered package root; current solution. Alphabetise within groups and place one blank line between groups.
 - Exactly one blank line between final `using` and namespace.

@@ -1,6 +1,5 @@
 ---
 description: "Use when working with XNA, MonoGame, or NuciXNA. Covers GuiImage, GuiText, control lifecycle, child registration, and screen registration rules."
-applyTo: "**/*.cs"
 ---
 ## C#
 

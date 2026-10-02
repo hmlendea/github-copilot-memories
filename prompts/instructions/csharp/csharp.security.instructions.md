@@ -1,6 +1,5 @@
 ---
-description: "Use when writing or editing C# code. Covers security."
-applyTo: "**/*.{cs}"
+description: "Use for C# security, sensitive data, masking, logs, exception messages, or telemetry."
 ---
 ## C#
 

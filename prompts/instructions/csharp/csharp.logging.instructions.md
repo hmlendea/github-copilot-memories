@@ -1,6 +1,5 @@
 ---
-description: "Use when writing or editing C# logging code. Covers logging rules, standards and conventions."
-applyTo: "**/*.{cs}"
+description: "Use for C# logging, NuciLog, Operation, LogInfoKey, masking, or sensitive log values."
 ---
 ## C#
 

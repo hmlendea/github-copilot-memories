@@ -1,6 +1,5 @@
 ---
 description: "Use for code edits involving exceptions, conversions, or error handling."
-applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,ms,msa,py,sh,ts,tsx}"
 ---
 
 ## Exception Handling

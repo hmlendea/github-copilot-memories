@@ -10,6 +10,8 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 
 ### Projects
 - Never add `InternalsVisibleTo` or other production-project changes solely for tests.
+- Integration tests MUST only be written in a dedicated integration-test project, never in a production or unit-test project.
+- The default integration-test project name is `[RootNamespace].IntegrationTests`.
 
 ### Unit Tests
 - Use project framework; absent framework defaults to NUnit 4.x + Moq.

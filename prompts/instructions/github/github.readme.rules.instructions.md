@@ -126,7 +126,7 @@ Process the subsequent sections in table order. This order is canonical after co
 | `## 🔐 Authentication and Authorisation` | Users or clients authenticate, or public roles and scopes are material. | Never include credentials, tokens, or unsafe examples. |
 | `## 🧱 Extensibility` | A public plug-in, extension, hook, provider, middleware, theme, or scripting contract exists. | Document public extension points only. |
 | `## 🔑 Permissions` | Users must grant OS, browser, mobile, server, cloud, or host permissions. | Explain purpose and whether each permission is mandatory. |
-| `## 🛡️ Privacy and Data` | The project collects, processes, transmits, or persists user data, analytics, diagnostics, or telemetry. | Document evidenced data conduct and controls without exposing personal data. |
+| `## 🛡️ Privacy and Data` | The project collects, processes, transmits, or persists user data, analytics, diagnostics, or telemetry, or `PRIVACY.md` exists. | Document evidenced data conduct and controls without exposing personal data. Link to `PRIVACY.md` when it exists. |
 | `## ♿ Accessibility` | A user-facing interface has documented accessibility support, constraints, or conformance. | Do not assert standards conformance without evidence. |
 | `## 🛠️ Development` | A local development workflow exists. | Use canonical project-native commands. Omit for content-only repositories without executable steps. |
 | `## ⚙️ GitHub Actions` | One or more workflow files exist under `.github/workflows/`. | Document every workflow. Link each workflow name to its verified `.yml` or `.yaml` file on `[[DEFAULT_BRANCH]]`, and explain its evidenced purpose and principal actions. |

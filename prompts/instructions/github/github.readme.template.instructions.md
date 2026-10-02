@@ -395,6 +395,11 @@ The subsequent environment variables can be set:
 <!-- Only if the project collects, processes, transmits, or persists user data, analytics, diagnostics, or telemetry. Document only repository-evidenced conduct. -->
 ## 🛡️ Privacy and Data
 
+<!-- Only if `PRIVACY.md` exists. -->
+For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
+
+[[PRIVACY_DATA_OVERVIEW]]
+
 <!-- Repeat for each data category. Never include genuine personal data, credentials, or secret values. -->
 | Data | Purpose | Storage | Retention | Optional |
 |------|---------|---------|-----------|----------|

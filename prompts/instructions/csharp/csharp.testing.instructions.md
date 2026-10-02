@@ -31,6 +31,7 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 
 ### Branch Coverage
 - Use common testing guidance and the `test-design` skill for branches, erroneous/inconsistent, edge, and unexpected scenarios.
+- Tests MUST comprehensively cover every stated requirement with a wide range of representative values, boundaries, exceptional inputs, and unexpected inputs.
 
 ### Structure
 - Class `[TestFixture]`; methods `[Test]`/`[TestCase(...)]`. Group by production method, no comment banners.

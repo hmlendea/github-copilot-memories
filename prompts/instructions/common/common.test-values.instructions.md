@@ -14,18 +14,7 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `solaire_of_astora`
 - `zezima`
 
-### Names: Male / Full / Romanian
-- `Dorel Meseriașu`
-- `Gică Contra` <!-- Especially for negative test cases -->
-- `Iancu Robilă`
-- `Ilarion Pintilie`
-- `Ionuț Karr`
-- `Lică Sămădăul`
-- `Moș Crăciun`
-- `Robert Blitz`
-- `Vasile Ciupitu`
-
-### Names: Male / Full / English
+### Personal Names: Male / Full / English
 - `Bob Ross`
 - `Chuck Norris`
 - `Courage the Cowardly Dog`
@@ -44,7 +33,19 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Willy Wonka`
 - `Yes Man`  <!-- Especially for positive test cases -->
 
-### Names: Male / First / Romanian
+### Personal Names: Male / Full / Romanian
+- `Dorel Meseriașu`
+- `Gică Contra` <!-- Especially for negative test cases -->
+- `Iancu Robilă`
+- `Ilarion Pintilie`
+- `Ionuț Karr`
+- `Lică Sămădăul`
+- `Moș Crăciun`
+- `Radu Găletaru`
+- `Robert Blitz`
+- `Vasile Ciupitu`
+
+### Personal Names: Male / First / Romanian
 - `Ilarion`
 - `Ionuț`
 - `Oscar`
@@ -52,39 +53,40 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Tibi`
 - `Vasile`
 
-### Names: Male / First / English
+### Personal Names: Male / First / English
 - `Bobert`
 
-### Names: Male / First / French
+### Personal Names: Male / First / French
 - `Solaire`
 
-### Names: Male / First / Greek
+### Personal Names: Male / First / Greek
 - `Arkantos`
 
-### Names: Female / Full / Romanian
+### Personal Names: Female / Full / Romanian
+- `Bianca Găletaru`
 - `Elodia Ghinescu`
 - `Ioana Blitz`
 - `Mary Karr`
 
-### Names: Female / First / Romanian
+### Personal Names: Female / First / Romanian
 - `Elodia`
 - `Ioana`
 - `Lili`
 - `Liliana`
 
-### Names: Female / First / English
+### Personal Names: Female / First / English
 - `Mary`
 
-### Names: Female / First / Latin
+### Personal Names: Female / First / Latin
 - `Vibia`
 
-### Names: Surnames/ Romanian
+### Personal Names: Surnames - Romanian
 - `Ciupitu`
 - `Nucaru`
 - `Nucescu`
 - `Pintilie`
 
-### Names: Surnames/ Others
+### Personal Names: Surnames - Others
 - `Blitz`
 - `Karr`
 
@@ -113,6 +115,8 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 ### Certificates
 - `dummy-cert.pem`
 - `dummy-cert.pfx`
+- `test.nucilandia.ro.pem`
+- `test.nucilandia.ro.pfx`
 
 ### Integers
 - `4`
@@ -168,18 +172,56 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Oradea`
 - `Solara`
 
-### Street Names
-- `Bulevardul Piersicilor`
+### Bridges - English
+- `Alliance Bridge`
+- `Foxes Bridge`
+- `Friendship Bridge`
+- `Plebeians Bridge`
+- `Water Bridge`
+
+### Bridges - Romanian
+- `Podul Alianței`
+- `Podul Apei`
+- `Podul Plebeilor`
+- `Podul Prieteniei`
+- `Podul Vulpilor`
+
+### Lakes - English
+- `Enada Lake`
+
+### Lakes - Romanian
+- `Lacul Enada`
+
+### Seas
+- `Pontic Sea`
+
+### Street Names - English
+- `Arcturus Boulevard`
+- `Incandescence Boulevard`
+- `Peaches Boulevard`
 - `Pinched Street`
 - `Polaris Boulevard`
 - `Solar Boulevard`
-- `Strada Ciupită`
-- `Strada Nucilor`
 - `Walnut Street`
 - `Walnut Way`
 
+### Street Names - Romanian
+- `Bulevardul Arcturus`
+- `Bulevardul Incandescenței`
+- `Bulevardul Piersicilor`
+- `Bulevardul Polaris`
+- `Bulevardul Solar`
+- `Strada Ciupită`
+- `Strada Nucilor`
+
 ### States / Regions
 - `Talmeria`
+
+### Tunnels - English
+- `Dacian Tunnel`
+
+### Tunnels - Romanian
+- `Tunelul Dacic`
 
 ### Domains
 - `dummy-domain.com`
@@ -310,10 +352,12 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Houston, we have a problem`
 - `I am once again asking for your financial support`
 - `I am Solaire of Astora, an adherent of the Lord of Sunlight.`
-- `I am your father`
+- `I am your father!`
+- `I can't even`
 - `I have read and agree to the Terms and Conditions`
 - `I know where you live`
 - `I use Arch btw`
+- `I want to speak to the manager`
 - `I'll be back`
 - `I'm making a note here: huge success`
 - `I'm not even angry`
@@ -374,6 +418,7 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Two plus two is four, minus one that's three, quick maths!`
 - `undefined is not a function`
 - `We do what we must because we can`
+- `We have unit tests at home`
 - `What a beautiful day to stay inside and write tests`
 - `What happens in Vegas, stays in Vegas`
 - `When life gives you lemons...`
@@ -385,6 +430,7 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Yes, we can`
 - `You can't have your cake and eat it too`
 - `You have no power here`
+- `You mad bro?`
 - `You shall not pass!`
 
 ### Phrases: French

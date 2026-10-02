@@ -3,7 +3,7 @@
 
 # GitHub Copilot Memories
 
-A curated collection of GitHub Copilot instruction files that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for VS Code and GitHub Copilot Chat.
+A curated collection of instruction files and skills that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for GitHub Copilot Chat and OpenAI Codex.
 
 ## 📑 Table of Contents
 
@@ -12,6 +12,8 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 - [Usage](#usage)
 - [Installation](#installation)
   - [Installation from Source](#installation-from-source)
+    - [GitHub Copilot](#github-copilot)
+    - [OpenAI Codex](#openai-codex)
 - [Configuration](#configuration)
 - [Integrations](#integrations)
 - [Project Structure](#project-structure)
@@ -28,6 +30,7 @@ A curated collection of GitHub Copilot instruction files that encode reusable co
 - Maintains British English and Romanian language preferences through contextual terminology rules.
 - Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
+- Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
 
@@ -47,9 +50,13 @@ For cost-sensitive coding work, select **Token Saver** from the agent picker. It
 
 Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
 
+For Codex, start a new session in your project after installation. The global `AGENTS.md` directs Codex to read relevant shared instructions. Invoke a skill explicitly with its name, such as `$repository-orientation`, or let Codex select it from its description.
+
 ## 📦 Installation
 
 ### Installation from Source
+
+#### GitHub Copilot
 
 Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
 
@@ -91,6 +98,41 @@ mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\mem
 
 The skill and memory links are optional when only instruction files and custom agents are required.
 
+#### OpenAI Codex
+
+Install [Git](https://git-scm.com/) and [Codex](https://developers.openai.com/codex/quickstart/). Use an existing clone or clone this repository, then run the link commands from its root. Keep the clone in place because the links point to it.
+
+The commands install [user-level skills](https://learn.chatgpt.com/docs/build-skills) in `~/.codex/skills` and [global instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md) in `~/.codex/AGENTS.md`. If `CODEX_HOME` is set, all three links use that directory instead of `~/.codex`. The linked [codex/AGENTS.md](codex/AGENTS.md) directs Codex to the `instructions` link; it uses `applyTo` and `description` to select relevant files.
+
+The destination `skills`, `AGENTS.md`, and `instructions` paths must not already exist. Preserve existing content first: merge the supplied guidance into an existing `AGENTS.md`, and link individual skill folders if you already have a skills directory. If `AGENTS.override.md` exists in your Codex home, merge the guidance there instead because it takes precedence over `AGENTS.md`.
+
+On Linux or macOS:
+
+```bash
+git clone https://github.com/hmlendea/github-copilot-memories.git
+cd github-copilot-memories
+codex_config_dir="${CODEX_HOME:-$HOME/.codex}"
+mkdir -p "$codex_config_dir"
+ln -s "$PWD/skills" "$codex_config_dir/skills"
+ln -s "$PWD/codex/AGENTS.md" "$codex_config_dir/AGENTS.md"
+ln -s "$PWD/prompts/instructions" "$codex_config_dir/instructions"
+```
+
+On Windows, use an Administrator Command Prompt:
+
+```batch
+git clone https://github.com/hmlendea/github-copilot-memories.git
+cd github-copilot-memories
+set "codex_config_dir=%USERPROFILE%\.codex"
+if defined CODEX_HOME set "codex_config_dir=%CODEX_HOME%"
+if not exist "%codex_config_dir%" mkdir "%codex_config_dir%"
+mklink /D "%codex_config_dir%\skills" "%CD%\skills"
+mklink "%codex_config_dir%\AGENTS.md" "%CD%\codex\AGENTS.md"
+mklink /D "%codex_config_dir%\instructions" "%CD%\prompts\instructions"
+```
+
+Start a new Codex session and ask it to summarise its active instructions and locate `$repository-orientation` to check discovery.
+
 ## ⚙️ Configuration
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
@@ -116,7 +158,8 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 
 | Integration | Compatibility | Purpose | Required |
 |-------------|---------------|---------|----------|
-| VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, and skill discovery | Applies instructions and exposes custom agents and on-demand skills | Yes |
+| VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, and skill discovery | Applies instructions and exposes custom agents and on-demand skills | For Copilot |
+| OpenAI Codex | Global `AGENTS.md` and user-level skill discovery | Reads the shared instruction library and exposes on-demand skills | For Codex |
 | GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
 ## 🗂️ Project Structure
@@ -127,6 +170,7 @@ The tracked project is content-focused. Instruction families are separated by la
 
 | Directory | Purpose |
 |-----------|---------|
+| `codex/` | Global Codex instructions that select relevant files from the shared library |
 | `prompts/agents/` | Opt-in custom agents with restricted tools and specialised workflows |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |

@@ -1,6 +1,8 @@
 *
 !.github/
 !.gitignore
+!codex/
+!codex/AGENTS.md
 !globalStorage/
 !globalStorage/github.copilot-chat/
 !globalStorage/github.copilot-chat/memory-tool/
@@ -11,3 +13,4 @@
 !README.md
 !skills/
 !skills/**
+skills/.system/

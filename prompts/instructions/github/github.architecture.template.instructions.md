@@ -5,8 +5,6 @@ applyTo: "ARCHITECTURE.md"
 This is the `ARCHITECTURE.md` template that shall be utilised.
 ---
 
-<!-- BEGIN ARCHITECTURE TEMPLATE IMMUTABLE -->
-
 # [[Project Title]] Architecture
 
 [[[State what this document covers, whether it describes the current or target architecture, and any relevant scope boundary.]]]
@@ -260,5 +258,3 @@ Compatibility requirements:
 ## 📚 Related Documentation
 
 [[[List existing complementary documents using repository-relative Markdown links and describe the distinct scope of each document.]]]
-
-<!-- END ARCHITECTURE TEMPLATE IMMUTABLE -->

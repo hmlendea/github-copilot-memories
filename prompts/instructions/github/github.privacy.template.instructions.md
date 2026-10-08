@@ -5,8 +5,6 @@ applyTo: "PRIVACY.md"
 This is the `PRIVACY.md` template that shall be utilised.
 ---
 
-<!-- BEGIN PRIVACY TEMPLATE IMMUTABLE -->
-
 # Privacy and Personal Data
 
 [[[Brief summary of the document scope, covered application, deployment model, and personal-data handling approach.]]]
@@ -87,5 +85,3 @@ Update this document when application data flows, storage, integrations, or depl
 ## 📬 Contact
 
 For questions about application data handling, contact the project maintainers. For a self-hosted instance, contact the instance operator, unless the project explicitly handles the request. Include [[Information needed to identify the deployment or data flow, if any]]; do not send passwords, access tokens, or other secrets.
-
-<!-- END PRIVACY TEMPLATE IMMUTABLE -->

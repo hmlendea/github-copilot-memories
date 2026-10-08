@@ -5,8 +5,6 @@ applyTo: "ROADMAP.md"
 This is the `ROADMAP.md` template that shall be utilised.
 ---
 
-<!-- BEGIN ROADMAP TEMPLATE IMMUTABLE -->
-
 # [[Project Title]] Roadmap
 
 [[[Brief summary of roadmap scope, planning horizon, and maintenance expectations.]]]
@@ -76,5 +74,3 @@ External contributions are welcome. Propose roadmap refinements or implementatio
 ## 🆘 Support
 
 For roadmap questions, proposals, or clarifications, [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues).
-
-<!-- END ROADMAP TEMPLATE IMMUTABLE -->

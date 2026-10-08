@@ -5,8 +5,6 @@ applyTo: "README.md"
 This is the `README.md` template that must be used.
 ---
 
-<!-- BEGIN README TEMPLATE IMMUTABLE -->
-
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 <!-- Only if the repository is public and it has at least one published release. -->
@@ -754,5 +752,3 @@ If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it o
 
 This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
 See [LICENSE](./LICENSE) for further information.
-
-<!-- END README TEMPLATE IMMUTABLE -->

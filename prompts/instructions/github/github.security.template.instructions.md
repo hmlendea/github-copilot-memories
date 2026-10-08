@@ -5,8 +5,6 @@ applyTo: "SECURITY.md"
 This is the `SECURITY.md` template that shall be utilised.
 ---
 
-<!-- BEGIN SECURITY TEMPLATE IMMUTABLE -->
-
 # Security Policy
 
 [[[Brief summary of the policy objective, reporting principles, and supported-release coverage.]]]
@@ -66,5 +64,3 @@ If your research is conducted in good faith, confined to authorised scope, and d
 ## 🙏 Recognition
 
 We appreciate responsible disclosure. Reporters who desire public attribution may be acknowledged in release notes, advisories, or a dedicated acknowledgements section.
-
-<!-- END SECURITY TEMPLATE IMMUTABLE -->

@@ -692,7 +692,7 @@ When doing so, please:
 - Raise a new [issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) for problems or suggestions
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
-Consult [CONTRIBUTING.md](./CONTRIBUTING.md) for further information on contributing to this project.
+See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 <!-- Only if `CODE_OF_CONDUCT.md` exists in the repository root or `.github/` directory. -->
 ## 📜 Code of Conduct

@@ -393,6 +393,8 @@ The subsequent environment variables can be set:
 <!-- Only if the project collects, processes, transmits, or persists user data, analytics, diagnostics, or telemetry. Document only repository-evidenced conduct. -->
 ## 🛡️ Privacy and Data
 
+[[PROJECT_NAME]] [[SHORT_PRIVACY_AND_DATA_HANDLING_SUMMARY]]
+
 <!-- Only if `PRIVACY.md` exists. -->
 For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
 
@@ -581,6 +583,8 @@ This script downloads and executes an external release helper from `https://raw.
 <!-- Only if `ARCHITECTURE.md` exists or a `docs/architecture/` directory contains substantive documentation. -->
 ## 🏗️ Architecture
 
+[[PROJECT_NAME]] [[SHORT_ARCHITECTURAL_SUMMARY]]
+
 See the [[ARCHITECTURE_DOCUMENT_LINK]] for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
 <!-- Only if the project is deployed as an application, service, website, infrastructure component, or self-hosted system. Include only evidenced procedures and never include secret values or private production endpoints. -->
@@ -733,6 +737,8 @@ See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
 
 <!-- Only if `SECURITY.md` exists. -->
 ## 🔒 Security
+
+[[PROJECT_NAME]] [[SHORT_SECURITY_SUMMARY]]
 
 For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
 

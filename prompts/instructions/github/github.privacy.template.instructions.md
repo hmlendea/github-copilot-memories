@@ -13,7 +13,7 @@ This is the `PRIVACY.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Do not include emojis here. -->
+<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 ## 🔎 What This Document Covers
 

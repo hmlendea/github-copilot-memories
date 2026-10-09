@@ -11,7 +11,7 @@ This is the `ROADMAP.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Do not include emojis here. -->
+<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 <!-- Only if there is active labour in progress. -->
 ## 🎯 Current Focus

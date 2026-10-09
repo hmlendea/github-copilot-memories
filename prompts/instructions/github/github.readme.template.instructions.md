@@ -45,7 +45,7 @@ This is the `README.md` template that must be used.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Use the text and anchor without heading emojis. -->
+<!-- Generate one entry per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 <!-- Only if `screenshots/` directory exists with image files. -->
 ## 🖼️ Screenshots

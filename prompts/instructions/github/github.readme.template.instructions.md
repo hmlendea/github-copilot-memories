@@ -671,10 +671,15 @@ See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 |---------|----------------|------------|
 | [[TROUBLESHOOTING_SYMPTOM]] | [[TROUBLESHOOTING_CAUSE]] | [[TROUBLESHOOTING_RESOLUTION]] |
 
-<!-- Only if `FAQ.md` exists. -->
+<!-- Only if `FAQ.md` or `docs/faq.md` or `docs/FaQ.md` or `docs/FAQ.md` exists. -->
 ## ❓ FAQ
 
-See [FAQ.md](./FAQ.md) for responses to frequently raised inquiries.
+See the [Frequently Asked Questions](./FAQ.md) <!-- or whatever the file path is --> for responses to frequently raised inquiries.
+
+<!-- Only if `TROUBLESHOOTING.md` or `docs/troubleshooting.md` or `docs/Troubleshooting.md` or `docs/TROUBLESHOOTING.md` exists. -->
+## 🩺 Troubleshooting
+
+See [Troubleshooting Guide](./TROUBLESHOOTING.md) <!-- or whatever the file path is --> for diagnostic procedures and resolutions to recurring problems.
 
 <!-- Always include. -->
 ## 🤝 Contributing

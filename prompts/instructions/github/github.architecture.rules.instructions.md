@@ -22,6 +22,8 @@ Unless the user explicitly requests a target architecture, document the verified
 
 ### Generation Contract
 
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final ARCHITECTURE.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 1. Commence from an exact copy of `github.architecture.template.instructions.md`, preserving the order of all included template-defined sections, headings, punctuation, and whitespace layout.
 2. Replace scalar `[[PLACEHOLDER]]` tokens and block `[[[PLACEHOLDER]]]` tokens with repository-specific content.
 3. Resolve template-marked conditional blocks in accordance with the Conditional Content Rules. Removing an inapplicable conditional block is permitted; removing a mandatory section is prohibited.

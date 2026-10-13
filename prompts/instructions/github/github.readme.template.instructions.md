@@ -3,6 +3,9 @@ description: "Template for README.md files."
 applyTo: "README.md"
 ---
 This is the `README.md` template that must be used.
+
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 ---
 
 <!-- Only if `.github/FUNDING.yml` exists. -->

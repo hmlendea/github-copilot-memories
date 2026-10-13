@@ -3,6 +3,9 @@ description: "Template for ARCHITECTURE.md files."
 applyTo: "ARCHITECTURE.md"
 ---
 This is the `ARCHITECTURE.md` template that shall be utilised.
+
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final ARCHITECTURE.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 ---
 
 # [[Project Title]] Architecture

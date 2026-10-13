@@ -11,6 +11,8 @@ Strict fidelity applies to every `PRIVACY.md` creation or revision and overrides
 
 ### Generation Contract
 
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final PRIVACY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 1. Use an exact copy of `github.privacy.template.instructions.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.

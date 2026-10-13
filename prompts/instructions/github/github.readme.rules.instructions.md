@@ -11,6 +11,8 @@ Strict fidelity applies to every `README.md` creation or revision and overrides 
 
 ### Generation Contract
 
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 1. Start from `github.readme.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
 3. When `ARCHITECTURE.md`, `SECURITY.md`, `ROADMAP.md`, or similar planning and policy documents exist or are being generated, ensure the README contains the corresponding section or link unless that section already exists and remains accurate.
@@ -103,7 +105,10 @@ Include `## 📄 License` only when `LICENSE` exists. Never infer or invent a li
 
 ### Sections
 
-Process the subsequent sections in table order. This order is canonical after conditional omissions:
+Process the subsequent sections in table order. This order is canonical after conditional omissions.
+
+**MANDATORY:** When a section's condition is met, the section MUST be included in the README. Do not omit sections whose conditions are satisfied.
+
 | Section | Condition | Required Content or Placement |
 |---------|-----------|-------------------------------|
 | Project status callout | Maturity, maintenance, deprecation, archival, or stability status requires prominent disclosure. | Place directly after the project description. |

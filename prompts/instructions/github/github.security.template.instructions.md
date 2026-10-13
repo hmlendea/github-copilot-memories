@@ -3,6 +3,9 @@ description: "Template for SECURITY.md files."
 applyTo: "SECURITY.md"
 ---
 This is the `SECURITY.md` template that shall be utilised.
+
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final SECURITY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 ---
 
 # Security Policy

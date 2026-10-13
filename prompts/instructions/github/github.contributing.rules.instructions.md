@@ -11,6 +11,8 @@ Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and over
 
 ### Generation Contract
 
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final CONTRIBUTING.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+
 1. Start from `github.contributing.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
 3. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, `ROADMAP.md`, or similar policy documents exist or are being generated, ensure the CONTRIBUTING contains the corresponding section or link unless that section already exists and remains accurate.

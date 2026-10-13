@@ -222,42 +222,54 @@ class GitHubMDValidator:
                     ))
 
     def _check_fixed_prose_integrity(self, content: str, template_content: str):
-        """Check that fixed template prose hasn't been rephrased."""
-        # Extract fixed prose blocks from template (non-placeholder, non-comment lines)
-        template_lines = template_content.split('\n')
-        fixed_prose_blocks = []
-        current_block = []
+        """Check that non-placeholder template prose is preserved in order."""
+        template_lines = template_content.splitlines()
+        output_lines = self._remove_html_comments(content).splitlines()
+        output_index = 0
+        in_front_matter = False
+        skip_conditional = False
 
-        for line in template_lines:
-            stripped = line.strip()
-            # Skip placeholders, comments, conditional directives
-            if re.search(r'\[\[[A-Z_]+\]\]', stripped) or \
-               re.search(r'\[\[\[.+\]\]\]', stripped) or \
-               stripped.startswith('<!--') or \
-               stripped.startswith('---') or \
-               re.match(r'^#{2,4}\s', stripped):
-                if current_block:
-                    fixed_prose_blocks.append('\n'.join(current_block))
-                    current_block = []
-            elif stripped:
-                current_block.append(stripped)
+        for template_line in template_lines:
+            stripped = template_line.strip()
 
-        if current_block:
-            fixed_prose_blocks.append('\n'.join(current_block))
+            if stripped == '---':
+                in_front_matter = not in_front_matter
+                continue
+            if in_front_matter or not stripped or stripped.startswith('<!--'):
+                if stripped.startswith('<!-- Only if'):
+                    skip_conditional = True
+                continue
 
-        # Check that key fixed phrases appear in generated content
-        key_phrases = [
-            "Table of Contents",
-            "Generate one entry per",
-            "Do not include emojis in the entry text",
-            "Strict Template Fidelity Mode",
-            "Mandatory Validation Before Final Output",
-        ]
+            # Conditional blocks may be omitted from the generated document.
+            if skip_conditional:
+                if stripped.startswith(('#', '[!', '|', '```')):
+                    skip_conditional = False
+                else:
+                    continue
 
-        for phrase in key_phrases:
-            if phrase in template_content and phrase not in content:
-                # Some phrases are in rules not template, or in comments
-                pass  # Simplified check
+            fixed_line = re.sub(r'\[\[\[.*?\]\]\]|\[\[.*?\]\]', '', template_line)
+            fixed_line = fixed_line.strip()
+            if not fixed_line or fixed_line.startswith('<!--'):
+                continue
+
+            found = False
+            for index in range(output_index, len(output_lines)):
+                if output_lines[index].strip() == fixed_line:
+                    output_index = index + 1
+                    found = True
+                    break
+
+            if not found:
+                self.issues.append(ValidationIssue(
+                    ValidationSeverity.ERROR,
+                    f"Fixed template prose changed or missing: {fixed_line}",
+                    context="Only placeholders and HTML comments may be changed"
+                ))
+
+    @staticmethod
+    def _remove_html_comments(content: str) -> str:
+        """Remove template comments before comparing generated prose."""
+        return re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
 
     def _check_mandatory_sections(self, content: str, rules_content: str):
         """Check that mandatory sections are present."""

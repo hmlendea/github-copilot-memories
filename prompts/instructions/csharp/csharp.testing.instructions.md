@@ -37,6 +37,7 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 ### Structure
 - Class `[TestFixture]`; methods `[Test]`/`[TestCase(...)]`. Group by production method, no comment banners.
 - Private static `BuildXxx()` test-data helpers at class bottom. Helpers without instance state: `static`.
+- Dummy custom implementations MUST be top-level `internal` classes in separate files, never private classes nested within public test classes. Apply all regular class rules to them.
 - Cache `JsonSerializerOptions` in static readonly fields, never per call.
 
 ### Compatibility

@@ -18,6 +18,7 @@ Strict fidelity applies to every `PRIVACY.md` creation or revision and overrides
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
 5. Ensure `README.md` contains an accurate Privacy section or link.
+6. When PRIVACY.md is created or updated, the corresponding `## 🛡️ Privacy and Data` section in README.md must also be created or updated accordingly.
 
 ### Failure Behaviour
 

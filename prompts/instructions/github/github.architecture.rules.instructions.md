@@ -32,9 +32,10 @@ Unless the user explicitly requests a target architecture, document the verified
 6. Additional project-specific sections or subsections are permitted when they document material domain mechanics, ownership rules, caches, compatibility contracts, or operational concerns absent from the standard sections.
 7. Preserve accurate, current project-specific content from an existing ARCHITECTURE.md. Position it beneath the nearest standard section or retain it as an additive section; do not discard it solely because the template lacks an identical heading.
 8. When creating or revising this document, also ensure the repository `README.md` includes the corresponding Architecture section or link unless the section already exists and remains accurate.
-9. Preserve deliberate architecture terminology used by the repository, including layer, component, module, service, adapter, facade, pipeline, host, and domain names.
-10. Use repository-relative links for source references, and verify that every referenced path exists.
-11. Remove all template comments and unresolved placeholders from the final document.
+9. When ARCHITECTURE.md is created or updated, the corresponding `## 🏗️ Architecture` section in README.md must also be created or updated accordingly.
+10. Preserve deliberate architecture terminology used by the repository, including layer, component, module, service, adapter, facade, pipeline, host, and domain names.
+11. Use repository-relative links for source references, and verify that every referenced path exists.
+12. Remove all template comments and unresolved placeholders from the final document.
 
 ### Failure Conduct
 

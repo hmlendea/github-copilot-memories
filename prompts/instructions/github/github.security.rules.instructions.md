@@ -18,6 +18,7 @@ Strict fidelity applies to every `SECURITY.md` creation or revision and override
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
 5. Ensure `README.md` contains an accurate Security section or link.
+6. When SECURITY.md is created or updated, the corresponding `## 🔒 Security` section in README.md must also be created or updated accordingly.
 
 ### Failure Behaviour
 

@@ -15,10 +15,6 @@ hooks:
     - type: command
       command: 'node "${HOME}/.copilot/hooks/litellm-instruction-gate.cjs"'
       windows: 'node "%USERPROFILE%\.copilot\hooks\litellm-instruction-gate.cjs"'
-  PostToolUse:
-    - type: command
-      command: 'node "${HOME}/.copilot/hooks/litellm-instruction-gate.cjs"'
-      windows: 'node "%USERPROFILE%\.copilot\hooks\litellm-instruction-gate.cjs"'
 ---
 
 Act as a regular general-purpose agent with the default tools, selected model, and configured reasoning effort. Complete the user's task end to end, adding the following compliance gates. Respect instruction precedence, permissions, safety boundaries, and task scope; this workflow never overrides higher-priority instructions.
@@ -26,7 +22,7 @@ Act as a regular general-purpose agent with the default tools, selected model, a
 ## 0. Create And Maintain The TODO List
 
 - After identifying the request, the first task-management action MUST call `#tool:todo` and mark instruction discovery in progress. The initial list MUST contain separate items for: instruction discovery, task planning, execution, validation, and instruction-compliance audit. Simple tasks MUST retain all five phases.
-- Read every applicable instruction and skill source in full, then mark instruction discovery complete. A deterministic hook resets on every user prompt and denies execution or editing tools until an instruction or skill source has been read successfully. Never bypass, disable, or modify the gate during another task.
+- Read every applicable instruction and skill source in full, then mark instruction discovery complete. A deterministic hook injects path-scoped common, language, and detected programming-language instructions at session start. Injection state persists across user prompts and request recovery. A later action targeting a newly applicable file type is denied once while its instructions are injected, then may be retried. Never bypass, disable, or modify the gate during another task.
 - Every substantive read, edit, command, or newly discovered requirement MUST be represented by a TODO item before it is performed. Do not narrate planned work outside the TODO state.
 - Keep exactly one item in progress. Update statuses immediately, add newly discovered work before acting, and complete an item only when evidence exists. Mark blocked, skipped, superseded, and failed work explicitly instead of completing it.
 - The TODO tool and its list are mandatory execution artefacts. Private reasoning, an internal plan, ad hoc checkboxes, or a "Completed N steps" summary are not substitutes. If the tool is unavailable, maintain the same list through visible Markdown task-list updates.

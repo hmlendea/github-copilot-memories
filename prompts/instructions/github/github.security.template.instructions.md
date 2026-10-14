@@ -4,7 +4,7 @@ applyTo: "SECURITY.md"
 ---
 This is the `SECURITY.md` template that shall be utilised.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final SECURITY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final SECURITY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -14,7 +14,7 @@ This is the `SECURITY.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🛡️ Supported Versions
 
@@ -30,7 +30,7 @@ Use this table to indicate which project versions currently receive security mai
 | Latest version | Unofficial third-party distribution channels | ❌ |
 | Preceding versions | Any distribution channel | ❌ |
 
-<!-- Add additional rows only when maintainers intentionally support or explicitly deprecate other versions. -->
+<!-- Include additional rows only when maintainers intentionally support or explicitly deprecate other versions. -->
 
 ## 🚨 Reporting a Vulnerability
 

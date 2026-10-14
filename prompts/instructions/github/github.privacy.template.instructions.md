@@ -4,7 +4,7 @@ applyTo: "PRIVACY.md"
 ---
 This is the `PRIVACY.md` template that shall be utilised.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final PRIVACY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final PRIVACY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -12,11 +12,9 @@ This is the `PRIVACY.md` template that shall be utilised.
 
 [[[Brief summary of the document scope, covered application, deployment model, and personal-data handling approach.]]]
 
-**Information reviewed:** [[YYYY-MM-DD]]
-
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🔎 What This Document Covers
 

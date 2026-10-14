@@ -4,7 +4,7 @@ applyTo: "README.md"
 ---
 This is the `README.md` template that must be used.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -48,7 +48,7 @@ This is the `README.md` template that must be used.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 <!-- Only if `screenshots/` directory exists with image files. -->
 ## 🖼️ Screenshots
@@ -96,13 +96,13 @@ This is the `README.md` template that must be used.
 |----------|--------|---------|
 | [[KEYBOARD_SHORTCUT]] | [[KEYBOARD_SHORTCUT_ACTION]] | [[KEYBOARD_SHORTCUT_CONTEXT]] |
 
-<!-- Only if there are notable caveats, constraints, or missing capabilities worth emphasising. -->
+<!-- Only if there are notable caveats, constraints, or absent capabilities worth emphasising. -->
 ## ⚠️ Known Limitations
 
 <!-- Repeat for each material, evidenced limitation. -->
 - [[LIMITATION]]
 
-<!-- Only if this is an end-user application with meaningful OS, hardware, or runtime prerequisites. -->
+<!-- Only if this is an end-user application with significant OS, hardware, or runtime prerequisites. -->
 ## 🖥️ System Requirements
 
 <!-- Repeat only for evidenced requirements. List operating systems in the priority order Linux, macOS, then Windows. Use `N/A` when no recommendation exists. -->
@@ -267,7 +267,7 @@ dependencies {
 
 [[UNINSTALLATION_INSTRUCTIONS]]
 
-<!-- Only if the repository evidences user-configurable settings through configuration files, `.env.example`, command-line options, or public configuration APIs. Include only evidenced settings and never expose secret values. -->
+<!-- Only if the repository evidences user-configurable settings via configuration files, `.env.example`, command-line options, or public configuration APIs. Include only evidenced settings and never expose secret values. -->
 ## ⚙️ Configuration
 
 [[CONFIGURATION_OVERVIEW]]
@@ -334,7 +334,7 @@ The subsequent environment variables can be set:
 
 [[CONFIGURATION_VALIDATION_INSTRUCTIONS]]
 
-<!-- Only if localisation signals are detected anywhere in the repository (directories like `locales/`, `i18n/`, `translations/`, `Localisation/`, `Localization/`; files like `LocalisationStrings.*`, `LocalizationStrings.*`, `LocaleService.*`, `LocalisationManager.*`; or language-code JSON files inside localisation-related directories). -->
+<!-- Only if localisation signals are detected anywhere in the repository (directories such as `locales/`, `i18n/`, `translations/`, `Localisation/`, `Localization/`; files such as `LocalisationStrings.*`, `LocalizationStrings.*`, `LocaleService.*`, `LocalisationManager.*`; or language-code JSON files within localisation-related directories). -->
 ## 🌍 Localisation
 
 [[LOCALISATION_OVERVIEW]]
@@ -532,7 +532,7 @@ For the detailed description of how the application handles privacy and personal
 
 [[CONTINUOUS_INTEGRATION_INSTRUCTIONS]]
 
-<!-- Only if maintainers have an evidenced packaging or release process and the exact .NET `release.sh` variant below does not apply. Include versioning, artefact, signing, and publication steps that are safe to disclose. Identify every remotely executed script and prominently instruct readers to inspect it first. -->
+<!-- Only if maintainers have an evidenced packaging or release process and the exact .NET `release.sh` variant below does not apply. Include versioning, artefact, signing, and publication steps that are prudent to disclose. Identify every remotely executed script and prominently instruct readers to inspect it first. -->
 ### Release
 
 [[RELEASE_INSTRUCTIONS]]
@@ -622,7 +622,7 @@ See the [[ARCHITECTURE_DOCUMENT_LINK]] for the system context, principal compone
 
 [[OBSERVABILITY_INFORMATION]]
 
-<!-- Only if the system persists state that operators must back up or recover. -->
+<!-- Only if the system persists state that operators must back up or restore. -->
 ### Backup and Restore
 
 [[BACKUP_AND_RESTORE_INSTRUCTIONS]]
@@ -700,7 +700,7 @@ When doing so, please:
 - Maintain your branch synchronised with `[[DEFAULT_BRANCH]]`
 - Revise the documentation when functionality changes <!-- Only if documentation and executable functionality exist. -->
 - Properly test all modifications, including edge cases and error conditions <!-- Only if tests exist. -->
-- Add tests for additional or modified functionality <!-- Only if tests exist. -->
+- Include tests for additional or modified functionality <!-- Only if tests exist. -->
 - Raise a new [issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) for problems or suggestions
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
@@ -722,7 +722,7 @@ See the [[CODE_OF_CONDUCT_DOCUMENT_LINK]] for the standards of conduct expected 
 <!-- Repeat for each directly related project. -->
 - [[RELATED_PROJECT]]: [[RELATED_PROJECT_DESCRIPTION]]
 
-<!-- Only if there are notable third-party works, data sources, or inspiration worth attributing. -->
+<!-- Only if there are notable third-party works, data sources, or inspiration meriting attribution. -->
 ## 🙏 Acknowledgements
 
 <!-- Repeat for each warranted acknowledgement. -->
@@ -761,8 +761,8 @@ If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it o
 <!-- Only if `.github/FUNDING.yml` exists. -->
 [![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
 
-<!-- Only if `./LICENSE` exists. Add this exactly as it is written here, do not modify it in any way. -->
+<!-- Only if `./LICENSE` exists. Include this exactly as it is written here, do not modify it in any manner. -->
 ## 📄 License
 
 This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
-See [LICENSE](./LICENSE) for further information.
+See [LICENSE](./LICENSE) for additional information.

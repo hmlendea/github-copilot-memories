@@ -4,7 +4,7 @@ applyTo: "CONTRIBUTING.md"
 ---
 This is the `CONTRIBUTING.md` template that must be used.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final CONTRIBUTING.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final CONTRIBUTING.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -14,7 +14,7 @@ This document covers the guidelines and processes for contributing to this proje
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🤝 How to Contribute
 
@@ -30,7 +30,7 @@ This document covers the guidelines and processes for contributing to this proje
 
 <!-- Only if the repository accepts feature requests. -->
 - Check the roadmap and existing discussions.
-- Explain the use case and expected behavior.
+- Explain the use case and expected behaviour.
 - Consider implementation complexity.
 
 ### Code Contributions
@@ -67,8 +67,8 @@ cd [[GITHUB_REPO_NAME]]
 
 - Target the `[[DEFAULT_BRANCH]]` branch.
 - Keep PRs focused and atomic.
-- Update documentation if applicable.
-- Add tests for any new functionality.
+- Revise documentation if applicable.
+- Include tests for any new functionality.
 - Ensure the CI checks pass.
 
 ### Code Style
@@ -92,7 +92,7 @@ Follow the project's coding standards:
 ### Documentation
 
 <!-- Only if documentation exists or is generated. -->
-- Update relevant docs for changes.
+- Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
@@ -116,7 +116,7 @@ By contributing, you agree that your contributions will be licensed under the [[
 <!-- Only if a contributors list or recognition mechanism exists. -->
 Contributors are recognized in [[RECOGNITION_LOCATION]].
 
-## ❓ Getting Help
+## ❓ Getting Assistance
 
 <!-- Only if support channels exist. -->
 - [[SUPPORT_CHANNELS]]

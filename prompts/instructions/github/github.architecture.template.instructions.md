@@ -4,7 +4,7 @@ applyTo: "ARCHITECTURE.md"
 ---
 This is the `ARCHITECTURE.md` template that shall be utilised.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final ARCHITECTURE.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final ARCHITECTURE.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -14,7 +14,7 @@ This is the `ARCHITECTURE.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🎯 Purpose
 
@@ -201,7 +201,7 @@ Execute the principal automated verification with:
 [[verification command]]
 ```
 
-<!-- Add further commands only when each command verifies a distinct architecture-sensitive contract. -->
+<!-- Include further commands only when each command verifies a distinct architecture-sensitive contract. -->
 
 ## ⚠️ Design Constraints
 

@@ -4,7 +4,7 @@ applyTo: "ROADMAP.md"
 ---
 This is the `ROADMAP.md` template that shall be utilised.
 
-**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final ROADMAP.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
+**MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final ROADMAP.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
 ---
 
@@ -14,7 +14,7 @@ This is the `ROADMAP.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one entry per ##/###/#### heading present in the final output, in order. Each entry must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 <!-- Only if there is active labour in progress. -->
 ## 🎯 Current Focus
@@ -41,7 +41,7 @@ This is the `ROADMAP.md` template that shall be utilised.
 - [[Priority 1]]
 - [[Priority 2]]
 
-<!-- Only if long-range planning is meaningful for this repository. -->
+<!-- Only if long-range planning is significant for this repository. -->
 ### [[Long-Term Horizon e.g. Future Exploration]]
 
 - [[Idea 1]]
@@ -72,7 +72,7 @@ See [CHANGELOG.md](./CHANGELOG.md) for completed labour.
 
 ## 🤝 Contribution
 
-External contributions are welcome. Propose roadmap refinements or implementation suggestions through repository [issues](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) and focused pull requests aligned with current priorities.
+External contributions are welcome. Propose roadmap refinements or implementation suggestions via repository [issues](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) and focused pull requests aligned with current priorities.
 
 ## 🆘 Support
 

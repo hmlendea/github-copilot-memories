@@ -5,7 +5,7 @@ applyTo: "**/*.md"
 
 # GitHub Markdown Template Prose Fidelity
 
-When generating or revising any GitHub markdown document from a template (`README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `PRIVACY.md`, `ROADMAP.md`), the following rule is absolute:
+When generating or revising any GitHub markdown document from a template (`README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `PRIVACY.md`, `ROADMAP.md`), the following rule is absolute:
 
 ## Fixed Prose Is Immutable
 
@@ -53,6 +53,7 @@ This rule is validated by the `github-md-template-fidelity` skill. Any output th
 | `github.readme.template.instructions.md` | `github.readme.rules.instructions.md` |
 | `github.architecture.template.instructions.md` | `github.architecture.rules.instructions.md` |
 | `github.contributing.template.instructions.md` | `github.contributing.rules.instructions.md` |
+| `github.code-of-conduct.template.instructions.md` | `github.code-of-conduct.rules.instructions.md` |
 | `github.security.template.instructions.md` | `github.security.rules.instructions.md` |
 | `github.privacy.template.instructions.md` | `github.privacy.rules.instructions.md` |
 | `github.roadmap.template.instructions.md` | `github.roadmap.rules.instructions.md` |

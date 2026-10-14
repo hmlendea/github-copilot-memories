@@ -1,5 +1,5 @@
 ---
-description: "Enforces 100% template fidelity for GitHub markdown files (README.md, ARCHITECTURE.md, CONTRIBUTING.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion."
+description: "Enforces 100% template fidelity for GitHub markdown files (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion."
 ---
 
 # GitHub MD Template Fidelity Skill
@@ -20,6 +20,7 @@ When generating or revising any of these files, the agent MUST:
 | README.md | `prompts/instructions/github/github.readme.template.instructions.md` | `prompts/instructions/github/github.readme.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
 | ARCHITECTURE.md | `prompts/instructions/github/github.architecture.template.instructions.md` | `prompts/instructions/github/github.architecture.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
 | CONTRIBUTING.md | `prompts/instructions/github/github.contributing.template.instructions.md` | `prompts/instructions/github/github.contributing.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
+| CODE_OF_CONDUCT.md | `prompts/instructions/github/github.code-of-conduct.template.instructions.md` | `prompts/instructions/github/github.code-of-conduct.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
 | SECURITY.md | `prompts/instructions/github/github.security.template.instructions.md` | `prompts/instructions/github/github.security.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
 | PRIVACY.md | `prompts/instructions/github/github.privacy.template.instructions.md` | `prompts/instructions/github/github.privacy.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
 | ROADMAP.md | `prompts/instructions/github/github.roadmap.template.instructions.md` | `prompts/instructions/github/github.roadmap.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
@@ -132,7 +133,7 @@ When generating ANY GitHub MD file, the agent MUST:
 1. **READ BOTH FILES FIRST** - Template AND Rules for the target file type
 2. **COLLECT EVIDENCE** - For every conditional in template, verify with repository
 3. **PROCESS LINE BY LINE** - Copy fixed prose verbatim, resolve placeholders, evaluate conditionals
-4. **GENERATE ToC LAST** - After all content finalized, with NO emojis, 2-space indent
+4. **GENERATE ToC LAST** - When the template defines a ToC, generate it after all content is finalized, with NO emojis and 2-space indent
 5. **VALIDATE BEFORE OUTPUT** - Run all checks, regenerate on ANY failure
 
 ### Critical Rules That Must NEVER Be Violated
@@ -185,6 +186,11 @@ For each target file type, verify:
 - [ ] Lint/format commands
 - [ ] Default branch
 
+**CODE_OF_CONDUCT.md:**
+- [ ] Verified reporting contact or channel
+- [ ] Contributor Covenant v1.4 wording and attribution
+- [ ] `CONTRIBUTING.md` and `README.md` links when those files exist
+
 **SECURITY.md:**
 - [ ] Supported versions/distribution channels
 - [ ] Vulnerability reporting process
@@ -218,6 +224,7 @@ For each target file type, verify:
 | README.md | `prompts/instructions/github/github.readme.template.instructions.md` | `prompts/instructions/github/github.readme.rules.instructions.md` |
 | ARCHITECTURE.md | `prompts/instructions/github/github.architecture.template.instructions.md` | `prompts/instructions/github/github.architecture.rules.instructions.md` |
 | CONTRIBUTING.md | `prompts/instructions/github/github.contributing.template.instructions.md` | `prompts/instructions/github/github.contributing.rules.instructions.md` |
+| CODE_OF_CONDUCT.md | `prompts/instructions/github/github.code-of-conduct.template.instructions.md` | `prompts/instructions/github/github.code-of-conduct.rules.instructions.md` |
 | SECURITY.md | `prompts/instructions/github/github.security.template.instructions.md` | `prompts/instructions/github/github.security.rules.instructions.md` |
 | PRIVACY.md | `prompts/instructions/github/github.privacy.template.instructions.md` | `prompts/instructions/github/github.privacy.rules.instructions.md` |
 | ROADMAP.md | `prompts/instructions/github/github.roadmap.template.instructions.md` | `prompts/instructions/github/github.roadmap.rules.instructions.md` |

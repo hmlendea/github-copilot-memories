@@ -15,6 +15,7 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 
 ### Unit Tests
 - Use project framework; absent framework defaults to NUnit 4.x + Moq.
+- Do not use xunit unless it was explicitly chosen as the project testing framework or already in use.
 - NUnit: `Assert.That(...)` constraint model only; never `Assert.AreEqual`, `Assert.IsTrue`, or `Assert.IsNotNull`.
 - Use `Assert.That(...)`, not `Assert.That(..., Is.True)`; compare with `Is.EqualTo`/`Is.Not.EqualTo`, never `.Equals()`.
 - Use `Is.Empty`, not `Is.EqualTo(string.Empty)`; use `Has.Length.EqualTo(n)`, not direct `.Length` assertion.
@@ -45,4 +46,5 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 
 - API integration tests cover all input/output success and failure scenarios, including applicable HTTP statuses (e.g. 400, 401, 404, 500).
 - Use project integration framework; absent framework defaults to NUnit + FluentAssertions + Microsoft.AspNetCore.Mvc.Testing.
+- Do not use xunit unless it was explicitly chosen as the project testing framework or already in use.
 - Assert response body and status. Parameterise with `[InlineData]`/`[Theory]`; mock external dependencies for deterministic speed.

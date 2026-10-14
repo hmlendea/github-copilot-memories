@@ -32,7 +32,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
-- Provides an opt-in LiteLLM agent with staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
+- Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
 - Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
 
 ## 🚀 Usage
@@ -49,7 +49,7 @@ The README rules inspect repository evidence, select applicable template section
 
 For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
 
-For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. These are prompt-level requirements, not runtime guarantees.
+For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. The Local agent hook blocks editing and execution tools until an instruction or skill source has been read successfully; complete applicability remains a semantic requirement.
 
 Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
 
@@ -61,7 +61,7 @@ For Codex, start a new session in your project after installation. The global `A
 
 #### GitHub Copilot
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, `agents`, `hooks`, and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
 
 On Linux:
 
@@ -72,6 +72,7 @@ ln -s "$PWD/prompts" "$HOME/.config/Code/User/prompts"
 mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
 ln -s "$PWD/agents" "$HOME/.copilot/agents"
+ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
 mkdir -p "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -85,6 +86,7 @@ ln -s "$PWD/prompts" "$HOME/Library/Application Support/Code/User/prompts"
 mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
 ln -s "$PWD/agents" "$HOME/.copilot/agents"
+ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
 mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -98,11 +100,12 @@ mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
 if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
 mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
+mklink /D "%USERPROFILE%\.copilot\hooks" "%CD%\hooks"
 if not exist "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool" mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
 mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
 
-The skill and memory links are optional when only instruction files and custom agents are required.
+The skill and memory links are optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent.
 
 #### OpenAI Codex
 
@@ -164,7 +167,7 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 
 | Integration | Compatibility | Purpose | Required |
 |-------------|---------------|---------|----------|
-| VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, and skill discovery | Applies instructions and exposes custom agents and on-demand skills | For Copilot |
+| VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, hook, and skill discovery | Applies instructions, enforces the LiteLLM pre-execution gate, and exposes custom agents and on-demand skills | For Copilot |
 | OpenAI Codex | Global `AGENTS.md` and user-level skill discovery | Reads the shared instruction library and exposes on-demand skills | For Codex |
 | GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
@@ -178,6 +181,7 @@ The tracked project is content-focused. Instruction families are separated by la
 |-----------|---------|
 | `codex/` | Global Codex instructions that select relevant files from the shared library |
 | [agents/](agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
+| [hooks/](hooks/) | Runtime instruction-read enforcement used by the LiteLLM agent |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | Repository document and GitHub Actions rules and templates |

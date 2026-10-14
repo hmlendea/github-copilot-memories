@@ -9,6 +9,7 @@
 !globalStorage/github.copilot-chat/memory-tool/
 !globalStorage/github.copilot-chat/memory-tool/memories/
 !globalStorage/github.copilot-chat/memory-tool/memories/**
+!hooks/
 !prompts/
 !prompts/**
 !README.md

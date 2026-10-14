@@ -32,6 +32,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
+- Provides an opt-in LiteLLM agent with staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
 - Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, and session handoff.
 
 ## 🚀 Usage
@@ -47,6 +48,8 @@ Update the README
 The README rules inspect repository evidence, select applicable template sections, and revise the existing `README.md` in place.
 
 For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
+
+For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](prompts/agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. These are prompt-level requirements, not runtime guarantees.
 
 Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
 
@@ -139,7 +142,7 @@ Instruction files reside under `prompts/instructions/`. Each file starts with YA
 
 Language dictionaries use semantic discovery rather than automatic path activation. Their compact `source [context] -> replacements/replacements` records load only for relevant language and terminology work.
 
-Custom agents reside under `prompts/agents/`. The Token Saver agent is opt-in and does not pin a model; select the desired model and reasoning effort before starting a session.
+Custom agents reside under [prompts/agents/](prompts/agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
 Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; the Token Saver agent handles execution with restricted tools.
 
@@ -171,7 +174,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | Directory | Purpose |
 |-----------|---------|
 | `codex/` | Global Codex instructions that select relevant files from the shared library |
-| `prompts/agents/` | Opt-in custom agents with restricted tools and specialised workflows |
+| [prompts/agents/](prompts/agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | Repository document and GitHub Actions rules and templates |

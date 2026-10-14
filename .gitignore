@@ -1,6 +1,7 @@
 */
 !.github/
 !.gitignore
+!agents/
 !codex/
 !codex/AGENTS.md
 !globalStorage/

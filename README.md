@@ -49,7 +49,7 @@ The README rules inspect repository evidence, select applicable template section
 
 For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
 
-For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](prompts/agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. These are prompt-level requirements, not runtime guarantees.
+For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. These are prompt-level requirements, not runtime guarantees.
 
 Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
 
@@ -71,6 +71,7 @@ cd github-copilot-memories
 ln -s "$PWD/prompts" "$HOME/.config/Code/User/prompts"
 mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
+ln -s "$PWD/agents" "$HOME/.copilot/agents"
 mkdir -p "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -83,6 +84,7 @@ cd github-copilot-memories
 ln -s "$PWD/prompts" "$HOME/Library/Application Support/Code/User/prompts"
 mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
+ln -s "$PWD/agents" "$HOME/.copilot/agents"
 mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool"
 ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
@@ -95,6 +97,7 @@ cd github-copilot-memories
 mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
 if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
 mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
+mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
 if not exist "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool" mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
 mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
@@ -142,7 +145,7 @@ Instruction files reside under `prompts/instructions/`. Each file starts with YA
 
 Language dictionaries use semantic discovery rather than automatic path activation. Their compact `source [context] -> replacements/replacements` records load only for relevant language and terminology work.
 
-Custom agents reside under [prompts/agents/](prompts/agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
+Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
 Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; the Token Saver agent handles execution with restricted tools.
 
@@ -174,7 +177,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | Directory | Purpose |
 |-----------|---------|
 | `codex/` | Global Codex instructions that select relevant files from the shared library |
-| [prompts/agents/](prompts/agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
+| [agents/](agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | Repository document and GitHub Actions rules and templates |

@@ -6,6 +6,7 @@ applyTo: "**/*.{csproj}"
 
 ### Projects
 - Target .NET 10.0 or newer for all projects in a solution. Use `<TargetFramework>net10.0</TargetFramework>` in each `.csproj` file.
+- Order all `<PackageReference>` elements alphabetically by their `Include` attribute.
 - All `csproj` files of any project must contain:
   - `<ImplicitUsings>disable</ImplicitUsings>`
   - `<LangVersion>latest</LangVersion>`

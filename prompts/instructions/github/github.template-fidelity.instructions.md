@@ -44,7 +44,7 @@ Only these elements may be modified during generation:
 
 ## Cross-Document README Synchronisation
 
-When creating or revising a document that has a corresponding README section, update the entire corresponding section in `README.md` from `github.readme.template.instructions.md`. Preserve its template-defined heading, fixed prose, order, and whitespace, and replace only its permitted placeholders or conditional content. A README link to the separate document is not a substitute for synchronising the complete section.
+When creating or revising a document that is referenced by another template-generated document, update every affected corresponding section in each referencing document from that document's template. Preserve each template-defined heading, fixed prose, order, and whitespace, and replace only permitted placeholders or conditional content. A link to the separate document is not a substitute for synchronising a complete dedicated section. This includes the README sections corresponding to `ARCHITECTURE.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `PRIVACY.md`, `ROADMAP.md`, and `SECURITY.md`, plus the `CONTRIBUTING.md` sections corresponding to `CODE_OF_CONDUCT.md`, `SECURITY.md`, and `LICENSE`.
 
 ## Enforcement
 

@@ -15,18 +15,19 @@ Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and over
 
 1. Start from `github.contributing.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
-3. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, `ROADMAP.md`, or similar policy documents exist or are being generated, ensure the CONTRIBUTING contains the corresponding section or link unless that section already exists and remains accurate.
+3. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, `ROADMAP.md`, or similar policy documents exist or are being generated, update every affected corresponding section in `CONTRIBUTING.md` from this template. Preserve the complete template-defined section; a link alone is insufficient when the template defines a dedicated section.
 4. When CONTRIBUTING.md is created or updated, update the entire corresponding `## 🤝 Contributing` section in `README.md` from the README template. Preserve its template-defined heading and fixed prose; a link to `CONTRIBUTING.md` alone is insufficient.
-5. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
-6. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
-7. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.
-8. Expand content placeholders such as `[[DEVELOPMENT_SETUP]]`, `[[TESTING_INSTRUCTIONS]]`, and `[[RELEASE_INSTRUCTIONS]]` into the complete Markdown required by that block, including paragraphs, lists, tables, or fenced code blocks.
-9. Duplicate rows, list items, or other examples only when an adjacent template comment says `Repeat` or otherwise expressly permits repetition. When adjacent directives define mutually exclusive variants with identical headings, include exactly one matching variant.
-10. Remove an optional placeholder together with its containing conditional block when no evidenced content applies. Never preserve an empty heading, table, list, or code block.
-11. Additional sections are permitted only when genuinely material repository information has no suitable template section. Position each addition after the nearest related template section without reordering template-defined sections.
-12. Apply language, spelling, and phrasing rules to placeholder values and additive content. Do not rephrase fixed template prose while generating a CONTRIBUTING.
-13. Use project-native commands from scripts, manifests, task definitions, CI workflows, or existing documentation. The strict template does not impose a framework or toolchain.
-14. Remove all template comments and unused examples from the final CONTRIBUTING.
+5. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, or `LICENSE` is created or updated, update the complete corresponding `## 📋 Code of Conduct`, `## 🔒 Security`, or `## 📄 License` section in `CONTRIBUTING.md` from this template. Preserve the section heading and fixed prose; a link alone is insufficient.
+6. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
+7. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
+8. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.
+9. Expand content placeholders such as `[[DEVELOPMENT_SETUP]]`, `[[TESTING_INSTRUCTIONS]]`, and `[[RELEASE_INSTRUCTIONS]]` into the complete Markdown required by that block, including paragraphs, lists, tables, or fenced code blocks.
+10. Duplicate rows, list items, or other examples only when an adjacent template comment says `Repeat` or otherwise expressly permits repetition. When adjacent directives define mutually exclusive variants with identical headings, include exactly one matching variant.
+11. Remove an optional placeholder together with its containing conditional block when no evidenced content applies. Never preserve an empty heading, table, list, or code block.
+12. Additional sections are permitted only when genuinely material repository information has no suitable template section. Position each addition after the nearest related template section without reordering template-defined sections.
+13. Apply language, spelling, and phrasing rules to placeholder values and additive content. Do not rephrase fixed template prose while generating a CONTRIBUTING.
+14. Use project-native commands from scripts, manifests, task definitions, CI workflows, or existing documentation. The strict template does not impose a framework or toolchain.
+15. Remove all template comments and unused examples from the final CONTRIBUTING.
 
 ### Evidence Requirements
 

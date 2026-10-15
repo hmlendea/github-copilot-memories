@@ -17,4 +17,5 @@ applyTo: "**"
 ## Repository Documentation
 
 - After changes, assess `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md`; revise only affected documents. Whenever a planning, policy, or project document has a corresponding README section, update the entire corresponding README section to match the README template, including its heading and fixed prose; a link alone is insufficient.
+- When a document is referenced by another template-generated document, update every affected corresponding section in each referencing document from that document's template. Preserve the template-defined heading and fixed prose; a link alone is insufficient when the template defines a dedicated section.
 - Verify repository-relative links before adding them to GitHub documentation.

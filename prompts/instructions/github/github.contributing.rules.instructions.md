@@ -16,7 +16,7 @@ Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and over
 1. Start from `github.contributing.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
 3. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, `ROADMAP.md`, or similar policy documents exist or are being generated, ensure the CONTRIBUTING contains the corresponding section or link unless that section already exists and remains accurate.
-4. When CONTRIBUTING.md is created or updated, the corresponding `## 🤝 Contributing` section in README.md must also be created or updated accordingly.
+4. When CONTRIBUTING.md is created or updated, update the entire corresponding `## 🤝 Contributing` section in `README.md` from the README template. Preserve its template-defined heading and fixed prose; a link to `CONTRIBUTING.md` alone is insufficient.
 5. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
 6. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
 7. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.

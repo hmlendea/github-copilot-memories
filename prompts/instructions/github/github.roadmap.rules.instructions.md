@@ -17,7 +17,8 @@ Strict fidelity applies to every `ROADMAP.md` creation or revision and overrides
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Include every template-defined section; conditional inclusion and omission are disabled.
-5. Ensure `README.md` contains an accurate Roadmap section or link.
+5. Update the entire corresponding `## 🗺️ Roadmap` section in `README.md` from the README template; a link to `ROADMAP.md` alone is insufficient.
+6. When ROADMAP.md is created or updated, synchronise the complete README section, including its template-defined heading, fixed prose, permitted placeholders, and conditional content.
 
 ### Failure Behaviour
 

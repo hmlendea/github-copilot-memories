@@ -42,6 +42,10 @@ Only these elements may be modified during generation:
 - ❌ "Correcting" spelling, grammar, or style in template prose
 - ❌ Normalising terminology used deliberately in the template
 
+## Cross-Document README Synchronisation
+
+When creating or revising a document that has a corresponding README section, update the entire corresponding section in `README.md` from `github.readme.template.instructions.md`. Preserve its template-defined heading, fixed prose, order, and whitespace, and replace only its permitted placeholders or conditional content. A README link to the separate document is not a substitute for synchronising the complete section.
+
 ## Enforcement
 
 This rule is validated by the `github-md-template-fidelity` skill. Any output that rephrases fixed template prose will be rejected and must be regenerated from the exact template source.

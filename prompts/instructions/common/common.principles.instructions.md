@@ -16,5 +16,5 @@ applyTo: "**"
 
 ## Repository Documentation
 
-55- After changes, assess `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md`; revise only affected documents. New or revised planning/policy documents require an accurate README section or link.
+- After changes, assess `README.md`, `SECURITY.md`, `ROADMAP.md`, and `ARCHITECTURE.md`; revise only affected documents. Whenever a planning, policy, or project document has a corresponding README section, update the entire corresponding README section to match the README template, including its heading and fixed prose; a link alone is insufficient.
 - Verify repository-relative links before adding them to GitHub documentation.

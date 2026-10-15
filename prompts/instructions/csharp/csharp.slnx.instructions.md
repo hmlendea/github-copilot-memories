@@ -9,6 +9,7 @@ applyTo: "**/*.{sln,slnx}"
 - Always prefer `.slnx` over `.sln` solution files.
 - The `.slnx` file must be **SDK-style**.
 - The `.slnx` file must not contain a `<Version>` element.
+- The `.slnx` file must not contain an XML declaration, such as `<?xml version="1.0" encoding="utf-8"?>`.
 - The `.slnx` file must start with `<Solution>` (no attributes) and end with `</Solution>` (no attributes).
 - Each project reference must be `<Project Path="..." />` with no attributes other than `Path`.
 

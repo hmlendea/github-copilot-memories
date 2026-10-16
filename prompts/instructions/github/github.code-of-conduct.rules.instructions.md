@@ -11,11 +11,11 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 
 ### Generation Contract
 
-**MANDATORY INCLUSION RULE:** Every section in the template MUST be included in the final `CODE_OF_CONDUCT.md`. Remove only template instructions and replace only the marked placeholder.
+**MANDATORY INCLUSION RULE:** Every section in the template MUST be included in the final `CODE_OF_CONDUCT.md`. Remove template instructions only; do not add or substitute project-specific content for material that is already defined by the template.
 
 1. Start from `github.code-of-conduct.template.instructions.md` and process it from top to bottom.
 2. Preserve the custom template's wording, emoji-prefixed heading order, list markers, and line breaks exactly.
-3. Replace only `[[REPORTING_CONTACT]]` with a verified project reporting address or channel.
+3. Do not add placeholders or replace the template's reporting route with a project-specific address or channel.
 4. Remove all template comments before writing the final document.
 5. Do not replace the custom guidance with text copied from the Contributor Covenant or another external code of conduct.
 6. Generate the Table of Contents after finalising the document, including every `##` heading except the Table of Contents heading itself.
@@ -26,14 +26,14 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 
 ### Placeholder Rules
 
-- `[[REPORTING_CONTACT]]` must be replaced with the project's verified incident-reporting address or channel.
+- The current template contains no placeholders to replace.
 - Do not leave any `[[...]]` placeholder, HTML comment, or template instruction in the final document.
-- Do not add external attribution that implies the final document reproduces the Contributor Covenant.
+- Preserve the template's acknowledgement that the guidance is original and informed by established open-source community practices; do not imply that it reproduces the Contributor Covenant.
 
 ### Mandatory Validation Before Final Output
 
 - All template sections are present and remain in order.
-- The reporting contact is verified and actionable.
+- Reporting concerns are directed to the repository maintainers as specified by the template.
 - The final document contains no unresolved placeholders or HTML comments.
 - The custom template wording is unchanged apart from the reporting-contact placeholder.
 - The final document contains no unsupported enforcement promises or project claims.

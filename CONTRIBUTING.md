@@ -71,6 +71,16 @@ Follow the project's coding standards:
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
+## 📋 Code of Conduct
+
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## 🔒 Security
+
+Report security vulnerabilities per the [Security Policy](./SECURITY.md).
+
 ## 📄 License
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
+
+By contributing, you agree that your contributions will be licensed under the [[LICENSE_TITLE]].

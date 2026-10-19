@@ -16,9 +16,14 @@ A curated collection of instruction files and skills that encode reusable coding
     - [OpenAI Codex](#openai-codex)
 - [Configuration](#configuration)
 - [Integrations](#integrations)
+- [Privacy and Data](#privacy-and-data)
 - [Project Structure](#project-structure)
   - [Directories](#directories)
+- [Architecture](#architecture)
+- [Roadmap](#roadmap)
 - [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
+- [Security](#security)
 - [Project Engagement](#project-engagement)
 - [License](#license)
 
@@ -171,6 +176,12 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 | OpenAI Codex | Global `AGENTS.md` and user-level skill discovery | Reads the shared instruction library and exposes on-demand skills | For Codex |
 | GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
+## 🛡️ Privacy and Data
+
+GitHub Copilot Memories does not collect, process, transmit, or persist user data, analytics, diagnostics, or telemetry.
+
+For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
+
 ## 🗂️ Project Structure
 
 The tracked project is content-focused. Instruction families are separated by language and concern so each file can define a narrow activation contract.
@@ -195,6 +206,16 @@ The tracked project is content-focused. Instruction families are separated by la
 | `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, validation, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
+## 🏗️ Architecture
+
+GitHub Copilot Memories is a content-only repository of instruction files, skills, and agents.
+
+See the [architecture documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+
+## 🗺️ Roadmap
+
+See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
+
 ## 🤝 Contributing
 
 You are welcome to submit any suggestion, feedback, or modification to this project.
@@ -203,6 +224,16 @@ When doing so, please:
 - Maintain cross-platform compatibility
 - Submit focused pull requests that conform to the existing code style
 - Maintain your branch synchronised with `master`
+
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
+
+## 🔒 Security
+
+GitHub Copilot Memories does not host services, execute code, or process user data.
+
+For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
 
 ## 💝 Project Engagement
 

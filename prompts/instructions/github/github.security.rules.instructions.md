@@ -17,7 +17,7 @@ Strict fidelity applies to every `SECURITY.md` creation or revision and override
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
-5. Update the entire corresponding `## 🔒 Security` section in `README.md` from the README template; a link to `SECURITY.md` alone is insufficient.
+5. Ensure that the entire corresponding `## 🔒 Security` section in `README.md` from the README template is fully updated to match its template-defined content, including all conditional sections, placeholders, and fixed prose. If the section is missing, add it as per the template. A link to `SECURITY.md` alone is insufficient.
 6. When SECURITY.md is created or updated, synchronise the complete README section and the corresponding `## 🔒 Security` section in `CONTRIBUTING.md`, including each template-defined heading, fixed prose, permitted placeholders, and conditional content. A link alone is insufficient.
 
 ### Failure Behaviour

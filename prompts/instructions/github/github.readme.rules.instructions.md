@@ -15,7 +15,7 @@ Strict fidelity applies to every `README.md` creation or revision and overrides 
 
 1. Start from `github.readme.template.instructions.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
-3. When any referenced document exists or is being generated, update the entire corresponding README template section, including its template-defined heading and fixed prose. This includes `ARCHITECTURE.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `LICENSE`, `PRIVACY.md`, `ROADMAP.md`, and `SECURITY.md`; a link to the separate document alone is insufficient.
+3. When any referenced document exists or is being generated, ensure that the entire corresponding README template section is updated, including its template-defined heading and fixed prose. If the section is missing, add it as per the template. This includes `ARCHITECTURE.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `LICENSE`, `PRIVACY.md`, `ROADMAP.md`, and `SECURITY.md`; a link to the separate document alone is insufficient.
 4. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
 5. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
 6. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.

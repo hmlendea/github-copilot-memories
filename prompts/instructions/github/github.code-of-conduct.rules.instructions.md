@@ -20,7 +20,7 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 5. Do not replace the custom guidance with text copied from the Contributor Covenant or another external code of conduct.
 6. Generate the Table of Contents after finalising the document, including every `##` heading except the Table of Contents heading itself.
 7. Use heading text without emojis in Table of Contents link labels, and indent nested entries by two spaces.
-8. If `CODE_OF_CONDUCT.md` exists or is being generated, update the entire corresponding `## 📜 Code of Conduct` section in `README.md` from the README template and the complete corresponding `## 📋 Code of Conduct` section in `CONTRIBUTING.md` from the CONTRIBUTING template. Preserve each template-defined heading and fixed prose; a link alone is insufficient.
+8. If `CODE_OF_CONDUCT.md` exists or is being generated, ensure that the entire corresponding `## 📜 Code of Conduct` section in `README.md` from the README template and the complete corresponding `## 📋 Code of Conduct` section in `CONTRIBUTING.md` from the CONTRIBUTING template are fully updated to match their respective template-defined content, including all conditional sections, placeholders, and fixed prose. If either section is missing, add it as per the template. Preserve each template-defined heading and fixed prose; a link alone is insufficient.
 9. Use a repository-relative Markdown link for every repository file reference added to another document, and verify that the target exists.
 10. Do not expose credentials, personal data, private endpoints, or unverified contact details.
 

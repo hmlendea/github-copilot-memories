@@ -36,6 +36,11 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 - Fitness and architecture tests MUST live in a project named `<RootNamespace>.ArchitectureTests`.
 - Fitness and architecture tests MUST use ArchUnit.NET and NUnit.
 - Architecture/Fitness tests MUST NEVER be modified by the agent, even if they are failing, unless the user EXPLICITLY asks for it.
+- Architecture tests MUST explicitly load all relevant production assemblies, exclude test assemblies, and reuse the loaded architecture for the test run.
+- Every rule MUST select expected types; tests MUST fail when a selector matches none rather than pass vacuously.
+- Tests MUST enforce documented dependency direction and forbidden dependencies between production boundaries, and check cycles where components are defined as independent or acyclic. Do not assume layer names or impose a layered design. Any permitted cycle MUST be documented and narrowly scoped.
+- Enforce namespace placement, naming, and interface implementation conventions only when required by the documented architecture; do not duplicate generic style or analyser rules.
+- Failure messages MUST identify the violated boundary and reason. Rule exceptions MUST be explicit and narrowly scoped.
 
 ### Branch Coverage
 - Use common testing guidance and the `test-design` skill for branches, erroneous/inconsistent, edge, and unexpected scenarios.

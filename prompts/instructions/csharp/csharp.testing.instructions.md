@@ -32,6 +32,11 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
 - `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
 - Configuration values: integration tests or runtime checks, never unit tests.
 
+### Architecture/Fitness Tests
+- Fitness and architecture tests MUST live in a project named `<RootNamespace>.ArchitectureTests`.
+- Fitness and architecture tests MUST use ArchUnit.NET and NUnit.
+- Architecture/Fitness tests MUST NEVER be modified by the agent, even if they are failing, unless the user EXPLICITLY asks for it.
+
 ### Branch Coverage
 - Use common testing guidance and the `test-design` skill for branches, erroneous/inconsistent, edge, and unexpected scenarios.
 - Tests MUST comprehensively cover every stated requirement with a wide range of representative values, boundaries, exceptional inputs, and unexpected inputs.

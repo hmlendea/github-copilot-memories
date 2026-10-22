@@ -79,6 +79,8 @@ The following documented controls or request procedures are available:
 
 [[Describe verified technical and operational safeguards without exposing sensitive implementation details. For self-hosted deployments, identify the operator's responsibilities for updates, secrets, access controls, backups, network exposure, and log protection. Do not promise absolute security.]]
 
+The original maintainers are not responsible for changes, modifications, or privacy issues introduced by downstream forks.
+
 ## 🔄 Document Changes
 
 Update this document when application data flows, storage, integrations, or deployment responsibilities change. The current version is published at [[Document URL or repository path]].

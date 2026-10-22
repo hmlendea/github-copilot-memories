@@ -42,6 +42,8 @@ To report a vulnerability:
 
 ## 📌 Scope
 
+The original maintainers are not responsible for changes, modifications, or security issues introduced by downstream forks.
+
 The subsequent report categories are in scope for this repository:
 - [[In-scope category 1]]
 - [[In-scope category 2]]

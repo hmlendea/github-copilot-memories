@@ -32,7 +32,7 @@ applyTo: "**/*.{cs}"
 
 ### Type Declarations
 
-- No `partial` classes except framework contracts or explicit user requests.
+- No `partial` classes except framework contracts, source-generator requirements such as `GeneratedRegex`, or explicit user requests.
 - Non-static classes with public methods implement a colocated equivalent interface (e.g. `AccountService`/`IAccountService`), except domain models and data/entities. Interface mirrors public contract.
 - Classes are `sealed` unless designed for inheritance. Domain models, data/entities, and configuration classes: `public sealed class`.
 - Domain/data objects with meaningful equality implement `IEquatable<T>`, `Equals(object)`, and consistent `GetHashCode()`.
@@ -71,3 +71,17 @@ applyTo: "**/*.{cs}"
 ### Compiler Instructions
 
 - Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.
+
+### Sonar Findings Prevention
+
+- Keep Cognitive Complexity at or below 15. Split complex methods into cohesive, named helpers without changing behaviour or public contracts.
+- Do not nest conditional expressions. Use a named helper or explicit control flow when selecting among multiple outcomes.
+- Reuse `JsonSerializerOptions` instances when repeatedly serialising with the same configuration; do not instantiate options for each operation.
+- Use `GeneratedRegex` for constant patterns in partial types. For other repeated patterns, retain and reuse a `Regex` instance.
+- Store repeatedly passed, non-mutated arrays in `static readonly` fields rather than recreating array arguments.
+- Prefer a concrete type when the implementation is already concrete and no substitution is needed; keep interfaces at actual abstraction boundaries.
+- Bind ASP.NET controller inputs with explicit binding attributes instead of reading values directly from `Request` or `HttpContext.Request`.
+- Omit redundant field initialisers when every constructor assigns the field before use; preserve initialisers that express a required default state.
+- Use named constants for repeated protocol literals and fixed values.
+- Ensure custom exception types have the accessibility required by their mappers and consumers.
+- Keep method, constructor, and lambda parameter counts at or below 7; group cohesive inputs into a request or options type when necessary.

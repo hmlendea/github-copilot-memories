@@ -60,7 +60,7 @@ applyTo: "**/*.{cs}"
 
 ### Methods
 
-- Mapping exists only as extension methods in dedicated `*MappingExtensions.cs` files under `*.Mappings`; never in implementation classes.
+- Mapping exists only as extension methods in dedicated `*MappingExtensions.cs` files under `[xyz].Mapping`; never in implementation classes.
 - Every single-statement method is expression-bodied (`=>`), including return, delegation, throw, and `new()` initialisers; never use a block or temporary local (e.g. `public Foo GetFoo() => foo;`).
 
 ### Async

@@ -12,7 +12,7 @@ applyTo: "**/*{Mappings,MappingExtensions}.{cs}"
 ### File & Namespace Placement
 
 - All mapping methods must be placed only in dedicated extension classes named `*MappingExtensions.cs`.
-- Mapping extension classes must be declared under a namespace that ends with `.Mappings`.
+- Mapping extension classes must use `[xyz].Mapping` namespaces (singular `Mapping`), with folders matching the namespace.
 - Implementation classes must not contain mapping methods.
 
 ### Type Declarations

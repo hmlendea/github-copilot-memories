@@ -26,3 +26,5 @@ applyTo: "**/*.{Tests,UnitTests}.csproj,**/*.{Tests,UnitTests}/**/*.cs"
 - `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
 - Configuration values: integration tests or runtime checks, never unit tests.
 - Business unit tests MUST contain an assertion, a Moq verification, or an `ExpectedResult`.
+- Do not pass reusable array literals or collection expressions to non-mutating APIs, including NUnit contraints. Put reusable expected values in descriptively named `private static readonly` fields; use a local array only for invocation-specific values.
+- Reuse a `static readonly JsonSerializerOptions` instance when tests share a serialisation configuration; do not construct options for every test execution.

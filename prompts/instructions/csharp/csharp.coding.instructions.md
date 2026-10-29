@@ -76,9 +76,14 @@ applyTo: "**/*.{cs}"
 
 - Keep Cognitive Complexity at or below 15. Split complex methods into cohesive, named helpers without changing behaviour or public contracts.
 - Do not nest conditional expressions. Use a named helper or explicit control flow when selecting among multiple outcomes.
+- Do not leave empty `catch` blocks. Convert expected parse failures into an explicit safe result or a sanitised exception.
 - Reuse `JsonSerializerOptions` instances when repeatedly serialising with the same configuration; do not instantiate options for each operation.
+- Reuse `JsonSerializerOptions` in tests as well; initialise one `static readonly` instance per configuration instead of constructing it for each test execution.
 - Use `GeneratedRegex` for constant patterns in partial types. For other repeated patterns, retain and reuse a `Regex` instance.
 - Store repeatedly passed, non-mutated arrays in `static readonly` fields rather than recreating array arguments.
+- Do not embed URI path separators at call sites. Use URI APIs or a named URI-specific separator; do not substitute the platform file-system separator.
+- Keep enum numeric values unique unless an alias is required to preserve a persisted or serialised contract. For an intentional alias, add a narrowly scoped `CA1069` supression with its compatibility rationale and tests that pin the numeric contract.
+- Resolve actionable `TODO` comments before closing the change. Track unresolved external decisions outside source comments rather than presenting them as completed work.
 - Prefer a concrete type when the implementation is already concrete and no substitution is needed; keep interfaces at actual abstraction boundaries.
 - Bind ASP.NET controller inputs with explicit binding attributes instead of reading values directly from `Request` or `HttpContext.Request`.
 - Omit redundant field initialisers when every constructor assigns the field before use; preserve initialisers that express a required default state.

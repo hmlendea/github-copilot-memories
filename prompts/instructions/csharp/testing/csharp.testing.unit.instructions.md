@@ -25,6 +25,7 @@ applyTo: "**/*.{Tests,UnitTests}.csproj,**/*.{Tests,UnitTests}/**/*.cs"
   ```
 - `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
 - Configuration values: integration tests or runtime checks, never unit tests.
+- Unit tests MUST be cross-platform, environment-agnostic, and machine-agnostic; they MUST not depend on OS APIs, filesystem layout, current directory, locale, timezone, clock, network, processes, environment variables, installed tools, hardware, or developer-specific local state. Mock or inject external dependencies and use deterministic, portable test data.
 - Business unit tests MUST contain an assertion, a Moq verification, or an `ExpectedResult`.
 - Do not pass reusable array literals or collection expressions to non-mutating APIs, including NUnit contraints. Put reusable expected values in descriptively named `private static readonly` fields; use a local array only for invocation-specific values.
 - Reuse a `static readonly JsonSerializerOptions` instance when tests share a serialisation configuration; do not construct options for every test execution.

@@ -13,3 +13,4 @@ applyTo: "**/*.IntegrationTests.csproj,**/*.IntegrationTests/**/*.cs"
 - Use project integration framework; absent framework defaults to NUnit + FluentAssertions + Microsoft.AspNetCore.Mvc.Testing.
 - Do not use xunit unless it was explicitly chosen as the project testing framework or already in use.
 - Assert response body and status. Parameterise with `[InlineData]`/`[Theory]`; mock external dependencies for deterministic speed.
+- Integration tests MUST be cross-platform, environment-agnostic, and machine-agnostic; they MUST run without relying on the host OS, machine name, username, home or current directory, filesystem layout, locale, timezone, clock, installed tools, environment variables, hardware, or developer-local services. Use portable temporary resources, controlled configuration, deterministic data, and isolated or explicitly provisioned dependencies; never silently require a local database, network service, container, or platform-specific executable.

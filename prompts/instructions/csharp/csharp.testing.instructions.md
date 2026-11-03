@@ -1,6 +1,6 @@
 ---
 description: "Use for C# tests and test projects. Covers structure, naming, framework, mocks, and assertions."
-applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/*.{Tests,IntegrationTests,UnitTests}/**/*.cs"
+applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,ArchitectureTests,IntegrationTests,UnitTests}/*.cs,**/*.{Tests,ArchitectureTests,IntegrationTests,UnitTests}/**/*.cs"
 ---
 ## C#
 
@@ -31,6 +31,7 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,IntegrationTests,UnitTests}/*.cs,**/
   ```
 - `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
 - Configuration values: integration tests or runtime checks, never unit tests.
+- All test types MUST be cross-platform, environment-agnostic, and machine-agnostic: they MUST run on Linux, Windows, and macOS, on x86 and ARM, and under any supported environment without relying on the developer's OS, machine, username, home directory, current directory, filesystem layout, installed tools, locale, timezone, clock, culture, network, processes, environment variables, or other local state. Isolate or explicitly control every external dependency and use portable, deterministic test data.
 
 ### Architecture/Fitness Tests
 - Fitness and architecture tests MUST live in a project named `<RootNamespace>.ArchitectureTests`.

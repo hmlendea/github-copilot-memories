@@ -6,6 +6,7 @@ applyTo: "**/*.ArchitectureTests.csproj,**/*.ArchitectureTests/**/*.cs"
 
 ### Architecture/Fitness Tests
 - Fitness and architecture tests MUST live in a project named `<RootNamespace>.ArchitectureTests`.
+- Architecture and fitness tests MUST be cross-platform, environment-agnostic, and machine-agnostic; they MUST run without relying on the host OS, machine name, username, home or current directory, filesystem layout, locale, timezone, clock, installed tools, environment variables, hardware, network, or developer-local state. Resolve assemblies and source files from explicit project metadata or test inputs, use deterministic ordering, and fail clearly when required inputs are unavailable rather than depending on local discovery.
 - Fitness and architecture tests MUST use NUnit; compiled dependency rules MUST use ArchUnit.NET, and source-file convention rules MUST use Roslyn syntax analysis.
 - Architecture/Fitness tests MUST NEVER be modified by the agent, even if they are failing, unless the user EXPLICITLY asks for it.
 - Architecture tests MUST explicitly load all relevant production assemblies, exclude test assemblies, and reuse the loaded architecture for the test run.

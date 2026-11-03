@@ -16,9 +16,6 @@ on:
   release:
     types: [ published ]
 
-permissions:
-  contents: read
-
 jobs:
   publish:
     name: Publish

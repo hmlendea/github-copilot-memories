@@ -399,7 +399,7 @@ The subsequent environment variables can be set:
 [[PROJECT_NAME]] [[SHORT_PRIVACY_AND_DATA_HANDLING_SUMMARY]]
 
 <!-- Only if `PRIVACY.md` exists. -->
-For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
 
 [[PRIVACY_DATA_OVERVIEW]]
 
@@ -704,7 +704,7 @@ When doing so, please:
 - Raise a new [issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues) for problems or suggestions
 
 <!-- Only if `CONTRIBUTING.md` exists in this repository's root directory. -->
-See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 <!-- Only if `CODE_OF_CONDUCT.md` exists in the repository root or `.github/` directory. -->
 ## 📜 Code of Conduct
@@ -736,14 +736,14 @@ See the [[CODE_OF_CONDUCT_DOCUMENT_LINK]] for the standards of conduct expected 
 <!-- Only if `CHANGELOG.md` exists. -->
 ## 📋 Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
+See the [Changelog](./CHANGELOG.md) for a full history of changes.
 
 <!-- Only if `SECURITY.md` exists. -->
 ## 🔒 Security
 
 [[PROJECT_NAME]] [[SHORT_SECURITY_SUMMARY]]
 
-For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
 <!-- Only if `SUPPORT.md`, a public discussion forum, community channel, or another documented support route exists. Distinguish support inquiries from security disclosures. -->
 ## 💬 Support

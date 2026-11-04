@@ -43,7 +43,7 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 - A content placeholder may expand to multiple Markdown lines.
 - Repeatable examples must be duplicated once per evidenced record and then have their placeholder row or item removed.
 - `[[DEFAULT_BRANCH]]` must reflect repository metadata; do not presume `master` or `main`.
-- `[[ARCHITECTURE_DOCUMENT_LINK]]` must expand to a Markdown link labelled `architecture documentation` whose target is the verified repository-relative document path.
+- `[[ARCHITECTURE_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Architecture Documentation` whose target is the verified repository-relative document path.
 - `[[CODE_OF_CONDUCT_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Code of Conduct` whose target is the verified repository-relative document path.
 - `[[LICENSE_TITLE]]` must reflect the repository licence without inference.
 - `[[LICENSE_SUFFIX]]` is ` or later` only when the licence text or SPDX expression explicitly grants later versions; otherwise it is empty.

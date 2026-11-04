@@ -17,3 +17,4 @@ applyTo: "**/*.{cs}"
 - No inline fully qualified types, including BCL types. Add a `using` and use the short name (e.g. `using System;` plus `Enum`, not `System.Enum`).
 - Group `using` directives in this order: `System.*`; `Microsoft.*`; third-party, one group per alphabetically ordered package root; current solution. Alphabetise within groups and place one blank line between groups.
 - Exactly one blank line between final `using` and namespace.
+- Never use `global using ...` or `GlobalUsings.cs`. Manually add `using ...` to each `.cs` file that requires it.

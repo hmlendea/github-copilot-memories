@@ -71,6 +71,7 @@ applyTo: "**/*.{cs}"
 ### Compiler Instructions
 
 - Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.
+- Never use preview language features. Only use stable, fully released features supported by the project's .NET version.
 
 ### Sonar Findings Prevention
 

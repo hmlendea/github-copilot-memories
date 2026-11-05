@@ -10,7 +10,7 @@ This is the `PRIVACY.md` template that shall be utilised.
 
 # Privacy and Personal Data
 
-[[[Brief summary of the document scope, covered application, deployment model, and personal-data handling approach.]]]
+[[[Brief summary of the document scope, covered application, deployment model, and personal-data management approach.]]]
 
 ## 📑 Table of Contents
 
@@ -18,14 +18,14 @@ This is the `PRIVACY.md` template that shall be utilised.
 
 ## 🔎 What This Document Covers
 
-This document describes how [[Project or service name]] at [[Repository URL or service URL]] handles personal data. It covers the application behaviour and verified integrations described below. Where the software is self-hosted, the instance operator may have separate responsibilities described below.
+This document describes how [[Project or service name]] at [[Repository URL or service URL]] manages personal data. It covers the application conduct and verified integrations described below. Where the software is self-hosted, the instance operator may have separate responsibilities described below.
 
 <!-- Only when users or organisations can deploy and operate their own instance. -->
 ## 🏠 Self-Hosted Deployments
 
-[[Explain whether this document covers the project maintainers, self-hosted instance operators, or both. State that operators control their instance's configuration, local storage, logs, backups, access controls, retention, and request handling unless the project directly controls those functions.]]
+[[Explain whether this document covers the project maintainers, self-hosted instance operators, or both. State that operators control their instance's configuration, local storage, logs, backups, access controls, preservation, and request handling unless the project directly controls those functions.]]
 
-[[Describe any data sent from a self-hosted instance to project maintainers or external services, including telemetry, update checks, crash reports, email, authentication, reverse-proxy, object-storage, or monitoring integrations. State how operators can disable each optional flow when that control exists.]]
+[[Describe any data sent from a self-hosted instance to project maintainers or external services, including telemetry, update checks, crash reports, email, authentication, reverse-proxy, object-storage, or monitoring integrations. State how operators can deactivate each optional process when that control exists.]]
 
 ## 📥 Data We Handle
 
@@ -49,11 +49,11 @@ The application processes the data described above for these verified functions:
 
 ## 🗄️ Storage, Retention, and Deletion
 
-[[Describe where each relevant data category is stored, including local databases, files, logs, caches, backups, or configured storage services. Describe verified retention and deletion behaviour. For self-hosted deployments, identify whether the project or the instance operator controls storage, deletion, and backups.]]
+[[Describe where each relevant data category is stored, including local databases, files, logs, caches, backups, or configured storage services. Describe verified preservation and deletion conduct. For self-hosted deployments, identify whether the project or the instance operator controls storage, deletion, and backups.]]
 
 ## 🔗 External Processing and Integrations
 
-[[List verified external services, recipients, or integrations that process or receive data, including their purpose and the data flow. State when the application has no built-in external data transfer.]]
+[[List verified external services, recipients, or integrations that process or receive data, including their purpose and the data process. State when the application has no built-in external data transfer.]]
 
 | Service or integration | Purpose | Data involved | Configuration or documentation |
 |-----------------------|---------|---------------|--------------------------------|
@@ -73,7 +73,7 @@ The following documented controls or request procedures are available:
 <!-- Only when the service is directed to children or age restrictions apply. -->
 ## 🧒 Children
 
-[[Describe verified age-related behaviour and any application controls for child accounts or data. Do not state an age threshold that has not been confirmed.]]
+[[Describe verified age-related conduct and any application controls for child accounts or data. Do not state an age threshold that has not been confirmed.]]
 
 ## 🛡️ Data Protection and Security
 
@@ -83,8 +83,8 @@ The original maintainers are not responsible for changes, modifications, or priv
 
 ## 🔄 Document Changes
 
-Update this document when application data flows, storage, integrations, or deployment responsibilities change. The current version is published at [[Document URL or repository path]].
+Update this document when application data processes, storage, integrations, or deployment responsibilities change. The current version is published at [[Document URL or repository path]].
 
 ## 📬 Contact
 
-For questions about application data handling, contact the project maintainers. For a self-hosted instance, contact the instance operator, unless the project explicitly handles the request. Include [[Information needed to identify the deployment or data flow, if any]]; do not send passwords, access tokens, or other secrets.
+For questions about application data handling, contact the project maintainers. For a self-hosted instance, contact the instance operator, unless the project explicitly manages the request. Include [[Information needed to identify the deployment or data process, if any]]; do not send passwords, access tokens, or other secrets.

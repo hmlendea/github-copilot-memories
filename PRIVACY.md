@@ -1,6 +1,6 @@
 # Privacy and Personal Data
 
-This document describes how the GitHub Copilot Memories repository handles personal data. The repository publishes instruction files, skills, and agents for GitHub Copilot Chat and OpenAI Codex; it does not host services, process user data, or transmit personal data to project maintainers.
+This document describes how the GitHub Copilot Memories repository manages personal data. The repository publishes instruction files, skills, and agents for GitHub Copilot Chat and OpenAI Codex; it does not host services, process user data, or transmit personal data to project maintainers.
 
 ## 📑 Table of Contents
 
@@ -14,7 +14,7 @@ This document describes how the GitHub Copilot Memories repository handles perso
 
 ## 🔎 What This Document Covers
 
-This document describes how GitHub Copilot Memories at https://github.com/hmlendea/github-copilot-memories handles personal data. It covers the repository content and verified integrations described below. The repository is a collection of instruction files, skills, and agents; it does not operate a hosted service or process user data.
+This document describes how GitHub Copilot Memories at https://github.com/hmlendea/github-copilot-memories manages personal data. It covers the repository content and verified integrations described below. The repository is a collection of instruction files, skills, and agents; it does not operate a hosted service or process user data.
 
 ## 📥 Data We Handle
 
@@ -36,7 +36,7 @@ The repository content does not process personal data for any function.
 
 ## 🗄️ Storage, Retention, and Deletion
 
-The repository content does not store, retain, or delete personal data.
+The repository content does not store, preserve, or delete personal data.
 
 ## 🔗 External Processing and Integrations
 
@@ -44,7 +44,7 @@ The repository content has no built-in external data transfer. It references ext
 
 ## 🔄 Document Changes
 
-Update this document when application data flows, storage, integrations, or deployment responsibilities change. The current version is published at https://github.com/hmlendea/github-copilot-memories/blob/master/PRIVACY.md.
+Update this document when application data processes, storage, integrations, or deployment responsibilities change. The current version is published at https://github.com/hmlendea/github-copilot-memories/blob/master/PRIVACY.md.
 
 ## 📬 Contact
 

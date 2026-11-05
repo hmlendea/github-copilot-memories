@@ -50,7 +50,7 @@ This project follows coordinated disclosure:
 
 ## 🧾 Safe Harbour
 
-If your research is conducted in good faith, confined to authorised scope, and disclosed responsibly, the maintainers will not pursue action for policy-compliant activity.
+If your investigation is conducted in good faith, confined to authorised scope, and disclosed responsibly, the maintainers will not pursue action for policy-compliant activity.
 
 ## 🙏 Recognition
 

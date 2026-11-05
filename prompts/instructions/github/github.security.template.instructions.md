@@ -60,10 +60,10 @@ This project follows coordinated disclosure:
 3. Public disclosure is published after a fix, mitigation, or agreed risk decision is available.
 4. Credit is attributed in accordance with reporter preference and project policy.
 
-<!-- Only if a safe-harbour statement is available. -->
+<!-- Only if a safe-harbour declaration is available. -->
 ## 🧾 Safe Harbour
 
-If your research is conducted in good faith, confined to authorised scope, and disclosed responsibly, the maintainers will not pursue action for policy-compliant activity.
+If your investigation is conducted in good faith, confined to authorised scope, and disclosed responsibly, the maintainers will not pursue action for policy-compliant activity.
 
 <!-- Only if public recognition is practised. -->
 ## 🙏 Recognition

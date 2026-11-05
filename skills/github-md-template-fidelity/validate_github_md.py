@@ -39,12 +39,13 @@ class GitHubMDValidator:
 
         # Determine template and rules files
         template_map = {
-            "README.md": ("github.readme.template.instructions.md", "github.readme.rules.instructions.md"),
             "ARCHITECTURE.md": ("github.architecture.template.instructions.md", "github.architecture.rules.instructions.md"),
+            "CODE_OF_CONDUCT.md": ("github.code-of-conduct.template.instructions.md", "github.code-of-conduct.rules.instructions.md"),
             "CONTRIBUTING.md": ("github.contributing.template.instructions.md", "github.contributing.rules.instructions.md"),
-            "SECURITY.md": ("github.security.template.instructions.md", "github.security.rules.instructions.md"),
             "PRIVACY.md": ("github.privacy.template.instructions.md", "github.privacy.rules.instructions.md"),
+            "README.md": ("github.readme.template.instructions.md", "github.readme.rules.instructions.md"),
             "ROADMAP.md": ("github.roadmap.template.instructions.md", "github.roadmap.rules.instructions.md"),
+            "SECURITY.md": ("github.security.template.instructions.md", "github.security.rules.instructions.md"),
         }
 
         if target_file not in template_map:
@@ -223,11 +224,13 @@ class GitHubMDValidator:
 
     def _check_fixed_prose_integrity(self, content: str, template_content: str):
         """Check that non-placeholder template prose is preserved in order."""
+        # Extract only the actual template content (after front matter and instructions)
         template_lines = template_content.splitlines()
         output_lines = self._remove_html_comments(content).splitlines()
         output_index = 0
         in_front_matter = False
         skip_conditional = False
+        template_started = False
 
         for template_line in template_lines:
             stripped = template_line.strip()
@@ -235,7 +238,16 @@ class GitHubMDValidator:
             if stripped == '---':
                 in_front_matter = not in_front_matter
                 continue
-            if in_front_matter or not stripped or stripped.startswith('<!--'):
+            if in_front_matter:
+                continue
+            # Skip template instructions until we hit the first heading
+            if not template_started:
+                if stripped.startswith('#'):
+                    template_started = True
+                else:
+                    continue
+
+            if not stripped or stripped.startswith('<!--'):
                 if stripped.startswith('<!-- Only if'):
                     skip_conditional = True
                 continue

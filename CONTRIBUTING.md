@@ -81,6 +81,6 @@ Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 📄 License
 
-This project is licensed under the [[[LICENSE_TITLE]]](LICENSE).
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0-only) (LICENSE).
 
-By contributing, you agree that your contributions will be licensed under the [[LICENSE_TITLE]].
+By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0 (GPL-3.0-only).

@@ -96,7 +96,7 @@ Follow the project's coding standards:
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
-## 📋 Code of Conduct
+## 📜 Code of Conduct
 
 <!-- Only if `CODE_OF_CONDUCT.md` exists. -->
 This project follows the [[CODE_OF_CONDUCT_DOCUMENT_LINK]].

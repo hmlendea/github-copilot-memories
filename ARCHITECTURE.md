@@ -7,7 +7,7 @@ This document describes the current architecture of the GitHub Copilot Memories 
 - [Purpose](#purpose)
 - [System Context](#system-context)
 - [Architectural Style](#architectural-style)
-- [Runtime Flow](#runtime-flow)
+- [Runtime Process](#runtime-process)
 - [Architectural Areas](#architectural-areas)
 - [Dependency Direction and Rules](#dependency-direction-and-rules)
 - [Deployment and Operations](#deployment-and-operations)
@@ -73,7 +73,7 @@ The principal architecture boundaries are:
 - **Agents:** Opt-in execution modes with defined tool restrictions and reporting styles.
 - **Hooks:** Runtime scripts that enforce instruction gating before model invocation.
 
-## 🔄 Runtime Flow
+## 🔄 Runtime Process
 
 The repository content is consumed at session start and on demand. There is no persistent runtime process.
 
@@ -133,7 +133,7 @@ Paths:
 - `skills/`
 
 Responsibilities:
-- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, validation, and token-efficient workflows.
+- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, validation, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 
 Boundary rules:

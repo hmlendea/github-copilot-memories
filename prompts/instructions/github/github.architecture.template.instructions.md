@@ -22,7 +22,7 @@ This is the `ARCHITECTURE.md` template that shall be utilised.
 
 ## 🌐 System Context
 
-[[[Describe the system boundary, initiating actors, external systems, persistent stores, outputs, and material trust boundaries.]]]
+[[[Describe the system boundary, initiating actors, external systems, persistent stores, outputs, and material confidence boundaries.]]]
 
 ```mermaid
 [[[Define a focused context flowchart with the documented system as one boundary and every material external interaction labelled.]]]
@@ -44,17 +44,17 @@ The principal architecture boundaries are:
 - **[[Boundary or Layer Name]]:** [[Responsibility and permitted dependencies]]
 <!-- Repeat the preceding item for each principal boundary. -->
 
-## 🔄 Runtime Flow
+## 🔄 Runtime Process
 
 ```mermaid
-[[[Define a flowchart or sequence diagram for startup and the principal execution path.]]]
+[[[Define a flowchart or sequence diagram for startup and the principal execution procedure.]]]
 ```
 
 The principal runtime sequence is:
 1. [[Initialisation or initiating event]]
 2. [[Principal orchestration step]]
 3. [[Result, persistence, response, or shutdown step]]
-<!-- Add, combine, or remove numbered steps in accordance with the verified runtime. -->
+<!-- Add, combine, or eliminate numbered steps in accordance with the verified runtime. -->
 
 <!-- Include when a finite component catalogue clarifies runtime responsibility. -->
 ## 🧩 Components
@@ -103,18 +103,18 @@ Boundary rules:
 | `[[Interface Name]]` | [[Inbound / Outbound / Bidirectional]] | [[Protocol, route, command, format, or version]] | [[Owning component]] | [[Translation, retry, fallback, or termination]] |
 <!-- Repeat the preceding row for each material interface or integration. -->
 
-<!-- Include when multiple requests, commands, jobs, or domain workflows merit detail beyond Runtime Flow. -->
-## 🔀 Key Flows
+<!-- Include when multiple requests, commands, jobs, or domain workflows merit detail beyond Runtime Process. -->
+## 🔀 Key Processes
 
-### [[Flow Name]]
+### [[Process Name]]
 
 ```mermaid
-[[[Define a sequence diagram for this flow, including boundary validation, state mutation, persistence, and failure translation where relevant.]]]
+[[[Define a sequence diagram for this process, including boundary validation, state mutation, persistence, and failure translation where relevant.]]]
 ```
 
-[[[Explain ordering, ownership, invariants, and consequential alternatives or failure paths for this flow.]]]
+[[[Explain ordering, ownership, invariants, and consequential alternatives or failure paths for this process.]]]
 
-<!-- Repeat the complete subsection for each principal flow. -->
+<!-- Repeat the complete subsection for each principal process. -->
 
 <!-- Include repeatable project-specific sections when material domain mechanics do not fit a standard section. -->
 ## ⚙️ [[Domain-Specific Concern]]
@@ -139,10 +139,10 @@ Boundary rules:
 
 [[[Describe emitted signals, their owners, destinations, correlation context, and material diagnostic gaps without exposing sensitive values.]]]
 
-<!-- Include when configuration sources or override precedence influence composition or runtime conduct. -->
+<!-- Include when configuration sources or supersede precedence influence composition or runtime conduct. -->
 ### Configuration
 
-| Configuration Area | Source | Responsibility | Override or Secret Policy |
+| Configuration Area | Source | Responsibility | Supersede or Secret Policy |
 |--------------------|--------|----------------|---------------------------|
 | `[[Configuration Area]]` | [[File, environment, command line, service, or device]] | [[Controlled conduct]] | [[Precedence or secret source]] |
 <!-- Repeat the preceding row for each principal configuration area. -->
@@ -163,7 +163,7 @@ Boundary rules:
 The principal dependency rules are:
 - [[Permitted dependency or ownership rule]]
 - [[Prohibited dependency or coupling]]
-<!-- Repeat, combine, or remove rules in accordance with the verified architecture. -->
+<!-- Repeat, combine, or eliminate rules in accordance with the verified architecture. -->
 
 <!-- Include when third-party frameworks, packages, services, or data sources have architectural responsibility. -->
 ## 📦 External Dependencies

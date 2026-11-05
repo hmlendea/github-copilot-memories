@@ -24,6 +24,7 @@ applyTo: "**/*.{Tests,UnitTests}.csproj,**/*.{Tests,UnitTests}/**/*.cs"
           Is.EqualTo("expected"));
   ```
 - `[SetUp] SetUp()` constructs mocks/SUT; mock/SUT fields are class-level `private`.
+- Mark test methods `static` when they do not access fixture state and NUnit permits it; retain instance methods when setup or lifecycle state is required.
 - Configuration values: integration tests or runtime checks, never unit tests.
 - Unit tests MUST be cross-platform, environment-agnostic, and machine-agnostic; they MUST not depend on OS APIs, filesystem layout, current directory, locale, timezone, clock, network, processes, environment variables, installed tools, hardware, or developer-specific local state. Mock or inject external dependencies and use deterministic, portable test data.
 - Business unit tests MUST contain an assertion, a Moq verification, or an `ExpectedResult`.

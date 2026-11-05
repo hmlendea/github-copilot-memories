@@ -11,6 +11,10 @@ applyTo: "**/*.{cs}"
 - Conditional default: initialise first; one `if` overrides it, without fallback-only `else`.
 - Comparisons: prefer static `Equals(a, b)` or `string.Equals(a, b)` over `==` and instance `.Equals()`. Guard any nullable instance call.
 - No instance state access: mark method `static`.
+- Keep framework callback and test method signatures competible with their frameworks when deciding whether they can be `static`.
+- Put `CancellationToken` last in asynchronous method signatures; place other parameters before it and use named arguments when necessary.
+- Prefer `string.StartsWith(char)` and `string.EndsWith(char)` for single-character checks.
+- Omit assignments that repeat framework or type defaults unless the explicit value documents an intentional contract.
 - No ternary (`condition ? a : b`); use `if`/`else`. `??=` and switch expressions remain permitted.
 - Parameters: no `ref`; avoid `out`; return a dedicated type for multiple values. No tuples.
 - No `#region` or `#endregion`.

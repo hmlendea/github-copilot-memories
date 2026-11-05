@@ -17,7 +17,7 @@ This document covers the guidelines and processes for contributing to this proje
 - [Security Policy](#-security-policy)
 - [License](#-license)
 
-## 🤝 How to Contribute
+## 🤝 Contributing
 
 ### Reporting Issues
 
@@ -29,8 +29,8 @@ This document covers the guidelines and processes for contributing to this proje
 ### Suggesting Enhancements
 
 - Check the roadmap and existing discussions.
-- Explain the use case and expected behavior.
-- Consider implementation complexity.
+- Explain the use case and expected conduct.
+- Consider the implementation complexity.
 
 ### Code Contributions
 
@@ -81,6 +81,6 @@ Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 📄 License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+This project is licensed under the [[[LICENSE_TITLE]]](LICENSE).
 
 By contributing, you agree that your contributions will be licensed under the [[LICENSE_TITLE]].

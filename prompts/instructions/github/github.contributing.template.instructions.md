@@ -16,7 +16,7 @@ This document covers the guidelines and processes for contributing to this proje
 
 <!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
-## 🤝 How to Contribute
+## 🤝 Contributing
 
 ### Reporting Issues
 
@@ -29,9 +29,9 @@ This document covers the guidelines and processes for contributing to this proje
 ### Suggesting Enhancements
 
 <!-- Only if the repository accepts feature requests. -->
-- Check the roadmap and existing discussions.
-- Explain the use case and expected behaviour.
-- Consider implementation complexity.
+- Check <!-- Only if ROADMAP.md exists: "the [ROADMAP](./ROADMAP.md) and" --> the existing discussions.
+- Explain the use case and expected conduct.
+- Consider the implementation complexity.
 
 ### Code Contributions
 

@@ -14,8 +14,10 @@ This is the `README.md` template that must be used.
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
 <!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use label 'GitHub Pages' for github.io URLs, otherwise 'Website'. -->
 [![Website](https://img.shields.io/badge/Website-Visit-blue)](https://[[WEBSITE_URL]])
-<!-- Only if a primary GitHub Actions workflow exists. `[[WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
-[![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]]/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[WORKFLOW_FILE]])
+<!-- Only if a primary GitHub Actions workflow exists. `[[BUILD_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
+[![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[BUILD_WORKFLOW_FILE]]/badge.svg)](https://github.com/
+<!-- Only if a primary GitHub Actions workflow exists. `[[SECURITY_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
+[![Security Scan](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]].yml/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]].yml)
 <!-- Only if code coverage reporting is configured. Use the provider's canonical badge and report URLs. -->
 [[COVERAGE_BADGE]]
 <!-- Only if an external code-quality or analysis service is configured. -->
@@ -637,7 +639,7 @@ See the [[ARCHITECTURE_DOCUMENT_LINK]] for the system context, principal compone
 
 See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 
-<!-- Only if docs/ directory, GitHub Pages, or GitHub Wiki exists. -->
+<!-- Only if the `docs/` directory, GitHub Pages documentation, or GitHub Wiki exists. -->
 ## 📚 Documentation
 
 [[DOCUMENTATION_OVERVIEW]]

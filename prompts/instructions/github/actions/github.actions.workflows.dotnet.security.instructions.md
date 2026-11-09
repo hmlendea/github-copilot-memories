@@ -9,6 +9,8 @@ The template must remain exactly as written, with only these exceptions:
 
 - `dotnet-version` must be set to the actual .NET version used in the repository.
 
+The `security-events` permission must be `write`. The CodeQL `analyze` action uploads SARIF results to GitHub Code Scanning, and that upload requires the `security-events: write` scope. With `security-events: read`, the upload fails on `push` and `schedule` runs with `Resource not accessible by integration`, while `pull_request` runs still complete. GitHub's own CodeQL workflow therefore grants `security-events: write`.
+
 ```yaml
 name: Security
 
@@ -25,7 +27,7 @@ jobs:
     name: Security Scan
     runs-on: ubuntu-latest
     permissions:
-      security-events: read
+      security-events: write
       contents: read
 
     steps:

@@ -60,6 +60,15 @@ This project follows coordinated disclosure:
 3. Public disclosure is published after a fix, mitigation, or agreed risk decision is available.
 4. Credit is attributed in accordance with reporter preference and project policy.
 
+<!-- Only if an automated security scanning GitHub Actions workflow exists. -->
+## 🔍 Automated Security Scanning
+
+This repository runs automated security scans [[description]]. The scan includes:
+- **[[WHAT_IS_SCANNED_1]]** [[WHAT_IS_SCANNED_1_DESCRIPTION]]
+- **[[WHAT_IS_SCANNED_2]]** [[WHAT_IS_SCANNED_2_DESCRIPTION]]
+
+Results are published to the [Security](https://github.com/hmlendea/iptv-playlist-aggregator/security) tab and the [Actions](https://github.com/hmlendea/iptv-playlist-aggregator/actions/workflows/security.yml) workflow page.
+
 <!-- Only if a safe-harbour declaration is available. -->
 ## 🧾 Safe Harbour
 

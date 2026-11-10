@@ -5,6 +5,8 @@ applyTo: ".github/workflows/security.yml"
 
 Use this exact workflow template for `security.yml`.
 
+For the full cross-file procedure, including documentation synchronisation and validation, apply the `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`.
+
 The template must remain exactly as written, with only these exceptions:
 
 - `dotnet-version` must be set to the actual .NET version used in the repository.

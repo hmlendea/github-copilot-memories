@@ -5,6 +5,8 @@ applyTo: ".github/workflows/steam-workshop.yml"
 
 Use this exact workflow template for steam-workshop.yml.
 
+For the full cross-file procedure, including documentation synchronisation and validation, apply the `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`.
+
 ```yaml
 name: Steam Workshop
 

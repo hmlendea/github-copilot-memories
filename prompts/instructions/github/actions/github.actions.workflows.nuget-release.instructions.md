@@ -5,6 +5,8 @@ applyTo: ".github/workflows/nuget-release.yml"
 
 Use this exact workflow template for `nuget-release.yml`.
 
+For the full cross-file procedure, including documentation synchronisation and validation, apply the `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`.
+
 The `[[NUGET_PACKAGE_NAME]]` placeholder must be replaced with the NuGet package ID.
 
 The repository must define the `NUGET_USER` secret with the NuGet.org account name associated with the package. NuGet trusted publishing must be configured for the repository so `NuGet/login` can exchange the GitHub Actions OIDC token for a temporary API key.

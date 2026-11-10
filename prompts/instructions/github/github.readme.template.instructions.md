@@ -17,7 +17,7 @@ This is the `README.md` template that must be used.
 <!-- Only if a primary GitHub Actions workflow exists. `[[BUILD_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
 [![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[BUILD_WORKFLOW_FILE]]/badge.svg)](https://github.com/
 <!-- Only if a primary GitHub Actions workflow exists. `[[SECURITY_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
-[![Security Scan](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]].yml/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]].yml)
+[![Security Scan](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]]/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]])
 <!-- Only if code coverage reporting is configured. Use the provider's canonical badge and report URLs. -->
 [[COVERAGE_BADGE]]
 <!-- Only if an external code-quality or analysis service is configured. -->

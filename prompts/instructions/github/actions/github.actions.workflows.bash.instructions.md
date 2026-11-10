@@ -7,6 +7,8 @@ Use this exact workflow template for `bash.yml`.
 
 The template must remain exactly as written.
 
+For the full cross-file procedure, including documentation synchronisation and validation, apply the `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`.
+
 ```yaml
 name: Bash
 

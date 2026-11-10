@@ -17,3 +17,7 @@ When creating or revising workflow files, use these canonical file names:
 - Steam Workshop workflows: `steam-workshop.yml`
 
 Do not use alternative names for these workflow categories unless the user explicitly requests an exception.
+
+## Documentation Updates
+
+When creating or revising GitHub Actions workflows, update all relevant documentation, repository Markdown files, README badges, and any other affected documentation to reflect the changes.

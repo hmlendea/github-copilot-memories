@@ -5,6 +5,23 @@ description: Use when updating NuGet package dependencies in a .NET solution or 
 
 # Update NuGet Packages
 
+Run `skills/update-nuget-packages/update_nuget_packages.sh <target>` to perform the entire workflow (baseline, per-project package updates, restore, final validation, and a summary report). Follow the steps below only when the script is unavailable, fails, or the situation requires manual intervention.
+
+## Script Usage
+
+```bash
+skills/update-nuget-packages/update_nuget_packages.sh <target> [--skip-baseline] [--skip-tests] [--dry-run]
+```
+
+- `<target>`: path to a `.sln`, `.slnx`, or `.csproj` file.
+- `--skip-baseline`: skip the pre-update test baseline.
+- `--skip-tests`: skip all test runs (baseline and final validation).
+- `--dry-run`: list packages that would be updated without changing files.
+
+Exit codes: `0` success; `1` usage error; `2` baseline failed (no changes made); `3` a package update failed and could not be resolved safely; `4` final validation or restore failed.
+
+Pick the target per section 1 below when it is ambiguous, then pass it to the script. If the script exits with `3` or `4`, apply the repair guidance in sections 3 and 4, then rerun the script.
+
 ## 1. Discover The Target
 
 - Inspect the repository root for `.sln`, `.slnx`, and `.csproj` files.

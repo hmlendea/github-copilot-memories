@@ -89,12 +89,13 @@ Follow the project's coding standards:
 [[TEST_SPECIFIC_COMMAND]]
 ```
 
+<!-- Only if documentation exists or is generated. -->
 ### Documentation
 
-<!-- Only if documentation exists or is generated. -->
 - Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
+<!-- Only if the repository contains code with dependency packages. --> - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
 ## 📜 Code of Conduct
 

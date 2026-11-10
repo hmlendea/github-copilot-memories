@@ -70,6 +70,7 @@ Follow the project's coding standards:
 - Update relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
+- When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
 ## 📋 Code of Conduct
 

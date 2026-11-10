@@ -39,6 +39,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
 - Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, NuGet package updates, and session handoff.
+- Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation).
 
 ## 🚀 Usage
 

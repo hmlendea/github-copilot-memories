@@ -51,7 +51,8 @@ Pick the target per section 1 below when it is ambiguous, then pass it to the sc
 ## 4. Validate And Repair
 
 - After all package updates complete, if tests exist, run `dotnet test <solution-or-project>` for the complete target again.
-- If final tests fail, classify each failure and fix the affected production code or tests as appropriate; do not weaken or delete tests merely to make them pass.
-- Re-run the complete target test after every repair until it passes or a safe repair is not possible.
+- If final tests fail, capture the test output and invoke the LLM to fix the affected production code or tests as appropriate; do not weaken or delete tests merely to make them pass.
+- Re-run the complete target test after every LLM fix until it passes or a safe repair is not possible.
 - Check the final diff for unintended changes, package downgrades, duplicate references, leaked credentials, and generated artifacts.
 - Report the target, projects processed, packages updated, test commands and outcomes, repairs made, and any unresolved blockers.
+- Update any relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the package version changes.

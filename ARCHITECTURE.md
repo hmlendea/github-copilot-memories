@@ -135,6 +135,7 @@ Paths:
 Responsibilities:
 - Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, validation, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
+- When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 
 Boundary rules:
 - Each skill must be self-contained with a clear procedure.

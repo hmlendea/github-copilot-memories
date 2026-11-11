@@ -747,15 +747,14 @@ See the [Changelog](./CHANGELOG.md) for a full history of changes.
 
 For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
-<!-- Only if `SUPPORT.md`, a public discussion forum, community channel, or another documented support route exists. Distinguish support inquiries from security disclosures. -->
 ## 💬 Support
 
-[[SUPPORT_INFORMATION]]
+For support, please [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)<!-- Only if `SUPPORT.md` exists. --> or see the [Support Guide](./SUPPORT.md).
 
 <!-- Always include. -->
 ## 💝 Project Engagement
 
-Discovered a problem or have a suggestion? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
+Discovered a problem with [[PROJECT_NAME]] or have a suggestion for it? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
 <!-- Set `[[FUNDING_PREFIX]]` to `[funding it](https://hmlendea.go.ro/funding) or ` only if `.github/FUNDING.yml` exists; otherwise set it to an empty value. -->
 If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it on GitHub<!-- Only if this is also released on the Steam Workshop, include: `, or giving it a thumbs up and adding it as a favourite on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ITEM_ID]])` -->!

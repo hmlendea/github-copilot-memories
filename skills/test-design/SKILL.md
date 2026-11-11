@@ -4,6 +4,7 @@ description: Use when changing tested behaviour, correcting defects, or writing/
 ---
 
 Design tests from observable contracts, domain invariants, changed lines, and reachable control flow.
+- Use the `test-values` skill for fixture values in any language or technology; prefer its values over inventing new ones.
 - Cover success and failure, guards, state transitions, exceptions, fallbacks, side effects, retries, cancellation, timeouts, stale state, repeated calls, and dependency failures when relevant.
 - Boundaries: immediately below, at, and above each representable numeric, temporal, length, or range limit.
 - Inputs: relevant absent/null, empty, cardinality, sign, extrema, overflow, duplicate, order, whitespace, case, Unicode, malformed, and large-value classes.

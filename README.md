@@ -34,12 +34,12 @@ A curated collection of instruction files and skills that encode reusable coding
 - Provides specialised guidance for C#, Python, TypeScript, shell scripts, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
 - Generates evidence-based README, architecture, roadmap, privacy, security, and GitHub Actions documents from strict templates.
 - Maintains British English and Romanian language preferences through contextual terminology rules.
-- Defines systematic test design and edge-case coverage requirements, supplies consistent test values, and provides an optional coding-pattern memory index.
+- Defines systematic test design and edge-case coverage requirements, supplies consistent test values through the on-demand `test-values` skill, and provides an optional coding-pattern memory index.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
-- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, validation, GitHub Actions workflow documentation, NuGet package updates, and session handoff.
+- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, test values, validation, GitHub Actions workflow documentation, NuGet package updates, and session handoff.
 - Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation). The `github-actions-workflow` skill synchronises every affected Markdown document whenever a GitHub Actions workflow is created or revised. The `github-md-template-fidelity` skill holds each GitHub document template, its rules, the fidelity contract, and the validation script, so they load only for document generation tasks.
 
 ## 🚀 Usage
@@ -195,7 +195,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `codex/` | Global Codex instructions that select relevant files from the shared library |
 | [agents/](agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
 | [hooks/](hooks/) | Runtime instruction-read enforcement used by the LiteLLM agent |
-| `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, test-data, security, and documentation principles |
+| `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | GitHub Actions workflow rules |
 | `prompts/instructions/language/` | British English and Romanian terminology preferences |
@@ -205,7 +205,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, validation, GitHub Actions workflow documentation, GitHub markdown template fidelity, NuGet package updates, and token-efficient workflows |
+| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, test values, validation, GitHub Actions workflow documentation, GitHub markdown template fidelity, NuGet package updates, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🏗️ Architecture

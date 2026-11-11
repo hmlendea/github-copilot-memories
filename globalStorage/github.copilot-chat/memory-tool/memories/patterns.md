@@ -22,7 +22,7 @@ On this machine the folder is symlinked to `prompts/` in this repository.
 | `monogame.instructions.md` | description-based | XNA / MonoGame / NuciXNA |
 | `python.instructions.md` | `**/*.py` | Python |
 | `typescript.instructions.md` | `**/*.ts`, `**/*.tsx` | TypeScript |
-| `test-values.instructions.md` | description-based | Standard test values (names, cities, etc.) |
+| `common.test-values.instructions.md` | `**` | Requires the `test-values` skill for fixture values in every language |
 
 ## Prompt Files
 
@@ -30,4 +30,4 @@ On this machine the folder is symlinked to `prompts/` in this repository.
 |---|---|---|
 | `github-readme.instructions.md` | `/github-readme` or "generate/update README" | Generate or update a `README.md` for a GitHub repository |
 
-See also: `common.test-values.instructions.md` for the raw test values reference.
+See also: the `test-values` skill for the raw test values reference.

@@ -15,6 +15,7 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,ArchitectureTests,IntegrationTests,U
 
 ### Branch Coverage
 - Use common testing guidance and the `test-design` skill for branches, erroneous/inconsistent, edge, and unexpected scenarios.
+- Use the `test-values` skill for fixture data; prefer its values over inventing new ones.
 - Tests MUST comprehensively cover every stated requirement with a wide range of representative values, boundaries, exceptional inputs, and unexpected inputs.
 
 ### Structure

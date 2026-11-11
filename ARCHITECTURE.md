@@ -122,7 +122,7 @@ Responsibilities:
 - Encode reusable coding standards, naming conventions, error-handling patterns, and language preferences.
 - Provide language-specific and framework-specific guidance.
 - Define activation contracts through `applyTo` globs and semantic descriptions.
-- Cover GitHub Actions workflow rules and Markdown link conventions under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill.
+- Cover GitHub Actions workflow rules and Markdown link conventions under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, and shared test fixture values live in the `test-values` skill.
 
 Boundary rules:
 - Each instruction file must define a narrow `applyTo` glob and a semantic description.
@@ -137,6 +137,7 @@ Responsibilities:
 - Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, validation, GitHub Actions workflow documentation, GitHub markdown template fidelity, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
+- Bundle the shared test fixture values under `skills/test-values/` so they load only for test and test-data work, while the always-on `common.test-values.instructions.md` requires the skill for every language and technology.
 - When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 
 Boundary rules:

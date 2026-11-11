@@ -41,3 +41,4 @@ applyTo: "**/*.{c,cpp,cs,h,java,js,jsx,ms,msa,py,sh,ts,tsx}"
 - Cover observable contracts and relevant success/failure paths, branches, boundaries, input classes, interactions, and side effects. Assert complete results and prohibited-side-effect absence.
 - Tests must be distinct, deterministic, and isolated. Parameterise only identical behaviour. Aim for complete affected branch coverage; justify omissions.
 - Use the `test-design` skill for detailed case derivation.
+- Use the `test-values` skill for test data in any language or technology; prefer its values over inventing new ones.

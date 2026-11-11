@@ -1,7 +1,3 @@
----
-description: "Template for custom CODE_OF_CONDUCT.md files informed by established open-source community standards."
-applyTo: "CODE_OF_CONDUCT.md"
----
 This is the `CODE_OF_CONDUCT.md` template that shall be utilised. It is an original template informed by ideas commonly employed in open-source codes of conduct, including the Contributor Covenant.
 
 **MANDATORY INCLUSION RULE:** Every section in this template MUST be included in the final `CODE_OF_CONDUCT.md`. Eliminate only template instructions and replace only the marked placeholder.

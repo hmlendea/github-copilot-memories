@@ -14,16 +14,19 @@ This prompt enforces **100% template fidelity** for all GitHub markdown files. N
 ## MANDATORY EXECUTION PROTOCOL
 
 ### Phase 1: Template & Rules Acquisition (REQUIRED)
-Before ANY generation, you MUST read BOTH files for the target document type:
+Before ANY generation, you MUST read BOTH files for the target document type from the `github-md-template-fidelity` skill:
 
 | Target File | Template File | Rules File |
 |-------------|---------------|------------|
-| README.md | `prompts/instructions/github/github.readme.template.instructions.md` | `prompts/instructions/github/github.readme.rules.instructions.md` |
-| ARCHITECTURE.md | `prompts/instructions/github/github.architecture.template.instructions.md` | `prompts/instructions/github/github.architecture.rules.instructions.md` |
-| CONTRIBUTING.md | `prompts/instructions/github/github.contributing.template.instructions.md` | `prompts/instructions/github/github.contributing.rules.instructions.md` |
-| SECURITY.md | `prompts/instructions/github/github.security.template.instructions.md` | `prompts/instructions/github/github.security.rules.instructions.md` |
-| PRIVACY.md | `prompts/instructions/github/github.privacy.template.instructions.md` | `prompts/instructions/github/github.privacy.rules.instructions.md` |
-| ROADMAP.md | `prompts/instructions/github/github.roadmap.template.instructions.md` | `prompts/instructions/github/github.roadmap.rules.instructions.md` |
+| README.md | `skills/github-md-template-fidelity/templates/readme.md` | `skills/github-md-template-fidelity/rules/readme.md` |
+| ARCHITECTURE.md | `skills/github-md-template-fidelity/templates/architecture.md` | `skills/github-md-template-fidelity/rules/architecture.md` |
+| CONTRIBUTING.md | `skills/github-md-template-fidelity/templates/contributing.md` | `skills/github-md-template-fidelity/rules/contributing.md` |
+| CODE_OF_CONDUCT.md | `skills/github-md-template-fidelity/templates/code-of-conduct.md` | `skills/github-md-template-fidelity/rules/code-of-conduct.md` |
+| SECURITY.md | `skills/github-md-template-fidelity/templates/security.md` | `skills/github-md-template-fidelity/rules/security.md` |
+| PRIVACY.md | `skills/github-md-template-fidelity/templates/privacy.md` | `skills/github-md-template-fidelity/rules/privacy.md` |
+| ROADMAP.md | `skills/github-md-template-fidelity/templates/roadmap.md` | `skills/github-md-template-fidelity/rules/roadmap.md` |
+
+Also read `skills/github-md-template-fidelity/fidelity.md` and `skills/github-md-template-fidelity/SKILL.md`.
 
 **FAILURE TO READ BOTH FILES = IMMEDIATE TERMINATION**
 

@@ -1,9 +1,4 @@
----
-description: "Rules for creating or revising README.md files."
-applyTo: "README.md"
----
-
-Generate or revise the `README.md` for this GitHub repository using the `github.readme.template.instructions.md` template.
+Generate or revise the `README.md` for this GitHub repository using the `templates/readme.md` template.
 
 ## Strict Template Fidelity Mode (Default)
 
@@ -13,7 +8,7 @@ Strict fidelity applies to every `README.md` creation or revision and overrides 
 
 **MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
-1. Start from `github.readme.template.instructions.md` and process it from top to bottom.
+1. Start from `templates/readme.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
 3. When any referenced document exists or is being generated, ensure that the entire corresponding README template section is updated, including its template-defined heading and fixed prose. If the section is missing, add it as per the template. This includes `ARCHITECTURE.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `LICENSE`, `PRIVACY.md`, `ROADMAP.md`, and `SECURITY.md`; a link to the separate document alone is insufficient.
 4. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
@@ -242,7 +237,7 @@ Include each subsection only when its template directive is satisfied:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `language.instructions.md` for all README text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all README text, including spelling, phrasing, and language conventions.
 - Preserve every included template heading and emoji exactly.
 - Generate the Table of Contents only after all conditional and additive content is final.
 - Remove every HTML directive comment, unresolved placeholder, unused example, and empty block from the final output.

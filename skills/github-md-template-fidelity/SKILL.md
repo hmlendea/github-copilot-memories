@@ -13,26 +13,37 @@ When generating or revising any of these files, the agent MUST:
 2. Read the corresponding template AND rules files
 3. Execute the full validation pipeline before output
 
+## Resources
+
+| Resource | Path |
+|----------|------|
+| Templates | `skills/github-md-template-fidelity/templates/` |
+| Rules | `skills/github-md-template-fidelity/rules/` |
+| Fidelity contract | `skills/github-md-template-fidelity/fidelity.md` |
+| Validator | `skills/github-md-template-fidelity/validate_github_md.py` |
+
 ## Target Files & Required Pairs
 
 | Target | Template | Rules | Fidelity |
 |--------|----------|-------|----------|
-| README.md | `prompts/instructions/github/github.readme.template.instructions.md` | `prompts/instructions/github/github.readme.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| ARCHITECTURE.md | `prompts/instructions/github/github.architecture.template.instructions.md` | `prompts/instructions/github/github.architecture.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| CONTRIBUTING.md | `prompts/instructions/github/github.contributing.template.instructions.md` | `prompts/instructions/github/github.contributing.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| CODE_OF_CONDUCT.md | `prompts/instructions/github/github.code-of-conduct.template.instructions.md` | `prompts/instructions/github/github.code-of-conduct.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| SECURITY.md | `prompts/instructions/github/github.security.template.instructions.md` | `prompts/instructions/github/github.security.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| PRIVACY.md | `prompts/instructions/github/github.privacy.template.instructions.md` | `prompts/instructions/github/github.privacy.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
-| ROADMAP.md | `prompts/instructions/github/github.roadmap.template.instructions.md` | `prompts/instructions/github/github.roadmap.rules.instructions.md` | `prompts/instructions/github/github.template-fidelity.instructions.md` |
+| README.md | `templates/readme.md` | `rules/readme.md` | `fidelity.md` |
+| ARCHITECTURE.md | `templates/architecture.md` | `rules/architecture.md` | `fidelity.md` |
+| CONTRIBUTING.md | `templates/contributing.md` | `rules/contributing.md` | `fidelity.md` |
+| CODE_OF_CONDUCT.md | `templates/code-of-conduct.md` | `rules/code-of-conduct.md` | `fidelity.md` |
+| SECURITY.md | `templates/security.md` | `rules/security.md` | `fidelity.md` |
+| PRIVACY.md | `templates/privacy.md` | `rules/privacy.md` | `fidelity.md` |
+| ROADMAP.md | `templates/roadmap.md` | `rules/roadmap.md` | `fidelity.md` |
+
+All resource paths above are relative to the skill directory `skills/github-md-template-fidelity/`.
 
 ## Validation Pipeline (MANDATORY - NO SHORTCUTS)
 
 ### Step 1: Template Acquisition
 ```bash
 # Read ALL THREE files completely - no partial reads
-read_file(template_path, 1, -1)
-read_file(rules_path, 1, -1)
-read_file(fidelity_path, 1, -1)  # prompts/instructions/github/github.template-fidelity.instructions.md
+read_file(template_path, 1, -1)   # skills/github-md-template-fidelity/templates/<target>.md
+read_file(rules_path, 1, -1)      # skills/github-md-template-fidelity/rules/<target>.md
+read_file(fidelity_path, 1, -1)   # skills/github-md-template-fidelity/fidelity.md
 ```
 
 ### Step 2: Evidence Collection
@@ -74,7 +85,7 @@ Run ALL checks - ANY failure requires full regeneration:
 | Mandatory sections | All "Always include" sections present |
 | Conditional sections | Only included with evidence + substantive content |
 | Additional sections | Only if genuinely material + no template section fits |
-| **Fixed prose fidelity** | **Byte-for-byte match of all template prose outside placeholders/comments (per `github.template-fidelity.instructions.md`)** |
+| **Fixed prose fidelity** | **Byte-for-byte match of all template prose outside placeholders/comments (per `fidelity.md`)** |
 | Placeholder clearance | Zero `[[...]]`, `[[[...]]]`, template comments, unused examples |
 | Empty content | No empty headings, tables, lists, code blocks |
 | ToC completeness | Every final heading in ToC, correct order, 2-space indent, no emojis |
@@ -143,7 +154,7 @@ When generating ANY GitHub MD file, the agent MUST:
 | No emojis in ToC | Auto-reject |
 | No unresolved placeholders | Auto-reject |
 | No template comments in output | Auto-reject |
-| **No rephrased fixed prose (byte-for-byte fidelity per `github.template-fidelity.instructions.md`)** | **Auto-reject** |
+| **No rephrased fixed prose (byte-for-byte fidelity per `fidelity.md`)** | **Auto-reject** |
 | No missing mandatory sections | Auto-reject |
 | No empty sections/tables/code blocks | Auto-reject |
 | Heading hierarchy matches template exactly | Auto-reject |
@@ -221,10 +232,10 @@ For each target file type, verify:
 
 | Target | Template | Rules |
 |--------|----------|-------|
-| README.md | `prompts/instructions/github/github.readme.template.instructions.md` | `prompts/instructions/github/github.readme.rules.instructions.md` |
-| ARCHITECTURE.md | `prompts/instructions/github/github.architecture.template.instructions.md` | `prompts/instructions/github/github.architecture.rules.instructions.md` |
-| CONTRIBUTING.md | `prompts/instructions/github/github.contributing.template.instructions.md` | `prompts/instructions/github/github.contributing.rules.instructions.md` |
-| CODE_OF_CONDUCT.md | `prompts/instructions/github/github.code-of-conduct.template.instructions.md` | `prompts/instructions/github/github.code-of-conduct.rules.instructions.md` |
-| SECURITY.md | `prompts/instructions/github/github.security.template.instructions.md` | `prompts/instructions/github/github.security.rules.instructions.md` |
-| PRIVACY.md | `prompts/instructions/github/github.privacy.template.instructions.md` | `prompts/instructions/github/github.privacy.rules.instructions.md` |
-| ROADMAP.md | `prompts/instructions/github/github.roadmap.template.instructions.md` | `prompts/instructions/github/github.roadmap.rules.instructions.md` |
+| README.md | `templates/readme.md` | `rules/readme.md` |
+| ARCHITECTURE.md | `templates/architecture.md` | `rules/architecture.md` |
+| CONTRIBUTING.md | `templates/contributing.md` | `rules/contributing.md` |
+| CODE_OF_CONDUCT.md | `templates/code-of-conduct.md` | `rules/code-of-conduct.md` |
+| SECURITY.md | `templates/security.md` | `rules/security.md` |
+| PRIVACY.md | `templates/privacy.md` | `rules/privacy.md` |
+| ROADMAP.md | `templates/roadmap.md` | `rules/roadmap.md` |

@@ -1,9 +1,4 @@
----
-description: "Rules for creating or revising PRIVACY.md data-handling documents."
-applyTo: "PRIVACY.md"
----
-
-Generate or revise the `PRIVACY.md` data-handling document for this GitHub repository using the `github.privacy.template.instructions.md` template.
+Generate or revise the `PRIVACY.md` data-handling document for this GitHub repository using the `templates/privacy.md` template.
 
 ## Strict Template Fidelity Mode (Default)
 
@@ -13,7 +8,7 @@ Strict fidelity applies to every `PRIVACY.md` creation or revision and overrides
 
 **MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final PRIVACY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
-1. Use an exact copy of `github.privacy.template.instructions.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
+1. Use an exact copy of `templates/privacy.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
@@ -86,7 +81,7 @@ Include these sections only when the specified conditions are met:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `language.instructions.md` for all PRIVACY text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all PRIVACY text, including spelling, phrasing, and language conventions.
 - Use clear headings and concise, actionable statements.
 - Remove all HTML comments from the final output.
 - Always fill `[[PLACEHOLDER]]` values with verified project details; omit template comments and example rows.

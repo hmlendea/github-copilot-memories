@@ -55,7 +55,8 @@ cd github-copilot-memories
 
 - Target the `master` branch.
 - Keep PRs focused and atomic.
-- Update documentation if applicable.
+- Revise documentation if applicable.
+- Include tests for any new functionality.
 - Ensure the CI checks pass.
 
 ### Code Style

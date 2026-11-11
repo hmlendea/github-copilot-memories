@@ -6,11 +6,18 @@ Validates generated GitHub markdown files against templates and rules for 100% f
 
 import re
 import sys
-import os
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional, Set
+from typing import List, Optional, Set
 from dataclasses import dataclass
 from enum import Enum
+
+CONDITIONAL_DIRECTIVE_PATTERN = re.compile(
+    r'^\s*<!--\s*(?:Only if|Only when|Include when|Include if|Only for|Always include)\b[^>]*-->',
+    re.IGNORECASE
+)
+PLACEHOLDER_PATTERN = re.compile(r'\[\[\[.*?\]\]\]|\[\[.*?\]\]')
+HEADING_PATTERN = re.compile(r'^(#{1,6})\s')
+LIST_MARKER_PATTERN = re.compile(r'^(?:[-*+]\s+|\d+[.)]\s+)')
 
 
 class ValidationSeverity(Enum):
@@ -30,7 +37,9 @@ class ValidationIssue:
 class GitHubMDValidator:
     def __init__(self, repo_root: Path):
         self.repo_root = repo_root
-        self.prompts_dir = repo_root / "prompts" / "instructions" / "github"
+        self.skill_dir = Path(__file__).resolve().parent
+        self.templates_dir = self.skill_dir / "templates"
+        self.rules_dir = self.skill_dir / "rules"
         self.issues: List[ValidationIssue] = []
 
     def validate(self, target_file: str, generated_content: str) -> List[ValidationIssue]:
@@ -39,13 +48,13 @@ class GitHubMDValidator:
 
         # Determine template and rules files
         template_map = {
-            "ARCHITECTURE.md": ("github.architecture.template.instructions.md", "github.architecture.rules.instructions.md"),
-            "CODE_OF_CONDUCT.md": ("github.code-of-conduct.template.instructions.md", "github.code-of-conduct.rules.instructions.md"),
-            "CONTRIBUTING.md": ("github.contributing.template.instructions.md", "github.contributing.rules.instructions.md"),
-            "PRIVACY.md": ("github.privacy.template.instructions.md", "github.privacy.rules.instructions.md"),
-            "README.md": ("github.readme.template.instructions.md", "github.readme.rules.instructions.md"),
-            "ROADMAP.md": ("github.roadmap.template.instructions.md", "github.roadmap.rules.instructions.md"),
-            "SECURITY.md": ("github.security.template.instructions.md", "github.security.rules.instructions.md"),
+            "ARCHITECTURE.md": ("architecture.md", "architecture.md"),
+            "CODE_OF_CONDUCT.md": ("code-of-conduct.md", "code-of-conduct.md"),
+            "CONTRIBUTING.md": ("contributing.md", "contributing.md"),
+            "PRIVACY.md": ("privacy.md", "privacy.md"),
+            "README.md": ("readme.md", "readme.md"),
+            "ROADMAP.md": ("roadmap.md", "roadmap.md"),
+            "SECURITY.md": ("security.md", "security.md"),
         }
 
         if target_file not in template_map:
@@ -56,8 +65,8 @@ class GitHubMDValidator:
             return self.issues
 
         template_file, rules_file = template_map[target_file]
-        template_path = self.prompts_dir / template_file
-        rules_path = self.prompts_dir / rules_file
+        template_path = self.templates_dir / template_file
+        rules_path = self.rules_dir / rules_file
 
         if not template_path.exists():
             self.issues.append(ValidationIssue(
@@ -73,19 +82,16 @@ class GitHubMDValidator:
             ))
             return self.issues
 
-        # Read template and rules
+        # Read the template that the document must follow
         template_content = template_path.read_text(encoding='utf-8')
-        rules_content = rules_path.read_text(encoding='utf-8')
 
         # Run validation checks
         self._check_placeholders_removed(generated_content)
         self._check_template_comments_removed(generated_content)
         self._check_toc_no_emojis(generated_content)
-        self._check_heading_hierarchy(generated_content, template_content)
+        self._check_mandatory_headings(generated_content, template_content)
         self._check_empty_sections(generated_content)
         self._check_fixed_prose_integrity(generated_content, template_content)
-        self._check_mandatory_sections(generated_content, rules_content)
-        self._check_conditional_sections(generated_content, template_content)
 
         return self.issues
 
@@ -143,202 +149,288 @@ class GitHubMDValidator:
                     context="Table of Contents must not contain emojis in entry text"
                 ))
 
-    def _check_heading_hierarchy(self, content: str, template_content: str):
-        """Check that heading hierarchy matches template."""
-        # Extract headings from generated content
-        generated_headings = re.findall(r'^(#{2,4})\s+(.+)$', content, re.MULTILINE)
+    def _check_mandatory_headings(self, content: str, template_content: str):
+        """Check that every non-conditional template heading survives verbatim."""
+        template_lines = self._strip_front_matter(template_content).splitlines()
+        gated_indices = self._get_conditional_indices(template_lines)
+        document_headings = {
+            self._normalise_prose(line)
+            for line in content.splitlines()
+            if HEADING_PATTERN.match(line.strip())
+        }
+        in_code_block = False
 
-        # Extract expected headings from template (non-conditional ones)
-        template_headings = re.findall(r'^(#{2,4})\s+(.+)$', template_content, re.MULTILINE)
+        for index, template_line in enumerate(template_lines):
+            stripped = template_line.strip()
 
-        # Filter template headings to only mandatory/always-include ones
-        # This is a simplified check - full implementation would parse conditionals
-        expected_headings = []
-        in_conditional = False
-        for level, text in template_headings:
-            # Skip headings inside conditional blocks (simplified)
-            if '<!-- Only if' in text or '<!-- Always include' in text:
+            if stripped.startswith('```'):
+                in_code_block = not in_code_block
                 continue
-            expected_headings.append((level, text.strip()))
 
-        # Compare (simplified - full impl would handle conditionals properly)
-        if len(generated_headings) < len([h for h in expected_headings if not h[1].startswith('<!--')]):
+            if in_code_block or index in gated_indices:
+                continue
+
+            heading = self._normalise_prose(template_line)
+
+            if not HEADING_PATTERN.match(heading) or heading in document_headings:
+                continue
+
+            # Headings that embed placeholders are rendered, not copied verbatim.
+            if PLACEHOLDER_PATTERN.search(template_line):
+                continue
+
             self.issues.append(ValidationIssue(
-                ValidationSeverity.WARNING,
-                f"Fewer headings in output ({len(generated_headings)}) than expected mandatory headings",
-                context="May indicate missing mandatory sections"
+                ValidationSeverity.ERROR,
+                f"Mandatory heading missing or changed: {heading}",
+                line_number=index + 1,
+                context="Non-conditional template headings must appear verbatim"
             ))
 
     def _check_empty_sections(self, content: str):
-        """Check for empty headings, tables, lists, code blocks."""
+        """Check for empty headings, tables, and code blocks."""
         lines = content.split('\n')
         in_code_block = False
         code_block_start = -1
 
         for i, line in enumerate(lines):
-            # Track code blocks
-            if line.strip().startswith('```'):
+            stripped = line.strip()
+
+            if stripped.startswith('```'):
                 if not in_code_block:
                     in_code_block = True
                     code_block_start = i
                 else:
                     in_code_block = False
+
                     if i == code_block_start + 1:
                         self.issues.append(ValidationIssue(
                             ValidationSeverity.ERROR,
                             f"Empty code block at line {i+1}",
                             context="Code blocks must have content"
                         ))
-                    in_code_block = False
 
-            # Check for empty headings (heading followed immediately by another heading or EOF)
-            if re.match(r'^#{2,4}\s+.+', line):
-                # Look ahead for content
+                continue
+
+            if in_code_block:
+                continue
+
+            # A heading is empty only when no content and no subsection follow it.
+            heading_match = re.match(r'^(#{1,6})\s+.+', stripped)
+
+            if heading_match:
+                heading_level = len(heading_match.group(1))
                 has_content = False
-                for j in range(i+1, min(i+5, len(lines))):
-                    if lines[j].strip() and not re.match(r'^#{2,4}\s+', lines[j]):
+
+                for subsequent in lines[i + 1:]:
+                    subsequent_stripped = subsequent.strip()
+
+                    if not subsequent_stripped:
+                        continue
+
+                    nested_match = re.match(r'^(#{1,6})\s+', subsequent_stripped)
+
+                    if nested_match and len(nested_match.group(1)) > heading_level:
                         has_content = True
                         break
-                if not has_content and i+1 < len(lines):
-                    self.issues.append(ValidationIssue(
-                        ValidationSeverity.WARNING,
-                        f"Potentially empty section at line {i+1}: {line.strip()}",
-                        context="Section may be empty or have only whitespace"
-                    ))
 
-            # Check for empty tables (header row only)
-            if '|' in line and line.strip().startswith('|'):
-                # Check if next non-empty line is also a table row
-                next_content_line = None
-                for j in range(i+1, len(lines)):
-                    if lines[j].strip():
-                        next_content_line = lines[j]
+                    if nested_match:
                         break
-                if next_content_line and not ('|' in next_content_line and next_content_line.strip().startswith('|')):
-                    # Table has only header row
-                    self.issues.append(ValidationIssue(
-                        ValidationSeverity.WARNING,
-                        f"Potentially empty table at line {i+1}",
-                        context="Table appears to have only header row"
-                    ))
 
-    def _check_fixed_prose_integrity(self, content: str, template_content: str):
-        """Check that non-placeholder template prose is preserved in order."""
-        # Extract only the actual template content (after front matter and instructions)
-        template_lines = template_content.splitlines()
-        output_lines = self._remove_html_comments(content).splitlines()
-        output_index = 0
-        in_front_matter = False
-        skip_conditional = False
-        template_started = False
-
-        for template_line in template_lines:
-            stripped = template_line.strip()
-
-            if stripped == '---':
-                in_front_matter = not in_front_matter
-                continue
-            if in_front_matter:
-                continue
-            # Skip template instructions until we hit the first heading
-            if not template_started:
-                if stripped.startswith('#'):
-                    template_started = True
-                else:
-                    continue
-
-            if not stripped or stripped.startswith('<!--'):
-                if stripped.startswith('<!-- Only if'):
-                    skip_conditional = True
-                continue
-
-            # Conditional blocks may be omitted from the generated document.
-            if skip_conditional:
-                if stripped.startswith(('#', '[!', '|', '```')):
-                    skip_conditional = False
-                else:
-                    continue
-
-            fixed_line = re.sub(r'\[\[\[.*?\]\]\]|\[\[.*?\]\]', '', template_line)
-            fixed_line = fixed_line.strip()
-            if not fixed_line or fixed_line.startswith('<!--'):
-                continue
-
-            found = False
-            for index in range(output_index, len(output_lines)):
-                if output_lines[index].strip() == fixed_line:
-                    output_index = index + 1
-                    found = True
+                    has_content = True
                     break
 
-            if not found:
+                if not has_content:
+                    self.issues.append(ValidationIssue(
+                        ValidationSeverity.WARNING,
+                        f"Empty section at line {i+1}: {stripped}",
+                        context="Section has no content and no subsections"
+                    ))
+
+        # A table is empty only when it has a header, a separator, and no data row.
+        for index, line in enumerate(lines):
+            if not self._is_table_row(line):
+                continue
+
+            if index > 0 and self._is_table_row(lines[index - 1]):
+                continue
+
+            if index + 1 >= len(lines) or not self._is_table_separator(lines[index + 1]):
+                continue
+
+            if index + 2 < len(lines) and self._is_table_row(lines[index + 2]):
+                continue
+
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.WARNING,
+                f"Empty table at line {index + 1}",
+                context="Table has a header and separator but no data rows"
+            ))
+
+    @staticmethod
+    def _is_table_row(line: str) -> bool:
+        """Report whether a line is a Markdown table row."""
+        return line.strip().startswith('|')
+
+    @staticmethod
+    def _is_table_separator(line: str) -> bool:
+        """Report whether a line is a Markdown table separator row."""
+        stripped = line.strip()
+
+        if not stripped.startswith('|'):
+            return False
+
+        cells = [cell.strip() for cell in stripped.strip('|').split('|')]
+
+        return bool(cells) and all(re.fullmatch(r':?-{3,}:?', cell) for cell in cells)
+
+    def _check_fixed_prose_integrity(self, content: str, template_content: str):
+        """Check that fixed template prose survives into the generated document.
+
+        Conditional blocks may legitimately be omitted, so they are excluded from
+        comparison. Lines carrying placeholders or inline conditional directives are
+        not fixed prose either and are skipped.
+        """
+        template_lines = self._strip_front_matter(template_content).splitlines()
+        gated_indices = self._get_conditional_indices(template_lines)
+        document_prose = self._normalise_prose(content)
+        body_start = self._get_body_start_index(template_lines)
+        in_code_block = False
+
+        for index in range(body_start, len(template_lines)):
+            template_line = template_lines[index]
+            stripped = template_line.strip()
+
+            if stripped.startswith('```'):
+                in_code_block = not in_code_block
+                continue
+
+            if in_code_block or index in gated_indices:
+                continue
+
+            prose = self._normalise_prose(template_line)
+
+            if not self._is_fixed_prose(template_line, prose):
+                continue
+
+            if prose not in document_prose:
                 self.issues.append(ValidationIssue(
                     ValidationSeverity.ERROR,
-                    f"Fixed template prose changed or missing: {fixed_line}",
+                    f"Fixed template prose changed or missing: {prose}",
+                    line_number=index + 1,
                     context="Only placeholders and HTML comments may be changed"
                 ))
+
+    @staticmethod
+    def _get_body_start_index(template_lines: List[str]) -> int:
+        """Return the index of the first document heading, skipping template prose."""
+        for index, template_line in enumerate(template_lines):
+            if HEADING_PATTERN.match(template_line.strip()):
+                return index
+
+        return 0
+
+    @staticmethod
+    def _is_fixed_prose(template_line: str, prose: str) -> bool:
+        """Report whether a template line is comparable fixed prose."""
+        if not prose:
+            return False
+
+        if CONDITIONAL_DIRECTIVE_PATTERN.search(template_line):
+            return False
+
+        if PLACEHOLDER_PATTERN.search(template_line):
+            return False
+
+        if HEADING_PATTERN.match(prose):
+            return True
+
+        if prose.startswith('|'):
+            return False
+
+        return len(prose.split()) >= 4
+
+    @staticmethod
+    def _normalise_prose(text: str) -> str:
+        """Collapse prose to a single comparable form."""
+        without_comments = re.sub(r'<!--.*?-->', ' ', text, flags=re.DOTALL)
+        collapsed = re.sub(r'\s+', ' ', without_comments).strip()
+
+        return LIST_MARKER_PATTERN.sub('', collapsed).strip()
+
+    @staticmethod
+    def _strip_front_matter(content: str) -> str:
+        """Return content without its leading YAML front matter."""
+        lines = content.splitlines()
+
+        if lines and lines[0].strip() == '---':
+            for index in range(1, len(lines)):
+                if lines[index].strip() == '---':
+                    return '\n'.join(lines[index + 1:])
+
+        return content
+
+    @staticmethod
+    def _get_conditional_indices(template_lines: List[str]) -> Set[int]:
+        """Return template line indices governed by a conditional directive."""
+        gated_indices: Set[int] = set()
+
+        for index, template_line in enumerate(template_lines):
+            if not CONDITIONAL_DIRECTIVE_PATTERN.search(template_line):
+                continue
+
+            if re.sub(r'<!--.*?-->', '', template_line, flags=re.DOTALL).strip():
+                continue
+
+            block_start = None
+
+            for offset in range(index + 1, len(template_lines)):
+                if template_lines[offset].strip():
+                    block_start = offset
+                    break
+
+            if block_start is None:
+                continue
+
+            heading_match = HEADING_PATTERN.match(template_lines[block_start].strip())
+
+            if heading_match is None:
+                for offset in range(block_start, len(template_lines)):
+                    if offset > block_start and HEADING_PATTERN.match(template_lines[offset].strip()):
+                        break
+
+                    gated_indices.add(offset)
+
+                continue
+
+            heading_level = len(heading_match.group(1))
+
+            for offset in range(block_start, len(template_lines)):
+                nested_match = HEADING_PATTERN.match(template_lines[offset].strip())
+
+                if offset > block_start and nested_match and len(nested_match.group(1)) <= heading_level:
+                    break
+
+                gated_indices.add(offset)
+
+        for index, template_line in enumerate(template_lines):
+            if index in gated_indices or not HEADING_PATTERN.match(template_line.strip()):
+                continue
+
+            for offset in range(index + 1, len(template_lines)):
+                if not template_lines[offset].strip():
+                    continue
+
+                if CONDITIONAL_DIRECTIVE_PATTERN.search(template_lines[offset]):
+                    gated_indices.add(index)
+
+                break
+
+        return gated_indices
 
     @staticmethod
     def _remove_html_comments(content: str) -> str:
         """Remove template comments before comparing generated prose."""
         return re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
-
-    def _check_mandatory_sections(self, content: str, rules_content: str):
-        """Check that mandatory sections are present."""
-        # Extract "Always include" sections from rules
-        always_include = re.findall(r'Always include:?\s*\n((?:- .+\n)*)', rules_content)
-        mandatory_sections = []
-        for block in always_include:
-            sections = re.findall(r'-\s*`?(##\s+[^`]+)`?', block)
-            mandatory_sections.extend(sections)
-
-        # Also check for explicit mandatory sections in rules
-        mandatory_patterns = [
-            r'##\s*📑\s*Table of Contents',
-            r'##\s*✨\s*Capabilities',
-            r'##\s*🚀\s*Usage',
-            r'##\s*🤝\s*Contributing',
-            r'##\s*💝\s*Project Engagement',
-        ]
-
-        for pattern in mandatory_patterns:
-            if re.search(pattern, rules_content) and not re.search(pattern, content):
-                self.issues.append(ValidationIssue(
-                    ValidationSeverity.ERROR,
-                    f"Mandatory section missing: {pattern}",
-                    context="Required section from rules not found in output"
-                ))
-
-    def _check_conditional_sections(self, content: str, template_content: str):
-        """Check conditional sections are properly handled."""
-        # Find all conditional blocks in template
-        conditional_blocks = re.findall(
-            r'<!--\s*Only if\s+([^>]+)>\s*-->\s*\n(##\s+.+?)(?=\n##|\n<!--|\Z)',
-            template_content,
-            re.DOTALL
-        )
-
-        for condition, section in conditional_blocks:
-            heading_match = re.match(r'(##\s+.+)', section.strip())
-            if heading_match:
-                heading = heading_match.group(1).strip()
-                # Check if section appears in output
-                if heading in content:
-                    # Section included - verify it has substantive content
-                    section_content = self._extract_section_content(content, heading)
-                    if not section_content or len(section_content.strip()) < 20:
-                        self.issues.append(ValidationIssue(
-                            ValidationSeverity.WARNING,
-                            f"Conditional section '{heading}' included but appears empty",
-                            context=f"Condition: {condition}"
-                        ))
-                # If not in output, that's fine - condition not met
-
-    def _extract_section_content(self, content: str, heading: str) -> str:
-        """Extract content between a heading and the next heading."""
-        pattern = rf'{re.escape(heading)}\s*\n(.*?)(?=\n##\s+|\Z)'
-        match = re.search(pattern, content, re.DOTALL)
-        return match.group(1) if match else ""
 
 
 def main():

@@ -32,7 +32,8 @@ This document describes how GitHub Copilot Memories at https://github.com/hmlend
 
 ## 🧭 Processing and Use
 
-The repository content does not process personal data for any function.
+The application processes the data described above for these verified functions:
+- No processing activity exists, because the repository content does not process personal data for any function.
 
 ## 🗄️ Storage, Retention, and Deletion
 
@@ -41,6 +42,12 @@ The repository content does not store, preserve, or delete personal data.
 ## 🔗 External Processing and Integrations
 
 The repository content has no built-in external data transfer. It references external services (GitHub, VS Code, OpenAI Codex) only through documentation links and installation instructions.
+
+## 🛡️ Data Protection and Security
+
+The repository content applies no technical or operational data safeguards because it neither collects nor processes personal data. Repository security policy details are published in [SECURITY.md](./SECURITY.md).
+
+The original maintainers are not responsible for changes, modifications, or privacy issues introduced by downstream forks.
 
 ## 🔄 Document Changes
 

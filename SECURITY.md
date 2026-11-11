@@ -30,6 +30,8 @@ To report a vulnerability:
 
 ## 📌 Scope
 
+The original maintainers are not responsible for changes, modifications, or security issues introduced by downstream forks.
+
 The subsequent report categories are in scope for this repository:
 - Malicious or misleading instruction files, skills, or agents that could compromise user environments
 - Insecure hook scripts that execute arbitrary code during Copilot or Codex sessions

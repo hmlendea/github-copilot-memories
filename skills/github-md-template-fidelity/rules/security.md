@@ -1,9 +1,4 @@
----
-description: "Rules for creating or revising SECURITY.md files."
-applyTo: "SECURITY.md"
----
-
-Generate or revise the `SECURITY.md` for this GitHub repository using the `github.security.template.instructions.md` template.
+Generate or revise the `SECURITY.md` for this GitHub repository using the `templates/security.md` template.
 
 ## Strict Template Fidelity Mode (Default)
 
@@ -13,7 +8,7 @@ Strict fidelity applies to every `SECURITY.md` creation or revision and override
 
 **MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final SECURITY.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
-1. Use an exact copy of `github.security.template.instructions.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
+1. Use an exact copy of `templates/security.md`; preserve every mandatory template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
 4. Resolve template-marked conditional blocks exactly as written; core sections and headings remain mandatory.
@@ -69,7 +64,7 @@ Include these sections only when the specified conditions are met:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `language.instructions.md` for all SECURITY text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all SECURITY text, including spelling, phrasing, and language conventions.
 - Prefix `##` headings with their emoji as demonstrated in the template (omit only if existing SECURITY.md uses no emojis and repository tone is formal).
 - Remove all HTML comments from final output.
 - Always fill `[[PLACEHOLDER]]` values with real project details; omit template comments and example rows.

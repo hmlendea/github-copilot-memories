@@ -1,9 +1,4 @@
----
-description: "Rules for creating or revising custom CODE_OF_CONDUCT.md files informed by established open-source community standards."
-applyTo: "CODE_OF_CONDUCT.md"
----
-
-Generate or revise `CODE_OF_CONDUCT.md` for this GitHub repository using the `github.code-of-conduct.template.instructions.md` template.
+Generate or revise `CODE_OF_CONDUCT.md` for this GitHub repository using the `templates/code-of-conduct.md` template.
 
 ## Strict Template Fidelity Mode (Default)
 
@@ -13,7 +8,7 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 
 **MANDATORY INCLUSION RULE:** Every section in the template MUST be included in the final `CODE_OF_CONDUCT.md`. Remove template instructions only; do not add or substitute project-specific content for material that is already defined by the template.
 
-1. Start from `github.code-of-conduct.template.instructions.md` and process it from top to bottom.
+1. Start from `templates/code-of-conduct.md` and process it from top to bottom.
 2. Preserve the custom template's wording, emoji-prefixed heading order, list markers, and line breaks exactly.
 3. Do not add placeholders or replace the template's reporting route with a project-specific address or channel.
 4. Remove all template comments before writing the final document.

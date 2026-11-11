@@ -1,9 +1,4 @@
----
-description: "Rules for creating or revising CONTRIBUTING.md files."
-applyTo: "CONTRIBUTING.md"
----
-
-Generate or revise the `CONTRIBUTING.md` for this GitHub repository using the `github.contributing.template.instructions.md` template.
+Generate or revise the `CONTRIBUTING.md` for this GitHub repository using the `templates/contributing.md` template.
 
 ## Strict Template Fidelity Mode (Default)
 
@@ -13,7 +8,7 @@ Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and over
 
 **MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` in the template MUST be included in the final CONTRIBUTING.md when its condition is satisfied. Do not omit conditional sections whose conditions are met. Remove the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
 
-1. Start from `github.contributing.template.instructions.md` and process it from top to bottom.
+1. Start from `templates/contributing.md` and process it from top to bottom.
 2. Resolve every `Always include` and `Only if` directive from repository evidence before composing content.
 3. When `CODE_OF_CONDUCT.md`, `SECURITY.md`, `ROADMAP.md`, or similar policy documents exist or are being generated, ensure that every affected corresponding section in `CONTRIBUTING.md` is fully updated to match the template-defined content, including all conditional sections, placeholders, and fixed prose. If the section is missing, add it as per the template. Preserve the complete template-defined section; a link alone is insufficient when the template defines a dedicated section.
 4. When CONTRIBUTING.md is created or updated, update the entire corresponding `## 🤝 Contributing` section in `README.md` from the README template. Preserve its template-defined heading and fixed prose; a link to `CONTRIBUTING.md` alone is insufficient.

@@ -1,7 +1,3 @@
----
-description: "Template for README.md files."
-applyTo: "README.md"
----
 This is the `README.md` template that must be used.
 
 **MANDATORY INCLUSION RULE:** Every section marked with `<!-- Only if ... -->` MUST be included in the final README when its condition is satisfied. Do not omit conditional sections whose conditions are met. Eliminate the entire conditional block (including heading, body, and directive comment) only when the condition is NOT met.
@@ -749,7 +745,10 @@ For information on reporting security vulnerabilities, see the [Security Policy]
 
 ## 💬 Support
 
-For support, please [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)<!-- Only if `SUPPORT.md` exists. --> or see the [Support Guide](./SUPPORT.md).
+For support, please [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues).
+
+<!-- Only if `SUPPORT.md` exists. -->
+For additional or specific information, consult the [Support Guide](./SUPPORT.md).
 
 <!-- Always include. -->
 ## 💝 Project Engagement

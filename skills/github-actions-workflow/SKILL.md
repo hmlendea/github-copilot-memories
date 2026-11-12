@@ -54,11 +54,11 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | Bash | `bash.yml` | `templates/bash.yml` | `rules/bash.md` |
 | .NET | `dotnet.yml` | `templates/dotnet.yml` | `rules/dotnet.md` |
 | .NET Security | `security.yml` | `templates/security.yml` | `rules/security.md` |
-| Nexus Mods | `nexus-mods.yml` | `templates/nexus-mods.yml` | `rules/nexus-mods.md` |
+| Nexus Mods | `nexus-mods-release.yml` | `templates/nexus-mods-release.yml` | `rules/nexus-mods-release.md` |
 | NuGet.org release | `nuget-release.yml` | `templates/nuget-release.yml` | `rules/nuget-release.md` |
 | GitHub Release (compilable .NET project) | `github-release.yml` | `templates/github-release-dotnet.yml` | `rules/github-release-dotnet.md` |
 | GitHub Release (NuGet package) | `github-release.yml` | `templates/github-release-nuget.yml` | `rules/github-release-nuget.md` |
-| Steam Workshop | `steam-workshop.yml` | `templates/steam-workshop.yml` | `rules/steam-workshop.md` |
+| Steam Workshop | `steam-workshop-release.yml` | `templates/steam-workshop-release.yml` | `rules/steam-workshop-release.md` |
 | Release assets | `release-assets.yml` | — (no canonical template) | `rules/release-assets.md` |
 
 `github-release.yml` has two mutually exclusive templates; select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.

@@ -10,7 +10,7 @@ gh api user --jq .login                        # current git user; fallback: git
 
 When the user explicitly requests the templates, this rule applies regardless of who owns the repository or whether it is personal.
 
-When generating or revising any GitHub Actions workflow from a template (`bash.yml`, `dotnet.yml`, `security.yml`, `nexus-mods.yml`, `nuget-release.yml`, `github-release.yml`, `steam-workshop.yml`), the following rule is absolute.
+When generating or revising any GitHub Actions workflow from a template (`bash.yml`, `dotnet.yml`, `security.yml`, `nexus-mods-release.yml`, `nuget-release.yml`, `github-release.yml`, `steam-workshop-release.yml`), the following rule is absolute.
 
 ## Fixed Workflow Content Is Immutable
 

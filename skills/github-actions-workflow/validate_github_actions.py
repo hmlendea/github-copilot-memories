@@ -34,11 +34,11 @@ TEMPLATE_MAP = {
     "bash.yml": ("bash.yml", "bash.yml", "bash.md"),
     "dotnet.yml": ("dotnet.yml", "dotnet.yml", "dotnet.md"),
     "security.yml": ("security.yml", "security.yml", "security.md"),
-    "nexus-mods.yml": ("nexus-mods.yml", "nexus-mods.yml", "nexus-mods.md"),
+    "nexus-mods-release.yml": ("nexus-mods-release.yml", "nexus-mods-release.yml", "nexus-mods-release.md"),
     "nuget-release.yml": ("nuget-release.yml", "nuget-release.yml", "nuget-release.md"),
     "github-release-dotnet.yml": ("github-release-dotnet.yml", "github-release.yml", "github-release-dotnet.md"),
     "github-release-nuget.yml": ("github-release-nuget.yml", "github-release.yml", "github-release-nuget.md"),
-    "steam-workshop.yml": ("steam-workshop.yml", "steam-workshop.yml", "steam-workshop.md"),
+    "steam-workshop-release.yml": ("steam-workshop-release.yml", "steam-workshop-release.yml", "steam-workshop-release.md"),
     "release-assets.yml": (None, "release-assets.yml", "release-assets.md"),
 }
 

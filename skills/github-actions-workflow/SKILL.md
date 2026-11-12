@@ -20,7 +20,8 @@ Read the applicable instruction files before editing. The canonical templates ar
 | .NET Security | `security.yml` | `prompts/instructions/github/actions/github.actions.workflows.dotnet.security.instructions.md` |
 | Nexus Mods | `nexus-mods.yml` | `prompts/instructions/github/actions/github.actions.workflows.nexus-mods.instructions.md` |
 | NuGet.org release | `nuget-release.yml` | `prompts/instructions/github/actions/github.actions.workflows.nuget-release.instructions.md` |
-| GitHub Release | `github-release.yml` | `prompts/instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` |
+| GitHub Release (compilable .NET project) | `github-release.yml` | `prompts/instructions/github/actions/github.actions.workflows.dotnet.github-release.instructions.md` |
+| GitHub Release (NuGet package) | `github-release.yml` | `prompts/instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` |
 | Steam Workshop | `steam-workshop.yml` | `prompts/instructions/github/actions/github.actions.workflows.steam-workshop.instructions.md` |
 | Release assets | `release-assets.yml` | Use the general Actions instruction and repository evidence when no dedicated template exists. |
 

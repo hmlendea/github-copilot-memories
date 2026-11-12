@@ -7,7 +7,7 @@ description: "Use when asked to generate, create, write, or refresh the reposito
 
 Trigger: any request to generate, create, write, refresh, or complete the repository's documentation, or to build/expand the `docs/` knowledge base. Execute the full procedure below exactly as specified, as though it had been supplied verbatim as the user's instruction.
 
-Companion skill: for the root GitHub documents (`README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `PRIVACY.md`, `ROADMAP.md`), use the `github-md-template-fidelity` skill. This skill governs the `docs/` tree only.
+Companion skill: for the root GitHub documents (`README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `PRIVACY.md`, `ROADMAP.md`), use the `github-md-template-fidelity` skill. This skill governs the `docs/` tree, plus the `Documentation` section of `README.md` that indexes that tree (see *README Documentation Section* below); every other root-document section remains governed by the companion skill.
 
 ---
 
@@ -481,6 +481,17 @@ The `logging.md` file must document:
 - Reference root `ARCHITECTURE.md`, `SECURITY.md`, `ROADMAP.md`, `PRIVACY.md`, `LICENSE` from `INDEX.md` and relevant `docs/` files
 - Do not duplicate root document content under `docs/`
 - Complement, don't replicate: `docs/architecture.md` elaborates on root `ARCHITECTURE.md`; `docs/security.md` elaborates on root `SECURITY.md`
+
+## README Documentation Section
+
+Once the `docs/` tree has been generated or refreshed, add or update the `## 📚 Documentation` section in the repository root `README.md` so it advertises the documentation that now exists. This step is mandatory and is performed after the `docs/` content is complete.
+
+- Apply the `github-md-template-fidelity` skill to `README.md` and update the section to match the README template exactly: the `## 📚 Documentation` heading, the fixed introductory prose rendered through the `[[DOCUMENTATION_OVERVIEW]]` placeholder, and the `Resource`/`Description` table.
+- Include the `## 📚 Documentation` section only when it is evidenced by the repository state: a substantive `docs/` directory exists, or a GitHub Pages site, GitHub Wiki, or hosted manual exists.
+- Populate the resource table from the generated `docs/` tree — for example `docs/INDEX.md` for navigation, `docs/api-reference/INDEX.md` for the API reference, `docs/quick-start.md` for newcomers, and `docs/architecture.md` for the architectural deep dive — using verified repository-relative links and concise one-line descriptions.
+- Link to the documentation rather than duplicating it; the README section remains a concise index, not a copy of the `docs/` content.
+- Preserve the section's template-defined position (after `## 🗺️ Roadmap`) and its fixed prose and columns; do not invent headings, prose, or columns.
+- Validate the updated `README.md` with the template-fidelity validation before declaring the documentation task complete.
 
 ------------------------------------------------------------------------
 

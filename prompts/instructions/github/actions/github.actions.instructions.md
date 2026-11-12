@@ -22,4 +22,4 @@ Do not use alternative names for these workflow categories unless the user expli
 
 When creating or revising GitHub Actions workflows, update all relevant documentation, repository Markdown files, README badges, and any other affected documentation to reflect the changes.
 
-This is a cross-file procedure. Apply the complete `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`. Workflow work is incomplete until every affected document has been synchronised and validated. A workflow-only change is never sufficient.
+This is a cross-file procedure. Apply the complete `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`, which holds the canonical workflow templates under `skills/github-actions-workflow/templates/`, their rules under `skills/github-actions-workflow/rules/`, the fidelity contract, and the validator. Workflow work is incomplete until every affected document has been synchronised and validated. A workflow-only change is never sufficient.

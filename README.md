@@ -40,7 +40,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
 - Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, test design, test values, validation, GitHub Actions workflow documentation, NuGet package updates, and session handoff.
-- Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation). The `github-actions-workflow` skill synchronises every affected Markdown document whenever a GitHub Actions workflow is created or revised. The `github-md-template-fidelity` skill holds each GitHub document template, its rules, the fidelity contract, and the validation script, so they load only for document generation tasks.
+- Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation). The `github-actions-workflow` skill holds each canonical workflow template, its rules, the fidelity contract, and the validation script, and synchronises every affected Markdown document whenever a GitHub Actions workflow is created or revised. The `github-md-template-fidelity` skill holds each GitHub document template, its rules, the fidelity contract, and the validation script, so they load only for document generation tasks.
 
 ## 🚀 Usage
 
@@ -157,7 +157,7 @@ Language dictionaries use semantic discovery rather than automatic path activati
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
-Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; the Token Saver agent handles execution with restricted tools.
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; the Token Saver agent handles execution with restricted tools.
 
 For example:
 
@@ -197,7 +197,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | [hooks/](hooks/) | Runtime instruction-read enforcement used by the LiteLLM agent |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
-| `prompts/instructions/github/` | GitHub Actions workflow rules |
+| `prompts/instructions/github/` | GitHub Actions workflow naming and documentation rules |
 | `prompts/instructions/language/` | British English and Romanian terminology preferences |
 | `prompts/instructions/markdown/` | Markdown structure and formatting conventions |
 | `prompts/instructions/methodscript/` | MethodScript coding and style conventions |
@@ -205,7 +205,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, test values, validation, GitHub Actions workflow documentation, GitHub markdown template fidelity, NuGet package updates, and token-efficient workflows |
+| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, test values, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, NuGet package updates, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🏗️ Architecture

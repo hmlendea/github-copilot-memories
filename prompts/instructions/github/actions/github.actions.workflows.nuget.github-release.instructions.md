@@ -3,83 +3,10 @@ description: "Use when creating or revising the GitHub Release workflow for a re
 applyTo: ".github/workflows/github-release.yml"
 ---
 
-Use this exact workflow template for github-release.yml.
+Use the canonical template `skills/github-actions-workflow/templates/github-release-nuget.yml` for github-release.yml, and its rules `skills/github-actions-workflow/rules/github-release-nuget.md`.
 
-For the full cross-file procedure, including documentation synchronisation and validation, apply the `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md`.
+Use this template only for repositories that host a NuGet package. For a compilable .NET project that builds release assets, use `prompts/instructions/github/actions/github.actions.workflows.dotnet.github-release.instructions.md` instead.
 
 The `[[NUGET_PACKAGE_NAME]]` placeholder must be replaced with the NuGet package ID.
 
-```yaml
-name: GitHub Release
-
-on:
-  release:
-    types: [ published ]
-
-jobs:
-  pack:
-    name: Publish
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    env:
-      NUGET_PACKAGE_NAME: [[NUGET_PACKAGE_NAME]]
-
-    permissions:
-      contents: write
-
-    steps:
-    - uses: actions/checkout@v6
-      with:
-        fetch-depth: 0
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v5
-      with:
-        dotnet-version: 10.0.x
-
-    - name: Extract the version from the GitHub tag
-      id: version
-      run: |
-        VERSION="${{ github.ref_name }}"
-        VERSION="${VERSION#v}"
-        echo "version=$VERSION" >> $GITHUB_OUTPUT
-
-    - name: Restore the dependencies
-      run: dotnet restore
-
-    - name: Create the NuGet package
-      run: dotnet pack -c Release --output ./nupkg -p:Version=${{ steps.version.outputs.version }}
-
-    - name: Calculate the SHA256 checksum
-      id: checksum
-      run: |
-        NUPKG_FILE="./nupkg/${NUGET_PACKAGE_NAME}.${{ steps.version.outputs.version }}.nupkg"
-        SHA256=$(sha256sum "$NUPKG_FILE" | awk '{print $1}')
-        echo "sha256=$SHA256" >> $GITHUB_OUTPUT
-
-    - name: Upload the package to the GitHub Release
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh release upload "${{ github.event.release.tag_name }}" "./nupkg/${NUGET_PACKAGE_NAME}.${{ steps.version.outputs.version }}.nupkg" --clobber
-
-    - name: Append the SHA256 checksum to the GitHub Release notes
-      uses: actions/github-script@v7
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          const releaseId = context.payload.release.id;
-          const currentBody = context.payload.release.body;
-          const newChecksum = "${{ steps.checksum.outputs.sha256 }}";
-          const checksumLine = `\n\n**SHA256 Checksum:** ${newChecksum}`;
-          const updatedBody = currentBody + checksumLine;
-
-          await github.rest.repos.updateRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            release_id: releaseId,
-            body: updatedBody
-          });
-```
+Apply the complete `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md` for the cross-file procedure, documentation synchronisation, fidelity contract, and validation.

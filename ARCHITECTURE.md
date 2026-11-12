@@ -122,7 +122,7 @@ Responsibilities:
 - Encode reusable coding standards, naming conventions, error-handling patterns, and language preferences.
 - Provide language-specific and framework-specific guidance.
 - Define activation contracts through `applyTo` globs and semantic descriptions.
-- Cover GitHub Actions workflow rules and Markdown link conventions under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, and shared test fixture values live in the `test-values` skill.
+- Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, and shared test fixture values live in the `test-values` skill.
 
 Boundary rules:
 - Each instruction file must define a narrow `applyTo` glob and a semantic description.
@@ -134,9 +134,10 @@ Paths:
 - `skills/`
 
 Responsibilities:
-- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, validation, GitHub Actions workflow documentation, GitHub markdown template fidelity, and token-efficient workflows.
+- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
+- Bundle the canonical GitHub Actions workflow templates, rules, fidelity contract, and validator under `skills/github-actions-workflow/` so they load only for workflow tasks.
 - Bundle the shared test fixture values under `skills/test-values/` so they load only for test and test-data work, while the always-on `common.test-values.instructions.md` requires the skill for every language and technology.
 - When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 
@@ -214,12 +215,13 @@ The repository is deployed through GitHub. Users install it by cloning the repos
 
 ## ✅ Testing and Verification
 
-The repository contains no executable tests. The `hooks/` directory includes a test file (`litellm-instruction-gate.test.cjs`) that validates the instruction-gate hook. The `skills/github-md-template-fidelity/` directory includes a validation script (`validate_github_md.py`) that checks template fidelity for generated GitHub markdown files in personal repositories owned by the current git user; `--force` asserts an explicit template request and bypasses the ownership scope.
+The repository contains no executable tests. The `hooks/` directory includes a test file (`litellm-instruction-gate.test.cjs`) that validates the instruction-gate hook. The `skills/github-md-template-fidelity/` directory includes a validation script (`validate_github_md.py`) that checks template fidelity for generated GitHub markdown files in personal repositories owned by the current git user; `--force` asserts an explicit template request and bypasses the ownership scope. The `skills/github-actions-workflow/` directory includes a validation script (`validate_github_actions.py`) that checks template fidelity for generated GitHub Actions workflows under the same ownership scope, with `--force` asserting an explicit template request.
 
 Execute the principal automated verification with:
 
 ```bash
 python3 skills/github-md-template-fidelity/validate_github_md.py /home/horatiu/Proiecte/ai/github-copilot-memories README.md README.md
+python3 skills/github-actions-workflow/validate_github_actions.py /home/horatiu/Proiecte/ai/github-copilot-memories dotnet.yml .github/workflows/dotnet.yml
 ```
 
 ## ⚠️ Design Constraints

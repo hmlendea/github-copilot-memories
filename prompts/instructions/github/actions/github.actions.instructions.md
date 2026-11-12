@@ -9,6 +9,7 @@ When creating or revising workflow files, use these canonical file names:
 
 - .NET Security workflows: `security.yml`
 - .NET workflows: `dotnet.yml`
+- Android workflows: `android.yml`
 - Bash workflows: `bash.yml`
 - GitHub Release workflows: `github-release.yml`
 - Nexus Mods workflows: `nexus-mods-release.yml`

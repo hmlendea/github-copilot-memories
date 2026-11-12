@@ -33,6 +33,7 @@ REQUIRED_TOP_LEVEL_KEYS = ("name:", "on:", "jobs:")
 TEMPLATE_MAP = {
     "bash.yml": ("bash.yml", "bash.yml", "bash.md"),
     "dotnet.yml": ("dotnet.yml", "dotnet.yml", "dotnet.md"),
+    "android.yml": ("android.yml", "android.yml", "android.md"),
     "security.yml": ("security.yml", "security.yml", "security.md"),
     "nexus-mods-release.yml": ("nexus-mods-release.yml", "nexus-mods-release.yml", "nexus-mods-release.md"),
     "nuget-release.yml": ("nuget-release.yml", "nuget-release.yml", "nuget-release.md"),

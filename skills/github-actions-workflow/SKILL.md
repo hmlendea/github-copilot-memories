@@ -1,6 +1,6 @@
 ---
 name: github-actions-workflow
-description: Use when creating or revising any GitHub Actions workflow, including bash, .NET, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result.
+description: Use when creating or revising any GitHub Actions workflow, including bash, .NET, Android, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result.
 ---
 
 # GitHub Actions Workflow
@@ -53,6 +53,7 @@ All resource paths above are relative to the skill directory `skills/github-acti
 |----------|-------------|----------|-------|
 | Bash | `bash.yml` | `templates/bash.yml` | `rules/bash.md` |
 | .NET | `dotnet.yml` | `templates/dotnet.yml` | `rules/dotnet.md` |
+| Android | `android.yml` | `templates/android.yml` | `rules/android.md` |
 | .NET Security | `security.yml` | `templates/security.yml` | `rules/security.md` |
 | Nexus Mods | `nexus-mods-release.yml` | `templates/nexus-mods-release.yml` | `rules/nexus-mods-release.md` |
 | NuGet.org release | `nuget-release.yml` | `templates/nuget-release.yml` | `rules/nuget-release.md` |
@@ -157,6 +158,7 @@ Exit codes:
 
 - [ ] Default branch name
 - [ ] Repository .NET version (`TargetFramework`, `global.json`)
+- [ ] Repository Java (JDK) version (`sourceCompatibility`, `jvmTarget`)
 - [ ] MonoGame usage
 - [ ] Primary project path and release asset glob
 - [ ] NuGet package ID and `NUGET_USER` secret

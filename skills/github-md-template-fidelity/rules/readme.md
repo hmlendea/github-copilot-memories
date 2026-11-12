@@ -42,6 +42,7 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 - `[[CODE_OF_CONDUCT_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Code of Conduct` whose target is the verified repository-relative document path.
 - `[[LICENSE_TITLE]]` must reflect the repository licence without inference.
 - `[[LICENSE_SUFFIX]]` is ` or later` only when the licence text or SPDX expression explicitly grants later versions; otherwise it is empty.
+- `[[FUNDING_URL]]` must expand to the author's donation link. When the user or repository explicitly provides one, use it verbatim. Otherwise take it from `.github/FUNDING.yml`: use the `custom` field value verbatim; when `custom` is missing or empty, use the `github` field as `https://github.com/sponsors/<github>`. Never invent a donation link.
 - Badge placeholders such as `[[COVERAGE_BADGE]]` must expand to complete linked badge Markdown from a configured provider.
 - Generic placeholders such as `[[ADDITIONAL_STATUS_BADGES]]` and `[[ADDITIONAL_DISTRIBUTION_BADGES]]` are removed when no additional evidenced records exist.
 
@@ -75,7 +76,7 @@ Use the exact template wording for fixed sections. Do not reword, paraphrase, or
 Include badges only when their state and destination can be verified:
 | Badge | Condition | Notes |
 |-------|-----------|-------|
-| Donate | `.github/FUNDING.yml` exists. | Use the fixed funding URL from the template. |
+| Donate | `.github/FUNDING.yml` exists. | Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml`. |
 | Latest Release | At least one published release exists. | Do not include for tags without published releases. |
 | Website or GitHub Pages | A public repository website is configured or GitHub Pages is enabled. | Use `GitHub Pages` for `github.io` URLs; otherwise use `Website`. |
 | Build Status | A primary GitHub Actions workflow exists. | `[[WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. Select the principal validation workflow rather than every workflow. |

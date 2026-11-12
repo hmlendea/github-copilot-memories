@@ -135,6 +135,13 @@ Run ALL checks - ANY failure requires full regeneration:
 - If ANY validation check fails → **REGENERATE from Step 3**
 - **NEVER** output partial or non-compliant document
 
+## Donation Link Resolution
+When a generated document requires the author's donation link and one was not explicitly provided, resolve `[[FUNDING_URL]]` from the repository's `.github/FUNDING.yml`:
+1. Use the `custom` field value verbatim.
+2. When `custom` is missing or empty, use the `github` field as `https://github.com/sponsors/<github>`.
+3. When the user or repository explicitly provides a donation link, use that instead.
+Never invent a donation link.
+
 ## Integration with Agent Workflow
 This skill is automatically invoked when:
 - User requests creation/revision of any target GitHub MD file **in a personal repository owned by the current git user**

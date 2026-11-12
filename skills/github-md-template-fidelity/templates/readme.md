@@ -4,8 +4,8 @@ This is the `README.md` template that must be used.
 
 ---
 
-<!-- Only if `.github/FUNDING.yml` exists. -->
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
+<!-- Only if `.github/FUNDING.yml` exists. Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml` as described in the rules. -->
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)]([[FUNDING_URL]])
 <!-- Only if the repository is public and it has at least one published release. -->
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
 <!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use label 'GitHub Pages' for github.io URLs, otherwise 'Website'. -->
@@ -755,11 +755,11 @@ For additional or specific information, consult the [Support Guide](./SUPPORT.md
 
 Discovered a problem with [[PROJECT_NAME]] or have a suggestion for it? [Open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues)!
 
-<!-- Set `[[FUNDING_PREFIX]]` to `[funding it](https://hmlendea.go.ro/funding) or ` only if `.github/FUNDING.yml` exists; otherwise set it to an empty value. -->
+<!-- Set `[[FUNDING_PREFIX]]` to `[funding it]([[FUNDING_URL]]) or ` only if `.github/FUNDING.yml` exists; otherwise set it to an empty value. Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml` as described in the rules. -->
 If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it on GitHub<!-- Only if this is also released on the Steam Workshop, include: `, or giving it a thumbs up and adding it as a favourite on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ITEM_ID]])` -->!
 
-<!-- Only if `.github/FUNDING.yml` exists. -->
-[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
+<!-- Only if `.github/FUNDING.yml` exists. Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml` as described in the rules. -->
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)]([[FUNDING_URL]])
 
 <!-- Only if `./LICENSE` exists. Include this exactly as it is written here, do not modify it in any manner. -->
 ## 📄 License

@@ -1,0 +1,273 @@
+---
+name: romanian-language
+description: Use for Romanian prose, code identifiers, literals, comments, or documentation, and for text generation, editing, translation, or review. Supplies Latin-ancestry vocabulary replacements applied contextually to text inside and outside code.
+---
+
+# Romanian Language
+
+Apply to all human-readable Romanian text, in code and outside it: identifiers (variable, parameter, function, method, class, type, constant, enumeration, field, property, event, module, package, file, directory, branch, and tag names), string literals, comments and doc comments, log, error, and exception messages, user-interface and localisation strings and keys, test names, descriptions, and expectations, test and fixture data, commit messages, and prose or documentation.
+
+Exemptions: retain the original text where a change would break a public or external contract or compatibility (published API names, serialised or protocol field names, configuration keys, database or wire identifiers, registered entry points, third-party or overridden identifiers, and quoted external text), where the identifier is already an established proper noun or product name, or where the contextual replacement would sound forced or overly formal outside formal contexts.
+
+## Romanian
+
+- Prefer context-natural Romanian words with Latin ancestry. Indirect ancestry through any intermediary qualifies; Latin words with older Greek, Etruscan, or other roots also qualify. Retain the original when no fluent alternative exists or the replacement sounds forced/overly formal, except in formal contexts.
+- Apply replacements contextually with LLM judgement, never bulk replacement; evaluate surrounding meaning and fluency case by case.
+
+Word replacements - apply to all variants and derivatives of each word:
+
+- [X] trebuie să <!-- construcție impersonală, cu [X] ca subiect; nu pentru "trebuie" utilizat ca substantiv sau pentru alte sensuri ale verbului --> → este necesar ca [X] să / [X] este necesar să
+- a fi nevoie → să fie necesar
+- a fi nevoit → să îi fie necesar
+- a fi nevoite → să le fie necesar
+- a fi nevoiți → să le fie necesar
+- a folosi → a utiliza
+- a găsi <!-- verb, în contextul identificării sau descoperirii --> → a identifica / a descoperi
+- a grăbi <!-- verb, în contextul accelerării unui proces --> → a accelera / a urgenta
+- a izbuti → a reuși
+- a pricepe → a înțelege
+- a schimba <!-- verb: de a altera sau modifica --> → a modifica / a transforma
+- a vesti → a anunța / a informa
+- a vorbi <!-- verb, în context formal --> → a comunica / a conversa / a dialoga / a discuta
+- ai nevoie → îți este necesar
+- aibă nevoie → îi fie necesar
+- amețit → dezorientat
+- amintire → memorie
+- ar trebui → ar fi necesar / ar fi indicat / ar fi bine
+- ar trebui să <!-- construcție care exprimă recomandare sau necesitate; nu pentru "ar trebui" utilizat izolat --> → ar fi necesar să / ar fi indicat să / ar fi bine să
+- arțăgos → irascibil
+- aruncă la gunoi <!-- locuțiune, cu snesul de a arunca un obiect la tomberon sau în coșul de gunoi; nu pentru eliminarea unei persoane, a unei idei ori a unei informații --> → aruncă la tomberon
+- asemănător → similar
+- astronaut → cosmonaut
+- aș avea nevoie <!-- locuțiune, pentru exprimarea unei necesități personale ipotetice sau politicoase --> → mi-ar fi necesar
+- avea nevoie → îi era necesar
+- aveai nevoie → îți era necesar
+- aveam nevoie → îmi era necesar
+- aveau nevoie → le era necesar
+- babă → bătrână
+- bai → problemă
+- băbuță → bătrânică
+- bănuială → suspiciune
+- belșug → abundență
+- benzinărie → stație de încărcare / stație de alimentare / stație de carburanți
+- boală <!-- substantiv, în contexte generale sau medicale --> → afecțiune
+- boturi → boți
+- brand → marcă / firmă
+- branșament → racord
+- branșare → racordare
+- buștean → trunchi
+- căcălău → cât încape
+- ChatGPT-ul → chat-ul GPT
+- chip <!-- substantiv: de față sau înfățișare --> → figură / fizionomie / aspect
+- chip <!-- substantiv: de mod sau fel --> → mod / manieră
+- ciob <!-- substantiv, pentru un fragment de sticlă , ceramică sau alt material spart; nu pentru un fragment de text ori de date --> → fragment
+- ciudat → straniu / bizar
+- ciudățenie → bizarerie
+- clanță → mâner de uşă
+- clătire → limpezire
+- clipă → moment
+- cotropit → oprimat
+- cotropitor → opressor
+- cottage cheese <!-- substantiv, plural, pentru mai multe porții sau tipuri de brânză proaspătă granulată --> → cotaje
+- cottage chesse <!-- substantiv, singular, pentru brânza proaspătă granulată; nu pentru sensuri metaforice sau alte tipuri de brânză --> → cotajă
+- cremă de brânză → crefă
+- cremă de brânză → crefă
+- cuier → agățător
+- darnic → generos
+- deal → colină
+- destul → suficient
+- deznădejde <!-- substantiv: de lipsă profundă de speranță sau disperare; nu pentru simpla tristețe ori dezamăgire --> → disperare / lipsă de speranță / lipsă profundă de speranță
+- dobândă → interes
+- dobândire → obținere
+- dovedesc → demonstrez
+- dovedire → demonstrație
+- dovedit → demonstrat
+- duhoare → miasmă
+- dumirire → clarificare, explicare, înțelegere
+- dușman → inamic
+- dușmănie → ostilitate / animozitate
+- făgădui → promite
+- făgăduință → promisiune
+- fățiș → evident / clar
+- fel → tip
+- focus → concentrare
+- focusat → concentrat
+- follower → urmăritor
+- folosind → utilizând
+- folositor → util
+- fursec → biscuite
+- gaură → orificiu
+- geam → fereastră
+- ghinioane [doar la plural] → adversități
+- grabă <!-- substantiv: de urgență sau precipitare --> → urgență / promptitudine
+- grabnic → urgent / prompt
+- graniță → frontieră
+- grănicer → agent de frontieră
+- greșite → eronate
+- grijă → preocupare
+- groaznic → teribil / foarte rău
+- grozav → extraordinar
+- haine de pat <!-- grup nominal, pentru lenjeria utilizată pe un pat; nu pentru îmbrăcăminte sau alte textile de uz casnic --> → lenjerie de pat
+- haz <!-- substantiv: de caracter amuzant --> → umor
+- hotar → frontieră
+- hotărâre → decizie
+- iscare → provocare
+- izbândă → succes
+- împodobire → ornare / decorare
+- împodobit → ornat / decorat
+- împotriva → contra / în opoziție cu
+- împotrivire → opoziție
+- în zadar → în van
+- încercare → tentativă
+- încrezător → confident / sigur pe sine
+- încrezut → prezumțios
+- încurcat → impedat / confundat
+- îndesat → compactat
+- îndrăzneală → cutezare
+- îndrăznesc → cutez
+- înfățișare → aparență / aspect
+- înființat → fondat
+- înfundat → blocat
+- înfundătură → blocaj
+- îngădui → permite
+- îngăduință → permisiune
+- îngăduitor → permisiv
+- îngrijorat → preocupat
+- însușire <!-- substantiv, în sens de caracteristică --> → proprietate / caracteristică
+- întâmplă → petrece
+- întâmplător → accidental
+- întemeiat → fondat
+- înzdrăvenire → întărire
+- îți trăbă <!-- formă colocvială sau ortografiată incorect: de necesitate adresată unei singure persoane --> → îți este necesar / îti este indicat
+- lacăt → încuietoare
+- lămurire → clarificare, explicare
+- liniștit → calm
+- lipici → adeziv
+- localnic → om de-al locului
+- magazie → depozit
+- măgar → asin
+- mărgele → perle
+- mi-ar fi de folos <!-- locuțiune, pentru exprimarea utilității unui lucru pentru vorbitor; nu pentru exprimarea unei necesități propriu-zise --> → mi-ar fi util
+- mijloace → căi / metode
+- minunat → miraculos
+- minune → miracol
+- molid → conifer
+- muncă → lucru
+- muncitor → lucrător
+- murdărie → mizerie
+- nădejde → speranță
+- nedumerit → confuz, neclar, incert
+- nelămurire → neclaritate
+- nenorocire → nefericire
+- neobișnuit → neuzual
+- nevoi <!-- substantiv: de necesități --> → necesități
+- nevoie → necesitate
+- noros → înnorat
+- nu mai ai nevoie <!-- locuțiune, adresată unei singure persoane, cu snesul că o necesitate a încetat --> → nu îți mai este necesar / nu mai îți este necesar
+- nu mai aveți nevoie de [X] <!-- locuțiune de politețe sau pentru plural, când [X] este un substtantiv la plural; nu utiliza pentru un singur obiect --> → nu vă mai sunt necesare [X]ele/[X]urile / nu vă mai sunt necesari [X]ii
+- oboseală → epuizare
+- obosit → extenuat
+- pagubă → daună / pierdere
+- păzește → supraveghează
+- pedeapsă → sancțiune
+- pedepsit → sancționat
+- pivniță → subsol
+- plângere → reclamație
+- poftă <!-- substantiv: de dorință sau apetit --> → dorință / apetit
+- pricină → cauză
+- pricinui → cauza
+- pricinuit → cauzat
+- prielnic → propice
+- prilej → ocazie
+- primejdie → pericol
+- primejdios → periculos
+- pripească → precipiteze
+- pripește → precipitează
+- pripire → precipitare
+- pripit → precipitat
+- pulled pork → porc tras
+- pulled turkey → curcan tras
+- putoare → miasmă
+- răsplată → recompensă
+- răzbunare → retribuție
+- rânduială → ordine / organizare
+- râșniță → măcinătoare
+- râvnă → deziderație
+- râvnire → deziderație
+- risipire → irosire
+- rost → sens
+- rostul → sensul
+- sățios → sațios
+- sârguincios → diligent
+- sârguință → diligență
+- scări → trepte
+- sfat → recomandare / sugestie
+- sfătui → recomanda / consilia
+- sfârșit → final
+- slugă → servitor
+- slujbă <!-- substantiv, în sens de ocupație --> → serviciu / funcție
+- stăpân <!-- substantiv: de proprietar sau stăpânitor --> → proprietar / domn
+- stârnire → incitare
+- stârnit → incitat
+- steag → drapel
+- strâmt → îngust
+- strâmtorare → îngustare
+- subscriere → abonare
+- subscripție → abonament
+- șipcă → lamelă
+- șlefuire → polizare
+- taină → secret
+- tăvălire → rostogolire
+- tâlc → sens / semnificație
+- teacă → toc
+- temei → fundament / bază
+- tocmeală → negociere
+- topor → secure
+- tovarăș → camarad
+- treabă → lucru
+- treabă <!-- substantiv: de atribuție, obligație sau misiune; nu pentru o activitate ori un lucru în sens general --> → atribuție / obligație / misiune
+- trebuia → era necesar / ar fi fost indicat / ar fi fost bine
+- trebuiască → fie necesar / fie indicat / fie bine
+- trebuie → este necesar
+- trebuință → necesitate
+- treburi → lucruri de făcut / chestiuni / chestii
+- trend → tendință
+- trezire → deșteptare
+- țeavă → conductă
+- țel → obiectiv
+- ți-ar trebui <!-- locuțiune, pentru exprimarea unei necesități sau a unei recomandări adresate unei singure persoane --> → ți-ar fi necesar / ți-ar fi indicat / ți-ar fi bine / ți-ar fi bun / ți-ar fi bună
+- țipăt → strigăt
+- ucenic → discipol
+- uimească → surprindă
+- uimește → surprinde
+- uimire → surprindere
+- uimit → surprins
+- uimitor → extraordinar
+- updatat → actualizat
+- ușurează → facilitează
+- ușurez → facilitez
+- vacare → vacantare
+- vamal → de frontieră
+- vamă → frontieră
+- veceu → toaletă
+- vesel <!-- adjectiv: de jovial sau plin de bucurie --> → jovial / euforic
+- veste → știre / noutate / informație
+- veșnic → etern
+- veșnicie → eternitate
+- veștejire → ofilire
+- vraiște → dezordine
+- vrednic → demn
+- vrednicie → demnitate
+- vremea → timpul
+- vremii → timpului
+- vremuri → timpuri
+- weekend → sfârșit de săptămână
+- zadarnic → inutil
+- zăbovire → pierdere de timp
+- zădărnicire → compromitere
+- zâmbet → surâs
+- zdravăn → robust
+- zdrobire → strivire
+- zdrobitor (e.g. de usturoi) → presă
+- zilnic <!-- adjectiv --> → cotidian
+- zilnic <!-- adverb, de exemplu „se întâmplă zilnic” --> → în fiecare zi

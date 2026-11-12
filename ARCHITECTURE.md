@@ -122,7 +122,7 @@ Responsibilities:
 - Encode reusable coding standards, naming conventions, error-handling patterns, and language preferences.
 - Provide language-specific and framework-specific guidance.
 - Define activation contracts through `applyTo` globs and semantic descriptions.
-- Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, and shared test fixture values live in the `test-values` skill.
+- Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, shared test fixture values live in the `test-values` skill, and English and Romanian vocabulary preferences live in the `english-language` and `romanian-language` skills.
 
 Boundary rules:
 - Each instruction file must define a narrow `applyTo` glob and a semantic description.
@@ -139,6 +139,7 @@ Responsibilities:
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
 - Bundle the canonical GitHub Actions workflow templates, rules, fidelity contract, and validator under `skills/github-actions-workflow/` so they load only for workflow tasks.
 - Bundle the shared test fixture values under `skills/test-values/` so they load only for test and test-data work, while the always-on `common.test-values.instructions.md` requires the skill for every language and technology.
+- Bundle the English and Romanian vocabulary preferences under `skills/english-language/` and `skills/romanian-language/` so they load only for language, terminology, and localisation work, while the `prompts/instructions/language/` instruction files require the corresponding skill and extend it to identifiers, literals, comments, messages, and test data inside code.
 - Bundle the exhaustive repository-documentation procedure and the `docs/` structure contract under `skills/repository-documentation/` so deep reverse-engineering guidance loads only when repository documentation is requested.
 - When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 

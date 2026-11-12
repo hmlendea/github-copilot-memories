@@ -64,7 +64,7 @@ cd github-copilot-memories
 Follow the project's coding standards:
 - Instruction files: follow the conventions in `prompts/instructions/common/common.coding.instructions.md`
 - Skill files: follow the conventions in `skills/*/SKILL.md`
-- Apply British English spelling per `prompts/instructions/language/language.english.instructions.md`
+- Apply British English spelling and the shared English and Romanian vocabulary rules through the `english-language` and `romanian-language` skills, to prose and to all human-readable text in code, including identifiers, string literals, comments, and messages
 
 ### Documentation
 

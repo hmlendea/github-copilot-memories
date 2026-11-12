@@ -214,7 +214,7 @@ The repository is deployed through GitHub. Users install it by cloning the repos
 
 ## ✅ Testing and Verification
 
-The repository contains no executable tests. The `hooks/` directory includes a test file (`litellm-instruction-gate.test.cjs`) that validates the instruction-gate hook. The `skills/github-md-template-fidelity/` directory includes a validation script (`validate_github_md.py`) that checks template fidelity for generated GitHub markdown files.
+The repository contains no executable tests. The `hooks/` directory includes a test file (`litellm-instruction-gate.test.cjs`) that validates the instruction-gate hook. The `skills/github-md-template-fidelity/` directory includes a validation script (`validate_github_md.py`) that checks template fidelity for generated GitHub markdown files in personal repositories owned by the current git user; `--force` asserts an explicit template request and bypasses the ownership scope.
 
 Execute the principal automated verification with:
 

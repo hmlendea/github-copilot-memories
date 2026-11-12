@@ -11,6 +11,12 @@ argument-hint: "Target file (README.md, ARCHITECTURE.md, CONTRIBUTING.md, SECURI
 
 This prompt enforces **100% template fidelity** for all GitHub markdown files. No exceptions, no partial compliance.
 
+## SCOPE
+
+Running this prompt is an **explicit template request**: fidelity applies regardless of repository ownership or owner type, including organization-owned repositories and repositories owned by another user. Pass `--force` to the validator in this case.
+
+Outside an explicit template request, the `github-md-template-fidelity` skill enforces fidelity only in personal repositories owned by the current git user.
+
 ## MANDATORY EXECUTION PROTOCOL
 
 ### Phase 1: Template & Rules Acquisition (REQUIRED)
@@ -100,7 +106,9 @@ Or with path: `github-md-generator.prompt.md ARCHITECTURE.md /path/to/repo`
 ## VALIDATION INTEGRATION
 After generation, validate using the fidelity skill:
 ```bash
-python3 skills/github-md-template-fidelity/validate_github_md.py /path/to/repo TARGET_FILE.md generated_file.md
+python3 skills/github-md-template-fidelity/validate_github_md.py --force /path/to/repo TARGET_FILE.md generated_file.md
 ```
+
+`--force` asserts the explicit template request, so validation runs even when the repository is organization-owned or owned by another user. Omit it for the default ownership-scoped enforcement.
 
 The skill `github-md-template-fidelity` (in `skills/github-md-template-fidelity/SKILL.md`) provides the complete validation pipeline and must be consulted for any GitHub MD generation task.

@@ -1,5 +1,15 @@
 # GitHub Markdown Template Prose Fidelity
 
+This rule applies **only to personal repositories owned by the current git user** — repositories whose GitHub owner is a personal account (`owner.type == "User"`) and whose owner matches the current git user. Organization-owned repositories and repositories owned by another user are out of strict-fidelity scope; fixed template prose fidelity is not enforced for them. Confirm repository ownership before generating or revising any target document:
+
+```bash
+git -C <repo_root> remote get-url origin
+gh api repos/<owner>/<repo> --jq .owner.type   # must return "User"
+gh api user --jq .login                        # current git user; fallback: git config github.user
+```
+
+When the user explicitly requests the templates, this rule applies regardless of who owns the repository or whether it is personal.
+
 When generating or revising any GitHub markdown document from a template (`README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `PRIVACY.md`, `ROADMAP.md`), the following rule is absolute.
 
 ## Fixed Prose Is Immutable

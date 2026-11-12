@@ -2,7 +2,7 @@ Generate or revise the `CONTRIBUTING.md` for this GitHub repository using the `t
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and overrides conflicting instructions.
+Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 

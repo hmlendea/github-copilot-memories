@@ -2,7 +2,7 @@ Generate or revise `CODE_OF_CONDUCT.md` for this GitHub repository using the `te
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and overrides conflicting instructions. This means fidelity to the custom template below, not reproduction of any external code of conduct.
+Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and overrides conflicting instructions. This means fidelity to the custom template below, not reproduction of any external code of conduct. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 

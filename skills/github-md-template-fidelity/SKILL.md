@@ -1,14 +1,34 @@
 ---
-description: "Enforces 100% template fidelity for GitHub markdown files (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion."
+description: "Enforces 100% template fidelity for GitHub markdown files in personal repositories owned by the current git user (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion. Skipped for organization-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed — unless the user explicitly requests the templates."
 ---
 
 # GitHub MD Template Fidelity Skill
 
-This skill enforces **100% template fidelity** for all GitHub markdown document generation. It must be invoked for any task that creates or revises these files.
+This skill enforces **100% template fidelity** for GitHub markdown document generation **only in personal repositories owned by the current git user** — repositories whose GitHub owner is a personal account (`owner.type == "User"`) and whose owner matches the current git user. Organization-owned repositories and repositories owned by another user are out of strict-fidelity scope; the validator skips all fidelity checks for them.
+
+The only exception is an **explicit user request** for the templates. When the user explicitly asks for template-based generation, full fidelity applies regardless of who owns the repository or whether it is personal.
+
+## Repository Scope (precondition)
+
+Enforce fidelity only when the target repository is personal **and** owned by the current git user:
+
+```bash
+git -C <repo_root> remote get-url origin          # e.g. git@github.com:<owner>/<repo>.git
+gh api repos/<owner>/<repo> --jq .owner.type      # must return "User"
+gh api user --jq .login                           # current git user
+# fallbacks for the current git user: git config github.user,
+# then the login in a users.noreply.github.com commit e-mail
+```
+
+- Owner type `User` **and** owner equal to the current git user → enforce full template fidelity (read templates/rules/fidelity, run the pipeline, validate before output).
+- Owner type `Organization`, owner is a different user, or either value cannot be confirmed → **skip** template fidelity enforcement entirely; treat GitHub markdown generation as optional guidance without enforcement.
+- **Explicit request override:** when the user explicitly requests the templates (for example "use the templates", "apply template fidelity", or running the `github-md-generator` prompt), enforce full fidelity regardless of owner type or ownership. Pass `--force` to the validator, or set `GITHUB_MD_FORCE_FIDELITY=1`.
+
+---
 
 ## Invocation Protocol
 
-When generating or revising any of these files, the agent MUST:
+When generating or revising any of these files **in a scoped personal repository, or whenever the user explicitly requests the templates**, the agent MUST:
 1. Read this skill file first
 2. Read the corresponding template AND rules files
 3. Execute the full validation pipeline before output
@@ -117,9 +137,12 @@ Run ALL checks - ANY failure requires full regeneration:
 
 ## Integration with Agent Workflow
 This skill is automatically invoked when:
-- User requests creation/revision of any target GitHub MD file
-- Agent detects GitHub MD file operation in progress
+- User requests creation/revision of any target GitHub MD file **in a personal repository owned by the current git user**
+- Agent detects GitHub MD file operation in progress in such a repository
 - Validation is requested explicitly
+- User explicitly requests the templates, regardless of repository ownership or owner type
+
+Organization-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed are out of strict-fidelity scope; the validator skips enforcement for them unless the templates are explicitly requested.
 
 The skill provides the `validate_github_md` function for programmatic validation.
 
@@ -130,12 +153,16 @@ python3 skills/github-md-template-fidelity/validate_github_md.py /path/to/repo R
 
 # Validate from stdin
 cat generated_readme.md | python3 skills/github-md-template-fidelity/validate_github_md.py /path/to/repo README.md
+
+# Enforce fidelity regardless of ownership (explicit template request)
+python3 skills/github-md-template-fidelity/validate_github_md.py --force /path/to/repo README.md generated_readme.md
 ```
 
 Exit codes:
 - 0: Validation passed (100% fidelity)
 - 1: Validation failed (errors found)
 - 2: Script usage error
+- 3: Enforcement skipped (repository is not a personal repository owned by the current git user, and templates were not explicitly requested)
 
 ## Agent Instructions for 100% Fidelity
 

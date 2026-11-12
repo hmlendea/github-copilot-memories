@@ -4,7 +4,9 @@ GitHub MD Template Fidelity Validator
 Validates generated GitHub markdown files against templates and rules for 100% fidelity.
 """
 
+import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import List, Optional, Set
@@ -35,16 +37,28 @@ class ValidationIssue:
 
 
 class GitHubMDValidator:
-    def __init__(self, repo_root: Path):
+    def __init__(self, repo_root: Path, force: bool = False):
         self.repo_root = repo_root
         self.skill_dir = Path(__file__).resolve().parent
         self.templates_dir = self.skill_dir / "templates"
         self.rules_dir = self.skill_dir / "rules"
+        self.force = force
         self.issues: List[ValidationIssue] = []
+        self._resolved_owner: Optional[str] = None
+        self._resolved_owner_type: Optional[str] = None
+        self._resolved_git_user: Optional[str] = None
 
     def validate(self, target_file: str, generated_content: str) -> List[ValidationIssue]:
-        """Validate generated content against template and rules."""
+        """Validate generated content against template and rules.
+
+        Template fidelity is enforced only for personal repositories owned by
+        the current git user, or whenever the caller explicitly requests the
+        templates (`force`). Otherwise all fidelity checks are skipped.
+        """
         self.issues = []
+
+        if not self._should_enforce_fidelity():
+            return self.issues
 
         # Determine template and rules files
         template_map = {
@@ -94,6 +108,162 @@ class GitHubMDValidator:
         self._check_fixed_prose_integrity(generated_content, template_content)
 
         return self.issues
+
+    def _should_enforce_fidelity(self) -> bool:
+        """Return True when the document must follow the templates verbatim.
+
+        Enforcement applies when the caller explicitly requests the templates
+        (`force`), or when the repository is both personal (GitHub owner type
+        `User`) and owned by the current git user. Enforcement is skipped
+        whenever any condition cannot be confirmed.
+        """
+        if self.force:
+            return True
+
+        owner = self._get_repository_owner()
+        current_user = self._get_current_git_user()
+
+        if owner is None or current_user is None:
+            return False
+
+        if owner.strip().lower() != current_user.strip().lower():
+            return False
+
+        owner_type = self._get_repository_owner_type()
+
+        if owner_type is None:
+            return False
+
+        return owner_type.strip().lower() == "user"
+
+    def _get_repository_owner(self) -> Optional[str]:
+        """Return the repository owner from the `origin` remote, or None."""
+        if self._resolved_owner is not None:
+            return self._resolved_owner
+
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(self.repo_root), "remote", "get-url", "origin"],
+                capture_output=True, text=True, timeout=10,
+            )
+        except (OSError, subprocess.SubprocessError):
+            return None
+
+        remote = result.stdout.strip()
+
+        if not remote:
+            return None
+
+        owner = GitHubMDValidator._extract_owner(remote)
+        self._resolved_owner = owner
+
+        return owner
+
+    def _get_current_git_user(self) -> Optional[str]:
+        """Return the current git/GitHub user login, or None if unknown.
+
+        Resolution order prefers authenticated identity, then explicit Git
+        configuration, then the GitHub login embedded in a `users.noreply`
+        commit e-mail. Display names are never used because they are not
+        account logins.
+        """
+        if self._resolved_git_user is not None:
+            return self._resolved_git_user
+
+        login = self._run_read_only_query(["gh", "api", "user", "--jq", ".login"])
+
+        if not login:
+            login = self._run_read_only_query(["git", "config", "--get", "github.user"])
+
+        if not login:
+            email = self._run_read_only_query(["git", "config", "--get", "user.email"])
+            login = GitHubMDValidator._extract_noreply_login(email or "")
+
+        if login:
+            self._resolved_git_user = login
+
+        return login
+
+    def _run_read_only_query(self, command: List[str]) -> Optional[str]:
+        """Run a read-only git/gh query and return its trimmed standard output."""
+        try:
+            result = subprocess.run(
+                command if command[0] != "git" else ["git", "-C", str(self.repo_root), *command[1:]],
+                capture_output=True, text=True, timeout=10,
+            )
+        except (OSError, subprocess.SubprocessError):
+            return None
+
+        if result.returncode != 0:
+            return None
+
+        return result.stdout.strip() or None
+
+    @staticmethod
+    def _extract_noreply_login(email: str) -> Optional[str]:
+        """Extract the GitHub login from a `users.noreply.github.com` e-mail."""
+        match = re.match(r"(?:\d+\+)?([^@+]+)@users\.noreply\.github\.com$", email.strip(), re.IGNORECASE)
+
+        return match.group(1) if match else None
+
+    def _get_repository_owner_type(self) -> Optional[str]:
+        """Return the GitHub owner type for the repository, or None if unknown."""
+        if self._resolved_owner_type is not None:
+            return self._resolved_owner_type
+
+        owner = self._get_repository_owner()
+
+        if not owner:
+            return None
+
+        # Prefer the GitHub API (authenticated or unauthenticated) so the
+        # result reflects the real owner type rather than URL heuristics.
+        # Query the owner account endpoint: users/{owner} returns "type" of
+        # "User" or "Organization" (and 404s for unknown owners).
+        try:
+            api_result = subprocess.run(
+                ["gh", "api", f"users/{owner}", "--jq", ".type"],
+                capture_output=True, text=True, timeout=10,
+            )
+        except (OSError, subprocess.SubprocessError):
+            api_result = None
+
+        if api_result is not None and api_result.stdout.strip():
+            owner_type = api_result.stdout.strip()
+            self._resolved_owner_type = owner_type
+            return owner_type
+
+        try:
+            import urllib.request
+            import json as _json
+            with urllib.request.urlopen(
+                f"https://api.github.com/users/{owner}", timeout=10
+            ) as response:
+                data = _json.loads(response.read().decode("utf-8"))
+                owner_type = data.get("type")
+            self._resolved_owner_type = owner_type
+            return owner_type
+        except Exception:
+            return None
+
+    @staticmethod
+    def _extract_owner(remote_url: str) -> Optional[str]:
+        """Extract the owner segment from a git remote URL."""
+        remote_url = remote_url.strip()
+        if not remote_url:
+            return None
+
+        # SSH form: git@github.com:owner/repo.git
+        ssh_match = re.match(r"git@[^:]+:([^/]+)/", remote_url)
+        if ssh_match:
+            return ssh_match.group(1)
+
+        # HTTPS form: https://github.com/owner/repo.git
+        https_match = re.match(r"https?://[^/]+/([^/]+)/", remote_url)
+        if https_match:
+            return https_match.group(1)
+
+        return None
 
     def _check_placeholders_removed(self, content: str):
         """Check that no [[PLACEHOLDER]] or [[[PLACEHOLDER]]] remain."""
@@ -434,21 +604,37 @@ class GitHubMDValidator:
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: validate_github_md.py <repo_root> <target_file> [generated_file]")
+    args = sys.argv[1:]
+    force = os.environ.get("GITHUB_MD_FORCE_FIDELITY", "").strip().lower() in {"1", "true", "yes"}
+
+    if args and args[0] in ("--force", "--use-templates"):
+        force = True
+        args = args[1:]
+
+    if len(args) < 2:
+        print("Usage: validate_github_md.py [--force] <repo_root> <target_file> [generated_file]")
         print("  If generated_file not provided, reads from stdin")
-        sys.exit(1)
+        print("  --force: enforce template fidelity regardless of repository ownership")
+        sys.exit(2)
 
-    repo_root = Path(sys.argv[1])
-    target_file = sys.argv[2]
+    repo_root = Path(args[0])
+    target_file = args[1]
 
-    if len(sys.argv) > 3:
-        generated_content = Path(sys.argv[3]).read_text(encoding='utf-8')
+    if len(args) > 2:
+        generated_content = Path(args[2]).read_text(encoding='utf-8')
     else:
         generated_content = sys.stdin.read()
 
-    validator = GitHubMDValidator(repo_root)
+    validator = GitHubMDValidator(repo_root, force=force)
     issues = validator.validate(target_file, generated_content)
+
+    # Template fidelity is enforced only for personal repositories owned by the
+    # current git user, unless the templates were explicitly requested.
+    if not validator._should_enforce_fidelity():
+        print("ℹ️  Template fidelity enforcement skipped: repository is not a personal "
+              "repository owned by the current git user. Pass --force (or set "
+              "GITHUB_MD_FORCE_FIDELITY=1) when the templates are explicitly requested.")
+        sys.exit(3)
 
     # Output results
     errors = [i for i in issues if i.severity == ValidationSeverity.ERROR]

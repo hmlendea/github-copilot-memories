@@ -8,7 +8,7 @@ Strict fidelity applies to every `dotnet.yml` creation or revision and overrides
 
 1. Use an exact copy of `templates/dotnet.yml`; preserve the workflow `name`, triggers, job, steps, action versions, indentation, and whitespace layout.
 2. The template must remain exactly as written, with only these exceptions:
-   - `[[REPOSITORY_DOTNET_VERSION]]` is replaced with the actual .NET version used in the repository.
+   - `[[DOTNET_PROJECT_PATH]]` is replaced with the repository-relative path of the primary project file whose `TargetFramework` determines the .NET version; the `Determine the .NET version` step derives the version from that file.
    - The two MonoGame steps are included only when the project uses MonoGame.
 3. The MonoGame `Setup MGCB` and `Setup fonts` steps are gated by adjacent `# Only include this step if the project uses MonoGame. Otherwise, remove it.` comments. Include both steps together, or remove both steps **and** their directive comments, in their entirety. Never keep one step without the other.
 4. When MonoGame steps are included, place them immediately before `Restore dependencies`.
@@ -18,11 +18,11 @@ Strict fidelity applies to every `dotnet.yml` creation or revision and overrides
 
 | Placeholder | Replacement |
 |-------------|-------------|
-| `[[REPOSITORY_DOTNET_VERSION]]` | The actual .NET version used in the repository (for example `8.0` or `10.0`). |
+| `[[DOTNET_PROJECT_PATH]]` | The repository-relative path of the primary project file whose `TargetFramework` determines the .NET version (for example `NuciCraft.API/NuciCraft.API.csproj`). |
 
 ### Failure Behaviour
 
-- If the repository .NET version cannot be determined from evidence, cease generation and ask one concise clarification question. Never produce a partial workflow.
+- If the primary project path cannot be determined from evidence, cease generation and ask one concise clarification question. Never produce a partial workflow.
 
 ### Mandatory Validation Before Final Output
 
@@ -30,7 +30,7 @@ Strict fidelity applies to every `dotnet.yml` creation or revision and overrides
 - The workflow `name` is `.NET`.
 - Triggers are `push` and `pull_request` on `master`.
 - The `build` job runs on `ubuntu-latest` and performs restore, build, and test.
-- `actions/setup-dotnet@v5` is used with the evidenced `dotnet-version`.
+- `actions/setup-dotnet@v5` is used with `${{ steps.dotnet.outputs.version }}.x`, derived from `[[DOTNET_PROJECT_PATH]]` by the `Determine the .NET version` step.
 - The MonoGame steps are either both present (immediately before `Restore dependencies`) with their directive comments removed, or both absent.
 - Every fixed template line is present verbatim; no placeholder, guidance comment, or reformatted line remains.
 - No secret, credential, or personal datum is exposed.

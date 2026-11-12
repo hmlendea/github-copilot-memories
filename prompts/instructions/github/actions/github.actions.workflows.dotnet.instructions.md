@@ -7,7 +7,7 @@ Use the canonical template `skills/github-actions-workflow/templates/dotnet.yml`
 
 The template must remain exactly as written, with only these exceptions:
 
-- `dotnet-version` must be set to the actual .NET version used in the repository.
+- `[[DOTNET_PROJECT_PATH]]` must be replaced with the repository-relative path of the primary project file whose `TargetFramework` determines the .NET version; the `Determine the .NET version` step derives `dotnet-version` from that file.
 - If the project uses MonoGame, add the MonoGame setup steps exactly as shown in the template, immediately before `Restore dependencies`.
 
 Apply the complete `github-actions-workflow` skill in `skills/github-actions-workflow/SKILL.md` for the cross-file procedure, documentation synchronisation, fidelity contract, and validation.

@@ -34,7 +34,8 @@ TEMPLATE_MAP = {
     "bash.yml": ("bash.yml", "bash.yml", "bash.md"),
     "dotnet.yml": ("dotnet.yml", "dotnet.yml", "dotnet.md"),
     "android.yml": ("android.yml", "android.yml", "android.md"),
-    "security.yml": ("security.yml", "security.yml", "security.md"),
+    "security-dotnet.yml": ("security-dotnet.yml", "security.yml", "security-dotnet.md"),
+    "security-android.yml": ("security-android.yml", "security.yml", "security-android.md"),
     "nexus-mods-release.yml": ("nexus-mods-release.yml", "nexus-mods-release.yml", "nexus-mods-release.md"),
     "nuget-release.yml": ("nuget-release.yml", "nuget-release.yml", "nuget-release.md"),
     "github-release-dotnet.yml": ("github-release-dotnet.yml", "github-release.yml", "github-release-dotnet.md"),
@@ -49,6 +50,24 @@ GITHUB_RELEASE_VARIANTS = {
     "dotnet": "github-release-dotnet.yml",
     "nuget": "github-release-nuget.yml",
     "android": "github-release-android.yml",
+}
+
+# Shared-output variants keyed by their output file. The `dotnet` variant is the
+# default when no variant is supplied.
+SHARED_OUTPUT_VARIANTS = {
+    "github-release.yml": GITHUB_RELEASE_VARIANTS,
+    "security.yml": {
+        "dotnet": "security-dotnet.yml",
+        "android": "security-android.yml",
+    },
+}
+
+# Workflow targets that must not be created in a non-public repository, because
+# GitHub Code Scanning (CodeQL) requires a public repository or GitHub
+# Enterprise Cloud with GitHub Advanced Security.
+SECURITY_VISIBILITY_GATED_TARGETS = {
+    "security-dotnet.yml",
+    "security-android.yml",
 }
 
 
@@ -77,6 +96,8 @@ class GitHubActionsValidator:
         self._resolved_owner: Optional[str] = None
         self._resolved_owner_type: Optional[str] = None
         self._resolved_git_user: Optional[str] = None
+        self._resolved_repo_name: Optional[str] = None
+        self._resolved_visibility: Optional[str] = None
 
     def validate(self, target_key: str, generated_content: str) -> List[ValidationIssue]:
         """Validate generated workflow content against its template and rules.
@@ -87,14 +108,16 @@ class GitHubActionsValidator:
         """
         self.issues = []
 
-        if not self._should_enforce_fidelity():
-            return self.issues
-
         if target_key not in TEMPLATE_MAP:
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
                 f"Unknown workflow target: {target_key}",
             ))
+            return self.issues
+
+        self._check_security_visibility(target_key)
+
+        if not self._should_enforce_fidelity():
             return self.issues
 
         template_file, _output_file, rules_file = TEMPLATE_MAP[target_key]
@@ -130,6 +153,94 @@ class GitHubActionsValidator:
             self._check_fixed_lines_integrity(generated_content, template_content)
 
         return self.issues
+
+    def _check_security_visibility(self, target_key: str):
+        """Refuse security.yml when the repository is not public.
+
+        GitHub Code Scanning (CodeQL) requires a public repository, or GitHub
+        Enterprise Cloud with GitHub Advanced Security. A private or internal
+        repository, or one whose visibility cannot be confirmed, must not
+        receive a security.yml workflow.
+        """
+        if target_key not in SECURITY_VISIBILITY_GATED_TARGETS:
+            return
+
+        visibility = self._get_repository_visibility()
+
+        if visibility is None:
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Repository visibility could not be confirmed; refusing to add "
+                "security.yml because GitHub Code Scanning (CodeQL) requires a public "
+                "repository.",
+                context="Confirm visibility with `gh api repos/<owner>/<repo> --jq .visibility`",
+            ))
+            return
+
+        if visibility.strip().lower() != "public":
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                f"Repository visibility is '{visibility.strip()}'; refusing to add "
+                "security.yml because GitHub Code Scanning (CodeQL) requires a public "
+                "repository.",
+                context="Make the repository public, or use GitHub Enterprise Cloud with "
+                        "GitHub Advanced Security, before adding security.yml",
+            ))
+
+    def _get_repository_visibility(self) -> Optional[str]:
+        """Return the repository visibility (`public`, `private`, `internal`, or None)."""
+        if self._resolved_visibility is not None:
+            return self._resolved_visibility
+
+        owner = self._get_repository_owner()
+        name = self._get_repository_name()
+
+        if not owner or not name:
+            return None
+
+        visibility = self._run_read_only_query(
+            ["gh", "api", f"repos/{owner}/{name}", "--jq", ".visibility"]
+        )
+
+        if not visibility:
+            try:
+                import urllib.request
+                import json as _json
+                with urllib.request.urlopen(
+                    f"https://api.github.com/repos/{owner}/{name}", timeout=10
+                ) as response:
+                    data = _json.loads(response.read().decode("utf-8"))
+                visibility = data.get("visibility")
+            except Exception:
+                return None
+
+        if visibility:
+            self._resolved_visibility = visibility.strip()
+
+        return self._resolved_visibility
+
+    def _get_repository_name(self) -> Optional[str]:
+        """Return the repository name from the `origin` remote, or None."""
+        if self._resolved_repo_name is not None:
+            return self._resolved_repo_name
+
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(self.repo_root), "remote", "get-url", "origin"],
+                capture_output=True, text=True, timeout=10,
+            )
+        except (OSError, subprocess.SubprocessError):
+            return None
+
+        remote = result.stdout.strip()
+
+        if not remote:
+            return None
+
+        name = GitHubActionsValidator._extract_repository_name(remote)
+        self._resolved_repo_name = name
+
+        return name
 
     def _should_enforce_fidelity(self) -> bool:
         """Return True when the workflow must follow the templates verbatim.
@@ -270,6 +381,23 @@ class GitHubActionsValidator:
             return ssh_match.group(1)
 
         https_match = re.match(r"https?://[^/]+/([^/]+)/", remote_url)
+        if https_match:
+            return https_match.group(1)
+
+        return None
+
+    @staticmethod
+    def _extract_repository_name(remote_url: str) -> Optional[str]:
+        """Extract the repository name segment from a git remote URL."""
+        remote_url = remote_url.strip()
+        if not remote_url:
+            return None
+
+        ssh_match = re.match(r"git@[^:]+:[^/]+/([^/]+?)(?:\.git)?$", remote_url)
+        if ssh_match:
+            return ssh_match.group(1)
+
+        https_match = re.match(r"https?://[^/]+/[^/]+/([^/]+?)(?:\.git)?$", remote_url)
         if https_match:
             return https_match.group(1)
 
@@ -428,11 +556,13 @@ class GitHubActionsValidator:
 
 def resolve_target(argument: str, variant: Optional[str]) -> Optional[str]:
     """Resolve a CLI target argument to a template-map key."""
+    variants = SHARED_OUTPUT_VARIANTS.get(argument)
+
+    if variants is not None:
+        return variants.get(variant or "dotnet")
+
     if argument in TEMPLATE_MAP:
         return argument
-
-    if argument == "github-release.yml":
-        return GITHUB_RELEASE_VARIANTS.get(variant or "dotnet")
 
     return None
 
@@ -450,6 +580,7 @@ def main():
             if len(args) < 2:
                 print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android] "
                       "<repo_root> <workflow_file> [generated_file]")
+                print("  --variant selects the template variant for github-release.yml or security.yml")
                 sys.exit(2)
             variant = args[1]
             args = args[2:]
@@ -470,7 +601,7 @@ def main():
 
     if target_key is None:
         print(f"Unknown workflow file: {target_argument}")
-        print("Known targets: " + ", ".join(sorted(TEMPLATE_MAP)))
+        print("Known targets: " + ", ".join(sorted({*TEMPLATE_MAP, *SHARED_OUTPUT_VARIANTS})))
         sys.exit(2)
 
     if len(args) > 2:
@@ -480,12 +611,6 @@ def main():
 
     validator = GitHubActionsValidator(repo_root, force=force)
     issues = validator.validate(target_key, generated_content)
-
-    if not validator._should_enforce_fidelity():
-        print("i  Template fidelity enforcement skipped: repository is not a personal "
-              "repository owned by the current git user. Pass --force (or set "
-              "GITHUB_ACTIONS_FORCE_FIDELITY=1) when the templates are explicitly requested.")
-        sys.exit(3)
 
     errors = [i for i in issues if i.severity == ValidationSeverity.ERROR]
     warnings = [i for i in issues if i.severity == ValidationSeverity.WARNING]
@@ -497,6 +622,12 @@ def main():
             if issue.context:
                 print(f"    Context: {issue.context}")
         sys.exit(1)
+
+    if not validator._should_enforce_fidelity():
+        print("i  Template fidelity enforcement skipped: repository is not a personal "
+              "repository owned by the current git user. Pass --force (or set "
+              "GITHUB_ACTIONS_FORCE_FIDELITY=1) when the templates are explicitly requested.")
+        sys.exit(3)
 
     if warnings:
         print(f"VALIDATION PASSED WITH WARNINGS: {len(warnings)} warnings")

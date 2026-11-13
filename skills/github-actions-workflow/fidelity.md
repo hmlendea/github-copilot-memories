@@ -14,6 +14,18 @@ When generating or revising any GitHub Actions workflow from a template (`bash.y
 
 `github-release.yml` has three mutually exclusive variants — `github-release-dotnet.yml`, `github-release-nuget.yml`, and `github-release-android.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
 
+`security.yml` has two mutually exclusive variants — `security-dotnet.yml` and `security-android.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
+
+## Repository Visibility Gate (`security.yml`)
+
+Before creating or revising `security.yml` in either variant, confirm the repository is public:
+
+```bash
+gh api repos/<owner>/<repo> --jq .visibility   # must return "public"
+```
+
+GitHub Code Scanning requires a public repository, or GitHub Enterprise Cloud with GitHub Advanced Security. A `private` or `internal` repository, or one whose visibility cannot be confirmed, must be **refused**: add nothing, explain that CodeQL requires the repository to be public, and do not weaken the workflow to work around the restriction.
+
 ## Fixed Workflow Content Is Immutable
 
 **Every template line outside of `[[PLACEHOLDER]]` tokens and template guidance comments must be copied byte-for-byte into the output workflow.** In this context a workflow template is YAML, so "fixed content" means:

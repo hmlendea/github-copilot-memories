@@ -9,6 +9,7 @@ When creating or revising workflow files, use these canonical file names:
 
 - .NET Security workflows: `security.yml`
 - .NET workflows: `dotnet.yml`
+- Android Security workflows: `security.yml`
 - Android workflows: `android.yml`
 - Bash workflows: `bash.yml`
 - GitHub Release workflows: `github-release.yml`
@@ -18,6 +19,16 @@ When creating or revising workflow files, use these canonical file names:
 - Steam Workshop workflows: `steam-workshop-release.yml`
 
 Do not use alternative names for these workflow categories unless the user explicitly requests an exception.
+
+## Repository Visibility Requirement
+
+GitHub Code Scanning requires a public repository, or GitHub Enterprise Cloud with GitHub Advanced Security. Before creating or revising any `security.yml` workflow (either the .NET or the Android variant), confirm the repository visibility:
+
+```bash
+gh api repos/<owner>/<repo> --jq .visibility   # must return "public"
+```
+
+If the repository is `private` or `internal`, or its visibility cannot be confirmed, refuse the request and explain that CodeQL requires the repository to be public. Do not add a partial or weakened `security.yml`.
 
 ## Documentation Updates
 

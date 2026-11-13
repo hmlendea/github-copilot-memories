@@ -54,7 +54,8 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | Bash | `bash.yml` | `templates/bash.yml` | `rules/bash.md` |
 | .NET | `dotnet.yml` | `templates/dotnet.yml` | `rules/dotnet.md` |
 | Android | `android.yml` | `templates/android.yml` | `rules/android.md` |
-| .NET Security | `security.yml` | `templates/security.yml` | `rules/security.md` |
+| Android Security | `security.yml` | `templates/security-android.yml` | `rules/security-android.md` |
+| .NET Security | `security.yml` | `templates/security-dotnet.yml` | `rules/security-dotnet.md` |
 | Nexus Mods | `nexus-mods-release.yml` | `templates/nexus-mods-release.yml` | `rules/nexus-mods-release.md` |
 | NuGet.org release | `nuget-release.yml` | `templates/nuget-release.yml` | `rules/nuget-release.md` |
 | GitHub Release (compilable .NET project) | `github-release.yml` | `templates/github-release-dotnet.yml` | `rules/github-release-dotnet.md` |
@@ -63,7 +64,7 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | Steam Workshop | `steam-workshop-release.yml` | `templates/steam-workshop-release.yml` | `rules/steam-workshop-release.md` |
 | Release assets | `release-assets.yml` | — (no canonical template) | `rules/release-assets.md` |
 
-`github-release.yml` has three mutually exclusive templates; select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
+`github-release.yml` has three mutually exclusive templates; select exactly one from evidence. `security.yml` has two mutually exclusive templates (`security-dotnet.yml` and `security-android.yml`); select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
 
 ## Validation Pipeline (MANDATORY — NO SHORTCUTS)
 
@@ -76,6 +77,8 @@ Read all applicable files completely — no partial reads:
 
 ### Step 2: Evidence Collection
 Resolve every placeholder and conditional step from repository evidence: default branch, repository .NET version, MonoGame usage, primary project path and release asset glob, NuGet package ID, Nexus Mods file ID, Steam identifiers, and existing workflows. Preserve unrelated working-tree changes.
+
+**`security.yml` visibility gate (blocking):** before creating or revising `security.yml` (either the .NET or the Android variant), confirm the repository is public with `gh api repos/<owner>/<repo> --jq .visibility`. GitHub Code Scanning requires a public repository (or GitHub Enterprise Cloud with GitHub Advanced Security). If visibility is `private` or `internal`, or cannot be confirmed, **REFUSE** the request, explain that CodeQL requires the repository to be public, and create nothing — no partial workflow and no weakened permissions.
 
 ### Step 3: Template Processing (strict)
 Process the template top to bottom:
@@ -102,10 +105,12 @@ Run the workflow fidelity validator and the Markdown fidelity validator for ever
 | Guidance comments | Zero `# Only include ...` / `# Only if ...` directives remain |
 | Conditional steps | Only included with evidence; removed blocks removed entirely |
 | YAML validity | Workflow parses as valid YAML |
+| Repository visibility | For `security.yml`, the repository is confirmed `public` |
 | Documentation sync | README, SECURITY.md, and other documents updated and consistent |
 | Security | No secrets, credentials, personal data, or unsafe scripts |
 
 ## Forbidden Patterns (Auto-Reject)
+- ❌ Adding or revising `security.yml` in a private or internal repository
 - ❌ Reformatting, renaming, or rephrasing fixed workflow content
 - ❌ Reordering triggers, permissions, jobs, or steps
 - ❌ Changing pinned action versions or action identifiers
@@ -124,6 +129,7 @@ Run the workflow fidelity validator and the Markdown fidelity validator for ever
 4. **ONE** concise user clarification if a mandatory value remains indeterminate
 
 ## Failure Behaviour
+- Private or internal repository for a `security.yml` request → **REFUSE**, explain that CodeQL requires the repository to be public, and create nothing.
 - Unknown mandatory value after evidence collection → **STOP** and ask ONE clarification question.
 - ANY validation failure → **REGENERATE from Step 3**.
 - **NEVER** output a partial workflow or unsynchronised documentation.
@@ -146,6 +152,9 @@ cat generated_dotnet.yml | python3 skills/github-actions-workflow/validate_githu
 python3 skills/github-actions-workflow/validate_github_actions.py --variant nuget /path/to/repo github-release.yml generated_github_release.yml
 python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo github-release.yml generated_github_release.yml
 
+# Disambiguate the shared security.yml output
+python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo security.yml generated_security.yml
+
 # Enforce fidelity regardless of ownership (explicit template request)
 python3 skills/github-actions-workflow/validate_github_actions.py --force /path/to/repo security.yml generated_security.yml
 ```
@@ -159,6 +168,7 @@ Exit codes:
 ## Evidence Collection Checklist
 
 - [ ] Default branch name
+- [ ] Repository visibility (`gh api repos/<owner>/<repo> --jq .visibility`) — mandatory before any `security.yml` work
 - [ ] Repository .NET version (`TargetFramework`, `global.json`)
 - [ ] Repository Java (JDK) version (`sourceCompatibility`, `jvmTarget`)
 - [ ] MonoGame usage

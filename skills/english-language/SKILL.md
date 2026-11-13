@@ -36,6 +36,9 @@ allow [v: to grant permission or enable something] -> permit/facilitate
 allowed [adjective or verb: granted permission or enabled] -> permitted/given permission/enabled
 allowed [adjective or verb: granted permission or enabled] -> permitted/given permission/facilitated
 already -> previously
+always [adv: continuously or persistently, as in "always running"] -> constantly/perpetually
+always [adv: invariably, at all times, or continuously] -> invariably/constantly/perpetually
+always [adv: at all times or forever] -> perpetually
 amid [prep: in the middle of or during] -> during
 anger [n: a feeling of intense displeasure or hostility] -> fury/ire
 angry [adj: feeling intense displeasure or hostility] -> furious
@@ -91,6 +94,10 @@ belong [v: to be part of, be associated with, or be properly placed with somethi
 belonging [n: possession, association, or membership] -> possession/affiliation/membership
 beneath [prep: directly below or under something] -> below/subjacent to
 bespoke [adj: made or tailored for a particular person or purpose] -> customised/tailored
+better [adj: of higher quality or standard] -> superior
+better [adj: more advisable or desirable] -> preferable
+better [adj: improved in degree, as in "better performance"] -> enhanced/elevated/greater/improved
+better [adv: in a more effective manner, as in "performs better"] -> more effectively/more proficiently/more advantageously
 beware [v: to remain alert to danger or risk] -> exercise caution concerning/remain vigilant concerning
 big [adj: physically large in size] -> large
 big [adj: substantial or significant in amount or degree] -> substantial/considerable
@@ -113,6 +120,8 @@ breakout [n: a sudden emergence from prior constraint] -> emergence
 breakthrough [n: a significant advance or discovery] -> innovation/advance
 bright [adj: emitting or reflecting a strong light] -> luminous/radiant
 bright [adj: intelligent or quick to learn] -> astute/intelligent
+brittle [adj: hard but liable to break easily] -> fragile
+brittle [adj: hard but liable to shatter violently] -> fragile/frangible
 broad [adj: wide in scope or extent, as in "broader circulation of knowledge"] -> extensive
 broadly [adv: in a general or wide-ranging manner] -> generally/extensively
 broken [adj: no longer functional or in disrepair] -> damaged/defective
@@ -259,6 +268,9 @@ fill [v: to add contents to a container until it is full] -> supply/charge
 fill [v: to complete fields in a form or record] -> complete/populate
 fill [v: to occupy available space, capacity, or a position] -> occupy
 find [v: to locate or discover] -> discover/locate
+finding [n: something discovered through investigation] -> discovery
+finding [n: a conclusion reached by inquiry or examination] -> conclusion/determination
+findings [n: results or observations from an investigation or audit] -> discoveries/observations
 finish [v: to reach the end of a process or task] -> complete/conclude/finalise
 fixture [n: a permanently attached fitting or installation] -> fitting/installation
 flashlight -> torch
@@ -473,6 +485,8 @@ neighbourhood [n: an area surrounding a particular location] -> vicinity/distric
 neither [conj/determiner: not one nor the other] -> not either
 new [adj: recent or novel] -> novel/recent
 night vision [np: the capacity to see in reduced illumination] -> nocturnal vision
+no way [phr: expressing impossibility or denial] -> by no means/under no circumstances
+no way [phr: expressing refusal] -> under no circumstances
 nonetheless -> nevertheless
 nonetheless [adv: despite that fact] -> nevertheless
 noteworthy [adj: deserving attention or notice] -> notable/remarkable
@@ -628,6 +642,8 @@ shoot [v: to discharge a projectile weapon] -> fire/discharge
 shopkeeper -> merchant
 shore [n: land adjoining a sea, lake, or river] -> coast/littoral
 short [adj: brief in duration] -> brief
+shortage [n: an insufficient supply of something] -> scarcity
+shortage [n: a quantitative deficit] -> deficiency/insufficiency
 shortly [adv: in a brief time or soon] -> in a moment/soon
 shortly [adv: not long before or after a reference point, as in shortly before] -> briefly before/not long before
 should [modal verb: recommendation or advisability] -> is advisable to/is recommended to
@@ -719,6 +735,8 @@ thin [adj: of little depth or slender in form] -> slender/attenuated
 think [v: to consider or contemplate] -> consider/contemplate
 think about [v: to consider] -> consider
 thinking [n: the process or result of considering something] -> consideration/reflection
+thousands [n: an indefinite large number] -> myriad
+thousands of [phr: very many of something] -> myriad/multitudes of
 threat [n: an indication or source of potential harm or danger] -> menace/peril
 three times -> thrice
 thrive [v: to prosper or flourish] -> flourish/prosper

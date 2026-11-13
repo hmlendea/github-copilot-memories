@@ -59,10 +59,11 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | NuGet.org release | `nuget-release.yml` | `templates/nuget-release.yml` | `rules/nuget-release.md` |
 | GitHub Release (compilable .NET project) | `github-release.yml` | `templates/github-release-dotnet.yml` | `rules/github-release-dotnet.md` |
 | GitHub Release (NuGet package) | `github-release.yml` | `templates/github-release-nuget.yml` | `rules/github-release-nuget.md` |
+| GitHub Release (Android project) | `github-release.yml` | `templates/github-release-android.yml` | `rules/github-release-android.md` |
 | Steam Workshop | `steam-workshop-release.yml` | `templates/steam-workshop-release.yml` | `rules/steam-workshop-release.md` |
 | Release assets | `release-assets.yml` | — (no canonical template) | `rules/release-assets.md` |
 
-`github-release.yml` has two mutually exclusive templates; select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
+`github-release.yml` has three mutually exclusive templates; select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
 
 ## Validation Pipeline (MANDATORY — NO SHORTCUTS)
 
@@ -143,6 +144,7 @@ cat generated_dotnet.yml | python3 skills/github-actions-workflow/validate_githu
 
 # Disambiguate the shared github-release.yml output
 python3 skills/github-actions-workflow/validate_github_actions.py --variant nuget /path/to/repo github-release.yml generated_github_release.yml
+python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo github-release.yml generated_github_release.yml
 
 # Enforce fidelity regardless of ownership (explicit template request)
 python3 skills/github-actions-workflow/validate_github_actions.py --force /path/to/repo security.yml generated_security.yml

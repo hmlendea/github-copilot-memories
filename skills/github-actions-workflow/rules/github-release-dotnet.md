@@ -6,7 +6,7 @@ Strict fidelity applies to every `github-release.yml` creation or revision and o
 
 ### Generation Contract
 
-1. Use this template only for compilable .NET projects, that is, projects that build to release assets. Do not use it for NuGet packages. For a repository that hosts a NuGet package, use `rules/github-release-nuget.md` instead.
+1. Use this template only for compilable .NET projects, that is, projects that build to release assets. Do not use it for NuGet packages. For a repository that hosts a NuGet package, use `rules/github-release-nuget.md` instead. For an Android project that builds an APK release artefact through Gradle, use `rules/github-release-android.md` instead.
 2. Use an exact copy of `templates/github-release-dotnet.yml`; preserve the workflow `name`, triggers, permissions, job, steps, action versions, indentation, and whitespace layout.
 3. The template must remain exactly as written, with only the placeholders replaced.
 4. The `contents: write` permission is required to publish release assets and must remain.

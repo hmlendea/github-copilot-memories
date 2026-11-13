@@ -5,7 +5,7 @@ applyTo: ".github/workflows/github-release.yml"
 
 Use the canonical template `skills/github-actions-workflow/templates/github-release-dotnet.yml` for `.github/workflows/github-release.yml`, and its rules `skills/github-actions-workflow/rules/github-release-dotnet.md`.
 
-Use this template only for compilable .NET projects, that is, projects that build to release assets. Do not use it for NuGet packages. For a repository that hosts a NuGet package, use `prompts/instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` instead.
+Use this template only for compilable .NET projects, that is, projects that build to release assets. Do not use it for NuGet packages. For a repository that hosts a NuGet package, use `prompts/instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` instead. For an Android project that builds an APK release artefact through Gradle, use `prompts/instructions/github/actions/github.actions.workflows.android.github-release.instructions.md` instead.
 
 The template must remain exactly as written, with only the placeholders replaced:
 

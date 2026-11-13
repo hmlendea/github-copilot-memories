@@ -28,8 +28,8 @@ PLACEHOLDER_PATTERN = re.compile(r'\[\[[A-Z0-9_]+\]\]')
 REQUIRED_TOP_LEVEL_KEYS = ("name:", "on:", "jobs:")
 
 # Target key -> (template file, output file, rules file).
-# The target key doubles as the template selector when two templates share one
-# output file (github-release.yml).
+# The target key doubles as the template selector when several templates share
+# one output file (github-release.yml).
 TEMPLATE_MAP = {
     "bash.yml": ("bash.yml", "bash.yml", "bash.md"),
     "dotnet.yml": ("dotnet.yml", "dotnet.yml", "dotnet.md"),
@@ -39,6 +39,7 @@ TEMPLATE_MAP = {
     "nuget-release.yml": ("nuget-release.yml", "nuget-release.yml", "nuget-release.md"),
     "github-release-dotnet.yml": ("github-release-dotnet.yml", "github-release.yml", "github-release-dotnet.md"),
     "github-release-nuget.yml": ("github-release-nuget.yml", "github-release.yml", "github-release-nuget.md"),
+    "github-release-android.yml": ("github-release-android.yml", "github-release.yml", "github-release-android.md"),
     "steam-workshop-release.yml": ("steam-workshop-release.yml", "steam-workshop-release.yml", "steam-workshop-release.md"),
     "release-assets.yml": (None, "release-assets.yml", "release-assets.md"),
 }
@@ -47,6 +48,7 @@ TEMPLATE_MAP = {
 GITHUB_RELEASE_VARIANTS = {
     "dotnet": "github-release-dotnet.yml",
     "nuget": "github-release-nuget.yml",
+    "android": "github-release-android.yml",
 }
 
 
@@ -446,7 +448,7 @@ def main():
             args = args[1:]
         elif args[0] == "--variant":
             if len(args) < 2:
-                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget] "
+                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android] "
                       "<repo_root> <workflow_file> [generated_file]")
                 sys.exit(2)
             variant = args[1]
@@ -455,7 +457,7 @@ def main():
             break
 
     if len(args) < 2:
-        print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget] "
+        print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android] "
               "<repo_root> <workflow_file> [generated_file]")
         print("  workflow_file: an output file name (e.g. dotnet.yml, github-release.yml)")
         print("  If generated_file not provided, reads from stdin")

@@ -134,13 +134,14 @@ Paths:
 - `skills/`
 
 Responsibilities:
-- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
+- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, secrets management assessment, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
 - Bundle the canonical GitHub Actions workflow templates, rules, fidelity contract, and validator under `skills/github-actions-workflow/` so they load only for workflow tasks.
 - Bundle the shared test fixture values under `skills/test-values/` so they load only for test and test-data work, while the always-on `common.test-values.instructions.md` requires the skill for every language and technology.
 - Bundle the English and Romanian vocabulary preferences under `skills/english-language/` and `skills/romanian-language/` so they load only for language, terminology, and localisation work, while the `prompts/instructions/language/` instruction files require the corresponding skill and extend it to identifiers, literals, comments, messages, and test data inside code.
 - Bundle the MethodScript architecture and style rules, plus a reference for every built-in function and bindable event, under `skills/methodscript/` so they load only for CommandHelper script work, while the `prompts/instructions/methodscript/` instruction files require the skill.
+- Bundle the OWASP and NIST SP 800-57 secrets management assessment procedure under `skills/secrets-management/` so it loads only for secret handling, credential exposure, and rotation policy work.
 - Bundle the exhaustive repository-documentation procedure and the `docs/` structure contract under `skills/repository-documentation/` so deep reverse-engineering guidance loads only when repository documentation is requested.
 - When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 

@@ -39,7 +39,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
-- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, English language conventions, Romanian language conventions, test design, test values, validation, GitHub Actions workflow documentation, repository documentation generation, NuGet package updates, and session handoff.
+- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, English language conventions, Romanian language conventions, test design, test values, validation, MethodScript conventions with a reference for its 897 built-in functions and 104 bindable events, GitHub Actions workflow documentation, repository documentation generation, NuGet package updates, and session handoff.
 - Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation). The `github-actions-workflow` skill holds each canonical workflow template, its rules, the fidelity contract, and the validation script, and synchronises every affected Markdown document whenever a GitHub Actions workflow is created or revised. The `github-md-template-fidelity` skill holds each GitHub document template, its rules, the fidelity contract, and the validation script, so they load only for document generation tasks. The `repository-documentation` skill performs exhaustive evidence-based reverse engineering and generates the structured `docs/` knowledge base when repository documentation is requested.
 
 ## 🚀 Usage
@@ -157,7 +157,7 @@ Language dictionaries use semantic discovery rather than automatic path activati
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
-Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; `repository-documentation` supplies the exhaustive reverse-engineering procedure and `docs/` structure contract; the Token Saver agent handles execution with restricted tools.
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, sessions, and tool sets; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; `repository-documentation` supplies the exhaustive reverse-engineering procedure and `docs/` structure contract; `methodscript` supplies the MethodScript architecture and style rules together with a reference for every built-in function and bindable event; the Token Saver agent handles execution with restricted tools.
 
 For example:
 
@@ -200,12 +200,12 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/github/` | GitHub Actions workflow naming and documentation rules |
 | `prompts/instructions/language/` | British English and Romanian terminology preferences; require the `english-language` and `romanian-language` skills |
 | `prompts/instructions/markdown/` | Markdown structure and formatting conventions |
-| `prompts/instructions/methodscript/` | MethodScript coding and style conventions |
+| `prompts/instructions/methodscript/` | MethodScript coding and style conventions; require the `methodscript` skill |
 | `prompts/instructions/polyglot/` | PolyGlot dictionary conventions |
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, English and Romanian language conventions, test values, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, NuGet package updates, and token-efficient workflows |
+| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, structured data, English and Romanian language conventions, MethodScript conventions and API references, test values, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, NuGet package updates, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🏗️ Architecture

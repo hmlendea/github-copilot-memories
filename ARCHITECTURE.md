@@ -134,7 +134,7 @@ Paths:
 - `skills/`
 
 Responsibilities:
-- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, secrets management assessment, secure code review, pipeline security assessment, supply chain security assessment, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
+- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, structured data, secrets management assessment, secure code review, prompt injection assessment, pipeline security assessment, supply chain security assessment, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
 - Bundle the canonical GitHub Actions workflow templates, rules, fidelity contract, and validator under `skills/github-actions-workflow/` so they load only for workflow tasks.
@@ -143,6 +143,7 @@ Responsibilities:
 - Bundle the MethodScript architecture and style rules, plus a reference for every built-in function and bindable event, under `skills/methodscript/` so they load only for CommandHelper script work, while the `prompts/instructions/methodscript/` instruction files require the skill.
 - Bundle the OWASP and NIST SP 800-57 secrets management assessment procedure under `skills/secrets-management/` so it loads only for secret handling, credential exposure, and rotation policy work.
 - Bundle the OWASP ASVS 4.0.3 and CWE Top 25 secure code review procedure under `skills/secure-code-review/` so it loads only for security-focused reviews of code, pull requests, diffs, and modules.
+- Bundle the OWASP LLM01:2025 and MITRE ATLAS AML.T0051 prompt injection assessment procedure under `skills/prompt-injection/` so it loads only for LLM interaction surface, injection vector, and defence review work.
 - Bundle the SLSA v1.0 build level and OWASP Top 10 CI/CD Security Risks pipeline assessment procedure under `skills/pipeline-security/` so it loads only for CI/CD configuration, build provenance, and supply chain security work.
 - Bundle the dependency inventory, SBOM and VEX validation, licence compliance, typosquatting, and CVSS 4.0, EPSS, SSVC 2.1, and CISA KEV triage procedure under `skills/supply-chain-security/` so it loads only for dependency, SBOM, VEX, licence, and CVE remediation work.
 - Bundle the exhaustive repository-documentation procedure and the `docs/` structure contract under `skills/repository-documentation/` so deep reverse-engineering guidance loads only when repository documentation is requested.

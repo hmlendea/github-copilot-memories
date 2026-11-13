@@ -134,7 +134,7 @@ Paths:
 - `skills/`
 
 Responsibilities:
-- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, phase separation for non-trivial work, structured data, secrets management assessment, secure code review, prompt injection assessment, agent security assessment, API security assessment, pipeline security assessment, supply chain security assessment, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
+- Provide on-demand procedures for context, baseline checks, failure triage, review, instruction audits, investigation, phase separation for non-trivial work, data pre-aggregation, structured data, secrets management assessment, secure code review, prompt injection assessment, agent security assessment, API security assessment, pipeline security assessment, supply chain security assessment, MethodScript conventions and API references, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, and token-efficient workflows.
 - Support task-based discovery through concise descriptions.
 - Bundle the GitHub document templates, rules, fidelity contract, and validator under `skills/github-md-template-fidelity/` so they load only for document generation tasks.
 - Bundle the canonical GitHub Actions workflow templates, rules, fidelity contract, and validator under `skills/github-actions-workflow/` so they load only for workflow tasks.
@@ -149,6 +149,7 @@ Responsibilities:
 - Bundle the SLSA v1.0 build level and OWASP Top 10 CI/CD Security Risks pipeline assessment procedure under `skills/pipeline-security/` so it loads only for CI/CD configuration, build provenance, and supply chain security work.
 - Bundle the dependency inventory, SBOM and VEX validation, licence compliance, typosquatting, and CVSS 4.0, EPSS, SSVC 2.1, and CISA KEV triage procedure under `skills/supply-chain-security/` so it loads only for dependency, SBOM, VEX, licence, and CVE remediation work.
 - Bundle the three-phase investigation, planning, and implementation workflow under `skills/research-plan-implement/` so it loads only for non-trivial capabilities and changes, and so each phase consumes a durable `PLAN.md` artefact in a fresh session rather than accumulated transcript context.
+- Bundle the data pre-aggregation procedure under `skills/pre-aggregate-data/` so it loads only when an assignment necessitates API, repository, or command data, and so trimmed results are retrieved into `.work` files during a preliminary step rather than round-tripping unprocessed payloads through the model.
 - Bundle the exhaustive repository-documentation procedure and the `docs/` structure contract under `skills/repository-documentation/` so deep reverse-engineering guidance loads only when repository documentation is requested.
 - When skills modify code, dependencies, or project structure, they must trigger documentation updates for relevant repository files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files).
 

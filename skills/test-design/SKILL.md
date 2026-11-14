@@ -8,7 +8,8 @@ Design tests from observable contracts, domain invariants, changed lines, and re
 - Cover success and failure, guards, state transitions, exceptions, fallbacks, side effects, retries, cancellation, timeouts, stale state, repeated calls, and dependency failures when relevant.
 - Boundaries: immediately below, at, and above each representable numeric, temporal, length, or range limit.
 - Inputs: relevant absent/null, empty, cardinality, sign, extrema, overflow, duplicate, order, whitespace, case, Unicode, malformed, and large-value classes.
-- Defect correction: regression test fails before correction and passes after it; exercise nearest observable boundary.
+- Defect correction: regression test fails prior to correction and passes afterwards; exercise nearest observable boundary.
+- Failure-side assertions: for each consequential effect, assert that a failure does not produce it, not merely that the success path works. A test proving the ordinary path completes is insufficient when an outage, retry, or restart could produce a later, unrequested effect.
 - Assert complete results: values, errors, state, persistence, events, dependency calls, and prohibited-side-effect absence. Do not assert internals or trivial accessors.
 - Parameterise identical setup, control flow, and expectations; separate materially different cases. Every case must detect a distinct plausible defect.
 - Aim for complete affected branch coverage; inspect omissions and justify any intentionally untested reachable branch.

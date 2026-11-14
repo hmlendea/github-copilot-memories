@@ -1,5 +1,6 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
+[![Build Status](https://github.com/hmlendea/github-copilot-memories/actions/workflows/verification.yml/badge.svg)](https://github.com/hmlendea/github-copilot-memories/actions/workflows/verification.yml)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
 
 # GitHub Copilot Memories
 
@@ -17,6 +18,12 @@ A curated collection of instruction files and skills that encode reusable coding
 - [Configuration](#configuration)
 - [Integrations](#integrations)
 - [Privacy and Data](#privacy-and-data)
+- [Development](#development)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Test](#test)
+  - [Continuous Integration](#continuous-integration)
+- [GitHub Actions](#github-actions)
 - [Project Structure](#project-structure)
   - [Directories](#directories)
 - [Architecture](#architecture)
@@ -38,8 +45,12 @@ A curated collection of instruction files and skills that encode reusable coding
 - Reviews REST, GraphQL, and gRPC APIs against the OWASP API Security Top 10:2023, covering object-level and function-level authorisation, authentication, property-level authorisation, resource consumption, sensitive business processes, server-side request forgery, security misconfiguration, inventory management, and unsafe consumption of APIs, and supplies C# and .NET patterns for ASP.NET Core, HotChocolate, and gRPC.
 - Assesses LLM-integrated applications for prompt injection against OWASP LLM01:2025 and MITRE ATLAS AML.T0051, mapping the model interaction surface, enumerating direct and indirect injection vectors, and evaluating layered defences.
 - Reviews AI agent architectures against OWASP Agentic AI threats and NIST AI RMF 1.0, covering permission models, least-privilege design, human-in-the-loop gates, blast radius containment, audit trails, rollback capability, and multi-agent trust boundaries.
+- Reviews and repairs user interfaces against a ten-category rule set ordered by user impact, covering accessibility, touch and interaction, performance, style selection, layout and responsiveness, typography and colour, animation, forms and feedback, navigation, and charts, with a native and mobile pre-delivery checklist and a Playwright-driven audit that reports evidence-ranked findings and fails a pipeline on high-severity defects.
 - Maintains British English and Romanian language preferences through contextual terminology rules supplied by the on-demand `english-language` and `romanian-language` skills, applied to prose, documentation, and all human-readable text in code, including identifiers, string literals, comments, messages, and test data.
-- Defines systematic test design and edge-case coverage requirements, supplies consistent test values through the on-demand `test-values` skill, and provides an optional coding-pattern memory index.
+- Defines systematic test design and edge-case coverage requirements, including failure-side assertions that a failure does not produce a later, unrequested effect, supplies consistent test values through the on-demand `test-values` skill, and provides an optional coding-pattern memory index.
+- Observes a pull request until it is genuinely mergeable through the `pr-babysit` skill, verifying each finding prior to correction and resolving a review thread only after the code addresses it.
+- Verifies a release after merge, publication, or deployment through the `release-verification` skill, confirming the delivered artefact per surface, classifying findings, and reporting partial verification with its coverage gap rather than claiming unverified health.
+- Verifies its own content in continuous integration by executing the instruction-gate hook tests, validating every governed GitHub document against its template, and parsing every workflow file.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
@@ -162,7 +173,7 @@ Language dictionaries use semantic discovery rather than automatic path activati
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
-Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, reasoning effort, sessions, and tool sets, gates model and effort escalation behind a stated condition, attributes spend by tokens and by cost, and judges savings by cost per completed task; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; `repository-documentation` supplies the exhaustive reverse-engineering procedure and `docs/` structure contract; `secrets-management` supplies the OWASP and NIST SP 800-57 secrets management assessment procedure; `secure-code-review` supplies the OWASP ASVS 4.0.3 and CWE Top 25 secure code review procedure; `prompt-injection` supplies the OWASP LLM01:2025 and MITRE ATLAS AML.T0051 prompt injection assessment procedure; `agent-security` supplies the OWASP Agentic AI and NIST AI RMF 1.0 agent architecture security assessment procedure; `api-security` supplies the OWASP API Security Top 10:2023 API review procedure with a per-category checklist and a C# and .NET supplement; `pipeline-security` supplies the SLSA v1.0 build level and OWASP Top 10 CI/CD Security Risks pipeline assessment procedure; `supply-chain-security` supplies the dependency inventory, SBOM and VEX validation, licence compliance, and multi-signal CVE triage procedure; `research-plan-implement` separates non-trivial work into an investigation phase, a planning phase, and an implementation phase, each in a fresh session, and hands off between them with `session-handoff`; `pre-aggregate-data` moves data collection out of the token-billed loop by retrieving trimmed results into `.work` files during a preliminary step; `methodscript` supplies the MethodScript architecture and style rules together with a reference for every built-in function and bindable event; the Token Saver agent handles execution with restricted tools.
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, reasoning effort, sessions, and tool sets, gates model and effort escalation behind a stated condition, attributes spend by tokens and by cost, and judges savings by cost per completed task; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; `repository-documentation` supplies the exhaustive reverse-engineering procedure and `docs/` structure contract; `secrets-management` supplies the OWASP and NIST SP 800-57 secrets management assessment procedure; `secure-code-review` supplies the OWASP ASVS 4.0.3 and CWE Top 25 secure code review procedure; `prompt-injection` supplies the OWASP LLM01:2025 and MITRE ATLAS AML.T0051 prompt injection assessment procedure; `agent-security` supplies the OWASP Agentic AI and NIST AI RMF 1.0 agent architecture security assessment procedure; `api-security` supplies the OWASP API Security Top 10:2023 API review procedure with a per-category checklist and a C# and .NET supplement; `pipeline-security` supplies the SLSA v1.0 build level and OWASP Top 10 CI/CD Security Risks pipeline assessment procedure; `supply-chain-security` supplies the dependency inventory, SBOM and VEX validation, licence compliance, and multi-signal CVE triage procedure; `ui-design-review` supplies the prioritised interface rule set, the native and mobile pre-delivery checklist, and the browser-driven audit script; `research-plan-implement` separates non-trivial work into an investigation phase, a planning phase, and an implementation phase, each in a fresh session, and hands off between them with `session-handoff`; `pr-babysit` observes a pull request or review cycle to merge readiness, verifying each finding before correction and resolving a review thread only after the code addresses it; `release-verification` verifies the delivered artefact per surface after a release, publication, or deployment, classifies findings, and reports partial verification with its coverage gap; `pre-aggregate-data` moves data collection out of the token-billed loop by retrieving trimmed results into `.work` files during a preliminary step; `methodscript` supplies the MethodScript architecture and style rules together with a reference for every built-in function and bindable event; the Token Saver agent handles execution with restricted tools.
 
 For example:
 
@@ -189,6 +200,52 @@ GitHub Copilot Memories does not collect, process, transmit, or persist user dat
 
 For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
 
+## 🛠️ Development
+
+### Requirements
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/), required by the instruction-gate hook tests
+- [Python 3](https://www.python.org/downloads/), required by the template validators
+- [PyYAML](https://pypi.org/project/PyYAML/), required only to parse workflow files during verification
+
+### Setup
+
+Clone the repository and create the user-profile links described under [Installation](#installation). The instruction content requires no dependency installation; only the verification commands below need the listed requirements.
+
+### Test
+
+Execute the instruction-gate hook tests:
+
+```bash
+node --test hooks/
+```
+
+Validate every governed GitHub document against its template:
+
+```bash
+for document in README.md ARCHITECTURE.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md PRIVACY.md ROADMAP.md; do
+  python3 skills/github-md-template-fidelity/validate_github_md.py --force . "$document" "$document"
+done
+```
+
+Validate the hook and validator scripts for syntax errors:
+
+```bash
+node --check hooks/litellm-instruction-gate.cjs
+python3 -m py_compile skills/github-md-template-fidelity/validate_github_md.py skills/github-actions-workflow/validate_github_actions.py
+```
+
+### Continuous Integration
+
+The [Verification workflow](.github/workflows/verification.yml) executes these checks, and parses every workflow file, on every push and pull request targeting `master`. Reproduce it locally with the commands above before opening a pull request.
+
+## ⚙️ GitHub Actions
+
+| Workflow | Purpose | What it does |
+|----------|---------|--------------|
+| [Verification](https://github.com/hmlendea/github-copilot-memories/blob/master/.github/workflows/verification.yml) | Continuous verification | Executes the instruction-gate hook tests, checks the hook and validator scripts for syntax errors, validates every governed GitHub document against its template, and parses every workflow file to confirm it remains valid YAML with a name and job definitions |
+
 ## 🗂️ Project Structure
 
 The tracked project is content-focused. Instruction families are separated by language and concern so each file can define a narrow activation contract.
@@ -210,7 +267,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, phased investigation and implementation, structured data, English and Romanian language conventions, secrets management assessment, secure code review, prompt injection assessment, agent security assessment, API security assessment, pipeline security assessment, supply chain security assessment, MethodScript conventions and API references, test values, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, NuGet package updates, data pre-aggregation, and token-efficient workflows |
+| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, phased investigation and implementation, structured data, English and Romanian language conventions, secrets management assessment, secure code review, prompt injection assessment, agent security assessment, API security assessment, pipeline security assessment, supply chain security assessment, user interface design review, MethodScript conventions and API references, test values, validation, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, NuGet package updates, data pre-aggregation, and token-efficient workflows |
 | `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
 
 ## 🏗️ Architecture

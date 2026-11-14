@@ -60,6 +60,12 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 ### Personal Names: Male / First / Greek
 - `Arkantos`
 
+### Personal Names: Male / First / Icelandic
+- `Gunnar`
+
+### Personal Names: Male / Full / Icelandic
+- `Gunnar Gunnarsson`
+
 ### Personal Names: Female / Full / Romanian
 - `Bianca Găletaru`
 - `Elodia Ghinescu`
@@ -83,6 +89,9 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Nucaru`
 - `Nucescu`
 - `Pintilie`
+
+### Personal Names: Surnames - Icelandic
+- `Gunnarsson`
 
 ### Personal Names: Surnames - Others
 - `Blitz`
@@ -215,6 +224,13 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 ### States / Regions
 - `Talmeria`
 
+### Time Zones (Valid)
+- `Europe/Bucharest`
+
+### Time Zones (Invalid)
+- `GNCT`
+- `Nucilandia/Solara`
+
 ### Tunnels - English
 - `Dacian Tunnel`
 
@@ -233,6 +249,9 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `test.url.com`
 - `test.url.md`
 - `test.url.ro`
+
+### File Names
+- `nucilandia.md`
 
 ## E-mails
 - `elodia@yahoo.ro`
@@ -291,6 +310,7 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Solus Mall`
 
 ### Movie Names
+- `The Hobbit`
 - `The Lord of the Rings`
 
 ### Phrases: Romanian

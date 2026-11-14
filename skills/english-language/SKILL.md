@@ -245,7 +245,7 @@ exchange networks [np: systems of trade and transfer] -> commercial networks/mer
 facing [adjective or participle: positioned opposite, as in "facing one another"] -> opposite/confronting
 fail [v: to be unsuccessful or prove inadequate] -> be unsuccessful/prove inadequate
 fair [adj: just or equitable] -> equitable/just
-far better [phr: substantially improved in quality or outcome] -> substantially better/considerably better
+far better [phr: substantially improved in quality, outcome, or effectiveness] -> considerably superior/substantially superior/considerably more effective
 far bigger [phr: substantially greater in size or scale] -> substantially larger/considerably larger
 far larger [phr: substantially greater in size or scale] -> substantially larger/considerably larger
 far later [phr: at a substantially more delayed time] -> substantially later/considerably later

@@ -1,5 +1,7 @@
 */
 !.github/
+!.github/**
+.work/**
 !.gitignore
 !agents/
 !codex/

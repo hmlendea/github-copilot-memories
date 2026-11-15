@@ -41,6 +41,7 @@ TEMPLATE_MAP = {
     "github-release-dotnet.yml": ("github-release-dotnet.yml", "github-release.yml", "github-release-dotnet.md"),
     "github-release-nuget.yml": ("github-release-nuget.yml", "github-release.yml", "github-release-nuget.md"),
     "github-release-android.yml": ("github-release-android.yml", "github-release.yml", "github-release-android.md"),
+    "github-release-electron.yml": ("github-release-electron.yml", "github-release.yml", "github-release-electron.md"),
     "steam-workshop-release.yml": ("steam-workshop-release.yml", "steam-workshop-release.yml", "steam-workshop-release.md"),
     "release-assets.yml": (None, "release-assets.yml", "release-assets.md"),
 }
@@ -50,6 +51,7 @@ GITHUB_RELEASE_VARIANTS = {
     "dotnet": "github-release-dotnet.yml",
     "nuget": "github-release-nuget.yml",
     "android": "github-release-android.yml",
+    "electron": "github-release-electron.yml",
 }
 
 # Shared-output variants keyed by their output file. The `dotnet` variant is the
@@ -578,7 +580,7 @@ def main():
             args = args[1:]
         elif args[0] == "--variant":
             if len(args) < 2:
-                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android] "
+                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android|electron] "
                       "<repo_root> <workflow_file> [generated_file]")
                 print("  --variant selects the template variant for github-release.yml or security.yml")
                 sys.exit(2)

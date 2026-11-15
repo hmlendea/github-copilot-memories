@@ -12,7 +12,7 @@ When the user explicitly requests the templates, this rule applies regardless of
 
 When generating or revising any GitHub Actions workflow from a template (`bash.yml`, `dotnet.yml`, `android.yml`, `security.yml`, `nexus-mods-release.yml`, `nuget-release.yml`, `github-release.yml`, `steam-workshop-release.yml`), the following rule is absolute.
 
-`github-release.yml` has three mutually exclusive variants — `github-release-dotnet.yml`, `github-release-nuget.yml`, and `github-release-android.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
+`github-release.yml` has four mutually exclusive variants — `github-release-dotnet.yml`, `github-release-nuget.yml`, `github-release-android.yml`, and `github-release-electron.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
 
 `security.yml` has two mutually exclusive variants — `security-dotnet.yml` and `security-android.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
 

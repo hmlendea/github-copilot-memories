@@ -4,6 +4,9 @@ This is the `CONTRIBUTING.md` template that must be used.
 
 ---
 
+<!-- Only if `.github/FUNDING.yml` exists. Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml` as described in the rules. -->
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)]([[FUNDING_URL]])
+
 # Contributing to [[PROJECT_TITLE]]
 
 This document covers the guidelines and processes for contributing to this project, including how to report issues, suggest enhancements, submit code changes, and follow project standards.
@@ -102,6 +105,11 @@ This project follows the [[CODE_OF_CONDUCT_DOCUMENT_LINK]].
 
 <!-- Only if `SECURITY.md` exists. -->
 Report security vulnerabilities per the [[SECURITY_DOCUMENT_LINK]].
+
+<!-- Only if `.github/FUNDING.yml` exists. Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml` as described in the rules. -->
+## 💝 Donations
+
+This project is developed and maintained during spare time. If you find it useful, consider [donating]([[FUNDING_URL]]) and giving it a star ⭐️ on GitHub!
 
 ## 📄 License
 

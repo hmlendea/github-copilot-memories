@@ -230,6 +230,7 @@ For each target file type, verify:
 - [ ] Test commands
 - [ ] Lint/format commands
 - [ ] Default branch
+- [ ] .github/FUNDING.yml
 
 **CODE_OF_CONDUCT.md:**
 - [ ] Verified reporting contact or channel

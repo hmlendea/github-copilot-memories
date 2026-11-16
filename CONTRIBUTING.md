@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
+
 # Contributing to GitHub Copilot Memories
 
 This document covers the guidelines and processes for contributing to this project, including how to report issues, suggest enhancements, submit code changes, and follow project standards.
@@ -15,6 +17,7 @@ This document covers the guidelines and processes for contributing to this proje
 - [Documentation](#-documentation)
 - [Code of Conduct](#-code-of-conduct)
 - [Security Policy](#-security-policy)
+- [Donations](#-donations)
 - [License](#-license)
 
 ## 🤝 Contributing
@@ -80,6 +83,10 @@ This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 ## 🔒 Security
 
 Report security vulnerabilities per the [Security Policy](./SECURITY.md).
+
+## 💝 Donations
+
+This project is developed and maintained in my spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/funding) or giving it a ⭐️ on GitHub!
 
 ## 📄 License
 

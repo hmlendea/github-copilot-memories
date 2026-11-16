@@ -14,11 +14,11 @@ When generating or revising any GitHub Actions workflow from a template (`bash.y
 
 `github-release.yml` has four mutually exclusive variants — `github-release-dotnet.yml`, `github-release-nuget.yml`, `github-release-android.yml`, and `github-release-electron.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
 
-`security.yml` has two mutually exclusive variants — `security-dotnet.yml` and `security-android.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
+`security.yml` has three mutually exclusive variants — `security-dotnet.yml`, `security-android.yml`, and `security-python.yml` — selected from evidence; all other rules in this contract apply equally to each variant.
 
 ## Repository Visibility Gate (`security.yml`)
 
-Before creating or revising `security.yml` in either variant, confirm the repository is public:
+Before creating or revising `security.yml` in any variant, confirm the repository is public:
 
 ```bash
 gh api repos/<owner>/<repo> --jq .visibility   # must return "public"

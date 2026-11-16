@@ -5,7 +5,7 @@ applyTo: ".github/workflows/security.yml"
 
 Use the canonical template `skills/github-actions-workflow/templates/security-android.yml` for `security.yml`, and its rules `skills/github-actions-workflow/rules/security-android.md`.
 
-Use this template only for Android projects that build an APK through Gradle. For a .NET repository, use `prompts/instructions/github/actions/github.actions.workflows.dotnet.security.instructions.md` instead.
+Use this template only for Android projects that build an APK through Gradle. For a .NET repository, use `prompts/instructions/github/actions/github.actions.workflows.dotnet.security.instructions.md` instead. For a Python repository, use `prompts/instructions/github/actions/github.actions.workflows.python.security.instructions.md` instead.
 
 ## Repository Visibility Precondition (Blocking)
 

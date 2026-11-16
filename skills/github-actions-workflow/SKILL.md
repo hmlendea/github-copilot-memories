@@ -1,6 +1,6 @@
 ---
 name: github-actions-workflow
-description: Use when creating or revising any GitHub Actions workflow, including bash, .NET, Android, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result.
+description: Use when creating or revising any GitHub Actions workflow, including bash, .NET, Android, Python, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result.
 ---
 
 # GitHub Actions Workflow
@@ -56,6 +56,7 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | Android | `android.yml` | `templates/android.yml` | `rules/android.md` |
 | Android Security | `security.yml` | `templates/security-android.yml` | `rules/security-android.md` |
 | .NET Security | `security.yml` | `templates/security-dotnet.yml` | `rules/security-dotnet.md` |
+| Python Security | `security.yml` | `templates/security-python.yml` | `rules/security-python.md` |
 | Nexus Mods | `nexus-mods-release.yml` | `templates/nexus-mods-release.yml` | `rules/nexus-mods-release.md` |
 | NuGet.org release | `nuget-release.yml` | `templates/nuget-release.yml` | `rules/nuget-release.md` |
 | GitHub Release (compilable .NET project) | `github-release.yml` | `templates/github-release-dotnet.yml` | `rules/github-release-dotnet.md` |
@@ -65,7 +66,7 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | Steam Workshop | `steam-workshop-release.yml` | `templates/steam-workshop-release.yml` | `rules/steam-workshop-release.md` |
 | Release assets | `release-assets.yml` | — (no canonical template) | `rules/release-assets.md` |
 
-`github-release.yml` has four mutually exclusive templates; select exactly one from evidence. `security.yml` has two mutually exclusive templates (`security-dotnet.yml` and `security-android.yml`); select exactly one from evidence. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
+`github-release.yml` has four mutually exclusive templates; select exactly one from evidence. `security.yml` has three mutually exclusive templates (`security-dotnet.yml`, `security-android.yml`, and `security-python.yml`); select exactly one from evidence. Use `security-python.yml` for Python repositories, `security-dotnet.yml` for .NET repositories, and `security-android.yml` for Android projects that build an APK through Gradle. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
 
 ## Validation Pipeline (MANDATORY — NO SHORTCUTS)
 
@@ -79,7 +80,7 @@ Read all applicable files completely — no partial reads:
 ### Step 2: Evidence Collection
 Resolve every placeholder and conditional step from repository evidence: default branch, repository .NET version, MonoGame usage, primary project path and release asset glob, NuGet package ID, Nexus Mods file ID, Steam identifiers, and existing workflows. Preserve unrelated working-tree changes.
 
-**`security.yml` visibility gate (blocking):** before creating or revising `security.yml` (either the .NET or the Android variant), confirm the repository is public with `gh api repos/<owner>/<repo> --jq .visibility`. GitHub Code Scanning requires a public repository (or GitHub Enterprise Cloud with GitHub Advanced Security). If visibility is `private` or `internal`, or cannot be confirmed, **REFUSE** the request, explain that CodeQL requires the repository to be public, and create nothing — no partial workflow and no weakened permissions.
+**`security.yml` visibility gate (blocking):** before creating or revising `security.yml` (any of the .NET, Android, or Python variants), confirm the repository is public with `gh api repos/<owner>/<repo> --jq .visibility`. GitHub Code Scanning requires a public repository (or GitHub Enterprise Cloud with GitHub Advanced Security). If visibility is `private` or `internal`, or cannot be confirmed, **REFUSE** the request, explain that CodeQL requires the repository to be public, and create nothing — no partial workflow and no weakened permissions.
 
 ### Step 3: Template Processing (strict)
 Process the template top to bottom:
@@ -156,6 +157,7 @@ python3 skills/github-actions-workflow/validate_github_actions.py --variant elec
 
 # Disambiguate the shared security.yml output
 python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo security.yml generated_security.yml
+python3 skills/github-actions-workflow/validate_github_actions.py --variant python /path/to/repo security.yml generated_security.yml
 
 # Enforce fidelity regardless of ownership (explicit template request)
 python3 skills/github-actions-workflow/validate_github_actions.py --force /path/to/repo security.yml generated_security.yml
@@ -173,6 +175,7 @@ Exit codes:
 - [ ] Repository visibility (`gh api repos/<owner>/<repo> --jq .visibility`) — mandatory before any `security.yml` work
 - [ ] Repository .NET version (`TargetFramework`, `global.json`)
 - [ ] Repository Java (JDK) version (`sourceCompatibility`, `jvmTarget`)
+- [ ] Repository Python version (`python_requires`, `.python-version`, `FROM python:` tag) and dependency manifest path (`requirements.txt`, `pyproject.toml`)
 - [ ] MonoGame usage
 - [ ] Primary project path and release asset glob
 - [ ] NuGet package ID and `NUGET_USER` secret

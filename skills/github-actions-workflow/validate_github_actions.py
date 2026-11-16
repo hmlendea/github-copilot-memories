@@ -36,6 +36,7 @@ TEMPLATE_MAP = {
     "android.yml": ("android.yml", "android.yml", "android.md"),
     "security-dotnet.yml": ("security-dotnet.yml", "security.yml", "security-dotnet.md"),
     "security-android.yml": ("security-android.yml", "security.yml", "security-android.md"),
+    "security-python.yml": ("security-python.yml", "security.yml", "security-python.md"),
     "nexus-mods-release.yml": ("nexus-mods-release.yml", "nexus-mods-release.yml", "nexus-mods-release.md"),
     "nuget-release.yml": ("nuget-release.yml", "nuget-release.yml", "nuget-release.md"),
     "github-release-dotnet.yml": ("github-release-dotnet.yml", "github-release.yml", "github-release-dotnet.md"),
@@ -61,6 +62,7 @@ SHARED_OUTPUT_VARIANTS = {
     "security.yml": {
         "dotnet": "security-dotnet.yml",
         "android": "security-android.yml",
+        "python": "security-python.yml",
     },
 }
 
@@ -70,6 +72,7 @@ SHARED_OUTPUT_VARIANTS = {
 SECURITY_VISIBILITY_GATED_TARGETS = {
     "security-dotnet.yml",
     "security-android.yml",
+    "security-python.yml",
 }
 
 

@@ -20,7 +20,7 @@ Strict fidelity applies to every `security.yml` creation or revision and overrid
 
 ### Generation Contract
 
-1. Use this template only for Android projects that build an APK through Gradle. For a .NET repository, use `rules/security-dotnet.md` instead.
+1. Use this template only for Android projects that build an APK through Gradle. For a .NET repository, use `rules/security-dotnet.md` instead. For a Python repository, use `rules/security-python.md` instead.
 2. Use an exact copy of `templates/security-android.yml`; preserve the workflow `name`, triggers, job, permissions, steps, action versions, indentation, and whitespace layout.
 3. The template must remain exactly as written, with only this exception:
    - `[[REPOSITORY_JAVA_VERSION]]` is replaced with the actual Java (JDK) version used in the repository.

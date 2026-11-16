@@ -15,6 +15,7 @@ When creating or revising workflow files, use these canonical file names:
 - GitHub Release workflows: `github-release.yml`
 - Nexus Mods workflows: `nexus-mods-release.yml`
 - NuGet.org release workflows: `nuget-release.yml`
+- Python Security workflows: `security.yml`
 - Release asset upload workflows: `release-assets.yml`
 - Steam Workshop workflows: `steam-workshop-release.yml`
 
@@ -22,7 +23,7 @@ Do not use alternative names for these workflow categories unless the user expli
 
 ## Repository Visibility Requirement
 
-GitHub Code Scanning requires a public repository, or GitHub Enterprise Cloud with GitHub Advanced Security. Before creating or revising any `security.yml` workflow (either the .NET or the Android variant), confirm the repository visibility:
+GitHub Code Scanning requires a public repository, or GitHub Enterprise Cloud with GitHub Advanced Security. Before creating or revising any `security.yml` workflow (the .NET, Android, or Python variant), confirm the repository visibility:
 
 ```bash
 gh api repos/<owner>/<repo> --jq .visibility   # must return "public"

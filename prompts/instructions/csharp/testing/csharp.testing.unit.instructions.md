@@ -30,3 +30,6 @@ applyTo: "**/*.{Tests,UnitTests}.csproj,**/*.{Tests,UnitTests}/**/*.cs"
 - Business unit tests MUST contain an assertion, a Moq verification, or an `ExpectedResult`.
 - Do not pass reusable array literals or collection expressions to non-mutating APIs, including NUnit contraints. Put reusable expected values in descriptively named `private static readonly` fields; use a local array only for invocation-specific values.
 - Reuse a `static readonly JsonSerializerOptions` instance when tests share a serialisation configuration; do not construct options for every test execution.
+- Never assume an interactive host: a TTY, console buffer geometry, cursor position, redirectable stdin/stdout, or specific `ConsoleColor` values after redirection may be unavailable on CI runners.
+- Guard console-buffer assertions (`Console.BufferWidth > 0 && Console.BufferHeight > 0`, `!Console.IsInputRedirected`, `!Console.IsOutputRedirected`) or assert parity with the equivalent `System.Console` call so success/failure matches under interactive and headless hosts.
+- Never pass assumed fixed console dimensions as arguments to console APIs; they can be zero on runners.

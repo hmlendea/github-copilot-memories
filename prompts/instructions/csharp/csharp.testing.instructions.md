@@ -67,6 +67,9 @@ applyTo: "**/*Tests.{cs,csproj},**/*.{Tests,ArchitectureTests,IntegrationTests,U
 
 ### Compatibility
 - Tests are platform-safe: no hard-coded paths, locale-dependent formats, or OS-specific APIs; support Linux/Windows/macOS and x86/ARM.
+- Never assume an interactive host: a TTY, console buffer geometry, cursor position, redirectable stdin/stdout, or specific `ConsoleColor` values after redirection may be unavailable on CI runners.
+- Guard console-buffer assertions (`Console.BufferWidth > 0 && Console.BufferHeight > 0`, `!Console.IsInputRedirected`, `!Console.IsOutputRedirected`) or assert parity with the equivalent `System.Console` call so success/failure matches under interactive and headless hosts.
+- Never pass assumed fixed console dimensions as arguments to console APIs; they can be zero on runners.
 
 ### Integration Testing
 

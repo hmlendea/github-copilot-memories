@@ -32,16 +32,45 @@ jobs:
         VERSION="${VERSION#v}"
         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
+    - name: Restore release signing configuration
+      env:
+        ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      run: |
+        test -n "$ANDROID_KEYSTORE_BASE64"
+        test -n "$ANDROID_KEYSTORE_PASSWORD"
+        test -n "$ANDROID_KEY_ALIAS"
+        test -n "$ANDROID_KEY_PASSWORD"
+        printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > [[KEYSTORE_FILE_NAME]]
+        cat > keystore.properties <<EOF
+        storeFile=[[KEYSTORE_FILE_NAME]]
+        storePassword=$ANDROID_KEYSTORE_PASSWORD
+        keyAlias=$ANDROID_KEY_ALIAS
+        keyPassword=$ANDROID_KEY_PASSWORD
+        EOF
+        chmod 600 [[KEYSTORE_FILE_NAME]] keystore.properties
+
     - name: Build the release artefact
       run: ./gradlew clean assembleRelease --no-daemon
 
+    - name: Build the debug artefact
+      run: ./gradlew assembleDebug --no-daemon
+
     - name: Name the release artefact
       run: |
-        mv [[RELEASE_APK_PATH]] "[[RELEASE_ASSET_LABEL]]_v${{ steps.version.outputs.version }}_unsigned.apk"
+        mv [[RELEASE_APK_PATH]] "[[RELEASE_ASSET_LABEL]]_v${{ steps.version.outputs.version }}.apk"
+
+    - name: Name the debug artefact
+      run: |
+        mv [[DEBUG_APK_PATH]] "[[RELEASE_ASSET_LABEL]]_v${{ steps.version.outputs.version }}_debug.apk"
 
     - name: Publish the release asset
       uses: softprops/action-gh-release@v2
       with:
-        files: [[RELEASE_ASSET_LABEL]]_v*_unsigned.apk
+        files: |
+          [[RELEASE_ASSET_LABEL]]_v*.apk
+          [[RELEASE_ASSET_LABEL]]_v*_debug.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

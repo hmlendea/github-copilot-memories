@@ -28,7 +28,7 @@ jobs:
         zip -r "release.zip" [[RELEASE_ASSETS_LIST]]
 
     - name: Upload
-      uses: Nexus-Mods/upload-action@v1.0.0-beta.10
+      uses: Nexus-Mods/upload-action@v1.0.0-beta.11
       with:
         api_key: ${{ secrets.NEXUSMODS_API_KEY }}
         file_id: [[NEXUSMODS_FILE_ID]]

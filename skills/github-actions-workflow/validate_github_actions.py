@@ -43,6 +43,7 @@ TEMPLATE_MAP = {
     "github-release-nuget.yml": ("github-release-nuget.yml", "github-release.yml", "github-release-nuget.md"),
     "github-release-android.yml": ("github-release-android.yml", "github-release.yml", "github-release-android.md"),
     "github-release-electron.yml": ("github-release-electron.yml", "github-release.yml", "github-release-electron.md"),
+    "github-release-mod.yml": ("github-release-mod.yml", "github-release.yml", "github-release-mod.md"),
     "steam-workshop-release.yml": ("steam-workshop-release.yml", "steam-workshop-release.yml", "steam-workshop-release.md"),
     "release-assets.yml": (None, "release-assets.yml", "release-assets.md"),
 }
@@ -52,6 +53,7 @@ GITHUB_RELEASE_VARIANTS = {
     "dotnet": "github-release-dotnet.yml",
     "nuget": "github-release-nuget.yml",
     "android": "github-release-android.yml",
+    "mod": "github-release-mod.yml",
     "electron": "github-release-electron.yml",
 }
 
@@ -583,7 +585,7 @@ def main():
             args = args[1:]
         elif args[0] == "--variant":
             if len(args) < 2:
-                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android|electron] "
+                print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android|electron|mod] "
                       "<repo_root> <workflow_file> [generated_file]")
                 print("  --variant selects the template variant for github-release.yml or security.yml")
                 sys.exit(2)
@@ -593,7 +595,7 @@ def main():
             break
 
     if len(args) < 2:
-        print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android] "
+        print("Usage: validate_github_actions.py [--force] [--variant dotnet|nuget|android|electron|mod] "
               "<repo_root> <workflow_file> [generated_file]")
         print("  workflow_file: an output file name (e.g. dotnet.yml, github-release.yml)")
         print("  If generated_file not provided, reads from stdin")

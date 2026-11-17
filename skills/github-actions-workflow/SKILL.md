@@ -63,10 +63,11 @@ All resource paths above are relative to the skill directory `skills/github-acti
 | GitHub Release (NuGet package) | `github-release.yml` | `templates/github-release-nuget.yml` | `rules/github-release-nuget.md` |
 | GitHub Release (Android project) | `github-release.yml` | `templates/github-release-android.yml` | `rules/github-release-android.md` |
 | GitHub Release (Electron project) | `github-release.yml` | `templates/github-release-electron.yml` | `rules/github-release-electron.md` |
+| GitHub Release (content-only or packaged repository) | `github-release.yml` | `templates/github-release-mod.yml` | `rules/github-release-mod.md` |
 | Steam Workshop | `steam-workshop-release.yml` | `templates/steam-workshop-release.yml` | `rules/steam-workshop-release.md` |
 | Release assets | `release-assets.yml` | — (no canonical template) | `rules/release-assets.md` |
 
-`github-release.yml` has four mutually exclusive templates; select exactly one from evidence. `security.yml` has three mutually exclusive templates (`security-dotnet.yml`, `security-android.yml`, and `security-python.yml`); select exactly one from evidence. Use `security-python.yml` for Python repositories, `security-dotnet.yml` for .NET repositories, and `security-android.yml` for Android projects that build an APK through Gradle. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
+`github-release.yml` has five mutually exclusive templates; select exactly one from evidence. `security.yml` has three mutually exclusive templates (`security-dotnet.yml`, `security-android.yml`, and `security-python.yml`); select exactly one from evidence. Use `security-python.yml` for Python repositories, `security-dotnet.yml` for .NET repositories, and `security-android.yml` for Android projects that build an APK through Gradle. `github-release-mod.yml` covers content-only or packaged repositories — game mods, asset packs, and the like — whose distributable content is committed rather than compiled. For `release-assets.yml` and any other workflow, use the general Actions instruction and repository evidence, preserve existing behaviour, and document the workflow from its actual YAML rather than inventing a template.
 
 ## Validation Pipeline (MANDATORY — NO SHORTCUTS)
 
@@ -154,6 +155,7 @@ cat generated_dotnet.yml | python3 skills/github-actions-workflow/validate_githu
 python3 skills/github-actions-workflow/validate_github_actions.py --variant nuget /path/to/repo github-release.yml generated_github_release.yml
 python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo github-release.yml generated_github_release.yml
 python3 skills/github-actions-workflow/validate_github_actions.py --variant electron /path/to/repo github-release.yml generated_github_release.yml
+python3 skills/github-actions-workflow/validate_github_actions.py --variant mod /path/to/repo github-release.yml generated_github_release.yml
 
 # Disambiguate the shared security.yml output
 python3 skills/github-actions-workflow/validate_github_actions.py --variant android /path/to/repo security.yml generated_security.yml

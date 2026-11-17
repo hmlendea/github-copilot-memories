@@ -4,6 +4,12 @@ My reusable instruction library is located at:
 
 `~/.codex/instructions` (or `$CODEX_HOME/instructions` when `CODEX_HOME` is set).
 
+Before resolving any path (installed software, repository clone, documentation,
+URL), read `~/.codex/Locations.md` (or `$CODEX_HOME/Locations.md` when
+`CODEX_HOME` is set) and use a recorded value when present. Only search or infer
+the location when the registry lacks the entry or the recorded value no longer
+exists.
+
 Before editing files:
 
 1. Inspect the target file type and task.

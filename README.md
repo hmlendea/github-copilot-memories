@@ -52,6 +52,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Verifies a release after merge, publication, or deployment through the `release-verification` skill, confirming the delivered artefact per surface, classifying findings, and reporting partial verification with its coverage gap rather than claiming unverified health.
 - Verifies its own content in continuous integration by executing the instruction-gate hook tests, validating every governed GitHub document against its template, and parsing every workflow file.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
+- Resolves installed software, repository clones, documentation, configuration, data directories, and URLs from the agent home `Locations.md` registry before searching, probing, or inferring a location.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
 - Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
@@ -168,6 +169,8 @@ Start a new Codex session and ask it to summarise its active instructions and lo
 ## ⚙️ Configuration
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
+
+The always-on common instructions additionally direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` or `$CODEX_HOME/Locations.md` for Codex, with the macOS and Windows equivalents) before resolving any path or address, so a recorded location is used instead of being searched for or inferred.
 
 Language dictionaries use semantic discovery rather than automatic path activation. Their compact `source [context] -> replacements/replacements` records live in the `english-language` and `romanian-language` skills and load only for relevant language and terminology work.
 

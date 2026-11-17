@@ -122,6 +122,7 @@ Responsibilities:
 - Encode reusable coding standards, naming conventions, error-handling patterns, and language preferences.
 - Provide language-specific and framework-specific guidance.
 - Define activation contracts through `applyTo` globs and semantic descriptions.
+- Require reading the agent home `Locations.md` registry (`~/.copilot/Locations.md`, `~/.codex/Locations.md`, or the platform equivalent) before resolving any path or address, so a recorded value is preferred over search, probe, or inference.
 - Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, shared test fixture values live in the `test-values` skill, English and Romanian vocabulary preferences live in the `english-language` and `romanian-language` skills, and MethodScript architecture, style rules, built-in function reference, and bindable event reference live in the `methodscript` skill.
 
 Boundary rules:

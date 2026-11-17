@@ -76,7 +76,7 @@ Follow the project's coding standards:
 - Preview changes locally if possible.
 - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
-## 📋 Code of Conduct
+## 📜 Code of Conduct
 
 This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 

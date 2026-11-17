@@ -14,7 +14,8 @@ Strict fidelity applies to every `nexus-mods-release.yml` creation or revision a
 
 | Placeholder | Replacement |
 |-------------|-------------|
-| `[[RELEASE_ASSET_LABEL]]` | The release asset label used by the corresponding `github-release.yml` assets. |
+| `[[RELEASE_ASSET_LABEL]]` | The release archive label, equal to the mod directory name and the mod descriptor base name (for example `ui-deposit-blockers`). |
+| `[[RELEASE_ASSETS_LIST]]` | The game-specific release assets to archive, as a double-quoted, space-separated list of paths in the checked-out tag (for example `"my-mod/" "my-mod.mod"`). |
 | `[[GITHUB_REPO_USERNAME]]` | The GitHub repository owner. |
 | `[[GITHUB_REPO_NAME]]` | The GitHub repository name. |
 | `[[NEXUSMODS_FILE_ID]]` | The Nexus Mods file identifier for the mod. |
@@ -28,7 +29,7 @@ Strict fidelity applies to every `nexus-mods-release.yml` creation or revision a
 - The output file is named `nexus-mods-release.yml`.
 - The workflow `name` is `Nexus Mods`.
 - Triggers are a `v*.*.*` tag push and a manual `workflow_dispatch` with a required `tag` input.
-- The `release` job downloads the release asset and uploads through `Nexus-Mods/upload-action@v1.0.0-beta.10`.
+- The `release` job checks out the requested tag, builds the release archive from the checked-out content, and uploads it through `Nexus-Mods/upload-action@v1.0.0-beta.10`.
 - Every fixed template line is present verbatim; no placeholder or reformatted line remains.
 - No secret value, credential, or personal datum is exposed.
 

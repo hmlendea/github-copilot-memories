@@ -16,7 +16,8 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 |-------------|-------------|
 | `[[GITHUB_REPO_USERNAME]]` | The GitHub repository owner. |
 | `[[GITHUB_REPO_NAME]]` | The GitHub repository name. |
-| `[[RELEASE_ASSET_LABEL]]` | The release asset label used by the corresponding `github-release.yml` assets. |
+| `[[RELEASE_ASSET_LABEL]]` | The release archive label, equal to the mod directory name and the mod descriptor base name (for example `ui-deposit-blockers`). |
+| `[[RELEASE_ASSETS_LIST]]` | The game-specific release assets to archive, as a double-quoted, space-separated list of paths in the checked-out tag (for example `"my-mod/" "my-mod.mod"`). |
 | `[[STEAM_APP_ID]]` | The Steam application identifier. |
 | `[[STEAM_WORKSHOP_ITEM_ID]]` | The Steam Workshop item identifier. |
 
@@ -28,7 +29,7 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 
 - The output file is named `steam-workshop-release.yml`.
 - The workflow `name` is `Steam Workshop` and triggers on a `v*.*.*` tag push.
-- The `release` job downloads and unzips the release asset and uploads through `hmlendea/steam-workshop-update@v1.0.0`.
+- The `release` job builds the release archive from the checked-out tag, extracts it, and uploads it through `hmlendea/steam-workshop-update@v1.0.0`.
 - Every fixed template line is present verbatim; no placeholder or reformatted line remains.
 - No secret value, credential, or personal datum is exposed.
 

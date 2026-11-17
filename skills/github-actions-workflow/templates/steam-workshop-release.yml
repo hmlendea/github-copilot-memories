@@ -13,9 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - name: Download the release asset
+    - name: Build the release archive
       run: |
-        wget "https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/download/${{github.ref_name}}/[[RELEASE_ASSET_LABEL]]_${GITHUB_REF:11}.zip" -O "release.zip"
+        zip -r "release.zip" [[RELEASE_ASSETS_LIST]]
+
+    - name: Extract the release archive
+      run: |
         unzip "release.zip" -d "release/"
 
     - name: Upload

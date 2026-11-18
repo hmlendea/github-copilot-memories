@@ -1,4 +1,4 @@
-# Common Definitions: Traits, Cultures, Religions, Governments, Holdings, Buildings, Men-at-Arms, Modifiers, Defines, Lifestyles, Terrains
+# Common Definitions: Traits, Cultures, Religions, Landed Titles, Governments, Holdings, Buildings, Men-at-Arms, Modifiers, Defines, Lifestyles, Terrains
 
 Nearly everything in this file lives in a `common/` subfolder and follows the same pattern: a key, a set of flags, and modifier blocks. A file added in the same subfolder merges at the object level, subject to the override rules in `references/mod-packaging.md`.
 
@@ -156,6 +156,41 @@ Localisation: `holy_site_<name>_name`, `holy_site_<name>_effect_name`, `holy_sit
 Faith icons: `gfx/interface/icons/faith/<icon>.dds`, 100×100.
 
 Faith/religion localisation requires the family of keys `<name>`, `<name>_adj`, `<name>_adherent`, `<name>_adherent_plural`, `<name>_desc`, plus the large priest/deity/afterlife key set (`HighGodName`, `DevoteeMale`, `PriestFemalePlural`, `PositiveAfterLife`, `GHWName`, and the rest). Many of these may point at other keys rather than new text.
+
+## Landed Titles
+
+`common/landed_titles/*.txt` declares the playable title hierarchy. A file added to the same subfolder merges at the object level, so a new, uniquely named file adds titles; only a whole-file copy replaces all of them.
+
+The key prefix fixes the tier and therefore the title's scope rank:
+
+| Prefix | Tier | Example |
+|--------|------|---------|
+| `b_` | barony | `b_london` |
+| `c_` | county | `c_roma_urbs` |
+| `d_` | duchy | `d_iconoclast` |
+| `k_` | kingdom | `k_papal_state` |
+| `e_` | empire | `e_france` |
+| `h_` | hegemony | `h_roman_empire` |
+
+`h_` is **hegemony**, the tier above empire. The vanilla examples are `h_roman_empire`, `h_roman_republic`, `h_carolingian`, `h_eastern_roman_empire`, `h_dar_al_islam` and `h_india`; they are unlanded, super-imperial titles created by special decision (`rule_title_creation_imperial_power_projection_title_creation_trigger`), and `h_india` is explicitly titular. Adding another hegemon title also requires updating the neighbouring-hegemon custom locs and the tribute logic (`NeighboringHegemonTitle`, `save_tribute_mission_target_scope_effect`, `small`/`adequate`/`excessive_gold_tribute_value`).
+
+Common title fields:
+
+```
+h_carolingian = {
+	color = { 11 22 170 }
+	capital = c_aachen
+	definite_form = yes                 # "the Carolingian Empire", not "Carolingian Empire"
+	can_be_named_after_dynasty = no
+	can_create = { <trigger> }          # gates creation; rank 5 uses the imperial-power-projection rule
+}
+```
+
+- Gating and naming: `definite_form`, `can_be_named_after_dynasty`, `can_use_nomadic_naming`.
+- Succession and claims: `no_automatic_claims`, `always_follows_primary_heir`, `destroy_if_invalid_heir` (used by `h_dar_al_islam`).
+- Optional `can_create`, `can_destroy`, `ai_primary_priority` blocks.
+
+Localisation keys: `<title key>` for the name, `<title key>_adj` for the adjective. Rank 4/5 titles additionally accept `court_language`, and title history lives in `history/titles/<title key>.txt` (see `references/history-and-characters.md`).
 
 ## Governments
 

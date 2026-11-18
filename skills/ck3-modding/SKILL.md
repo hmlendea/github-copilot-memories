@@ -69,7 +69,7 @@ A file at `my_mod/common/scripted_triggers/all_can_raid_trigger.txt` overrides t
 | Event files, namespaces, event types, portraits and animations, themes, triggers, descriptions, options, on_actions, pulses, delays | `events/`, `common/on_action/` | `references/events-and-actions.md` |
 | Decisions, character interactions, schemes, activities, story cycles, struggles | `common/decisions/`, `common/character_interactions/`, `common/activities/` | `references/decisions-and-interactions.md` |
 | Characters, DNA, portrait modifiers, outfit tags, dynasties and houses, title and province history, bookmarks | `history/`, `common/dynasties/`, `common/bookmarks/` | `references/history-and-characters.md` |
-| Traits, cultures, innovations, religions, faiths, rites, holy sites, governments, succession, laws, holdings, buildings, men-at-arms, modifiers, defines, lifestyles, terrains | `common/` | `references/common-definitions.md` |
+| Traits, cultures, innovations, religions, faiths, rites, holy sites, landed titles (tiers `b_`–`h_`, including hegemony), governments, succession, laws, holdings, buildings, men-at-arms, modifiers, defines, lifestyles, terrains | `common/` | `references/common-definitions.md` |
 | `.yml` rules, BOM, formatting codes, `$` reuse, data types, arguments, customizable localization, flavorization | `localization/` | `references/localisation.md` |
 | `.gui` layouts, scripted GUIs, data types in UI, portraits and DNA, coat of arms, 3D models, map, terrain, music, sound, fonts | `gui/`, `gfx/`, `map_data/`, `music/` | `references/interface-graphics-map.md` |
 | Console, launch options, `script_docs` dumps, logs, run scripts, CK3 Tiger, debugging workflow | — | `references/console-and-debugging.md` |

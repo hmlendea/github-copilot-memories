@@ -28,7 +28,8 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 ### Mandatory Validation Before Final Output
 
 - The output file is named `steam-workshop-release.yml`.
-- The workflow `name` is `Steam Workshop` and triggers on a `v*.*.*` tag push.
+- The workflow `name` is `Steam Workshop` and triggers on a `v*.*.*` tag push and a manual `workflow_dispatch` with a required `tag` input.
+- The `VERSION` environment variable resolves to `${{ inputs.tag || github.ref_name }}`, and the checkout, changenote, and upload steps consume it so that manual runs publish the requested tag.
 - The `release` job builds the release archive from the checked-out tag, extracts it, and uploads it through `hmlendea/steam-workshop-update@v1.0.0`.
 - Every fixed template line is present verbatim; no placeholder or reformatted line remains.
 - No secret value, credential, or personal datum is exposed.

@@ -27,8 +27,9 @@ Strict fidelity applies to every `github-release.yml` creation or revision and o
 ### Mandatory Validation Before Final Output
 
 - The output file is named `github-release.yml`.
-- The workflow `name` is `GitHub Release` and triggers on published releases.
+- The workflow `name` is `GitHub Release` and triggers on published releases and a manual `workflow_dispatch` with a required `tag` input.
 - Top-level `permissions` sets `contents: write`.
+- The `VERSION` environment variable resolves to `${{ inputs.tag || github.event.release.tag_name }}`, and the checkout and publish steps consume it so that manual runs publish the requested tag.
 - The `release` job runs on `ubuntu-latest`, extracts the version from the release tag, builds `[[RELEASE_ASSET_LABEL]]_<version>.zip` from `[[RELEASE_ASSETS_LIST]]`, and publishes it with `softprops/action-gh-release@v2`.
 - Every fixed template line is present verbatim; no placeholder or reformatted line remains.
 - No secret value, credential, or personal datum is exposed.

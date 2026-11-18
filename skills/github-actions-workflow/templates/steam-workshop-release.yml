@@ -4,14 +4,24 @@ on:
   push:
     tags:
     - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
 
+    env:
+      VERSION: ${{ inputs.tag || github.ref_name }}
+
     steps:
     - uses: actions/checkout@v7
+      with:
+        ref: ${{ env.VERSION }}
 
     - name: Build the release archive
       run: |
@@ -27,7 +37,7 @@ jobs:
         appid: [[STEAM_APP_ID]]
         itemid: [[STEAM_WORKSHOP_ITEM_ID]]
         path: "release/[[RELEASE_ASSET_LABEL]]/"
-        changenote: "[url=https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/tag/${{github.ref_name}}]Version ${{github.ref_name}}[/url]"
+        changenote: "[url=https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/tag/${{env.VERSION}}]Version ${{env.VERSION}}[/url]"
       env:
         STEAM_USERNAME: ${{secrets.STEAM_USERNAME}}
         STEAM_PASSWORD: ${{secrets.STEAM_PASSWORD}}

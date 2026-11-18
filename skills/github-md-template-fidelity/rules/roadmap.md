@@ -2,7 +2,7 @@ Generate or revise the `ROADMAP.md` for this GitHub repository using the `templa
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `ROADMAP.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `ROADMAP.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 
@@ -11,7 +11,7 @@ Strict fidelity applies to every `ROADMAP.md` creation or revision and overrides
 1. Use an exact copy of `templates/roadmap.md`; preserve every template section, subsection, table, bullet structure, heading order, punctuation, and whitespace layout.
 2. Replace only `[[PLACEHOLDER]]` tokens. Apply language rules only to inserted values; never rephrase, normalise, correct, or improve fixed text.
 3. Add only genuinely relevant sections that neither replace, rename, reorder, nor omit template content.
-4. Include every template-defined section; conditional inclusion and omission are disabled.
+4. Include every template-defined section; omit a conditional block only when its condition is not met.
 5. Ensure that the entire corresponding `## 🗺️ Roadmap` section in `README.md` from the README template is fully updated to match its template-defined content, including all conditional sections, placeholders, and fixed prose. If the section is missing, add it as per the template. A link to `ROADMAP.md` alone is insufficient.
 6. When ROADMAP.md is created or updated, synchronise the complete README section, including its template-defined heading, fixed prose, permitted placeholders, and conditional content.
 
@@ -41,13 +41,13 @@ Include these sections only when the specified conditions are met:
 
 | Section | Condition | Notes |
 |---------|-----------|-------|
-| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order. |
+| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order, excluding the Table of Contents heading itself. |
 | Current Focus | There are actively prioritised initiatives. | Use concise bullets with status and target period. |
 | Planned Labour | There is meaningful forward planning beyond current focus. | Use grouped horizons such as short-term and medium-term. |
-| Milestones | Date-based goals exist (quarterly, monthly, or release-based). | Include target period and measurable outcome. |
+| Objectives | Date-based goals exist (quarterly, monthly, or release-based). | Include target period and measurable outcome. |
 | Dependencies and Risks | External constraints or notable risks exist. | Omit when no material risk is known. |
-| Change History Link | `CHANGELOG.md` exists. | Link to changelog for delivered labour. |
-| Related Planning Documents | `ARCHITECTURE.md`, `MIGRATION.md`, `UPGRADING.md`, or `docs/` planning artefacts exist. | Include only relevant links. |
+| Out of Scope | Explicit non-goals exist for the planning horizon. | State only non-goals that are evidenced or maintainer-declared. |
+| Delivered Labour | `CHANGELOG.md` exists. | Link to the changelog for delivered labour. |
 | Contribution | Repository accepts external contributions. | Maintain concise and actionable guidance. |
 | Support | Always include. | Use issue tracker link with repository placeholders. |
 

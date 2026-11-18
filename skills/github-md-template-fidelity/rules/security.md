@@ -2,7 +2,7 @@ Generate or revise the `SECURITY.md` for this GitHub repository using the `templ
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `SECURITY.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `SECURITY.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 
@@ -29,7 +29,7 @@ Strict fidelity applies to every `SECURITY.md` creation or revision and override
 
 If a `SECURITY.md` previously exists, preserve any content that is accurate and current, and revise only what has changed or is absent. If no `SECURITY.md` exists, create one from commencement.
 
-Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## 🛡️ Supported Versions`, `## 🚨 Reporting a Vulnerability`, or `## 📢 Disclosure Policy`; only replace placeholder tokens such as `[[Latest version or branch, e.g. 2.x]]`, `[[Distribution method, e.g. GitHub Releases]]`, and `[[In-scope category 1]]`.
+Use the exact template wording for fixed sections. Do not reword, paraphrase, or alter `## 🛡️ Supported Versions`, `## 🚨 Reporting a Vulnerability`, or `## 📢 Disclosure Policy`; only replace placeholder tokens such as `[[Supported distribution channel 1, e.g. FlatHub]]` or `[[In-scope category 1]]`. Keep the literal `Latest version` and `Preceding versions` cell text unchanged.
 
 Fill in all `[[PLACEHOLDER]]` values from the real project. Remove any section or comment that is not applicable (refer to inline guidance). Do not leave placeholder text, template comments, or example rows in the final output.
 
@@ -41,11 +41,12 @@ Include these sections only when the specified conditions are met:
 
 | Section | Condition | Notes |
 |---------|-----------|-------|
-| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order. |
+| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order, excluding the Table of Contents heading itself. |
 | Scope | Always include. | Distinguish in-scope and out-of-scope report categories. |
 | Disclosure Policy | Always include. | State coordinated disclosure expectations. |
 | Safe Harbour | A good-faith testing statement exists or is required by maintainers. | Omit when unavailable. |
 | Recognition | The project publicly acknowledges reporters. | Omit when unavailable. |
+| Automated Security Scanning | An automated security scanning GitHub Actions workflow exists. | Include the fixed scan description bullets and the publication links; resolve `[[SCAN_DESCRIPTION]]`, `[[WHAT_IS_SCANNED_1]]`, `[[WHAT_IS_SCANNED_1_DESCRIPTION]]`, `[[WHAT_IS_SCANNED_2]]`, `[[WHAT_IS_SCANNED_2_DESCRIPTION]]`, `[[GITHUB_REPO_USERNAME]]`, `[[GITHUB_REPO_NAME]]`, and `[[SECURITY_WORKFLOW_FILE]]` from repository evidence. |
 
 ### Content Rules
 

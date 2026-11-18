@@ -13,7 +13,7 @@ This document covers the guidelines and processes for contributing to this proje
 
 ## 📑 Table of Contents
 
-<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
+<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order, excluding the Table of Contents heading itself. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🤝 Contributing
 
@@ -75,6 +75,7 @@ cd [[GITHUB_REPO_NAME]]
 <!-- Only if a style guide or linter config exists. -->
 Follow the project's coding standards:
 - [[CODE_STYLE_GUIDE]]
+<!-- Only if a formatter or formatting check is configured. -->
 - Run `[[FORMAT_COMMAND]]` before committing.
 
 ### Testing
@@ -94,7 +95,8 @@ Follow the project's coding standards:
 - Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
-<!-- Only if the repository contains code with dependency packages. --> - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
+<!-- Only if the repository contains code with dependency packages. -->
+- When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
 ## 📜 Code of Conduct
 
@@ -119,7 +121,7 @@ By contributing, you agree that your contributions will be licensed under the [[
 ## 🙏 Recognition
 
 <!-- Only if a contributors list or recognition mechanism exists. -->
-Contributors are recognized in [[RECOGNITION_LOCATION]].
+Contributors are recognised in [[RECOGNITION_LOCATION]].
 
 ## ❓ Getting Assistance
 

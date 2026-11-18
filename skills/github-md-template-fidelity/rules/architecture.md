@@ -2,7 +2,7 @@ Generate or revise the `ARCHITECTURE.md` for this GitHub repository using the `t
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `ARCHITECTURE.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `ARCHITECTURE.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Current-State Evidence Contract
 
@@ -42,7 +42,7 @@ Unless the user explicitly requests a target architecture, document the verified
 - Mandatory headings are present in template order.
 - The title identifies the project and the document as architecture documentation.
 - The system context defines the system boundary, actors, external systems, data stores, and trust boundaries that are material to the repository.
-- Runtime flow, component ownership, and dependency direction are mutually consistent.
+- Runtime process, component ownership, and dependency direction are mutually consistent.
 - At least one of `Components` or `Architectural Areas` is included.
 - Every diagram agrees with the surrounding prose and uses valid Mermaid syntax.
 - Conditional and additional sections are supported by repository evidence.
@@ -62,16 +62,16 @@ Include sections in accordance with the subsequent conditions:
 
 | Section | Condition | Notes |
 |---------|-----------|-------|
-| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order. |
+| Table of Contents | Always include. | Include all `##`, `###`, and `####` headings in order, excluding the Table of Contents heading itself. |
 | Purpose | Always include. | Define document scope, system responsibility, audience, and current or target status. |
 | System Context | Always include. | Identify material actors, external systems, stores, outputs, and trust boundaries. |
 | Architectural Style | Always include. | Name only styles demonstrated by the implementation and explain their consequences. |
-| Runtime Flow | Always include. | Describe process startup and the principal ordered execution path. |
+| Runtime Process | Always include. | Describe process startup and the principal ordered execution path. |
 | Components | A finite catalogue of runtime services, modules, adapters, or collaborators clarifies responsibility. | Include responsibility, dependencies, and lifetime or ownership where verified. |
 | Architectural Areas | Directory, layer, subsystem, or ownership boundaries provide more clarity than a component catalogue. | Include paths, responsibilities, and boundary rules. At least one of Components or Architectural Areas is mandatory. |
 | Data Architecture | The system owns, transforms, caches, transmits, or persists meaningful state. | Describe models, mappings, stores, ownership, lifecycle, consistency, and migration where relevant. |
 | Interfaces and Integrations | Public APIs, protocols, command interfaces, remote providers, devices, or external systems exist. | Record direction, contract, ownership, and failure semantics. |
-| Key Flows | Multiple requests, commands, jobs, or domain workflows merit detail beyond Runtime Flow. | Use one subsection per flow and include sequence diagrams where they improve precision. |
+| Key Processes | Multiple requests, commands, jobs, or domain workflows merit detail beyond Runtime Process. | Use one subsection per process and include sequence diagrams where they improve precision. |
 | Domain-Specific Concerns | Material mechanics do not fit a standard section. | Examples include matching, rendering, caching, packet framing, authorisation, or compatibility facades. Use precise project terminology. |
 | Cross-Cutting Concerns | Security, privacy, error handling, observability, configuration, localisation, concurrency, or resource management has architectural impact. | Include only relevant subsections and omit filler. |
 | Dependency Direction and Rules | Always include. | State permitted dependency direction, ownership rules, and prohibited coupling. |
@@ -123,7 +123,7 @@ Profiles guide emphasis only. They do not authorise unsupported claims or omissi
 - `## 🎯 Purpose`.
 - `## 🌐 System Context` with a Mermaid context diagram.
 - `## 🏗️ Architectural Style`.
-- `## 🔄 Runtime Flow` with a Mermaid flow or sequence diagram.
+- `## 🔄 Runtime Process` with a Mermaid process or sequence diagram.
 - At least one of `## 🧩 Components` or `## 🗂️ Architectural Areas`.
 - `## 🧭 Dependency Direction and Rules`.
 - `## 🚀 Deployment and Operations`.
@@ -141,4 +141,4 @@ Profiles guide emphasis only. They do not authorise unsupported claims or omissi
 - Use repository-relative Markdown links for files and directories.
 - Remove all HTML comments from the final output.
 - Replace every placeholder with verified project detail, and remove example rows or subsections that do not apply.
-- Maintain concise prose, but include sufficient detail for a contributor to locate ownership, follow a runtime flow, and evaluate the impact of a change.
+- Maintain concise prose, but include sufficient detail for a contributor to locate ownership, follow a runtime process, and evaluate the impact of a change.

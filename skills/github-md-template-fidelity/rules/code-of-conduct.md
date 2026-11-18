@@ -2,7 +2,7 @@ Generate or revise `CODE_OF_CONDUCT.md` for this GitHub repository using the `te
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and overrides conflicting instructions. This means fidelity to the custom template below, not reproduction of any external code of conduct. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and overrides conflicting instructions. This means fidelity to the custom template below, not reproduction of any external code of conduct. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 
@@ -14,7 +14,7 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 4. Remove all template comments before writing the final document.
 5. Do not replace the custom guidance with text copied from the Contributor Covenant or another external code of conduct.
 6. Generate the Table of Contents after finalising the document, including every `##` heading except the Table of Contents heading itself.
-7. Use heading text without emojis in Table of Contents link labels, and indent nested entries by two spaces.
+7. Use heading text without emojis in Table of Contents link labels, indent nested entries by two spaces, and verify that every label matches the plain text of its heading.
 8. If `CODE_OF_CONDUCT.md` exists or is being generated, ensure that the entire corresponding `## 📜 Code of Conduct` section in `README.md` from the README template and the complete corresponding `## 📜 Code of Conduct` section in `CONTRIBUTING.md` from the CONTRIBUTING template are fully updated to match their respective template-defined content, including all conditional sections, placeholders, and fixed prose. If either section is missing, add it as per the template. Preserve each template-defined heading and fixed prose; a link alone is insufficient.
 9. Use a repository-relative Markdown link for every repository file reference added to another document, and verify that the target exists.
 10. Do not expose credentials, personal data, private endpoints, or unverified contact details.
@@ -30,7 +30,7 @@ Strict fidelity applies to every `CODE_OF_CONDUCT.md` creation or revision and o
 - All template sections are present and remain in order.
 - Reporting concerns are directed to the repository maintainers as specified by the template.
 - The final document contains no unresolved placeholders or HTML comments.
-- The custom template wording is unchanged apart from the reporting-contact placeholder.
+- The custom template wording is unchanged, including the absence of any reporting-contact placeholder.
 - The final document contains no unsupported enforcement promises or project claims.
 - All required headings have their specified emojis.
 - The Table of Contents includes every applicable heading in order, uses emoji-free labels, and links to valid anchors.

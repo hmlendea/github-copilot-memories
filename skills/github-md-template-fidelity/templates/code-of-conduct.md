@@ -8,7 +8,7 @@ This is the `CODE_OF_CONDUCT.md` template that shall be utilised. It is an origi
 
 ## 📑 Table of Contents
 
-<!-- Generate one record per `##` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per `##` heading present in the final output, in order, excluding the Table of Contents heading itself. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 ## 🎯 Purpose
 

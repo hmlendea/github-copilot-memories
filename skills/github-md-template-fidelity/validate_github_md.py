@@ -4,6 +4,7 @@ GitHub MD Template Fidelity Validator
 Validates generated GitHub markdown files against templates and rules for 100% fidelity.
 """
 
+import collections
 import os
 import re
 import subprocess
@@ -15,6 +16,10 @@ from enum import Enum
 
 CONDITIONAL_DIRECTIVE_PATTERN = re.compile(
     r'^\s*<!--\s*(?:Only if|Only when|Include when|Include if|Only for|Always include)\b[^>]*-->',
+    re.IGNORECASE
+)
+INLINE_CONDITIONAL_PATTERN = re.compile(
+    r'<!--\s*(?:Only if|Only when|Include when|Include if|Only for|Always include)\b[^>]*-->',
     re.IGNORECASE
 )
 PLACEHOLDER_PATTERN = re.compile(r'\[\[\[.*?\]\]\]|\[\[.*?\]\]')
@@ -102,7 +107,7 @@ class GitHubMDValidator:
         # Run validation checks
         self._check_placeholders_removed(generated_content)
         self._check_template_comments_removed(generated_content)
-        self._check_toc_no_emojis(generated_content)
+        self._check_toc_entries(generated_content)
         self._check_mandatory_headings(generated_content, template_content)
         self._check_empty_sections(generated_content)
         self._check_fixed_prose_integrity(generated_content, template_content)
@@ -295,10 +300,10 @@ class GitHubMDValidator:
                 context="Template directive comment found in output"
             ))
 
-    def _check_toc_no_emojis(self, content: str):
-        """Check Table of Contents has no emojis in entries."""
-        # Find ToC section
-        toc_match = re.search(r'##\s*📑\s*Table of Contents\s*\n(.*?)(?=\n##|\Z)', content, re.DOTALL)
+    def _check_toc_entries(self, content: str):
+        """Check the Table of Contents for emojis, coverage, and order."""
+        toc_match = re.search(r'(?:^|\n)#{1,6}\s*\S*\s*Table of Contents\s*\n(.*?)(?=\n#{1,6}\s|\Z)', content, re.DOTALL)
+
         if not toc_match:
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
@@ -307,17 +312,102 @@ class GitHubMDValidator:
             ))
             return
 
-        toc_content = toc_match.group(1)
-        # Check for emojis in ToC entries (links)
-        toc_entries = re.findall(r'\[([^\]]+)\]\(#[^\)]+\)', toc_content)
-        for entry in toc_entries:
-            # Check for emoji characters
-            if re.search(r'[\U0001F300-\U0001F9FF]', entry):
+        toc_entries = [
+            (label, anchor)
+            for label, anchor in re.findall(r'^\s*-\s*\[([^\]]+)\]\(#([^\)]*)\)\s*$', toc_match.group(1), re.MULTILINE)
+        ]
+
+        for label, _ in toc_entries:
+            if self._strip_heading_markers(label).lower() == 'table of contents':
                 self.issues.append(ValidationIssue(
                     ValidationSeverity.ERROR,
-                    f"Emoji found in ToC entry: {entry}",
+                    "Table of Contents lists itself as an entry",
+                    context="Do not include the Table of Contents heading in its own list"
+                ))
+
+            if re.search(r'[\U0001F300-\U0001FAFF\u2190-\u2BFF\uFE0F]', label):
+                self.issues.append(ValidationIssue(
+                    ValidationSeverity.ERROR,
+                    f"Emoji found in ToC entry: {label}",
                     context="Table of Contents must not contain emojis in entry text"
                 ))
+
+        entries_without_self = [
+            (self._strip_heading_markers(label), anchor)
+            for label, anchor in toc_entries
+            if self._strip_heading_markers(label).lower() != 'table of contents'
+        ]
+
+        expected_anchors = []
+        body_headings = []
+        in_code_block = False
+
+        for line in content.splitlines():
+            stripped = line.strip()
+
+            if stripped.startswith('```'):
+                in_code_block = not in_code_block
+                continue
+
+            if in_code_block or not re.match(r'^#{2,4}\s', stripped):
+                continue
+
+            heading = self._strip_heading_markers(stripped)
+
+            if heading.lower() == 'table of contents':
+                continue
+
+            body_headings.append(heading)
+            expected_anchors.append(self._slugify(heading))
+
+        labels = [label for label, _ in entries_without_self]
+        anchors = [anchor for _, anchor in entries_without_self]
+
+        for heading, anchor in zip(body_headings, expected_anchors):
+            if anchor not in anchors:
+                self.issues.append(ValidationIssue(
+                    ValidationSeverity.ERROR,
+                    f"Heading missing from Table of Contents: {heading}",
+                    context="Every ##, ###, and #### heading must appear in the ToC"
+                ))
+
+            elif heading not in labels:
+                self.issues.append(ValidationIssue(
+                    ValidationSeverity.ERROR,
+                    f"ToC entry text does not match its heading: {heading}",
+                    context="ToC labels must reproduce the heading text without emojis"
+                ))
+
+        observed = [anchor for anchor in anchors if anchor in expected_anchors]
+
+        if observed != expected_anchors:
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Table of Contents entries are missing or out of document order",
+                context=f"Expected order: {expected_anchors}"
+            ))
+
+    @staticmethod
+    def _strip_heading_markers(text: str) -> str:
+        """Return heading or label text with leading Markdown markers removed."""
+        without_emojis = re.sub(r'[\U0001F300-\U0001FAFF\u2190-\u2BFF\uFE0F]', '', text)
+        without_hashes = re.sub(r'^#+\s*', '', without_emojis.strip())
+
+        return re.sub(r'\s+', ' ', without_hashes).strip()
+
+    @staticmethod
+    def _slugify(heading: str) -> str:
+        """Return the GitHub-style anchor slug for a heading's plain text.
+
+        Emoji and punctuation are removed, spaces become hyphens, and repeated
+        or leading hyphens are collapsed so that both the ``#-heading`` and
+        ``#heading`` conventions compare equal.
+        """
+        lowered = heading.lower()
+        without_punctuation = re.sub(r'[^\w\s-]', '', lowered)
+        hyphenated = re.sub(r'\s+', '-', without_punctuation.strip())
+
+        return re.sub(r'-{2,}', '-', hyphenated).strip('-')
 
     def _check_mandatory_headings(self, content: str, template_content: str):
         """Check that every non-conditional template heading survives verbatim."""
@@ -456,13 +546,35 @@ class GitHubMDValidator:
     def _check_fixed_prose_integrity(self, content: str, template_content: str):
         """Check that fixed template prose survives into the generated document.
 
-        Conditional blocks may legitimately be omitted, so they are excluded from
-        comparison. Lines carrying placeholders or inline conditional directives are
-        not fixed prose either and are skipped.
+        Conditional blocks may legitimately be omitted. A block is treated as
+        included when its heading, or its first placeholder-free prose line,
+        appears in the generated document. Lines carrying placeholders or inline
+        conditional directives are not fixed prose and are skipped.
         """
         template_lines = self._strip_front_matter(template_content).splitlines()
-        gated_indices = self._get_conditional_indices(template_lines)
+        blocks = self._get_conditional_blocks(template_lines)
         document_prose = self._normalise_prose(content)
+        unique_blocks = sorted(set(blocks.values()))
+        heading_counts = collections.Counter()
+        block_headings = {}
+
+        for start, end in unique_blocks:
+            heading_match = HEADING_PATTERN.match(template_lines[start].strip())
+
+            if heading_match is not None:
+                heading_text = self._normalise_prose(template_lines[start])
+                heading_counts[heading_text] += 1
+                block_headings[(start, end)] = heading_text
+
+        skipped = set()
+
+        for start, end in unique_blocks:
+            heading_text = block_headings.get((start, end))
+            shares_heading = heading_text is not None and heading_counts[heading_text] > 1
+
+            if not self._is_block_included(template_lines, start, end, document_prose, shares_heading):
+                skipped.update(range(start, end))
+
         body_start = self._get_body_start_index(template_lines)
         in_code_block = False
 
@@ -474,7 +586,7 @@ class GitHubMDValidator:
                 in_code_block = not in_code_block
                 continue
 
-            if in_code_block or index in gated_indices:
+            if in_code_block or index in skipped:
                 continue
 
             prose = self._normalise_prose(template_line)
@@ -482,13 +594,93 @@ class GitHubMDValidator:
             if not self._is_fixed_prose(template_line, prose):
                 continue
 
-            if prose not in document_prose:
+            skeleton, fixed_words = self._prose_skeleton(prose)
+
+            if fixed_words < 4:
+                continue
+
+            if re.search(skeleton, document_prose) is None:
                 self.issues.append(ValidationIssue(
                     ValidationSeverity.ERROR,
                     f"Fixed template prose changed or missing: {prose}",
                     line_number=index + 1,
                     context="Only placeholders and HTML comments may be changed"
                 ))
+
+    @staticmethod
+    def _prose_skeleton(prose: str) -> tuple:
+        """Build a regular expression from prose, treating placeholders as wildcards.
+
+        Returns the expression together with the number of fixed (non-placeholder)
+        words that must survive into the generated document.
+        """
+        parts = []
+        fixed_words = 0
+        position = 0
+
+        for match in PLACEHOLDER_PATTERN.finditer(prose):
+            literal = prose[position:match.start()]
+            parts.append(re.escape(literal))
+            fixed_words += len(literal.split())
+            parts.append('.{0,400}?')
+            position = match.end()
+
+        tail = prose[position:]
+        parts.append(re.escape(tail))
+        fixed_words += len(tail.split())
+
+        return ''.join(parts), fixed_words
+
+    @classmethod
+    def _is_block_included(
+        cls,
+        template_lines: List[str],
+        start: int,
+        end: int,
+        document_prose: str,
+        require_distinguishing_line: bool = False,
+    ) -> bool:
+        """Report whether a conditional block is present in the document.
+
+        A block without a distinguishing body sentence counts as included when
+        its heading appears in the generated document. When the block owns at
+        least one placeholder-free body sentence, that sentence decides
+        inclusion in place of the heading, which keeps mutually exclusive
+        variants that share a heading distinguishable.
+        """
+        heading_present = False
+        body_sentences = []
+
+        for offset in range(start, end):
+            template_line = template_lines[offset]
+            candidate = template_line.strip()
+
+            if not candidate:
+                continue
+
+            prose = cls._normalise_prose(template_line)
+
+            if not prose:
+                continue
+
+            if HEADING_PATTERN.match(prose):
+                if prose in document_prose:
+                    heading_present = True
+
+                continue
+
+            if candidate.startswith('|') or PLACEHOLDER_PATTERN.search(template_line):
+                continue
+
+            if len(prose.split()) < 4:
+                continue
+
+            body_sentences.append(prose)
+
+        if body_sentences and (require_distinguishing_line or not heading_present):
+            return any(sentence in document_prose for sentence in body_sentences)
+
+        return heading_present
 
     @staticmethod
     def _get_body_start_index(template_lines: List[str]) -> int:
@@ -501,14 +693,17 @@ class GitHubMDValidator:
 
     @staticmethod
     def _is_fixed_prose(template_line: str, prose: str) -> bool:
-        """Report whether a template line is comparable fixed prose."""
+        """Report whether a template line is comparable fixed prose.
+
+        Lines carrying a conditional directive anywhere, including inline
+        directives attached to a bullet or sentence, are excluded because the
+        directive governs whether the text is emitted at all. Table rows are
+        excluded because their cells are data rather than fixed prose.
+        """
         if not prose:
             return False
 
-        if CONDITIONAL_DIRECTIVE_PATTERN.search(template_line):
-            return False
-
-        if PLACEHOLDER_PATTERN.search(template_line):
+        if INLINE_CONDITIONAL_PATTERN.search(template_line):
             return False
 
         if HEADING_PATTERN.match(prose):
@@ -516,6 +711,11 @@ class GitHubMDValidator:
 
         if prose.startswith('|'):
             return False
+
+        if PLACEHOLDER_PATTERN.search(prose):
+            skeleton, fixed_words = GitHubMDValidator._prose_skeleton(prose)
+
+            return fixed_words >= 4 and bool(skeleton)
 
         return len(prose.split()) >= 4
 
@@ -540,9 +740,15 @@ class GitHubMDValidator:
         return content
 
     @staticmethod
-    def _get_conditional_indices(template_lines: List[str]) -> Set[int]:
-        """Return template line indices governed by a conditional directive."""
-        gated_indices: Set[int] = set()
+    def _get_conditional_blocks(template_lines: List[str]) -> dict:
+        """Return conditional blocks as ``{gated index: (start, end)}`` pairs.
+
+        A block starts at the first non-blank line after a directive-only
+        comment and ends before the next directive or the next heading at the
+        same or a shallower level. Standalone headings that are immediately
+        followed by a directive are themselves gated.
+        """
+        blocks = {}
 
         for index, template_line in enumerate(template_lines):
             if not CONDITIONAL_DIRECTIVE_PATTERN.search(template_line):
@@ -551,39 +757,43 @@ class GitHubMDValidator:
             if re.sub(r'<!--.*?-->', '', template_line, flags=re.DOTALL).strip():
                 continue
 
-            block_start = None
+            start = None
 
             for offset in range(index + 1, len(template_lines)):
                 if template_lines[offset].strip():
-                    block_start = offset
+                    start = offset
                     break
 
-            if block_start is None:
+            if start is None:
                 continue
 
-            heading_match = HEADING_PATTERN.match(template_lines[block_start].strip())
+            heading_match = HEADING_PATTERN.match(template_lines[start].strip())
+            end = len(template_lines)
 
-            if heading_match is None:
-                for offset in range(block_start, len(template_lines)):
-                    if offset > block_start and HEADING_PATTERN.match(template_lines[offset].strip()):
+            if heading_match is not None:
+                heading_level = len(heading_match.group(1))
+
+                for offset in range(start + 1, len(template_lines)):
+                    nested_match = HEADING_PATTERN.match(template_lines[offset].strip())
+
+                    if nested_match and len(nested_match.group(1)) <= heading_level:
+                        end = offset
+                        break
+            else:
+                for offset in range(start + 1, len(template_lines)):
+                    if CONDITIONAL_DIRECTIVE_PATTERN.search(template_lines[offset]):
+                        end = offset
                         break
 
-                    gated_indices.add(offset)
+                    if HEADING_PATTERN.match(template_lines[offset].strip()):
+                        end = offset
+                        break
 
-                continue
-
-            heading_level = len(heading_match.group(1))
-
-            for offset in range(block_start, len(template_lines)):
-                nested_match = HEADING_PATTERN.match(template_lines[offset].strip())
-
-                if offset > block_start and nested_match and len(nested_match.group(1)) <= heading_level:
-                    break
-
-                gated_indices.add(offset)
+            for offset in range(start, end):
+                blocks[offset] = (start, end)
 
         for index, template_line in enumerate(template_lines):
-            if index in gated_indices or not HEADING_PATTERN.match(template_line.strip()):
+            if not HEADING_PATTERN.match(template_line.strip()):
                 continue
 
             for offset in range(index + 1, len(template_lines)):
@@ -591,11 +801,16 @@ class GitHubMDValidator:
                     continue
 
                 if CONDITIONAL_DIRECTIVE_PATTERN.search(template_lines[offset]):
-                    gated_indices.add(index)
+                    blocks.setdefault(index, (index, index + 1))
 
                 break
 
-        return gated_indices
+        return blocks
+
+    @staticmethod
+    def _get_conditional_indices(template_lines: List[str]) -> Set[int]:
+        """Return template line indices governed by a conditional directive."""
+        return set(GitHubMDValidator._get_conditional_blocks(template_lines).keys())
 
     @staticmethod
     def _remove_html_comments(content: str) -> str:

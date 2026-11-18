@@ -1,10 +1,10 @@
 ---
-description: "Enforces 100% template fidelity for GitHub markdown files in personal repositories owned by the current git user (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion. Skipped for organization-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed — unless the user explicitly requests the templates."
+description: "Enforces 100% template fidelity for GitHub markdown files in personal repositories owned by the current git user (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion. Skipped for organisation-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed — unless the user explicitly requests the templates."
 ---
 
 # GitHub MD Template Fidelity Skill
 
-This skill enforces **100% template fidelity** for GitHub markdown document generation **only in personal repositories owned by the current git user** — repositories whose GitHub owner is a personal account (`owner.type == "User"`) and whose owner matches the current git user. Organization-owned repositories and repositories owned by another user are out of strict-fidelity scope; the validator skips all fidelity checks for them.
+This skill enforces **100% template fidelity** for GitHub markdown document generation **only in personal repositories owned by the current git user** — repositories whose GitHub owner is a personal account (`owner.type == "User"`) and whose owner matches the current git user. Organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope; the validator skips all fidelity checks for them.
 
 The only exception is an **explicit user request** for the templates. When the user explicitly asks for template-based generation, full fidelity applies regardless of who owns the repository or whether it is personal.
 
@@ -22,6 +22,8 @@ gh api user --jq .login                           # current git user
 
 - Owner type `User` **and** owner equal to the current git user → enforce full template fidelity (read templates/rules/fidelity, run the pipeline, validate before output).
 - Owner type `Organization`, owner is a different user, or either value cannot be confirmed → **skip** template fidelity enforcement entirely; treat GitHub markdown generation as optional guidance without enforcement.
+
+The value `Organization` above is the literal GitHub API owner type, not prose.
 - **Explicit request override:** when the user explicitly requests the templates (for example "use the templates", "apply template fidelity", or running the `github-md-generator` prompt), enforce full fidelity regardless of owner type or ownership. Pass `--force` to the validator, or set `GITHUB_MD_FORCE_FIDELITY=1`.
 
 ---
@@ -82,7 +84,7 @@ Process template from line 1 to EOF:
 - **Comments**: Strip ALL template comments from output
 
 ### Step 4: ToC Generation (Post-Content)
-After ALL content finalized:
+After ALL content is finalised:
 ```markdown
 ## 📑 Table of Contents
 
@@ -110,7 +112,7 @@ Run ALL checks - ANY failure requires full regeneration:
 | Empty content | No empty headings, tables, lists, code blocks |
 | ToC completeness | Every final heading in ToC, correct order, 2-space indent, no emojis |
 | Evidence alignment | Commands, paths, versions, links, defaults match repository |
-| Release subsection | Exactly one `### Release` (or fixed .NET `release.sh` subsection) |
+| Release subsection | Exactly one `### Release` (generic or fixed .NET `release.sh` subsection, never both) |
 | Security | No secrets, credentials, personal data, private endpoints, unsafe scripts |
 
 ## Forbidden Patterns (Auto-Reject)
@@ -130,7 +132,7 @@ Run ALL checks - ANY failure requires full regeneration:
 3. Public registry metadata, hosted docs, deployment metadata
 4. **ONE** concise user clarification if mandatory value indeterminate
 
-## Failure Behavior
+## Failure Behaviour
 - If mandatory core value indeterminate after evidence collection → **STOP** and ask ONE clarification question
 - If ANY validation check fails → **REGENERATE from Step 3**
 - **NEVER** output partial or non-compliant document
@@ -149,7 +151,7 @@ This skill is automatically invoked when:
 - Validation is requested explicitly
 - User explicitly requests the templates, regardless of repository ownership or owner type
 
-Organization-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed are out of strict-fidelity scope; the validator skips enforcement for them unless the templates are explicitly requested.
+Organisation-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed are out of strict-fidelity scope; the validator skips enforcement for them unless the templates are explicitly requested.
 
 The skill provides the `validate_github_md` function for programmatic validation.
 
@@ -178,7 +180,7 @@ When generating ANY GitHub MD file, the agent MUST:
 1. **READ BOTH FILES FIRST** - Template AND Rules for the target file type
 2. **COLLECT EVIDENCE** - For every conditional in template, verify with repository
 3. **PROCESS LINE BY LINE** - Copy fixed prose verbatim, resolve placeholders, evaluate conditionals
-4. **GENERATE ToC LAST** - When the template defines a ToC, generate it after all content is finalized, with NO emojis and 2-space indent
+4. **GENERATE ToC LAST** - When the template defines a ToC, generate it after all content is finalised, with NO emojis and 2-space indent
 5. **VALIDATE BEFORE OUTPUT** - Run all checks, regenerate on ANY failure
 
 ### Critical Rules That Must NEVER Be Violated

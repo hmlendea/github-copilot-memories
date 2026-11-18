@@ -8,10 +8,10 @@ This is the `README.md` template that must be used.
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)]([[FUNDING_URL]])
 <!-- Only if the repository is public and it has at least one published release. -->
 [![Latest Release](https://img.shields.io/github/v/release/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]])](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases/latest)
-<!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use label 'GitHub Pages' for github.io URLs, otherwise 'Website'. -->
+<!-- Only if the repository has a configured Website URL or GitHub Pages is enabled. Use the configured Website URL, or the GitHub Pages URL when GitHub Pages is enabled. Keep the fixed `Website` badge label. -->
 [![Website](https://img.shields.io/badge/Website-Visit-blue)](https://[[WEBSITE_URL]])
 <!-- Only if a primary GitHub Actions workflow exists. `[[BUILD_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
-[![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[BUILD_WORKFLOW_FILE]]/badge.svg)](https://github.com/
+[![Build Status](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[BUILD_WORKFLOW_FILE]]/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[BUILD_WORKFLOW_FILE]])
 <!-- Only if a primary GitHub Actions workflow exists. `[[SECURITY_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. -->
 [![Security Scan](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]]/badge.svg)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]])
 <!-- Only if code coverage reporting is configured. Use the provider's canonical badge and report URLs. -->
@@ -46,7 +46,7 @@ This is the `README.md` template that must be used.
 
 ## 📑 Table of Contents
 
-<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
+<!-- Generate one record per `##`, `###`, and `####` heading present in the final output, in order, excluding the Table of Contents heading itself. Indent each level by two spaces. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the entry text. -->
 
 <!-- Only if `screenshots/` directory exists with image files. -->
 ## 🖼️ Screenshots
@@ -214,9 +214,9 @@ go install [[GO_INSTALL_PATH]]@[[GO_INSTALL_VERSION]]
 
 ```xml
 <dependency>
-	<groupId>[[MAVEN_GROUP_ID]]</groupId>
-	<artifactId>[[MAVEN_ARTIFACT_ID]]</artifactId>
-	<version>[[MAVEN_VERSION]]</version>
+    <groupId>[[MAVEN_GROUP_ID]]</groupId>
+    <artifactId>[[MAVEN_ARTIFACT_ID]]</artifactId>
+    <version>[[MAVEN_VERSION]]</version>
 </dependency>
 ```
 
@@ -225,7 +225,7 @@ go install [[GO_INSTALL_PATH]]@[[GO_INSTALL_VERSION]]
 
 ```kotlin
 dependencies {
-	implementation("[[MAVEN_GROUP_ID]]:[[MAVEN_ARTIFACT_ID]]:[[MAVEN_VERSION]]")
+    implementation("[[MAVEN_GROUP_ID]]:[[MAVEN_ARTIFACT_ID]]:[[MAVEN_VERSION]]")
 }
 ```
 
@@ -431,9 +431,8 @@ For the detailed description of how the application handles privacy and personal
 
 <!-- Only if this is a .NET project. -->
 - [.NET [[DOTNET_VERSION]] SDK](https://dotnet.microsoft.com/download/dotnet/[[DOTNET_VERSION]])
-<!-- Only if other requirements exist. -->
-- [[Additional requirement 1]]
-- [[Additional requirement 2]]
+<!-- Only if other requirements exist. Repeat for each additional requirement. -->
+- [[ADDITIONAL_REQUIREMENT]]
 
 <!-- Include source checkout, submodules or Git LFS when applicable, dependency restoration, local configuration, and required service initialisation. -->
 ### Setup
@@ -530,12 +529,12 @@ For the detailed description of how the application handles privacy and personal
 
 [[CONTINUOUS_INTEGRATION_INSTRUCTIONS]]
 
-<!-- Only if maintainers have an evidenced packaging or release process and the exact .NET `release.sh` variant below does not apply. Include versioning, artefact, signing, and publication steps that are prudent to disclose. Identify every remotely executed script and prominently instruct readers to inspect it first. -->
+<!-- Only if maintainers have an evidenced packaging or release process and the exact .NET `release.sh` variant below does not apply. Mutually exclusive with the following `### Release` variant; include exactly one. Include versioning, artefact, signing, and publication steps that are prudent to disclose. Identify every remotely executed script and prominently instruct readers to inspect it first. -->
 ### Release
 
 [[RELEASE_INSTRUCTIONS]]
 
-<!-- Only if `release.sh` exists. -->
+<!-- Only if `release.sh` exists. Mutually exclusive with the preceding `### Release` variant; include exactly one. -->
 ### Release
 
 The repository includes `release.sh`, which delegates to the upstream deployment script used by the project maintainer.
@@ -586,7 +585,7 @@ This script downloads and executes an external release helper from `https://raw.
 
 [[PROJECT_NAME]] [[SHORT_ARCHITECTURAL_SUMMARY]]
 
-See the [[ARCHITECTURE_DOCUMENT_LINK]] for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+See the [[ARCHITECTURE_DOCUMENT_LINK]] for the system context, principal components, runtime processes, ownership boundaries, dependencies, constraints, and extension points.
 
 <!-- Only if the project is deployed as an application, service, website, infrastructure component, or self-hosted system. Include only evidenced procedures and never include secret values or private production endpoints. -->
 ## 🚢 Deployment
@@ -668,7 +667,7 @@ See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 
 [[MIGRATION_GUIDE_REFERENCE]]
 
-<!-- Only if recurring, evidenced problems have concise diagnostic procedures or resolutions. Do not invent speculative problems. -->
+<!-- Only if recurring, evidenced problems have concise diagnostic procedures or resolutions. Mutually exclusive with the following `## 🩺 Troubleshooting` link variant; include exactly one. Do not invent speculative problems. -->
 ## 🩺 Troubleshooting
 
 <!-- Repeat for each evidenced problem. -->
@@ -676,15 +675,15 @@ See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 |---------|----------------|------------|
 | [[TROUBLESHOOTING_SYMPTOM]] | [[TROUBLESHOOTING_CAUSE]] | [[TROUBLESHOOTING_RESOLUTION]] |
 
-<!-- Only if `FAQ.md` or `docs/faq.md` or `docs/FaQ.md` or `docs/FAQ.md` exists. -->
+<!-- Only if `FAQ.md` or `docs/faq.md` or `docs/FaQ.md` or `docs/FAQ.md` exists. Resolve `[[FAQ_DOCUMENT_LINK]]` to the verified repository-relative path of the existing FAQ document. -->
 ## ❓ FAQ
 
-See the [Frequently Asked Questions](./FAQ.md) <!-- or whatever the file path is --> for responses to frequently raised inquiries.
+See the [FAQ]([[FAQ_DOCUMENT_LINK]]) for responses to frequently raised inquiries.
 
-<!-- Only if `TROUBLESHOOTING.md` or `docs/troubleshooting.md` or `docs/Troubleshooting.md` or `docs/TROUBLESHOOTING.md` exists. -->
+<!-- Only if `TROUBLESHOOTING.md` or `docs/troubleshooting.md` or `docs/Troubleshooting.md` or `docs/TROUBLESHOOTING.md` exists. Mutually exclusive with the preceding `## 🩺 Troubleshooting` table variant; include exactly one. Resolve `[[TROUBLESHOOTING_DOCUMENT_LINK]]` to the verified repository-relative path of the existing troubleshooting document. -->
 ## 🩺 Troubleshooting
 
-See [Troubleshooting Guide](./TROUBLESHOOTING.md) <!-- or whatever the file path is --> for diagnostic procedures and resolutions to recurring problems.
+See [Troubleshooting Guide]([[TROUBLESHOOTING_DOCUMENT_LINK]]) for diagnostic procedures and resolutions to recurring problems.
 
 <!-- Always include. -->
 ## 🤝 Contributing
@@ -743,6 +742,7 @@ See the [Changelog](./CHANGELOG.md) for a full history of changes.
 
 For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
+<!-- Always include. -->
 ## 💬 Support
 
 For support, please [open an issue](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/issues).
@@ -764,5 +764,5 @@ If you find this project useful, consider [[FUNDING_PREFIX]]starring ⭐️ it o
 <!-- Only if `./LICENSE` exists. Include this exactly as it is written here, do not modify it in any manner. -->
 ## 📄 License
 
-This project is being distributed under the `[[License Title]]`<!-- Only for GPL-family licences, append: " or later" -->.
+This project is being distributed under the `[[LICENSE_TITLE]]`[[LICENSE_SUFFIX]].
 See [LICENSE](./LICENSE) for additional information.

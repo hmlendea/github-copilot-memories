@@ -10,7 +10,7 @@ This is the `ROADMAP.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order, excluding the Table of Contents heading itself. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 <!-- Only if there is active labour in progress. -->
 ## 🎯 Current Focus

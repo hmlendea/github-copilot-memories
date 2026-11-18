@@ -10,7 +10,7 @@ This is the `SECURITY.md` template that shall be utilised.
 
 ## 📑 Table of Contents
 
-<!-- Generate one record per ##/###/#### heading present in the final output, in order. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
+<!-- Generate one record per ##/###/#### heading present in the final output, in order, excluding the Table of Contents heading itself. Each record must be a Markdown link to its corresponding heading anchor. Do not include emojis in the record text. -->
 
 ## 🛡️ Supported Versions
 
@@ -59,11 +59,11 @@ This project follows coordinated disclosure:
 <!-- Only if an automated security scanning GitHub Actions workflow exists. -->
 ## 🔍 Automated Security Scanning
 
-This repository runs automated security scans [[description]]. The scan includes:
+This repository runs automated security scans [[SCAN_DESCRIPTION]]. The scan includes:
 - **[[WHAT_IS_SCANNED_1]]** [[WHAT_IS_SCANNED_1_DESCRIPTION]]
 - **[[WHAT_IS_SCANNED_2]]** [[WHAT_IS_SCANNED_2_DESCRIPTION]]
 
-Results are published to the [Security](https://github.com/hmlendea/iptv-playlist-aggregator/security) tab and the [Actions](https://github.com/hmlendea/iptv-playlist-aggregator/actions/workflows/security.yml) workflow page.
+Results are published to the [Security](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/security) tab and the [Actions](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/actions/workflows/[[SECURITY_WORKFLOW_FILE]]) workflow page.
 
 <!-- Only if a safe-harbour declaration is available. -->
 ## 🧾 Safe Harbour

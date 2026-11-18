@@ -2,7 +2,7 @@ Generate or revise the `README.md` for this GitHub repository using the `templat
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `README.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `README.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 
@@ -34,14 +34,18 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 
 ### Placeholder Rules
 
-- Placeholder names use uppercase snake case enclosed by double brackets.
+- Placeholder names use uppercase snake case enclosed by double brackets. Descriptive prompt placeholders such as `[[Project or service name]]` also occur; resolve those from repository evidence rather than renaming them.
 - A content placeholder may expand to multiple Markdown lines.
 - Repeatable examples must be duplicated once per evidenced record and then have their placeholder row or item removed.
 - `[[DEFAULT_BRANCH]]` must reflect repository metadata; do not presume `master` or `main`.
+- `[[PROJECT_TITLE]]` and `[[PROJECT_NAME]]` both expand to the same human-friendly project name, taken from the repository title or documented project name.
+- `[[FAQ_DOCUMENT_LINK]]` and `[[TROUBLESHOOTING_DOCUMENT_LINK]]` must expand to verified repository-relative paths of the existing documents, never to a path that does not exist.
 - `[[ARCHITECTURE_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Architecture Documentation` whose target is the verified repository-relative document path.
 - `[[CODE_OF_CONDUCT_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Code of Conduct` whose target is the verified repository-relative document path.
 - `[[LICENSE_TITLE]]` must reflect the repository licence without inference.
 - `[[LICENSE_SUFFIX]]` is ` or later` only when the licence text or SPDX expression explicitly grants later versions; otherwise it is empty.
+- `[[RELEASE_INSTRUCTIONS]]` and the template-defined `release.sh` subsection are mutually exclusive `### Release` variants; include exactly one.
+- The table variant of `## 🩺 Troubleshooting` and the link variant that references `TROUBLESHOOTING.md` are mutually exclusive; include exactly one when its condition is met.
 - `[[FUNDING_URL]]` must expand to the author's donation link. When the user or repository explicitly provides one, use it verbatim. Otherwise take it from `.github/FUNDING.yml`: use the `custom` field value verbatim; when `custom` is missing or empty, use the `github` field as `https://github.com/sponsors/<github>`. Never invent a donation link.
 - Badge placeholders such as `[[COVERAGE_BADGE]]` must expand to complete linked badge Markdown from a configured provider.
 - Generic placeholders such as `[[ADDITIONAL_STATUS_BADGES]]` and `[[ADDITIONAL_DISTRIBUTION_BADGES]]` are removed when no additional evidenced records exist.
@@ -60,7 +64,7 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 - Every additional section is repository-relevant, substantive, and purely additive.
 - Fixed template prose has not been rephrased.
 - No `[[PLACEHOLDER]]`, template comment, unused example, empty heading, empty table, or empty code block remains.
-- The Table of Contents includes every final `##`, `###`, and `####` heading in order, with two-space indentation per level and no heading emoji in labels or anchors.
+- The Table of Contents includes every final `##`, `###`, and `####` heading except the Table of Contents heading itself, in order, with two-space indentation per level and no heading emoji in labels or anchors.
 - Commands, paths, versions, links, defaults, and compatibility statements agree with repository evidence.
 - Exactly one `### Release` subsection remains when release guidance applies. A .NET project with the template-defined `release.sh` workflow uses that fixed subsection verbatim instead of `[[RELEASE_INSTRUCTIONS]]`.
 - No secret, credential, personal datum, private endpoint, or unsafe remote-script instruction is exposed.
@@ -78,8 +82,8 @@ Include badges only when their state and destination can be verified:
 |-------|-----------|-------|
 | Donate | `.github/FUNDING.yml` exists. | Resolve `[[FUNDING_URL]]` from `.github/FUNDING.yml`. |
 | Latest Release | At least one published release exists. | Do not include for tags without published releases. |
-| Website or GitHub Pages | A public repository website is configured or GitHub Pages is enabled. | Use `GitHub Pages` for `github.io` URLs; otherwise use `Website`. |
-| Build Status | A primary GitHub Actions workflow exists. | `[[WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. Select the principal validation workflow rather than every workflow. |
+| Website or GitHub Pages | A public repository website is configured or GitHub Pages is enabled. | Keep the fixed `Website` badge label; use the configured Website URL, or the GitHub Pages URL when GitHub Pages is enabled. |
+| Build Status | A primary GitHub Actions workflow exists. | `[[BUILD_WORKFLOW_FILE]]` includes its `.yml` or `.yaml` extension. Select the principal validation workflow rather than every workflow. |
 | Coverage | A coverage provider and public report are configured. | Use the provider's canonical linked badge; do not presume Codecov, a branch, or a report URL. |
 | Code Quality | An external analysis service is configured and has a useful public report. | Omit local-only linters and redundant quality badges. |
 | NuGet, npm, PyPI, or crates.io | The corresponding package is publicly published. | Confirm the package identifier from manifests and registry metadata. |
@@ -94,6 +98,7 @@ Always include:
 - `## 📑 Table of Contents`
 - `## ✨ Capabilities`
 - `## 🚀 Usage`
+- `## 💬 Support`
 - `## 🤝 Contributing`
 - `## 💝 Project Engagement`
 
@@ -109,7 +114,7 @@ Process the subsequent sections in table order. This order is canonical after co
 |---------|-----------|-------------------------------|
 | Project status callout | Maturity, maintenance, deprecation, archival, or stability status requires prominent disclosure. | Place directly after the project description. |
 | Preview screenshot | `preview.png` exists in the repository root. | Place before Table of Contents. |
-| `## 📑 Table of Contents` | Always. | Include every final `##`, `###`, and `####`; indent nested levels by two spaces and omit heading emojis from labels and anchors. |
+| `## 📑 Table of Contents` | Always. | Include every final `##`, `###`, and `####` except the Table of Contents heading itself; indent nested levels by two spaces and omit heading emojis from labels and anchors. |
 | `## 🖼️ Screenshots` | `screenshots/` contains useful image files. | Include representative current images only. |
 | `## 🎬 Demo` | A public interactive demonstration, sample instance, recorded demonstration, or representative media asset exists. | Link or embed the canonical public resource. |
 | `## ✨ Capabilities` | Always. | Describe evidenced user outcomes rather than implementation details. |
@@ -140,8 +145,8 @@ Process the subsequent sections in table order. This order is canonical after co
 | `## 🧾 Data Formats and Protocols` | Users implement public formats, schemas, protocols, or import/export contracts directly. | Link specifications and avoid duplicating generated schemas. |
 | `## 🏷️ Versioning` | A versioning scheme, stability guarantee, support window, or deprecation policy is documented. | Do not infer Semantic Versioning from version-shaped tags alone. |
 | `## 🔄 Migration Guide` | `MIGRATION.md`, `UPGRADING.md`, or an equivalent migration resource exists. | Link the evidenced resource. |
-| `## 🩺 Troubleshooting` | Recurring evidenced problems have diagnostic procedures or resolutions. | Do not invent speculative failures. |
-| `## ❓ FAQ` | `FAQ.md` exists. | Place after Troubleshooting. |
+| `## 🩺 Troubleshooting` | Recurring evidenced problems have diagnostic procedures or resolutions, or a troubleshooting document exists. | Include exactly one of the table variant or the `TROUBLESHOOTING.md` link variant. Do not invent speculative failures. |
+| `## ❓ FAQ` | `FAQ.md`, `docs/faq.md`, `docs/FaQ.md`, or `docs/FAQ.md` exists. | Place after Troubleshooting and resolve `[[FAQ_DOCUMENT_LINK]]` to the verified path. |
 | `## 🤝 Contributing` | Always. | Preserve the fixed base text and resolve conditional bullets. |
 | `## 📜 Code of Conduct` | `CODE_OF_CONDUCT.md` exists in the root or `.github/`. | Preserve its fixed sentence and resolve only `[[CODE_OF_CONDUCT_DOCUMENT_LINK]]`. |
 | `## 🧭 Governance` | Public governance, maintainer, owner, or decision-making documentation exists. | Link or summarise the canonical source. |
@@ -150,7 +155,7 @@ Process the subsequent sections in table order. This order is canonical after co
 | `## 📝 Citation` | Citation metadata exists or the project is an academic or research artefact. | Prefer `CITATION.cff`, `CITATION.bib`, DOI, or canonical publication metadata. |
 | `## 📋 Changelog` | `CHANGELOG.md` exists. | Link to the root document. |
 | `## 🔒 Security` | `SECURITY.md` exists. | Direct vulnerability reports to the policy, not the public issue tracker. |
-| `## 💬 Support` | `SUPPORT.md` or a public support route exists. | Distinguish general support from security disclosure. |
+| `## 💬 Support` | Always. | Preserve the fixed issue link and resolve the conditional `SUPPORT.md` sentence. Distinguish general support from security disclosure. |
 | `## 💝 Project Engagement` | Always. | Preserve the fixed issue, suggestion, funding, and starring text while resolving funding conditionals. |
 | `## 📄 License` | `LICENSE` exists. | Preserve the fixed base text and resolve title and suffix from licence evidence. |
 

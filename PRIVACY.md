@@ -6,15 +6,19 @@ This document describes how the GitHub Copilot Memories repository manages perso
 
 - [What This Document Covers](#what-this-document-covers)
 - [Data We Handle](#data-we-handle)
+  - [Data Provided to the Application](#data-provided-to-the-application)
+  - [Data Generated or Collected by the Application](#data-generated-or-collected-by-the-application)
+  - [Data Received from Integrations](#data-received-from-integrations)
 - [Processing and Use](#processing-and-use)
 - [Storage, Retention, and Deletion](#storage-retention-and-deletion)
 - [External Processing and Integrations](#external-processing-and-integrations)
+- [Data Protection and Security](#data-protection-and-security)
 - [Document Changes](#document-changes)
 - [Contact](#contact)
 
 ## 🔎 What This Document Covers
 
-This document describes how GitHub Copilot Memories at https://github.com/hmlendea/github-copilot-memories manages personal data. It covers the repository content and verified integrations described below. The repository is a collection of instruction files, skills, and agents; it does not operate a hosted service or process user data.
+This document describes how GitHub Copilot Memories at https://github.com/hmlendea/github-copilot-memories manages personal data. It covers the application conduct and verified integrations described below. Where the software is self-hosted, the instance operator may have separate responsibilities described below.
 
 ## 📥 Data We Handle
 
@@ -55,4 +59,4 @@ Update this document when application data processes, storage, integrations, or 
 
 ## 📬 Contact
 
-For questions about application data handling, contact the project maintainers. Include no secrets, passwords, or access tokens.
+For questions about application data handling, contact the project maintainers. For a self-hosted instance, contact the instance operator, unless the project explicitly manages the request. Include the repository name or issue number that identifies the deployment or data process, if any; do not send passwords, access tokens, or other secrets.

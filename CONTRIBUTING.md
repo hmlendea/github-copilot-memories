@@ -6,19 +6,19 @@ This document covers the guidelines and processes for contributing to this proje
 
 ## 📑 Table of Contents
 
-- [How to Contribute](#-how-to-contribute)
+- [Contributing](#contributing)
   - [Reporting Issues](#reporting-issues)
   - [Suggesting Enhancements](#suggesting-enhancements)
   - [Code Contributions](#code-contributions)
     - [Development Setup](#development-setup)
     - [Making Changes](#making-changes)
     - [Pull Request Guidelines](#pull-request-guidelines)
-- [Code Style](#-code-style)
-- [Documentation](#-documentation)
-- [Code of Conduct](#-code-of-conduct)
-- [Security Policy](#-security-policy)
-- [Donations](#-donations)
-- [License](#-license)
+- [Code Style](#code-style)
+- [Documentation](#documentation)
+- [Code of Conduct](#code-of-conduct)
+- [Security](#security)
+- [Donations](#donations)
+- [License](#license)
 
 ## 🤝 Contributing
 
@@ -72,7 +72,7 @@ Follow the project's coding standards:
 
 ### Documentation
 
-- Update relevant docs for changes.
+- Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
@@ -87,10 +87,8 @@ Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 💝 Donations
 
-This project is developed and maintained in my spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/funding) or giving it a ⭐️ on GitHub!
+This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/funding) and giving it a star ⭐️ on GitHub!
 
 ## 📄 License
 
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0-only) (LICENSE).
-
-By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0 (GPL-3.0-only).
+By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0.

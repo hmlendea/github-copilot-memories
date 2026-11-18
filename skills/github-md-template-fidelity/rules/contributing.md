@@ -2,7 +2,7 @@ Generate or revise the `CONTRIBUTING.md` for this GitHub repository using the `t
 
 ## Strict Template Fidelity Mode (Default)
 
-Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organization-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
+Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and overrides conflicting instructions. Strict fidelity applies **only to personal repositories owned by the current git user** (GitHub owner type `User` and owner matching the current git user); organisation-owned repositories and repositories owned by another user are out of strict-fidelity scope. If the user explicitly requests the templates, strict fidelity applies regardless of repository ownership.
 
 ### Generation Contract
 
@@ -17,7 +17,7 @@ Strict fidelity applies to every `CONTRIBUTING.md` creation or revision and over
 7. Remove each inapplicable conditional block in its entirety, including its heading, body, example rows, associated badge, and directive comment.
 8. For every included block, preserve the template-defined heading, relative order, and fixed prose. Replace only placeholders, repeatable examples, and content explicitly designated by comments.
 9. Replace scalar placeholders such as `[[PROJECT_TITLE]]` with one evidence-based value.
-10. Expand content placeholders such as `[[DEVELOPMENT_SETUP]]`, `[[TESTING_INSTRUCTIONS]]`, and `[[RELEASE_INSTRUCTIONS]]` into the complete Markdown required by that block, including paragraphs, lists, tables, or fenced code blocks.
+10. Expand content placeholders such as `[[DEVELOPMENT_SETUP]]`, `[[TEST_COMMAND]]`, and `[[FORMAT_COMMAND]]` into the complete Markdown required by that block, including paragraphs, lists, tables, or fenced code blocks.
 11. Duplicate rows, list items, or other examples only when an adjacent template comment says `Repeat` or otherwise expressly permits repetition. When adjacent directives define mutually exclusive variants with identical headings, include exactly one matching variant.
 12. Remove an optional placeholder together with its containing conditional block when no evidenced content applies. Never preserve an empty heading, table, list, or code block.
 13. Additional sections are permitted only when genuinely material repository information has no suitable template section. Position each addition after the nearest related template section without reordering template-defined sections.
@@ -37,7 +37,7 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 
 ### Placeholder Rules
 
-- Placeholder names use uppercase snake case enclosed by double brackets.
+- Placeholder names use uppercase snake case enclosed by double brackets. Descriptive prompt placeholders such as `[[PREREQUISITES]]`-style prose also occur; resolve those from repository evidence rather than renaming them.
 - A content placeholder may expand to multiple Markdown lines.
 - Repeatable examples must be duplicated once per evidenced record and then have their placeholder row or item removed.
 - `[[DEFAULT_BRANCH]]` must reflect repository metadata; do not presume `master` or `main`.
@@ -46,7 +46,7 @@ Do not infer unsupported capabilities, compatibility, guarantees, package availa
 - `[[SECURITY_DOCUMENT_LINK]]` must expand to a Markdown link labelled `Security Policy` whose target is the verified repository-relative document path.
 - `[[LICENSE_TITLE]]` must reflect the repository licence without inference.
 - Badge placeholders must expand to complete linked badge Markdown from a configured provider.
-- Generic placeholders such as `[[ADDITIONAL_SECTIONS]]` are removed when no additional evidenced records exist.
+- Generic placeholders such as `[[ADDITIONAL_SECTIONS]]` or `[[ADDITIONAL_STATUS_BADGES]]` are removed when no additional evidenced records exist.
 
 ## Conditional Content Rules
 
@@ -74,7 +74,7 @@ Process the subsequent sections in table order. This order is canonical after co
 | `### Code Contributions` | Always. | Preserve its `####` subsections and resolve only their conditionals and placeholders. |
 | `### Code Style` | A style guide or linter configuration exists. | Resolve `[[CODE_STYLE_GUIDE]]` and `[[FORMAT_COMMAND]]`. |
 | `### Testing` | Tests exist. | Resolve `[[TEST_COMMAND]]` and `[[TEST_SPECIFIC_COMMAND]]`. |
-| `### Documentation` | Documentation exists or is generated. | Resolve the dependency-package bullet conditional. |
+| `### Documentation` | Documentation exists or is generated. | Include the documentation bullets and resolve the dependency-package bullet conditional. |
 | `## 📜 Code of Conduct` | `CODE_OF_CONDUCT.md` exists. | Preserve its fixed sentence and resolve only `[[CODE_OF_CONDUCT_DOCUMENT_LINK]]`. |
 | `## 🔒 Security` | `SECURITY.md` exists. | Preserve its fixed sentence and resolve only `[[SECURITY_DOCUMENT_LINK]]`. |
 | `## 💝 Donations` | `.github/FUNDING.yml` exists. | Preserve the fixed prose and resolve only `[[FUNDING_URL]]`. |

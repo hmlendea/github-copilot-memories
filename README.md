@@ -8,7 +8,6 @@ A curated collection of instruction files and skills that encode reusable coding
 
 ## 📑 Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Capabilities](#capabilities)
 - [Usage](#usage)
 - [Installation](#installation)
@@ -277,7 +276,7 @@ The tracked project is content-focused. Instruction families are separated by la
 
 GitHub Copilot Memories is a content-only repository of instruction files, skills, and agents.
 
-See the [architecture documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+See the [architecture documentation](./ARCHITECTURE.md) for the system context, principal components, runtime processes, ownership boundaries, dependencies, constraints, and extension points.
 
 ## 🗺️ Roadmap
 
@@ -291,6 +290,7 @@ When doing so, please:
 - Maintain cross-platform compatibility
 - Submit focused pull requests that conform to the existing code style
 - Maintain your branch synchronised with `master`
+- Raise a new [issue](https://github.com/hmlendea/github-copilot-memories/issues) for problems or suggestions
 
 ## 📜 Code of Conduct
 
@@ -300,7 +300,7 @@ See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct exp
 
 GitHub Copilot Memories does not host services, execute code, or process user data.
 
-For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
 ## 💬 Support
 
@@ -308,11 +308,11 @@ For support, please [open an issue](https://github.com/hmlendea/github-copilot-m
 
 ## 💝 Project Engagement
 
-Discovered a problem or have a suggestion? [Open an issue](https://github.com/hmlendea/github-copilot-memories/issues)!
+Discovered a problem with GitHub Copilot Memories or have a suggestion for it? [Open an issue](https://github.com/hmlendea/github-copilot-memories/issues)!
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
 
 ## 📄 License
 
 This project is being distributed under the `GNU General Public License v3.0`.
-See [LICENSE](./LICENSE) for further information.
+See [LICENSE](./LICENSE) for additional information.

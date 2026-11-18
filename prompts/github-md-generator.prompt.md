@@ -13,7 +13,7 @@ This prompt enforces **100% template fidelity** for all GitHub markdown files. N
 
 ## SCOPE
 
-Running this prompt is an **explicit template request**: fidelity applies regardless of repository ownership or owner type, including organization-owned repositories and repositories owned by another user. Pass `--force` to the validator in this case.
+Running this prompt is an **explicit template request**: fidelity applies regardless of repository ownership or owner type, including organisation-owned repositories and repositories owned by another user. Pass `--force` to the validator in this case.
 
 Outside an explicit template request, the `github-md-template-fidelity` skill enforces fidelity only in personal repositories owned by the current git user.
 
@@ -56,7 +56,7 @@ Process the template **line by line, top to bottom**:
 7. **Remove ALL template comments and unused examples**
 
 ### Phase 4: Table of Contents Generation (CRITICAL)
-Generate ToC **AFTER** all content is finalized:
+Generate ToC **AFTER** all content is finalised:
 - Include EVERY final `##`, `###`, `####` heading in order
 - Indent nested levels by **exactly two spaces** per level
 - **NO EMOJIS** in ToC entry text or anchors
@@ -109,6 +109,6 @@ After generation, validate using the fidelity skill:
 python3 skills/github-md-template-fidelity/validate_github_md.py --force /path/to/repo TARGET_FILE.md generated_file.md
 ```
 
-`--force` asserts the explicit template request, so validation runs even when the repository is organization-owned or owned by another user. Omit it for the default ownership-scoped enforcement.
+`--force` asserts the explicit template request, so validation runs even when the repository is organisation-owned or owned by another user. Omit it for the default ownership-scoped enforcement.
 
 The skill `github-md-template-fidelity` (in `skills/github-md-template-fidelity/SKILL.md`) provides the complete validation pipeline and must be consulted for any GitHub MD generation task.

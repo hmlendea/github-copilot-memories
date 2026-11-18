@@ -68,6 +68,7 @@ Follow the project's coding standards:
 - Instruction files: follow the conventions in `prompts/instructions/common/common.coding.instructions.md`
 - Skill files: follow the conventions in `skills/*/SKILL.md`
 - Apply British English spelling and the shared English and Romanian vocabulary rules through the `english-language` and `romanian-language` skills, to prose and to all human-readable text in code, including identifiers, string literals, comments, and messages
+- Treat those skills as mandatory for every file type; the language instruction files activate automatically on all paths and require the corresponding skill, applied in full rather than partially, before the edit is finished
 
 ### Documentation
 

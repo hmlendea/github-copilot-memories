@@ -9,6 +9,8 @@ Apply to all human-readable Romanian text, in code and outside it: identifiers (
 
 Exemptions: retain the original text where a change would break a public or external contract or compatibility (published API names, serialised or protocol field names, configuration keys, database or wire identifiers, registered entry points, third-party or overridden identifiers, and quoted external text), where the identifier is already an established proper noun or product name, or where the contextual replacement would sound forced or overly formal outside formal contexts.
 
+Completeness: apply the whole dictionary to the whole file, in every file type, including code, configuration, data, scripts, and documentation. Each record applies to all variants and derivatives, so every match must be resolved, either replaced or explicitly justified by an exemption above or by the scope comment attached to that record. Partial application is not permitted; neither a subset of records nor a subset of matches may be left. The volume of matches changes the effort, never the requirement.
+
 ## Romanian
 
 - Prefer context-natural Romanian words with Latin ancestry. Indirect ancestry through any intermediary qualifies; Latin words with older Greek, Etruscan, or other roots also qualify. Retain the original when no fluent alternative exists or the replacement sounds forced/overly formal, except in formal contexts.

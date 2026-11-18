@@ -46,12 +46,12 @@ A curated collection of instruction files and skills that encode reusable coding
 - Assesses LLM-integrated applications for prompt injection against OWASP LLM01:2025 and MITRE ATLAS AML.T0051, mapping the model interaction surface, enumerating direct and indirect injection vectors, and evaluating layered defences.
 - Reviews AI agent architectures against OWASP Agentic AI threats and NIST AI RMF 1.0, covering permission models, least-privilege design, human-in-the-loop gates, blast radius containment, audit trails, rollback capability, and multi-agent trust boundaries.
 - Reviews and repairs user interfaces against a ten-category rule set ordered by user impact, covering accessibility, touch and interaction, performance, style selection, layout and responsiveness, typography and colour, animation, forms and feedback, navigation, and charts, with a native and mobile pre-delivery checklist and a Playwright-driven audit that reports evidence-ranked findings and fails a pipeline on high-severity defects.
-- Maintains British English and Romanian language preferences through contextual terminology rules supplied by the on-demand `english-language` and `romanian-language` skills, applied to prose, documentation, and all human-readable text in code, including identifiers, string literals, comments, messages, and test data.
+- Maintains British English and Romanian language preferences through contextual terminology rules supplied by the mandatory `english-language` and `romanian-language` skills, applied in full and without partial passes to every file, including prose, documentation, code, configuration, data, and scripts, and to all human-readable text within them.
 - Defines systematic test design and edge-case coverage requirements, including failure-side assertions that a failure does not produce a later, unrequested effect, supplies consistent test values through the on-demand `test-values` skill, and provides an optional coding-pattern memory index.
 - Observes a pull request until it is genuinely mergeable through the `pr-babysit` skill, verifying each finding prior to correction and resolving a review thread only after the code addresses it.
 - Verifies a release after merge, publication, or deployment through the `release-verification` skill, confirming the delivered artefact per surface, classifying findings, and reporting partial verification with its coverage gap rather than claiming unverified health.
 - Verifies its own content in continuous integration by executing the instruction-gate hook tests, validating every governed GitHub document against its template, and parsing every workflow file.
-- Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file.
+- Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file, except for the language instructions, which deliberately apply to every file.
 - Resolves installed software, repository clones, documentation, configuration, data directories, and URLs from the agent home `Locations.md` registry before searching, probing, or inferring a location.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
@@ -172,7 +172,7 @@ Instruction files reside under `prompts/instructions/`. Each file starts with YA
 
 The always-on common instructions additionally direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` or `$CODEX_HOME/Locations.md` for Codex, with the macOS and Windows equivalents) before resolving any path or address, so a recorded location is used instead of being searched for or inferred.
 
-Language dictionaries use semantic discovery rather than automatic path activation. Their compact `source [context] -> replacements/replacements` records live in the `english-language` and `romanian-language` skills and load only for relevant language and terminology work.
+The language instruction files activate automatically for every file and require the `english-language` and `romanian-language` skills, whose compact `source [context] -> replacements/replacements` dictionaries must be applied in full, without partial passes.
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
@@ -263,7 +263,7 @@ The tracked project is content-focused. Instruction families are separated by la
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, and documentation principles |
 | `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | GitHub Actions workflow naming and documentation rules |
-| `prompts/instructions/language/` | British English and Romanian terminology preferences; require the `english-language` and `romanian-language` skills |
+| `prompts/instructions/language/` | British English and Romanian terminology preferences applied to every file type, requiring complete application of the `english-language` and `romanian-language` skills |
 | `prompts/instructions/markdown/` | Markdown structure and formatting conventions |
 | `prompts/instructions/methodscript/` | MethodScript coding and style conventions; require the `methodscript` skill |
 | `prompts/instructions/polyglot/` | PolyGlot dictionary conventions |

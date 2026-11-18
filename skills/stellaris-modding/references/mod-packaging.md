@@ -173,6 +173,18 @@ Names beginning with `~` sort to the top intent, `!` towards the bottom. Submods
 3. Extract so that `mod/MyMod.mod` and `mod/MyMod/` both exist. A frequent error is extracting into an extra nesting level.
 4. If the launcher cannot find the mod, open its `.mod` file and check `path` — Workshop-ripped archives often carry `path="steam/workshop/<name>/"`, which must become `path="mod/<name>/"`.
 
+## Local Versus Published Copies
+
+A subscribed Steam Workshop or Paradox Mods item and a local folder carrying an identical mod are two independent definition sets. The engine loads whichever the playlist activates, and a local copy never displaces the published one; the overlap instead yields duplicate keys, stale spawn weights, and edits that appear to have no effect.
+
+Prior to testing a local build:
+1. Unsubscribe from the published item in Steam, and deactivate it in the Paradox Mods list.
+2. Confirm the published content directory no longer exists under `<steam>/steamapps/workshop/content/281990/<workshop id>`.
+3. Delete its `ugc_<workshop id>.mod` descriptor from the user `mod/` folder.
+4. Launch a **new game**: planet modifiers and other generation-time content are recorded at galaxy creation and are not recomputed in an existing save.
+
+Diagnose the overlap by checking whether the engine reports identifiers unique to the published item. A name-list file that exists only in the Workshop copy appearing in `game.log` proves that copy is active. A malformed probe file placed in the local folder, and never reported in `error.log`, indicates instead that the local copy is not being read.
+
 ## Publishing
 
 Upload through **Mods → Upload a Mod**, choose Steam Workshop or Paradox Mods, and confirm the item page afterwards. Updates reuse `descriptor.mod`. The uploaded copy must never coexist with the local folder while testing.
@@ -182,7 +194,7 @@ Upload through **Mods → Upload a Mod**, choose Steam Workshop or Paradox Mods,
 | Symptom | Cause | Fix |
 |---------|-------|-----|
 | Mod absent from launcher | Wrong install path, or non-ASCII characters in the path | Move under the user data `mod/` folder; use an ASCII path |
-| Mod listed but no effect | Local and Workshop copies both present | Remove one, including its `.mod` |
+| Mod listed but no effect | Local and Workshop copies both present | Unsubscribe from the published item, then delete one copy including its `.mod` |
 | Mod vanished after launcher update | Stale `launcher-v2.sqlite` entry | Fix `dirPath`/`status` in `launcher-v2.sqlite`, or purge mod state and reload |
 | Checksum mismatch in multiplayer | Different mod set, load order, or game version | Equalise playlists and versions exactly |
 | Nothing works after many installs | Corrupt launcher database | Quit launcher, unsubscribe all, clear `workshop/content/281990`, delete `dlc_load.json`, `launcher-v2.sqlite`, and the `last_mods={}` block in `settings.txt`, then resubscribe and let all downloads finish |

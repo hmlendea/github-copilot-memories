@@ -20,6 +20,7 @@ Source material: the [Stellaris Wiki](https://stellaris.paradoxwikis.com/Stellar
 7. **Keep both descriptors.** `modname.mod` links the launcher to the folder; `descriptor.mod` inside the folder is what the 2.4+ launcher and the Workshop item use.
 8. **Indent with tabs and comment with `#`.** Clausewitz script is brace-structured; mismatched braces are the most frequent hard failure.
 9. **Read `error.log` after every change.** A silently inert effect or trigger usually means a wrong scope or an invalid key, not a broken install.
+10. **Never test a local copy alongside a published copy.** A subscribed Steam Workshop or Paradox Mods item of the mod loads as a second definition set, so local edits are merged away or shadowed and appear inert. Unsubscribe from the published item, delete its `.mod` descriptor, and start a **new game** (`references/mod-packaging.md`).
 
 ## Layout
 

@@ -45,7 +45,7 @@ jobs:
         run: node --check hooks/litellm-instruction-gate.cjs
 
       - name: Verify validator syntax
-        run: python3 -m py_compile skills/github-md-template-fidelity/validate_github_md.py skills/github-actions-workflow/validate_github_actions.py
+        run: python3 -m py_compile skills/github-md-template-fidelity/validate_github_md.py skills/github-actions-workflow/validate_github_actions.py skills/steam-workshop-page/validate_steam_workshop_page.py
 
       - name: Verify GitHub document fidelity
         shell: bash

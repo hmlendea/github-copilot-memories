@@ -1,6 +1,6 @@
 ---
 name: skill-security-auditor
-description: Use prior to installing a skill, plug-in, hook, or agent definition from an untrusted source, or when asked whether one is safe. Covers execution, instruction, dependency, and structure risks, and returns a redacted PASS, WARN, or FAIL verdict.
+description: "Use prior to installing a skill, plug-in, hook, or agent definition from an untrusted source, or when asked whether one is safe. Covers execution, instruction, dependency, and structure risks, and returns a redacted PASS, WARN, or FAIL verdict."
 ---
 
 Scrutinise a skill, plug-in, hook, or agent definition prior to installation, and return a verdict a reviewer can act upon. Never execute the examined content during the audit.
@@ -27,7 +27,7 @@ Inspect manifests for typosquatted names, unpinned versions, installation comman
 
 ## Structure Surface
 
-Inspect for symbolic links escaping the directory, unexpected executables and binary objects, concealed dotfiles, and oversized files capable of concealing a payload.
+Inspect for symbolic links escaping the directory, unexpected executables and binary objects, concealed dotfiles, and oversized files capable of concealing a payload. Also parse the `SKILL.md` frontmatter: a missing or mismatched `name`, an unquoted `description`, or a `description` exceeding 1024 characters is a structural defect that prevents loading or hides the real activation surface.
 
 ## Verdict
 

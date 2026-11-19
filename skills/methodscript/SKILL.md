@@ -1,6 +1,6 @@
 ---
 name: methodscript
-description: Use when writing or editing MethodScript code for Minecraft Spigot's CommandHelper plugin. Supplies the architecture and paradigm rules (project structure, execution model, commands, events, data and state, procedures, asynchronous scheduling, error and reliability, alias language, safety and compatibility), the style conventions (syntax and formatting, aliases, naming and typing, command and event option objects, error handling and guards, comments and documentation, project and file organisation, concurrency and runtime safety, persistence and IO, maintenance), and references for the 897 built-in functions and 104 bindable events of MethodScript 3.3.5.
+description: "Use when writing or editing MethodScript code for Minecraft Spigot's CommandHelper plugin. Supplies the architecture and paradigm rules (project structure, execution model, commands, events, data and state, procedures, asynchronous scheduling, error and reliability, alias language, safety and compatibility), the style conventions (syntax and formatting, aliases, naming and typing, command and event option objects, error handling and guards, comments and documentation, project and file organisation, concurrency and runtime safety, persistence and IO, maintenance), and references for the 897 built-in functions and 104 bindable events of MethodScript 3.3.5."
 ---
 
 # MethodScript

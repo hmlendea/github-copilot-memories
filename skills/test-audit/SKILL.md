@@ -1,6 +1,6 @@
 ---
 name: test-audit
-description: Use when auditing or gardening a test suite to detect and eliminate redundant, vacuous, or implementation-coupled tests while preserving regression proof. Covers the removal decision gate, duplication prevention, and evidence-backed reporting.
+description: "Use when auditing or gardening a test suite to detect and eliminate redundant, vacuous, or implementation-coupled tests while preserving regression proof. Covers the removal decision gate, duplication prevention, and evidence-backed reporting."
 ---
 
 Audit and garden test suites to reduce execution, maintenance, and continuous-integration expenditure whilst preserving meaningful regression detection. Investigate rigorously; delete only with concrete evidence. Retaining an area after examination is an entirely valid outcome.

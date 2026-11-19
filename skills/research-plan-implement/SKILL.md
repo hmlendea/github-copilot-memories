@@ -1,6 +1,6 @@
 ---
 name: research-plan-implement
-description: Use for non-trivial capabilities or changes. Separate investigation, planning, and implementation into three phases, each in a fresh session.
+description: "Use for non-trivial capabilities or changes. Separate investigation, planning, and implementation into three phases, each in a fresh session."
 ---
 
 Separate non-trivial work into three phases, each in a fresh session:

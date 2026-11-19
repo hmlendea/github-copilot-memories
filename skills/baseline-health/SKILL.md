@@ -1,6 +1,6 @@
 ---
 name: baseline-health
-description: Use before changing code when test, build, lint, or type-check baseline status is unknown and pre-existing failures could cause rework.
+description: "Use before changing code when test, build, lint, or type-check baseline status is unknown and pre-existing failures could cause rework."
 ---
 
 Establish the smallest useful baseline.

@@ -1,6 +1,6 @@
 ---
 name: performance-profiler
-description: Use for a slow endpoint, memory growth, elevated processor usage, an oversized bundle, or a performance budget, prior to modifying anything. Covers baseline establishment, profiling by domain, load testing, and before-and-after measurement.
+description: "Use for a slow endpoint, memory growth, elevated processor usage, an oversized bundle, or a performance budget, prior to modifying anything. Covers baseline establishment, profiling by domain, load testing, and before-and-after measurement."
 ---
 
 Establish a measured baseline prior to modifying anything, and substantiate a modification with a measured difference afterwards.

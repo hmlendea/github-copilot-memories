@@ -1,6 +1,6 @@
 ---
 name: imperator-rome-modding
-description: Use when creating or editing an Imperator Rome mod, or when working with its Clausewitz/Jomini script (effects, triggers, scopes, variables, script values), mod descriptors (.mod, descriptor.mod), setup files (countries, characters, provinces, cultures, religions, deities, heritages), events, decisions, ideas, units, combat tactics, governor policies, localisation (.yml), GUI (.gui), coat of arms, map data, defines, or the in-game console and debugging tools. Covers mod folder layout, packaging and publishing through the Paradox launcher, checksum and ironman safety, and troubleshooting load failures.
+description: "Use when creating or editing an Imperator Rome mod, or when working with its Clausewitz script (effects, triggers, scopes, variables, script values), mod descriptors (.mod, descriptor.mod), setup files (countries, characters, provinces, cultures, religions, deities, heritages), events, decisions, ideas, units, combat tactics, governor policies, localisation (.yml), GUI (.gui), coat of arms, map data, defines, or the console and debugging tools. Covers mod folder layout, packaging and publishing through the Paradox launcher, checksum and ironman safety, and load failures. The bundled references hold the full detail and load on demand."
 ---
 
 # Imperator: Rome Modding

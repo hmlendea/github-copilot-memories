@@ -1,6 +1,6 @@
 ---
 name: pre-aggregate-data
-description: Use when an assignment necessitates API, repository, or command data. Retrieve it during a preliminary step into files, then read only what is required.
+description: "Use when an assignment necessitates API, repository, or command data. Retrieve it during a preliminary step into files, then read only what is required."
 ---
 
 Move data collection out of the token-billed agent loop.

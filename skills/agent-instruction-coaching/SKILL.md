@@ -1,6 +1,6 @@
 ---
 name: agent-instruction-coaching
-description: Use when proposing evidence-backed improvements to another agent's instructions, skills, or tool descriptions. Covers trajectory-based evidence, mandatory review gating, dimension limits, and single-run separation of analysis from application.
+description: "Use when proposing evidence-backed improvements to another agent's instructions, skills, or tool descriptions. Covers trajectory-based evidence, mandatory review gating, dimension limits, and single-run separation of analysis from application."
 ---
 
 Coach a distinct agent by examining its recent execution record, identifying recurring behavioural patterns, and proposing the most compact durable modification to its instruction file, an existing skill, or a tool description. Never coach the active agent; self-examination is excluded.
@@ -30,7 +30,7 @@ Optional inputs:
 Every proposal must satisfy all of the following conditions:
 
 - **Separate application:** analysis and application execute in distinct runs. Deliver a diff together with an application plan; a human or the overseeing authority accepts it through an explicit interaction before any modification occurs.
-- **Dimension limits:** a skill file must not exceed 15 KB; a tool description must not exceed 500 characters; the agent instruction file may expand by at most twenty per cent per proposal. Requirements beyond these limits demand separate proposals.
+- **Dimension limits:** a skill file must not exceed 15 KB; a skill `SKILL.md` `description` must not exceed 1024 characters, and a tool description must not exceed 500 characters; the agent instruction file may expand by at most twenty per cent per proposal. Requirements beyond these limits demand separate proposals. A description over 1024 characters is a load error, so a proposal that would exceed it must compress the description and move the displaced detail into the body or `references/` instead of proposing the overflow.
 - **Evidence or omission:** every proposed rule cites at least one concrete quotation or assignment identifier from the examined agent's recent record. Absent evidence, omit the rule.
 - **Bounded scope:** propose modifications only to the target agent's instructions, its skills, or its tool descriptions. Never propose modifications to source code the agent does not own or to shared infrastructure.
 

@@ -1,6 +1,6 @@
 ---
 name: csharp-monogame
-description: Use when working with XNA, MonoGame, or NuciXNA C# code, especially GUI controls, screens, textures, text rendering, layout, or control lifecycle.
+description: "Use when working with XNA, MonoGame, or NuciXNA C# code, especially GUI controls, screens, textures, text rendering, layout, or control lifecycle."
 ---
 
 # C# MonoGame / NuciXNA

@@ -1,6 +1,6 @@
 ---
 name: test-design
-description: Use when changing tested behaviour, correcting defects, or writing/revising tests. Covers case derivation, boundaries, interactions, assertions, coverage, and determinism.
+description: "Use when changing tested behaviour, correcting defects, or writing/revising tests. Covers case derivation, boundaries, interactions, assertions, coverage, and determinism."
 ---
 
 Design tests from observable contracts, domain invariants, changed lines, and reachable control flow.

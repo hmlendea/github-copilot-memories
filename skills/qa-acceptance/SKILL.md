@@ -1,6 +1,6 @@
 ---
 name: qa-acceptance
-description: Use when defining manual QA acceptance criteria or a structured validation plan for a feature, defect correction, or release candidate. Covers the Given-When-Then single-assertion contract, mandatory coverage dimensions, pass-fail evidence standards, and handoff classifications.
+description: "Use when defining manual QA acceptance criteria or a structured validation plan for a feature, defect correction, or release candidate. Covers the Given-When-Then single-assertion contract, mandatory coverage dimensions, pass-fail evidence standards, and handoff classifications."
 ---
 
 Formulate acceptance criteria that an independent reviewer can execute against a running application to determine acceptance without consulting the author. Acceptance criteria define the contract: automated tests establish regression correctness; QA validation establishes feature-level behaviour.

@@ -1,6 +1,6 @@
 ---
 name: commit-craft
-description: Use when a working tree holds mixed modifications, or prior to composing a commit series or pushing. Covers logical grouping, staged-secret gating, subject and body discipline, and series verification.
+description: "Use when a working tree holds mixed modifications, or prior to composing a commit series or pushing. Covers logical grouping, staged-secret gating, subject and body discipline, and series verification."
 ---
 
 Compose reviewable commits from a mixed working tree. Staging, committing, pushing, and any history rewrite remain user-authorised operations; prepare the series, propose the commands, and execute only what the user requests.

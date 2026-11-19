@@ -1,6 +1,6 @@
 ---
 name: verify-before-continue
-description: Use for multi-step code changes. Validate each substantive edit with the cheapest focused check; stop on failure.
+description: "Use for multi-step code changes. Validate each substantive edit with the cheapest focused check; stop on failure."
 ---
 After each substantive edit:
 - Run the cheapest focused check that can falsify it.

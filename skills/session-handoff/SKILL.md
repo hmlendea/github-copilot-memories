@@ -1,6 +1,6 @@
 ---
 name: session-handoff
-description: Use when changing task, topic, model, reasoning effort, agent, or tool set, or when accumulated conversation context is no longer relevant.
+description: "Use when changing task, topic, model, reasoning effort, agent, or tool set, or when accumulated conversation context is no longer relevant."
 ---
 
 Continue in a fresh session with a compact handoff artefact, normally `HANDOFF.md`, holding:

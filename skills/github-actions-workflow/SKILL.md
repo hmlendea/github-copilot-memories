@@ -1,6 +1,6 @@
 ---
 name: github-actions-workflow
-description: Use when creating or revising any GitHub Actions workflow, including bash, .NET, Android, Python, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result.
+description: "Use when creating or revising any GitHub Actions workflow, including bash, .NET, Android, Python, security, release, NuGet, Nexus Mods, Steam Workshop, release-assets, or repository-specific workflows. Holds each canonical workflow template, its rules, the fidelity contract, and the validation script; synchronises all affected documentation and validates the result."
 ---
 
 # GitHub Actions Workflow

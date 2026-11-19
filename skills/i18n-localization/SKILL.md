@@ -1,6 +1,6 @@
 ---
 name: i18n-localization
-description: Use when adding interface text, adding or shipping a locale, reviewing translation files, or building localisation into an application. Covers key and placeholder verification, CLDR plural categories, ICU syntax, hardcoded-string detection, and pseudo-locale review.
+description: "Use when adding interface text, adding or shipping a locale, reviewing translation files, or building localisation into an application. Covers key and placeholder verification, CLDR plural categories, ICU syntax, hardcoded-string detection, and pseudo-locale review."
 ---
 
 Verify the translation layer rather than translate text. Inspect files and generate a pseudo-locale; a translation service is never a substitute for a translator.

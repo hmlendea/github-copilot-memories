@@ -1,6 +1,6 @@
 ---
 name: agent-regression-evals
-description: Use before shipping an agent, prompt, model, or tool modification, or when a pass-rate movement requires adjudication. Covers repeated trials, trajectory grading, flake quarantine, and paired statistical gating against a baseline.
+description: "Use before shipping an agent, prompt, model, or tool modification, or when a pass-rate movement requires adjudication. Covers repeated trials, trajectory grading, flake quarantine, and paired statistical gating against a baseline."
 ---
 
 Adjudicate a modification to an agent, prompt, model, or tool through repeated measurement rather than a single pass rate.

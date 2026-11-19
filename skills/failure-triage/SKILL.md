@@ -1,6 +1,6 @@
 ---
 name: failure-triage
-description: Use when a focused test, build, lint, type-check, or tool command fails during a task and the next repair is unclear.
+description: "Use when a focused test, build, lint, type-check, or tool command fails during a task and the next repair is unclear."
 ---
 
 Classify failure before expanding context.

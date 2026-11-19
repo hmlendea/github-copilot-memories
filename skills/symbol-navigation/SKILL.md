@@ -1,6 +1,6 @@
 ---
 name: symbol-navigation
-description: Use when locating symbol definitions, references, implementations, call sites, or structurally similar code without reading broad file sets.
+description: "Use when locating symbol definitions, references, implementations, call sites, or structurally similar code without reading broad file sets."
 ---
 
 Navigate semantics prior to text, and acquire a map prior to acquiring source.

@@ -1,6 +1,6 @@
 ---
 name: update-nuget-packages
-description: Use when updating NuGet package dependencies in a .NET solution or project. Runs test baselines when tests exist, updates every referenced package to the latest version project by project, and validates and repairs the final result.
+description: "Use when updating NuGet package dependencies in a .NET solution or project. Runs test baselines when tests exist, updates every referenced package to the latest version project by project, and validates and repairs the final result."
 ---
 
 # Update NuGet Packages

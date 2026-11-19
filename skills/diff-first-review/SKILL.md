@@ -1,6 +1,6 @@
 ---
 name: diff-first-review
-description: Use when reviewing a change, pull request, patch, or diff for defects, regressions, risks, or missing tests.
+description: "Use when reviewing a change, pull request, patch, or diff for defects, regressions, risks, or missing tests."
 ---
 
 Review the change surface before repository history.

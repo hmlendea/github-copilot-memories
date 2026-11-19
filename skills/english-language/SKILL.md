@@ -1,6 +1,6 @@
 ---
 name: english-language
-description: Use for English prose, code identifiers, literals, comments, or documentation, and for localisation, terminology revision, or strict contextual word replacement. Supplies British spelling preferences and Latin-ancestry vocabulary replacements applied contextually to text inside and outside code.
+description: "Use for English prose, code identifiers, literals, comments, or documentation, and for localisation, terminology revision, or strict contextual word replacement. Supplies British spelling preferences and Latin-ancestry vocabulary replacements applied contextually to text inside and outside code."
 ---
 
 # English Language

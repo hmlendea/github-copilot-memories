@@ -1,6 +1,6 @@
 ---
 name: ai-credit-routing
-description: Use when minimising GitHub Copilot AI credits, selecting a mode, model, or reasoning effort, gating escalation to a stronger model, attributing spend by tokens and by cost, classifying wasted spend, or deciding whether to start a fresh session.
+description: "Use when minimising GitHub Copilot AI credits, selecting a mode, model, or reasoning effort, gating escalation to a stronger model, attributing spend by tokens and by cost, classifying wasted spend, or deciding whether to start a fresh session."
 ---
 
 Optimise outcome per billed token:

@@ -1,6 +1,6 @@
 ---
 name: release-verification
-description: Use after a release, publication, or deployment to verify the delivered artefact and observe the affected surfaces until the observation window is clean. Covers release identity, surface evidence, finding classification, observation cadence, and partial-verification reporting.
+description: "Use after a release, publication, or deployment to verify the delivered artefact and observe the affected surfaces until the observation window is clean. Covers release identity, surface evidence, finding classification, observation cadence, and partial-verification reporting."
 ---
 
 Regard a successful merge, publish, or deploy command as the commencement of verification, not its conclusion.

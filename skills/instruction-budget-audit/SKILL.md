@@ -1,6 +1,6 @@
 ---
 name: instruction-budget-audit
-description: Use when creating, reviewing, splitting, or optimising Copilot instructions, agents, prompts, or skills for context cost.
+description: "Use when creating, reviewing, splitting, or optimising Copilot instructions, agents, prompts, or skills for context cost."
 ---
 
 Optimise context without changing policy outcomes.
@@ -13,4 +13,5 @@ Optimise context without changing policy outcomes.
 - Prefer compact declarative invariants over procedural repetition.
 - Keep model, reasoning effort, agent, skill, and tool configuration stable during a session; use `session-handoff` when changing them.
 - Validate frontmatter, activation, required rules, whitespace, and focused representative tasks after each slice.
+- Enforce the hard frontmatter limits: a `SKILL.md` `description` of at most 1024 characters, measured as written, in a single-line double-quoted scalar. A description that exceeds 1024 characters is a load error rather than a cost trade-off, so compress the description and move the displaced detail into the body or `references/`.
 - Report baseline, changed surfaces, measured payload reduction, and residual risk; never infer billing savings from file size or request count.

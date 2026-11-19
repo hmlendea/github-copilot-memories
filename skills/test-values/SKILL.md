@@ -1,6 +1,6 @@
 ---
 name: test-values
-description: Use whenever writing or revising tests or test data, in any language, framework, or technology. Supplies the canonical shared fixture values (usernames, personal names, phone numbers, certificates, numbers, countries, cities, bridges, lakes, seas, streets, regions, tunnels, domains, e-mails, company names, dates, currencies, video games, passwords, stations, shopping centres, film names, and phrases) and the preference to reuse them instead of inventing new values.
+description: "Use whenever writing or revising tests or test data, in any language, framework, or technology. Supplies the canonical shared fixture values (usernames, personal names, phone numbers, certificates, numbers, countries, cities, bridges, lakes, seas, streets, regions, tunnels, domains, e-mails, company names, dates, currencies, video games, passwords, stations, shopping centres, film names, and phrases) and the preference to reuse them instead of inventing new values."
 ---
 
 Prefer these values for tests and test data whenever suitable; invent alternatives only when necessary.

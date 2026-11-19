@@ -1,6 +1,6 @@
 ---
 name: repository-defaults
-description: Use when creating a project/repository, selecting its licence or default branch, merging branches, or pulling changes.
+description: "Use when creating a project/repository, selecting its licence or default branch, merging branches, or pulling changes."
 ---
 
 Repository defaults, unless existing configuration specifies otherwise:

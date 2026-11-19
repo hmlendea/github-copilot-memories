@@ -1,6 +1,6 @@
 ---
 name: romanian-language
-description: Use for Romanian prose, code identifiers, literals, comments, or documentation, and for text generation, editing, translation, or review. Supplies Latin-ancestry vocabulary replacements applied contextually to text inside and outside code.
+description: "Use for Romanian prose, code identifiers, literals, comments, or documentation, and for text generation, editing, translation, or review. Supplies Latin-ancestry vocabulary replacements applied contextually to text inside and outside code."
 ---
 
 # Romanian Language

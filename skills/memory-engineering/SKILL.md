@@ -1,6 +1,6 @@
 ---
 name: memory-engineering
-description: Use prior to adding memory to an agent, or when a memory store grows without eviction. Covers family selection and pricing, record classification, provenance and control, and the mandatory forgetting policy.
+description: "Use prior to adding memory to an agent, or when a memory store grows without eviction. Covers family selection and pricing, record classification, provenance and control, and the mandatory forgetting policy."
 ---
 
 Engineer what a memory system forgets, not only what it retains. Apply prior to adding memory to an agent, or when a memory store grows without eviction.

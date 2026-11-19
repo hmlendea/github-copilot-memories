@@ -1,6 +1,6 @@
 ---
 name: agent-security
-description: Use when reviewing AI agent architectures for security risks, including permission model design, least-privilege enforcement, human-in-the-loop gate placement, blast radius containment, audit trail completeness, rollback capability, and multi-agent trust boundaries. Covers agentic systems in which models invoke tools, act autonomously, or operate in multi-agent configurations. Produces a structured architecture security assessment mapped to OWASP Agentic AI threats and NIST AI RMF 1.0.
+description: "Use when reviewing AI agent architectures for security risks, including permission model design, least-privilege enforcement, human-in-the-loop gate placement, blast radius containment, audit trail completeness, rollback capability, and multi-agent trust boundaries. Covers agentic systems in which models invoke tools, act autonomously, or operate in multi-agent configurations. Produces a structured architecture security assessment mapped to OWASP Agentic AI threats and NIST AI RMF 1.0."
 ---
 
 # Agent Security Assessment

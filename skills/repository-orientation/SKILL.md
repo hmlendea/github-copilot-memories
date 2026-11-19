@@ -1,6 +1,6 @@
 ---
 name: repository-orientation
-description: Use when repository structure, architecture, documentation, conventions, or project context must be discovered before a change.
+description: "Use when repository structure, architecture, documentation, conventions, or project context must be discovered before a change."
 ---
 
 Orient with the smallest useful context:

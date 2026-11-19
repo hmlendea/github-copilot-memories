@@ -1,6 +1,6 @@
 ---
 name: prompt-injection
-description: Use when assessing an LLM-integrated application for prompt injection vulnerabilities, whether user input reaches a language model, retrieved external content is inserted into a prompt, or tools are exposed to model-controlled arguments. Covers interaction-surface mapping, direct and indirect injection vectors, goal hijacking, prompt leaking, privilege escalation, data exfiltration, jailbreaking, and layered defence evaluation against OWASP LLM01:2025 and MITRE ATLAS AML.T0051. Produces a prioritised assessment with categorised findings and defensive recommendations.
+description: "Use when assessing an LLM-integrated application for prompt injection vulnerabilities, whether user input reaches a language model, retrieved external content is inserted into a prompt, or tools are exposed to model-controlled arguments. Covers interaction-surface mapping, direct and indirect injection vectors, goal hijacking, prompt leaking, privilege escalation, data exfiltration, jailbreaking, and layered defence evaluation against OWASP LLM01:2025 and MITRE ATLAS AML.T0051. Produces a prioritised assessment with categorised findings and defensive recommendations."
 ---
 
 # Prompt Injection Assessment

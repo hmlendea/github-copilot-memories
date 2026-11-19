@@ -1,4 +1,5 @@
 ---
+name: github-md-template-fidelity
 description: "Enforces 100% template fidelity for GitHub markdown files in personal repositories owned by the current git user (README.md, ARCHITECTURE.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, PRIVACY.md, ROADMAP.md). Validates output against templates and rules before allowing completion. Skipped for organisation-owned repositories, repositories owned by another user, and repositories whose ownership cannot be confirmed — unless the user explicitly requests the templates."
 ---
 

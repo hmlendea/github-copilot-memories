@@ -1,6 +1,6 @@
 ---
 name: create-verification-skill
-description: Use when constructing a project-local verification skill that automates end-to-end execution, diagnostic health checks, surface interaction, evidence capture, and safe teardown for an application, service, or tool.
+description: "Use when constructing a project-local verification skill that automates end-to-end execution, diagnostic health checks, surface interaction, evidence capture, and safe teardown for an application, service, or tool."
 ---
 
 Generate an automated project-local verification skill (`.copilot/skills/verify-<application>/SKILL.md` or repository-designated equivalent) that executes an application precisely as a user interacts with it, evaluates behaviour, and preserves evidence. Author the generated skill so a subsequent automated agent can execute it without prior familiarity with the repository.
@@ -19,7 +19,7 @@ Verify that the repository builds and initiates prior to authoring the skill; au
 
 ## Step 2: Formulate the Verification Skill
 
-Author the generated skill with complete, repository-specific commands and concrete values, containing these structured sections:
+Author the generated skill with complete, repository-specific commands and concrete values, containing these structured sections. Its frontmatter holds `name` equal to the skill directory and a single-line double-quoted `description` of at most 1024 characters; measure the value, because an oversized or unquoted description is a load error:
 
 - **Launch:** the precise command initiating the application for verification, together with the explicit condition confirming readiness (a designated log message, a listening port, or an interactive prompt). Include orderly process termination. For brief command-line utilities, compile the binary once, then execute each scenario in an isolated session.
 - **Doctor:** a non-destructive diagnostic check confirming whether the application instance is in a valid state to verify (process active, expected version, owned network port, valid credentials). Execute this check prior to each interaction.

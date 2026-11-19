@@ -1,6 +1,6 @@
 ---
 name: stellaris-modding
-description: Use when creating or editing a Stellaris mod, or when working with its Clausewitz script (effects, triggers, scopes, conditions, variables, script values, scripted effects and triggers), mod descriptors (.mod, descriptor.mod), load order and file-override semantics (LIOS, FIOS, DUPL, MERGE), events and on_actions, decisions, buildings and districts, economies and resources, empires and governments, pops, planets, leaders, ships, starbases, armies, war and espionage, map and galaxy setup, localisation (.yml), interface (.gui, .gfx), defines, or the console and debugging tools. Covers mod folder layout, Steam Workshop and Paradox Mods packaging, compatibility and checksum safety, and troubleshooting load failures.
+description: "Use when creating or editing a Stellaris mod, or when working with its Clausewitz script (effects, triggers, scopes, conditions, variables, script values, scripted effects and triggers), mod descriptors (.mod, descriptor.mod), load order and file-override semantics (LIOS, FIOS, DUPL, MERGE), events and on_actions, decisions, buildings and districts, economies and resources, empires and governments, pops, planets, leaders, ships, starbases, armies, war and espionage, map and galaxy setup, localisation (.yml), interface (.gui, .gfx), defines, or the console and debugging tools. Covers mod folder layout, Workshop and Paradox Mods packaging, compatibility and checksum safety, and load failures. The bundled references hold the full detail and load on demand."
 ---
 
 # Stellaris Modding

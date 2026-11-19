@@ -1,6 +1,6 @@
 ---
 name: api-security
-description: Use when reviewing REST, GraphQL, gRPC, or hybrid APIs against the OWASP API Security Top 10:2023, including OpenAPI/Swagger specifications, API endpoint code, GraphQL schemas, and API gateway configuration. Covers object-level and function-level authorisation, authentication, property-level authorisation, resource consumption, sensitive business processes, server-side request forgery, security misconfiguration, inventory management, and unsafe consumption of APIs. Produces prioritised findings mapped to API1:2023 through API10:2023 with CWE identifiers, severity ratings, and remediation guidance.
+description: "Use when reviewing REST, GraphQL, gRPC, or hybrid APIs against the OWASP API Security Top 10:2023, including OpenAPI/Swagger specifications, API endpoint code, GraphQL schemas, and API gateway configuration. Covers object-level and function-level authorisation, authentication, property-level authorisation, resource consumption, sensitive business processes, server-side request forgery, security misconfiguration, inventory management, and unsafe consumption of APIs. Produces prioritised findings mapped to API1:2023 through API10:2023 with CWE identifiers, severity ratings, and remediation guidance."
 ---
 
 # API Security Review

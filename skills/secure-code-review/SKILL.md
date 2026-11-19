@@ -1,6 +1,6 @@
 ---
 name: secure-code-review
-description: Use when performing a security-focused code review of a pull request, diff, file, or module, or when code touching authentication, authorisation, cryptography, input handling, deserialisation, file handling, or logging requires verification. Performs a structured review against OWASP ASVS 4.0.3 requirements and the CWE Top 25 (2024), producing findings mapped to ASVS controls and CWE identifiers with severity ratings and specific remediation guidance.
+description: "Use when performing a security-focused code review of a pull request, diff, file, or module, or when code touching authentication, authorisation, cryptography, input handling, deserialisation, file handling, or logging requires verification. Performs a structured review against OWASP ASVS 4.0.3 requirements and the CWE Top 25 (2024), producing findings mapped to ASVS controls and CWE identifiers with severity ratings and specific remediation guidance."
 ---
 
 # Secure Code Review

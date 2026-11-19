@@ -56,6 +56,55 @@ jobs:
             python3 skills/github-md-template-fidelity/validate_github_md.py . "$document" "$document"
           done
 
+      - name: Verify skill frontmatter
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          failed = False
+
+          for path in sorted(Path("skills").glob("*/SKILL.md")):
+              match = re.match(r"^---\n(.*?)\n---\n", path.read_text(encoding="utf-8"), re.S)
+
+              if match is None:
+                  print(f"{path}: missing frontmatter")
+                  failed = True
+                  continue
+
+              try:
+                  document = yaml.safe_load(match.group(1))
+              except yaml.YAMLError as error:
+                  print(f"{path}: unparsable frontmatter: {error}")
+                  failed = True
+                  continue
+
+              if document.get("name") != path.parent.name:
+                  print(f"{path}: name does not match directory")
+                  failed = True
+
+              description = str(document.get("description", ""))
+
+              if len(description) > 1024:
+                  print(f"{path}: description is {len(description)} characters")
+                  failed = True
+                  continue
+
+              if not re.search(r"^description: \".*\"$", match.group(1), re.M):
+                  print(f"{path}: description is not a single-line double-quoted scalar")
+                  failed = True
+                  continue
+
+              print(f"{path}: valid ({len(description)} characters)")
+
+          sys.exit(1 if failed else 0)
+          PY
+
       - name: Verify workflow validity
         shell: bash
         run: |

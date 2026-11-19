@@ -1,6 +1,6 @@
 ---
 name: pr-babysit
-description: Use when monitoring a pull request or review cycle until it is ready to merge. Covers check observation, unresolved review threads, verification prior to resolution, and evidence-based completion.
+description: "Use when monitoring a pull request or review cycle until it is ready to merge. Covers check observation, unresolved review threads, verification prior to resolution, and evidence-based completion."
 ---
 
 Maintain observation until the pull request is genuinely mergeable.

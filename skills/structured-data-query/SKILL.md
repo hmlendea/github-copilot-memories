@@ -1,6 +1,6 @@
 ---
 name: structured-data-query
-description: Use when only specific fields or records are required from JSON, YAML, XML, CSV, API responses, manifests, lock files, or other structured data.
+description: "Use when only specific fields or records are required from JSON, YAML, XML, CSV, API responses, manifests, lock files, or other structured data."
 ---
 
 Query structure; do not read or return the entire source.

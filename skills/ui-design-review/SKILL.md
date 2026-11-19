@@ -1,6 +1,6 @@
 ---
 name: ui-design-review
-description: Use when designing, building, reviewing, or repairing user interfaces, or when UI work must be verified before delivery. Covers accessibility, touch and interaction, performance, style selection, layout and responsive behaviour, typography and colour, animation, forms and feedback, navigation, and charts, with a prioritised rule set, a native and mobile pre-delivery checklist, and a browser-driven audit procedure that reports evidence-ranked findings.
+description: "Use when designing, building, reviewing, or repairing user interfaces, or when UI work must be verified before delivery. Covers accessibility, touch and interaction, performance, style selection, layout and responsive behaviour, typography and colour, animation, forms and feedback, navigation, and charts, with a prioritised rule set, a native and mobile pre-delivery checklist, and a browser-driven audit procedure that reports evidence-ranked findings."
 ---
 
 # UI Design Review

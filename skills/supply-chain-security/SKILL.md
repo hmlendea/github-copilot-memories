@@ -1,6 +1,6 @@
 ---
 name: supply-chain-security
-description: Use when assessing software supply chain exposure from dependency manifests, lockfiles, SBOMs, VEX records, licence declarations, package names, or CVE identifiers. Covers dependency and transitive risk, SBOM validation against the NTIA minimum elements in CycloneDX and SPDX, VEX status interpretation, licence compliance, typosquatting and dependency confusion, and CVE triage through CVSS 4.0, EPSS, SSVC 2.1, and the CISA KEV catalogue. Produces a prioritised, SLA-bound remediation assessment.
+description: "Use when assessing software supply chain exposure from dependency manifests, lockfiles, SBOMs, VEX records, licence declarations, package names, or CVE identifiers. Covers dependency and transitive risk, SBOM validation against the NTIA minimum elements in CycloneDX and SPDX, VEX status interpretation, licence compliance, typosquatting and dependency confusion, and CVE triage through CVSS 4.0, EPSS, SSVC 2.1, and the CISA KEV catalogue. Produces a prioritised, SLA-bound remediation assessment."
 ---
 
 # Supply Chain Security Assessment

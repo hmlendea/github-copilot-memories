@@ -1,6 +1,6 @@
 ---
 name: signal-preserving-output
-description: Use when builds, tests, linters, logs, Git commands, or other terminal operations may return verbose output.
+description: "Use when builds, tests, linters, logs, Git commands, or other terminal operations may return verbose output."
 ---
 
 Minimise returned output without hiding evidence.

@@ -1,6 +1,6 @@
 ---
 name: secrets-management
-description: Use when examining secret handling, credential exposure, vault or cloud secrets manager integration, environment-file hygiene, rotation policy, or credential access for agents and CI/CD pipelines. Performs a structured secrets management assessment against the OWASP Secrets Management Cheat Sheet and NIST SP 800-57 Part 1 Rev 5, covering detection tooling, exposure routes, rotation automation, and centralised storage, without ever reproducing a secret value.
+description: "Use when examining secret handling, credential exposure, vault or cloud secrets manager integration, environment-file hygiene, rotation policy, or credential access for agents and CI/CD pipelines. Performs a structured secrets management assessment against the OWASP Secrets Management Cheat Sheet and NIST SP 800-57 Part 1 Rev 5, covering detection tooling, exposure routes, rotation automation, and centralised storage, without ever reproducing a secret value."
 ---
 
 # Secrets Management Assessment

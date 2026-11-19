@@ -1,6 +1,6 @@
 ---
 name: pipeline-security
-description: Use when reviewing CI/CD pipeline configurations against the SLSA v1.0 build levels or the OWASP Top 10 CI/CD Security Risks, including GitHub Actions workflows, GitLab CI configuration, Jenkins, Cloud Build, or Azure Pipelines definitions, release automation, and supply chain security discussion. Produces a pipeline security assessment with an SLSA build level determination and per-control CICD-SEC findings.
+description: "Use when reviewing CI/CD pipeline configurations against the SLSA v1.0 build levels or the OWASP Top 10 CI/CD Security Risks, including GitHub Actions workflows, GitLab CI configuration, Jenkins, Cloud Build, or Azure Pipelines definitions, release automation, and supply chain security discussion. Produces a pipeline security assessment with an SLSA build level determination and per-control CICD-SEC findings."
 ---
 
 # Pipeline Security Assessment

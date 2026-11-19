@@ -1,6 +1,6 @@
 ---
 name: migration-architect
-description: Use when a live schema, database, service, or host requires modification or cut-over without downtime. Covers phased planning with gates, compatibility determination, expand-contract and strangler patterns, and per-phase rollback.
+description: "Use when a live schema, database, service, or host requires modification or cut-over without downtime. Covers phased planning with gates, compatibility determination, expand-contract and strangler patterns, and per-phase rollback."
 ---
 
 Plan a migration of a live schema, database, service, or host so that interruption remains within the stated window and every phase is reversible.

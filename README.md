@@ -1,6 +1,6 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Build Status](https://github.com/hmlendea/github-copilot-memories/actions/workflows/verification.yml/badge.svg)](https://github.com/hmlendea/github-copilot-memories/actions/workflows/verification.yml)
-[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
+[![License](https://img.shields.io/github/license/hmlendea/github-copilot-memories)](https://github.com/hmlendea/github-copilot-memories/blob/master/LICENSE)
 
 # GitHub Copilot Memories
 
@@ -9,6 +9,7 @@ A curated collection of instruction files and skills that encode reusable coding
 ## 📑 Table of Contents
 
 - [Capabilities](#capabilities)
+- [Use Cases](#use-cases)
 - [Usage](#usage)
 - [Installation](#installation)
   - [Installation from Source](#installation-from-source)
@@ -39,24 +40,32 @@ A curated collection of instruction files and skills that encode reusable coding
 - Applies shared coding, naming, error-handling, security, and documentation principles across supported file types.
 - Provides specialised guidance for C#, Python, TypeScript, shell scripts, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
 - Generates evidence-based README, architecture, roadmap, privacy, security, and GitHub Actions documents from strict templates.
-- Assesses secret handling, credential exposure, rotation policy, and vault integration against the OWASP Secrets Management Cheat Sheet and NIST SP 800-57 Part 1 Rev 5, without reproducing secret values.
-- Reviews code, pull requests, and diffs against OWASP ASVS 4.0.3 requirements and the CWE Top 25 (2024), producing findings mapped to ASVS controls and CWE identifiers with severity ratings and remediation guidance.
-- Reviews REST, GraphQL, and gRPC APIs against the OWASP API Security Top 10:2023, covering object-level and function-level authorisation, authentication, property-level authorisation, resource consumption, sensitive business processes, server-side request forgery, security misconfiguration, inventory management, and unsafe consumption of APIs, and supplies C# and .NET patterns for ASP.NET Core, HotChocolate, and gRPC.
-- Assesses LLM-integrated applications for prompt injection against OWASP LLM01:2025 and MITRE ATLAS AML.T0051, mapping the model interaction surface, enumerating direct and indirect injection vectors, and evaluating layered defences.
-- Reviews AI agent architectures against OWASP Agentic AI threats and NIST AI RMF 1.0, covering permission models, least-privilege design, human-in-the-loop gates, blast radius containment, audit trails, rollback capability, and multi-agent trust boundaries.
-- Reviews and repairs user interfaces against a ten-category rule set ordered by user impact, covering accessibility, touch and interaction, performance, style selection, layout and responsiveness, typography and colour, animation, forms and feedback, navigation, and charts, with a native and mobile pre-delivery checklist and a Playwright-driven audit that reports evidence-ranked findings and fails a pipeline on high-severity defects.
-- Maintains British English and Romanian language preferences through contextual terminology rules supplied by the mandatory `english-language` and `romanian-language` skills, applied in full and without partial passes to every file, including prose, documentation, code, configuration, data, and scripts, and to all human-readable text within them.
-- Defines systematic test design and edge-case coverage requirements, including failure-side assertions that a failure does not produce a later, unrequested effect, supplies consistent test values through the on-demand `test-values` skill, and provides an optional coding-pattern memory index.
-- Observes a pull request until it is genuinely mergeable through the `pr-babysit` skill, verifying each finding prior to correction and resolving a review thread only after the code addresses it.
-- Verifies a release after merge, publication, or deployment through the `release-verification` skill, confirming the delivered artefact per surface, classifying findings, and reporting partial verification with its coverage gap rather than claiming unverified health.
+- Assesses secrets handling, credential exposure, rotation, and vault integration against OWASP and NIST guidance.
+- Reviews code, pull requests, and diffs against OWASP ASVS 4.0.3 and the CWE Top 25 (2024), reporting severity-rated findings and remediation.
+- Reviews REST, GraphQL, gRPC, and hybrid APIs against the OWASP API Security Top 10:2023, with C# and .NET guidance.
+- Assesses prompt injection risk in LLM-integrated applications against OWASP LLM01:2025 and MITRE ATLAS AML.T0051.
+- Reviews AI agent architectures against OWASP Agentic AI threats and NIST AI RMF 1.0, covering permissions, trust boundaries, and rollback.
+- Reviews and repairs user interfaces against a prioritised rule set covering accessibility, interaction, performance, layout, typography, animation, forms, and navigation, with a browser-driven audit.
+- Maintains British English and Romanian language preferences through the mandatory `english-language` and `romanian-language` skills, applied to every file.
+- Defines test design, edge-case coverage, test suite auditing, shared test values, and manual QA acceptance criteria.
+- Observes a pull request to merge readiness through the `pr-babysit` skill, verifying each finding before correction.
+- Verifies a release after publication or deployment through the `release-verification` skill, per surface and with explicit coverage gaps.
 - Verifies its own content in continuous integration by executing the instruction-gate hook tests, validating every governed GitHub document against its template, and parsing every workflow file.
 - Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file, except for the language instructions, which deliberately apply to every file.
-- Resolves installed software, repository clones, documentation, configuration, data directories, and URLs from the agent home `Locations.md` registry before searching, probing, or inferring a location.
+- Resolves paths and addresses from the agent home `Locations.md` registry before searching or inferring them.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
-- Provides an opt-in Token Saver agent with restricted tools, targeted context, and terse reporting.
-- Provides an opt-in LiteLLM agent with automatic pre-execution instruction gating, staged semantic instruction audits, complete applicable skill procedures, and bounded corrective retries.
-- Provides on-demand skills for AI-credit routing, repository orientation, scoped research, baseline checks, failure triage, diff review, instruction-budget audits, symbol navigation, structured-data queries, signal-preserving output, phased investigation and implementation, English language conventions, Romanian language conventions, test design, test suite auditing, test values, manual QA acceptance criteria, project-local verification skill generation, agent instruction coaching, commit-series composition, agent regression evaluation, migration planning, performance profiling, interface localisation, memory-store engineering, skill security auditing, validation, secrets management assessment, secure code review against OWASP ASVS 4.0.3 and the CWE Top 25, prompt injection assessment against OWASP LLM01:2025 and MITRE ATLAS AML.T0051, agent security assessment against OWASP Agentic AI threats and NIST AI RMF 1.0, API security assessment against the OWASP API Security Top 10:2023 with a C# and .NET supplement, pipeline security assessment against the SLSA v1.0 build track and the OWASP Top 10 CI/CD Security Risks, MethodScript conventions with a reference for its 897 built-in functions and 104 bindable events, Imperator: Rome modding conventions with references for scripting, events, setup data, localisation, GUI, map data, and debugging, Stellaris modding conventions with references for merge semantics, scripting, dynamic scripting, events and on actions, economy and planets, empires and content, localisation, interface, map data and defines, and debugging, Crusader Kings II modding conventions with references for override semantics, scripting, events, on actions and decisions, history and setup data, common definitions, localisation, interface, graphics, portraits, coats of arms, map data, music, and debugging, Crusader Kings III modding conventions with references for override and load-order semantics, scripting, events and on actions, decisions and interactions, history and characters, common definitions, localisation, interface, graphics, coat of arms, map and terrain, audio, and debugging, Civilization V modding conventions with references for ModBuddy actions and VFS, XML/SQL database updates, content definitions, Lua scripting, UI and art, localisation, and debugging, Civilization VI modding conventions with references for ModBuddy action and criteria wiring, SQL and GameData updates, content definitions, modifiers and requirements, Lua scripting, UI, icons and art, localisation, and debugging, Civilization: Beyond Earth modding conventions with references for ModBuddy action and VFS wiring, XML/SQL database updates, sponsor, colonist, cargo, spacecraft, unit, technology, affinity, virtue, quest, artifact, marvel, covert operation, orbital unit, biome, improvement, and resource content definitions, Lua scripting, UI and art, localisation, and debugging, Total War: Rome Remastered modding conventions with references for mod packaging and manifests, scripting, units and models, buildings and factions, campaign data and map, interface and audio, and debugging, GitHub Actions workflow documentation, repository documentation generation, NuGet package updates, logical commit-series composition with staged-secret gating, agent regression evaluation against a measured baseline, migration planning with per-phase rollback, performance profiling from a measured baseline, interface localisation verification, memory-store engineering with a mandatory forgetting policy, skill and plug-in security auditing, C# enumeration-class conventions, C# architecture and fitness test conventions, C# NuGet package usage with versioned package-documentation lookup, and session handoff.
-- Skills that modify code or dependencies (e.g., NuGet package updates) automatically trigger documentation updates for relevant repository files (README.md, CONTRIBUTING.md, ARCHITECTURE.md, or project-specific documentation). The `github-actions-workflow` skill holds each canonical workflow template, its rules, the fidelity contract, and the validation script, and synchronises every affected Markdown document whenever a GitHub Actions workflow is created or revised. The `github-md-template-fidelity` skill holds each GitHub document template, its rules, the fidelity contract, and the validation script, so they load only for document generation tasks. The `steam-workshop-page` skill holds the Steam Workshop description BBCode template, its rules, the fidelity contract, and the validation script, and enforces the fixed header and donate-banner blocks, the mandatory About, Capabilities, Installation with manual steps, Support, Project Engagement, and License prose held directly in the template so that only placeholders, repeatable lines, and conditional blocks change, the conditional Contributing, FAQ, and Related Mods content, with FAQ and troubleshooting folded into Support and the language list and game name and version folded into Compatibility, the store-badge block with at most three badges per line, balanced evenly across lines, the Steam link-filter wrapper, the BBCode-only constraint, and the mandatory `description/steam-workshop.bbcode` output path for every page description. The `repository-documentation` skill performs exhaustive evidence-based reverse engineering and generates the structured `docs/` knowledge base when repository documentation is requested.
+- Provides the opt-in **Token Saver** (restricted tools, terse reporting) and **LiteLLM** (pre-execution instruction gating, semantic audits) agents.
+- Provides game-modding conventions for MethodScript, Imperator: Rome, Stellaris, Crusader Kings II and III, Civilization V, VI, and Beyond Earth, Victoria 3, Europa Universalis V, and Total War: Rome Remastered.
+- Provides on-demand procedures for context, research, review, migration, profiling, localisation, memory, documentation, release, and workflow automation.
+- Holds each document and workflow template, its rules, the fidelity contract, and the validation script in the corresponding skill, so they load only for generation tasks.
+- Triggers documentation updates for affected repository files whenever a skill modifies code or dependencies.
+
+## 🎯 Use Cases
+
+- **GitHub Copilot Chat users:** Apply reusable coding standards, documentation templates, and domain-specific guidance to their projects.
+- **OpenAI Codex users:** Read the shared instruction library through a global `AGENTS.md` entry point and invoke skills on demand.
+- **Repository maintainers:** Generate and validate template-governed GitHub documents and Actions workflows against a fixed fidelity contract.
+- **Application and game-mod developers:** Apply framework, language, and game-specific conventions from the on-demand skills.
 
 ## 🚀 Usage
 
@@ -72,7 +81,7 @@ The README rules inspect repository evidence, select applicable template section
 
 For cost-sensitive coding work, select **Token Saver** from the agent picker. It limits operations to reading, searching, editing, and terminal execution; it neither delegates to subagents nor permits implicit model invocation.
 
-For explicit instruction-compliance checks, select **LiteLLM** from the agent selector. The [agent definition](agents/litellm.agent.md) retains default tools and the selected model, requires complete contextual reading of applicable instructions and skills, and adds pre-action, post-action, and final semantic audits. Tools may retrieve sources and validate results, but never substitute for LLM comprehension. Corrective retries are limited to two per issue and three recovery cycles per assignment, subject to stricter applicable limits. The Local agent hook injects path-scoped common, language, and detected programming-language instructions at session start, preserving that state across prompts and request recovery; complete semantic applicability remains an agent audit requirement.
+For instruction-compliance audits, select **LiteLLM**. The [agent definition](agents/litellm.agent.md) keeps default tools and the selected model, reads applicable instructions and skills in full, and adds pre-action, post-action, and final semantic audits. The local agent hook injects path-scoped common, language, and detected programming-language instructions at session start; complete semantic applicability remains an agent audit requirement.
 
 Skill descriptions remain available for discovery, while full skill procedures load only for relevant tasks.
 
@@ -84,7 +93,7 @@ For Codex, start a new session in your project after installation. The global `A
 
 #### GitHub Copilot
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, `agents`, `hooks`, and `memories` paths must not exist before creating the links, so preserve or relocate any existing content first.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, `agents`, and `hooks` paths must not exist before creating the links.
 
 On Linux:
 
@@ -96,8 +105,6 @@ mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
 ln -s "$PWD/agents" "$HOME/.copilot/agents"
 ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
-mkdir -p "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool"
-ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/.config/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
 
 On macOS:
@@ -110,8 +117,6 @@ mkdir -p "$HOME/.copilot"
 ln -s "$PWD/skills" "$HOME/.copilot/skills"
 ln -s "$PWD/agents" "$HOME/.copilot/agents"
 ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
-mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool"
-ln -s "$PWD/globalStorage/github.copilot-chat/memory-tool/memories" "$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/memory-tool/memories"
 ```
 
 On Windows, use an Administrator Command Prompt:
@@ -124,19 +129,17 @@ if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
 mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
 mklink /D "%USERPROFILE%\.copilot\hooks" "%CD%\hooks"
-if not exist "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool" mkdir "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool"
-mklink /D "%APPDATA%\Code\User\globalStorage\github.copilot-chat\memory-tool\memories" "%CD%\globalStorage\github.copilot-chat\memory-tool\memories"
 ```
 
-The skill and memory links are optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent.
+The skill links are optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent.
 
 #### OpenAI Codex
 
 Install [Git](https://git-scm.com/) and [Codex](https://developers.openai.com/codex/quickstart/). Use an existing clone or clone this repository, then run the link commands from its root. Keep the clone in place because the links point to it.
 
-The commands install [user-level skills](https://learn.chatgpt.com/docs/build-skills) in `~/.codex/skills` and [global instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md) in `~/.codex/AGENTS.md`. If `CODEX_HOME` is set, all three links use that directory instead of `~/.codex`. The linked [codex/AGENTS.md](codex/AGENTS.md) directs Codex to the `instructions` link; it uses `applyTo` and `description` to select relevant files.
+The commands install [user-level skills](https://learn.chatgpt.com/docs/build-skills) in `~/.codex/skills` and [global instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md) in `~/.codex/AGENTS.md`, or in `$CODEX_HOME` when set. The linked [codex/AGENTS.md](codex/AGENTS.md) selects relevant instruction files through `applyTo` and `description`.
 
-The destination `skills`, `AGENTS.md`, and `instructions` paths must not already exist. Preserve existing content first: merge the supplied guidance into an existing `AGENTS.md`, and link individual skill folders if you already have a skills directory. If `AGENTS.override.md` exists in your Codex home, merge the guidance there instead because it takes precedence over `AGENTS.md`.
+The destination `skills`, `AGENTS.md`, and `instructions` paths must not already exist. Merge the supplied guidance into an existing `AGENTS.md` or `AGENTS.override.md`, and link individual skill folders if a skills directory already exists.
 
 On Linux or macOS:
 
@@ -169,15 +172,15 @@ Start a new Codex session and ask it to summarise its active instructions and lo
 
 Instruction files reside under `prompts/instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
 
-The always-on common instructions additionally direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` or `$CODEX_HOME/Locations.md` for Codex, with the macOS and Windows equivalents) before resolving any path or address, so a recorded location is used instead of being searched for or inferred.
+The always-on common instructions direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` for Codex) before resolving any path or address.
 
-The language instruction files activate automatically for every file and require the `english-language` and `romanian-language` skills, whose compact `source [context] -> replacements/replacements` dictionaries must be applied in full, without partial passes.
+The language instruction files activate for every file and require the `english-language` and `romanian-language` skills, whose compact dictionaries must be applied in full.
 
-Every skill file resides under `skills/<name>/SKILL.md` and begins with YAML frontmatter whose `name` equals the directory name and whose single-line double-quoted `description` is at most 1024 characters, which is the host's hard load limit; `prompts/instructions/common/common.skills.instructions.md` states the contract and the measurement procedure, and the verification workflow enforces it.
+Every skill file resides under `skills/<name>/SKILL.md` and begins with YAML frontmatter whose `name` equals the directory name and whose single-line double-quoted `description` is at most 1024 characters, the host's hard load limit.
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
-Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. The `ai-credit-routing` skill selects economical modes, models, reasoning effort, sessions, and tool sets, gates model and effort escalation behind a stated condition, attributes spend by tokens and by cost, and judges savings by cost per completed task; `repository-orientation` limits repository discovery to relevant sources; `github-md-template-fidelity` supplies the GitHub document templates, rules, fidelity contract, and validator; `github-actions-workflow` supplies the GitHub Actions workflow templates, rules, fidelity contract, validator, and cross-file documentation procedure; `steam-workshop-page` supplies the Steam Workshop description BBCode template, rules, fidelity contract, and validator, holding the fixed header and donate-banner blocks, the mandatory About, Capabilities, Installation with manual steps, Support, Project Engagement, and License prose directly in the template, the conditional Contributing, FAQ, Related Mods, and troubleshooting content with FAQ and troubleshooting folded into Support, the language list, game name, version, and compatibility prose folded into Compatibility, the store-badge block with its balanced three-per-line layout, the link-filter requirement, the BBCode-only constraints, and the mandatory `description/steam-workshop.bbcode` output path; `repository-documentation` supplies the exhaustive reverse-engineering procedure and `docs/` structure contract; `secrets-management` supplies the OWASP and NIST SP 800-57 secrets management assessment procedure; `secure-code-review` supplies the OWASP ASVS 4.0.3 and CWE Top 25 secure code review procedure; `prompt-injection` supplies the OWASP LLM01:2025 and MITRE ATLAS AML.T0051 prompt injection assessment procedure; `agent-security` supplies the OWASP Agentic AI and NIST AI RMF 1.0 agent architecture security assessment procedure; `api-security` supplies the OWASP API Security Top 10:2023 API review procedure with a per-category checklist and a C# and .NET supplement; `pipeline-security` supplies the SLSA v1.0 build level and OWASP Top 10 CI/CD Security Risks pipeline assessment procedure; `supply-chain-security` supplies the dependency inventory, SBOM and VEX validation, licence compliance, and multi-signal CVE triage procedure; `ui-design-review` supplies the prioritised interface rule set, the native and mobile pre-delivery checklist, and the browser-driven audit script; `research-plan-implement` separates non-trivial work into an investigation phase, a planning phase, and an implementation phase, each in a fresh session, and hands off between them with `session-handoff`; `pr-babysit` observes a pull request or review cycle to merge readiness, verifying each finding before correction and resolving a review thread only after the code addresses it; `imperator-rome-modding` supplies Imperator: Rome mod packaging, scripting, event, decision, setup, localisation, GUI, map, unit, and debugging procedures; `stellaris-modding` supplies Stellaris mod packaging, merge and load-order semantics, scripting, dynamic scripting, events and on actions, economy and planet content, empire and content definitions, localisation, interface, map and defines, and debugging procedures; `ck2-modding` supplies Crusader Kings II mod packaging, override and load-order semantics, scripting: event, on action and decision, history and setup, common definition, localisation, interface, graphics, portrait, coat of arms, map, music, and debugging procedures; `ck3-modding` supplies Crusader Kings III mod packaging, override and load-order semantics, scripting, events and on actions, decisions and interactions, history and characters, common definitions, localisation, interface, graphics, coat of arms, map and terrain, sound, and debugging procedures; `civ5-modding` supplies Civilization V ModBuddy action and VFS wiring, XML/SQL database update, content definition, Lua scripting, UI and art, localisation, and debugging procedures; `civ6-modding` supplies Civilization VI ModBuddy action and criteria wiring, SQL and GameData update, content definition, modifier and requirement composition, Lua scripting, UI, icon and art handling, localisation, and debugging procedures; `civbe-modding` supplies Civilization: Beyond Earth ModBuddy action and VFS wiring, XML/SQL database update, sponsor, colonist, cargo, spacecraft, unit, technology, affinity, virtue, quest, artifact, marvel, covert operation, orbital unit, biome, improvement, and resource content definitions, Lua scripting, UI and art, localisation, and debugging procedures; `vic3-modding` supplies Victoria 3 metadata and override semantics, scripting, event and on action, politics and diplomacy, building and production method, goods and pop, history and map, localisation, interface, graphics and audio, and debugging procedures; `eu5-modding` supplies Europa Universalis V metadata, top-folder and override semantics, scripting, events and on actions, actions and interactions, setup and history, map and terrain, countries and politics, economy and pops, content definitions, interface, localisation and graphics, and debugging procedures; `tw-rome-remastered-modding` supplies Total War: Rome Remastered mod descriptor, manifest, and override semantics, scripting, unit and model, building and faction, campaign and map, interface, audio and localisation, and console and debugging procedures; `release-verification` verifies the delivered artefact per surface after a release, publication, or deployment, classifies findings, and reports partial verification with its coverage gap; `pre-aggregate-data` moves data collection out of the token-billed loop by retrieving trimmed results into `.work` files during a preliminary step; `methodscript` supplies the MethodScript architecture and style rules together with a reference for every built-in function and bindable event; `test-audit` gardens test suites by detecting and eliminating redundant, vacuous, or implementation-coupled tests while preserving regression proof; `qa-acceptance` produces Given-When-Then acceptance criteria and a manual validation plan for feature changes; `create-verification-skill` generates a project-local verification skill that drives the application the way a user does and captures evidence; `agent-instruction-coaching` proposes evidence-backed modifications to another agent's instructions, skills, or tool descriptions behind a reviewed-diff gate; `commit-craft` composes a mixed working tree into logical commits with a staged-secret gate and message discipline; `agent-regression-evals` adjudicates an agent, prompt, model, or tool modification through repeated trials and paired comparison against a baseline; `migration-architect` plans a schema, database, service, or host migration in phases, each with a compatibility determination and a rollback procedure; `performance-profiler` establishes a measured baseline, profiles processor, memory, data, and distribution constrictions, and substantiates each modification with a measured difference; `i18n-localization` verifies keys, placeholders, ICU syntax, and CLDR plural categories, detects untranslated text, and reviews a pseudo-locale; `memory-engineering` prices and selects a memory family and demands an explicit forgetting policy; `skill-security-auditor` inspects an untrusted skill, plug-in, hook, or agent definition for execution, instruction, dependency, and structure risks and returns a redacted verdict; `csharp-enumerations` holds the namespace placement rule, the selection rule between a plain `enum` and an enumeration class, and the canonical enumeration-class template with its structural, serialisation, equality, and conversion rules; `csharp-architecture-testing` holds the fitness-test project placement and framework rules, the layer dependency matrix, the boundary and placement rules, the Roslyn source-file convention checks, and the per-instruction enforcement catalogue; `csharp-nuget-usage` holds the versioned `v<version>` documentation lookup procedure for `hmlendea` packages, the prohibition on investigating by decompilation, and the `NuciWeb.HTTP`, `HttpClientCreator`, `UserAgentFetcher`, `NetworkUtils`, and Kestrel IPv6 requirements; the Token Saver agent handles execution with restricted tools.
+Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. Each skill is self-contained: it holds its procedure, and where relevant its templates, rules, fidelity contract, validators, and references.
 
 For example:
 
@@ -196,13 +199,12 @@ Edit the Markdown body to personalise the guidance. Because the user-profile dir
 |-------------|---------------|---------|----------|
 | VS Code with GitHub Copilot Chat | User-profile prompt, custom-agent, hook, and skill discovery | Applies instructions, enforces the LiteLLM pre-execution gate, and exposes custom agents and on-demand skills | For Copilot |
 | OpenAI Codex | Global `AGENTS.md` and user-level skill discovery | Reads the shared instruction library and exposes on-demand skills | For Codex |
-| GitHub Copilot Chat memory tool | `memory-tool/memories/` storage layout | Exposes the coding-pattern reference index | No |
 
 ## 🛡️ Privacy and Data
 
 GitHub Copilot Memories does not collect, process, transmit, or persist user data, analytics, diagnostics, or telemetry.
 
-For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
 
 ## 🛠️ Development
 
@@ -215,7 +217,7 @@ For the detailed description of how the application handles privacy and personal
 
 ### Setup
 
-Clone the repository and create the user-profile links described under [Installation](#installation). The instruction content requires no dependency installation; only the verification commands below need the listed requirements.
+Clone the repository and create the user-profile links described under [Installation](#installation). Only the verification commands below need the listed requirements.
 
 ### Test
 
@@ -248,13 +250,13 @@ python3 -m py_compile skills/github-md-template-fidelity/validate_github_md.py s
 
 ### Continuous Integration
 
-The [Verification workflow](.github/workflows/verification.yml) executes these checks, and parses every workflow file, on every push and pull request targeting `master`. Reproduce it locally with the commands above before opening a pull request.
+The [Verification workflow](.github/workflows/verification.yml) runs these checks on every push and pull request targeting `master`. Reproduce it locally with the commands above before opening a pull request.
 
 ## ⚙️ GitHub Actions
 
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
-| [Verification](https://github.com/hmlendea/github-copilot-memories/blob/master/.github/workflows/verification.yml) | Continuous verification | Executes the instruction-gate hook tests, checks the hook and validator scripts for syntax errors, validates every governed GitHub document against its template, checks every skill's frontmatter for a matching `name` and a single-line double-quoted `description` of at most 1024 characters, and parses every workflow file to confirm it remains valid YAML with a name and job definitions |
+| [Verification](https://github.com/hmlendea/github-copilot-memories/blob/master/.github/workflows/verification.yml) | Continuous verification | Runs the hook tests, checks script syntax, validates every governed GitHub document and workflow file, and verifies skill frontmatter |
 
 ## 🗂️ Project Structure
 
@@ -268,23 +270,22 @@ The tracked project is content-focused. Instruction families are separated by la
 | [agents/](agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
 | [hooks/](hooks/) | Runtime instruction-read enforcement used by the LiteLLM agent |
 | `prompts/instructions/common/` | Shared coding, naming, error-handling, test-design, documentation, and skill-frontmatter principles |
-| `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance, plus mandatory-skill stubs that delegate enumerations, architecture and fitness testing, and NuGet package usage to their skills |
+| `prompts/instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
 | `prompts/instructions/github/` | GitHub Actions workflow naming and documentation rules |
-| `prompts/instructions/language/` | British English and Romanian terminology preferences applied to every file type, requiring complete application of the `english-language` and `romanian-language` skills |
+| `prompts/instructions/language/` | British English and Romanian terminology preferences for every file type |
 | `prompts/instructions/markdown/` | Markdown structure and formatting conventions |
 | `prompts/instructions/methodscript/` | MethodScript coding and style conventions; require the `methodscript` skill |
 | `prompts/instructions/polyglot/` | PolyGlot dictionary conventions |
 | `prompts/instructions/python/` | Python coding and error-handling conventions |
 | `prompts/instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `prompts/instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `skills/` | On-demand procedures for context, baseline checks, failure triage, review, instruction audits, research, phased investigation and implementation, structured data, English and Romanian language conventions, C# enumeration classes, C# architecture and fitness test conventions, C# NuGet package usage, secrets management assessment, secure code review, prompt injection assessment, agent security assessment, API security assessment, pipeline security assessment, supply chain security assessment, user interface design review, MethodScript conventions and API references, Imperator: Rome modding conventions and references, Stellaris modding conventions and references, Crusader Kings II modding conventions and references, Crusader Kings III modding conventions and references, Civilization V modding conventions and references, Civilization VI modding conventions and references, Civilization: Beyond Earth modding conventions and references, Victoria 3 modding conventions and references, Europa Universalis V modding conventions and references, Total War: Rome Remastered modding conventions and references, test design, test suite auditing, test values, manual QA acceptance criteria, project-local verification skill generation, agent instruction coaching, validation, commit-series composition, agent regression evaluation, migration planning, performance profiling, interface localisation, memory-store engineering, skill security auditing, GitHub Actions workflow templates, GitHub markdown template fidelity, repository documentation generation, NuGet package updates, data pre-aggregation, and token-efficient workflows |
-| `globalStorage/github.copilot-chat/memory-tool/memories/` | Optional Copilot Chat memory index |
+| `skills/` | On-demand procedures, templates, validators, and references |
 
 ## 🏗️ Architecture
 
 GitHub Copilot Memories is a content-only repository of instruction files, skills, and agents.
 
-See the [architecture documentation](./ARCHITECTURE.md) for the system context, principal components, runtime processes, ownership boundaries, dependencies, constraints, and extension points.
+See the [Architecture Documentation](./ARCHITECTURE.md) for the system context, principal components, runtime processes, ownership boundaries, dependencies, constraints, and extension points.
 
 ## 🗺️ Roadmap
 
@@ -296,9 +297,15 @@ You are welcome to submit any suggestion, feedback, or modification to this proj
 
 When doing so, please:
 - Maintain cross-platform compatibility
+- Preserve the existing public contract unless a breaking change is intentional
 - Submit focused pull requests that conform to the existing code style
 - Maintain your branch synchronised with `master`
+- Revise the documentation when functionality changes
+- Properly test all modifications, including edge cases and error conditions
+- Include tests for additional or modified functionality
 - Raise a new [issue](https://github.com/hmlendea/github-copilot-memories/issues) for problems or suggestions
+
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 ## 📜 Code of Conduct
 
@@ -319,6 +326,8 @@ For support, please [open an issue](https://github.com/hmlendea/github-copilot-m
 Discovered a problem with GitHub Copilot Memories or have a suggestion for it? [Open an issue](https://github.com/hmlendea/github-copilot-memories/issues)!
 
 If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
+
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
 
 ## 📄 License
 

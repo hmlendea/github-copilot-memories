@@ -20,7 +20,7 @@ Completeness: apply the whole dictionary to the whole file, in every file type, 
 - Context tag legend: `n` noun; `v` verb; `adj` adjective; `adv` adverb; `prep` preposition; `conj` conjunction; `phr` phrase; `np` noun phrase; `vp` verb phrase. Other brackets retain literal context.
 - Record format: `source [context] -> replacements/replacements`; one record per line. Apply to all variants and derivatives.
 about [prep: concerning or on the subject of] -> concerning/regarding
-across [prep: from one side to another, or throughout an area] -> throughout/transversely
+across [prep: from one side to another, or throughout an area] -> transversely
 actual [adj: real or genuine in context such as "actual work"] -> genuine/real
 adamantite -> adamantium
 add [v: to include, insert, or append something] -> include/insert/append
@@ -38,9 +38,9 @@ allow [v: to grant permission or enable something] -> permit/facilitate
 allowed [adjective or verb: granted permission or enabled] -> permitted/given permission/enabled
 allowed [adjective or verb: granted permission or enabled] -> permitted/given permission/facilitated
 already -> previously
+always [adv: at all times or forever] -> perpetually
 always [adv: continuously or persistently, as in "always running"] -> constantly/perpetually
 always [adv: invariably, at all times, or continuously] -> invariably/constantly/perpetually
-always [adv: at all times or forever] -> perpetually
 amid [prep: in the middle of or during] -> during
 anger [n: a feeling of intense displeasure or hostility] -> fury/ire
 angry [adj: feeling intense displeasure or hostility] -> furious
@@ -49,8 +49,11 @@ app [n: a software application designed for a specific purpose] -> application
 approach [n: a method or strategy for dealing with something] -> method/strategy
 approach [v: to come nearer to someone or something] -> advance towards
 approved [adj: officially accepted or authorised] -> authorised/endorsed
-around [adverb/preposition: approximately] -> approximately, circa
-around [adverb/preposition: in the vicinity of or surrounding] -> surrounding/near
+around [adv: in various places, directions, or locations, as in "travelled around"] -> in various locations / in various places / in various directions
+around [adv/prep: approximately, as in "around 20 items"] -> approximately/circa
+around [prep: in the vicinity of or situated close to something, as in "a town around the lake"] -> in the vicinity of / adjacent to / proximate to
+around [prep: on all sides of or encircling something, as in "a wall around the city"] -> encircling / surrounding
+around the clock [phr: continuously throughout the day and night] -> continuously / perpetually
 ask [v: to pose a question or make a request] -> inquire
 ask [v: to request something specific, as in "I asked for the other cup"] -> request
 assume [v: to suppose or take for granted without proof] -> presume/suppose
@@ -58,12 +61,16 @@ assumption [n: something accepted as true without proof] -> premise/supposition
 at the same time [phr: occurring concurrently] -> simultaneously/concurrently
 average [adj: typical or ordinary] -> typical/mean
 avoid [v: to abstain from doing something] -> refrain from
-avoid [v: to deliberately reject or exclude someone socially] -> shun
+avoid [v: to deliberately reject or exclude someone socially] -> ostracise
 avoid [v: to evade or keep away from something] -> evade
 aware [adj: conscious of or informed regarding a fact or situation] -> conscious/cognisant
 awareness [n: consciousness or perception of a fact, condition, or situation] -> cognisance/consciousness/perception
 awesome [adj: impressively great or remarkable] -> remarkable/extraordinary
 axe [n: a small, one-handed chopping tool] -> hatchet
+back [n: the rear part or surface of something, as in "the back of the house"] -> rear/reverse side
+back [v: to support, fund, or endorse a person, project, or proposal] -> support/finance/endorse
+backed [adjective or past participle: supported, funded, or substantiated by the stated source, as in "audit-backed" or "evidence-backed"] -> supported/substantiated
+backing [n: support, funding, or endorsement of a person, project, or proposal] -> support/funding/sponsorship
 backup/back-up [noun or adjective: assistance, a substitute, or a copy retained for contingencies] -> support/reserve/duplicate/contingency
 backwards [adv: in the reverse direction or order] -> retrogressively/in reverse
 bad [adj: morally wrong or harmful] -> vile/adverse
@@ -94,21 +101,31 @@ being [n: a living creature or supernatural entity] -> entity/creature
 belief [n: acceptance that something is true or real] -> credence/conviction
 belong [v: to be part of, be associated with, or be properly placed with something] -> pertain/be affiliated/be associated
 belonging [n: possession, association, or membership] -> possession/affiliation/membership
-beneath [prep: directly below or under something] -> below/subjacent to
+beneath [prep: directly below or under something] -> subjacent to
+beset [v: to trouble, harass, or afflict persistently, often in the passive, as in "beset by delays"] -> afflicted/plagued
+beset [v: to surround or hem in on all sides, as in "beset by enemies"] -> encircled/surrounded
 bespoke [adj: made or tailored for a particular person or purpose] -> customised/tailored
-better [adj: of higher quality or standard] -> superior
-better [adj: more advisable or desirable] -> preferable
 better [adj: improved in degree, as in "better performance"] -> enhanced/elevated/greater/improved
+better [adj: more advisable or desirable] -> preferable
+better [adj: of higher quality or standard] -> superior
 better [adv: in a more effective manner, as in "performs better"] -> more effectively/more proficiently/more advantageously
 beware [v: to remain alert to danger or risk] -> exercise caution concerning/remain vigilant concerning
 big [adj: physically large in size] -> large
 big [adj: substantial or significant in amount or degree] -> substantial/considerable
 blame [noun or verb: assignment of fault] -> censure/reproach
-blank [adj: empty or unfilled] -> empty/vacant
+blank [adj: empty or unfilled] -> vacant
 blend [v: to mix or combine things together] -> mix/combine/merge
 bless [verb, in formal or religious contexts: to make holy or invoke divine favour] -> consecrate/sanctify
 blight [n: a disease or force that destroys or corrupts] -> affliction/pestilence
+blister [n: a fluid-filled swelling on the skin] -> vesicle/bulla
+blister [v: to raise or form blisters on the skin or a surface] -> vesicate/vesiculate
+blistering [adj: extremely hot, as in "blistering heat"] -> torrid/fervid
+blistering [adj: extremely rapid, as in "a blistering pace"] -> extremely rapid/furious
+blistering [adj: severely critical, as in "a blistering attack"] -> caustic/vitriolic/mordant
 blueprint [n: a design or detailed plan] -> plan/schematic
+blunder [n: a careless or serious mistake] -> error/lapse/faux pas
+blunder [v: to make a careless or serious mistake] -> err/lapse
+blundering [adj/participle: acting clumsily or committing careless errors, as in "a blundering attempt"] -> inept/erroneous
 bold [adj: daring or courageous] -> audacious
 bookkeeping [n: the recording and management of financial accounts] -> accountancy
 border [n: an edge, boundary, or dividing line between areas or jurisdictions] -> frontier/boundary
@@ -129,16 +146,23 @@ broadly [adv: in a general or wide-ranging manner] -> generally/extensively
 broken [adj: no longer functional or in disrepair] -> damaged/defective
 brotherhood [n: a community or bond between males] -> fraternity
 browse [v: to navigate or explore the web or internet] -> navigate
+bruise [n: a discoloured injury to the skin caused by impact] -> contusion/haematoma
+bruise [v: to injure tissue without breaking the skin] -> contuse
+bruise [v: to damage or mark a surface or fruit, as in "bruised fruit"] -> contuse/impair
+bruise [v: to wound feelings or pride, as in "a bruised ego"] -> offend/afflict
 buffer [n: a protective margin or reserve in technical or figurative use] -> cushion/reserve
 build [verb, as in "build a building/structure"] -> construct
 building [noun, as in "a building/structure"] -> structure/edifice
 burglar -> intruder
+burrow [n: a hole or tunnel excavated by an animal as a dwelling] -> excavation/tunnel
+burrow [v: to dig a hole or tunnel, especially as a dwelling] -> excavate/tunnel
+burrow [v: to conceal or nestle oneself within something, as in "burrowed under the covers"] -> insinuate oneself/conceal oneself
 busy [adj: actively occupied or engaged] -> occupied
 buy -> purchase
 cannot [modal verb phrase: to be unable to do something] -> is unable to/is incapable of
 carry [v: to convey or transport something] -> convey/transport
 cease [v: to stop or come to an end] -> terminate
-ceasefire [n: a negotiated or declared suspension of hostilities] -> armistice/truce
+ceasefire [n: a negotiated or declared suspension of hostilities] -> armistice
 ceiling [n: an upper bound, as in "throughput ceiling"] -> capacity limit
 certain [adj: definite or assured] -> definite/assured
 certainly [adv: with confidence or without doubt] -> assuredly/undoubtedly
@@ -147,6 +171,12 @@ charm [n: attractive quality] -> allure/appeal
 cheap [adj: low in price or cost] -> inexpensive/economical
 choose [v: to pick from alternatives] -> select
 chunk -> segment/fragment
+churn [n: a vessel or device in which cream is agitated to produce butter] -> agitator
+churn [n: the rate at which customers, staff, or subscribers leave and are replaced, as in "customer churn"] -> attrition/defection
+churn [v: to agitate a liquid, especially cream, to produce butter] -> agitate
+churn [v: to cause distress or nausea, as in "the news churned her stomach"] -> agitate/distress
+churn [v: to move or cause to move with a turbulent, swirling motion] -> agitate/roil
+churn [v: to produce or emit continuously and in large quantities, as in "churn out content"] -> generate/produce
 cities [noun, plural: urban settlements] -> urban centres
 claim [v: to state, maintain, or assert something as true or due] -> assert
 cleanly [adverb, in technical or procedural contexts: without errors, residue, or unwanted side effects] -> correctly/neatly
@@ -175,7 +205,7 @@ cunning [adj: skilled at achieving goals through devious means] -> astute/deviou
 customize [v: to modify to personal preferences] -> personalise
 Czech Republic -> Czechia
 damp [adj: slightly wet or moist] -> moist
-dark [adj: lacking light or deeply obscure; not as a title or proper name (e.g. not "Dark Lord")] -> dim/obscure
+dark [adj: lacking light or deeply obscure; not as a title or proper name (e.g. not "Dark Lord")] -> obscure
 death [noun, referring to the passing of a person] -> demise
 debris [n: scattered fragments, wreckage, or rubble] -> rubble/detritus
 deed [n: an action or accomplishment] -> action/feat
@@ -192,8 +222,17 @@ dirty [adj: morally corrupt or impure] -> corrupt/impure
 dirty [adj: physically unclean or soiled] -> soiled
 disable [v: to deactivate or prevent from functioning] -> deactivate
 disappointment [n: dissatisfaction or disillusionment caused by unmet expectations] -> dissatisfaction/disillusionment
+discard [v: to throw away or get rid of something no longer wanted] -> dispose of/relinquish/jettison
+discard [v: to reject or abandon an idea, plan, or option] -> reject/abandon/repudiate
+discard [n: a card or item cast aside or rejected] -> reject/rejectamentum
 dislike [v: to regard with disapproval or aversion] -> disapprove of/object to
 dispersal [n: the act or process of distributing or scattering] -> dissemination/diffusion
+dispatch [n: the act or process of sending something to a destination] -> transmission/consignment
+dispatch [n: a prompt or efficient action, as in "with dispatch"] -> promptitude/celerity
+dispatch [n: a message or report transmitted, especially by a journalist or official] -> communication/bulletin
+dispatch [v: to send off to a destination or for a purpose] -> transmit/expedite/consign
+dispatch [v: to deal with or complete a task promptly, as in "dispatch the work"] -> expedite/complete
+dispatch [v: to kill or put to death] -> eliminate/execute
 disruption [n: interruption of normal operation] -> interruption
 disturb [v: to interrupt, unsettle, or interfere with] -> disrupt/unsettle
 do you have -> have you got
@@ -205,7 +244,6 @@ doorway [n: an entrance or opening through a door] -> entrance/portal
 downgrade [v: to reduce in rank, status, quality, or value] -> demote/devalue
 downstream [adv/adj: further along a process or flow] -> subsequently/further along the process
 downtime [n: a period when a system is not operational] -> inactivity period/interruption period
-downwind [adv/adj: in the direction towards which the wind is blowing] -> leeward
 draft [n: a preliminary version of a document or plan] -> preliminary version/prototype
 draft [v: to prepare a preliminary version of a document] -> compose/prepare
 drafting [n: the preparation of a preliminary document or plan] -> composition/preparation
@@ -217,12 +255,16 @@ dull [adj: lacking interest or excitement] -> tedious/mundane
 dumb [adj: unable to speak] -> mute
 dumb [adj: unintelligent or foolish] -> stupid
 dwarfs [noun, plural of dwarf] -> dwarves
+dwell [v: to live or reside in a place] -> reside/inhabit
+dwell on [vp: to think or speak about something at length, especially a grievance] -> ruminate upon/elaborate upon
+dweller [n: a person or animal that lives in a specified place] -> resident/inhabitant/occupant
+dwelling [v: the present participle or gerund of dwell, as in "dwelling in the mountains" or "dwelling on the past"] -> residing/inhabiting/ruminating
 dwelling [n: a place where someone lives] -> residence/abode
 earnest [adj: sincere and serious in intention] -> sincere
 Earth [noun, the planet] -> Terra
 earthly [adj: of or relating to Earth or worldly existence] -> terrestrial/mundane
 eat [v: to consume food] -> consume/ingest
-eerie [adj: strange and unsettling in atmosphere] -> uncanny/sinister
+eerie [adj: strange and unsettling in atmosphere] -> sinister
 effectively [adv: in an efficient or successful manner] -> efficiently/efficaciously
 elementary school -> primary school
 elsewhere [adv: in another place] -> in another location
@@ -263,18 +305,18 @@ faucet -> tap
 feature [n: a distinctive attribute or aspect of something] -> attribute/characteristic
 feature [noun, in software contexts: an application capability] -> capability/function/functionality
 feedback [n: a response or evaluation] -> response/evaluation
-feel [v: to think or believe, in contexts such as "do we feel we are ready?"] -> believe/consider/judge
+feel [v: to think or believe, in contexts such as "do we feel we are ready?"] -> consider/judge
 fetch [v: to go and bring or to retrieve something] -> retrieve
 fighter [n: a person actively engaged in combat] -> combatant
 fill [v: to add contents to a container until it is full] -> supply/charge
 fill [v: to complete fields in a form or record] -> complete/populate
 fill [v: to occupy available space, capacity, or a position] -> occupy
 find [v: to locate or discover] -> discover/locate
-finding [n: something discovered through investigation] -> discovery
 finding [n: a conclusion reached by inquiry or examination] -> conclusion/determination
+finding [n: something discovered through investigation] -> discovery
 findings [n: results or observations from an investigation or audit] -> discoveries/observations
 finish [v: to reach the end of a process or task] -> complete/conclude/finalise
-fixture [n: a permanently attached fitting or installation] -> fitting/installation
+fixture [n: a permanently attached fitting or installation] -> installation
 flashlight -> torch
 flat [noun, the living space] -> apartment
 flat tyre -> punctured tyre
@@ -288,7 +330,7 @@ flow [v: to move continuously in a stream or current] -> circulate/course
 foe [n: an enemy or opponent] -> adversary
 folder [noun, in computing] -> directory
 folk [n: people in general] -> people/populace
-follow [v: to pursue or track] -> pursue/track
+follow [v: to pursue or track] -> pursue
 following [adj: listed or mentioned next] -> subsequent/ensuing
 for sure -> certainly/assuredly
 forbid [v: to prohibit by authority] -> prohibit/interdict
@@ -313,11 +355,11 @@ fright [n: fear or terror] -> terror
 frighten [v: to scare] -> terrify
 frightened [adj: scared] -> terrified
 frightening [adj: scary] -> terrifying
-frolicking [v: playing or moving in a lively, carefree way] -> playing/recreating
+frolicking [v: playing or moving in a lively, carefree way] -> recreating
 from where -> whence
 fuel [v: to intensify, sustain, or provoke something such as conflict, suspicion, or accusations] -> intensify/exacerbate/provoke
 fulfillment [n: completion or realisation of something desired] -> completion/realisation
-further [adj: additional or more distant] -> additional/farther
+further [adj: additional or more distant] -> additional/distant
 gain [n: increase, profit, or benefit] -> increase/profit/benefit
 gain [v: to obtain, acquire, or increase] -> acquire/obtain/increase
 gains [n: increases or improvements] -> increments/increases
@@ -343,7 +385,7 @@ go forward -> advance/proceed
 go in -> enter
 go out -> exit
 grasp [v: to comprehend or understand something] -> comprehend/apprehend
-grasp [v: to physically seize or grip something] -> seize/grip
+grasp [v: to physically seize or grip something] -> apprehend
 gray -> grey
 great [adj: considerable in size, extent, or degree] -> considerable/magnificent
 great [interjection: approval or resigned acknowledgement, as in "Great, that's what I asked for"] -> excellent/marvellous
@@ -355,6 +397,7 @@ growth [n: development] -> development
 growth [n: increase in size, number, or extent, as in "population growth"] -> expansion/increase
 growth policy [np: a policy intended to increase development or expansion] -> development policy/expansion policy
 growth rate [np: the pace of development or expansion] -> development rate/expansion rate
+gruelling [adj: extremely tiring or demanding, as in "a gruelling schedule"] -> arduous/onerous/exhausting/strenuous
 guide [n: a person, document, or source that directs or instructs] -> adviser/manual/instruction
 guide [v: to direct, instruct, or conduct someone or something] -> direct/instruct/conduct
 halt [v: to cease movement or operation] -> cease/suspend
@@ -390,10 +433,10 @@ hungry [adj: experiencing a strong desire for food] -> famished/ravenous
 hurt [v: to injure or cause pain] -> injure
 I wonder [phrase, expressing curiosity about something] -> I am curious
 illness [n: a disease or medical condition] -> malady/infirmity
-income [n: money received or earned] -> revenue/earnings
+income [n: money received or earned] -> revenue
 inn [n: a drinking and eating establishment] -> tavern
 inn [n: a lodging establishment] -> hostelry
-inside [prep: within a process, forum, or institution, as in "inside this institution"] -> within
+inside [prep: within a process, forum, or institution, as in "inside this institution"] -> internal to
 is/was/are needed [v: to be necessary] -> is/was/are necessary
 jagged [adj: rough with sharp, uneven edges] -> serrated/irregular
 jail [noun] -> prison
@@ -404,7 +447,7 @@ keen [adj: enthusiastic or eager] -> avid/ardent
 keep [v: to maintain a state or condition] -> maintain
 keep [v: to retain or preserve] -> retain/preserve
 kidnap [v: to seize and detain a person, typically for ransom] -> abduct
-kill [v: to cause the death of a living being] -> slay/eliminate
+kill [v: to cause the death of a living being] -> eliminate
 kill [verb, in computing] -> terminate
 kind [n: a type or category] -> type/category
 know [v: to be acquainted with a person or community] -> be acquainted with/be familiar with
@@ -470,8 +513,8 @@ misbehave [v: to conduct oneself improperly] -> misconduct oneself/act improperl
 misc -> miscellaneous
 misclick -> accidental click
 misgiving [n: a feeling of doubt or apprehension] -> apprehension
-missed [adj/v: overlooked or not noticed] -> overlooked/omitted
-missing [adj: absent or not present] -> absent/lacking
+missed [adj/v: overlooked or not noticed] -> omitted
+missing [adj: absent or not present] -> absent
 misunderstood [adjective or past participle: incorrectly interpreted or construed] -> misinterpreted/misconstrued
 misuse [v: to use improperly or for an unintended purpose] -> abuse/misapply
 mood [n: a person's emotional state or disposition] -> disposition/temperament
@@ -489,8 +532,6 @@ new [adj: recent or novel] -> novel/recent
 night vision [np: the capacity to see in reduced illumination] -> nocturnal vision
 no way [phr: expressing impossibility or denial] -> by no means/under no circumstances
 no way [phr: expressing refusal] -> under no circumstances
-nonetheless -> nevertheless
-nonetheless [adv: despite that fact] -> nevertheless
 noteworthy [adj: deserving attention or notice] -> notable/remarkable
 nuisance [n: a cause of inconvenience or annoyance] -> impediment/annoyance
 odd [adj: peculiar or unusual] -> peculiar/anomalous
@@ -499,7 +540,7 @@ offshore [adj/adv: situated or occurring away from the coast] -> maritime
 offspring [n: the progeny of a person, animal, or plant] -> progeny
 often -> frequently
 old [adjective, in historical-age contexts meaning ancient or aged; do not replace numeric age constructions such as "3,000 years old"] -> ancient/aged
-oldest [adjective, in chronological or historical ordering contexts meaning earliest] -> earliest
+oldest [adjective, in chronological or historical ordering contexts meaning earliest] -> initial
 ongoing [adj: continuing or in progress] -> continuing/in progress
 open [v: to access or expose] -> access/expose
 open [v: to formally begin, dedicate, or commence a venue, event, or institution] -> inaugurate
@@ -511,8 +552,7 @@ outdone [adjective or past participle: surpassed or exceeded] -> surpassed/excee
 outlaw [n: a person declared outside the protection of the law] -> criminal/fugitive
 outpace [v: to move faster than or exceed] -> surpass
 output [n: produced quantity or result] -> production
-outside [prep: external to a process, forum, or institution, as in "outside arbitration"] -> external/beyond
-outskirts [n: the outer parts of a city or town] -> periphery
+outside [prep: external to a process, forum, or institution, as in "outside arbitration"] -> external
 outskirts [n: the outer parts of a city or town] -> periphery
 overcome [v: to successfully deal with or defeat] -> surmount
 overhang [noun or verb: a projecting part that extends beyond what supports it] -> projection/protrusion
@@ -550,17 +590,17 @@ prize [v: to value highly] -> value/appreciate/esteem
 proof [n: evidence that establishes truth or validity] -> evidence/verification
 propelant [misspelling of propellant] -> propellant
 proud [adj: feeling superior to others or self-important] -> haughty/arrogant
-pull [v: to draw something towards oneself or another point] -> attract/draw
+pull [v: to draw something towards oneself or another point] -> attract
 push [v: to urge, promote, or apply force to something] -> urge/promote
 put [v: to place or position] -> place/position
 quick [adj: rapid in movement or action] -> rapid/expeditious
 quietly [adv: without noise or public attention] -> silently/discreetly
 raise [v: to lift, elevate, or increase] -> elevate/increase
-range [n: an interval between limits or values] -> interval/span
+range [n: an interval between limits or values] -> interval
 raw [adj: food that has not been cooked] -> uncooked
 raw [adj: material, data, or a substance that has not been processed or treated] -> unprocessed/untreated
 reach [n: scope or extent, as in "fiscal reach"] -> scope
-reboot [v: to restart a system or device] -> restart
+reboot [v: to restart a system or device] -> restart/reinitialise
 reckon [v: to calculate or consider] -> calculate/consider
 recover [v: to regain, retrieve, or restore something] -> regain/retrieve/restore
 recovery [n: restoration to a former condition or recuperation after harm] -> restoration/recuperation
@@ -576,7 +616,7 @@ removal [n: the act of taking away, extracting, or eliminating something] -> ext
 remove [v: to eliminate or abolish something such as a barrier, restriction, obstacle, or feature] -> eliminate/abolish
 remove [v: to extract something from within, from a container, or from a fixed position] -> extract
 render [v: to cause, provide, or present formally] -> cause/provide/present
-repel [v: to drive back or fend off an attack or approach] -> repulse/ward off
+repel [v: to drive back or fend off an attack or approach] -> repulse
 replacement [n: a substitute that takes the place of another item] -> substitute
 rescue [v: to save or recover someone or something from danger] -> extricate/recover
 research [n: systematic investigation to establish facts or conclusions] -> investigation/study
@@ -585,7 +625,7 @@ restore [v: to return something to a former or proper state] -> reinstate/re-est
 restroom -> toilet
 retention [n: continued possession, preservation, or remembrance] -> preservation/continuity
 retrain [v: to train again for a different skill, role, or standard] -> re-educate/reskill
-retreat [v: to withdraw from a position or confrontation] -> withdraw/fall back
+retreat [v: to withdraw from a position or confrontation] -> withdraw
 reward [n: compensation or recognition for merit, service, or effort] -> recompense/remuneration/compensation
 reward [v: to provide compensation or recognition] -> recompense/remunerate/compensate
 rig [n: equipment or apparatus used for a particular purpose] -> apparatus/equipment
@@ -644,9 +684,9 @@ shoot [v: to discharge a projectile weapon] -> fire/discharge
 shopkeeper -> merchant
 shore [n: land adjoining a sea, lake, or river] -> coast/littoral
 short [adj: brief in duration] -> brief
-shortage [n: an insufficient supply of something] -> scarcity
 shortage [n: a quantitative deficit] -> deficiency/insufficiency
-shortly [adv: in a brief time or soon] -> in a moment/soon
+shortage [n: an insufficient supply of something] -> scarcity
+shortly [adv: in a brief time or soon] -> in a moment
 shortly [adv: not long before or after a reference point, as in shortly before] -> briefly before/not long before
 should [modal verb: recommendation or advisability] -> is advisable to/is recommended to
 show [v: to demonstrate or display] -> demonstrate/display/exhibit
@@ -665,10 +705,10 @@ slowness [n: reduced speed, delayed progress, or delayed response] -> reduced ve
 sluggish [adj: slow-moving or lacking energy] -> lethargic/torpid
 small [adj: little in size or degree] -> minor
 smart [adj: intelligent or perceptive] -> intelligent
-smash [v: to break a brittle object violently, as in smashing a window] -> shatter
-smash to pieces [vp: to break something violently into fragments] -> shatter into pieces/reduce to fragments
-smooth [adj: having an even, regular surface] -> seamless/sleek
-solar system [noun, astronomy, one other than the Sun's] -> star system
+smash [v: to break a brittle object violently, as in smashing a window] -> fracture
+smash to pieces [vp: to break something violently into fragments] -> reduce to fragments
+smooth [adj: having an even, regular surface] -> polished/uniform
+solar system [noun, astronomy, one other than the Sun's] -> stellar system
 sorrow [n: deep distress or grief] -> grief/anguish
 sort [v: to organise items into order, as in alphabetical sorting] -> arrange/classify
 sort out [phrasal verb: to resolve or organise a problem or situation] -> resolve/organise
@@ -702,12 +742,11 @@ strengthen [v: to make stronger or more robust] -> fortify/reinforce
 strengthening [n: the process of making stronger] -> reinforcement/fortification
 strong [adj: physically powerful or robust] -> robust/sturdy
 submerged [adj: covered by or immersed in water] -> immersed/subaquatic
-such [determiner: of the kind or degree specified] -> that kind of/of that nature
+such [determiner: of the kind or degree specified] -> that type of/of that nature
 sulfur -> sulphur
 surge [n: a sudden increase in quantity, demand, activity, or arrivals] -> influx/escalation
 surge [v: to increase suddenly in quantity, demand, or activity] -> escalate/intensify
 survival [n: continued existence or remaining alive despite danger] -> persistence/continuance
-swamp [n: a low-lying wetland area] -> marsh/bog
 swear [v: to solemnly commit to a course of action or allegiance] -> vow/pledge
 swift [adj: rapid in movement] -> rapid/expeditious
 swiftness [n: rapidity of movement or action] -> rapidity/celerity
@@ -742,23 +781,26 @@ thousands of [phr: very many of something] -> myriad/multitudes of
 threat [n: an indication or source of potential harm or danger] -> menace/peril
 three times -> thrice
 thrive [v: to prosper or flourish] -> flourish/prosper
-through [preposition or adverb: by way of, via, or across] -> via/by means of/across
+through [preposition or adverb: by way of, via, or across] -> via/by means of
+throughout [prep: in every part of or all over an area, as in "throughout the country"] -> in every part of/in the entirety of
+throughout [prep: for the whole of a period, as in "throughout the year"] -> for the duration of/during the entirety of
+throughout [adv: in every part or respect, as in "painted throughout"] -> universally/in every respect/entirely
 throughput [n: rate of processing or transfer] -> processing rate/transfer rate
-throw [v: to propel something through the air] -> hurl/project/cast
+throw [v: to propel something through the air] -> project
 tight [adj: closely connected or united] -> cohesive/intimate
 tight [adj: closely contested] -> competitive/closely contested
 tight [adj: firmly fixed, compressed, tense, or constricted] -> secure/compressed/tense/constricted
 tight [adj: limited in availability, capacity, or time] -> restricted/limited/constrained
 tight [adj: strict or permitting little latitude] -> rigorous/restrictive/stringent
 tight [adv: firmly or securely] -> firmly/securely
-tightly coupled [adj: strongly interdependent components] -> tightly integrated
+tightly coupled [adj: strongly interdependent components] -> closely integrated
 tiny [adj: very small in size or degree] -> minuscule
 tip [v: to cause a decisive shift, as in "tipped civilisation into sustained industrial acceleration"] -> catalyse/precipitate
 tired [adj: physically or mentally drained from exertion] -> fatigued/exhausted
 tough [adj: resilient or resistant to hardship] -> resilient/robust
 towards [prep: in the direction of] -> in the direction of
-towing [v: pulling a vehicle or vessel behind another] -> hauling
-trace [v: to find or follow the course or origin of something] -> identify/track
+towing [v: pulling a vehicle or vessel behind another] -> traction
+trace [v: to find or follow the course or origin of something] -> identify
 trade [v: to exchange goods or services] -> exchange/barter
 trade [v: to exchange one concession or right for another, as in "trade access"] -> exchange/concede
 trader [n: a person who engages in trade] -> merchant
@@ -808,7 +850,7 @@ utmost [adj: greatest or highest in degree] -> maximum/supreme
 utter [adj: complete, absolute, or total] -> complete/absolute/total
 utter [v: to say, express, or articulate] -> articulate/express
 uttermost [adj: furthest, greatest, or most extreme] -> extreme/maximum
-want [v: to desire or wish] -> desire/wish
+want [v: to desire or wish] -> desire
 war [n: an armed conflict between nations or groups] -> conflict/warfare
 warn [v: to caution or alert someone about danger or risk] -> caution/alert
 warship [n: a vessel equipped for naval combat] -> war vessel
@@ -826,11 +868,10 @@ well [meaning satisfactorily] -> satisfactorily/adequately
 well enough [phr: to a sufficient degree] -> sufficiently/adequately
 whole [adj: entire or complete] -> entire/complete
 wholesome [adj: conducive to health or wellbeing] -> salutary/beneficial
-wide [adj: broad or expansive] -> broad/expansive
+wide [adj: broad or expansive] -> expansive
 wield [v: to hold and use a weapon or tool effectively] -> employ/exercise
-wild [adj: living or occurring in an undomesticated state] -> feral/untamed
-will/would need [v: to be necessary] -> will/would be necessary
-windswept [adjective, describing terrain exposed to persistent or strong winds; not hair merely styled in waves] -> exposed to prevailing winds/wind-exposed
+wild [adj: living or occurring in an undomesticated state] -> feral
+windswept [adjective, describing terrain exposed to persistent or strong winds; not hair merely styled in waves] -> exposed to prevailing winds
 wipe [v: to remove or erase something completely] -> erase/eliminate
 wisdom [n: the quality of having experience, knowledge, and good judgement] -> sagacity
 wish [v: to desire something] -> desire
@@ -856,6 +897,8 @@ worthwhile [adj: worth the time, effort, or expense] -> valuable/beneficial
 worthy [adj: deserving of respect or merit] -> meritorious/deserving
 wrath [n: extreme anger or indignation] -> indignation
 write [v: to compose or document] -> compose/document
+written [adjective or past participle: recorded or composed in text, as in "the written record" or "well-written"] -> recorded/documented/composed in text
+written [adjective, in legal or formal contexts: formally set down or enacted, as in "written law"] -> codified/enacted/statutory
 wrong [adj: incorrect or erroneous, as opposed to right] -> erroneous/incorrect
 wrong [adj: unjust or inequitable] -> unjust/inequitable
 wroth [adj: intensely angry] -> irate/indignant

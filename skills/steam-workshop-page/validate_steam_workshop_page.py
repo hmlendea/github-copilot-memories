@@ -44,7 +44,6 @@ MANDATORY_SECTIONS = (
     "About",
     "Capabilities",
     "Installation",
-    "Contributing",
     "Support",
     "Project Engagement",
     "License",
@@ -65,6 +64,7 @@ KNOWN_OPTIONAL_SECTIONS = {
     "Requirements",
     "Compatibility",
     "Related Mods",
+    "Contributing",
 }
 
 MAX_CAPABILITY_ITEMS = 12
@@ -100,6 +100,39 @@ BADGE_PATH_PATTERN = re.compile(
     r'raw\.githubusercontent\.com/hmlendea/readme-assets/master/(?!badges/stores/)[^\s\[]*badge[^\s\[]*',
     re.IGNORECASE,
 )
+SUPPORT_FIXED_SENTENCE = (
+    "]GitHub[/url]. None of the other channels are actively monitored, "
+    "which may result in delayed responses."
+)
+SUPERSEDED_SUPPORT_SENTENCE = "GitHub is the primary location for obtaining support"
+CONTRIBUTING_FIXED_SENTENCE = (
+    "See the [url=<CONTRIBUTING_URL>]Contributing Guidelines[/url] for details on how "
+    "to report issues, suggest enhancements, and submit changes."
+)
+TROUBLESHOOTING_FIXED_SENTENCE = (
+    "]Troubleshooting Guide[/url] for diagnostic procedures and resolutions to "
+    "recurring problems."
+)
+SUPERSEDED_CONTRIBUTING_SENTENCE = "Contributions are managed on the"
+SUPERSEDED_CONTRIBUTING_ISSUE_SENTENCE = (
+    "To report a problem or suggest an enhancement, submit an"
+)
+
+
+def _balanced_badge_layout(total: int) -> list:
+    """Distribute badges across the fewest lines, as evenly as possible.
+
+    Three badges fill one line and four badges are laid out two per line. In
+    general the badges occupy ``ceil(total / 3)`` lines, spread as evenly as
+    possible with any remainder on the earlier lines.
+    """
+    if total <= 0:
+        return []
+
+    lines = -(-total // MAX_BADGES_PER_LINE)
+    base, extra = divmod(total, lines)
+
+    return [base + 1 if index < extra else base for index in range(lines)]
 
 
 class ValidationSeverity(Enum):
@@ -516,8 +549,8 @@ class SteamWorkshopPageValidator:
                     context="Sections must come from the documented mandatory or optional list",
                 ))
 
-        contributing_index = positions[3] if len(positions) > 3 else -1
-        support_index = positions[4] if len(positions) > 4 else -1
+        contributing_index = headings.index("Contributing") if "Contributing" in headings else -1
+        support_index = headings.index("Support") if "Support" in headings else -1
 
         if contributing_index >= 0 and support_index > contributing_index:
             between = headings[contributing_index + 1:support_index]
@@ -536,6 +569,7 @@ class SteamWorkshopPageValidator:
         self._check_compatibility(content)
         self._check_merged_sections(content)
         self._check_contributing_section(content)
+        self._check_troubleshooting_sentence(content)
         self._check_project_engagement(content)
         self._check_license_section(content)
         self._check_related_mods(content)
@@ -632,19 +666,22 @@ class SteamWorkshopPageValidator:
         support = self._extract_section_body(content, "Support")
 
         if support is not None:
-            if not re.search(r'GitHub is the primary location for obtaining support', support):
+            if not re.search(re.escape(SUPPORT_FIXED_SENTENCE), support):
                 self.issues.append(ValidationIssue(
                     ValidationSeverity.ERROR,
-                    "Support section is missing the GitHub-primary sentence",
-                    context="The fixed sentence states that GitHub is the primary support "
-                            "location and that the other channels are not actively monitored",
+                    "Support section is missing the fixed issue-tracker sentence",
+                    context="The sentence must end: [url=<REPO>]GitHub[/url] on GitHub. "
+                            "None of the other channels are actively monitored, which "
+                            "may result in delayed responses.",
                 ))
 
-            if not re.search(r'may result in delayed responses', support):
+            if re.search(re.escape(SUPERSEDED_SUPPORT_SENTENCE), support):
                 self.issues.append(ValidationIssue(
                     ValidationSeverity.ERROR,
-                    "Support section is missing the delayed-responses clause",
-                    context="Use: which may result in delayed responses.",
+                    "Support section carries the superseded GitHub-primary sentence",
+                    context="It is merged into the preceding sentence as "
+                            "`on GitHub. None of the other channels are actively "
+                            "monitored, which may result in delayed responses.`",
                 ))
 
             faq = re.search(r'See the \[url=[^\]]+\]FAQ\[/url\] for responses to frequent inquiries\.', support)
@@ -672,31 +709,47 @@ class SteamWorkshopPageValidator:
             ))
             return
 
-        os_agnostic = "This mod is [b]OS-agnostic[/b]" in body
-        platform_specific = re.search(
-            r'\b(?:Windows|Linux|macOS)\b', body, re.IGNORECASE
-        ) is not None
+        sentence = re.search(
+            r'This mod is compatible with ([^\n.\[]+?) '
+            r'([^\s.\[]*[0-9][^\s.\[]*)[^\n]*? on all operating systems\.',
+            body,
+            re.IGNORECASE,
+        )
 
-        if not os_agnostic and not platform_specific:
+        if sentence is None:
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
-                "Compatibility section states neither OS-agnostic nor platform support",
-                context="Use the fixed OS-agnostic paragraph, or the evidenced platform support",
+                "Compatibility section is missing the unified compatibility sentence",
+                context="Use: This mod is compatible with <GAME_NAME> "
+                        "<SUPPORTED_GAME_VERSION> on all operating systems.",
+            ))
+        elif not sentence.group(1).strip():
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Unified compatibility sentence has no game name",
+                context="Name the game the mod targets, for example Stellaris",
             ))
 
-        if re.search(r'\bshould work on\b|\ball of the operating systems\b', body, re.IGNORECASE):
+        if re.search(r'\[b\]OS-agnostic\[/b\]|\bworks on any operating system\b',
+                     body, re.IGNORECASE):
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
-                "Compatibility OS-agnostic paragraph uses superseded wording",
-                context="Use: This mod is [b]OS-agnostic[/b] and works on any "
-                        "operating system.",
+                "Compatibility section carries the superseded OS-agnostic paragraph",
+                context="It was replaced by the unified compatibility sentence",
             ))
 
-        if re.search(r'Target game version', body, re.IGNORECASE):
+        if re.search(r'\bgame version\s*:|\bTarget game version\b', body, re.IGNORECASE):
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
-                "Compatibility game-version block uses the superseded wording",
-                context="Use: Game version: [b][[SUPPORTED_GAME_VERSION]][/b].",
+                "Compatibility section carries the superseded game-version block",
+                context="The version is embedded in the unified compatibility sentence",
+            ))
+
+        if re.search(r'\[code\][^\[]*\d[^\[]*\[/code\]', body, re.IGNORECASE):
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Version is enclosed in [code][/code]",
+                context="Enclose versions in [b][/b] instead",
             ))
 
         incompat = re.search(
@@ -749,29 +802,6 @@ class SteamWorkshopPageValidator:
                 ValidationSeverity.ERROR,
                 "Malformed link tag: [ul=...] must be [url=...]",
                 context="BBCode links use [url=<TARGET>]text[/url]",
-            ))
-
-        game_version = re.search(r'game version:\s*[^\[]*\[b\]([^\[]+)\[/b\]', body, re.IGNORECASE)
-
-        if game_version and not re.search(r'\d', game_version.group(1)):
-            self.issues.append(ValidationIssue(
-                ValidationSeverity.ERROR,
-                f"Supported game version is not a version: {game_version.group(1)}",
-                context="State an evidenced game version such as 3.14.* or 1.9.2",
-            ))
-
-        if re.search(r'\[code\][^\[]*\d[^\[]*\[/code\]', body, re.IGNORECASE):
-            self.issues.append(ValidationIssue(
-                ValidationSeverity.ERROR,
-                "Version is enclosed in [code][/code]",
-                context="Enclose versions in [b][/b] instead",
-            ))
-
-        if re.search(r'\[url=[^\]]+\]Proton\[/url\]', body, re.IGNORECASE):
-            self.issues.append(ValidationIssue(
-                ValidationSeverity.ERROR,
-                "Proton is hyperlinked",
-                context="Proton must remain plain text, without a link",
             ))
 
     def _check_related_mods(self, content: str):
@@ -831,10 +861,19 @@ class SteamWorkshopPageValidator:
                 ))
 
     def _check_contributing_section(self, content: str):
-        """Check that Contributing has no welcome paragraph."""
+        """Check that Contributing carries only the fixed guidelines sentence."""
         body = self._extract_section_body(content, "Contributing")
 
         if body is None:
+            return
+
+        if not body.strip():
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Contributing section has no content",
+                context="Emit the fixed guidelines sentence, or omit the section with "
+                        "its heading and directive comment",
+            ))
             return
 
         if re.search(
@@ -843,14 +882,49 @@ class SteamWorkshopPageValidator:
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
                 "Contributing section carries the removed welcome paragraph",
-                context="The section opens directly with the contributions-managed sentence",
+                context="The section carries only the fixed guidelines sentence",
             ))
 
-        if not re.search(r'Contributions are managed on the', body):
+        if re.search(re.escape(SUPERSEDED_CONTRIBUTING_SENTENCE), body):
             self.issues.append(ValidationIssue(
                 ValidationSeverity.ERROR,
-                "Contributing section is missing the contributions-managed sentence",
-                context="Contributing opens with the fixed contributions-managed sentence",
+                "Contributing section carries the removed contributions-managed sentence",
+                context="It was removed from the template contract",
+            ))
+
+        if re.search(re.escape(SUPERSEDED_CONTRIBUTING_ISSUE_SENTENCE), body):
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Contributing section carries the removed issue-tracker sentence",
+                context="It was removed from the template contract",
+            ))
+
+        if not re.search(r'\]Contributing Guidelines\[/url\]', body):
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Contributing section is missing the fixed guidelines sentence",
+                context="Use: " + CONTRIBUTING_FIXED_SENTENCE,
+            ))
+
+    def _check_troubleshooting_sentence(self, content: str):
+        """Check the conditional troubleshooting document sentence."""
+        body = self._extract_section_body(content, "Support")
+
+        if body is None:
+            return
+
+        if "[[TROUBLESHOOTING" in content or "[[ADDITIONAL_SUPPORT]]" in content:
+            return
+
+        mentions_guide = re.search(r'\]Troubleshooting Guide\[/url\]', body)
+
+        if mentions_guide and not re.search(re.escape(TROUBLESHOOTING_FIXED_SENTENCE), body):
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                "Troubleshooting sentence does not match the fixed wording",
+                context="Expected: See the [url=<TROUBLESHOOTING_URL>]Troubleshooting "
+                        "Guide[/url] for diagnostic procedures and resolutions to "
+                        "recurring problems.",
             ))
     def _check_project_engagement(self, content: str):
         """Check the fixed Project Engagement links.
@@ -1016,6 +1090,18 @@ class SteamWorkshopPageValidator:
             for index, line in enumerate(body.splitlines())
             if BADGE_PATTERN.search(line)
         ]
+
+        actual_layout = [len(BADGE_PATTERN.findall(line)) for _, line in badge_lines]
+        expected_layout = _balanced_badge_layout(len(badges))
+
+        if actual_layout != expected_layout:
+            self.issues.append(ValidationIssue(
+                ValidationSeverity.ERROR,
+                f"Installation badges are not evenly distributed across lines: got "
+                f"{actual_layout}, expected {expected_layout}",
+                context="Badges fill each line up to three, then balance evenly, so "
+                        "three fill one line and four are laid out two per line",
+            ))
 
         for position, (index, line) in enumerate(badge_lines):
             is_last = position == len(badge_lines) - 1

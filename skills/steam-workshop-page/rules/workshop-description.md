@@ -31,6 +31,7 @@ Strict fidelity applies to every Steam Workshop page description creation or rev
 | `[[INSTALLATION_BADGES]]` | The installation badge block (see Installation Badges). At least one badge is mandatory. |
 | `[[UPGRADE_INSTRUCTIONS]]` | The evidenced upgrade procedure when it requires more than repeating the installation command. |
 | `[[REQUIREMENTS]]` | Requirements beyond the base game, such as DLC, expansions, or other mods, as evidenced. |
+| `[[GAME_NAME]]` | The human-readable game name the item targets, for example `Stellaris` or `Crusader Kings III`. |
 | `[[SUPPORTED_GAME_VERSION]]` | The evidenced game version the item supports, for example `3.14.*` or `1.9.2`; see Compatibility Section. |
 | `[[LOAD_ORDER]]` | Required load order or placement guidance as evidenced; rendered as the `[h2]Load Order[/h2]` sub-section of Compatibility. |
 | `[[INCOMPATIBLE_MOD_URL]]` | The incompatible mod link, resolved in priority order: its Steam Workshop page, otherwise its Nexus Mods page, otherwise its GitHub repository. |
@@ -43,7 +44,7 @@ Strict fidelity applies to every Steam Workshop page description creation or rev
 | `[[RELATED_MOD_NAME]]` | The related mod name. |
 | `[[RELATED_MOD_DESCRIPTION]]` | A concise description of the related mod. |
 | `[[ADDITIONAL_SUPPORT]]` | An optional evidenced support-channel line, such as a documented forum, discussion board, or support document. |
-| `[[TROUBLESHOOTING]]` | Evidenced diagnostic procedures and resolutions, placed inside the Support section. |
+| `[[TROUBLESHOOTING_DOCUMENT_LINK]]` | The verified repository-relative path of the existing troubleshooting document, for example `docs/troubleshooting.md`. |
 | `[[FAQ_DOCUMENT_LINK]]` | The verified repository-relative path of the existing FAQ document. |
 | `[[PROJECT_NAME]]` | The human-friendly project name. |
 | `[[GITHUB_REPO_USERNAME]]` | The GitHub repository owner. |
@@ -78,7 +79,7 @@ The description MUST contain exactly these sections, in this order:
 | About | `[h1]About[/h1]` | `[[ABOUT]]` |
 | Capabilities | `[h1]Capabilities[/h1]` | `[list]` of repeatable `[*][[CAPABILITY]]` |
 | Installation | `[h1]Installation[/h1]` | `[[INSTALLATION_BADGES]]`, then the conditional `[h2]Upgrading[/h2]` sub-section |
-| Contributing | `[h1]Contributing[/h1]` | Fixed prose directing contributors to the GitHub repository || Support | `[h1]Support[/h1]` | Fixed prose |
+| Support | `[h1]Support[/h1]` | Fixed prose |
 | Project Engagement | `[h1]Project Engagement[/h1]` | Fixed prose |
 | License | `[h1]License[/h1]` | Fixed prose with the resolved licence values |
 
@@ -92,13 +93,13 @@ Each conditional section is gated by its own directive comment in the template. 
 |---------|-----------|
 | Upgrading | The upgrade procedure requires more than repeating the installation command. |
 | Requirements | More than the base game is required, such as DLC, expansions, or other mods. |
-| Compatibility | Compatibility with other mods, or with a game version, is material to users. |
-| Incompatible mods | One or more specific mods are known to be incompatible; otherwise the block is omitted entirely. |
+| Compatibility | Compatibility with other mods, or with a game version, is material to users. || Incompatible mods | One or more specific mods are known to be incompatible; otherwise the block is omitted entirely. |
 | Load Order | A required load order or placement is evidenced; rendered as the `[h2]Load Order[/h2]` subsection of Compatibility. |
 | Localised languages | The item ships translated text, or a localisation directory, translation files, or documented locale list exists; the language list then lives inside Compatibility. |
 | FAQ | A repository FAQ document exists (`FAQ.md`, `docs/faq.md`, or `docs/FAQ.md`); the FAQ sentence then lives inside Support. |
+| Contributing | `CONTRIBUTING.md` exists in the repository root; the section carries only its fixed guidelines sentence and is otherwise omitted with its heading. |
 | Related Mods | Related mods exist. |
-| Troubleshooting | Recurring, evidenced problems have diagnostic procedures or resolutions; the procedures then live inside Support. |
+| Troubleshooting | A `TROUBLESHOOTING.md` or `docs/troubleshooting.md` document exists; the fixed troubleshooting sentence then lives inside Support. |
 | Additional support | An evidenced support channel, forum, discussion board, or support document exists. |
 
 Never invent a section, a problem, or a related mod, and never emit a vacant section. `Features` is never a section, because `Capabilities` is mandatory; place capability content in the repeatable `[[CAPABILITY]]` line instead. `Known Limitations` is never a section; state limits in `Compatibility` or `Support` when they are material. `Troubleshooting`, `Localisation`, `Changelog`, and `FAQ` are never standalone sections; their content lives inside `Support` or `Compatibility` as described below. `Load Order` is never a top-level section; it is the `[h2]Load Order[/h2]` subsection of Compatibility.
@@ -117,19 +118,18 @@ The Compatibility prose is fixed in the template and is used whenever it applies
 
 | Block | Condition |
 |-----------|-----------|
-| `This mod is [b]OS-agnostic[/b] and works on any operating system.` | The mod genuinely is OS-agnostic. |
-| `Game version: [b][[SUPPORTED_GAME_VERSION]][/b].` | The supported game version is evidenced. The version is enclosed in `[b][/b]`, never in `[code][/code]`. |
+| `This mod is compatible with <GAME_NAME> <SUPPORTED_GAME_VERSION> on all operating systems.` | The supported game version is evidenced. The sentence is a single fixed line; the version carries no emphasis, because no part of it uses `[b][/b]` or `[code][/code]`. |
 | `The subsequent languages are currently supported:` followed by the language list | The item ships translated text, or a localisation directory, translation files, or documented locale list exists. |
 | `Translations are welcome. See the GitHub repository for the translation process.` | A documented translation contribution process exists. |
 | `Incompatible mods:` followed by the incompatible-mod list | One or more specific mods are known to be incompatible. Omit the whole block when none are known. |
 | `[h2]Load Order[/h2]` with `[[LOAD_ORDER]]` | A required load order or placement is evidenced. |
 
 - Start from this fixed prose rather than composing free-form compatibility text.
-- Replace the OS-agnostic paragraph with the evidenced platform support when the mod is **not** OS-agnostic, for example when it ships platform-specific binaries.
-- The game-version sentence is mandatory whenever a supported game version is evidenced. Never invent a version, and never widen a version range beyond what the repository or Workshop page states.
+- Replace the unified sentence with the evidenced platform support when the mod is **not** OS-agnostic, for example when it ships platform-specific binaries.
+- The unified sentence is mandatory whenever a supported game version is evidenced. Never invent a game name or a version, and never widen a version range beyond what the repository or Workshop page states.
 - The language list is part of Compatibility, not a separate section. Emit one `[*]` line per supported language in the form `Language (locale): status`, ordered by translation completeness from highest to lowest, using a standards-compliant locale identifier where available. Never invent a language, a locale, or a completeness figure.
 - The incompatible-mod list names each known incompatible mod as `Name: reason`, and links it in priority order: its Steam Workshop page, otherwise its Nexus Mods page, otherwise its GitHub repository. Never invert it into a compatibility claim: there is no sentence asserting blanket compatibility. When no incompatibility is known, remove the entire block with its heading and directive comment.
-- The fixed prose uses the inline emphasis tags `[b]OS-agnostic[/b]` and `[b][[SUPPORTED_GAME_VERSION]][/b]`. Retain them in the corresponding positions, and do not add emphasis elsewhere.
+- The unified sentence uses no inline emphasis tags. Do not add `[b]`, `[i]`, or `[code]` emphasis anywhere in it.
 - Add evidenced DLC or dependency statements as additional sentences only when they are material, and never contradict the fixed prose.
 - The prose has already passed the `english-language` dictionary; when revising it, re-apply the dictionary rather than reintroducing a recorded source word such as `should`, `such`, or `outcome`.
 
@@ -151,16 +151,16 @@ Derive the status from translation files, a documented locale list, or a transla
 
 The Support prose is fixed in the template and additionally carries the former Troubleshooting and FAQ content, in this order:
 
-1. The issue-tracker sentence and the GitHub-primary sentence, which are fixed and never removed.
+1. The fixed issue-tracker sentence, which records that GitHub is the primary support location. It is never removed or split.
 2. The FAQ sentence, retained only when a repository FAQ document exists. `[[FAQ_DOCUMENT_LINK]]` resolves to the verified repository-relative path of that document.
-3. `[[TROUBLESHOOTING]]`, retained only when recurring, evidenced problems have diagnostic procedures or resolutions.
+3. The troubleshooting sentence, retained only when a `TROUBLESHOOTING.md` or `docs/troubleshooting.md` document exists. `[[TROUBLESHOOTING_DOCUMENT_LINK]]` resolves to the verified repository-relative path of that document. Its prose is fixed: `See the [url=<TROUBLESHOOTING_URL>]Troubleshooting Guide[/url] for diagnostic procedures and resolutions to recurring problems.`
 4. `[[ADDITIONAL_SUPPORT]]`, retained only when an additional evidenced support channel exists.
 
 There is no standalone Troubleshooting, FAQ, Changelog, or Localisation section.
 
 ### Contributing Section
 
-The Contributing prose is fixed in the template and directs contributors to GitHub, which is the only supported contribution channel. It links the repository, the Contributing Guidelines when `CONTRIBUTING.md` exists, and the issue tracker when one exists. There is no welcome paragraph; the section opens directly with the contributions-managed sentence.
+The Contributing prose is fixed in the template: a single sentence that links the Contributing Guidelines when `CONTRIBUTING.md` exists. There is no welcome paragraph and no separate contributions-managed or issue-tracker sentence; those were removed. When `CONTRIBUTING.md` does not exist, the section is omitted entirely together with its heading and directive comment, because the sentence is the section's only content.
 
 Do not add a contribution checklist, a pull-request workflow, or any other guidance to this section; it points readers to the repository rather than duplicating repository policy.
 
@@ -193,19 +193,20 @@ Rules:
 Layout rules:
 
 - A maximum of three badges per line.
+- Distribute the badges as evenly as possible across the fewest lines: the badges occupy `ceil(total / 3)` lines, and any remainder sits on the earlier lines. Three badges therefore fill a single line, while four badges are laid out two per line.
 - Every badge line begins with exactly four leading spaces.
 - Badges on the same line are separated by exactly one space and nothing else.
 - A wrapped badge line keeps the same four leading spaces and the same single space that would have separated it on the previous line, so every line but the last ends with exactly one trailing space.
 - The final badge line may end with at most one trailing space.
 - Never wrap or split a single badge across lines.
 
-Reference layout with three badges on one line:
+Reference layout with three badges, filling one line:
 
 ```
     [url=https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ID]]][img]https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png[/img][/url] [url=https://steamcommunity.com:/linkfilter/?url=https://nexusmods.com/[[NEXUS_MODS_GAME_ID]]/mods/[[NEXUS_MODS_ID]]][img]https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nexus.png[/img][/url] [url=https://steamcommunity.com:/linkfilter/?url=https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases][img]https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/github.png[/img][/url]
 ```
 
-Reference layout with a fourth badge overflowing to a second line: the first line keeps its four-space prefix, its three badges, and its single trailing space, and the second line repeats the four-space prefix for the remaining badge.
+Reference layout with four badges, balanced two per line: the first line keeps its four-space prefix, its two badges, and its single trailing space, and the second line repeats the four-space prefix for the remaining two badges.
 
 ### Content Constraints
 
@@ -224,18 +225,18 @@ Reference layout with a fourth badge overflowing to a second line: the first lin
 - The output file is `description/steam-workshop.bbcode` relative to the repository root.
 - The output commences with the exact header block from `templates/workshop-description.bbcode`, byte-for-byte after placeholder substitution.
 - The output concludes with the exact closing donate banner from the template.
-- The About, Capabilities, Installation, Contributing, Support, Project Engagement, and License sections are present, in that order, with their template headings and prose.
+- The About, Capabilities, Installation, Support, Project Engagement, and License sections are present, in that order, with their template headings and prose.
 - The Installation section carries the badge block and no Manual Installation or Uninstallation sub-section.
 - The Requirements section is present only when more than the base game is required.
 - The Capabilities section carries a non-vacant list of evidenced capabilities.
-- The Compatibility section carries the fixed OS-agnostic and game-version prose, the language list, the incompatible-mod list when known, and the `[h2]Load Order[/h2]` subsection when evidenced, with the game version enclosed in `[b][/b]`.
+- The Compatibility section carries the fixed unified compatibility sentence, the language list, the incompatible-mod list when known, and the `[h2]Load Order[/h2]` subsection when evidenced, with the version embedded without emphasis in the unified sentence.
 - The Compatibility section carries no blanket multi-mod compatibility claim, and no development-platform paragraph.
-- The Contributing section opens with the contributions-managed sentence and carries no welcome paragraph.
-- The Support section carries the issue-tracker and GitHub-primary sentences, the conditional FAQ sentence, the conditional troubleshooting procedures, and the conditional additional-support line.
+- The Contributing section carries only the fixed guidelines sentence and no welcome, contributions-managed, or issue-tracker paragraph.
+- The Support section carries the fixed issue-tracker sentence with its GitHub-primary clause, the conditional FAQ sentence, the conditional troubleshooting-document sentence, and the conditional additional-support line.
 - No standalone Troubleshooting, FAQ, Changelog, or Localisation section exists.
 - Every included conditional block is evidenced, and every excluded block is removed entirely with its directive comment.
 - No template comment or `Repeat` example remains.
-- The Installation section contains at least one badge in the exact store-badge form, with at most three badges per line, a four-space prefix on every badge line, and a single trailing space on every line but the last.
+- The Installation section contains at least one badge in the exact store-badge form, with at most three badges per line distributed as evenly as possible across lines, a four-space prefix on every badge line, and a single trailing space on every line but the last.
 - Every fixed URL, image URL, tag, and blank line from the template is present verbatim.
 - Every `[[PLACEHOLDER]]` is resolved; no placeholder, template comment, or unused example remains.
 - Every outbound link is wrapped in the Steam link filter, except Steam-hosted links.

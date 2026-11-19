@@ -1,6 +1,6 @@
 ---
 name: steam-workshop-page
-description: Use when creating or revising a Steam Workshop page description, or when a mod, UI pack, or other Workshop item page requires its BBCode body generated or refreshed. Holds the canonical BBCode template, its generation rules, the fidelity contract, and the validator; synchronises affected documentation and validates the result.
+description: "Use when creating or revising a Steam Workshop page description, or when a mod, UI pack, or other Workshop item page requires its BBCode body generated or refreshed. Holds the canonical BBCode template, its generation rules, the fidelity contract, and the validator; synchronises affected documentation and validates the result."
 ---
 
 # Steam Workshop Page
@@ -99,19 +99,19 @@ Run the description fidelity validator. ANY failure requires regeneration from S
 | Output path | The description is written to `description/steam-workshop.bbcode` |
 | Header fidelity | The exact initial block is present, in order, byte-for-byte after substitution |
 | Footer fidelity | The exact closing donate banner is the final block |
-| Mandatory sections | About, Capabilities, Installation, Contributing, Support, Project Engagement, and License are present, in order, with their template prose |
+| Mandatory sections | About, Capabilities, Installation, Support, Project Engagement, and License are present, in order, with their template prose |
 | Fixed prose fidelity | Every fixed template line survives verbatim; only placeholders, `Repeat` lines, and conditional blocks change |
 | Conditional blocks | Included only with evidence; otherwise removed entirely with their directive comments |
 | Installation section | Badge block, then the conditional `[h2]Upgrading[/h2]` sub-section; no Manual Installation or Uninstallation sub-section |
 | Requirements section | Present only when more than the base game is required |
 | Capabilities list | Non-vacant `[list]` of at most twelve evidenced capabilities |
-| Compatibility content | Fixed OS-agnostic (`and works on any operating system`) and `Game version: [b][/b]` statements, the language list, the incompatible-mod list when applicable, and the `[h2]Load Order[/h2]` subsection |
-| Support content | Issue-tracker and GitHub-primary sentences, plus the conditional FAQ sentence, troubleshooting procedures, and additional support |
+| Compatibility content | Fixed unified sentence `This mod is compatible with <GAME_NAME> <SUPPORTED_GAME_VERSION> on all operating systems.`, the language list, the incompatible-mod list when applicable, and the `[h2]Load Order[/h2]` subsection |
+| Support content | Fixed issue-tracker sentence, plus the conditional FAQ sentence, troubleshooting-document sentence, and additional support |
 | Merged sections | No standalone Troubleshooting, FAQ, Changelog, or Localisation section exists; Load Order is a Compatibility subsection |
-| Contributing section | Opens with the contributions-managed sentence; no welcome paragraph |
+| Contributing section | Conditional on `CONTRIBUTING.md`; carries only the fixed guidelines sentence |
 | License section | Single fixed sentence whose licence title links to `LICENSE`; no separate licence sentence |
 | Related Mods | Each mod links to its Steam Workshop page, otherwise Nexus Mods, otherwise GitHub |
-| Installation badges | At least one badge in the exact store form; at most three per line; four-space prefix; one trailing space on every line but the last |
+| Installation badges | At least one badge in the exact store form; at most three per line, distributed as evenly as possible across the fewest lines; four-space prefix; one trailing space on every line but the last |
 | Placeholder clearance | Zero `[[...]]` tokens remain |
 | Link filtering | Every non-Steam outbound link is wrapped in the Steam link filter |
 | BBCode only | No Markdown syntax and no literal HTML |
@@ -124,12 +124,12 @@ Run the description fidelity validator. ANY failure requires regeneration from S
 - ❌ Omitting or reordering the mandatory About, Capabilities, Installation, Contributing, Support, Project Engagement, or License section
 - ❌ Emitting a standalone Troubleshooting, FAQ, Changelog, or Localisation section, or a Manual Installation or Uninstallation sub-section
 - ❌ Emitting the Requirements section when only the base game is required
-- ❌ Enclosing a version in `[code][/code]` instead of `[b][/b]`, or linking `Proton` instead of leaving it as plain text
+- ❌ Reinstating the removed game-version line, the removed OS-agnostic paragraph, or inline emphasis inside the unified compatibility sentence
 - ❌ Emitting the removed development-platform paragraph or the removed blanket multi-mod compatibility claim
 - ❌ Emitting `Load Order` as a top-level section, or opening `Contributing` with the removal welcome paragraph
 - ❌ Rewording, reformatting, or relocating any fixed template prose
 - ❌ Leaving a `<!-- ... -->` directive comment or a `Repeat` example in the delivered description
-- ❌ More than three badges on one badge line, or a missing four-space prefix or trailing space
+- ❌ More than three badges on one badge line, an uneven badge distribution across lines, or a missing four-space prefix or trailing space
 - ❌ Changing the store-badge path from `/badges/stores/`
 - ❌ "Fixing" `https://steamcommunity.com:/linkfilter/?url=` into a normal URL
 - ❌ Markdown or HTML syntax in the description body
@@ -219,7 +219,7 @@ When generating a Workshop page description, the agent MUST:
 - [ ] Principal capabilities evidence-collected
 - [ ] FAQ document presence confirmed or denied
 - [ ] Supported languages and translation completeness evidence-collected
-- [ ] Operating systems, supported game version, load order, and known incompatible mods evidence-collected
+- [ ] Game name, supported game version, load order, and known incompatible mods evidence-collected
 - [ ] Related mods identified with their Steam, Nexus, or GitHub pages
 - [ ] Game and supported version identified from the descriptor
 - [ ] Dependencies, load order, and compatibility confirmed from documentation

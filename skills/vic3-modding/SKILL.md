@@ -29,8 +29,9 @@ Source material: the [Victoria 3 Wiki](https://vic3.paradoxwikis.com/Victoria_3_
 Victoria 3/mod/
   my_mod/                          # the mod folder itself (counterpart of game/)
     .metadata/
-      metadata.json                # required by the launcher
-      thumbnail.png                # optional launcher thumbnail
+      metadata.json                # required by the launcher; must declare picture = "thumbnail.png"
+      thumbnail.png                # launcher thumbnail, PNG 600x333
+    thumbnail.png                  # Steam Workshop thumbnail, PNG 512x512 (mod root)
     common/                        # scripted type definitions (largest surface)
     events/                        # event files, subfolders allowed
     common/history/                # starting game state, subfolders allowed

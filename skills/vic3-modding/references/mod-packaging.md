@@ -50,6 +50,7 @@ Located at `<mod>/.metadata/metadata.json`. JSON, and comments in the wiki sampl
 | `id` | Unique, stable identifier; reverse-domain notation recommended (`com.github.mymod`). Must never change: relationships and updates reference it. Do not include a version number |
 | `version` | Mod version; semantic versioning is understood, other schemes are unreliable |
 | `game_id` | Always `"victoria3"` |
+| `picture` | Name of the launcher thumbnail file: `"thumbnail.png"`. Present in the official template; put it after `game_id`, before `supported_game_version` |
 | `supported_game_version` | Target game version; supports `*` and a trailing `+` for "or higher" |
 | `short_description` | Short launcher text |
 | `tags` | Up to 5 local categories; must be re-specified at upload |
@@ -58,7 +59,18 @@ Located at `<mod>/.metadata/metadata.json`. JSON, and comments in the wiki sampl
 
 `rel_type` values: `dependency`, `incompatible_with`, `load_before`, `load_after`. `resource_type` is currently `mod` only; `dlc` is being considered. `version` uses the same globbing as `supported_game_version`; use `"*"` if indifferent.
 
-`thumbnail.png` sits next to `metadata.json` inside `.metadata/`.
+## Thumbnails
+
+Victoria 3 uses **two separate PNG thumbnails**, and the launcher one is declared by the `picture` key.
+
+| Purpose | Path (relative to mod root) | Format | Size |
+|---------|-----------------------------|--------|------|
+| Paradox launcher | `.metadata/thumbnail.png` (next to `metadata.json`) | PNG | 600 x 333 |
+| Steam Workshop | `thumbnail.png` (mod root) | PNG | 512 x 512 |
+
+- The launcher reads only the `.metadata/thumbnail.png` file; the file name must match `picture` in `metadata.json` exactly.
+- The Steam Workshop image is uploaded/set through Steam, not read by the game.
+- Values above are the sizes shipped by the Victoria 3 Modding Co-op template.
 
 ## Folder Structure Rules
 

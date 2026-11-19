@@ -119,11 +119,11 @@ This is the `README.md` template that must be used.
 [![Obtain it from AUR](https://raw.githubusercontent.com/hmlendea/readme-assets/master/install_from_aur.png)](https://aur.archlinux.org/packages/[[AUR_PACKAGE_ID]])
 <!-- Only if this is distributed as a NuGet package. -->
 [![Obtain it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/[[NUGET_PACKAGE_ID]])
-<!-- Only if this is distributed as a Steam Workshop mod. -->
-[![Obtain it from Steam Workshop](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ID]])
 <!-- Only if this is distributed as a Nexus Mods mod. -->
 [![Obtain it from Nexus Mods](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nexus.png)](https://nexusmods.com/[[NEXUS_MODS_GAME_ID]]/mods/[[NEXUS_MODS_ID]])
-<!-- Only if this is distributed as a Paradox Mods mod. -->
+<<!-- Only if this is distributed as a Steam Workshop mod. -->
+[![Obtain it from Steam Workshop](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=[[STEAM_WORKSHOP_ID]])
+!-- Only if this is distributed as a Paradox Mods mod. -->
 [![Obtain it from Paradox Mods](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/paradox-mods.png)](https://mods.paradoxplaza.com/mods/[[PARADOX_MODS_ID]]/Any)
 <!-- Only if this is distributed as a GitHub release. -->
 [![Obtain it from GitHub](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/github.png)](https://github.com/[[GITHUB_REPO_USERNAME]]/[[GITHUB_REPO_NAME]]/releases)

@@ -65,7 +65,7 @@ applyTo: "**/*.{cs}"
 ### Methods
 
 - Mapping exists only as extension methods in dedicated `*MappingExtensions.cs` files under `[xyz].Mapping`; never in implementation classes.
-- Every single-statement method is expression-bodied (`=>`), including return, delegation, throw, and `new()` initialisers; never use a block or temporary local (e.g. `public Foo GetFoo() => foo;`).
+- Every single-statement method is expression-bodied (`=>`), including `void` delegation, return, throw, and `new()` initialisers; never use a block or a temporary local. A single-statement block is only acceptable when its statement is a control-flow construct with no expression form. Example: `private void AddBankChannels(List<FundingChannelSettings> channels) => AddBankChannel(channels, "Salt Bank", "saltbank", SaltBank);`; when the signature plus expression exceeds 96 characters, place `=>` and the expression on the next line, indented 4 spaces.
 
 ### Async
 

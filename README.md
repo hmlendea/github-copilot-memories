@@ -93,18 +93,40 @@ For Codex, start a new session in your project after installation. The global `A
 
 #### GitHub Copilot
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The destination `prompts`, `skills`, `agents`, and `hooks` paths must not exist before creating the links.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The commands link the shared library into the GitHub Copilot home (`~/.copilot`, which holds `skills`, `agents`, and `hooks`) and into the user profile of every installed VS Code flavour (`Code`, `Code - OSS`, and `Code - Insiders`), which holds `prompts` and `agents`.
+
+| Destination | Content | Consumed by |
+|-------------|---------|-------------|
+| `<profile>/prompts` | `prompts` | Instruction and prompt files, selected through `applyTo` and `description` |
+| `<profile>/agents` | `agents` | Custom agents, discovered from `*.agent.md` |
+| `~/.copilot/skills` | `skills` | On-demand skill procedures |
+| `~/.copilot/agents` | `agents` | Custom agent discovery through the GitHub Copilot home |
+| `~/.copilot/hooks` | `hooks` | Instruction-gate script referenced by the LiteLLM agent |
+
+Each command is idempotent: it creates the parent directories first and replaces any existing link at the destination, so the commands can be re-run after moving the clone. A destination that is a regular file or directory rather than a link must be moved or removed manually, because the link commands do not overwrite it. When a destination already holds a link, the commands replace it in place rather than creating a link inside the target, so re-running them never nests `skills/skills`, `agents/agents`, or `hooks/hooks` inside the clone.
+
+Create the links with an absolute, existing source path. A relative or non-existent source such as `$PWD/prompts` evaluated outside the clone root resolves to the wrong location and produces `No such file or directory`.
 
 On Linux:
 
 ```bash
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
-ln -s "$PWD/prompts" "$HOME/.config/Code/User/prompts"
-mkdir -p "$HOME/.copilot"
-ln -s "$PWD/skills" "$HOME/.copilot/skills"
-ln -s "$PWD/agents" "$HOME/.copilot/agents"
-ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
+
+# GitHub Copilot home: skills, custom agents, and hooks
+mkdir -p "${HOME}/.copilot"
+ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
+ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
+ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
+
+# VS Code user profile: instruction files, prompts, and custom agents
+for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
+  VS_CODE_PROFILE="${HOME}/.config/${VS_CODE_FLAVOUR}/User"
+  if [ -d "${VS_CODE_PROFILE}" ]; then
+    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
+    ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
+  fi
+done
 ```
 
 On macOS:
@@ -112,11 +134,21 @@ On macOS:
 ```bash
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
-ln -s "$PWD/prompts" "$HOME/Library/Application Support/Code/User/prompts"
-mkdir -p "$HOME/.copilot"
-ln -s "$PWD/skills" "$HOME/.copilot/skills"
-ln -s "$PWD/agents" "$HOME/.copilot/agents"
-ln -s "$PWD/hooks" "$HOME/.copilot/hooks"
+
+# GitHub Copilot home: skills, custom agents, and hooks
+mkdir -p "${HOME}/.copilot"
+ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
+ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
+ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
+
+# VS Code user profile: instruction files, prompts, and custom agents
+for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
+  VS_CODE_PROFILE="${HOME}/Library/Application Support/${VS_CODE_FLAVOUR}/User"
+  if [ -d "${VS_CODE_PROFILE}" ]; then
+    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
+    ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
+  fi
+done
 ```
 
 On Windows, use an Administrator Command Prompt:
@@ -124,14 +156,45 @@ On Windows, use an Administrator Command Prompt:
 ```batch
 git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
-mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
+
+rem GitHub Copilot home: skills, custom agents, and hooks
 if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
+if exist "%USERPROFILE%\.copilot\skills" rmdir "%USERPROFILE%\.copilot\skills"
+if exist "%USERPROFILE%\.copilot\agents" rmdir "%USERPROFILE%\.copilot\agents"
+if exist "%USERPROFILE%\.copilot\hooks" rmdir "%USERPROFILE%\.copilot\hooks"
 mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
 mklink /D "%USERPROFILE%\.copilot\hooks" "%CD%\hooks"
+
+rem VS Code user profile: instruction files, prompts, and custom agents
+if exist "%APPDATA%\Code\User" (
+  if exist "%APPDATA%\Code\User\prompts" rmdir "%APPDATA%\Code\User\prompts"
+  if exist "%APPDATA%\Code\User\agents" rmdir "%APPDATA%\Code\User\agents"
+  mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code\User\agents" "%CD%\agents"
+)
+if exist "%APPDATA%\Code - OSS\User" (
+  if exist "%APPDATA%\Code - OSS\User\prompts" rmdir "%APPDATA%\Code - OSS\User\prompts"
+  if exist "%APPDATA%\Code - OSS\User\agents" rmdir "%APPDATA%\Code - OSS\User\agents"
+  mklink /D "%APPDATA%\Code - OSS\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code - OSS\User\agents" "%CD%\agents"
+)
+if exist "%APPDATA%\Code - Insiders\User" (
+  if exist "%APPDATA%\Code - Insiders\User\prompts" rmdir "%APPDATA%\Code - Insiders\User\prompts"
+  if exist "%APPDATA%\Code - Insiders\User\agents" rmdir "%APPDATA%\Code - Insiders\User\agents"
+  mklink /D "%APPDATA%\Code - Insiders\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code - Insiders\User\agents" "%CD%\agents"
+)
 ```
 
-The skill links are optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent.
+Custom agents are discovered from the `agents` directory of the VS Code user profile, which is why the profile loop links it alongside `prompts`. The `~/.copilot/agents` link covers agent discovery through the GitHub Copilot home, and the `skills` link is optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent, whose definition invokes `~/.copilot/hooks/litellm-instruction-gate.cjs`. The profile loop links only VS Code flavours whose user profile already exists, so installing a single flavour is sufficient.
+
+After installation, reload the VS Code window and confirm the installation:
+
+- Open the agent picker and locate **Token Saver** and **LiteLLM**.
+- Confirm that `Code/User/agents`, `Code/User/prompts`, `~/.copilot/skills`, `~/.copilot/agents`, and `~/.copilot/hooks` resolve to the clone, for example with `readlink -f "${HOME}/.config/Code/User/agents"`.
+
+If no agent appears, the profile `agents` link is missing or points to a non-existent path; recreate it with the commands above. If a link instead resolves to a nested path such as `skills/skills`, an earlier run created a link inside the target directory, and that stray link must be removed before the correct link is created.
 
 #### OpenAI Codex
 

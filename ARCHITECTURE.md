@@ -10,7 +10,6 @@ This document describes the current architecture of the GitHub Copilot Memories 
 - [Runtime Process](#runtime-process)
 - [Architectural Areas](#architectural-areas)
   - [Instruction Files](#instruction-files)
-  - [Prompt Files](#prompt-files)
   - [Skills](#skills)
   - [Agents](#agents)
   - [Hooks](#hooks)
@@ -23,7 +22,7 @@ This document describes the current architecture of the GitHub Copilot Memories 
 
 ## 🎯 Purpose
 
-The repository provides a curated collection of instruction files, skills, agents, and prompt files that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for GitHub Copilot Chat and OpenAI Codex. The architectural scope covers the repository's content organisation, activation model, and integration boundaries with the host AI assistants. The intended audience is contributors who maintain or extend the instruction library.
+The repository provides a curated collection of instruction files, skills, and agents that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for GitHub Copilot Chat and OpenAI Codex. The architectural scope covers the repository's content organisation, activation model, and integration boundaries with the host AI assistants. The intended audience is contributors who maintain or extend the instruction library.
 
 ## 🌐 System Context
 
@@ -37,7 +36,6 @@ flowchart LR
         C["Agents<br/>agents/"]
         D["Hooks<br/>hooks/"]
         E["Codex AGENTS.md<br/>codex/AGENTS.md"]
-        H["Prompt Files<br/>prompts/"]
     end
     F["GitHub Copilot Chat"]
     G["OpenAI Codex"]
@@ -45,19 +43,18 @@ flowchart LR
     F -->|"discovers and loads"| B
     F -->|"selects from agent picker"| C
     F -->|"executes at session start"| D
-    F -->|"discovers as slash commands"| H
     G -->|"reads via AGENTS.md"| E
     G -->|"discovers and loads"| B
 end
 ```
 
 The principal external boundaries are:
-- **GitHub Copilot Chat:** Consumes instruction files through `applyTo` globs and descriptions, loads prompt files as slash commands, loads skills on demand, selects custom agents from the agent picker, and executes hooks at session start.
+- **GitHub Copilot Chat:** Consumes instruction files through `applyTo` globs and descriptions, loads skills on demand, selects custom agents from the agent picker, and executes hooks at session start.
 - **OpenAI Codex:** Reads the global `AGENTS.md` and user-level skills directory to discover and apply relevant instructions.
 
 ## 🏗️ Architectural Style
 
-The repository follows a content-library architectural style. Instruction files are organised by concern (common, language, framework) and activated through narrowly scoped `applyTo` globs and semantic descriptions. Prompt files provide explicit-request entry points discovered as slash commands. Skills are self-contained procedures discovered by name or description. Agents are opt-in execution modes with restricted or extended tool sets. Hooks enforce pre-execution instruction gating.
+The repository follows a content-library architectural style. Instruction files are organised by concern (common, language, framework) and activated through narrowly scoped `applyTo` globs and semantic descriptions. Skills are self-contained procedures discovered by name or description. Agents are opt-in execution modes with restricted or extended tool sets. Hooks enforce pre-execution instruction gating.
 
 ```mermaid
 flowchart LR
@@ -66,12 +63,10 @@ flowchart LR
     C["Agents<br/>execution modes"]
     D["Hooks<br/>runtime enforcement"]
     E["Codex AGENTS.md<br/>entry point"]
-    H["Prompt Files<br/>explicit requests"]
     A -->|"applyTo globs"| F["Copilot Chat"]
     B -->|"skill discovery"| F
     C -->|"agent picker"| F
     D -->|"session start"| F
-    H -->|"slash commands"| F
     E -->|"global instructions"| G["OpenAI Codex"]
     B -->|"skill discovery"| G
 end
@@ -79,7 +74,6 @@ end
 
 The principal architecture boundaries are:
 - **Instruction Files:** Content-scoped guidance activated by `applyTo` globs; no runtime execution.
-- **Prompt Files:** Explicit-request entry points discovered as slash commands; no automatic application.
 - **Skills:** Self-contained procedures with concise descriptions for discovery; full procedures load on demand.
 - **Agents:** Opt-in execution modes with defined tool restrictions and reporting styles.
 - **Hooks:** Runtime scripts that enforce instruction gating before model invocation.
@@ -140,19 +134,6 @@ Responsibilities:
 Boundary rules:
 - Each instruction file must define a narrow `applyTo` glob and a semantic description; only the language instructions may use a global `applyTo` pattern, because their terminology rules govern text in every file type. Instruction files that govern skill authoring, such as `instructions/common/common.skills.instructions.md`, apply to skill files.
 - Instruction files must not reference external services or expose secrets.
-
-### Prompt Files
-
-Paths:
-- `prompts/`
-
-Responsibilities:
-- Hold the GitHub MD Generator prompt (`prompts/github-md-generator.prompt.md`), an explicit-request entry point that applies the `github-md-template-fidelity` skill in full.
-- Provide a discoverable slash command once the file is linked into the user-profile `prompts` directory.
-
-Boundary rules:
-- Prompt files must delegate template, rules, and validation detail to the corresponding skill rather than duplicating it.
-- Prompt files must not reference external services or expose secrets.
 
 ### Skills
 

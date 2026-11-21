@@ -25,7 +25,7 @@ gh api user --jq .login                           # current git user
 - Owner type `Organization`, owner is a different user, or either value cannot be confirmed → **skip** template fidelity enforcement entirely; treat GitHub markdown generation as optional guidance without enforcement.
 
 The value `Organization` above is the literal GitHub API owner type, not prose.
-- **Explicit request override:** when the user explicitly requests the templates (for example "use the templates", "apply template fidelity", or running the GitHub MD Generator prompt), enforce full fidelity regardless of owner type or ownership. Pass `--force` to the validator, or set `GITHUB_MD_FORCE_FIDELITY=1`.
+- **Explicit request override:** when the user explicitly requests the templates (for example "use the templates", "apply template fidelity", or invoking the `github-md-template-fidelity` skill), enforce full fidelity regardless of owner type or ownership. Pass `--force` to the validator, or set `GITHUB_MD_FORCE_FIDELITY=1`.
 
 ---
 

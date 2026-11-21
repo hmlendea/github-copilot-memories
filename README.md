@@ -93,23 +93,22 @@ For Codex, start a new session in your project after installation. The global `A
 
 #### GitHub Copilot
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The commands link the shared library into the GitHub Copilot home (`~/.copilot`, which holds `skills`, `agents`, and `hooks`) and into the user profile of every installed VS Code flavour (`Code`, `Code - OSS`, and `Code - Insiders`). The user profile holds `prompts` and `agents`, and its `prompts/instructions` path receives the repository `instructions` directory, because VS Code expects instruction files beneath `prompts/instructions`.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The commands link the shared library into the GitHub Copilot home (`~/.copilot`, which holds `skills`, `agents`, and `hooks`) and into the user profile of every installed VS Code flavour (`Code`, `Code - OSS`, and `Code - Insiders`). VS Code reads instruction files from `<profile>/prompts/instructions` and prompt files from `<profile>/prompts`, so the install creates a local `prompts` directory inside the clone, links the repository `instructions` directory into it, and links the whole directory into the profile.
 
 | Destination | Content | Consumed by |
 |-------------|---------|-------------|
-| `<profile>/prompts` | `prompts` | Prompt files, discovered from `*.prompt.md` |
-| `<profile>/prompts/instructions` | `instructions` | Instruction files, selected through `applyTo` and `description` |
-| `<profile>/prompts/github-md-generator.prompt.md` | `prompts/github-md-generator.prompt.md` | The GitHub MD Generator slash command |
+| `<profile>/prompts` | the clone `prompts` directory | Prompt files placed in it, and the `instructions` link |
+| `prompts/instructions` (inside the clone, created by the install) | `instructions` | Instruction files, selected through `applyTo` and `description` |
 | `<profile>/agents` | `agents` | Custom agents, discovered from `*.agent.md` |
 | `~/.copilot/skills` | `skills` | On-demand skill procedures |
 | `~/.copilot/agents` | `agents` | Custom agent discovery through the GitHub Copilot home |
 | `~/.copilot/hooks` | `hooks` | Instruction-gate script referenced by the LiteLLM agent |
 
-The repository keeps the GitHub MD Generator prompt under `prompts/` and the instruction files under `instructions/`. The commands create `<profile>/prompts` as a real directory rather than a link, then link the prompt file and the `instructions` directory into it, so the prompt resolves to `<profile>/prompts/github-md-generator.prompt.md` and the instructions resolve to `<profile>/prompts/instructions`.
+The repository keeps its instruction files at `instructions/`. The install creates a `prompts` directory inside the clone, links `instructions` into it, then links the whole `prompts` directory into the user profile. VS Code therefore finds the instruction files at `<profile>/prompts/instructions`, and any prompt file placed in the clone `prompts` directory is discovered as a slash command. The clone `prompts` directory and its `instructions` link are both git-ignored, so the tracked repository contains only `instructions/`.
 
-Each command is idempotent: it creates the parent directories first and replaces any existing link at the destination, so the commands can be re-run after moving the clone. A destination that is a regular file or directory rather than a link must be moved or removed manually, because the link commands do not overwrite it. When a destination already holds a link, the commands replace it in place rather than creating a link inside the target, so re-running them never nests `skills/skills`, `agents/agents`, or `hooks/hooks` inside the clone.
+Each command is idempotent: it creates the parent directories first and replaces any existing link at the destination, so the commands can be re-run after moving the clone. A destination that is a regular directory rather than a link must be moved or removed manually, because the link commands do not overwrite it; on Linux and macOS the commands move an existing user-profile `prompts` directory to `prompts.backup`, whose prompt files can then be moved into the clone `prompts` directory, and on Windows `rmdir` fails safely on a non-empty real directory. When a destination already holds a link, the commands replace it in place rather than creating a link inside the target, so re-running them never nests `prompts/prompts`, `skills/skills`, `agents/agents`, or `hooks/hooks` inside the clone.
 
-Create the links with an absolute, existing source path. A relative or non-existent source such as `$PWD/instructions` evaluated outside the clone root resolves to the wrong location and produces `No such file or directory`.
+Create the links with an absolute, existing source path, because a relative or non-existent source such as `$PWD/instructions` evaluated outside the clone root resolves to the wrong location and produces `No such file or directory`. The in-clone `prompts` directory and its `instructions` link are created by the installation commands.
 
 On Linux:
 
@@ -123,13 +122,18 @@ ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
 ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
 ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
 
-# VS Code user profile: instruction files, prompt files, and custom agents
+# Local prompts directory, with the instruction files linked into it
+mkdir -p "${PWD}/prompts"
+ln -sfn "${PWD}/instructions" "${PWD}/prompts/instructions"
+
+# VS Code user profile: prompts directory and custom agents
 for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
   VS_CODE_PROFILE="${HOME}/.config/${VS_CODE_FLAVOUR}/User"
   if [ -d "${VS_CODE_PROFILE}" ]; then
-    mkdir -p "${VS_CODE_PROFILE}/prompts"
-    ln -sfn "${PWD}/instructions" "${VS_CODE_PROFILE}/prompts/instructions"
-    ln -sfn "${PWD}/prompts/github-md-generator.prompt.md" "${VS_CODE_PROFILE}/prompts/github-md-generator.prompt.md"
+    if [ -d "${VS_CODE_PROFILE}/prompts" ] && [ ! -L "${VS_CODE_PROFILE}/prompts" ]; then
+      mv "${VS_CODE_PROFILE}/prompts" "${VS_CODE_PROFILE}/prompts.backup"
+    fi
+    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
     ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
   fi
 done
@@ -147,13 +151,18 @@ ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
 ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
 ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
 
-# VS Code user profile: instruction files, prompt files, and custom agents
+# Local prompts directory, with the instruction files linked into it
+mkdir -p "${PWD}/prompts"
+ln -sfn "${PWD}/instructions" "${PWD}/prompts/instructions"
+
+# VS Code user profile: prompts directory and custom agents
 for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
   VS_CODE_PROFILE="${HOME}/Library/Application Support/${VS_CODE_FLAVOUR}/User"
   if [ -d "${VS_CODE_PROFILE}" ]; then
-    mkdir -p "${VS_CODE_PROFILE}/prompts"
-    ln -sfn "${PWD}/instructions" "${VS_CODE_PROFILE}/prompts/instructions"
-    ln -sfn "${PWD}/prompts/github-md-generator.prompt.md" "${VS_CODE_PROFILE}/prompts/github-md-generator.prompt.md"
+    if [ -d "${VS_CODE_PROFILE}/prompts" ] && [ ! -L "${VS_CODE_PROFILE}/prompts" ]; then
+      mv "${VS_CODE_PROFILE}/prompts" "${VS_CODE_PROFILE}/prompts.backup"
+    fi
+    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
     ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
   fi
 done
@@ -174,42 +183,38 @@ mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
 mklink /D "%USERPROFILE%\.copilot\hooks" "%CD%\hooks"
 
-rem VS Code user profile: instruction files, prompt files, and custom agents
+rem Local prompts directory, with the instruction files linked into it
+if not exist "%CD%\prompts" mkdir "%CD%\prompts"
+if exist "%CD%\prompts\instructions" rmdir "%CD%\prompts\instructions"
+mklink /D "%CD%\prompts\instructions" "%CD%\instructions"
+
+rem VS Code user profile: prompts directory and custom agents
 if exist "%APPDATA%\Code\User" (
-  if not exist "%APPDATA%\Code\User\prompts" mkdir "%APPDATA%\Code\User\prompts"
-  if exist "%APPDATA%\Code\User\prompts\instructions" rmdir "%APPDATA%\Code\User\prompts\instructions"
-  if exist "%APPDATA%\Code\User\prompts\github-md-generator.prompt.md" del "%APPDATA%\Code\User\prompts\github-md-generator.prompt.md"
+  if exist "%APPDATA%\Code\User\prompts" rmdir "%APPDATA%\Code\User\prompts"
   if exist "%APPDATA%\Code\User\agents" rmdir "%APPDATA%\Code\User\agents"
-  mklink /D "%APPDATA%\Code\User\prompts\instructions" "%CD%\instructions"
-  mklink "%APPDATA%\Code\User\prompts\github-md-generator.prompt.md" "%CD%\prompts\github-md-generator.prompt.md"
+  mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
   mklink /D "%APPDATA%\Code\User\agents" "%CD%\agents"
 )
 if exist "%APPDATA%\Code - OSS\User" (
-  if not exist "%APPDATA%\Code - OSS\User\prompts" mkdir "%APPDATA%\Code - OSS\User\prompts"
-  if exist "%APPDATA%\Code - OSS\User\prompts\instructions" rmdir "%APPDATA%\Code - OSS\User\prompts\instructions"
-  if exist "%APPDATA%\Code - OSS\User\prompts\github-md-generator.prompt.md" del "%APPDATA%\Code - OSS\User\prompts\github-md-generator.prompt.md"
+  if exist "%APPDATA%\Code - OSS\User\prompts" rmdir "%APPDATA%\Code - OSS\User\prompts"
   if exist "%APPDATA%\Code - OSS\User\agents" rmdir "%APPDATA%\Code - OSS\User\agents"
-  mklink /D "%APPDATA%\Code - OSS\User\prompts\instructions" "%CD%\instructions"
-  mklink "%APPDATA%\Code - OSS\User\prompts\github-md-generator.prompt.md" "%CD%\prompts\github-md-generator.prompt.md"
+  mklink /D "%APPDATA%\Code - OSS\User\prompts" "%CD%\prompts"
   mklink /D "%APPDATA%\Code - OSS\User\agents" "%CD%\agents"
 )
 if exist "%APPDATA%\Code - Insiders\User" (
-  if not exist "%APPDATA%\Code - Insiders\User\prompts" mkdir "%APPDATA%\Code - Insiders\User\prompts"
-  if exist "%APPDATA%\Code - Insiders\User\prompts\instructions" rmdir "%APPDATA%\Code - Insiders\User\prompts\instructions"
-  if exist "%APPDATA%\Code - Insiders\User\prompts\github-md-generator.prompt.md" del "%APPDATA%\Code - Insiders\User\prompts\github-md-generator.prompt.md"
+  if exist "%APPDATA%\Code - Insiders\User\prompts" rmdir "%APPDATA%\Code - Insiders\User\prompts"
   if exist "%APPDATA%\Code - Insiders\User\agents" rmdir "%APPDATA%\Code - Insiders\User\agents"
-  mklink /D "%APPDATA%\Code - Insiders\User\prompts\instructions" "%CD%\instructions"
-  mklink "%APPDATA%\Code - Insiders\User\prompts\github-md-generator.prompt.md" "%CD%\prompts\github-md-generator.prompt.md"
+  mklink /D "%APPDATA%\Code - Insiders\User\prompts" "%CD%\prompts"
   mklink /D "%APPDATA%\Code - Insiders\User\agents" "%CD%\agents"
 )
 ```
 
-The `instructions` link must resolve to `<profile>/prompts/instructions`, which is the location VS Code expects for user-level instruction files, while the repository keeps them at the top level as `instructions`. Custom agents are discovered from the `agents` directory of the VS Code user profile, which is why the profile loop links it alongside `prompts`. The `~/.copilot/agents` link covers agent discovery through the GitHub Copilot home, and the `skills` link is optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent, whose definition invokes `~/.copilot/hooks/litellm-instruction-gate.cjs`. The profile loop links only VS Code flavours whose user profile already exists, so installing a single flavour is sufficient.
+The `prompts` link resolves to the clone `prompts` directory, whose `instructions` link resolves to the repository `instructions/` directory, which is the location VS Code expects for user-level instruction files. Custom agents are discovered from the `agents` directory of the VS Code user profile, which is why the profile loop links it alongside `prompts`. The `~/.copilot/agents` link covers agent discovery through the GitHub Copilot home, and the `skills` link is optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent, whose definition invokes `~/.copilot/hooks/litellm-instruction-gate.cjs`. The profile loop links only VS Code flavours whose user profile already exists, so installing a single flavour is sufficient.
 
 After installation, reload the VS Code window and confirm the installation:
 
-- Open the agent picker and locate **Token Saver** and **LiteLLM**, then confirm that the GitHub MD Generator prompt appears as a slash command.
-- Confirm that `Code/User/agents`, `Code/User/prompts/instructions`, and `Code/User/prompts/github-md-generator.prompt.md` resolve to the clone, for example with `readlink -f "${HOME}/.config/Code/User/prompts/instructions"`.
+- Open the agent picker and locate **Token Saver** and **LiteLLM**.
+- Confirm that `Code/User/agents`, `Code/User/prompts`, and `Code/User/prompts/instructions` resolve to the clone, for example with `readlink -f "${HOME}/.config/Code/User/prompts/instructions"`.
 
 If no agent appears, the profile `agents` link is missing or points to a non-existent path; recreate it with the commands above. If a link instead resolves to a nested path such as `skills/skills`, an earlier run created a link inside the target directory, and that stray link must be removed before the correct link is created.
 
@@ -360,7 +365,6 @@ The tracked project is content-focused. Instruction families are separated by la
 | `instructions/python/` | Python coding and error-handling conventions |
 | `instructions/shell/` | Shell coding, naming, and error-handling conventions |
 | `instructions/typescript/` | TypeScript coding, naming, and style conventions |
-| `prompts/` | The GitHub MD Generator prompt, discovered from the user-profile `prompts` directory once linked |
 | `skills/` | On-demand procedures, templates, validators, and references |
 
 ## 🏗️ Architecture

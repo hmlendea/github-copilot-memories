@@ -8,8 +8,7 @@
 !hooks/
 !instructions/
 !instructions/**
-!prompts/
-!prompts/**
+prompts/
 !README.md
 !skills/
 !skills/**

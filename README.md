@@ -93,86 +93,101 @@ For Codex, start a new session in your project after installation. The global `A
 
 #### GitHub Copilot
 
-Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The commands link the shared library into the GitHub Copilot home (`~/.copilot`, which holds `skills`, `agents`, and `hooks`) and into the user profile of every installed VS Code flavour (`Code`, `Code - OSS`, and `Code - Insiders`). VS Code reads instruction files from `<profile>/prompts/instructions` and prompt files from `<profile>/prompts`, so the install creates a local `prompts` directory inside the clone, links the repository `instructions` directory into it, and links the whole directory into the profile.
+Install [Git](https://git-scm.com/) and [VS Code](https://code.visualstudio.com/) with the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat). The commands link the shared library into the GitHub Copilot home (`~/.copilot`, which holds `skills`, `agents`, and `hooks`) and into the user profile of every installed VS Code flavour (`Code`, `Code - OSS`, and `Code - Insiders`). VS Code reads user-level instruction files from `<profile>/prompts/instructions` and prompt files from `<profile>/prompts`, so the commands link the repository `instructions` directory into that location.
 
 | Destination | Content | Consumed by |
 |-------------|---------|-------------|
-| `<profile>/prompts` | the clone `prompts` directory | Prompt files placed in it, and the `instructions` link |
-| `prompts/instructions` (inside the clone, created by the install) | `instructions` | Instruction files, selected through `applyTo` and `description` |
+| `<profile>/prompts/instructions` | `instructions` | Instruction files, selected through `applyTo` and `description` |
 | `<profile>/agents` | `agents` | Custom agents, discovered from `*.agent.md` |
 | `~/.copilot/skills` | `skills` | On-demand skill procedures |
 | `~/.copilot/agents` | `agents` | Custom agent discovery through the GitHub Copilot home |
 | `~/.copilot/hooks` | `hooks` | Instruction-gate script referenced by the LiteLLM agent |
 
-The repository keeps its instruction files at `instructions/`. The install creates a `prompts` directory inside the clone, links `instructions` into it, then links the whole `prompts` directory into the user profile. VS Code therefore finds the instruction files at `<profile>/prompts/instructions`, and any prompt file placed in the clone `prompts` directory is discovered as a slash command. The clone `prompts` directory and its `instructions` link are both git-ignored, so the tracked repository contains only `instructions/`.
+The repository keeps its instruction files at `instructions/`, and no `prompts` directory is tracked. Where a profile already lacks `<profile>/prompts`, the commands create it, then link `instructions` into it, so VS Code finds the instruction files at `<profile>/prompts/instructions`. Any prompt file subsequently placed in `<profile>/prompts` is discovered as a slash command without further installation steps.
 
-Each command is idempotent: it creates the parent directories first and replaces any existing link at the destination, so the commands can be re-run after moving the clone. A destination that is a regular directory rather than a link must be moved or removed manually, because the link commands do not overwrite it; on Linux and macOS the commands move an existing user-profile `prompts` directory to `prompts.backup`, whose prompt files can then be moved into the clone `prompts` directory, and on Windows `rmdir` fails safely on a non-empty real directory. When a destination already holds a link, the commands replace it in place rather than creating a link inside the target, so re-running them never nests `prompts/prompts`, `skills/skills`, `agents/agents`, or `hooks/hooks` inside the clone.
+Each command is idempotent: it creates the parent directories first and replaces any existing link at the destination, so the commands can be re-run after moving the clone. A destination that is a regular directory rather than a link is moved aside as a `.backup` sibling, because the link commands do not overwrite it. When a destination already holds a link, the commands replace it in place rather than creating a link inside the target, so re-running them never nests `prompts/prompts`, `skills/skills`, `agents/agents`, or `hooks/hooks` inside the clone.
 
-Create the links with an absolute, existing source path, because a relative or non-existent source such as `$PWD/instructions` evaluated outside the clone root resolves to the wrong location and produces `No such file or directory`. The in-clone `prompts` directory and its `instructions` link are created by the installation commands.
+Create the links with an absolute, existing source path, because a relative or non-existent source such as `$PWD/instructions` evaluated outside the clone root resolves to the wrong location and produces `No such file or directory`.
 
 On Linux:
 
 ```bash
-git clone https://github.com/hmlendea/github-copilot-memories.git
+# Clone (skip if the clone already exists), then enter it
+if [ ! -d github-copilot-memories ]; then
+  git clone https://github.com/hmlendea/github-copilot-memories.git
+fi
 cd github-copilot-memories
 
-# GitHub Copilot home: skills, custom agents, and hooks
-mkdir -p "${HOME}/.copilot"
-ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
-ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
-ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
+# Validate the clone root, so links never point at the wrong location
+if [ ! -d "${PWD}/instructions" ] || [ ! -d "${PWD}/skills" ]; then
+  echo "Run these commands from the github-copilot-memories clone." >&2
+else
+  # GitHub Copilot home: skills, custom agents, and hooks
+  mkdir -p "${HOME}/.copilot"
+  ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
+  ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
+  ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
 
-# Local prompts directory, with the instruction files linked into it
-mkdir -p "${PWD}/prompts"
-ln -sfn "${PWD}/instructions" "${PWD}/prompts/instructions"
-
-# VS Code user profile: prompts directory and custom agents
-for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
-  VS_CODE_PROFILE="${HOME}/.config/${VS_CODE_FLAVOUR}/User"
-  if [ -d "${VS_CODE_PROFILE}" ]; then
-    if [ -d "${VS_CODE_PROFILE}/prompts" ] && [ ! -L "${VS_CODE_PROFILE}/prompts" ]; then
-      mv "${VS_CODE_PROFILE}/prompts" "${VS_CODE_PROFILE}/prompts.backup"
+  # VS Code user profile: instruction files and custom agents
+  for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
+    VS_CODE_PROFILE="${HOME}/.config/${VS_CODE_FLAVOUR}/User"
+    if [ -d "${VS_CODE_PROFILE}" ]; then
+      mkdir -p "${VS_CODE_PROFILE}/prompts"
+      if [ -e "${VS_CODE_PROFILE}/prompts/instructions" ] && [ ! -L "${VS_CODE_PROFILE}/prompts/instructions" ]; then
+        mv "${VS_CODE_PROFILE}/prompts/instructions" "${VS_CODE_PROFILE}/prompts/instructions.backup"
+      fi
+      ln -sfn "${PWD}/instructions" "${VS_CODE_PROFILE}/prompts/instructions"
+      ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
     fi
-    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
-    ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
-  fi
-done
+  done
+fi
 ```
 
 On macOS:
 
 ```bash
-git clone https://github.com/hmlendea/github-copilot-memories.git
+# Clone (skip if the clone already exists), then enter it
+if [ ! -d github-copilot-memories ]; then
+  git clone https://github.com/hmlendea/github-copilot-memories.git
+fi
 cd github-copilot-memories
 
-# GitHub Copilot home: skills, custom agents, and hooks
-mkdir -p "${HOME}/.copilot"
-ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
-ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
-ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
+# Validate the clone root, so links never point at the wrong location
+if [ ! -d "${PWD}/instructions" ] || [ ! -d "${PWD}/skills" ]; then
+  echo "Run these commands from the github-copilot-memories clone." >&2
+else
+  # GitHub Copilot home: skills, custom agents, and hooks
+  mkdir -p "${HOME}/.copilot"
+  ln -sfn "${PWD}/skills" "${HOME}/.copilot/skills"
+  ln -sfn "${PWD}/agents" "${HOME}/.copilot/agents"
+  ln -sfn "${PWD}/hooks" "${HOME}/.copilot/hooks"
 
-# Local prompts directory, with the instruction files linked into it
-mkdir -p "${PWD}/prompts"
-ln -sfn "${PWD}/instructions" "${PWD}/prompts/instructions"
-
-# VS Code user profile: prompts directory and custom agents
-for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
-  VS_CODE_PROFILE="${HOME}/Library/Application Support/${VS_CODE_FLAVOUR}/User"
-  if [ -d "${VS_CODE_PROFILE}" ]; then
-    if [ -d "${VS_CODE_PROFILE}/prompts" ] && [ ! -L "${VS_CODE_PROFILE}/prompts" ]; then
-      mv "${VS_CODE_PROFILE}/prompts" "${VS_CODE_PROFILE}/prompts.backup"
+  # VS Code user profile: instruction files and custom agents
+  for VS_CODE_FLAVOUR in 'Code' 'Code - OSS' 'Code - Insiders'; do
+    VS_CODE_PROFILE="${HOME}/Library/Application Support/${VS_CODE_FLAVOUR}/User"
+    if [ -d "${VS_CODE_PROFILE}" ]; then
+      mkdir -p "${VS_CODE_PROFILE}/prompts"
+      if [ -e "${VS_CODE_PROFILE}/prompts/instructions" ] && [ ! -L "${VS_CODE_PROFILE}/prompts/instructions" ]; then
+        mv "${VS_CODE_PROFILE}/prompts/instructions" "${VS_CODE_PROFILE}/prompts/instructions.backup"
+      fi
+      ln -sfn "${PWD}/instructions" "${VS_CODE_PROFILE}/prompts/instructions"
+      ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
     fi
-    ln -sfn "${PWD}/prompts" "${VS_CODE_PROFILE}/prompts"
-    ln -sfn "${PWD}/agents" "${VS_CODE_PROFILE}/agents"
-  fi
-done
+  done
+fi
 ```
 
 On Windows, use an Administrator Command Prompt:
 
 ```batch
-git clone https://github.com/hmlendea/github-copilot-memories.git
+rem Clone (skip if the clone already exists), then enter it
+if not exist github-copilot-memories git clone https://github.com/hmlendea/github-copilot-memories.git
 cd github-copilot-memories
+
+rem Validate the clone root, so links never point at the wrong location
+if not exist "%CD%\instructions" (
+  echo Run these commands from the github-copilot-memories clone.
+) else (
 
 rem GitHub Copilot home: skills, custom agents, and hooks
 if not exist "%USERPROFILE%\.copilot" mkdir "%USERPROFILE%\.copilot"
@@ -183,40 +198,39 @@ mklink /D "%USERPROFILE%\.copilot\skills" "%CD%\skills"
 mklink /D "%USERPROFILE%\.copilot\agents" "%CD%\agents"
 mklink /D "%USERPROFILE%\.copilot\hooks" "%CD%\hooks"
 
-rem Local prompts directory, with the instruction files linked into it
-if not exist "%CD%\prompts" mkdir "%CD%\prompts"
-if exist "%CD%\prompts\instructions" rmdir "%CD%\prompts\instructions"
-mklink /D "%CD%\prompts\instructions" "%CD%\instructions"
-
-rem VS Code user profile: prompts directory and custom agents
+rem VS Code user profile: instruction files and custom agents
 if exist "%APPDATA%\Code\User" (
-  if exist "%APPDATA%\Code\User\prompts" rmdir "%APPDATA%\Code\User\prompts"
+  if not exist "%APPDATA%\Code\User\prompts" mkdir "%APPDATA%\Code\User\prompts"
+  if exist "%APPDATA%\Code\User\prompts\instructions" rmdir "%APPDATA%\Code\User\prompts\instructions"
   if exist "%APPDATA%\Code\User\agents" rmdir "%APPDATA%\Code\User\agents"
-  mklink /D "%APPDATA%\Code\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code\User\prompts\instructions" "%CD%\instructions"
   mklink /D "%APPDATA%\Code\User\agents" "%CD%\agents"
 )
 if exist "%APPDATA%\Code - OSS\User" (
-  if exist "%APPDATA%\Code - OSS\User\prompts" rmdir "%APPDATA%\Code - OSS\User\prompts"
+  if not exist "%APPDATA%\Code - OSS\User\prompts" mkdir "%APPDATA%\Code - OSS\User\prompts"
+  if exist "%APPDATA%\Code - OSS\User\prompts\instructions" rmdir "%APPDATA%\Code - OSS\User\prompts\instructions"
   if exist "%APPDATA%\Code - OSS\User\agents" rmdir "%APPDATA%\Code - OSS\User\agents"
-  mklink /D "%APPDATA%\Code - OSS\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code - OSS\User\prompts\instructions" "%CD%\instructions"
   mklink /D "%APPDATA%\Code - OSS\User\agents" "%CD%\agents"
 )
 if exist "%APPDATA%\Code - Insiders\User" (
-  if exist "%APPDATA%\Code - Insiders\User\prompts" rmdir "%APPDATA%\Code - Insiders\User\prompts"
+  if not exist "%APPDATA%\Code - Insiders\User\prompts" mkdir "%APPDATA%\Code - Insiders\User\prompts"
+  if exist "%APPDATA%\Code - Insiders\User\prompts\instructions" rmdir "%APPDATA%\Code - Insiders\User\prompts\instructions"
   if exist "%APPDATA%\Code - Insiders\User\agents" rmdir "%APPDATA%\Code - Insiders\User\agents"
-  mklink /D "%APPDATA%\Code - Insiders\User\prompts" "%CD%\prompts"
+  mklink /D "%APPDATA%\Code - Insiders\User\prompts\instructions" "%CD%\instructions"
   mklink /D "%APPDATA%\Code - Insiders\User\agents" "%CD%\agents"
+)
 )
 ```
 
-The `prompts` link resolves to the clone `prompts` directory, whose `instructions` link resolves to the repository `instructions/` directory, which is the location VS Code expects for user-level instruction files. Custom agents are discovered from the `agents` directory of the VS Code user profile, which is why the profile loop links it alongside `prompts`. The `~/.copilot/agents` link covers agent discovery through the GitHub Copilot home, and the `skills` link is optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent, whose definition invokes `~/.copilot/hooks/litellm-instruction-gate.cjs`. The profile loop links only VS Code flavours whose user profile already exists, so installing a single flavour is sufficient.
+The `instructions` link resolves to the repository `instructions/` directory at `<profile>/prompts/instructions`, which is the location VS Code expects for user-level instruction files. Custom agents are discovered from the `agents` directory of the VS Code user profile, which is why the profile loop links it alongside `prompts`. The `~/.copilot/agents` link covers agent discovery through the GitHub Copilot home, and the `skills` link is optional when only instruction files and custom agents are required. The [hooks directory](hooks/) link is required by the LiteLLM agent, whose definition invokes `~/.copilot/hooks/litellm-instruction-gate.cjs`. The profile loop links only VS Code flavours whose user profile already exists, so installing a single flavour is sufficient.
 
 After installation, reload the VS Code window and confirm the installation:
 
 - Open the agent picker and locate **Token Saver** and **LiteLLM**.
-- Confirm that `Code/User/agents`, `Code/User/prompts`, and `Code/User/prompts/instructions` resolve to the clone, for example with `readlink -f "${HOME}/.config/Code/User/prompts/instructions"`.
+- Print each resolved destination, which must point inside the clone, for example with `readlink -f "${HOME}/.config/Code - OSS/User/agents"` and `readlink -f "${HOME}/.config/Code - OSS/User/prompts/instructions"`.
 
-If no agent appears, the profile `agents` link is missing or points to a non-existent path; recreate it with the commands above. If a link instead resolves to a nested path such as `skills/skills`, an earlier run created a link inside the target directory, and that stray link must be removed before the correct link is created.
+The links store the directory the commands ran from, so a link that does not resolve inside the clone means the commands ran from the wrong directory. The usual symptom is a destination that resolves into the home directory, such as `agents -> /home/<user>/agents`, which happens when the commands run from `$HOME` or another directory that happens to contain folders named like the clone's. That is why the commands validate the working directory before creating any link, and why a refusal message is preferable to a silently wrong link. To repair the links, run the install commands again from the clone root: each `ln -sfn` replaces the stale link in place, and the guard moves any real `prompts/instructions` directory aside as `instructions.backup` first. If a link instead resolves to a nested path such as `skills/skills`, an earlier run created a link inside the target directory, and that stray link must be removed before the correct link is created.
 
 #### OpenAI Codex
 

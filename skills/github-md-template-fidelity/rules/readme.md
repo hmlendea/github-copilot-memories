@@ -243,7 +243,7 @@ Include each subsection only when its template directive is satisfied:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all README text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `instructions/language/*.instructions.md` for all README text, including spelling, phrasing, and language conventions.
 - Preserve every included template heading and emoji exactly.
 - Generate the Table of Contents only after all conditional and additive content is final.
 - Remove every HTML directive comment, unresolved placeholder, unused example, and empty block from the final output.

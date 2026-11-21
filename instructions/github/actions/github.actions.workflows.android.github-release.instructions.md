@@ -5,7 +5,7 @@ applyTo: ".github/workflows/github-release.yml"
 
 Use the canonical template `skills/github-actions-workflow/templates/github-release-android.yml` for `.github/workflows/github-release.yml`, and its rules `skills/github-actions-workflow/rules/github-release-android.md`.
 
-Use this template only for Android projects that build an APK release artefact through Gradle. For a compilable .NET project that builds release assets, use `prompts/instructions/github/actions/github.actions.workflows.dotnet.github-release.instructions.md` instead. For a repository that hosts a NuGet package, use `prompts/instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` instead.
+Use this template only for Android projects that build an APK release artefact through Gradle. For a compilable .NET project that builds release assets, use `instructions/github/actions/github.actions.workflows.dotnet.github-release.instructions.md` instead. For a repository that hosts a NuGet package, use `instructions/github/actions/github.actions.workflows.nuget.github-release.instructions.md` instead.
 
 The template must remain exactly as written, with only the placeholders replaced:
 

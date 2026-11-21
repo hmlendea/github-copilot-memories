@@ -10,6 +10,7 @@ This document describes the current architecture of the GitHub Copilot Memories 
 - [Runtime Process](#runtime-process)
 - [Architectural Areas](#architectural-areas)
   - [Instruction Files](#instruction-files)
+  - [Prompt Files](#prompt-files)
   - [Skills](#skills)
   - [Agents](#agents)
   - [Hooks](#hooks)
@@ -22,7 +23,7 @@ This document describes the current architecture of the GitHub Copilot Memories 
 
 ## 🎯 Purpose
 
-This repository provides a curated collection of instruction files, skills, and agents that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for GitHub Copilot Chat and OpenAI Codex. The architectural scope covers the repository's content organisation, activation model, and integration boundaries with the host AI assistants. The intended audience is contributors who maintain or extend the instruction library.
+The repository provides a curated collection of instruction files, skills, agents, and prompt files that encode reusable coding standards, documentation templates, language conventions, and domain-specific guidance for GitHub Copilot Chat and OpenAI Codex. The architectural scope covers the repository's content organisation, activation model, and integration boundaries with the host AI assistants. The intended audience is contributors who maintain or extend the instruction library.
 
 ## 🌐 System Context
 
@@ -31,11 +32,12 @@ The repository is a content-only repository. It does not host services, execute 
 ```mermaid
 flowchart LR
     subgraph "GitHub Copilot Memories Repository"
-        A["Instruction Files<br/>prompts/instructions/"]
+        A["Instruction Files<br/>instructions/"]
         B["Skills<br/>skills/"]
         C["Agents<br/>agents/"]
         D["Hooks<br/>hooks/"]
         E["Codex AGENTS.md<br/>codex/AGENTS.md"]
+        H["Prompt Files<br/>prompts/"]
     end
     F["GitHub Copilot Chat"]
     G["OpenAI Codex"]
@@ -43,18 +45,19 @@ flowchart LR
     F -->|"discovers and loads"| B
     F -->|"selects from agent picker"| C
     F -->|"executes at session start"| D
+    F -->|"discovers as slash commands"| H
     G -->|"reads via AGENTS.md"| E
     G -->|"discovers and loads"| B
 end
 ```
 
 The principal external boundaries are:
-- **GitHub Copilot Chat:** Consumes instruction files through `applyTo` globs and descriptions, loads skills on demand, selects custom agents from the agent picker, and executes hooks at session start.
+- **GitHub Copilot Chat:** Consumes instruction files through `applyTo` globs and descriptions, loads prompt files as slash commands, loads skills on demand, selects custom agents from the agent picker, and executes hooks at session start.
 - **OpenAI Codex:** Reads the global `AGENTS.md` and user-level skills directory to discover and apply relevant instructions.
 
 ## 🏗️ Architectural Style
 
-The repository follows a content-library architectural style. Instruction files are organised by concern (common, language, framework) and activated through narrowly scoped `applyTo` globs and semantic descriptions. Skills are self-contained procedures discovered by name or description. Agents are opt-in execution modes with restricted or extended tool sets. Hooks enforce pre-execution instruction gating.
+The repository follows a content-library architectural style. Instruction files are organised by concern (common, language, framework) and activated through narrowly scoped `applyTo` globs and semantic descriptions. Prompt files provide explicit-request entry points discovered as slash commands. Skills are self-contained procedures discovered by name or description. Agents are opt-in execution modes with restricted or extended tool sets. Hooks enforce pre-execution instruction gating.
 
 ```mermaid
 flowchart LR
@@ -63,10 +66,12 @@ flowchart LR
     C["Agents<br/>execution modes"]
     D["Hooks<br/>runtime enforcement"]
     E["Codex AGENTS.md<br/>entry point"]
+    H["Prompt Files<br/>explicit requests"]
     A -->|"applyTo globs"| F["Copilot Chat"]
     B -->|"skill discovery"| F
     C -->|"agent picker"| F
     D -->|"session start"| F
+    H -->|"slash commands"| F
     E -->|"global instructions"| G["OpenAI Codex"]
     B -->|"skill discovery"| G
 end
@@ -74,6 +79,7 @@ end
 
 The principal architecture boundaries are:
 - **Instruction Files:** Content-scoped guidance activated by `applyTo` globs; no runtime execution.
+- **Prompt Files:** Explicit-request entry points discovered as slash commands; no automatic application.
 - **Skills:** Self-contained procedures with concise descriptions for discovery; full procedures load on demand.
 - **Agents:** Opt-in execution modes with defined tool restrictions and reporting styles.
 - **Hooks:** Runtime scripts that enforce instruction gating before model invocation.
@@ -112,27 +118,41 @@ The principal runtime sequence is:
 ### Instruction Files
 
 Paths:
-- `prompts/instructions/common/`
-- `prompts/instructions/csharp/`
-- `prompts/instructions/github/`
-- `prompts/instructions/language/`
-- `prompts/instructions/markdown/`
-- `prompts/instructions/methodscript/`
-- `prompts/instructions/polyglot/`
-- `prompts/instructions/python/`
-- `prompts/instructions/shell/`
-- `prompts/instructions/typescript/`
+- `instructions/common/`
+- `instructions/csharp/`
+- `instructions/git/`
+- `instructions/github/`
+- `instructions/language/`
+- `instructions/markdown/`
+- `instructions/methodscript/`
+- `instructions/polyglot/`
+- `instructions/python/`
+- `instructions/shell/`
+- `instructions/typescript/`
 
 Responsibilities:
 - Encode reusable coding standards, naming conventions, error-handling patterns, and language preferences.
 - Provide language-specific and framework-specific guidance.
 - Define activation contracts through `applyTo` globs and semantic descriptions.
 - Require reading the agent home `Locations.md` registry (`~/.copilot/Locations.md`, `~/.codex/Locations.md`, or the platform equivalent) before resolving any path or address, so a recorded value is preferred over search, probe, or inference.
-- Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `prompts/instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, shared test fixture values live in the `test-values` skill, English and Romanian vocabulary preferences live in the `english-language` and `romanian-language` skills, MethodScript architecture, style rules, built-in function reference, and bindable event reference live in the `methodscript` skill, and Imperator: Rome mod packaging, scripting, setup, localisation, GUI, map, and debugging references live in the `imperator-rome-modding` skill; Stellaris mod packaging, merge semantics, scripting, dynamic scripting, events and on actions, economy and planets, empires and content, localisation, interface, map, defines, and debugging references live in the `stellaris-modding` skill; Crusader Kings II mod packaging, override semantics, scripting, events, on actions and decisions, history and setup, common definitions, localisation, interface, graphics, portraits, coats of arms, map, music, and debugging references live in the `ck2-modding` skill; Crusader Kings III mod packaging, override and load-order semantics, scripting, events and on actions, decisions and interactions, history and characters, common definitions, localisation, interface, graphics, coat of arms, map and terrain, audio, and debugging references live in the `ck3-modding` skill; Civilization IV mod packaging and modular loading, XML table and schema handling, text and art-define conventions, content definitions, Python scripting, interface and font art, WorldBuilder and map scripts, SDK and C++ changes, and debugging references live in the `civ4-modding` skill; Civilization V mod packaging, VFS and action wiring, XML/SQL database updates, content definitions, Lua scripting, UI contexts, art atlases, localisation, and debugging references live in the `civ5-modding` skill; Civilization VI ModBuddy action, criteria, and load-order wiring, SQL and GameData updates, content definitions, modifier and requirement composition, Lua scripting, UI, icon and art handling, localisation, and debugging references live in the `civ6-modding` skill; Civilization: Beyond Earth mod packaging, VFS and action wiring, XML/SQL database updates, sponsor, colonist, cargo, spacecraft, unit, technology, affinity, virtue, quest, artifact, marvel, covert operation, orbital unit, biome, improvement, and resource content definitions, Lua scripting, UI contexts and art, localisation, and debugging references live in the `civbe-modding` skill; Victoria 3 mod packaging, metadata and override semantics, scripting, events and on actions, politics and diplomacy content, buildings, production methods, goods and pops, history and map, localisation, interface, graphics and audio, and debugging references live in the `vic3-modding` skill; Europa Universalis V mod packaging, top-folder and override semantics, scripting, events and on actions, actions and interactions, setup and history, map and terrain, countries and politics, economy and pops, content definitions, interface, localisation and graphics, and debugging references live in the `eu5-modding` skill; Total War: Rome Remastered mod packaging, manifest and override semantics, scripting, units and models, buildings and factions, campaign data and map, interface, audio and localisation, and debugging references live in the `tw-rome-remastered-modding` skill. C# enumeration-class conventions live in the `csharp-enumerations` skill, C# architecture and fitness test conventions live in the `csharp-architecture-testing` skill, and C# NuGet package usage and versioned package-documentation lookup live in the `csharp-nuget-usage` skill.
+- Cover GitHub Actions workflow naming and documentation rules, and Markdown link conventions, under `instructions/github/`; GitHub document templates and rules live in the `github-md-template-fidelity` skill, GitHub Actions workflow templates and rules live in the `github-actions-workflow` skill, shared test fixture values live in the `test-values` skill, English and Romanian vocabulary preferences live in the `english-language` and `romanian-language` skills, MethodScript architecture, style rules, built-in function reference, and bindable event reference live in the `methodscript` skill, and Imperator: Rome mod packaging, scripting, setup, localisation, GUI, map, and debugging references live in the `imperator-rome-modding` skill; Stellaris mod packaging, merge semantics, scripting, dynamic scripting, events and on actions, economy and planets, empires and content, localisation, interface, map, defines, and debugging references live in the `stellaris-modding` skill; Crusader Kings II mod packaging, override semantics, scripting, events, on actions and decisions, history and setup, common definitions, localisation, interface, graphics, portraits, coats of arms, map, music, and debugging references live in the `ck2-modding` skill; Crusader Kings III mod packaging, override and load-order semantics, scripting, events and on actions, decisions and interactions, history and characters, common definitions, localisation, interface, graphics, coat of arms, map and terrain, audio, and debugging references live in the `ck3-modding` skill; Civilization IV mod packaging and modular loading, XML table and schema handling, text and art-define conventions, content definitions, Python scripting, interface and font art, WorldBuilder and map scripts, SDK and C++ changes, and debugging references live in the `civ4-modding` skill; Civilization V mod packaging, VFS and action wiring, XML/SQL database updates, content definitions, Lua scripting, UI contexts, art atlases, localisation, and debugging references live in the `civ5-modding` skill; Civilization VI ModBuddy action, criteria, and load-order wiring, SQL and GameData updates, content definitions, modifier and requirement composition, Lua scripting, UI, icon and art handling, localisation, and debugging references live in the `civ6-modding` skill; Civilization: Beyond Earth mod packaging, VFS and action wiring, XML/SQL database updates, sponsor, colonist, cargo, spacecraft, unit, technology, affinity, virtue, quest, artifact, marvel, covert operation, orbital unit, biome, improvement, and resource content definitions, Lua scripting, UI contexts and art, localisation, and debugging references live in the `civbe-modding` skill; Victoria 3 mod packaging, metadata and override semantics, scripting, events and on actions, politics and diplomacy content, buildings, production methods, goods and pops, history and map, localisation, interface, graphics and audio, and debugging references live in the `vic3-modding` skill; Europa Universalis V mod packaging, top-folder and override semantics, scripting, events and on actions, actions and interactions, setup and history, map and terrain, countries and politics, economy and pops, content definitions, interface, localisation and graphics, and debugging references live in the `eu5-modding` skill; Total War: Rome Remastered mod packaging, manifest and override semantics, scripting, units and models, buildings and factions, campaign data and map, interface, audio and localisation, and debugging references live in the `tw-rome-remastered-modding` skill. C# enumeration-class conventions live in the `csharp-enumerations` skill, C# architecture and fitness test conventions live in the `csharp-architecture-testing` skill, and C# NuGet package usage and versioned package-documentation lookup live in the `csharp-nuget-usage` skill.
 
 Boundary rules:
-- Each instruction file must define a narrow `applyTo` glob and a semantic description; only the language instructions may use a global `applyTo` pattern, because their terminology rules govern text in every file type. Instruction files that govern skill authoring, such as `prompts/instructions/common/common.skills.instructions.md`, apply to skill files.
+- Each instruction file must define a narrow `applyTo` glob and a semantic description; only the language instructions may use a global `applyTo` pattern, because their terminology rules govern text in every file type. Instruction files that govern skill authoring, such as `instructions/common/common.skills.instructions.md`, apply to skill files.
 - Instruction files must not reference external services or expose secrets.
+
+### Prompt Files
+
+Paths:
+- `prompts/`
+
+Responsibilities:
+- Hold the GitHub MD Generator prompt (`prompts/github-md-generator.prompt.md`), an explicit-request entry point that applies the `github-md-template-fidelity` skill in full.
+- Provide a discoverable slash command once the file is linked into the user-profile `prompts` directory.
+
+Boundary rules:
+- Prompt files must delegate template, rules, and validation detail to the corresponding skill rather than duplicating it.
+- Prompt files must not reference external services or expose secrets.
 
 ### Skills
 
@@ -150,11 +170,11 @@ Responsibilities:
 - Bundle the manual QA acceptance criteria and validation plan procedure under `skills/qa-acceptance/` so it loads only for feature-level acceptance, release candidate smoke passes, and incident regression verification work.
 - Bundle the project-local verification skill generator under `skills/create-verification-skill/` so it loads only when a repository lacks a scripted way to drive its application and capture behavioural evidence.
 - Bundle the evidence-backed agent instruction coaching procedure under `skills/agent-instruction-coaching/` so it loads only when a proposal must refine another agent's instructions, skills, or tool descriptions behind a reviewed-diff gate.
-- Bundle the English and Romanian vocabulary preferences under `skills/english-language/` and `skills/romanian-language/` so they load only for language, terminology, and localisation work, while the `prompts/instructions/language/` instruction files require the corresponding skill, apply automatically to every file through a global `applyTo` pattern, mandate complete rather than partial application of the dictionary, and extend it to identifiers, literals, comments, messages, and test data inside code.
-- Bundle the MethodScript architecture and style rules, plus a reference for every built-in function and bindable event, under `skills/methodscript/` so they load only for CommandHelper script work, while the `prompts/instructions/methodscript/` instruction files require the skill.
-- Bundle the C# enumeration-class placement, selection, and canonical template procedure under `skills/csharp-enumerations/` so it loads only for enumeration work, while `prompts/instructions/csharp/csharp.enumerations.instructions.md` requires the skill.
-- Bundle the C# architecture and fitness test procedure, including the ArchUnit.NET dependency rules, the Roslyn source and semantic convention checks, the layer dependency matrix, and the per-instruction enforcement catalogue, under `skills/csharp-architecture-testing/` so it loads only for architecture and fitness test work, while `prompts/instructions/csharp/testing/csharp.testing.architecture.instructions.md` requires the skill.
-- Bundle the `hmlendea` NuGet package versioned documentation lookup procedure, the prohibition on investigating by decompilation, and the `NuciWeb.HTTP` networking requirements under `skills/csharp-nuget-usage/` so it loads only when such a package is used, while `prompts/instructions/csharp/csharp.nuget.usage.instructions.md` requires the skill.
+- Bundle the English and Romanian vocabulary preferences under `skills/english-language/` and `skills/romanian-language/` so they load only for language, terminology, and localisation work, while the `instructions/language/` instruction files require the corresponding skill, apply automatically to every file through a global `applyTo` pattern, mandate complete rather than partial application of the dictionary, and extend it to identifiers, literals, comments, messages, and test data inside code.
+- Bundle the MethodScript architecture and style rules, plus a reference for every built-in function and bindable event, under `skills/methodscript/` so they load only for CommandHelper script work, while the `instructions/methodscript/` instruction files require the skill.
+- Bundle the C# enumeration-class placement, selection, and canonical template procedure under `skills/csharp-enumerations/` so it loads only for enumeration work, while `instructions/csharp/csharp.enumerations.instructions.md` requires the skill.
+- Bundle the C# architecture and fitness test procedure, including the ArchUnit.NET dependency rules, the Roslyn source and semantic convention checks, the layer dependency matrix, and the per-instruction enforcement catalogue, under `skills/csharp-architecture-testing/` so it loads only for architecture and fitness test work, while `instructions/csharp/testing/csharp.testing.architecture.instructions.md` requires the skill.
+- Bundle the `hmlendea` NuGet package versioned documentation lookup procedure, the prohibition on investigating by decompilation, and the `NuciWeb.HTTP` networking requirements under `skills/csharp-nuget-usage/` so it loads only when such a package is used, while `instructions/csharp/csharp.nuget.usage.instructions.md` requires the skill.
 - Bundle the Imperator: Rome mod packaging, scripting, event and decision, setup and entity, localisation, GUI, map and world, and console and debugging procedures under `skills/imperator-rome-modding/` so they load only for Imperator: Rome mod work.
 - Bundle the Stellaris mod packaging, merge and load-order semantics, scripting, dynamic scripting, event and on action, economy and planet, empire and content, localisation, interface, map and defines, and console and debugging procedures under `skills/stellaris-modding/` so they load only for Stellaris mod work.
 - Bundle the Crusader Kings II mod packaging, override and load-order semantics, scripting, event, on action and decision, history and setup, common definition, localisation, interface, graphics, portrait, coat of arms, map, music, and console and debugging procedures under `skills/ck2-modding/` so they load only for Crusader Kings II mod work.
@@ -191,7 +211,7 @@ Responsibilities:
 Boundary rules:
 - Each skill must be self-contained with a clear procedure.
 - Skills must not execute arbitrary code outside the repository context.
-- The `name` in a skill's YAML frontmatter must equal its directory name, and the single-line double-quoted `description` must be at most 1024 characters, which is the host's hard load limit; `prompts/instructions/common/common.skills.instructions.md` holds the contract, the measurement procedure, and the enforcement step in `verification.yml`.
+- The `name` in a skill's YAML frontmatter must equal its directory name, and the single-line double-quoted `description` must be at most 1024 characters, which is the host's hard load limit; `instructions/common/common.skills.instructions.md` holds the contract, the measurement procedure, and the enforcement step in `verification.yml`.
 
 ### Agents
 

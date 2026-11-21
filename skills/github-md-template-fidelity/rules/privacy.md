@@ -81,7 +81,7 @@ Include these sections only when the specified conditions are met:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all PRIVACY text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `instructions/language/*.instructions.md` for all PRIVACY text, including spelling, phrasing, and language conventions.
 - Use clear headings and concise, actionable statements.
 - Remove all HTML comments from the final output.
 - Always fill `[[PLACEHOLDER]]` values with verified project details; omit template comments and example rows.

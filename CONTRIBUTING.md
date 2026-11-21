@@ -65,8 +65,8 @@ cd github-copilot-memories
 ### Code Style
 
 Follow the project's coding standards:
-- Instruction files: follow the conventions in `prompts/instructions/common/common.coding.instructions.md`
-- Skill files: follow the conventions in `skills/*/SKILL.md`; each `SKILL.md` must start with YAML frontmatter whose `name` equals its directory name and whose single-line double-quoted `description` is at most 1024 characters, per `prompts/instructions/common/common.skills.instructions.md`
+- Instruction files: follow the conventions in `instructions/common/common.coding.instructions.md`
+- Skill files: follow the conventions in `skills/*/SKILL.md`; each `SKILL.md` must start with YAML frontmatter whose `name` equals its directory name and whose single-line double-quoted `description` is at most 1024 characters, per `instructions/common/common.skills.instructions.md`
 - Apply British English spelling and the shared English and Romanian vocabulary rules through the `english-language` and `romanian-language` skills, to prose and to all human-readable text in code, including identifiers, string literals, comments, and messages
 - Treat those skills as mandatory for every file type; the language instruction files activate automatically on all paths and require the corresponding skill, applied in full rather than partially, before the edit is finished
 

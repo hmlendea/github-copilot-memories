@@ -65,7 +65,7 @@ Include these sections only when the specified conditions are met:
 
 ## Styling & Format Rules
 
-- Respect the instructions in `prompts/instructions/language/*.instructions.md` for all SECURITY text, including spelling, phrasing, and language conventions.
+- Respect the instructions in `instructions/language/*.instructions.md` for all SECURITY text, including spelling, phrasing, and language conventions.
 - Prefix `##` headings with their emoji as demonstrated in the template (omit only if existing SECURITY.md uses no emojis and repository tone is formal).
 - Remove all HTML comments from final output.
 - Always fill `[[PLACEHOLDER]]` values with real project details; omit template comments and example rows.

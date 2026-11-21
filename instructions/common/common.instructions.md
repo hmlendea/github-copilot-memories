@@ -5,7 +5,7 @@ applyTo: '**'
 
 # Instruction Sources
 
-"The instructions" means profile prompt files: Linux `~/.config/Code/User/prompts/`; macOS `~/Library/Application Support/Code/User/prompts/`; Windows `%APPDATA%\Code\User\prompts\`. Search there before requesting clarification.
+"The instructions" means profile prompt files: Linux `~/.config/Code/User/prompts/instructions/`; macOS `~/Library/Application Support/Code/User/prompts/instructions/`; Windows `%APPDATA%\Code\User\prompts\instructions\`. Search there before requesting clarification.
 
 ## Location Registry
 

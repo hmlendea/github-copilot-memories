@@ -58,7 +58,7 @@ function getStateFilePath(eventData) {
 
 function getInstructionRoot() {
     return process.env.LITELLM_INSTRUCTION_ROOT
-        || pathModule.resolve(__dirname, '..', 'prompts', 'instructions');
+        || pathModule.resolve(__dirname, '..', 'instructions');
 }
 
 function listFiles(directoryPath) {

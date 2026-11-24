@@ -9,6 +9,7 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 1. Use an exact copy of `templates/steam-workshop-release.yml`; preserve the workflow `name`, triggers, job, steps, action versions, indentation, and whitespace layout.
 2. The template must remain exactly as written, with only the placeholders replaced.
 3. The `STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets must be referenced as `${{secrets.STEAM_USERNAME}}`, `${{secrets.STEAM_PASSWORD}}`, and `${{secrets.STEAM_2FA_SEED}}` respectively; their values must never be exposed.
+4. The `icon` input must always be supplied, so that the Workshop item's preview image is set on every upload rather than relying on the action's filename auto-detection.
 
 ### Placeholders
 
@@ -20,6 +21,7 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 | `[[RELEASE_ASSETS_LIST]]` | The game-specific release assets to archive, as a double-quoted, space-separated list of paths in the checked-out tag (for example `"my-mod/" "my-mod.mod"`). |
 | `[[STEAM_APP_ID]]` | The Steam application identifier. |
 | `[[STEAM_WORKSHOP_ITEM_ID]]` | The Steam Workshop item identifier. |
+| `[[STEAM_PREVIEW_IMAGE]]` | The file name of the Workshop preview image, relative to the mod directory inside the release archive (for example `thumbnail.png`). The file must exist in the checked-out tag. |
 
 ### Failure Behaviour
 
@@ -30,7 +32,8 @@ Strict fidelity applies to every `steam-workshop-release.yml` creation or revisi
 - The output file is named `steam-workshop-release.yml`.
 - The workflow `name` is `Steam Workshop` and triggers on a `v*.*.*` tag push and a manual `workflow_dispatch` with a required `tag` input.
 - The `VERSION` environment variable resolves to `${{ inputs.tag || github.ref_name }}`, and the checkout, changenote, and upload steps consume it so that manual runs publish the requested tag.
-- The `release` job builds the release archive from the checked-out tag, extracts it, and uploads it through `hmlendea/steam-workshop-update@v1.0.0`.
+- The `release` job builds the release archive from the checked-out tag, extracts it, and uploads it through `hmlendea/steam-workshop-update@latest`.
+- The upload step supplies `icon` with a path inside the extracted mod folder, so the item's preview image is set on every upload.
 - Every fixed template line is present verbatim; no placeholder or reformatted line remains.
 - No secret value, credential, or personal datum is exposed.
 

@@ -98,4 +98,4 @@ applyTo: "**/*.{cs}"
 - Keep method, constructor, and lambda parameter counts at or below 7; group cohesive inputs into a request or options type when necessary.
 - Prefer `TryGetValue` over `ContainsKey` followed by a dictionary indexer.
 - Match override parameter names and XML `<param>` tags to their declarations, especially for `Equals(object? obj)`.
-- When checking properties on an options object, set `ParamName` to the real method argument and name the invalid property and value in the message; do not identify a property as a nonexistent argument.
+- When checking properties on an options object, do not add an unused parameter solely to supply exception `ParamName`; use a real argument only when it is itself invalid, and identify the invalid option and value in the message.

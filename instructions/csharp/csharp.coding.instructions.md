@@ -71,6 +71,7 @@ applyTo: "**/*.{cs}"
 
 - Prefer synchronous service methods. Do not add `Task<T>` return types or `async/await` unless required.
 - No `CancellationToken` usage unless explicitly needed.
+- Propagate a received `CancellationToken` to each cancellation-aware subsequent call and blocking wait; pass `CancellationToken.None` explicitly only when intentionally not propagating cancellation.
 
 ### Compiler Instructions
 
@@ -95,3 +96,6 @@ applyTo: "**/*.{cs}"
 - Use named constants for repeated protocol literals and fixed values.
 - Ensure custom exception types have the accessibility required by their mappers and consumers.
 - Keep method, constructor, and lambda parameter counts at or below 7; group cohesive inputs into a request or options type when necessary.
+- Prefer `TryGetValue` over `ContainsKey` followed by a dictionary indexer.
+- Match override parameter names and XML `<param>` tags to their declarations, especially for `Equals(object? obj)`.
+- When checking properties on an options object, set `ParamName` to the real method argument and name the invalid property and value in the message; do not identify a property as a nonexistent argument.

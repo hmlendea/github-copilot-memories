@@ -19,7 +19,8 @@ applyTo: "**/*.{cs}"
 - Parameters: no `ref`; avoid `out`; return a dedicated type for multiple values. No tuples.
 - No `#region` or `#endregion`.
 - Exactly one empty line between methods, including after methods ending with `};`.
-- Constants: `static [Type] [Name] =>`; never `const`.
+- Private and internal constants: `const [Type] [Name] = value;`; never a `static` expression-bodied member.
+- Public constants: `public static [Type] [Name] =>`; never `const`, so the value is not baked into external assemblies.
 - Every control-flow body uses braces, including single `continue`, `break`, or `return`; opening brace occupies its own line.
 - Keep `else if` on one line.
 - Derive variant indices via `(int)value`; never store them directly.

@@ -14,6 +14,7 @@ applyTo: "**/*.{cs}"
 - Keep framework callback and test method signatures competible with their frameworks when deciding whether they can be `static`.
 - Put `CancellationToken` last in asynchronous method signatures; place other parameters before it and use named arguments when necessary.
 - Prefer `string.StartsWith(char)` and `string.EndsWith(char)` for single-character checks.
+- Use `StringBuilder` instead of repeated manual string concatenation or other incremental string operations when the operation is iterative or large enough that it provides a meaningful performance advantage; for simple or small one-off compositions, choose the clearer, simpler string operation.
 - Omit assignments that repeat framework or type defaults unless the explicit value documents an intentional contract.
 - No ternary (`condition ? a : b`); use `if`/`else`. `??=` and switch expressions remain permitted.
 - Parameters: no `ref`; avoid `out`; return a dedicated type for multiple values. No tuples.

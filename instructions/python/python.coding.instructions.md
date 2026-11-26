@@ -54,3 +54,7 @@ applyTo: "**/*.py"
 - `if`, `for`, `while`, `continue`, and `break` statements must always be separated from adjacent assignments or other statements by a blank line above and below.
 - `return` statements must always be separated from other lines of code by a blank line above (unless they are the only statement in the function body or the first line after an opening block).
 - Never use two or more consecutive blank lines anywhere.
+
+### Conditional Quality Skill
+
+- Invoke [python-code-quality](../../skills/python-code-quality/SKILL.md) prior to editing or reviewing Python code; load each rule reference listed in its Rule Catalogue whose topic the change touches, and the [security instructions](python.security.instructions.md) for security-relevant changes.

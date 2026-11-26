@@ -1,0 +1,41 @@
+# Java Rules: Tests
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Deactivate tests only with `@Ignore` (JUnit 4) or `@Disabled` (JUnit 5), invariably stating the rationale in the annotation.
+- Never call JUnit assertions within `run()` methods of `Runnable` or `Thread` instances; assertion errors on other threads are not reported to the test runner.
+- Include at least one test in every class whose name corresponds to `.*(Test|Tests|TestCase)`.
+- Call `super.setUp()` and `super.tearDown()` in overrides within JUnit 3 `TestCase` subclasses.
+- Include at least one assertion in every test.
+- Use every JUnit 4 `@Rule` and `@ClassRule` field within the tests, or delete it.
+- Never call `Thread.sleep` in tests; await conditions with synchronisation utilities or polling libraries (for example Awaitility).
+- Complete every assertion: follow each AssertJ, Fest, or Truth `assertThat` with an assertion method, and each Mockito `verify` with the verified method call.
+- Pass assertion arguments in the order the library specifies: the expected value first for JUnit `assertEquals`, the actual value first for TestNG, and the actual value within AssertJ `assertThat`.
+- Name test classes per `^((Test|IT)[a-zA-Z0-9_]+|[A-Z][a-zA-Z0-9_]*(Test|Tests|TestCase|IT|ITCase))$`.
+- Never combine the JUnit 4 `ExpectedException` rule with other assertions in one test; use `assertThrows`.
+- Test exceptions with `assertThrows` or `assertThatThrownBy` instead of `@Test(expected = ...)`, which prevents assertions on the state after the exception.
+- Include exactly one method invocation that can throw within each `assertThrows` lambda testing a runtime exception.
+- Replace `assertTrue` and `assertFalse` applied to comparisons with dedicated assertions (`assertEquals`, `assertNotEquals`, `assertNull`, `assertNotNull`, `assertSame`, `assertNotSame`).
+- Declare JUnit 5 test classes and methods with package-private (default) visibility.
+- Annotate preparation and teardown methods with `@Before` and `@After` (JUnit 4) or `@BeforeEach` and `@AfterEach` (JUnit 5); never rely on the JUnit 3 `setUp()` and `tearDown()` names.
+- Simplify chained AssertJ assertions with dedicated assertions (for example `assertThat(list).hasSize(3)` instead of `assertThat(list.size()).isEqualTo(3)`).
+- Chain consecutive AssertJ `assertThat` statements on one identical value into a single assertion chain.
+- Follow every AssertJ `assertThatThrownBy` with assertions on the thrown exception (for example `isInstanceOf` or `hasMessage`).
+- Limit each test method to at most 25 assertions.
+- Never mock every non-`private` method of a class; test a genuine instance or redesign the dependency.
+- Ensure tests are stable; never tolerate intermittent failures via TestNG `successPercentage` values below 100.
+- Group 3 or more similar tests that differ only in fewer than 4 values into one parameterised test. **Local precedence:** The coding instructions permit parameterisation only for identical behaviour; group only tests that verify identical behaviour.
+- Never wrap every argument of Mockito `verify`, `when`, or `given` calls in `eq()`; pass the values directly.
+- Use `@DirtiesContext` modes correctly: never set `methodMode` at class level or `classMode` at method level.
+- Never place assertion methods within the `try` block of a `try`-`catch` catching `Error` or `AssertionError`; the `catch` swallows assertion failures.
+- Include exactly one method invocation that can throw within each `assertThrows` lambda testing a checked exception.
+- Annotate JUnit 5 inner test classes with `@Nested`.
+- Never declare JUnit 5 test classes or methods `private`, test methods `static`, or test methods other than `@TestFactory` methods with a return value; JUnit 5 silently ignores them.
+- Apply AssertJ `Configuration` instances via `apply()` or `applyAndDisplay()`.
+- Call AssertJ context methods (`as`, `describedAs`, `withFailMessage`, `overridingErrorMessage`, `usingComparator`, `usingElementComparator`, `extracting`, `filteredOn`) prior to the assertion they configure, and invariably follow them with an assertion.
+- Combine AssertJ `allMatch` and `doesNotContain` assertions with `isNotEmpty()` or `isEmpty()`; they pass vacuously on vacant collections.
+- Never assert equality between values of incompatible types.
+- Never assert that an object equals itself.
+- Never use test assertion libraries (JUnit, AssertJ, Hamcrest) in production code.
+- Annotate each test method with at most one of `@Test`, `@RepeatedTest`, `@ParameterizedTest`, `@TestFactory`, and `@TestTemplate`.
+- Include at least one assertion within every `Consumer` passed to AssertJ methods (`allSatisfy`, `anySatisfy`, `hasOnlyOneElementSatisfying`, `isInstanceOfSatisfying`, `noneSatisfy`, `satisfies`, `satisfiesAnyOf`, `zipSatisfy`).

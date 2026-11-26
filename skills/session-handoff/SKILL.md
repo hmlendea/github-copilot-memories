@@ -3,7 +3,7 @@ name: session-handoff
 description: "Use when changing task, topic, model, reasoning effort, agent, or tool set, or when accumulated conversation context is no longer relevant."
 ---
 
-Continue in a fresh session with a compact handoff artefact, normally `HANDOFF.md`, holding:
+Continue in a fresh session with a compact handoff artefact, stored as `.work/progress/<task>.md` according to the `work-directory` skill, holding:
 - objective and acceptance criteria
 - verified decisions and constraints
 - modified files and current state

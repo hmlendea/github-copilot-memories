@@ -1,0 +1,45 @@
+# JavaScript Rules: Strings, Numbers, And Dates
+
+One directive per JavaScript rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never use octal literals (`010`); use decimal or `0o` notation.
+- Never use multi-line string literals with line-continuation backslashes; use template literals or concatenation.
+- Never use vacant character classes (`[]`) in regular expressions.
+- Never compare with `NaN` (`value === NaN`); the comparison is invariably false.
+- Never nest template literals.
+- Never apply repetition quantifiers (`*`, `+`, `{n,}`) to regular expression elements that can match the empty string.
+- Limit the complexity of each regular expression to 20.
+- Group alternatives in regular expressions when using anchors (`^(a|b)$`, not `^a|b$`).
+- Use only syntactically valid regular expressions.
+- Access named capture groups by name, never by index, and never reference undeclared group names.
+- Never place multi-code-point grapheme clusters (combining marks, emoji sequences) within regular expression character classes; use alternation.
+- Never repeat a character within a regular expression character class.
+- Ensure every reluctant quantifier (`*?`, `+?`, `??`) precedes an expression unable to match the empty string.
+- Use character classes (`[abc]`) rather than single-character alternations (`a|b|c`) in regular expressions.
+- Never include vacant alternatives in regular expression alternations (`a||b`, `(a|)`).
+- Never include control characters (`\x00` to `\x1F`) in regular expressions.
+- Use regular expression literals (`/abc/`) rather than the `RegExp` constructor with a static string.
+- Never include multiple consecutive spaces in regular expressions; use a quantifier, for example `/a {3}b/`.
+- Reference only existing capture groups in replacement strings (`$1`, `$<name>`).
+- Never use vacant groups (`()`) in regular expressions.
+- Reset `lastIndex` prior to reusing a regular expression with the global flag on another string, and never construct one within a `while` condition that calls `exec()`.
+- Use concise regular expression syntax: `\d` rather than `[0-9]`, `\w` rather than `[A-Za-z0-9_]`, `+` rather than `{1,}`, `*` rather than `{0,}`, and `?` rather than `{0,1}`.
+- Never use character classes with a single character (`[a]`); use the character directly.
+- Never use number literals that exceed the precision of a double-precision number; use `BigInt` for large integers.
+- Delete unnecessary escape characters in strings, template literals, and regular expressions.
+- Use `startsWith()` and `endsWith()` rather than index, `slice()`, or regular expression checks of string prefixes and suffixes.
+- Use `RegExp.prototype.exec()` rather than `String.prototype.match()` for regular expressions without the global flag.
+- Never use octal escape sequences (`\251`) in string literals; use Unicode or hexadecimal escapes.
+- Use `Number.isNaN()` to test for `NaN`.
+- Clone `Date` objects directly (`new Date(date)`), not via `getTime()`.
+- Never include unnecessary decimal points or trailing zeros in number literals (`1.0`, `1.50`, `1.`).
+- Group the digits of large numeric literals consistently with numeric separators: decimals in threes (`1_234_567`), hexadecimals in twos or fours (`0xFF_EE_DD`), binaries in fours (`0b1010_1111`), and octals in threes or fours.
+- Use code-point string methods (`codePointAt()`, `String.fromCodePoint()`) rather than `charCodeAt()` and `String.fromCharCode()`.
+- Use `Date.now()` rather than `new Date().getTime()` or `+new Date()` for the current timestamp.
+- Use `Math.min()` or `Math.max()` rather than conditional expressions for simple comparisons (`a > b ? b : a`).
+- Never truncate numbers with bitwise operators (`value | 0`, `~~value`); use `Math.trunc()`.
+- Use modern `Math` methods (`Math.log10()`, `Math.log2()`, `Math.hypot()`) rather than legacy expressions (`Math.log(value) * Math.LOG10E`, `Math.sqrt(a * a + b * b)`).
+- Use `Number` static methods and properties (`Number.parseInt()`, `Number.parseFloat()`, `Number.isNaN()`, `Number.isFinite()`, `Number.NaN`, `Number.POSITIVE_INFINITY`) rather than global equivalents.
+- Use `String.raw` template literals rather than escaping backslashes in string literals.
+- Use `replaceAll()` rather than `replace()` with a global regular expression.
+- Use `trimStart()` and `trimEnd()`, never `trimLeft()` or `trimRight()`.

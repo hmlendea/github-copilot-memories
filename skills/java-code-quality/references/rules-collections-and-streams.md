@@ -1,0 +1,44 @@
+# Java Rules: Collections And Streams
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never use the synchronised legacy classes `Vector`, `Hashtable`, `Stack`, or `StringBuffer`; use `ArrayList`, `HashMap`, `Deque`, or `StringBuilder`, or a `java.util.concurrent` type where thread safety is required.
+- Never implement `Enumeration`; implement `Iterator`.
+- Test whether a collection is vacant with `isEmpty()`, not by comparing `size()` with zero.
+- Return zero-length arrays or collections instead of `null`.
+- Declare variables, parameters, and return types with collection interfaces (`List`, `Set`, `Map`, `Deque`), never implementation classes (`ArrayList`, `LinkedList`, `HashMap`).
+- Never use `Collections.EMPTY_LIST`, `EMPTY_MAP`, or `EMPTY_SET`; use the generic `Collections.emptyList()`, `emptyMap()`, and `emptySet()` methods.
+- Use `EnumMap` for maps whose keys are enum constants.
+- Iterate `entrySet()` instead of `keySet()` when both the key and the value are required.
+- Copy arrays and lists with `Arrays.copyOf`, `System.arraycopy`, `addAll`, or a copy constructor, never with loops.
+- Stream primitive arrays with `Arrays.stream` or `IntStream.of`, `LongStream.of`, and `DoubleStream.of`, never via `Arrays.asList(...).stream()`, which boxes the values.
+- Replace `Map.get` followed by a `null` test and `put` with a single `computeIfAbsent` call.
+- Use `Stream.peek()` only for debugging; never rely on it for program logic, considering that the stream implementation may skip it.
+- Read the contents of every collection that is populated, or delete the collection.
+- Simplify `Stream` call chains: use `anyMatch(predicate)` instead of `filter(predicate).findFirst().isPresent()` or `findAny().isPresent()`, `noneMatch` instead of a negated `anyMatch`, and `allMatch` instead of a negated `anyMatch` with a negated predicate.
+- Declare for-each loop variables with the item type of the collection instead of casting each item within the loop.
+- Never pass collection constructor references (for example `ArrayList::new`) where a `java.util.function.Function` is expected; the argument becomes the initial capacity.
+- Never call `List.remove()` within an ascending index-based `for` loop; iterate in reverse, or use `removeIf` or an `Iterator`.
+- Use `Stream.toList()` instead of `collect(Collectors.toUnmodifiableList())`, or instead of `collect(Collectors.toList())` whose result is never modified.
+- Create hash-based collections of a predetermined size via `HashMap.newHashMap(count)`, `HashSet.newHashSet(count)`, or `LinkedHashMap.newLinkedHashMap(count)`, never via the capacity constructor.
+- Iterate sequenced collections in reverse via `reversed()` (Java 21), never via explicit descending index loops or manual reversal.
+- Use the `reversed()` view instead of a reversed copy (a copied list passed to `Collections.reverse`) when the result is only read.
+- Construct sequential gatherers with `Gatherer.ofSequential()` instead of `Gatherer.of()` with a combiner that throws.
+- Omit the initialiser of stateless stream gatherers.
+- Use the `Gatherer.of` or `Gatherer.ofSequential` overload without a finisher instead of passing `Gatherer.defaultFinisher()`.
+- Never call `Iterator.next()` within `Iterator.hasNext()`.
+- Never pass a collection as an argument to its own methods (for example `list.addAll(list)` or `list.containsAll(list)`).
+- Never call `hashCode()` or `toString()` on arrays; use `Arrays.hashCode` and `Arrays.toString`.
+- Pass arguments of a compatible type to collection methods (for example `contains`, `remove`, and `indexOf`, and `get` and `containsKey` on maps).
+- Throw `NoSuchElementException` from `Iterator.next()` when no items remain.
+- Pass a typed array to `Collection.toArray` (for example `list.toArray(new String[0])` or `list.toArray(String[]::new)`) instead of casting an `Object[]` result.
+- Never use double brace initialisation; use `List.of`, `Map.of`, or explicit `add` calls.
+- Pass the result of every intermediate `Stream` operation to a terminal operation; never ignore it.
+- Never reuse a `Stream` after a terminal operation consumes it.
+- Never compare collection sizes or array lengths with `>= 0` or `< 0`; the results are invariant.
+- Never overwrite a map value or collection item unconditionally prior to reading it (for example consecutive `put` calls with the identical key).
+- Never return `this` from `Iterable.iterator()`; return a separate iterator instance.
+- Never return `null` from the function passed to `Map.computeIfAbsent()` or `Map.computeIfPresent()` with the intention of storing `null`; the map stores no value, and `computeIfPresent` deletes the existing mapping.
+- Never call optional methods on collection implementations that do not support them (for example `add` or `remove` on `List.of`, `Arrays.asList`, or `Collections.unmodifiableList` results).
+- Never modify the size of a collection during iteration, except via the `remove` method of its iterator.
+- Access array elements only within the array's bounds; never trigger `ArrayIndexOutOfBoundsException`.

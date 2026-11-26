@@ -1,0 +1,56 @@
+# Python Rules: Data Science And Machine Learning
+
+One directive per Python rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Provide a seed to random generators so results depending on random number generation are reproducible.
+- Use a `numpy.random.Generator` (`numpy.random.default_rng(seed)`) instead of `numpy.random.RandomState` or `numpy.random.seed`.
+- Pass a list, not a generator, to `np.array`, unless `dtype=object`.
+- Never compare with `numpy.nan` using equality; use `numpy.isnan`.
+- Use `np.nonzero` instead of `np.where` with only the condition argument.
+- Never use deprecated NumPy aliases of builtin types (`np.int`, `np.bool`, or `np.float`); use the builtins.
+- Pass a valid weekmask to NumPy business-day functions (for example `'1111100'` or `'Mon Tue Wed Thu Fri'`).
+- Never use `inplace=True` when modifying a pandas DataFrame; reassign the result or chain.
+- Provide `how`, `on` (or `left_on` and `right_on`), and `validate` to `pandas.merge` and `DataFrame.join`.
+- Use `DataFrame.to_numpy()` instead of `DataFrame.values`.
+- Use `DataFrame.pipe` instead of chains of 7 or more pandas operations.
+- Format date strings consistently with `dayfirst` or `yearfirst` when passing them to `pandas.to_datetime`.
+- Specify `memory` for scikit-learn `Pipeline`.
+- Never access pipeline transformers directly when a scikit-learn `Pipeline` uses caching (`memory`); access them via `named_steps`.
+- Refer to valid nested parameters (`step__param`) when modifying estimator parameters via `set_params` in a `Pipeline`.
+- Specify important hyperparameters for machine learning estimators and optimisers (for example `n_neighbors` or `learning_rate`).
+- Never set attributes with a trailing `_` in `__init__` of scikit-learn `BaseEstimator` subclasses; set them in `fit`.
+- Never define recursive `tf.function` functions.
+- Never depend on Python globals or free variables within a `tf.function`; pass them as arguments. `tf.Variable` objects are exempt.
+- Create `tf.Variable` objects within a `tf.function` only once (singletons), guarded by an `is None` test.
+- Never specify `input_shape` for `tf.keras.Model` subclasses.
+- Never set `validate_indices` on `tf.gather`.
+- Never use Python side effects (for example `print`) within a `tf.function`; use `tf.print`.
+- Specify the reduction axis (`axis`) for reduction operations (for example `tf.math.reduce_sum`).
+- Call `super().__init__()` in the initialiser of `torch.nn.Module` subclasses.
+- Use `torch.tensor` instead of `torch.autograd.Variable`.
+- Call `model.eval()` or `model.train()` after `load_state_dict`.
+- Specify `num_workers` for `torch.utils.data.DataLoader`.
+- Use valid einops patterns.
+- Use `torch.log1p(values)` and `torch.expm1(values)` instead of `torch.log(1 + values)` and `torch.exp(values) - 1`.
+- Copy tensors with `tensor.clone().detach()` or `tensor.detach().clone()`, never `torch.tensor(existing)` or `tensor.new_tensor(existing)`.
+- Specify `start_dim` for `torch.flatten` to preserve the batch dimension.
+- Call `state_dict()` with parentheses when saving PyTorch model state (`torch.save(model.state_dict(), file_path)`).
+- Never instantiate `nn.Module` classes within `forward`; create them in `__init__` or use the functional `torch.nn.functional` API.
+- Use PyTorch Lightning's integrated checkpointing instead of manual `torch.save` checkpoints.
+- Never concatenate tensors incrementally in loops; collect them in a list and call `torch.cat` once.
+- Use `torch.empty()` instead of list comprehensions to allocate uninitialised tensors.
+- Rely on automatic broadcasting instead of manual `expand()` in tensor operations.
+- Never call `super()` in TorchScript methods (`@torch.jit.script_method`).
+- Specify a frame (`rowsBetween` or `rangeBetween`) for PySpark Window functions.
+- Provide `subset` to PySpark `dropDuplicates`; to deduplicate on every column, use `distinct()` or pass `subset=None` explicitly.
+- Never pass `[]` as the PySpark `dropDuplicates` subset.
+- Never name PySpark pandas DataFrame columns with leading and trailing double underscores (`__name__`), which are reserved.
+- Cache (`cache()`) or persist (`persist()`) PySpark DataFrames used multiple times.
+- Use `withColumns` instead of several `withColumn` calls, unless a column depends on one created earlier.
+- Specify `how` in PySpark DataFrame `join` calls.
+- Refrain from `toPandas()` on PySpark DataFrames; visualisation with matplotlib or seaborn is exempt.
+- Use `lit(None)`, not `lit('')`, to populate null columns in PySpark DataFrames.
+- Retain at most 5 nested calls and 5 comparisons in logic passed to PySpark `withColumn`, `filter`, and `when`; extract additional logic into separate expressions.
+- Use unique PySpark DataFrame column names, including case-insensitively.
+- Use `RDD.reduceByKey` instead of `groupByKey` followed by `mapValues` with a commutative and associative operation.
+- Set `master` and `appName` when constructing PySpark `SparkContext` and `SparkSession` objects; AWS Glue jobs are exempt.

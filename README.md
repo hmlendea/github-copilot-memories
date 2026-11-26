@@ -38,9 +38,10 @@ A curated collection of instruction files and skills that encode reusable coding
 ## ✨ Capabilities
 
 - Applies shared coding, naming, error-handling, security, and documentation principles across supported file types.
-- Provides specialised guidance for C#, Python, TypeScript, shell scripts, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
+- Provides specialised guidance for C#, HTML, Java, JavaScript, Kotlin, Python, TypeScript, shell scripts, XML, MethodScript, PolyGlot dictionaries, Markdown, MonoGame, and NuciXNA.
 - Generates evidence-based README, architecture, roadmap, privacy, security, and GitHub Actions documents from strict templates.
 - Assesses secrets handling, credential exposure, rotation, and vault integration against OWASP and NIST guidance.
+- Prevents secrets, credentials, personal data, system-specific details, and private agent configuration details from leaking into tracked files, commits, publications, or third-party requests through an always-on security instruction and the mandatory `leak-prevention` scan.
 - Reviews code, pull requests, and diffs against OWASP ASVS 4.0.3 and the CWE Top 25 (2024), reporting severity-rated findings and remediation.
 - Reviews REST, GraphQL, gRPC, and hybrid APIs against the OWASP API Security Top 10:2023, with C# and .NET guidance.
 - Assesses prompt injection risk in LLM-integrated applications against OWASP LLM01:2025 and MITRE ATLAS AML.T0051.
@@ -51,8 +52,9 @@ A curated collection of instruction files and skills that encode reusable coding
 - Observes a pull request to merge readiness through the `pr-babysit` skill, verifying each finding before correction.
 - Verifies a release after publication or deployment through the `release-verification` skill, per surface and with explicit coverage gaps.
 - Verifies its own content in continuous integration by executing the instruction-gate hook tests, validating every governed GitHub document against its template, and parsing every workflow file.
-- Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file, except for the language instructions, which deliberately apply to every file.
+- Uses narrowly scoped `applyTo` globs and semantic descriptions so Copilot receives relevant guidance for each file, except for the always-on safeguards and the language instructions, which deliberately apply to every file.
 - Resolves paths and addresses from the agent home `Locations.md` registry before searching or inferring them.
+- Shares progress, decisions, context, data, and utilities across sessions through a Git-excluded local work directory that no tracked artefact mentions, governed by the `work-directory` skill.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides the opt-in **Token Saver** (restricted tools, terse reporting) and **LiteLLM** (pre-execution instruction gating, semantic audits) agents.
 - Provides game-modding conventions for MethodScript, Imperator: Rome, Stellaris, Crusader Kings II and III, Civilization IV, V, VI, and Beyond Earth, Victoria 3, Europa Universalis V, and Total War: Rome Remastered.
@@ -271,15 +273,37 @@ Start a new Codex session and ask it to summarise its active instructions and lo
 
 Instruction files reside under `instructions/`. Each file starts with YAML frontmatter in which `description` identifies the relevant context and `applyTo`, when present, limits automatic application to matching paths.
 
-The always-on common instructions direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` for Codex) before resolving any path or address.
+The always-on common instructions direct each agent to read the `Locations.md` registry in its own home directory (`~/.copilot/Locations.md` for GitHub Copilot, `~/.codex/Locations.md` for Codex) before resolving any path or address, and to insert every item into an alphabetically ordered list, enumeration, or table at its alphabetical position.
+
+The always-on [work directory instructions](instructions/common/common.work-directory.instructions.md) require the [work-directory](skills/work-directory/SKILL.md) skill. At task start the agent consults the repository's `.work/` directory when present; it stores temporary data, utilities, and reusable progress, decisions, context, and data there; it excludes the directory from Git through `.git/info/exclude`; and it never mentions the directory in any tracked file, commit, or publication, presenting information from it as standalone fact or attributing it to its original source.
 
 The language instruction files activate for every file and require the `english-language` and `romanian-language` skills, whose compact dictionaries must be applied in full.
+
+The [security instructions](instructions/common/common.security.instructions.md) activate for every file. They forbid secrets, personal data, system-specific details, and agent configuration details (names, paths, or invocations of skills, instructions, prompts, agents, or memories that the repository does not track) in any tracked or trackable file unless Git ignores it, and require the [leak-prevention](skills/leak-prevention/SKILL.md) scan before a file-changing task finishes and before any commit or publication.
 
 Every skill file resides under `skills/<name>/SKILL.md` and begins with YAML frontmatter whose `name` equals the directory name and whose single-line double-quoted `description` is at most 1024 characters, the host's hard load limit.
 
 Custom agents reside under [agents/](agents/). Token Saver and LiteLLM are opt-in and do not pin a model; select the desired model and reasoning effort prior to starting a session.
 
 Skills reside under `skills/`. Their concise descriptions support task-based discovery; complete procedures load on demand. Each skill is self-contained: it holds its procedure, and where relevant its templates, rules, fidelity contract, validators, and references.
+
+The [C# coding instructions](instructions/csharp/csharp.coding.instructions.md) retain universal conventions and explicitly require [csharp-code-quality](skills/csharp-code-quality/SKILL.md) for relevant API and analyser concerns, even without diagnostics. The instruction file supplies a direct-read alternative when skill invocation is unavailable; required contracts and stable compiler support take precedence over style preferences. The skill's rule catalogue contains one directive per C# rule in topic references, with security rules in the [C# security instructions](instructions/csharp/csharp.security.instructions.md).
+
+The [java-code-quality](skills/java-code-quality/SKILL.md) skill applies to relevant Java API and analyser concerns, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per Java rule in topic references, with security rules in the [Java security instructions](instructions/java/java.security.instructions.md), which apply to every Java source file.
+
+The [javascript-code-quality](skills/javascript-code-quality/SKILL.md) skill applies to relevant JavaScript API and analyser concerns, including promises, DOM and Node.js APIs, React and JSX, and accessibility, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per JavaScript rule in topic references, with security rules in the [JavaScript security instructions](instructions/javascript/javascript.security.instructions.md), which apply to every JavaScript source file.
+
+The [kotlin-code-quality](skills/kotlin-code-quality/SKILL.md) skill applies to relevant Kotlin API and analyser concerns, including coroutines and Gradle Kotlin DSL build scripts, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per Kotlin rule in topic references, with security rules in the [Kotlin security instructions](instructions/kotlin/kotlin.security.instructions.md), which apply to every Kotlin source and script file.
+
+The [Python coding instructions](instructions/python/python.coding.instructions.md) require [python-code-quality](skills/python-code-quality/SKILL.md) for Python edits and reviews, including async code, Django, AWS Lambda, and data science and machine learning libraries, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per Python rule in topic references, with security rules in the [Python security instructions](instructions/python/python.security.instructions.md), which apply to every Python source file.
+
+The [gh-actions-code-quality](skills/gh-actions-code-quality/SKILL.md) skill applies to relevant GitHub Actions workflow and analyser concerns, even without diagnostics; explicit local instructions, the canonical workflow templates, and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per GitHub Actions rule in topic references, with security rules in the [GitHub Actions security instructions](instructions/gh-actions/gh-actions.security.instructions.md), which apply to every workflow and action metadata file.
+
+The [Shell coding instructions](instructions/shell/shell.coding.instructions.md) require [shell-code-quality](skills/shell-code-quality/SKILL.md) for shell script edits and reviews, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per Shell rule in topic references, with security rules in the [Shell security instructions](instructions/shell/shell.security.instructions.md), which apply to every shell script.
+
+The [xml-code-quality](skills/xml-code-quality/SKILL.md) skill applies to relevant XML document and configuration concerns, including Maven, Spring, Hibernate, Android, and web application descriptors, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per XML rule in topic references, with security rules in the [XML security instructions](instructions/xml/xml.security.instructions.md), which apply to every XML file.
+
+The [html-code-quality](skills/html-code-quality/SKILL.md) skill applies to relevant HTML page and template concerns, including accessibility, ARIA roles and properties, keyboard focus, and obsolete markup, even without diagnostics; explicit local instructions and required contracts take precedence over its directives. The skill's rule catalogue contains one directive per HTML rule in topic references, with security rules in the [HTML security instructions](instructions/html/html.security.instructions.md), which apply to every HTML file.
 
 For example:
 
@@ -368,17 +392,23 @@ The tracked project is content-focused. Instruction families are separated by la
 | `codex/` | Global Codex instructions that select relevant files from the shared library |
 | [agents/](agents/) | Opt-in custom agents for restricted-tool execution and semantic instruction-compliance audits |
 | [hooks/](hooks/) | Runtime instruction-read enforcement used by the LiteLLM agent |
-| `instructions/common/` | Shared coding, naming, error-handling, test-design, documentation, and skill-frontmatter principles |
+| `instructions/common/` | Shared coding, naming, error-handling, security and privacy, test-design, documentation, and skill-frontmatter principles |
 | `instructions/csharp/` | C# language, project, testing, mapping, logging, MonoGame, and NuciXNA guidance |
+| `instructions/gh-actions/` | GitHub Actions security guidance and security rules; the remaining GitHub Actions rules reside in the `gh-actions-code-quality` skill |
 | `instructions/git/` | Git safety rules that prevent autonomous state changes and destructive operations |
 | `instructions/github/` | GitHub Actions workflow naming and documentation rules |
+| `instructions/html/` | HTML security guidance and security rules; the remaining HTML rules reside in the `html-code-quality` skill |
+| `instructions/java/` | Java security guidance and security rules; the remaining Java rules reside in the `java-code-quality` skill |
+| `instructions/javascript/` | JavaScript security guidance and security rules; the remaining JavaScript rules reside in the `javascript-code-quality` skill |
+| `instructions/kotlin/` | Kotlin security guidance and security rules; the remaining Kotlin rules reside in the `kotlin-code-quality` skill |
 | `instructions/language/` | British English and Romanian terminology preferences for every file type |
 | `instructions/markdown/` | Markdown structure and formatting conventions |
 | `instructions/methodscript/` | MethodScript coding and style conventions; require the `methodscript` skill |
 | `instructions/polyglot/` | PolyGlot dictionary conventions |
-| `instructions/python/` | Python coding and error-handling conventions |
-| `instructions/shell/` | Shell coding, naming, and error-handling conventions |
+| `instructions/python/` | Python coding, error-handling, and security conventions and security rules; the remaining Python rules reside in the `python-code-quality` skill |
+| `instructions/shell/` | Shell coding, naming, error-handling, and security conventions and security rules; the remaining Shell rules reside in the `shell-code-quality` skill |
 | `instructions/typescript/` | TypeScript coding, naming, and style conventions |
+| `instructions/xml/` | XML security guidance and security rules; the remaining XML rules reside in the `xml-code-quality` skill |
 | `skills/` | On-demand procedures, templates, validators, and references |
 
 ## 🏗️ Architecture

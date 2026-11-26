@@ -1,103 +1,137 @@
 ---
-description: "Use for C# edits. Covers style, types, members, construction, methods, properties, async, and compiler rules."
+description: "Use for C# edits. Defines coding invariants, contract exceptions, and mandatory csharp-code-quality skill activation."
 applyTo: "**/*.{cs}"
 ---
-## C#
+# C# Coding
 
-### Code Style
+## Applicability And Precedence
 
-- Prefer `+= 1` and `-= 1` over explicit self-assignments such as `a = a + 1` and `a = a - 1`.
-- Types: explicit; never `var`.
-- Conditional default: initialise first; one `if` overrides it, without fallback-only `else`.
-- Comparisons: prefer static `Equals(a, b)` or `string.Equals(a, b)` over `==` and instance `.Equals()`. Guard any nullable instance call.
-- No instance state access: mark method `static`.
-- Keep framework callback and test method signatures competible with their frameworks when deciding whether they can be `static`.
-- Put `CancellationToken` last in asynchronous method signatures; place other parameters before it and use named arguments when necessary.
-- Prefer `string.StartsWith(char)` and `string.EndsWith(char)` for single-character checks.
-- Use `StringBuilder` instead of repeated manual string concatenation or other incremental string operations when the operation is iterative or large enough that it provides a meaningful performance advantage; for simple or small one-off compositions, choose the clearer, simpler string operation.
-- Omit assignments that repeat framework or type defaults unless the explicit value documents an intentional contract.
-- No ternary (`condition ? a : b`); use `if`/`else`. `??=` and switch expressions remain permitted.
-- Parameters: no `ref`; avoid `out`; return a dedicated type for multiple values. No tuples.
-- No `#region` or `#endregion`.
-- Exactly one empty line between methods, including after methods ending with `};`.
-- Private and internal constants: `const [Type] [Name] = value;`; never a `static` expression-bodied member.
-- Public constants: `public static [Type] [Name] =>`; never `const`, so the value is not baked into external assemblies.
-- Every control-flow body uses braces, including single `continue`, `break`, or `return`; opening brace occupies its own line.
-- Keep `else if` on one line.
-- Derive variant indices via `(int)value`; never store them directly.
-- No optional/default parameters; use overloads.
-- Interface and implementation parameter names must match exactly (e.g. `accountId`, not `id`).
-- Group overloads together, ordered from fewest/simplest to most parameters/complexity.
-- No blank line immediately before `}`, `]`, or `)`.
-- Always place a blank line above AND below a block control flow statement (`if`, `for`, `foreach`, `while`, `do`, `switch`, `continue`, `break`) when it is adjacent to non-blank, non-control-flow statements in the same block. Always place a blank line above only for `return` and `throw` statements when preceded by one or more non-blank, non-control-flow statements. Do not add the blank line when the statement is the very first statement in the block, or when the adjacent line is itself an opening brace or another control flow statement.
+- Apply to handwritten C#; do not edit generated code. Preserve public contracts, runtime semantics, disposal, and required interface, override, callback, and test signatures.
+- Use only released syntax supported by the configured compiler, language version, and .NET targets; never introduce preview syntax or change project versions merely to satisfy style. If prescribed syntax is unsupported, use a compatible form and report the exception.
+- Specific rules take precedence over general preferences: null patterns over equality calls; collection contracts over concrete-type preferences; required instance signatures over `static`. Report unresolved conflicts; do not silently select a policy.
 
-### File Structure
+## Conditional Quality Skill
 
-- No top-level/free-floating code. Every file, including `Program.cs`, requires explicit namespace and type blocks; `Program` uses `static void Main`.
-- One type per identically named file; extract additional types immediately.
+Invoke [csharp-code-quality](../../skills/csharp-code-quality/SKILL.md) prior to editing or reviewing strings, JSON options, regexes, reusable arrays, dictionary lookups, URI composition, enum values, controller binding, parsing, exceptions, or option validation; also invoke it for C# analyser-rule remediation. Apply every relevant section, even without an analyser warning. Load each rule reference listed in its Rule Catalogue whose topic the change touches, and the [security instructions](csharp.security.instructions.md) for security-relevant changes. If skill invocation is unavailable, read the linked file directly; if inaccessible, report the blocker rather than omitting its rules.
 
-### Type Declarations
+## Expressions And Parameters
 
-- No `partial` classes except framework contracts, source-generator requirements such as `GeneratedRegex`, or explicit user requests.
-- Non-static classes with public methods implement a colocated equivalent interface (e.g. `AccountService`/`IAccountService`), except domain models and data/entities. Interface mirrors public contract.
-- Classes are `sealed` unless designed for inheritance. Domain models, data/entities, and configuration classes: `public sealed class`.
-- Domain/data objects with meaningful equality implement `IEquatable<T>`, `Equals(object)`, and consistent `GetHashCode()`.
+- Explicit types; never `var`. Prefer `+= 1` / `-= 1` over `a = a + 1` / `a = a - 1`.
+- Conditional default: initialise first, then one overriding `if`, without a fallback-only `else`. Do not evaluate a default eagerly if that changes side effects, exceptions, or cost.
+- Prefer static `Equals(a, b)` / `string.Equals(a, b)` over `==` or instance `.Equals()` only with equivalent semantics. Guard nullable instance calls; retain required operator, reference, and floating-point semantics.
+- No ternary `condition ? a : b`; use `if`/`else`. `??=` and switch expressions are permitted; `??` and nested conditional expressions are not.
+- Prefer early guard clauses for independent preconditions. Keep compound conditions readable; extract a cohesive named predicate or split independent validation into sequential guards when a long boolean chain obscures intent. Preserve short-circuit order and side effects.
+- In loops, use `continue` guard clauses for per-item exclusions instead of nesting the remaining body in an `if`. Hoist loop-invariant checks only when semantics are unchanged. A `foreach` followed by an `if` is not inherently inefficient; do not replace it with LINQ or materialise a collection solely to remove the conditional.
+- No tuples; use a dedicated result type. Do not declare `ref` parameters; prefer returns over `out`. Required external signatures and calls, including `TryParse` / `TryGetValue`, are exceptions.
+- No optional/default parameters in authored APIs; use adjacent overloads, ordered from fewest/simplest to most parameters/complexity. Preserve required external signatures.
+- Interface, implementation, and override parameter names agree exactly; XML `<param>` tags use those names.
+- Derive numeric enum variant indices via `(int)value`; do not maintain parallel stored indices.
+- Methods, constructors, and lambdas: at most 7 parameters; group cohesive inputs into a request/options type. Preserve required external signatures.
 
-### Member Organisation
+## Layout
 
-- Every field, property, event, constructor, and method explicitly declares valid accessibility, including `private`; omission is a defect.
-- Kind order: fields -> properties -> events -> constructors/destructors -> methods.
-- Field order: static readonly -> static mutable -> instance readonly -> instance mutable; within each: `public` -> `protected` -> `private`.
-- Other member groups: `public` -> `protected` -> `private`.
-- Every public NuGet class/member, including enum members, requires preserved and current XML documentation (`/// <summary>...</summary>`).
-- Never remove a public NuGet member unless explicitly requested; external clients may use it.
+- No `#region` / `#endregion`. Control-flow bodies require braces on separate lines, including bodies containing only `continue`, `break`, or `return`; retain `else if` on one line.
+- Exactly one blank line between methods, including after `};`; none immediately preceding `}`, `]`, or `)`.
+- Separate block control-flow statements (`if`, `for`, `foreach`, `while`, `do`, `switch`, `try`, `using` blocks) and `continue` / `break` from adjacent non-control-flow statements in their block by one blank line above and below. Non-control-flow statements include local declarations, assignments, and calls; a declaration whose variable the control-flow statement consumes is not exempt. For `return` / `throw`, separate only above. No padding at block boundaries (directly after `{` or directly before `}`) or between adjacent control-flow statements; never separate an `else`, `else if`, `catch`, or `finally` from its preceding clause.
+- Use the co-activated [indentation rules](csharp.indentation.instructions.md) for the 72/96-character thresholds and expression-body layout.
+- XML documentation attributes use no spaces around `=`: `/// <param name="clientInfo">`, `/// <exception cref="ArgumentOutOfRangeException">`, never `name = "clientInfo"` or `cref = "..."`.
 
-### Constructors & Object Creation
+Control-flow spacing:
+```csharp
+private static bool IsValidUtf8(byte[] body)
+{
+    ReadOnlySpan<byte> remaining = body;
 
-- Services, controllers, and startup classes use C# 12 primary constructors; use parameters directly, without fields.
-- Models/entities use target-typed `new()` initialisers: `Account account = new() { Id = x, ... };`.
-- When declaration already states the type, use `new(...)`, never `new Type(...)` (e.g. `Colour colour = new(1, 2, 3);`).
+    while (!remaining.IsEmpty)
+    {
+        OperationStatus status = Rune.DecodeFromUtf8(remaining, out _, out int bytesConsumed);
 
-### Properties
+        if (status != OperationStatus.Done)
+        {
+            return false;
+        }
 
-- Use auto-properties `{ get; set; }` for all models, entities, requests, responses, and settings.
-- Use expression-bodied (`=>`) for derived/computed read-only properties.
-- No `init`-only properties.
+        remaining = remaining[bytesConsumed..];
+    }
 
-### Methods
+    return true;
+}
+```
 
-- Mapping exists only as extension methods in dedicated `*MappingExtensions.cs` files under `[xyz].Mapping`; never in implementation classes.
-- Every single-statement method is expression-bodied (`=>`), including `void` delegation, return, throw, and `new()` initialisers; never use a block or a temporary local. A single-statement block is only acceptable when its statement is a control-flow construct with no expression form. Example: `private void AddBankChannels(List<FundingChannelSettings> channels) => AddBankChannel(channels, "Salt Bank", "saltbank", SaltBank);`; when the signature plus expression exceeds 96 characters, place `=>` and the expression on the next line, indented 4 spaces.
+## Files, Types And Members
 
-### Async
+- Explicit namespace and type blocks, including `Program.cs`; no top-level code. Default entry point: `static void Main`; use `int`, `Task`, or `Task<int>` when exit codes or asynchronous execution require it.
+- One type per identically named file; extract additional types. No `partial` classes except required host contracts, source generators (for example `GeneratedRegex`), or explicit user requests.
+- Every non-static class with public instance methods implements a colocated equivalent interface, except domain models and data/entities. Mirror its public instance contract; controllers and test fixtures are not implicitly exempt.
+- Classes are `sealed` unless designed for inheritance. Domain models, data/entities, and configuration classes: `public sealed class` unless inheritance is required.
+- Domain/data types with significant equality implement `IEquatable<T>`, override `Equals(object)`, and supply consistent `GetHashCode()`.
+- Declare accessibility explicitly wherever legal for fields, properties, events, constructors, and methods, including `private`. Do not invent modifiers for static constructors, destructors, or explicit interface implementations.
+- Member order: fields -> properties -> events -> constructors/destructors -> methods.
+- Field order: constants -> static readonly -> static mutable -> instance readonly -> instance mutable.
+- Within each field subgroup and other member group: `public` -> `protected internal` -> `protected` -> `internal` -> `private protected` -> `private`. Preserve overload adjacency.
+- Private/internal constants use `const Type Name = value;`; public constant values use `public static Type Name => value;`, never `public const`, to prevent client-side inlining. Use named constants for repeated protocol literals and fixed values.
+- Preserve and refresh XML summaries for every public NuGet class/member, including enum members. Never eliminate a public NuGet member without an explicit request.
+- Prefer concrete types for implementation details; retain mandatory class interfaces, collection contracts, and genuine substitution boundaries.
 
-- Prefer synchronous service methods. Do not add `Task<T>` return types or `async/await` unless required.
-- No `CancellationToken` usage unless explicitly needed.
-- Propagate a received `CancellationToken` to each cancellation-aware subsequent call and blocking wait; pass `CancellationToken.None` explicitly only when intentionally not propagating cancellation.
+## Construction, Properties And Methods
 
-### Compiler Instructions
+- Services, controllers, and startup classes: C# 12 primary constructors; use parameters directly, without redundant fields, subject to the compatibility rule.
+- Models/entities: target-typed object initialisers, for example `Account account = new() { Id = identifier };`. When the declaration supplies the type, use `new(...)`, not `new Type(...)`; supported collection expressions take precedence.
+- Omit assignments repeating type/host defaults or field initialisers overwritten by every constructor prior to use; preserve intentional contract/default-state initialisers.
+- Stored model/entity/request/response/settings properties use `{ get; set; }`; computed read-only properties use `=>`. No `init` accessors.
+- Methods without instance state are `static`, unless required instance contracts apply.
+- Mapping methods exist only as extensions in dedicated `*MappingExtensions.cs` files under `[xyz].Mapping`, never implementation classes.
+- A body expressible as one equivalent expression uses `=>`, including void delegation, return, throw, and `new()` initialisers; no temporary-return local. Retain blocks for control-flow constructs, required local declarations, and disposal/exception scopes without an equivalent expression form, and predicates exceeding the boolean-expression limits below.
+- Cognitive Complexity: at most 15. Extract cohesive named helpers without changing semantics or public contracts.
+- Boolean expressions read as plain sentences:
+  - At most 3 clauses, joined by one operator kind; never mix `&&` and `||` in one expression, even with parentheses.
+  - Each clause is a comparison, a `bool` name, or a single call. A lambda inside a condition holds one clause; otherwise extract a predicate method and pass it as a method group.
+  - Extract each further or mixed group into a named `bool` local (`is…`, `has…`, `are…`, `can…`) or a named predicate method stating the intent.
+  - Prefer positive forms: `All(IsPermitted)`, never `!Any(x => !IsPermitted(x))`; never negate a call whose lambda contains a negation.
+  - Evaluate a repeated subexpression (for example `context.EnumerateObject()`) once into a local.
+  - Check `null` and structural guards separately from policy checks.
+  - These limits take precedence over the expression-body preference: a predicate exceeding them uses a block body with named locals.
 
-- Never use `#nullable enable` in any class. All code must be written as if nullable reference types are enabled, without using the compiler directive.
-- Never use preview language features. Only use stable, fully released features supported by the project's .NET version.
+Readable conditions:
+```csharp
+private static void ValidateClientInfo(ClientInfo? clientInfo, int maximumFieldLength)
+{
+    bool isApplicationValid = clientInfo is not null &&
+        !string.IsNullOrWhiteSpace(clientInfo.Application) &&
+        IsFieldPermitted(clientInfo.Application, maximumFieldLength);
+    bool isVersionValid = clientInfo?.ApplicationVersion is null ||
+        IsFieldPermitted(clientInfo.ApplicationVersion, maximumFieldLength);
 
-### Sonar Findings Prevention
+    if (!isApplicationValid || !isVersionValid)
+    {
+        throw new InvalidOperationException("The handshake parameters violate the admission policy.");
+    }
+}
 
-- Keep Cognitive Complexity at or below 15. Split complex methods into cohesive, named helpers without changing behaviour or public contracts.
-- Do not nest conditional expressions. Use a named helper or explicit control flow when selecting among multiple outcomes.
-- Do not leave empty `catch` blocks. Convert expected parse failures into an explicit safe result or a sanitised exception.
-- Reuse `JsonSerializerOptions` instances when repeatedly serialising with the same configuration; do not instantiate options for each operation.
-- Reuse `JsonSerializerOptions` in tests as well; initialise one `static readonly` instance per configuration instead of constructing it for each test execution.
-- Use `GeneratedRegex` for constant patterns in partial types. For other repeated patterns, retain and reuse a `Regex` instance.
-- Store repeatedly passed, non-mutated arrays in `static readonly` fields rather than recreating array arguments.
-- Do not embed URI path separators at call sites. Use URI APIs or a named URI-specific separator; do not substitute the platform file-system separator.
-- Keep enum numeric values unique unless an alias is required to preserve a persisted or serialised contract. For an intentional alias, add a narrowly scoped `CA1069` supression with its compatibility rationale and tests that pin the numeric contract.
-- Resolve actionable `TODO` comments before closing the change. Track unresolved external decisions outside source comments rather than presenting them as completed work.
-- Prefer a concrete type when the implementation is already concrete and no substitution is needed; keep interfaces at actual abstraction boundaries.
-- Bind ASP.NET controller inputs with explicit binding attributes instead of reading values directly from `Request` or `HttpContext.Request`.
-- Omit redundant field initialisers when every constructor assigns the field before use; preserve initialisers that express a required default state.
-- Use named constants for repeated protocol literals and fixed values.
-- Ensure custom exception types have the accessibility required by their mappers and consumers.
-- Keep method, constructor, and lambda parameter counts at or below 7; group cohesive inputs into a request or options type when necessary.
-- Prefer `TryGetValue` over `ContainsKey` followed by a dictionary indexer.
-- Match override parameter names and XML `<param>` tags to their declarations, especially for `Equals(object? obj)`.
-- When checking properties on an options object, do not add an unused parameter solely to supply exception `ParamName`; use a real argument only when it is itself invalid, and identify the invalid option and value in the message.
+private static bool IsFieldPermitted(string value, int maximumLength)
+    => value.Length <= maximumLength && !SensitiveDataPolicy.ContainsSensitiveData(value);
+```
+
+Never:
+```csharp
+if (clientInfo is null ||
+    string.IsNullOrWhiteSpace(clientInfo.Application) ||
+    clientInfo.Application.Length > maximumFieldLength ||
+    clientInfo.ApplicationVersion is not null &&
+        clientInfo.ApplicationVersion.Length > maximumFieldLength ||
+    SensitiveDataPolicy.ContainsSensitiveData(clientInfo.Application))
+```
+
+Single-expression void delegation retains `=>`, with the expression on the next line when the combined length exceeds 96 characters:
+```csharp
+private void ConfigureBankChannels(IEnumerable<FundingChannelSettings> channels)
+    => ConfigureBankChannel(channels, "Salt Bank", "saltbank", SaltBank);
+```
+
+## Async And Completion
+
+- Prefer synchronous service methods when no asynchronous operation/contract is required; do not introduce unnecessary `Task<T>` or `async`/`await`, or block existing asynchronous APIs to satisfy this preference.
+- Use `CancellationToken` only when required. Place it last in authored asynchronous signatures; use named arguments as necessary. Preserve required external signatures.
+- Propagate received tokens to every cancellation-aware subsequent call and blocking wait; use explicit `CancellationToken.None` only for intentional non-propagation.
+- Treat reference types as nullable-aware without `#nullable enable` directives.
+- Resolve actionable `TODO` comments in the changed area; record unresolved external decisions outside source comments and report them as incomplete.

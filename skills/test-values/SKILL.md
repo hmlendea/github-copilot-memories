@@ -5,6 +5,8 @@ description: "Use whenever writing or revising tests or test data, in any langua
 
 Prefer these values for tests and test data whenever suitable; invent alternatives only when necessary.
 
+Never use real personal data, real credentials, or the details of the user, their employer, or their machine as test values. When inventing a value, choose one that cannot reach a real person or system: the reserved domains `example.com`, `example.org`, and `example.net` (RFC 2606), the documentation IP ranges `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24` (RFC 5737) and `2001:db8::/32` (RFC 3849), and fictional names or organisations.
+
 ### Usernames
 - `Angetenar`
 - `DummyUser`
@@ -55,6 +57,7 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `Bobert`
 
 ### Personal Names: Male / First / French
+- `François`
 - `Solaire`
 
 ### Personal Names: Male / First / Greek
@@ -254,22 +257,20 @@ Prefer these values for tests and test data whenever suitable; invent alternativ
 - `nucilandia.md`
 
 ## E-mails
-- `elodia@yahoo.ro`
+- `elodia@example.com`
 - `ilarion.pintilie@nucilandia.ro`
-- `solaire@astora.com`
-- `test@email.com`
-- `vasile.ciupitu@gmail.com`
+- `solaire@example.org`
+- `test@example.com`
+- `vasile.ciupitu@example.net`
 
 ### Company Names
 - `Aperture Laboratories`
 - `Black Mesa`
-- `Endava`
 - `Îmhe Incorporated`
 - `Nucilandian Softworks`
 - `NuciSoft`
 - `Pinched Games`
 - `Valve`
-- `WorldPay`
 - `Zamolxis Entertainment`
 
 ### Dates

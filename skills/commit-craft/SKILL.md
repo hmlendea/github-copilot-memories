@@ -13,11 +13,15 @@ Compose reviewable commits from a mixed working tree. Staging, committing, pushi
 
 ## Staged-Secret Gate
 
-Scan the added lines of what is staged, prior to composing the message, for:
+Scan the added lines of what is staged, prior to composing the message, using the `leak-prevention` skill, for:
 - provider-shaped tokens and credential prefixes;
 - high-entropy values assigned to secret, key, token, or password names;
 - sensitive paths (environment files, key material, state files, credential stores);
+- personal data and system-specific details (home or profile paths, usernames, hostnames, private addresses, git identity, internal names);
+- agent configuration details (names, paths, or invocations of skills, instructions, prompts, agents, or memories that the repository does not track);
 - conflict markers.
+
+Apply the same check to the commit message, branch name, and any pull request text.
 
 Present findings redacted. Waive a false positive only through a recorded path or fingerprint with a rationale. A blocked gate is a stoppage: extract the value and load it at execution time, and never bypass the gate. A published secret is rotated first, since deleting it in a later commit leaves it in the history.
 

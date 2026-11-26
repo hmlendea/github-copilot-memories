@@ -1,0 +1,59 @@
+# JavaScript Rules: Control Structures
+
+One directive per JavaScript rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never leave nested blocks vacant; include a statement or an explanatory comment. Exempt: blocks containing a comment, and `catch` blocks.
+- Conclude each non-vacant `switch` case with `break`, `return`, `throw`, or `continue`, or mark an intended fall-through with a comment.
+- Never use the comma operator. Exempt: `for` initialisation and increment clauses, and sequences enclosed in parentheses.
+- Use relational operators (`<`, `<=`, `>`, `>=`), never equality operators, in `for` loop termination conditions.
+- Ensure every non-vacant statement alters control flow or produces a side effect; delete statements without effect.
+- Never use labelled statements.
+- Never assign within sub-expressions; perform each assignment as a separate statement.
+- Never compare with boolean literals (`=== true`, `== false`); use the expression or its negation directly.
+- Return a boolean expression directly rather than wrapping it in an `if`/`else` that returns `true` and `false`.
+- Never use standalone nested code blocks; extract them into functions. Exempt: blocks declaring `let`, `const`, `class`, or (in strict mode) functions.
+- Never place labels other than `case` and `default` within a `switch` statement.
+- Use a `while` loop rather than a `for` loop with neither an initialisation nor an increment clause.
+- Use `if` rather than `switch` for fewer than 3 `case` clauses.
+- Never use `with` statements.
+- Label only `while`, `do`, `for`, and `switch` statements.
+- Limit `switch` statements to 30 `case` clauses.
+- Never use bitwise operators (`&`, `|`) in boolean contexts; use logical operators (`&&`, `||`).
+- Never assign a variable to itself.
+- Refactor loops with at most one iteration into `if` statements.
+- Eliminate unreachable code after `return`, `throw`, `break`, and `continue`.
+- Never use identical expressions on both sides of a binary operator.
+- Delete assignments whose value is never read.
+- Never repeat a condition within an `if`/`else if` chain or within the cases of a `switch` statement.
+- Never implement two branches of a conditional structure identically; merge their conditions.
+- Never invert boolean checks (`!(a === b)`); use the opposite operator (`a !== b`).
+- Modify the loop counter in the increment clause of a `for` loop, never unrelated variables.
+- Never apply a postfix increment or decrement whose effect is overwritten or never read (`i = i++`, `return i++`).
+- Ensure every loop can terminate; never create infinite loops without a reachable exit.
+- Move a `for` loop's counter in the direction of its termination condition.
+- Never assign a loop counter within the loop body.
+- Never use a `var` variable beyond the block that declares it; declare it with `let` or `const` in the enclosing scope.
+- Never use gratuitous boolean expressions whose value is invariably true or false at that point.
+- Never use the non-existent operators `=+`, `=-`, and `=!`; use `+=`, `-=`, and `!=`, or insert a space (`= +x`).
+- Never nest conditional (ternary) operators; use `if`/`else` statements.
+- Never use strict equality operators (`===`, `!==`) with operands of dissimilar types; the result is invariably constant.
+- Never reassign `const` variables.
+- Never use comma or logical OR (`||`) operators in `case` expressions; list each value as a separate `case`.
+- Delete redundant jump statements (`return;`, `continue;`) at the conclusion of a function or loop body.
+- Never use the `void` operator. Exempt: `void 0`, immediately invoked function expressions, and promises.
+- Limit the Cognitive Complexity of each function to 15.
+- Never use vacant destructuring patterns (`const {} = object`, `const [] = array`).
+- Parenthesise the operand when negating `in` and `instanceof` (`!(key in object)`, `!(value instanceof Type)`).
+- Never implement every branch of a conditional structure identically.
+- Delete redundant assignments that assign a variable its current value.
+- Place the `default` clause last in a `switch` statement.
+- Delete redundant boolean casts (`!!value`, `Boolean(value)`) in boolean contexts.
+- Never invoke or dereference an optional chain whose `undefined` result throws (`(object?.method)()`); provide a fallback with `??` or `||`.
+- Use optional chaining (`a?.b`) rather than chained `&&` checks (`a && a.b`).
+- Never use binary expressions whose result is constant: comparisons that are invariably true or false, logical expressions whose right operand is invariably or never evaluated, and comparisons with object literals or `new` expressions.
+- Never use a conditional expression where a simpler alternative suffices (`a ? a : b` as `a || b`, `a ? true : false` as `!!a`).
+- Never initialise variables to `undefined` explicitly.
+- Never place an `if` statement as the sole statement of an `else` block; use `else if`.
+- Never declare `let`, `const`, `class`, or `function` directly within `case` or `default` clauses; enclose the clause body in braces.
+- Never negate the condition of an `if` with an `else` clause or of a conditional expression; invert the condition and swap the branches.
+- Never negate the left operand of an equality check (`!a === b`); use `a !== b`.

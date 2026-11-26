@@ -1,0 +1,55 @@
+# C# Rules: Members And Parameters
+
+One directive per C# rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Declare at most 7 parameters per method, constructor, delegate, or local function; group cohesive inputs into a parameter object.
+- Use parameter names identical to the base declaration, interface member, or other partial declaration.
+- Never change default parameter values in overrides or interface implementations; defaults bind to the static type at the call site.
+- Never declare `public` fields; use properties. Exempt: `const` and `readonly` fields, and fields of `[StructLayout]` or `[Serializable]` types (except `[NonSerialized]` fields).
+- Never name a local variable identically to a field or property of the containing type.
+- Delete unused private types, methods, properties, fields, and constructors.
+- Delete unused parameters of private methods and constructors. Exempt: the extension `this` parameter, attributed methods, methods without statements or only throwing `NotImplementedException`, `Main`, `virtual`/`override` methods, and interface implementations.
+- Delete overrides that only call the identical base member with identical arguments.
+- Ensure every method body contains statements, throws `NotSupportedException`, or contains a comment explaining why it is intentionally vacant.
+- Convert a private field into a local variable when every method using it assigns it prior to reading it.
+- Never ignore the value returned by a method that only computes a result (for example `string` methods, LINQ operators, immutable collection operations); use the value or delete the call.
+- Never expose non-constant `static` fields publicly; declare them `readonly` or `const`, or encapsulate them behind a property.
+- Pass arguments in the declared parameter order when argument names correspond to parameter names; use named arguments when reordering is intentional.
+- Never declare field-like events `virtual`; declare explicit `add` and `remove` accessors when derived types require overriding.
+- Use auto-implemented properties instead of trivial properties with a backing field and no logic.
+- Declare methods and properties that access no instance data `static`, unless an interface, override, or other required instance contract applies.
+- Never declare multidimensional (`T[,]`) or jagged (`T[][]`) array parameters on publicly exposed methods; use a collection or dedicated type.
+- Never declare write-only properties; declare a getter or use a method.
+- Never expose `public static` fields of mutable types (arrays, `List<T>`, `Dictionary<TKey, TValue>`), even `readonly`; expose immutable or read-only collections.
+- Never assign `static` fields from instance members.
+- Mark fields assigned only in their declaration or a constructor `readonly`.
+- Never assign `static` fields in instance constructors; initialise them inline or in a static constructor.
+- Never combine or subtract multicast delegates with `-` or `-=`, except to unsubscribe a single handler from an event; chained-delegate subtraction yields unpredictable results.
+- Never declare nested-class members that shadow static members or nested types of the outer class.
+- Never call a method so that it resolves ambiguously between a `params` overload and a specific overload; cast the arguments or call the intended overload explicitly.
+- Never pass caller-information arguments explicitly (for example to `[CallerMemberName]` parameters).
+- Use `value` in every `set`, `init`, `add`, and `remove` accessor; never ignore the assigned value.
+- Return `void` from private methods whose return values are never used.
+- Never unsubscribe an anonymous method or lambda from an event; retain the delegate in a variable and unsubscribe that instance.
+- Implement every `partial` method declaration that is invoked; else delete the declaration and its calls.
+- Retain `params` on overrides of methods declaring `params`.
+- Declare static fields after every static field their initialisers reference; textual order determines initialisation order.
+- Invoke every declared event; delete events never invoked.
+- Place caller-information parameters (`[CallerMemberName]`, `[CallerFilePath]`, `[CallerLineNumber]`, `[CallerArgumentExpression]`) last in the parameter list.
+- Move `private` methods invoked only by a nested class into that nested class.
+- Never declare methods that only return a constant; use a constant field or property.
+- Never declare an overload whose default parameter values overlap another overload's signature.
+- Never apply `[Optional]` to `ref` or `out` parameters.
+- Combine every `[DefaultParameterValue]` with `[Optional]`.
+- Use `[DefaultParameterValue]` with `[Optional]`, not `[DefaultValue]`, to specify a parameter default.
+- Delete fields and auto-properties never assigned.
+- When an override calls its `base` method, pass every optional argument explicitly so the caller's values are not replaced by base defaults.
+- Never introduce `params` on an override when the base declaration omits it.
+- Never initialise members inline with values every constructor overwrites.
+- Never create an array explicitly to pass to a `params` parameter; pass the elements directly.
+- Never declare a mutable non-private field `readonly` (for example a `readonly` array or `List<T>`); `readonly` protects only the reference. Use an immutable or read-only type, or declare the field `private`.
+- Initialise `static` fields inline instead of within a static constructor.
+- Never let two methods share an identical implementation; delegate one to the other.
+- Invoke events with a `sender` (`this`, or `null` for static events) and non-null event arguments (`EventArgs.Empty` when there is no data).
+- Ensure each property getter returns, and each setter assigns, the field corresponding to that property.
+- Delete private fields that are assigned but never read.

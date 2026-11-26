@@ -1,0 +1,84 @@
+# Java Rules: Strings, Numbers, And Dates
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never hardcode URIs or file paths; read them from configuration or accept them as parameters.
+- Never call `String.valueOf()` on values concatenated to a `String` with `+`; concatenation converts them implicitly.
+- Compare strings case-insensitively with `equalsIgnoreCase()`, never via intermediate `toUpperCase()` or `toLowerCase()` calls.
+- Never instantiate primitive wrappers solely to call `toString()` or `compareTo()`; use the static methods (for example `Integer.toString(value)` and `Integer.compare(first, second)`).
+- Extract string literals of at least 5 characters that occur 3 or more times into a constant.
+- Never concatenate strings with `+` in a loop; use `StringBuilder`.
+- Never call `toString()` on a `String`.
+- Never call `URL.hashCode()` or `URL.equals()`, which perform DNS resolution; use `URI`.
+- Never instantiate `String`, `BigInteger`, `BigDecimal`, or primitive wrappers via constructors; use literals, `valueOf()`, or the predefined constants.
+- Convert strings to primitives with the `parse` methods (for example `Integer.parseInt`), not `valueOf()` followed by unboxing.
+- Generate random integers with `Random.nextInt(bound)`, never by scaling `nextDouble()` or `nextFloat()` results.
+- Never perform mathematical operations with predetermined results (for example rounding integral values or `Math.ceil` on an integer); replace them with their result.
+- Never perform unnecessary bit operations (for example `value & -1`, `value | 0`, or `value ^ 0`).
+- Never place literal tab or control characters in string or character literals, including text blocks; use escape sequences (`\t`, `\n`, `\u0000`).
+- Compare `indexOf` results with `>= 0` or `> -1`, never `> 0`, which omits index zero.
+- Never use Apache Commons Lang `DateUtils.truncate`; use `java.time` (for example `ZonedDateTime.truncatedTo`).
+- Pass each fragment to a separate `StringBuilder.append` call instead of concatenating `append` arguments with `+`.
+- Test whether a `StringBuilder` or `StringBuffer` is vacant with its `isEmpty()` method, never by converting it with `toString()` first.
+- Use the contents of every `StringBuilder` or `StringBuffer` that receives `append` calls, or delete the instance.
+- Ensure every format string specifier corresponds to an argument of a compatible type, and pass no superfluous arguments, in `String.format`, `formatted`, `Formatter.format`, `printf`, `MessageFormat.format`, and SLF4J, Log4j, and `java.util.logging` calls.
+- Never construct hexadecimal strings with `Integer.toHexString`, which omits leading zeros; use `HexFormat` or `String.format("%02x", value)`.
+- Search for substrings from an offset with the offset-based methods (for example `indexOf(value, fromIndex)`), never via `substring(beginIndex).indexOf(value)`.
+- Use `StandardCharsets` constants instead of `Charset.forName` or charset name strings for standard charsets.
+- Use `String.replace` instead of `String.replaceAll` when the first argument is not a regular expression.
+- Use a regular string literal instead of a text block for strings that fit on a single line.
+- Indent text blocks consistently with either spaces or tabs, never both. **Local precedence:** The coding instructions prohibit tabs for indentation; indent text blocks with spaces only.
+- Never use unnecessary escape sequences in text blocks (for example `\n`, or escaped quotes other than the first of three consecutive quotes).
+- Limit the complexity of each regular expression to at most 20.
+- Never search for vacant lines with a `Pattern.MULTILINE` regular expression that accepts a zero-length string (for example `^$`) without also testing whether the entire input is vacant.
+- Use the `Pattern.CANON_EQ` flag for regular expressions containing characters subject to Unicode normalisation (for example accented letters).
+- Use negated character classes instead of reluctant quantifiers in regular expressions (for example `<[^>]+>` instead of `<.+?>`).
+- Reference every named regular expression group by its name; never define named groups that are never referenced, reference them by number, or reference undefined group names.
+- Never repeat a character within a regular expression character class.
+- Never follow a reluctant quantifier with an expression that accepts a zero-length string, and never place one at the terminus of the regular expression.
+- Replace single-character alternations in regular expressions with character classes (for example `[abc]` instead of `a|b|c`).
+- Use text blocks instead of multi-line string concatenation.
+- Never place text blocks of more than 5 lines directly within lambda expressions; extract them into a local variable or a field.
+- Never place multiple consecutive spaces in regular expressions; use a quantifier (for example ` {3}`).
+- Never include vacant groups (`()`) in regular expressions.
+- Use concise regular expression syntax (for example `\d` instead of `[0-9]`, `+` instead of `{1,}`, and `?` instead of `{0,1}`).
+- Delete non-capturing groups (`(?:...)`) that contain no alternation and are not quantified.
+- Delete superfluous curly brace quantifiers (`{1}`, `{1,1}`) and elements quantified with `{0}` or `{0,0}`.
+- Never use character classes containing a single character (for example `[a]`); use the character directly.
+- Use `Math.clamp` (Java 21) to restrict a value to an interval instead of nested `Math.min` and `Math.max` calls or conditionals.
+- Test whether a `String` or other `CharSequence` is vacant with `isEmpty()`, never `length() == 0`.
+- Never instantiate `StringBuilder` or `StringBuffer` with a `char` argument, which sets the capacity; pass a `String`.
+- Never construct `Date` or `Calendar` values with field values beyond their valid limits (for example a month of 12 or a day of 32).
+- Never use `new BigDecimal(double)`; use `BigDecimal.valueOf(double)` or the `String` constructor.
+- Create `Random` instances once and reuse them; never instantiate one for each random value.
+- Never perform string operations with predictable results (for example `value.substring(0)` or `value.contains(value)`).
+- Pass only `long` values to `Double.longBitsToDouble`.
+- Never box or unbox values explicitly where the conversion is unnecessary (for example `Integer.valueOf(value).intValue()`); rely on implicit conversion.
+- Cast dissimilar primitive wrapper operands of the conditional (`?:`) operator explicitly to prevent unexpected unboxing and numeric promotion.
+- Never shift `int` values by 0 or by more than 31 bits, or `long` values by 0 or by more than 63 bits.
+- Cast operands to the larger type prior to arithmetic whose result is assigned to a `long`, `float`, or `double`, to prevent integer overflow and truncated division.
+- Ensure every `printf`-style format string is valid at runtime: each specifier must suit its argument type, every indexed argument reference must exist, and no specifier may be malformed.
+- Never pass `.`, `|`, or `File.separator` as a regular expression (for example to `replaceAll` or `split`); escape them or use `Pattern.quote`.
+- Never call `Math.abs` on, or negate, values that can be `Integer.MIN_VALUE` or `Long.MIN_VALUE` (for example `hashCode()` or `Random.nextInt()` results).
+- Never use non-existent operators (for example `=+`, `=-`, or `=!`); use `+=`, `-=`, or `!=`, or separate the characters.
+- Never repeat unary prefix operators (for example `!!flag` or `~~value`).
+- Mask `byte` values with `& 0xff` prior to combining them with shifts in bitwise operations, to prevent sign extension.
+- Pass indices within the string's bounds to `String` methods (for example `substring` and `charAt`).
+- When combining `Math.min` and `Math.max` to restrict a value, pass the maximum limit to `Math.min` and the minimum limit to `Math.max`; never invert them so that the result is invariant.
+- Never use the week-based year (`YYYY`) in date formats; use `yyyy`.
+- Compare `String` and boxed type values with `equals()`, never `==` or `!=`.
+- Never apply `*` or `+` repetitions to regular expression sub-expressions that accept a zero-length string.
+- Group alternatives with a non-capturing group when combining them with anchors (for example `^(?:first|second)$` instead of `^first|second$`).
+- Delete redundant alternatives in regular expressions that another alternative subsumes.
+- Use only syntactically valid regular expressions.
+- Include the `UNICODE_CASE` flag when combining `CASE_INSENSITIVE` with Unicode characters in regular expressions.
+- Never place Unicode grapheme clusters (characters composed of multiple code points) within regular expression character classes; use alternation instead.
+- Pair the week-based year (`WeekFields.weekBasedYear()`, format letter `Y`) only with the week of week-based year (`WeekFields.weekOfWeekBasedYear()`), and use `ChronoField.ALIGNED_WEEK_OF_YEAR` only with the regular year, in `DateTimeFormatter` instances.
+- Never follow a possessive quantifier with a sub-expression that accepts only characters the quantifier consumes; the regular expression can then never succeed.
+- Never position regular expression boundaries (`^`, `\A`, `$`, `\Z`, `\z`) where they can never be satisfied (for example `$` followed by additional characters).
+- Prevent regular expressions from overflowing the stack: never apply repetitions whose body contains alternation, optional elements, or nested repetitions to large inputs; use possessive quantifiers or character classes instead (maximum stack consumption factor 5.0).
+- Reference, via back references, only capturing groups that the regular expression defines and matches on the identical path prior to the reference.
+- Never use regular expression lookahead assertions that contradict the remainder of the expression; the expression can then never succeed.
+- Use the regular expression escape sequence `\cX` only with characters from `@` to `_` (`@`, capital ASCII letters, `[`, `\`, `]`, `^`, and `_`).
+- Pass `Math.clamp` a minimum that never exceeds its maximum, and never pass the clamped value itself as a limit.
+- Pass `String.indexOf` a non-negative `beginIndex` of at most `endIndex`, and an `endIndex` of at most the string length.

@@ -1,0 +1,43 @@
+# C# Rules: Control Structures
+
+One directive per C# rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Ensure every nested block (`if`, loop, `try`, `catch`, `finally`) contains at least one statement or a comment explaining the intentional omission.
+- Never modify a `for` loop's stop-condition variables within its body; use `while` when the bound changes.
+- Never use `goto`; restructure with loops, `break`, `continue`, or extracted methods.
+- Merge nested `if` statements without `else` branches into one `if` combining the conditions with `&&`.
+- Never assign within a sub-expression (for example `Foo(x = 1)`, `return x = y;`); assign in a separate statement. Exempt: lambdas and anonymous methods, chained assignments (`a = b = c`), assignments in `if` or loop conditions, and the right operand of `??`.
+- Never use redundant boolean literals (`x == true`, `x || false`, `b ? true : false`) with non-nullable `bool` values; simplify the expression.
+- Use `while` instead of a `for` loop containing only a condition (no initialiser and no iterator).
+- In a `switch` with more than 30 `case` sections, limit each section to one statement; prefer a lookup table.
+- Delete unused local variables.
+- Never assign a variable to itself; the no-op usually conceals a typo.
+- Never declare a loop whose body invariably exits on its first iteration (`break`, `return`, `throw`); use an `if`.
+- Never use identical operands on both sides of a binary operator (for example `a == a`, `a && a`, `x - x`); correct the intended operand.
+- Never instantiate an object without using the instance; assign it, use it, or delete the expression.
+- Delete assignments whose value is never read prior to reassignment or scope exit (dead stores).
+- Never repeat a condition within one `if`/`else if` chain; the later branch is unreachable.
+- Never duplicate an implementation in two branches of an `if` chain or two `switch` sections; merge their conditions.
+- Never negate a comparison (`!(a == b)`); use the opposite operator (`a != b`).
+- Ensure a `for` iterator clause modifies the variable tested in the loop condition; use `while` when it does not.
+- Never apply a postfix increment or decrement whose result is never read (for example `return i++;`, `i = i++;`).
+- Use the conditional logical operators `&&` and `||` instead of `&` and `|` in boolean conditions.
+- Ensure every loop and every recursive call contains a reachable termination condition.
+- Ensure a `for` loop iterator clause moves the counter in the direction of the stop condition.
+- Never declare a `for` loop whose condition is false on entry; correct or delete the loop.
+- Never dereference a value that can be `null` on any execution route; guard it with a null check (`is not null`) or restructure.
+- Never use a condition whose value is constant at that point (invariably `true` or `false`); correct the condition or delete the unreachable code.
+- Delete boolean sub-expressions whose value is constant at that point.
+- Never use reversed compound operators (`=+`, `=-`, `=!`); use `+=`/`-=`, or insert a space when assigning a unary expression is intended.
+- Never double a prefix operator (`!!x`, `~~x`, `- -x`); delete the redundant pair.
+- Never nest conditional (`?:`) operators; use `if`/`else` or a `switch` expression. **Local precedence:** The coding instructions are stricter: never use `?:` at all.
+- Prefer sequential guard clauses for independent preconditions, and cohesive named `bool` locals or predicate methods for policy checks. A boolean expression holds at most 3 single-operator clauses, never mixes `&&` with `||`, and contains no negated multi-clause lambda (use `All(predicate)` rather than `!Any(x => !...)`); preserve short-circuit order and side effects.
+- In loops, prefer `continue` guard clauses for per-item exclusions over nesting the remaining body. Do not treat `foreach` plus `if` as inherently inefficient or replace it with LINQ/materialisation solely to remove the conditional; retain the clearer implementation unless profiling justifies a performance change.
+- Never compare a variable with a value immediately prior to assigning that value (`if (x != v) { x = v; }`); assign unconditionally.
+- Delete `case` labels without statements that fall through to `default`.
+- Never compare `GetType()` of a nullable value with `typeof(T?)` or test it with `is T?`; boxing yields the underlying type, so the comparison is constant.
+- Delete redundant jump statements (a final `return;` in a `void` method, a final `continue;` in a loop).
+- Never read `.Value` of a `Nullable<T>` without first checking `HasValue` (or `is not null`).
+- Limit Cognitive Complexity to 15 per method and 3 per property accessor; extract cohesive named methods.
+- Never let every branch of an `if` chain, `switch`, or conditional expression share an identical implementation; delete the conditional or correct a branch.
+- Place the `default` section either first or last in a `switch`.

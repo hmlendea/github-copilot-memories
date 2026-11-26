@@ -35,7 +35,7 @@ The original maintainers are not responsible for changes, modifications, or secu
 The subsequent report categories are in scope for this repository:
 - Malicious or misleading instruction files, skills, or agents that could compromise user environments
 - Insecure hook scripts that execute arbitrary code during Copilot or Codex sessions
-- Credential, secret, or personal-data exposure in repository content
+- Credential, secret, personal-data, or system-specific detail exposure in repository content
 
 The subsequent categories are out of scope unless explicitly stated to the contrary:
 - Vulnerabilities in third-party software referenced by instructions

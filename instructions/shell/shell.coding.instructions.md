@@ -23,3 +23,7 @@ applyTo: "**/*.sh"
 
 - Always write distro-agnostic code: use only POSIX-standard or universally available commands, and avoid paths or tools specific to any particular Linux distribution.
 - Never embed Python in shell scripts unless explicitly asked.
+
+### Conditional Quality Skill
+
+- Invoke [shell-code-quality](../../skills/shell-code-quality/SKILL.md) prior to editing or reviewing shell scripts; load each rule reference listed in its Rule Catalogue whose topic the change touches, and the [security instructions](shell.security.instructions.md) for security-relevant changes.

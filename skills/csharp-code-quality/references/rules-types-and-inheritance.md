@@ -1,0 +1,47 @@
+# C# Rules: Types And Inheritance
+
+One directive per C# rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Limit class inheritance depth to 5 levels, counting base classes from libraries; prefer composition.
+- Declare classes containing only static members `static`, or declare a non-public constructor.
+- Override `Equals(object)` and `GetHashCode()` together, never one without the other.
+- When implementing `IComparable` or `IComparable<T>`, also override `Equals` and the operators `==`, `!=`, `<`, `<=`, `>`, and `>=`.
+- Declare an interface instead of an abstract class whose members are all abstract.
+- Never call overridable (`virtual` or `abstract`) members from a constructor.
+- Delete casts to the expression's existing static type.
+- Delete redundant items from inheritance lists (`object`, an `int` enumeration base, interfaces previously implemented by the base class or another listed interface).
+- Never cast to a type incompatible with the value's runtime type; correct the cast or test the type with `is` or `as` first.
+- Never declare a class without members; delete it or use an interface. Exempt: `partial` classes, names with the suffix `Command`, `Message`, `Event`, or `Query`, and `Exception` or `Attribute` subclasses.
+- Use `x is T` instead of `typeof(T).IsInstanceOfType(x)`, `typeof(T).IsAssignableFrom(x.GetType())`, or a null comparison of `x as T`.
+- Never return `null` from `ToString()`; return `string.Empty` or a descriptive value.
+- Delete unused type parameters.
+- Compute `GetHashCode()` only from immutable (`readonly`) fields and read-only properties.
+- Assign every `[Flags]` enumeration member an explicit power-of-two value or an explicit combination; never rely on implicit sequential values.
+- Name the zero-value member of a `[Flags]` enumeration `None`.
+- Declare at most 2 generic type parameters per type and at most 3 per method.
+- Never declare `static` fields in generic types unless a separate value per closed generic type is intended.
+- Never assign properties of a `readonly` field whose type can be a value type (a struct or an unconstrained generic); the assignment mutates a copy. Constrain the generic to `class` or delete the `readonly` modifier.
+- Never compare a value of an unconstrained generic type with `null`; constrain `T` to `class` or use `EqualityComparer<T>.Default.Equals(value, default)`.
+- Never call `object.ReferenceEquals` with value-type arguments; boxing invariably yields `false`.
+- Never test `this is T`; use polymorphism (virtual members) instead.
+- Declare generic interface and delegate type parameters `out` (covariant) or `in` (contravariant) when their usage permits.
+- Never cast the identical value twice (combine the `is` check and cast in a pattern, for example `if (x is T t)`).
+- In a class deriving directly from `object`, never call `base.GetHashCode()` or `base.Equals()` from the overrides; it yields reference semantics.
+- Mark `private` classes and records without derived types `sealed`.
+- Use bitwise operators only on `[Flags]` enumerations.
+- In an `Equals` override, never use `base.Equals` as a reference-equality check unless the base type is `object`; use `object.ReferenceEquals`.
+- Declare constructors of `abstract` classes `protected` (or `private protected`), never `public`.
+- Never call `GetType()` on a `System.Type` instance; use the `Type` itself.
+- Redeclare colliding members in an interface that inherits several base interfaces with identically named members.
+- Never declare a class whose constructors are all `private` unless it instantiates itself (singleton, factory, smart enumeration), is static-only, or derives from `SafeHandle`; else declare it `static` or expose a constructor.
+- Never declare a generic type whose base type nests it with an expanding type argument (for example `class C<T> : B<C<C<T>>>`); the runtime is unable to load it.
+- Never overload `operator==` on reference types unless they are value-like (they overload `+`/`-` or implement `IEquatable<T>` or `IComparable<T>`).
+- Implement `IEquatable<T>` on every type declaring `Equals(T)`.
+- Mark custom attribute classes with `[AttributeUsage]`.
+- Never reduce the accessibility of an inherited member via `new`.
+- Never declare a method that shadows an identically named base method by accepting a less derived parameter type; rename it or override the base method.
+- Seal classes that implement `IEquatable<T>`.
+- Overload operators consistently: overloading `==` requires overriding `Equals` and `GetHashCode`; overloading `+` or `-` requires overloading `==` and overriding `Equals`.
+- Never extend outdated base types in externally visible types (`ApplicationException`, `XmlDocument`, `CollectionBase`, `DictionaryBase`, `Queue`, `ReadOnlyCollectionBase`, `SortedList`, `Stack`); use `Exception` and generic collections.
+- Apply `[Flags]` only to enumerations whose values are powers of two or combinations of them.
+- Never null-check a value that is also tested with `is`; `is` returns `false` for `null`.

@@ -1,0 +1,47 @@
+# Python Rules: Strings, Numbers, And Dates
+
+One directive per Python rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never repeat a string literal 3 or more times; define a constant. Literals below 5 characters, literals within decorators, and literals containing only letters, digits, and underscores are exempt.
+- Never compose format strings that raise at runtime (for example `%d` with a `str`, or invalid replacement field numbering). **Local precedence:** The coding instructions require f-strings for all interpolation, never `%` formatting or `.format()`; apply the rule to any remaining format strings.
+- Use string formatting correctly: no unused `%` or `str.format` arguments, no f-strings without a replacement field, and correctly formatted logger messages. **Local precedence:** The coding instructions require f-strings for all interpolation, never `%` formatting or `.format()`; apply the rule to any remaining format strings.
+- Never concatenate string or bytes literals implicitly where it is confusing (adjacent literals on one line, or within a collection where a comma may be absent); use `+` or merge the literals.
+- Use `startswith()` or `endswith()` instead of string slicing in conditions.
+- Never nest f-strings 3 or more levels.
+- Process template strings (t-strings) prior to use; never use a `Template` as a `str`.
+- Never concatenate `Template` and `str` directly; wrap the string with `Template(...)`.
+- Process template strings with structural pattern matching (`match`) on Python 3.14 and later.
+- Use `str.replace` instead of `re.sub` for literal substitutions.
+- Never test floating-point values for equality, directly or indirectly; use `math.isclose` or `numpy.isclose`.
+- Provide `abs_tol` when comparing to 0 with `math.isclose`.
+- Never divide by a value that can be zero; test the denominator first.
+- Pass date and time constructor attributes within valid intervals (for example month 1-12 and hour 0-23).
+- Use `%I` only with `%p` in time formats; otherwise use `%H`.
+- Never pass a `pytz.timezone` to the `datetime.datetime` constructor; use `localize`.
+- Use `zoneinfo` instead of `pytz` on Python 3.9 and later.
+- Use timezone-aware `datetime.now(timezone.utc)` and `datetime.fromtimestamp(timestamp, timezone.utc)` instead of `utcnow()` and `utcfromtimestamp()`.
+- Never compare offset-naive `datetime.time` or `datetime.datetime` objects with offset-aware ones.
+- Never compare `datetime.datetime` objects with `datetime.date` objects.
+- Never repeat regular expression subpatterns that can match the empty string.
+- Retain regular expression complexity of 20 or below.
+- Group regular expression alternatives when used with anchors (`^(a|b)$`, not `^a|b$`).
+- Delete redundant regular expression alternatives.
+- Use character classes instead of reluctant quantifiers in regular expressions (`<[^>]*>` rather than `<.*?>`).
+- Reference named regular expression groups by name, never by index, and only by names that exist.
+- Never place Unicode grapheme clusters (combining characters) within regular expression character classes.
+- Never repeat a character within a regular expression character class.
+- Never follow a possessive quantifier with a subpattern that can never match.
+- Never place regular expression boundaries (`^`, `$`, or `\b`) where they can never match.
+- Reference only capturing groups defined and matched prior to the back reference.
+- Never use contradictory lookahead assertions in regular expressions.
+- Follow reluctant quantifiers with an expression incapable of matching the empty string.
+- Replace single-character alternations (`a|b|c`) with character classes (`[abc]`).
+- Never include vacant alternatives in regular expression alternation.
+- Never place multiple consecutive spaces in regular expressions; quantify a single space instead.
+- Reference only existing groups in regular expression substitution strings.
+- Never use vacant groups in regular expressions.
+- Use concise regular expression quantifiers and character classes (`\d` rather than `[0-9]`, and `+` rather than `{1,}`).
+- Delete non-capturing groups (`(?:...)`) without a quantifier.
+- Delete superfluous curly brace quantifiers (`{1}` or `{1,1}`).
+- Never use a character class containing a single character; use the character itself.
+- Never use octal escape sequences in regular expressions.

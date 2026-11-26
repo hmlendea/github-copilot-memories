@@ -1,0 +1,48 @@
+# Java Rules: Members And Parameters
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Limit methods and constructors to at most 7 parameters each; group related values into a dedicated type.
+- Delete unused `private` fields; `serialVersionUID` is exempt.
+- Never declare mutable `public` fields; declare them `private` and expose accessors.
+- Never declare a local variable with a name identical to a field of the enclosing class.
+- Delete unused `private` methods; serialisation hook methods are exempt.
+- Declare `public final` fields initialised with a constant at declaration as `static final`.
+- Delete unused method parameters. Exempt: `@Observes` parameters, overrides and implementations, interface `default` methods, non-`private` methods that only throw or contain no statements, and annotated methods.
+- Delete overriding methods whose body only calls the overridden superclass method with identical arguments.
+- Never permit a method to remain without statements; implement it, throw `UnsupportedOperationException`, or insert a comment explaining why it is intentionally vacant.
+- Declare `public static` fields `final`.
+- Convert `private` fields used only as local variables within individual methods into local variables.
+- Delete unused local variables.
+- Never declare a local variable only to return or throw it immediately; return or throw the expression directly.
+- Never wrap a single-statement lambda body in a block; use an expression lambda.
+- Replace anonymous inner classes implementing a single-method interface with lambdas.
+- Omit the parentheses enclosing a single lambda parameter whose type is inferred (`value -> ...`).
+- Replace lambdas that only call a method with method references.
+- Delete unused assignments (dead stores) to local variables.
+- Access `static` members via the class name, never via an instance.
+- Pass arguments in the order of the declared parameters; never swap arguments whose names correspond to differently positioned parameters.
+- Never declare mutable `public static` fields (arrays, collections, or mutable objects); expose unmodifiable copies.
+- Never return `null` from methods returning `Boolean`; return a primitive `boolean`.
+- Never assign `static` fields from instance methods.
+- Never assign `static` fields in constructors; delete the `static` modifier or initialise the field statically.
+- Access `static` members via their declaring class, never via a subclass.
+- Move `private` methods invoked only by an inner class into that inner class.
+- Replace methods whose sole statement returns a constant with a constant. Exempt: overrides, non-`final` methods, and annotated methods.
+- Never create methods whose every `return` statement returns one identical value; return an informative result or declare the method `void`.
+- Never create arrays explicitly solely to pass them as varargs arguments; pass the values directly.
+- Never implement two methods identically; delegate one to the other.
+- Delete assignments that set a variable to the value it currently contains.
+- Use specialised functional interfaces instead of generic ones with boxed types (for example `IntFunction<Result>` instead of `Function<Integer, Result>`, and `IntPredicate` instead of `Predicate<Integer>`).
+- Never pass `null` to parameters that a package-level or class-level non-null default (for example `@ParametersAreNonnullByDefault`) covers.
+- Never annotate the parameter of `equals` with `@Nonnull` or a similar non-null annotation; `equals(null)` must return `false`.
+- Never annotate primitive types with `@CheckForNull` or `@Nullable`.
+- Never pass `null` or a single primitive array as the sole argument to a varargs parameter of a reference type; cast or wrap it explicitly.
+- Never access members annotated `@VisibleForTesting` from production code.
+- Declare unnamed variables (`_`) with `var` instead of an explicit type.
+- Read the initial values of method parameters, caught exceptions, and for-each variables prior to reassigning them; preferably treat them as `final`.
+- Never assign a variable to itself.
+- Never increment or decrement a value whose result is discarded (for example `return count++;` or `count = count++;`).
+- Never ignore the return values of methods without side effects (for example `String.trim()`, `BigDecimal.add`, or `Stream.map`).
+- Never assign `null` to fields, parameters, or return values annotated `@NonNull` or `@Nonnull`.
+- Ensure getters and setters access the field their names indicate.

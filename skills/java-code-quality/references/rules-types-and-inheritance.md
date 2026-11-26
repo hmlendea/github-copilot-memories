@@ -1,0 +1,58 @@
+# Java Rules: Types And Inheritance
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Limit the inheritance depth of classes to at most 5.
+- Declare a `private` constructor in every class containing only `static` members.
+- Mark deprecated elements with both the `@Deprecated` annotation and the Javadoc `@deprecated` tag.
+- Delete deprecated code at the earliest opportunity; deprecation marks code for eventual deletion.
+- Annotate every overriding and implementing method with `@Override`.
+- Never use instance initialiser blocks; initialise in constructors or field declarations, and use only `static` initialisers.
+- Implement `Cloneable` and call `super.clone()` in every class that overrides `clone()`.
+- Override `equals(Object)` consistently with `compareTo` in every class that implements `Comparable`.
+- Never declare interfaces consisting solely of constants; place constants in a `final` class or enum.
+- Never use wildcard types (`? extends`, `? super`, `?`) in return types.
+- Never wrap repeated annotations in their container annotation; repeat the annotation directly.
+- Never use code marked `@Deprecated`; migrate to the recommended substitute.
+- Delete redundant casts.
+- Delete classes devoid of members; annotated classes (for example marker types) are exempt.
+- Implement `clone()` in every class that implements `Cloneable`.
+- Override `equals` in every subclass that declares fields and extends a class overriding `equals`.
+- Use the diamond operator (`<>`) wherever the type arguments are inferable.
+- Delete unused type parameters.
+- Never declare subclass fields with names identical to non-`private` superclass fields.
+- Qualify calls from inner classes to inherited methods with `super.` or `Outer.this.` when the enclosing class declares an identically named method.
+- Never instantiate classes containing only `static` methods.
+- Never alter the superclass contract in overriding methods (for example nullability annotations on parameters or return values).
+- Never override `Object.clone()`; use a copy constructor or a copy factory method.
+- Never redeclare as `abstract` a method that an implemented interface or a superclass previously declares.
+- Never expose mutable state on enums: declare enum fields `private final` and never provide setters.
+- Never use generic types without type arguments (for example `List` instead of `List<String>`).
+- Delete unused `private` nested classes.
+- Never test for `null` in conjunction with `instanceof`; `instanceof` returns `false` for `null`.
+- Never bound a type variable or wildcard with `extends` and a `final` class; use the class directly.
+- Never declare type parameters that shadow other type parameters.
+- Never use code annotated `@Deprecated(forRemoval = true)`.
+- Declare constructors of `abstract` classes `protected` or package-private, never `public`.
+- Use pattern matching for `instanceof` (`if (value instanceof Type typed)`) instead of `instanceof` followed by a cast.
+- Use the `instanceof` operator instead of `Type.class.isInstance(value)` when the type is determined at compile time.
+- Use records instead of ordinary classes for immutable data carriers.
+- Delete record constructors and accessor methods that only duplicate the generated implementations.
+- Omit the `permits` clause of a `sealed` class when every permitted subclass is declared in the identical file.
+- Include `since` or `forRemoval` in every `@Deprecated` annotation.
+- Limit each class to dependencies on at most 20 other classes.
+- Review every Singleton class to confirm that a single instance is genuinely necessary and that its implementation suits the context; prefer dependency injection.
+- Use record patterns (for example `if (value instanceof Range(int minimum, int maximum))`) instead of explicit accessor calls when every record component is accessed.
+- Replace the types of unused record components in record patterns with the unnamed pattern `_`.
+- Declare the parameter of every `equals` override as `Object`; never overload `equals` with a narrower parameter type.
+- Override `equals(Object)` and `hashCode()` together, never one alone.
+- Test the argument type in every `equals(Object)` implementation prior to casting it.
+- Never compare values of unrelated types with `equals` (for example a `String` with an `Integer`, unrelated classes or interfaces, or an array with a non-array), and never pass `null` to `equals`; the result is invariably `false`.
+- Never return `Integer.MIN_VALUE` from `compareTo`; return a value that remains valid when negated (for example -1).
+- Never declare a subclass method with the name and signature of a parent method that it fails to override (the parent method being `static` or `private`, or its parameter or return types come from different packages); rename it or override correctly.
+- Compare `compareTo` results with zero (`< 0`, `== 0`, `> 0`), never with specific values (for example 1 or -1).
+- Never return `null` from `toString()` or `clone()`.
+- Never reference `static` members of a subclass from its parent class during class initialisation.
+- Never overload `compareTo`; implement only `compareTo(T)` from `Comparable<T>`.
+- Override `equals()`, `hashCode()`, and `toString()` in records with array fields, comparing and printing the arrays by content (`Arrays.equals`, `Arrays.hashCode`, `Arrays.toString`).
+- Cast only references to objects of a compatible type; never perform casts that throw `ClassCastException`.

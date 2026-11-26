@@ -1,0 +1,66 @@
+# Java Rules: Platform APIs
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Mark fields of `Serializable` classes `transient` or `static` unless their types are serialisable.
+- Declare `readResolve` methods `protected` or `public` in non-`final` serialisable classes so that subclasses inherit them.
+- Never mark fields `transient` in non-serialisable classes.
+- Never call `ResultSet.isLast()`; test the result of `next()` instead.
+- Never declare `readObject` `synchronized`.
+- Delete the `synchronized` modifier from `writeObject` when no other code in the class is synchronised.
+- Inject dependencies into `@Bean` factory method parameters within `@Configuration` classes, never into fields of the configuration class.
+- Never declare `@RequestMapping` handler methods `private`.
+- Use composed mapping annotations (`@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`, `@PatchMapping`) instead of `@RequestMapping(method = ...)`.
+- Use standard Java APIs instead of their Guava equivalents (for example `java.util.Base64` instead of `BaseEncoding.base64()`, `String.join` or `Collectors.joining` instead of `Joiner`, and `java.util.Optional` instead of the Guava `Optional`).
+- Never set `serialVersionUID` to `0L` in records.
+- Set the region explicitly when constructing AWS SDK clients.
+- Set the credentials provider explicitly when constructing AWS SDK clients.
+- Initialise reusable resources of AWS Lambda functions (for example SDK clients and database connections) in the constructor or field initialisers, never in the handler method.
+- Use the AWS SDK consumer `Builder` overloads (lambda arguments) instead of creating nested `Builder` instances explicitly.
+- Never invoke another AWS Lambda function synchronously from a Lambda function.
+- Set AWS regions with the `Region` or `Regions` constants, never with hardcoded strings.
+- Pass a property placeholder (`${...}`) or a SpEL expression (`#{...}`) to `@Value`, never a plain literal.
+- Never call `@Async`, `@Cacheable`, or `@Transactional` methods via `this`; call them via the injected proxy.
+- Use constructor injection instead of field injection (`@Autowired`, `@Inject`, or `@Resource` on fields).
+- Declare optional REST handler parameters (`required = false`) with object types (for example `Optional<Integer>` or `Integer`), never primitives.
+- Annotate exactly one constructor with `@Autowired` when a Spring bean declares multiple constructors.
+- Name Spring beans per the Java naming conventions (camel case).
+- Never inject request-scoped, session-scoped, or prototype beans directly into singleton beans; inject an `ObjectFactory`, a `Provider`, or a scoped proxy.
+- Use `@RestController` instead of `@Controller` when every handler method is annotated `@ResponseBody`.
+- Delete superfluous `@ResponseBody` annotations within `@RestController` classes.
+- Release Android sensor resources (for example the camera, location services, and the microphone) as soon as they are no longer required.
+- Select only the required columns in JDBC SQL queries; never use `SELECT *`.
+- Set constant `PreparedStatement` parameters once, prior to loops, instead of within them.
+- Use JDBC batch processing (`addBatch` and `executeBatch`) for statements executed in loops.
+- Never inject values into `static` fields with `@Value`, `@Inject`, or `@Autowired`.
+- Never combine `@Cacheable` and `@CachePut` on one method.
+- Apply `@Cacheable`, `@CachePut`, `@CacheEvict`, and `@Caching` annotations only to concrete classes and their methods, never to interfaces or interface methods.
+- Declare `@InitBinder` methods `void`.
+- Include a `Pageable` parameter in every Spring Data repository method returning `Page` or `Slice`.
+- Declare `@BeforeTransaction` and `@AfterTransaction` methods `void` and without parameters.
+- Provide a no-argument constructor accessible to the subclass in every non-serialisable superclass of a `Serializable` class.
+- Declare a `public` no-argument constructor in every `Externalizable` class.
+- Declare custom serialisation methods with the exact required signatures: `private void writeObject(ObjectOutputStream)`, `private void readObject(ObjectInputStream)`, `private void readObjectNoData()`, and `writeReplace` and `readResolve` returning `Object`.
+- Declare `Serializable` inner classes of non-serialisable outer classes `static`.
+- Pass only `Serializable` objects to `ObjectOutputStream.writeObject`.
+- Never declare mutable instance fields in servlets; servlets are shared between threads.
+- Never call methods of the identical class with incompatible `@Transactional` propagation values; the proxy ignores internal calls.
+- Never annotate `private` methods (or, prior to Spring 6, any non-`public` methods) with `@Async` or `@Transactional`; Spring proxies ignore them.
+- Store only `Serializable` objects in `HttpSession` attributes.
+- Pass valid indices to `PreparedStatement` setters and `ResultSet` getters; indices start at 1.
+- Call `SessionStatus.setComplete()` in `@Controller` classes annotated `@SessionAttributes`.
+- Never place `@SpringBootApplication` or `@ComponentScan` classes in the default package.
+- Never declare `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, `readExternal`, or `serialPersistentFields` in records; record serialisation ignores them (use `writeReplace` and `readResolve` instead).
+- Name Spring model attributes according to the Java identifier convention so that SpEL expressions can reference them.
+- Declare `@Async` methods returning `void` or `Future` (for example `CompletableFuture`).
+- Provide a default value for nullable `@Value`-injected fields and parameters (for example `@Value("${name:#{null}}")`).
+- Never annotate methods declared within `@Configuration` classes with `@Async`.
+- Annotate at most one constructor per class with `@Autowired`.
+- Never annotate `@Bean` methods with `@Qualifier`; name the bean via the method name or `@Bean("name")`.
+- Never invoke `@Bean` methods for singleton beans directly within `@Configuration(proxyBeanMethods = false)` classes; inject the bean as a method parameter instead.
+- Bind every path variable of a request mapping template to a method parameter annotated `@PathVariable`.
+- Use only syntactically valid, properly closed SpEL expressions and property placeholders.
+- Assign every bean in a `@Configuration` class a distinct name.
+- Return appropriate HTTP status codes from controller handlers; when a handler fails with an exception, respond with a 4xx or 5xx status code, never a 2xx code.
+- Apply `@Scheduled` only to methods without parameters.
+- Declare `@EventListener` methods with at most one parameter.

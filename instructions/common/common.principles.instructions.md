@@ -1,12 +1,7 @@
 ---
-description: "Use for code or documentation edits. Covers privacy, security, evidence, execution, and documentation synchronisation."
+description: "Use for code or documentation edits. Covers evidence, execution, and documentation synchronisation. Privacy and security rules live in common.security.instructions.md."
 applyTo: "**"
 ---
-
-## Privacy And Security
-
-- Minimise collected, processed, persisted, and exposed personal data.
-- Never log, display, commit, telemeter, or expose secrets or personal data unless explicitly required and protected or redacted. Apply secure practices throughout; prefer the most secure practical option.
 
 ## Evidence And Execution
 

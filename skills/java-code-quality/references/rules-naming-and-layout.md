@@ -1,0 +1,44 @@
+# Java Rules: Naming And Layout
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Name methods per `^[a-z][a-zA-Z0-9]*$` (camel case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Name classes per `^[A-Z][a-zA-Z0-9]*$` (Pascal case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Name interfaces per `^[A-Z][a-zA-Z0-9]*$` (Pascal case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Name constants (`static final` fields and enum constants) per `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`. **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Name fields per `^[a-z][a-zA-Z0-9]*$` (camel case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Name local variables and method parameters per `^[a-z][a-zA-Z0-9]*$` (camel case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names, including loop and lambda variables; apply both.
+- Name type parameters per `^[A-Z][0-9]?$` (one capital letter, optionally followed by a digit). **Local precedence:** The naming instructions prohibit single-letter names; use descriptive type parameter names and report each deviation.
+- Name packages per `^[a-z_]+(\.[a-z_][a-z0-9_]*)*$`. **Local precedence:** The naming instructions additionally prohibit abbreviations, and the coding instructions prohibit catch-all `Helpers`, `Utils`, `Common`, `Misc`, or `Shared` packages; apply both.
+- Delete commented-out code.
+- Delete redundant pairs of parentheses.
+- Delete vacant statements (stray semicolons).
+- Declare modifiers in the order annotations, `public`, `protected`, `private`, `abstract`, `static`, `final`, `transient`, `volatile`, `synchronized`, `native`, `default`, `strictfp`.
+- Delete unnecessary imports: unused, duplicated, `java.lang`, and enclosing-package imports.
+- Resolve every `FIXME` comment and delete it once resolved.
+- Resolve every `TODO` comment and delete it once complete; format any interim one as `// TODO: Description.`
+- Never use restricted or future keywords (for example `_`) as identifiers.
+- Place array designators `[]` on the return type in method signatures (`int[] values()`), never after the parameter list.
+- Place array designators `[]` on the type, never on the variable name (`int[] values`).
+- Never use nested blocks devoid of a controlling statement; extract them into methods.
+- Declare a package for every class; never use the default unnamed package.
+- Never name a non-constructor method identically to its enclosing class.
+- Align package declarations with the source file directory structure.
+- Declare one variable per declaration statement.
+- Never name a field identically to its enclosing class, ignoring case.
+- Never name methods and fields identically or differing only by capitalisation.
+- Never reuse the simple name of an implemented interface or an extended superclass as a class name.
+- Enclose multi-statement bodies of `if`, `else`, `for`, `while`, and `do` in curly braces; indentation never forms a block.
+- Never declare nested `enum` types `static`; they are implicitly static.
+- Name `static` non-`final` fields per `^[a-z][a-zA-Z0-9]*$` (camel case). **Local precedence:** The naming instructions additionally prohibit abbreviations and single-letter names; apply both.
+- Start each `if` statement on a separate line, unless it forms an `else if`; never place it after the closing brace of a preceding `if` block.
+- Indent the single statement controlled by an unbraced `if`, `else`, `for`, `while`, or `do` relative to its controlling statement.
+- Delete packages that contain only `package-info.java`.
+- Pair each `else` unambiguously with its `if` by means of curly braces; never rely on indentation to resolve a dangling `else`.
+- Never use restricted identifiers (`var`, `yield`, `record`, `sealed`, `permits`) as identifiers.
+- Format Markdown documentation comments (`///`) consistently with Markdown syntax; never mix in HTML tags or the Javadoc inline tags `{@code}` and `{@link}` where Markdown equivalents exist.
+- Start regular comments with exactly two slashes; never start them with three or more, which denote Markdown documentation comments.
+- Align dependencies between classes and packages with the intended architecture; never introduce relationships it prohibits.
+- Place classes in the packages and modules that the intended architecture specifies.
+- Eliminate the relationships that the architecture directives designate for elimination, to resolve dependency cycles.
+- Never name methods `tostring`, `hashcode`, or `equal`; these names suggest a failed override of `toString`, `hashCode`, or `equals`.

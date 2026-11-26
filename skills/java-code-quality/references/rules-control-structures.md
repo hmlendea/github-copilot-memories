@@ -1,0 +1,47 @@
+# Java Rules: Control Structures
+
+One directive per Java rule in this area. Explicit local instructions prevail; see the [rule catalogue](../SKILL.md#rule-catalogue) for precedence notes.
+
+- Never permit a nested block to remain without statements; implement it or insert a comment explaining why it is intentionally vacant.
+- Never assign a `for` loop counter or stop-condition variable within the loop body; maintain the stop condition invariant, or use a `while` loop.
+- Terminate every `switch` case containing statements with an unconditional `break`, `return`, `throw`, or `continue`; never fall through into the subsequent case.
+- Include a `default` clause in every `switch` statement, except a `switch` that covers every constant of an enum.
+- Use at most one `break` or `continue` statement per loop.
+- Delete unused labels.
+- Combine nested `if` statements without `else` clauses into a single `if` statement using `&&`.
+- Never use labels.
+- Never assign within sub-expressions; extract the assignment into a separate statement. Exempt: `while` conditions, relational expressions, and chained assignments.
+- Delete redundant boolean literals from expressions (for example `== true` or `|| false`).
+- Return a boolean expression directly instead of wrapping it in an `if`/`else` statement that returns `true` and `false`.
+- Never place non-`case` labels within `switch` statements.
+- Use a `while` loop instead of a `for` loop without initialiser and update clauses.
+- Use `if` statements instead of a `switch` statement with fewer than 3 `case` clauses.
+- Limit `switch` statements to at most 30 `case` clauses; use a `Map` or polymorphism for larger mappings.
+- Never implement two branches of an `if` chain or `switch` identically; merge them.
+- Never invert boolean comparisons (`!(first == second)`); use the opposite operator (`first != second`).
+- Ensure the update clause of a `for` loop modifies the counter tested in its condition.
+- Use the short-circuit operators `&&` and `||` in boolean contexts, never `&` and `|`.
+- Never use gratuitous boolean expressions whose values are invariably `true` or `false` due to prior conditions.
+- Never nest conditional (`?:`) operators; use `if` statements or extract a method.
+- Delete redundant jump statements (for example `return;` as the final statement of a `void` method, or `continue;` as the final statement of a loop body).
+- Limit the Cognitive Complexity of each method to at most 15.
+- Place the `default` clause last in every `switch`.
+- Never use boxed `Boolean` values directly in boolean expressions; compare them via `Boolean.TRUE.equals(value)` or test for `null` explicitly.
+- Never use redundant keywords in arrow `switch` labels: return the value directly instead of a block containing a single `yield`, and never use `break` within an arrow block.
+- Combine `case` labels with identical bodies into comma-separated labels (`case FIRST, SECOND:`) in colon `switch` statements.
+- Never create brain methods that simultaneously exceed 65 lines of code, a cyclomatic complexity of 15, a nesting depth of 3, and 7 accessed variables; divide them into focused methods. **Local precedence:** The coding instructions limit methods to approximately 20-30 lines; apply that stricter limit.
+- Replace `if`-`else` chains that compare one variable against multiple values or types with a `switch`.
+- Use guarded `case` labels (`case Type typed when condition ->`) instead of a single `if` within the body of a pattern-matching `case`.
+- Never create loops that execute at most once; use an `if` statement.
+- Never use identical expressions as both operands of a binary operator. Exempt: `*`, `+`, and `=`, `value != value` NaN tests, and `1 << 1`.
+- Never repeat a condition within an `if`/`else if` chain.
+- Never create infinite loops; ensure every loop has a reachable termination condition.
+- Never create infinite recursion; ensure every recursive method has a reachable base case.
+- Ensure the update clause of a `for` loop moves the counter in the direction of the stop condition.
+- Ensure every loop condition can be `true` at least once; never declare a `for` loop whose condition is `false` prior to the first iteration.
+- Never dereference values that can be `null`; test for `null` first.
+- Ensure conditionally executed code is reachable: never use conditions whose result prior code fixes.
+- Never assign `null` to `Optional` variables or compare them with `null`; use `Optional.empty()`.
+- Ensure divisors can never be zero; test the denominator prior to division or modulo operations.
+- Call `Optional.get()` only after confirming the value is present with `isPresent()`; prefer `orElse`, `orElseThrow`, `map`, or `ifPresent`.
+- Never implement every branch of an `if` chain, `switch`, or conditional operator identically.

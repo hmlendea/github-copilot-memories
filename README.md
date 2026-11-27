@@ -57,7 +57,7 @@ A curated collection of instruction files and skills that encode reusable coding
 - Shares progress, decisions, context, data, and utilities across sessions through a Git-excluded local work directory that no tracked artefact mentions, governed by the `work-directory` skill.
 - Provides a Codex `AGENTS.md` entry point for selecting relevant files from the shared instruction library.
 - Provides the opt-in **Token Saver** (restricted tools, terse reporting) and **LiteLLM** (pre-execution instruction gating, semantic audits) agents.
-- Provides game-modding conventions for MethodScript, Imperator: Rome, Stellaris, Crusader Kings II and III, Civilization IV, V, VI, and Beyond Earth, Victoria 3, Europa Universalis V, and Total War: Rome Remastered.
+- Provides game-modding conventions for MethodScript, Imperator: Rome, Stellaris, Crusader Kings II and III, Civilization IV, V, VI, and Beyond Earth, Victoria 3, Europa Universalis V, Old World, and Total War: Rome Remastered.
 - Provides on-demand procedures for context, research, review, migration, profiling, localisation, memory, documentation, release, and workflow automation.
 - Holds each document and workflow template, its rules, the fidelity contract, and the validation script in the corresponding skill, so they load only for generation tasks.
 - Triggers documentation updates for affected repository files whenever a skill modifies code or dependencies.
